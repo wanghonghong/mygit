@@ -1,0 +1,29 @@
+{% if items.length>0 %}
+{%for item in items%}
+<ul class="table-container">
+    <li>
+        <div class="col-xs-3">
+            <div class="u-cb">
+                <input type="checkbox" name="role" value="{{item.id}}" data-name="{{item.roleName}}" id="checkbox-{{item.id}}" />
+                <label class="iconfont icon-avoid" for="checkbox-{{item.id}}"></label>
+            </div>
+        </div>
+        <div class="col-xs-8">
+            <label for="checkbox-{{item.id}}">{{item.roleName}}</label>
+        </div>
+    </li>
+    <li style="width: 15%;">
+        {{item.typeName}}
+    </li>
+    <li>{{item.createDate}}</li>
+    <li>{{item.userName}}</li>
+    <li>
+        <div class="u-btn-smltgry f-mr-xs dialog-xg updateRole" data-id="{{item.id}}" onclick="zbRole.power.updateRole('{{item.id}}')"><span>修改</span></div>
+        <div class="u-btn-smltgry f-mr-xs dialog-sc deleteRole" data-id="{{item.id}}" data-name="{{item.roleName}}"><span>删除</span></div>
+        <div class="u-btn-smltgry f-mr-xs dialog-ckqx updatePower" data-id="{{item.id}}" data-name="{{item.roleName}}" onclick="zbRole.power.setRole('{{item.id}}')"><span>配置权限</span></div>
+    </li>
+</ul>
+{%endfor%}
+{%else%}
+{% include "/tpl/system/nodb.html" %}
+{%endif%}

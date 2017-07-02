@@ -1,0 +1,87 @@
+<style>
+    .form-group {
+        padding: 5px 0;
+    }
+    .form-group .check-group {
+        padding: 10px 10px 10px 0;
+    }
+    .stock-info-details-right .stock-info-details {
+        margin-top: 16px;
+        margin-left: 80px;
+    }
+    .stock-info-details-right .stock-info-details .btn-lightgray i {
+        font-size: 20px;
+    }
+    .form-group .check-group label {
+
+        font-size: 16px;
+        top: -2px;
+        left: 2px;
+
+    }
+    .shop-stmd .base-info-details .base-info-details-right .form-group .mrxg {
+        font-size: 14px;
+        color: #666;
+    }
+    .base-info-details .base-info-details-right .form-group span, .stock-info-details .base-info-details-right .form-group span, .sell-set-details .base-info-details-right .form-group span, .order-set-details .base-info-details-right .form-group span, .logistics-set-details .base-info-details-right .form-group span, .base-info-details .stock-info-details-right .form-group span, .stock-info-details .stock-info-details-right .form-group span, .sell-set-details .stock-info-details-right .form-group span, .order-set-details .stock-info-details-right .form-group span, .logistics-set-details .stock-info-details-right .form-group span, .base-info-details .sell-set-details-right .form-group span, .stock-info-details .sell-set-details-right .form-group span, .sell-set-details .sell-set-details-right .form-group span, .order-set-details .sell-set-details-right .form-group span, .logistics-set-details .sell-set-details-right .form-group span, .base-info-details .logistics-set-details-right .form-group span, .stock-info-details .logistics-set-details-right .form-group span, .sell-set-details .logistics-set-details-right .form-group span, .order-set-details .logistics-set-details-right .form-group span, .logistics-set-details .logistics-set-details-right .form-group span
+    {
+        margin-left: 12px;
+        font-family: '宋体', Verdana, Arial, Helvetica, sans-serif;
+        font-size: 12px;
+        line-height: 18px;
+        line-height: 38px;
+
+    }
+
+</style>
+            <div class="col-xs-12 shop-stmd margin-top-s" style="margin: 0 0 20px 0;">
+                <div class="base-info-details">
+                    <div class="base-info-details-right ">
+                        <div class="form-group">
+                            <div class="check-group" >
+                                <label class="margin-right-m">实体门店</label>
+                                <div class="checkBox">
+                                    <input type="checkbox" name="" id="isEntity" value="" />
+                                    <label class="iconfont icon-avoid"  for="isEntity"></label>
+                                </div>
+                                <span class="mrxg">暂无门店</span>
+                                <span style="color: #999;"><i class="iconfont icon-lamp"></i>勾选暂无门店，商城首页底部不出现实体门店小模块</span>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="stock-info-details-right">
+                    <div class="stock-info-details">
+                        <div  class="btn btn-lightgray btn-lg" id="shop_entity_add">
+                            <i class="iconfont icon-add"></i>
+                            <span>新增门店</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="gmsy margin-bottom-m" style="font-size: 14px;">
+                    门店列表
+                </div>
+                <div class="jm-table" style="min-height: 147px;">
+                    <ul class="table-hander">
+                        <li>门店照片-名称-联系电话</li>
+                        <li>营业时间</li>
+                        <li>所属地区</li>
+                        <li>详细地址</li>
+                        <li>操作</li>
+                    </ul>
+                    <div class="table-body" id="table-body">
+
+                    </div>
+                </div>
+            </div>
+            <div id="pageToolbar" class="pagination" style="float: right; margin: 0px 4px 0 0;"></div>
+         <!--   <div style="margin: 63px 0 69px;float: left; width: 1093px; ">
+                <div style="padding:0 30px;" class="btn btn-darkorange btn-radius-5 btn-lg col-xs-offset-6" id="shop_auth_save">保存</div>
+            </div>-->
+
+    <script>
+            shop.entitystore.shop_page_bar();
+            shop.entitystore.shop_entity_add();
+            shop.entitystore.shop_ishas();
+    </script>

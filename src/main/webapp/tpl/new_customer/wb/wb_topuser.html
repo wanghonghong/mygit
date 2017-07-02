@@ -1,0 +1,44 @@
+<style>
+    .ui-dialog-body{
+        padding:0 5px 10px;
+    }
+</style>
+<div>
+    <div class="m-person-totle1 f-mt-m">人数：<span id="count">{{items.length }}</span></div>
+<div class="m-jm-table" >
+	<ul class="table-hander">
+		<li>头像</li>
+		<li>昵称-姓名-手机号</li>
+		<li>关注时间</li>
+		<li>微平台</li>
+		<li>等级</li>
+	</ul>
+	<div class="table-body">
+		{%if items.length>0%}
+		{% for item in items %}
+			<ul class="table-container">
+				<li><img src="{{item.headimgurl}}" class="u-thumbnail-circ"></li>
+				<li>
+				<span>{{item.nickname}}</span><br><span>{{item.userName}}</span><br><span>{{item.phoneNumber}}</span>
+				</li>
+				<li>{{item.subscribeTime}}</li>
+				<li>微博</li>
+				<li>
+					{{item.levelName}}
+				</li>
+			</ul>
+		{%endfor%}
+		{% else %}
+		<div class="m-jm-err">
+			<img src="{{globalUrl}}/css/pc/img/jm-nodb.png">
+		</div>
+		{%endif%}
+	</div>
+    <div id="pageToolbar" class="pagination f-fr f-mt-m">
+
+    </div>
+</div>
+
+</div>
+
+

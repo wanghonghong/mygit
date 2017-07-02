@@ -1,0 +1,64 @@
+<style>
+    .u-cb1 label:before{
+        top: 3px;
+    }
+    @media screen and (max-height:720px){
+        #Preview {
+            width:281px;
+            height:590px;
+            margin-left:-140px;
+            margin-top:-295px;
+        }
+        .btb-close {
+            position: absolute;
+            left: 92%;
+            top: 3%;
+            z-index: 103;
+        }
+        .m-phone-view .phone-shell-top{
+            width: 85%;
+        }
+        .m-phone-view .phone-window{
+            height: 400px;
+            width: 85%;
+        }
+        .m-phone-view .phone-height .m-message-marketing{
+            max-height: 450px;
+        }
+        .m-phone-view .phone-shell-bottom{
+            width: 85%;
+        }
+        .u-btn-lgdkorg{
+            padding: 0 35px;
+        }
+        .u-btn-lgdkbl{
+            padding: 0 35px;
+        }
+    }
+  /*  .fullwidhgt{
+        width: 100%;
+        height: 100%;
+    }*/
+</style>
+<!--主模块-->
+
+    <div class="u-btn-lgltgry1 f-mb-m dialog1" id="picturemsgadd"><i class="iconfont icon-add"></i><span>新建图文消息</span></div>
+    <div class="m-jm-table">
+        <ul class="table-hander">
+            <li style="width:35%;">主图-标题</li>
+            <li>作者</li>
+            <li>日期</li>
+            <li style="width:20%;">操作</li>
+        </ul>
+        <div class="table-body" id="mm_picmsg_list">
+
+        </div>
+        <div id="pageToolbar" class="pagination"  style="float: right; margin: 15px 4px 0 0;"></div>
+    </div>
+    <div id="layer"  style="z-index:9999;position: fixed;">
+
+   </div>
+<!--/主模块-->
+<script>
+    mm.picturemsg.init();
+</script>

@@ -1,0 +1,126 @@
+
+<div class="m-search" id="m-search">
+    <label class="u-lb-sm">商户姓名</label>
+    <div class="u-txt col-xs-3">
+        <input type="text" class="ipt-txt" id="userName" placeholder="请输入商户姓名" />
+    </div>
+    <label class="u-lb-sm">公司名称</label>
+    <div class="u-txt col-xs-3">
+        <input type="text" class="ipt-txt" id="companyName" placeholder="请输入公司名称" />
+    </div>
+    <label class="u-lb-sm">申请角色</label>
+    <div class="u-txt col-xs-3">
+        <select class="ipt-txt select2" name="applyRole" id="applyRole">
+            <option value="">全部</option>
+            {%for role in items%}
+            <option value="{{role.roleId}}">{{role.roleName}}</option>
+            {%endfor%}
+        </select>
+    </div>
+    <label class="u-lb-sm">商户手机</label>
+    <div class="u-txt col-xs-3">
+        <input type="text" class="ipt-txt" id="phoneNumber" placeholder="请输入商户手机" />
+    </div>
+    <label class="u-lb-sm">申请属性</label>
+    <div class="u-txt col-xs-3">
+        <select class="ipt-txt " name="property" id="property" >
+            <option value="">全部</option>
+            <option value="1">个人</option>
+            <option value="2">机构</option>
+        </select>
+    </div>
+    <label class="u-lb-sm">申请日期</label>
+    <div class="u-txt f-ml-m">
+        <input type="text" class="ipt-txt c-gray1" placeholder="开始时间" id="startTime"  style="width: 118px;" />
+    </div>
+    <div class="u-txt">
+        <span class="line" style=" width: 20px;">-</span>
+    </div>
+    <div class="u-txt f-mr-m">
+        <input type="text" class="ipt-txt c-gray1" placeholder="结束时间" id="endTime"  style="width: 118px;" />
+    </div>
+    <div class="u-btn-box1">
+        <input type="button" class="u-btn-mdemptyred" id="query" value="查询" />
+    </div>
+</div>
+<a class="btn-slide btn-slide1"></a>
+<div class="m-tab f-mt-m" id="m-tab">
+    <ul>
+        <li class="z-sel" data-index="1">待审核</li>
+        <li data-index="2">未通过</li>
+        <li data-index="3">已通过</li>
+    </ul>
+</div>
+<!--待审核-->
+<div class="m-jm-table f-mt-m" >
+    <ul class="table-hander">
+        <li>申请头像</li>
+        <li>姓名-手机</li>
+        <li style="width: 18%;">公司名称</li>
+        <li>申请属性</li>
+        <li>申请角色</li>
+        <li>申请日期</li>
+        <li>审核执行</li>
+    </ul>
+    <div class="table-body" id="serviceReviewList1">
+
+    </div>
+    <!--分页-->
+    <div id="serviceToolbar1" class="pagination">
+
+    </div>
+    <!--分页end-->
+</div>
+<!--未通过-->
+<div class="m-jm-table f-mt-m" >
+    <ul class="table-hander">
+        <li>申请头像</li>
+        <li>姓名-手机</li>
+        <li style="width: 18%;">公司名称</li>
+        <li>申请属性</li>
+        <li>申请角色</li>
+        <li>申请日期</li>
+        <li>审核人</li>
+        <li>审核执行</li>
+    </ul>
+    <div class="table-body" id="serviceReviewList2">
+
+    </div>
+    <!--分页-->
+    <div id="serviceToolbar2" class="pagination">
+
+    </div>
+    <!--分页end-->
+</div>
+<!--/-->
+<!--已通过-->
+<div class="m-jm-table f-mt-m" >
+    <ul class="table-hander">
+        <li>申请头像</li>
+        <li>姓名-手机</li>
+        <li style="width: 18%;">公司名称</li>
+        <li>申请属性</li>
+        <li>申请角色</li>
+        <li>申请日期</li>
+        <li>审核人</li>
+        <li>审核执行</li>
+    </ul>
+    <div class="table-body" id="serviceReviewList3">
+
+    </div>
+    <!--分页-->
+    <div id="serviceToolbar3" class="pagination">
+
+    </div>
+    <!--分页end-->
+</div>
+<!--/-->
+<style>
+    .pagination{
+        float:right;
+        margin:0px;
+    }
+</style>
+<script>
+    server.review.init();
+</script>

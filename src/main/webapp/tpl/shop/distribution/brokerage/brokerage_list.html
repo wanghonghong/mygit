@@ -1,0 +1,84 @@
+<div id="brokerage">
+    <form id="searchform1">
+    <div class="m-search" id="m-search">
+        <label class="u-lb-sm">手机</label>
+        <div class="u-txt col-xs-3">
+            <input type="text" class="ipt-txt" name="phoneNumber" placeholder="请输入手机" />
+        </div>
+        <label class="u-lb-sm">订单编号</label>
+        <div class="u-txt col-xs-3">
+            <input type="number" class="ipt-txt" name="orderNum" placeholder="请输入订单编号" />
+        </div>
+        <label class="u-lb-sm">购买平台</label>
+        <div class="u-txt col-xs-3">
+            <select class="ipt-txt c-gray1" name="platForm" id="platForm">
+                <option value="-1">全部</option>
+                <option value="0">微信</option>
+                <option value="1">微博</option>
+            </select>
+        </div>
+        <label class="u-lb-sm">姓名</label>
+        <div class="u-txt col-xs-1" style="width: 11%;">
+            <input type="text" class="ipt-txt" name="userName" placeholder="请输入姓名" />
+        </div>
+        <label class="u-lb-ssm">昵称</label>
+        <div class="u-txt col-xs-1" style="width: 11.2%;">
+            <input type="text" class="ipt-txt"  name="nickname" placeholder="请输入昵称" />
+            <input type="text" class="z-hide" name="type" value="1"/>
+        </div>
+        <!--<label class="u-lb-sm">用户角色</label>-->
+        <!--<div class="u-txt col-xs-3">-->
+            <!--<select class="ipt-txt c-gray1">-->
+                <!--<option value="-1">全部</option>-->
+                <!--<option value="1">分销客户</option>-->
+                <!--<option value="2">分销a档</option>-->
+                <!--<option value="2">分销b档</option>-->
+                <!--<option value="2">分销c档</option>-->
+                <!--<option value="2">代理A档</option>-->
+                <!--<option value="2">代理B档</option>-->
+                <!--<option value="2">代理C档</option>-->
+                <!--<option value="2">代理D档</option>-->
+            <!--</select>-->
+        <!--</div>-->
+        <label class="u-lb-sm">订单日期</label>
+        <div class="u-txt u-txt-date f-ml-m">
+            <input type="text" class="ipt-txt c-gray1" id="startDate" name="startDate" placeholder="" style="width: 115px;" />
+        </div>
+        <div class="u-txt">
+            <span class="line" style=" width: 24px;">-</span>
+        </div>
+        <div class="u-txt u-txt-date">
+            <input type="text" class="ipt-txt c-gray1" id="endDate" name="endDate" placeholder="" style="width: 115px;" />
+        </div>
+        <div class="u-btn-box1">
+            <input type="button" class="u-btn-mddkbl f-mr-xs" value="导出" />
+            <input type="button" class="u-btn-mddkorg u-w searchbtn" value="查询" />
+        </div>
+    </div>
+    <a class="btn-slide btn-slide1"></a>
+    </form>
+    <!--查询列表-->
+    <div class="m-jm-table f-mt-m">
+        <ul class="table-hander">
+            <li>头像</li>
+            <li style="width: 15%">昵称-姓名-手机号</li>
+            <li>用户角色</li>
+            <li>订单金额（元）</li>
+            <li>佣金比例</li>
+            <li>本次佣金</li>
+            <li>购买平台</li>
+            <li>订单日期</li>
+            <li>状态</li>
+            <li>订单详情</li>
+        </ul>
+        <div class="table-body" id="tableBody1">
+
+        </div>
+        <div class="table-footer f-mt-s"  >
+            <div id="pageToolbar1" class="pagination f-fr"></div>
+        </div>
+    </div>
+</div>
+<script>
+    sales.brokerage.init();
+</script>

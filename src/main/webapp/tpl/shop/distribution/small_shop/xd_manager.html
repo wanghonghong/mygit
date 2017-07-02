@@ -1,0 +1,118 @@
+<style>
+    .ipt-txt11 .error[for]{
+        min-width: 120px;
+    }
+</style>
+<div class="panel-hidden" style="display:block">
+    <div class="col-xs-4">
+        <div class="m-phone-view">
+            <div class="phone-shell-top">
+            </div>
+            <div class="phone-window fxsz">
+                <img src="{{globalUrl}}/css/pc/img/myshop.png" />
+            </div>
+            <div class="phone-shell-bottom">
+            </div>
+        </div>
+
+    </div>
+    <div class="col-xs-8 f-mt-l" style="padding: 0;">
+        <div class="m-sell-set m-myshopset f-mb-s">
+            <div class="sell-set-left">
+                <h3>背景风格</h3>
+            </div>
+            <div class="sell-set-right f-pt-xs" id="bgstyle">
+                <div class="f-mb-s">
+                    <div class="u-rb bg-white">
+                        <input type="radio" name="settpl" backstyle="1" id="radioBox1" value="" />
+                        <label for="radioBox1" onclick="distribution.smallshop.show(1)"></label>
+                    </div>
+                    <label for="radioBox1" class="c-gray1 m-sptlp1" onclick="distribution.smallshop.show(1)" >选择预置模板</label>
+                    <div class="u-shoptlp1 u-sptlp1" id="presettpl">
+                        <div class="u-sort" id="preset1">
+                            <img src="{{globalUrl}}/css/pc/img/shoptlp-img1.png" />
+                            <input preStyle="1" type="checkbox"/>
+                            <label class="iconfont icon-avoid"></label>
+                        </div>
+                        <div class="u-sort" id="preset2">
+                            <img src="{{globalUrl}}/css/pc/img/shoptlp-img2.png" />
+                            <input preStyle="2" type="checkbox" />
+                            <label class="iconfont icon-avoid"></label>
+                        </div>
+                        <div class="u-sort" id="preset3">
+                            <img src="{{globalUrl}}/css/pc/img/shoptlp-img3.png" />
+                            <input preStyle="3" type="checkbox" />
+                            <label class="iconfont icon-avoid"></label>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="u-rb bg-white">
+                        <input type="radio" name="settpl" backstyle="2" id="radioBox2" value="" />
+                        <label for="radioBox2" onclick="distribution.smallshop.show(2)"></label>
+                    </div>
+                    <label for="radioBox2" class="c-gray1 m-sptlp2" onclick="distribution.smallshop.show(2)">上传自定义模板</label>
+                    <div class="m-tip1 m-tip11" style="display: inline-block;">
+									<span>
+										<i class="iconfont icon-lamp"></i>
+										建议尺寸（宽*高）：<font class="c-orange1">750 * 320</font>像素
+									</span>
+                    </div>
+                    <div class="u-shoptlp1 u-sptlp2" id="diytpl">
+                        <div class="m-add-pic" onclick="distribution.smallshop.diyimgchoose()" style="width: 135px; height: 59px;display: inline-block">
+                            <img src="{{data.backUrl|default(globalUrl+'/css/pc/img/noc_picture.png',true)}}" style="width: 133px; height: 57px;" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="m-sell-set m-myshopset f-mb-s">
+            <div class="sell-set-left">
+                <h3>开通设置</h3>
+            </div>
+            <div class="sell-set-right f-pt-xs" id="modeset">
+                <div class="f-mb-s">
+                    <div class="u-rb bg-white">
+                        <input type="radio" name="settpl1" mode="1" id="radioBox3" value="" />
+                        <label for="radioBox3" onclick="distribution.smallshop.import(1)"></label>
+                    </div>
+                    <label for="radioBox3" class="c-gray1" onclick="distribution.smallshop.import(1)">粉丝开通免费模式</label>
+                    <div class="m-tip1 m-tip11" id="m-tip1" style="display: none">
+                        <span style="color: #a1a1a1;">
+                            <i class="iconfont icon-lamp"></i>
+                            聚米为谷赠送2000家粉丝小店，第2001家开始每家收费0.10元，请提前做好【增加小店】购买
+                        </span>
+                    </div>
+                </div>
+                <div>
+                    <div class="f-fl">
+                        <div class="u-rb bg-white">
+                            <input type="radio" name="settpl1" mode="2" id="radioBox4" value="" />
+                            <label for="radioBox4" onclick="distribution.smallshop.import(2)"></label>
+                        </div>
+                        <label for="radioBox4" class="c-gray1" onclick="distribution.smallshop.import(2)">粉丝开通收费模式</label>
+                        <label class="c-gray1 f-pl-xl f-pr-m">收费标准</label>
+                    </div>
+                    <div class="u-txt" style="top: -6px;">
+                        <div class="ipt-txt11" style="width: 145px;">
+                            <i class="icon-lb-word c-gray">元/店</i>
+                            <form id="xdcharge" >
+                                <input type="text" name="xdchargename" class="ipt-txt c-gray1" id="money" min="0" value="{{data.money/100}}" style="padding-right: 50px;" />
+                            </form>
+                        </div>
+                    </div>
+                        <div class="m-tip1 m-tip11 f-cb" id="m-tip2" style="display: none;float: none">
+                            <span style="color: #a1a1a1;">
+                                <i class="iconfont icon-lamp"></i>
+                                该功能聚米为谷收费标准为您收取粉丝每店金额的10%，比如您收取每个粉丝10元/店，则聚米为谷收取您1元/店！
+                            </span>
+                        </div>
+                </div>
+            </div>
+        </div>
+        <div class="u-btn-box f-mt-xl">
+            <input type="button" class="u-btn-lgdkorg u-p50" value="保存" onclick="distribution.smallshop.setdata()" />
+        </div>
+    </div>
+</div>
+<input id="smallshopid" type="hidden" value="{{data.id}}">

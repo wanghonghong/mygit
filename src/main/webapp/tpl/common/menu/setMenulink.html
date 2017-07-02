@@ -1,0 +1,60 @@
+<style>
+    .dialoginfo-menu .menu-table .table-hander {
+        background: none;
+    }
+    .dialoginfo-menu .menu-table .table-hander li {
+        padding: 0;
+        color: #000000;
+        border-left: none;
+        border-right: none;
+    }
+    .dialoginfo-menu .menu-table .table-hander li span {
+        display: inline-block;
+        padding: 5px;
+        margin-bottom: 5px;
+        width: 90%;
+        border-bottom: 1px solid #eee;
+    }
+    .dialoginfo-menu .menu-table .tag-details-content {
+        width: 100%;
+    }
+    .dialoginfo-menu .menu-table .tag-details-content .tag-details {
+        width: 20%;
+        float: left;
+        margin-top: 5px;
+    }
+    .dialoginfo-menu .menu-table .tag-details-content .tag-details li {
+        margin-left: 9px;
+        margin-bottom: 10px;
+        width: 123px;
+        line-height: normal;
+    }
+
+</style>
+<div id="setMenuLink" class=" dialoginfo-menu dhk">
+    <div class="m-linkwebsite f-pb-l">
+        <label class="u-lb-sm">自定义网址</label>
+        <div class="col-xs-9 u-txt f-mb-zero">
+            <input type="text" class="ipt-txt c-gray1 custom-link" name="" value="" placeholder="http://" />
+        </div>
+        <input type="button" class="u-btn-mddkbl f-fl custom" value="确定" />
+        <div class="f-cb"></div>
+    </div>
+    <div class="jm-table menu-table">
+        <ul class="table-hander m-link-chose">
+            <li><span style="border-bottom: 1px solid #ff7374;"><i class="iconfont icon-store2" style="font-size: 16px;"></i>商城</span></li>
+            <li><span style="border-bottom: 1px solid #d2b4fc;"><i class="iconfont icon-person2" style="font-size: 16px;"></i>我的</span></li>
+            <li><span style="border-bottom: 1px solid #8fc0fb;"><i class="iconfont icon-collectbig" style="font-size: 18px;"></i>活动</span></li>
+            <li><span style="border-bottom: 1px solid #8fe29a;"><i class="iconfont icon-imageText" style="font-size: 16px;"></i>图文</span></li>
+            <li><span style="border-bottom: 1px solid #ee8140;"><i class="iconfont icon-menuset"></i>其他</span></li>
+        </ul>
+        <div class="tag-details-content" id="tag-details-content">
+
+        </div>
+    </div>
+    <div id="products" class="products">
+
+    </div>
+    <div id="page"></div>
+    <div id="text_pageToolbar" class="pagination f-fr f-pt-s" style="margin: 0px 4px 0 0;display: none;"></div>
+</div>

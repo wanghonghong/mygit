@@ -1,0 +1,10 @@
+
+{% for item in items %}
+<ul class="table-container">
+    <li class="f-tl font-s14" style="width: 25%; padding: 0 20px;">{{item.orderNum}}</li>
+    <li class="font-s14">{{item.totalPrice|default(0,ture) /100}}</li>
+    <li>{{item.brokerage|default(0,ture) /100}}</li>
+    <li>{{item.commissionPrice|default(0,ture) /100}}</li>
+    <li>{{item.takeDate}}</li>
+</ul>
+{% endfor %}

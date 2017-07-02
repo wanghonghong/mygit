@@ -1,0 +1,57 @@
+<div  id="agentBody">
+
+</div>
+<script>
+    $(function () {
+        var data = {};
+        var joinVoUrl = CONTEXT_PATH + "/join/apply/1";
+        $.ajaxJsonGet(joinVoUrl, null, {
+            "done": function (res) {
+                $('#shopIndexLeftmenu').hide();
+                data.jmJoin = res.data;
+                data.THIRD_URL = '{{THIRD_URL}}';
+                var id = res.data.id;
+                var subType = res.data.subType;
+                var status =  res.data.status;
+                if (!id){
+                    jumi.template('software_agent/agent_application',data,function(tpl){
+                            $('#agentBody').empty();
+                        $('#agentBody').html(tpl);
+                    });
+                }else if(status==1) {
+                    if (subType==1){
+                        jumi.template('software_agent/p_join_wait',function(tpl){
+                            $('#agentBody').empty();
+                            $('#agentBody').html(tpl);
+                        });
+                    }else {
+                        jumi.template('software_agent/c_join_wait',function(tpl){
+                            $('#agentBody').empty();
+                            $('#agentBody').html(tpl);
+                        });
+                    }
+                }else if(status==2) {
+                    if (subType == 1) {
+                        jumi.template('software_agent/personal_join',data,function(tpl){
+                            $('#agentBody').empty();
+                            $('#agentBody').html(tpl);
+                        });
+                    } else {
+                        jumi.template('software_agent/company_join',data,function(tpl){
+                            $('#agentBody').empty();
+                            $('#agentBody').html(tpl);
+                        });
+                    }
+                }else{
+                    $('#shopIndexLeftmenu').show();
+//                    jumi.template('software_agent/business',function(tpl){
+//                        $('#agentBody').empty();
+//                        $('#agentBody').html(tpl);
+//                    });
+                }
+            }
+        });
+
+    });
+
+</script>

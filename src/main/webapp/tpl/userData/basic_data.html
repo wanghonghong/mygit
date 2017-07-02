@@ -1,0 +1,147 @@
+<style>
+    .u-tiptxt label{
+        font-family: '宋体', Verdana, Arial, Helvetica, sans-serif;
+        font-size: 12px;
+        color: red;
+    }
+    .shop-jbsz .sell-set-details .sell-set-details-right .form-txsc{
+        margin-bottom: 0;
+    }
+    .sell-set-details-right .form-group, .stock-info-details .sell-set-details-right .form-group, .sell-set-details .sell-set-details-right .form-group{
+        margin-bottom: 0;
+    }
+    .tag-tips{
+        margin-top: 0;
+    }
+
+</style>
+<div id="tabcontent1" class="tabcontent active">
+    <div class=" djfe-bjth shop-jbsz">
+        <div class="goods-sell-set goods-sell-set1 margin-top-l" style="margin-bottom: 20px">
+            <div class="sell-set-details">
+                <div class="sell-set-details-left">
+                    <div >商家角色</div>
+                </div>
+                <div class="sell-set-details-right">
+                    <i class="iconfont icon-store1"></i>
+                    <span>普通商家</span>
+                </div>
+            </div>
+        </div>
+        <div class="goods-sell-set goods-sell-set2" style="padding-bottom: 5px">
+            <div class="sell-set-details">
+                <div class="sell-set-details-left">
+                    <div >基础资料</div>
+                </div>
+
+                <form id="signupForm1" method="post" action="">
+                    <div class="sell-set-details-right">
+                        <div class="form-group form-ztc form-txsc" style="padding: 0 5px;">
+                            <label class="margin-right-s margin-top-s">头像上传</label>
+                            <div class="stock-info-details stock-info-tips" style="width: 45%;">
+                                <div href="#" class="thumbnail">
+                                    <img class="avt" id="headImg" src="{{headImg}}" style="width: 65px; height: 65px;"  onerror="account.cert.nofind()"/>
+                                </div>
+                                <div class="base-info-img-tips" >
+                                    <!--<input class="xiugai" type="file" />-->
+                                    <span  class="btn  btn-lightgray btn-sm m-add-img1 " id="m-add-img1">修改头像</span>
+                                </div>
+                                <div class="tag-tips tag-tips1">
+                                    <!--<img src="/css/pc/img/no_picture.png">-->
+                                    <i style="" class="iconfont icon-lamp"></i>
+                                    <span>图像大小不可大于1M</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="margin-right-m">开通时间</label>
+                            <input type="text" id="createDate" class="form-control" value="{{createDate}}"  disabled />
+                        </div>
+                        <div class="form-group form-sex" style="margin-bottom: 0;padding: 0 5px">
+                            <label>性别</label>
+                            <div  class="radio-group">
+                                <div class="radioBox">
+                                    {%if sex==1%}
+                                    <input type="radio" name="sex" id="radioBox1" value="1" checked/>
+                                    {%else%}
+                                    <input type="radio" name="sex" id="radioBox1" value="1" />
+                                    {%endif%}
+
+                                    <label    for="radioBox1"></label>
+                                </div>
+                                <label for="radioBox1" >男</label>
+                                <div class="radioBox">
+                                    {%if sex==2%}
+                                    <input type="radio" name="sex" id="radioBox2" value="2" checked/>
+                                    {%else%}
+                                    <input type="radio" name="sex" id="radioBox2" value="2" />
+                                    {%endif%}
+
+                                    <label   for="radioBox2"></label>
+                                </div>
+                                <label for="radioBox2" >女</label>
+                            </div>
+                        </div>
+                        <div class="form-group right-group u-tiptxt">
+                            <label class="margin-right-m ">姓名</label>
+                            <input type="text" id="userName" name="userName" class="form-control " value="{{userName}}"  />
+                            <!--<i class="iconfont "></i>-->
+                        </div>
+                        <div class="form-group u-tiptxt">
+                            <label class="margin-right-m">手机</label>
+                            <input type="text" id="phoneNumber" name="phoneNumber " class="form-control" style="background-color: #f8f8f8;" value="{{phoneNumber}}"  disabled />
+
+                        </div>
+                        <div class="form-group u-tiptxt">
+                            <label class="margin-right-m">邮箱</label>
+                            <input type="text" id="email" name="email" class="form-control" value="{{email}}"  />
+                        </div>
+                        <div class="form-group u-tiptxt">
+                            <label class="margin-right-m">微信号</label>
+                            <input type="text" id="wxnum" name="wxnum" class="form-control " value="{{wxnum}}"  />
+                            <!--<i class="iconfont "></i>-->
+                            <!--<span class="error-text hint hint-error">请填写正确的微信账号</span>-->
+                        </div>
+                        <div class="form-group u-tiptxt">
+                            <label class="margin-right-m">身份证号</label>
+                            <input type="text" id="cardNum" name="cardNum" value="{{cardNum}}" class="form-control " placeholder="" />
+                        </div>
+                        <div class="form-group form-ztc">
+                            <label class="margin-right-x">身份证照</label>
+                            <div class="stock-info-details stock-info-tips">
+                                <div class="">
+                                    <div class="stock-info-details-add-img img-pzsc">
+                                        <div>
+                                            <div id="m-add-img2" class="m-add-img2">
+                                                {%if cardNumImg %}
+                                                <img id="cardNumImg" class="cardNumImg" src="{{cardNumImg}}">
+                                                {%else%}
+                                                <img id="cardNumImg" class="cardNumImg" src="{{globalUrl}}/css/pc/img/no_picture.png">
+                                                {%endif%}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tag-tips">
+                                        <i style="" class="iconfont icon-lamp"></i>
+                                        <span style="margin-left: 0">仅支持个人手持身份证所拍照片</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div style="margin: 40px 0 20px;">
+        <div style="padding:0 30px;" class="btn btn-darkorange btn-radius-5 btn-lg col-xs-offset-5" id="save">提交修改</div>
+    </div>
+</div>
+
+<style type="text/css">
+    .dialog-uploadpic{
+        overflow: hidden;
+        padding: 0 50px;
+        text-align: center;
+    }
+</style>

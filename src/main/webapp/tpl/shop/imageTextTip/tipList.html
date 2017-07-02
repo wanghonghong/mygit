@@ -1,0 +1,70 @@
+<div class="panel-hidden_tip2" style="display: none;">
+    <div class="m-search" id="m-search_tip2">
+        <label class="u-lb-sm">手机</label>
+        <div class="u-txt col-xs-3">
+            <input type="text" class="ipt-txt" id="telPhone" placeholder="请输入手机" />
+        </div>
+        <label class="u-lb-sm">姓名</label>
+        <div class="u-txt col-xs-3">
+            <input type="text" class="ipt-txt" id="userName" placeholder="请输入姓名" />
+        </div>
+        <label class="u-lb-sm">打赏日期</label>
+        <div class="u-txt u-txt-date f-ml-m">
+            <i class="iconfont icon-calendar"></i>
+            <input type="text" id="startDate2"  class="ipt-txt c-gray1" placeholder="" style="width: 112px;" />
+        </div>
+        <div class="u-txt">
+            <span class="line" style=" width: 20px;">-</span>
+        </div>
+        <div class="u-txt u-txt-date f-mr-m">
+            <i class="iconfont icon-calendar"></i>
+            <input type="text" id="endDate2" class="ipt-txt c-gray1" placeholder="" style="width: 112px;" />
+        </div>
+        <label class="u-lb-sm">具体图文</label>
+        <div class="u-txt col-xs-3">
+            <input type="text" class="ipt-txt" id="imageTextTitle2" placeholder="请输入具体图文" />
+        </div>
+        <label class="u-lb-sm">昵称</label>
+        <div class="u-txt col-xs-3">
+            <input type="text" id="nickName" class="ipt-txt" placeholder="请输入昵称" />
+        </div>
+        <label class="u-lb-sm">打赏平台</label>
+        <div class="u-txt col-xs-3" style="padding-right: 22px;">
+            <select class="ipt-txt c-gray1" id="platForm2">
+                <option value="0">微信</option>
+                <option value="1">微博</option>
+            </select>
+        </div>
+        <div class="u-btn-box1">
+            <input type="button" class="u-btn-mddkorg u-w" onclick="imageTextTip.tip.initBase(2)" value="查询" />
+        </div>
+    </div>
+    <a class="btn-slide btn-slide1" id="b_2" onclick="cp2()"></a>
+    <div class="m-jm-table panel-hid1 f-mt-m" id="u-tab2" >
+    </div>
+    <div id="pageToolbar2" class="pagination f-fr f-pt-s"></div>
+</div>
+
+<script type="text/javascript">
+    function cp2(){
+        $("#m-search_tip2").slideToggle("fast");
+        $("#b_2").toggleClass("btn-slide1"); return false;
+    }
+    $("#startDate2").datetimepicker({
+        showSecond : false,
+        timeFormat : 'hh:mm:ss',
+        dateFormat : 'yy-mm-dd',
+        stepHour : 1,
+        stepMinute : 1,
+        stepSecond : 1
+    });
+    $("#endDate2").datetimepicker({
+        showSecond : false,
+        timeFormat : '23:59:59',
+        dateFormat : 'yy-mm-dd',
+        stepHour : 1,
+        stepMinute : 1,
+        stepSecond : 1
+    });
+
+</script>

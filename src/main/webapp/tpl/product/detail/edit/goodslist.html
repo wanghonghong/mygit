@@ -1,0 +1,61 @@
+<div class="goodslist-config f-cf">
+    <div class="col-xs-12">
+        <label class="u-lb-md u-rd-lh f-pr-m">显示个数</label>
+        <div class="f-fl">
+            <div class="u-rb">
+                <input type="radio" name="size" id="size-{{randomNum}}-6" value="6"  {% if size==6 %} checked {% endif %} >
+                <label for="size-{{randomNum}}-6"></label>
+            </div>
+            <label for="size-{{randomNum}}-6" class="f-mr-s">6</label>
+            <div class="u-rb">
+                <input type="radio" name="size" id="size-{{randomNum}}-8" value="8"  {% if size==8 %} checked {% endif %} >
+                <label for="size-{{randomNum}}-8"></label>
+            </div>
+            <label for="size-{{randomNum}}-8" class="f-mr-s">8</label>
+            <div class="u-rb">
+                <input type="radio" name="size" id="size-{{randomNum}}-12" value="12"  {% if size==12 %} checked {% endif %} >
+                <label for="size-{{randomNum}}-12"></label>
+            </div>
+            <label for="size-{{randomNum}}-12">12</label>
+            <div class="u-rb">
+                <input type="radio" name="size" id="size-{{randomNum}}-18" value="18"  {% if size==18 %} checked {% endif %} >
+                <label for="size-{{randomNum}}-18"></label>
+            </div>
+            <label for="size-{{randomNum}}-18">18</label>
+            <div class="u-rb">
+                <input type="radio" name="size" id="size-{{randomNum}}-24" value="24"  {% if size==24 %} checked {% endif %} >
+                <label for="size-{{randomNum}}-24"></label>
+            </div>
+            <label for="size-{{randomNum}}-24">24</label>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label class="u-lb-md u-rd-lh f-pr-m">商品样式</label>
+        <div class="f-fl">
+            <div class="u-rb">
+                <input type="radio" name="sizeType" id="sizeType-{{randomNum}}-0"  value="0"  {% if sizeType==0 %} checked {% endif %} >
+                <label for="sizeType-{{randomNum}}-0"></label>
+            </div>
+            <label for="sizeType-{{randomNum}}-0" class="f-mr-s">小图</label>
+            <div class="u-rb">
+                <input type="radio" name="sizeType" id="sizeType-{{randomNum}}-1"  value="1"  {% if sizeType==1 %} checked {% endif %} >
+                <label for="sizeType-{{randomNum}}-1"></label>
+            </div>
+            <label for="sizeType-{{randomNum}}-1" class="f-mr-s">大图</label>
+            <div class="u-rb">
+                <input type="radio" name="sizeType" id="sizeType-{{randomNum}}-2"   value="2"  {% if sizeType==2 %} checked {% endif %} >
+                <label for="sizeType-{{randomNum}}-2"></label>
+            </div>
+            <label for="sizeType-{{randomNum}}-2" class="f-mr-s">长图</label>
+            <div class="u-rb">
+                <input type="radio" name="sizeType" id="sizeType-{{randomNum}}-3"  value="3"  {% if sizeType==3 %} checked {% endif %} >
+                <label for="sizeType-{{randomNum}}-3"></label>
+            </div>
+            <label for="sizeType-{{randomNum}}-3">一大两小</label>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label class="u-lb-md u-rd-lh f-pr-m">选择分类</label>
+        <a class="chooseType"  >{{goodsTypeName}}</a>
+    </div>
+</div>

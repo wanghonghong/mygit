@@ -1,0 +1,49 @@
+<div class="panel-hidden">
+    <div class="col-xs-12 f-mt-m" style="padding: 0;">
+        <div class="u-btn-lgltgry1" id="shop_entity_add"><i class="iconfont icon-add"></i><span>新增门店</span></div>
+    </div>
+    <dl class="col-xs-12 u-wx-explain f-mt-m f-mb-m" id="entitysh_show" style="border-color: #eeeeee;">
+        <div class="col-xs-12 f-mt-s" style="padding-left: 0;">
+            <div class="u-rb f-fl f-mt-xs f-ml-l">
+                <input type="radio" id="isEntity1" name="isEntity" value="0" checked />
+                <label for="isEntity1"></label>
+            </div>
+            <label for="isEntity1" class="f-fl f-mt-xs f-pl-s" style="width: 100px;">隐藏门店</label>
+            <div class="m-tip4">
+                <i class="iconfont icon-lamp"></i>
+                <span>点选隐藏门店，则手机端不展示相关资料</span>
+            </div>
+        </div>
+        <div class="col-xs-12"  style="padding-left: 0;">
+            <div class="u-rb f-fl f-mt-xs f-ml-l">
+                <input type="radio" id="isEntity2" name="isEntity" value="1" />
+                <label for="isEntity2"></label>
+            </div>
+            <label for="isEntity2" class="f-fl f-mt-xs f-pl-s" style="width: 100px;">展示门店</label>
+            <!--<div class="m-tip4">
+                <i class="iconfont icon-lamp"></i>
+                <span>点选隐藏门店，则手机端不展示相关资料</span>
+            </div>	-->
+        </div>
+    </dl>
+    <div class="m-jm-table">
+        <ul class="table-hander">
+            <li style="width:25%;">门店照片-名称-联系电话</li>
+            <li>营业时间</li>
+            <li>所属地区</li>
+            <li style="width:25%;">详细地址</li>
+            <li style="width:15%;">操作</li>
+        </ul>
+        <div class="table-body"  id="table-body">
+
+        </div>
+        <div id="pageToolbar" class="pagination" style="float: right; margin: 10px 4px 0 0;"></div>
+    </div>
+
+</div>
+
+<script>
+   shop.entitystore.shop_page_bar();
+    shop.entitystore.shop_entity_add();
+    shop.entitystore.shop_ishas();
+</script>

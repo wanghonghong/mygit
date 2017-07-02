@@ -1,0 +1,132 @@
+<div id="dialoginfo" >
+    <div class="m-tab2">
+        <ul>
+            <li class="z-sel">退款操作</li>
+            <li>客户证据</li>
+        </ul>
+    </div>
+    <div class="m-refund">
+        <input type="hidden" id="id" name="id" value="{{data.orderRefundId}}" />
+        <input type="hidden" id="refundMoney" name="refundMoney" value="{{data.refundMoney/100}}"/>
+        <input type="hidden" id="refundType" name="refundType" value="{{data.refundType}}" />
+        <table class="g-table-layout">
+            <tbody>
+                <tr>
+                    <td rowspan="2" style="background-color: #fafafa;"><span>原订单金额（元）</span><br /><span><font color="#f89a14">{{(data.realPrice)/100}}</font></span></td>
+                    <td><span>运费金额（元）<font>{{data.sendFee/100}}</font></span><br /><span></span></td>
+                </tr>
+                <tr>
+                    <td><span>商品金额（元）<font>{{data.productMoney/100}}</font></span><br /><span></span></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="f-mt-m g-table-refund">
+            <div class="f-fl u-txt f-pt-l">
+                <div class="u-rb f-fl">
+                    {% if data.operateWay==1 %}
+                    <input type="radio" name="buy-r" value="1" checked onchange="agreeRefund.changePW();"/>
+                    {% else %}
+                    <input type="radio" name="buy-r" id="radioBox1" value="1" disabled />
+                    {% endif %}
+                    <label for="radioBox1"></label>
+                </div>
+                <label for="radioBox1" class="u-rd-wd f-fl" style="width: 120px;">按卖家申请退款</label>
+                <div class="ipt-txt11" style="margin-top: -6px;width: 200px;">
+                    <i class="icon-lb-word c-gray">元</i>
+                    {% if data.operateWay==1 %}
+                    <input type="text" class="ipt-txt c-gray1" value="{{data.refundMoney/100}}" name="applyRefund" readonly="readonly" />
+                    {% else %}
+                    <input type="text" class="ipt-txt c-gray1" value="" name="applyRefund" id="applyRefund" readonly="readonly"/>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="f-fl u-txt">
+                <div class="u-rb f-fl">
+                    {% if data.operateWay==2 %}
+                    <input type="radio" name="buy-r" value="2" checked onchange="agreeRefund.changePW();" />
+                    {% else %}
+                    <input type="radio" name="buy-r" id="radioBox2" value="2" disabled/>
+                    {% endif %}
+                    <label for="radioBox2"></label>
+                </div>
+                <label for="radioBox2" class="u-rd-wd f-fl" style="width: 120px;">协议后申请退款</label>
+                <div class="ipt-txt11" style="margin-top: -6px;width: 200px;">
+                    <i class="icon-lb-word c-gray">元</i>
+                    {% if data.operateWay==2 %}
+                    <input type="text" class="ipt-txt c-gray1" value="{{data.refundMoney/100}}" name="consultRefund" onkeyup="clearNoNum(this)" readonly="readonly"/>
+                    {% else %}
+                    <input type="text" class="ipt-txt c-gray1" value="" name="consultRefund" id="consultRefund" readonly="readonly"/>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="f-cb">
+                <label class="tk-tittle">退款支付方式</label>
+                <div class="u-rb">
+                    <input type="radio" name="sex" id="radioBox5" value="" disabled />
+                    <label for="radioBox5"></label>
+                </div>
+                <label for="radioBox5" class="f-mr-l">微信公众号红包</label>
+                <div class="u-rb">
+                    <input type="radio" name="sex" id="radioBox6" value="" disabled />
+                    <label for="radioBox6"></label>
+                </div>
+                <label for="radioBox6" class="f-mr-l">已外部支付退款</label>
+                <div style="padding-left: 125px;">
+                    <div class="u-rb">
+                        {% if data.refundStatus==1 %}
+                        <input type="radio" name="sex" id="radioBox7" value="" checked/>
+                        {% else %}
+                        <input type="radio" name="sex" value="" />
+                        {% endif %}
+                        <label for="radioBox7"></label>
+                    </div>
+                    <label for="radioBox7" class="f-mr-l">原路径退款</label>
+                </div>
+        </div>
+        </div>
+        <div class="f-mt-m g-table-refund f-pt-l" style="height: 110px;">
+            <div class="u-txt u-txt-rel">
+                <div class="u-rb">
+                    {% if data.refundStatus==2 %}
+                    <input type="radio" name="buy-r" value="3" checked onchange="agreeRefund.changePW();" />
+                    {% else %}
+                    <input type="radio" name="buy-r" id="radioBox3" value="3" disabled/>
+                    {% endif %}
+                    <label for="radioBox3"></label>
+                </div>
+                <label for="radioBox3" class="u-rd-wd" >拒绝退款</label>
+                <textarea name="shared" id="refuseReason" class="ipt-txt txtarea" style="width:225px ;" placeholder="请输入退款原因" readonly="readonly">{{data.refuseReason}}</textarea>
+            </div>
+        </div>
+        {% if data.refundStatus==0 %}
+        <div class="u-btn-box1 f-mt-l">
+            <input type="button" class="u-btn-mddkgry f-mr-xs" onclick="agreeRefund.closeRefund();" value="取消" />
+            <input type="button" class="u-btn-mddkorg" onclick="agreeRefund.saveAgreeRefund('{{data.orderInfoId}}',5)" value="确认提交" />
+        </div>
+        {% endif %}
+    </div>
+    <div class="m-refund">
+        <div class="g-table-refund1">
+            <label class="u-lb-sm">退款原因</label>
+            <div class="u-txt col-xs-9" >
+                <textarea name="shared" class="ipt-txt txtarea" placeholder="" disabled="disabled">{{data.refundReason}}</textarea>
+            </div>
+            <!--<label class="u-lb-sm">商家图片</label>
+            <div class="u-txt col-xs-9">
+                <img class="refundimg" src="css/pc/img/no_picture-bg.png"  />
+                <img class="refundimg" src="css/pc/img/no_picture-bg.png"  />
+                <img class="refundimg" src="css/pc/img/no_picture-bg.png"  />
+                <img class="refundimg" src="css/pc/img/no_picture-bg.png"  />
+            </div>
+            <div class="u-btn-box1">
+                <input type="button" class="u-btn-mddkorg" value="关闭" />
+            </div>-->
+            <div class="u-btn-box1">
+                <input type="button" class="u-btn-mddkorg" value="关闭" onclick="agreeRefund.closeRefund();" />
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 提交退款操作-->
+<script src="{{basePath}}/js/busi-js/pc/order/agreeRefund.js" type="text/javascript" charset="utf-8"></script>

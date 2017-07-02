@@ -1,0 +1,39 @@
+<div>
+    <label class="f-fl" style="line-height: 36px;">日期</label>
+    <div class="u-txt f-ml-m">
+        <input type="text" class="ipt-txt c-gray1" id="startTime" placeholder="开始时间" style="width: 118px;" />
+    </div>
+    <div class="u-txt">
+        <span class="line" style=" width: 20px;">-</span>
+    </div>
+    <div class="u-txt f-mr-m">
+        <input type="text" class="ipt-txt c-gray1" id="endTime"placeholder="结束时间" style="width: 118px;" />
+    </div>
+    <label class="u-lb-sm">通知类别</label>
+    <div class="u-txt col-xs-3">
+        <select class="ipt-txt" id="type">
+            <option value="">全部</option>
+            <option value="1">系统公告</option>
+            <option value="2">其他公告</option>
+        </select>
+    </div>
+    <input type="button" class="u-btn-mdemptyred f-ml-m" value="查询" id="search-btn" style="margin-top: -2px;" />
+</div>
+<div class="m-jm-table f-mt-m" >
+    <ul class="table-hander">
+        <li style="width: 50%;" >标题</li>
+        <li >公告类型</li>
+        <li>日期</li>
+    </ul>
+    <div class="table-body f-t-off u-firstnews c-deepgray" id="noticeList">
+    </div>
+    <!--以下是分页-->
+    <div id="noticeToolbar" class="pagination f-fr f-mt-m">
+
+    </div>
+    <!--分页end-->
+</div>
+<!--/-->
+<script>
+    notice.search.init();
+</script>

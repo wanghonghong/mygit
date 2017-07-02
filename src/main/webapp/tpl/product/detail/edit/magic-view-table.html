@@ -1,0 +1,11 @@
+<table class="magic-view-table">
+    <tbody>
+    {% for i in range(4) %}
+        <tr>
+        {% for j in range(4) %}
+        <td class="empty" data-x={{j}} data-y={{i}}></td>
+        {% endfor %}
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>

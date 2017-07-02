@@ -1,0 +1,129 @@
+<style>
+	/*.ui-dialog-body{*/
+		/*padding-bottom: 10px;*/
+	/*}*/
+	.m-orderinfo-dialog li > div:nth-child(odd){
+		width: 20%;
+		padding-right: 0;
+		color: #484848;
+		border-right: 1px solid #eeeeee;
+		text-align: center;
+	}
+	.m-orderinfo-dialog li > div:nth-child(3){
+		border-left: 1px solid #eeeeee;
+	}
+	.m-orderinfo-dialog li > div:nth-child(even) {
+		padding-left: 30px;
+		color: #8d8d8d;
+	}
+	.ui-dialog .ui-dialog-content{
+		padding:0;
+	}
+</style>
+
+<ul class="m-orderinfo-dialog">
+	<li>
+		<div class="bg-gray1">昵称</div>
+		<div>{{nickname}}</div>
+		<div class="bg-gray1">平台</div>
+		<div>微信</div>
+	</li>
+	<li>
+		<div class="bg-gray1">姓名</div>
+		<div>
+			{%if userName==null or userName=='' %}
+			-
+			{%else%}{{userName}}{%endif%}
+		</div>
+		<div class="bg-gray1">手机</div>
+		<div>
+			{%if phoneNumber==null or phoneNumber=='' %}
+			-
+			{%else%}{{phoneNumber}}{%endif%}
+		</div>
+	</li>
+	<li>
+		<div class="bg-gray1">性别</div>
+		<div>{%if sex==1%}男{%elif sex==2%}女 {%else%}-{%endif%}</div>
+		<div class="bg-gray1">角色</div>
+		<div>
+			{%if agentRole==1 %}
+			代理商1档
+			{%elif agentRole==2 %}
+			代理商2档
+			{%elif agentRole==3 %}
+			代理商3档
+			{%elif agentRole==4 %}
+			代理商4档
+			{%elif agentRole==5 %}
+			分销商1档
+			{%elif agentRole==6 %}
+			分销商2档
+			{%elif agentRole==7 %}
+			分销商3档
+			{%elif agentRole==8 %}
+			分享客
+			{%else%}
+			-
+			{%endif%}
+		</div>
+	</li>
+	<li>
+		<div class="bg-gray1">分组</div>
+		<div>
+			{%if groupName==null or groupName=='' %}
+			-
+			{%else%}{{groupName}}{%endif%}
+		</div>
+		<div class="bg-gray1">等级</div>
+		<div>
+			{%if levelName==null or levelName=='' %}
+			-
+			{%else%}{{levelName}}{%endif%}
+		</div>
+	</li>
+	<li>
+		<div class="bg-gray1">累计佣金</div>
+		<div><span>{{sumBrokerage/100}}</span> 元</div>
+		<div class="bg-gray1">未发佣金</div>
+		<div><span>{{noSendBrokerage/100}}</span> 元</div>
+	</li>
+	<li>
+		<div class="bg-gray1">累计积分</div>
+		<div><span>{{sumIntegral}}</span> 币</div>
+		<div class="bg-gray1">余额积分</div>
+		<div><span>{{integral}}</span> 币</div>
+	</li>
+	<li>
+		<div class="bg-gray1">累计礼券</div>
+		<div><span>{{sumCard}}</span> 张</div>
+		<div class="bg-gray1">未用礼券</div>
+		<div><span>{{card}}</span> 张</div>
+	</li>
+	<li>
+		<div class="bg-gray1">备注名称</div>
+		<div>
+			{%if remark==null or remark=='' %}
+			-
+			{%else%}{{remark}}{%endif%}
+		</div>
+	</li>
+	{% for item in adds %}
+	<li>
+		<div class="bg-gray1">收货地址</div>
+		<div>{{item}}</div>
+	</li>
+	{% endfor %}
+	<li>
+		<div class="bg-gray1">上级微客</div>
+		<div>{{upNickname}} - {{upUserName}} - {{upPhoneNumber}}</div>
+	</li>
+	<li>
+		<div class="bg-gray1">下 1 级微客</div>
+		<div><span>{{oneCount}}</span> 人&nbsp;<div class="u-btn-smltgry dialog-wklist1" onclick="customer.operation.lastUserPopMsg('{{userId}}')">微客列表</div></div>
+	</li>
+	<li>
+		<div class="bg-gray1">下 2 级微客</div>
+		<div><span>{{twoCount}}</span> 人&nbsp;<div class="u-btn-smltgry dialog-wklist2" onclick="customer.operation.lastUserPopMsg('{{userId}}')" >微客列表</div></div>
+	</li>
+</ul>

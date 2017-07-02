@@ -1,0 +1,118 @@
+<!--奖励方式-->
+<div class="panel-hidden">
+    <div class="m-sell-set bg-gray2" style="margin-right: 0; margin-left: 0px; padding: 10px 0; box-shadow: none;">
+        <div class="sell-set-left c-gray1" style="width: 12%;">
+            <h3 style="padding-left: 15px; font-size: 16px;">地区限定</h3>
+        </div>
+        <div class="sell-set-right">
+            <label class="u-lb-sm c-black f-cb">奖励方式</label>
+            <div class="u-txt f-pt-s f-pl-m f-mb-zero">
+                <div class="u-rb bg-white">
+                    {% if items.rewardType ==0 %}
+                    <input type="radio" name="rewardType" id="radioreward1" value="0" {% if items.rewardType==0 %} checked {% endif %}  />
+                    {% else %}
+                    <input type="radio" name="rewardType" id="radioreward1" value="0" checked />
+                    {% endif %}
+                    <label for="radioreward1"></label>
+                </div>
+                <label for="radioreward1" class="c-deepgray">积分</label>
+                <br />
+                <div class="u-rb bg-white">
+                    <input type="radio" name="rewardType" id="radioreward2" value="1" {% if items.rewardType==1 %} checked {% endif %} />
+                    <label for="radioreward2"></label>
+                </div>
+                <label for="radioreward2" class="c-deepgray">红包</label>
+            </div>
+            <label class="u-lb-sm c-black f-cb">展示方式</label>
+            <div class="u-txt f-pt-s f-pl-m f-mb-zero">
+                <div class="u-rb bg-white">
+                    {% if items.showType==0 %}
+                    <input type="radio" name="showType" id="radioshow1" value="0" {% if items.showType==0 %} checked {% endif %} />
+                    {% else %}
+                    <input type="radio" name="showType" id="radioshow1" value="0" checked />
+                    {% endif %}
+                    <label for="radioshow1"></label>
+                </div>
+                <label for="radioshow1" class="c-deepgray">摇一摇</label>
+                <br />
+                <div class="u-rb bg-white">
+                    <input type="radio" name="showType" id="radioshow2" value="1" {% if items.showType==1 %} checked {% endif %} />
+                    <label for="radioshow2"></label>
+                </div>
+                <label for="radioshow2" class="c-deepgray">红包雨</label>
+            </div>
+            <label class="u-lb-sm c-black f-cb">层级限定</label>
+            <div class="col-xs-9">
+                <div class="m-jm-table1 f-mt-s m-hsfloorlimit">
+                    <ul class="table-hander">
+                        <li>起始最终重量（kg）</li>
+                        <li>本人奖励（<font>元</font><font class="z-hide">币</font>）</li>
+                        <li>上级奖励（<font>元</font><font class="z-hide">币</font>）</li>
+                        <li style="width: 10%;">操作</li>
+                    </ul>
+                    <div class="table-body c-gray1" id="specData">
+                        {% for item in items.recycleWeightConfigList %}
+                        <ul class="table-container">
+                            <li><input type="text" class="table-input c-gray1" value="{{item.weight}}" name="weight" /></li>
+                            <li><input type="text" class="table-input c-gray1" value="{{item.userCount}}" name="reward" /></li>
+                            <li><input type="text" class="table-input c-gray1" value="{{item.upperCount}}" name="upReward" /></li>
+                            <li style="width: 10%;"><i class="iconfont icon-delete1" onclick="orderRecoverBusiness.list.delSpecData(this)" ></i></li>
+                        </ul>
+                        {% endfor %}
+                    </div>
+                    <div class="u-btn-lgltgry2 f-margin-s addSpecData" >
+                        <i class="iconfont icon-add"></i><span>添加规格</span>
+                    </div>
+                </div>
+            <!--<label class="u-lb-sm c-black f-cb">层级限定</label>
+            <div class="u-txt f-pl-m f-mb-zero" style="top: -6px;">
+                &lt;!&ndash;奖励方式选择积分&ndash;&gt;
+                <div>
+                    <div class="u-cb bg-white">
+                        <input type="checkbox" name="floor" id="radiofloor1" value="0" checked />
+                        <label class="iconfont icon-avoid" for="radiofloor1"></label>
+                    </div>
+                    <label for="radiofloor1" class="c-deepgray">本人奖励</label>
+                    <div class="ipt-txt11 f-ml-m" style="float: none; display: inline-block; top: 10px;">
+                        <i class="icon-lb-word c-gray">币</i>
+                        <input type="text" class="ipt-txt c-gray1" id="userCount" name="userCount" value="{{userCount/100}}">
+                    </div>
+                    <br />
+                    <div class="u-cb bg-white">
+                        <input type="checkbox" name="floor" id="radiofloor2" value="1" {% if floor==1 %} checked {% endif %}/>
+                        <label class="iconfont icon-avoid" for="radiofloor2"></label>
+                    </div>
+                    <label for="radiofloor2" class="c-deepgray">上级奖励</label>
+                    <div class="ipt-txt11 f-ml-m" style="float: none; display: inline-block; top: 10px;">
+                        <i class="icon-lb-word c-gray">币</i>
+                        <input type="text" class="ipt-txt c-gray1" id="upperCount" name="upperCount" value="{{upperCount/100}}">
+                    </div>
+                </div>
+            </div>-->
+        </div>
+    </div>
+    </div>
+    <div class="u-btn-box f-mt-xl">
+        <input type="button" class="u-btn-mainlg addRewardMode" value="保存">
+    </div>
+</div>
+<script>
+    /*function addSpecData(){
+        jumi.template("order/pc/rewardModeAdd",function (tpl) {
+            $("#specData").append(tpl);
+        });
+    }*/
+   /* function saveSpec() {
+        var allData = $(".table-container");
+        var
+        var recycleWeightConfigVo = {};
+        for (var i=0 ;i<allData.length;i++){
+            var startWeight = $(allData[i]).find("[name='startWeight']").val();
+            var endWeight = $(allData[i]).find("[name='endWeight']").val();
+            var reward = $(allData[i]).find("[name='reward']").val();
+            var upReward = $(allData[i]).find("[name='upReward']").val();
+            console.log(startWeight +"|" +endWeight+"|"+reward+"|"+upReward);
+        }
+    }*/
+
+</script>

@@ -1,0 +1,157 @@
+<div class="g-mn">
+    <div class="m-search" id="m-search">
+        <label class="u-lb-sm">店铺手机</label>
+        <div class="u-txt col-xs-3">
+            <input type="text" class="ipt-txt" placeholder="请输入店铺手机" />
+        </div>
+        <label class="u-lb-sm">店铺姓名</label>
+        <div class="u-txt col-xs-3">
+            <input type="text" class="ipt-txt" placeholder="请输入店铺姓名" />
+        </div>
+
+
+        <label class="u-lb-sm">日期</label>
+        <div class="u-txt u-txt-date f-ml-m">
+            <i class="iconfont icon-calendar"></i>
+            <input type="text" class="ipt-txt c-gray1" placeholder="" style="width: 112px;" />
+        </div>
+        <div class="u-txt">
+            <span class="line" style=" width: 25px;">-</span>
+        </div>
+        <div class="u-txt u-txt-date">
+            <i class="iconfont icon-calendar"></i>
+            <input type="text" class="ipt-txt c-gray1" placeholder="" style="width: 112px;" />
+        </div>
+        <label class="u-lb-sm">店铺名称</label>
+        <div class="u-txt col-xs-3">
+            <input type="text" class="ipt-txt" placeholder="请输入店铺名称" />
+        </div>
+        <label class="u-lb-sm">支出项目</label>
+        <div class="u-txt col-xs-3">
+            <select class="ipt-txt" >
+                <option value="1">加盟费缴纳</option>
+                <option value="2">软件自购</option>
+                <option value="3">软件代购</option>
+                <option value="4">服务自购</option>
+                <option value="5">服务代购</option>
+                <option value="6">普通商品</option>
+            </select>
+        </div>
+        <div class="u-btn-box1">
+            <input type="button" class="u-btn-mddkorg" value="查询" />
+        </div>
+    </div>
+    <a class="btn-slide btn-slide1"></a>
+    <div class="m-jm-table f-mt-m" style="min-height: 0">
+        <ul class="table-hander">
+            <li  width="20%">支出项目</li>
+            <li >日期</li>
+            <li width="15%" >总支出金额（元）</li>
+            <li width="10%" >米币使用（元）</li>
+            <li width="10%" >现金使用（元）</li>
+            <li >店铺名称</li>
+            <li >店主姓名</li>
+            <li >店主手机</li>
+        </ul>
+        <div class="table-body">
+            <ul class="table-container f-pd f-t-off">
+                <li width="20%">加盟费缴纳</li>
+                <li>2016-01-08</li>
+                <li width="15%">25 00000</li>
+                <li width="12%">1 000</li>
+                <li width="12%">15 000</li>
+                <li>沙畹</li>
+                <li>林飞</li>
+                <li>15284525844</li>
+            </ul>
+            <ul class="table-container f-pd f-t-off">
+                <li width="20%">软件自购</li>
+                <li>2016-01-08</li>
+                <li width="15%">25 00000</li>
+                <li width="12%">1 000</li>
+                <li width="12%">15 000</li>
+                <li>沙畹</li>
+                <li>林飞</li>
+                <li>15284525844</li>
+            </ul>
+            <ul class="table-container f-pd f-t-off">
+                <li width="20%">软件代购</li>
+                <li>2016-01-08</li>
+                <li width="15%">25 00000</li>
+                <li width="12%">1 000</li>
+                <li width="12%">15 000</li>
+                <li>沙畹</li>
+                <li>林飞</li>
+                <li>15284525844</li>
+            </ul>
+            <ul class="table-container f-pd f-t-off">
+                <li width="20%">服务自购</li>
+                <li>2016-01-08</li>
+                <li width="15%">25 00000</li>
+                <li width="12%">1 000</li>
+                <li width="12%">15 000</li>
+                <li>沙畹</li>
+                <li>林飞</li>
+                <li>15284525844</li>
+            </ul>
+            <ul class="table-container f-pd f-t-off">
+                <li width="20%">服务代购</li>
+                <li>2016-01-08</li>
+                <li width="15%">25 00000</li>
+                <li width="12%">1 000</li>
+                <li width="12%">15 000</li>
+                <li>沙畹</li>
+                <li>林飞</li>
+                <li>15284525844</li>
+            </ul>
+            <ul class="table-container f-pd f-t-off">
+                <li width="20%">普通商品</li>
+                <li>2016-01-08</li>
+                <li width="15%">25 00000</li>
+                <li width="12%">1 000</li>
+                <li width="12%">15 000</li>
+                <li>沙畹</li>
+                <li>林飞</li>
+                <li>15284525844</li>
+            </ul>
+
+        </div>
+    </div>
+    <div class="f-fr f-mt-m">
+        <div id="Pagination" class="pagination"><!-- 这里显示分页 --></div>
+    </div>
+</div>
+<!--<script src="${basePath}/js/third-js/jquery-1.11.0.js" type="text/javascript" charset="utf-8"></script>-->
+<!--<script src="${basePath}/js/third-js/pagination/jquery.pagination.js" type="text/javascript" charset="utf-8"></script>-->
+<!--<script src="${basePath}/js/our-js/module-js/jm-ui.js" type="text/javascript" charset="utf-8"></script>-->
+<script>
+
+
+    $(function(){
+
+        var select1=new selectControl("#select1",{
+            queryItem:true,
+            onSelectChange:function(v){
+                console.log(v);
+            }
+        });
+        select1.render();
+        var num_entries=33;
+        $(".btn-slide").click(function(){
+            $("#m-search").slideToggle("fast");
+            $(this).toggleClass("btn-slide1"); return false;
+        });
+        $("#Pagination").pagination(num_entries, {
+            num_edge_entries: 1, //边缘页数
+            num_display_entries: 3, //主体页数
+            prev_text:"<li class='iconfont icon-left  '></li>",
+            next_text:"<li class='iconfont icon-right  '></li>",
+            callback: pageselectCallback,
+            items_per_page:1 //每页显示1项
+        });
+        function pageselectCallback(page_index, jq){
+            return false;
+        }
+    });
+</script>
+

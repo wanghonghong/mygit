@@ -1,0 +1,66 @@
+{%if items.length>0%}
+<div class="table-body" style="overflow: inherit;">
+    {% for item in items %}
+    <ul class="table-container">
+
+        <li>
+            {%if item.headimgurl%}
+            <img class="u-thumbnail-squa" src="{{item.headimgurl}}">
+            {%else%}
+            <img class="u-thumbnail-squa" src="https://www.jumiweigu.com/css/pc/img/no_headpic.jpg">
+            {%endif%}
+        </li>
+        <li>
+            {%if item.nickname%}
+            {{item.nickname}}
+            {%else%}
+            ---
+            {%endif%}
+        </li>
+        <li>{{item.phoneNumber}}</li>
+        <li>
+            {%if item.upNickname%}
+            {{item.upNickname}}
+            {%else%}
+            ---
+            {%endif%}
+        </li>
+
+        <li>{{item.payDate}}</li>
+        <li>{{item.money/100}}元</li>
+        <li class="f-tl" style="padding-left: 45px;">
+            {%if item.payType==1%}
+            微信支付
+            {%endif%}
+        </li>
+    </ul>
+    {%endfor%}
+</div>
+{%else%}
+<!--< !&#45;&#45;<div class="noData">暂无数据</div>&ndash;&gt;-->
+<div class="m-jm-err">
+    <img src="{{globalUrl}}/css/pc/img/jm-nodb.png">
+</div>
+{%endif%}
+
+<script  type="text/javascript">
+
+    function showDig(activityUserId,obj){
+        var conditions = $(".condition");
+        conditions.css("display","none");
+        $.each(conditions,function(i,condition){
+            var id = $(condition).attr("id");
+            if(id==="qCondition"+activityUserId){
+                $(condition).css("display","");
+                $(".table-body").bind("click",function(event){
+                    var target = event.target;
+                    if($(target).attr("id")!==$(obj).attr("id")){
+                        $(condition).hide();
+                        $(this).unbind("click");
+                    }
+                });
+            }
+        });
+    }
+
+</script>

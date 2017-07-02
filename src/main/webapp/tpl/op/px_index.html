@@ -1,0 +1,307 @@
+<style>
+    label.error{
+        color:red;
+    }
+    .pagination{
+        text-align: right;
+    }
+    img#op_img{
+        border: 1px dashed #e2e2e2;
+    }
+    .goods-sell-set{
+        background-color: #FFFFFF;
+        box-shadow:none;
+    }
+    .djsz{
+        position: relative;
+    }
+
+    .djsz span {
+        position: absolute;
+        height: 35px;
+        line-height: 35px;
+        border-top-left-radius: 2px;
+        border-bottom-left-radius: 2px;
+        padding: 0 5px;
+        font-size: 12px;
+        top: 0;
+        left: 0;
+        background-color: #bbc6cc;
+        color: #ffffff;
+        cursor: pointer;
+    }
+    .enjoy-texture .jm-table .table-body .table-container:last-child li{
+        border-bottom: 1px solid #ebebeb;
+    }
+</style>
+<!--培训通知主页面框架-->
+<div class="mallBuilding multimarketing">
+    <div class="row clearfix" style="margin-left: 0;">
+        <div class="tab" id="op_tab">
+            <ul>
+                <li class="active">新增图文</li>
+                <li>新增分类</li>
+                <li>图文列表</li>
+            </ul>
+        </div>
+        <div>
+
+            <div id="op_container_0">
+
+                <div class="clearfix">
+                    <div class="floatleft col-xs-4" style="margin-right: -25px; padding-left: 0;">
+                        <div class="phone-view phone-view-mini phone-billd phone-marketing" style="width: 330px;">
+                            <div class="phone-shell-top">
+                            </div>
+                            <div class="phone-window">
+                                <div  class="fxsz addti">
+                                </div>
+                                <div id="app-memu-panel">
+                                    <ul class="app-bottom-memu" id="app-bottom-memu">
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="phone-shell-bottom">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="floatleft col-xs-8 djfe-bjth mall-add dialoginfo-lstk">
+                        <form id="jsForm" class="bl-form bl-formhor" novalidate="novalidate">
+                            <div class="goods-sell-set">
+                                <div class="form-group padding-top-xl">
+                                    <label class="margin-right-xs">列表显示版式</label>
+                                    <div  class="radio-group ">
+                                        <div class="u-rb">
+                                            <input type="radio" name="op_lbradio" id="op_radio1" value="1"  checked  />
+                                            <label  for="op_radio1"></label>
+                                        </div>
+                                        <label for="op_radio1" class="u-rd-wd">仿微信页</label>
+                                        <div class="u-rb">
+                                            <input type="radio" name="op_lbradio" id="op_radio2" value="2" />
+                                            <label   for="op_radio2"></label>
+                                        </div>
+                                        <label for="op_radio2" class="u-rd-wd">自由编辑</label>
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="margin-right-m">分类</label>
+                                    <select name="select1" id="select1" selectValue="1"  required data-msg-required="分类不能为空" class="fn-tinput valid" style="width:150px">
+
+                                    </select>
+
+                                </div>
+                                <div class="form-group">
+                                    <label class="margin-right-m">标题</label>
+                                    <input type="text" name="imgtext" class="form-control fn-tinput valid" placeholder="请输入标题" required data-msg-required="标题不能为空"/>
+                                </div>
+                                <div class="form-group" id="author_group">
+                                    <label class="margin-right-m">作者</label>
+                                    <input type="text" name="author"  class="form-control" placeholder="请输入作者" required data-msg-required="作者不能为空"/>
+                                </div>
+                                <div class="form-group stock-info-details-right">
+                                    <label class="margin-right-x">主图</label>
+                                    <div class="stock-info-details stock-info-tips" style="width: auto;">
+                                        <div class="">
+                                            <div class="stock-info-details-add-img img-pzsc">
+                                                <div>
+                                                    <div>
+                                                        <img id="op_img" flag="" src="{{globalUrl}}/css/pc/img/no_picture.png" alt="" name="ImagePath_3" height="100" width="100">
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="base-info-img-tips">
+                                            <i class="iconfont icon-lamp margin-left-l"></i>
+                                            <span class="tips-cont margin-left-s">建议尺寸：长<font color="orange">750</font>像素，宽不限</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="margin-right-m">摘要</label>
+                                    <textarea id="op_shared" data-msg-required="摘要不能为空" name="shared" required class="form-control" placeholder=""></textarea>
+                                </div>
+                                <div class="base-info-img-tips">
+                                    <i style="" class="iconfont icon-lamp" style="color: #f38925; font-size: 14px;"></i>
+                                    选填，如果不填写会默认抓取正文前部分文字
+                                </div>
+
+
+
+                                <div class="form-group">
+                                    <label class="margin-right-m">图文详情</label>
+                                    <div class="panel-spxq" style="border:none;background:none;width:430px;">
+                                        <script id="container" name="content" type="text/plain">
+                                        </script>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="margin-right-l">二维码版式</label>
+                                    <div  class="radio-group ">
+                                        <div class="u-cb f-fl f-mt-xs">
+                                            <input type="checkbox" id="op_radio5" name="op_ewradio" value="1">
+                                            <label class="iconfont icon-avoid" for="op_radio5"></label>
+                                        </div>
+                                        <label  for="op_radio5"></label>
+                                        <img class="f-fl" src="{{globalUrl}}/css/pc/img/erm1.png"/>
+                                        <div class="u-cb f-fl f-mt-xs">
+                                            <input type="checkbox" id="op_radio6" name="op_ewradio" value="2">
+                                            <label class="iconfont icon-avoid" for="op_radio6"></label>
+                                        </div>
+
+                                        <label  for="op_radio6"></label>
+                                        <img src="{{globalUrl}}/css/pc/img/ewm2.png" />
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="margin-right-l">打赏版式</label>
+                                    <div  class="radio-group ">
+                                        <div class="u-cb f-fl f-mt-xs">
+                                            <input type="checkbox" id="op_radio3" name="op_dsradio" value="1">
+                                            <label class="iconfont icon-avoid" for="op_radio3"></label>
+                                        </div>
+                                        <label  for="op_radio3"></label>
+                                        <img class="f-fl" src="{{globalUrl}}/css/pc/img/da1.png"/>
+                                        <div class="u-cb f-fl f-mt-xs">
+                                            <input type="checkbox" id="op_radio4" name="op_dsradio" value="2">
+                                            <label class="iconfont icon-avoid" for="op_radio4"></label>
+                                        </div>
+                                        <label  for="op_radio4"></label>
+                                        <img src="{{globalUrl}}/css/pc/img/da2.png"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="margin-right-m">点赞数量</label>
+                                    <input type="number" name="op_dz_num" class="form-control" min="0" value="0"/>
+                                </div>
+                                <div class="form-group" id="link_group">
+                                    <label class="margin-right-m">更多好料</label>
+                                    <input type="text" name="op_address" class="form-control" placeholder="请输入链接地址" value="http://"/>
+                                </div>
+                            </div>
+
+                    </div>
+
+                </div>
+                <div class="u-btn-box1">
+                    <input type="button" class="u-btn-mainlg" id="op_save" value="保存" />
+                </div>
+                <!--<button class="btn btn-darkorange btn-radius-5 btn-lg col-xs-offset-6" type="submit" id="op_save">保存</button>-->
+
+
+                </form>
+            </div>
+
+            <div id="op_container_1" style="display: none">
+                <div class="clearfix">
+                    <div class="floatleft col-xs-4" style="margin-right: -25px; padding-left: 0;">
+                        <div class="phone-view phone-view-mini phone-billd phone-marketing" style="width: 330px;">
+                            <div class="phone-shell-top">
+                            </div>
+                            <div class="phone-window">
+                                <div class="fxsz addti">
+                                </div>
+                                <div id="app-memu-panel">
+                                    <ul class="app-bottom-memu" id="app-bottom-memu">
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="phone-shell-bottom">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-8 enjoy-texture" style="padding:15px 0">
+                        <div class="enjoy-text-titl" style="margin-bottom: 0">
+                            <h3>列表显示版式:</h3>
+                            <div class="radio-group">
+                                <div class="u-rb">
+                                    <input type="radio" name="image_showFormat" value="1" id="radioBox1" checked>
+                                    <label for="radioBox1"></label>
+                                </div>
+                                <label for="radioBox1" class="u-rd-wd">仿微信</label>
+                                <div class="u-rb">
+                                    <input type="radio" name="image_showFormat" id="radioBox2" value="2">
+                                    <label for="radioBox2"></label>
+                                </div>
+                                <label for="radioBox2" class="u-rd-wd">画报风</label>
+                            </div>
+                            <div class="btn btn-lightgray btn-lg" id="op_add_type" style="margin-top: -8px; margin-bottom: 5px; padding: 0 20px;">
+                                <i class="iconfont icon-add"></i>
+                                <span>新增分类</span>
+                            </div>
+                        </div>
+                        <div class="jm-table">
+                            <ul class="table-hander">
+                                <li style="width: 20%;">分类</li>
+                                <li style="width: 10%;">排序</li>
+                                <li style="width: 28%;">分享语</li>
+                                <li>分类图片</li>
+                                <li style="width: 25%;">操作</li>
+                            </ul>
+                            <div class="table-body" id="m_type_list">
+
+
+
+                            </div>
+                        </div>
+                        <div id="pageTypeToolbar" class="pagination f-mt-s f-mr-s">
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div id="op_container_2" style="display:none">
+                <div class="col-xs-4" style="margin-right: -25px; padding-left: 0;">
+                    <div class="phone-view phone-view-mini phone-billd phone-marketing" style="width: 330px;">
+                        <div class="phone-shell-top">
+                        </div>
+                        <div class="phone-window">
+                            <div class="fxsz addti">
+                            </div>
+                            <div id="app-memu-panel">
+                                <ul class="app-bottom-memu" id="app-bottom-memu">
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="phone-shell-bottom">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-8 djfe-bjth list-twlb" style="padding-left: 0; padding-right: 0; padding-top: 20px;">
+                    <div class="jm-table">
+                        <ul class="table-hander">
+                            <li style="width: 25%;">标题</li>
+                            <li style="width: 14%;">分类</li>
+                            <li>版式</li>
+                            <li>日期</li>
+                            <li>创建人</li>
+                            <li>管理</li>
+                        </ul>
+                        <div class="table-body" id="table-body">
+
+                        </div>
+                    </div>
+                    <div class="clearfix">
+                        <div id="pageToolbar" class="pagination f-mt-s f-mr-s">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <div id="link_content" class="hide"></div>
+    <script>
+        op.trainingnotice.init();
+        op.trainingnotice.add();
+        op.trainingnotice.del();
+        op.trainingnotice.update();
+
+    </script>

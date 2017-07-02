@@ -1,0 +1,77 @@
+<div class="panel-hidden_3" id="u-tab4">
+    <!--<img src="css/pc/img/jm-indlp.png" style="padding-left: 300px;padding-top: 200px;">-->
+    <!--时间查询条件-->
+    <div class="m-search f-mt-m f-pb-s" id="m-search3">
+        <label class="u-lb-sm">查询时间</label>
+        <div class="u-txt u-txt-date f-ml-m">
+            <i class="iconfont icon-calendar"></i>
+            <input type="text" id="beginDate3"  class="ipt-txt c-gray1" placeholder="" style="width: 111px;" />
+        </div>
+        <div class="u-txt">
+            <span class="line" style=" width: 20px;">至</span>
+        </div>
+        <div class="u-txt u-txt-date f-mr-m">
+            <i class="iconfont icon-calendar"></i>
+            <input type="text" id="endDate3" class="ipt-txt c-gray1" placeholder="" style="width: 111px;" />
+        </div>
+        <label class="u-lb-sm" style="width: 120px;">交易平台</label>
+        <div class="u-txt col-xs-3">
+            <select class="ipt-txt c-gray1" id="platForm3">
+                <option value="1">微信</option>
+                <option value="2">微博</option>
+            </select>
+        </div>
+        <div class="col-xs-3">
+            <!--<input type="button" class="u-btn-mddkbl f-mr-xs" value="导出" />-->
+            <input type="button" class="u-btn-mddkorg u-w" onclick="dataAnalysis.user.initBase2(3,$('#beginDate3').val(),$('#endDate3').val())" value="查询" />
+        </div>
+    </div>
+    <!--/-->
+    <!--<a class="btn-slide btn-slide1" id="btn_3" onclick="u(3)"></a>-->
+    <!--查询列表-->
+    <!--   <div class="m-panel-head f-mt-m">
+        <div class="m-tt">
+            <p style="padding-left: 10px;">页面深度</p>
+        </div>
+        <div class="col-xs-12 f-pb-m">
+            <div id="chartpage" style="width: 1080px; height: 310px;"></div>
+        </div>
+    </div>-->
+    <div class="m-panel-head f-mt-m">
+        <div class="m-tt">
+            <p style="padding-left: 10px;">地区分布</p>
+        </div>
+        <div class="col-xs-12 f-pt-s f-pb-m">
+            <div id="chartareaplace" style="width: 540px; height: 330px; float: left;"></div>
+            <div id="chartareadata" class="f-ml-xxl f-mt-xxl" style="width: 450px; height: 200px; float: left;"></div>
+        </div>
+    </div>
+    <!--<div class="m-panel-head f-mt-m">
+        <div class="m-tt">
+            <p style="padding-left: 10px;">使用系统</p>
+        </div>
+        <div class="col-xs-12 f-pt-s f-pb-m">
+            <div id="chartsys" style="width: 540px; height: 200px; float: left;"></div>
+            <div id="chartbrowser" class="f-ml-xxl" style="width: 450px; height: 200px; float: left;"></div>
+        </div>
+    </div>-->
+</div>
+<script type="text/javascript">
+
+    $("#beginDate3").datetimepicker({
+        showSecond : false,
+        timeFormat : 'hh:mm:ss',
+        dateFormat : 'yy-mm-dd',
+        stepHour : 1,
+        stepMinute : 1,
+        stepSecond : 1
+    });
+    $("#endDate3").datetimepicker({
+        showSecond : false,
+        timeFormat : '23:59:59',
+        dateFormat : 'yy-mm-dd',
+        stepHour : 1,
+        stepMinute : 1,
+        stepSecond : 1
+    });
+</script> 

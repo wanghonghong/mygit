@@ -1,0 +1,45 @@
+<div id="commentBox">
+
+    <div class="m-search" style="padding-bottom: 10px;" id="searchform1">
+        <label class="u-lb-sm">具体图文</label>
+        <div class="u-txt col-xs-3">
+            <input type="text" name="imageTextTile" class="ipt-txt" placeholder="请输入具体图文"/>
+        </div>
+        <label class="u-lb-sm">创建日期</label>
+        <div class="u-txt u-txt-date f-ml-m">
+            <i class="iconfont icon-calendar"></i>
+            <input type="text" class="ipt-txt c-gray1" name="beginCreateTime" placeholder="" style="width: 114px;"/>
+        </div>
+        <div class="u-txt">
+            <span class="line" style="width: 24px;">-</span>
+        </div>
+        <div class="u-txt u-txt-date">
+            <i class="iconfont icon-calendar"></i>
+            <input type="text" class="ipt-txt c-gray1" placeholder="" name="endCreateTime" style="width: 114px;"/>
+        </div>
+        <div class="col-xs-3 f-ml-xxl">
+            <input type="button" class="u-btn-mddkorg u-w" id="querybtn"  value="查询"/>
+        </div>
+    </div>
+    <div class="m-jm-table f-mt-m">
+        <ul class="table-hander">
+            <li style="width: 30%;">具体图文</li>
+            <li>创建日期</li>
+            <li>阅读量 - 访问量</li>
+            <li>点赞量 - 评论数</li>
+            <li>操作</li>
+        </ul>
+        <div class="table-body f-t-off" id="tableBody1">
+
+        </div>
+        <!--以下是分页效果-->
+        <div id="pageToolbar1" class="pagination f-tr f-mt-m">
+
+        </div>
+        <!--分页end-->
+    </div>
+
+</div>
+<script>
+    imagecomment.index.init();
+</script>

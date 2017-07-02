@@ -1,0 +1,35 @@
+
+    {% if items.length>0 %}
+    {%for item in items%}
+    <ul class="table-container">
+        <li style="width: 18%;">
+            <div class="col-xs-3">
+                <div class="u-cb f-mt-l">
+                    <input type="checkbox" name="user" id="checkbox{{loop.index}}" value="{{item.userId}}" />
+                    <label class="iconfont icon-avoid" for="checkbox{{loop.index}}" style="top: 0;"></label>
+                </div>
+            </div>
+            <div class="col-xs-6">
+                <label for="checkbox{{loop.index}}"><img src="{{item.headImg}}"  class="u-thumbnail-circ" /></label>
+            </div>
+        </li>
+        <li>{{item.userName}}</li>
+        <li> {% if item.sex==1 %}
+            男
+            {% elif item.sex==2 %}
+            女
+            {%endif%}</li>
+        <li>{{item.phoneNumber}}</li>
+        <li>{{item.wxnum}}</li>
+        <li>{{item.staffCode}}</li>
+        <li>{{item.departmentName}}</li>
+        <li>
+            <div class="u-btn-smltgry f-mr-xs edit" id="edit_{{item.userId}}" data-type-id="{{item.userId}}">编辑</div>
+            <div class="u-btn-smltgry delete_btn" id="delete_btn"  data-type-id="{{item.userId}}">删除</div>
+        </li>
+    </ul>
+    {%endfor%}
+    {%else%}
+    {% include "/tpl/system/nodb.html" %}
+    {%endif%}
+

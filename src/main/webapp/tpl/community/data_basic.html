@@ -1,0 +1,70 @@
+<div class="panel-hidden f-padding-m">
+    <div class="m-bbsbox1 f-pt-l f-pb-xl">
+        <label class="u-lb-sm f-fl f-cb f-pt-m c-deepgray">我的头像</label>
+        <div class="col-xs-11">
+            <div>
+                <img  src="{{headImg}}" id="headImg"  class="u-userpic-lg f-vm" onerror="community.index.nofind()" />
+                <div class="u-btn-smltgry f-ml-m" id="m-add-img1"><span>头像修改</span></div>
+            </div>
+            <div class="m-tip1" style="margin: 0;">
+                <i class="iconfont icon-lamp"></i>
+                <span>图像大小不可超过 <font class="c-orange1">1M</font></span>
+            </div>
+        </div>
+        <label class="u-lb-sm f-fl f-cb c-deepgray">昵称</label>
+        <div class="u-txt col-xs-3">
+            <input type="text" class="ipt-txt" value="{{nickname}}" id="nickname" placeholder="请输入昵称" />
+        </div>
+        <div class="m-tip1 f-fl" style="margin: 0;">
+            <i class="iconfont icon-lamp"></i>
+            <span>仅有 <font>1</font> 次修改昵称机会</span>
+        </div>
+        <label class="u-lb-sm f-fl f-cb c-deepgray">性别</label>
+        <div class="u-txt col-xs-3">
+            <select class="ipt-txt c-gray1" id="sex">
+                {%if sex==1%}
+                <option value="1" selected>男</option>
+                <option value="2">女</option>
+                {%else%}
+                <option value="1" >男</option>
+                <option value="2" selected>女</option>
+                {%endif%}
+            </select>
+        </div>
+        <label class="u-lb-sm f-fl f-cb c-deepgray">手机</label>
+        <div class="u-txt col-xs-3">
+            <input type="text" class="ipt-txt" id="phoneNumber" value="{{phoneNumber}}" placeholder="请输入手机号" />
+        </div>
+        <label class="u-lb-sm f-fl f-cb c-deepgray">职业</label>
+        <div class="u-txt col-xs-3">
+            <select class="ipt-txt c-gray1 " id="staff">
+                {%if staff==1%}
+                <option value="1" selected>IT互联网</option>
+                <option value="2">商场经营</option>
+                {%else%}
+                <option value="1" >IT互联网</option>
+                <option value="2" selected>商场经营</option>
+                {%endif%}
+            </select>
+        </div>
+        <label class="u-lb-sm f-fl f-cb c-deepgray">ＱＱ</label>
+        <div class="u-txt col-xs-3">
+            <input type="text" class="ipt-txt" id="qq" value="{{qq}}" placeholder="请输入QQ" />
+        </div>
+        <label class="u-lb-sm f-fl f-cb c-deepgray">所在地区</label>
+        <div class="u-txt col-xs-11 distpicker" >
+            <select class="ipt-txt c-gray1"  data-province="{{province}}" id="province" style="width: 90px;">
+            </select>
+            <span class="line" style="width: 17px;">-</span>
+            <select class="ipt-txt c-gray1"  data-city="{{city}}" id="city" style="width: 90px;">
+            </select>
+            <span class="line" style="width: 17px;">-</span>
+            <select class="ipt-txt c-gray1"  data-district="{{district}}" id="district" style="width: 90px;">
+            </select>
+        </div>
+    </div>
+    <div class="u-btn-box1 f-mt-l">
+        <!--<input type="button" class="u-btn-gymainlg f-mr-s" value="取消" />-->
+        <input type="button" class="u-btn-mainlg" onclick="community.data.save()" value="保存" />
+    </div>
+</div>

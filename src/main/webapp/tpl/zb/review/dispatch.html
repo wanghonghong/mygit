@@ -1,0 +1,505 @@
+<style>
+    input:-webkit-autofill{
+        background-color: inherit;
+    }
+    input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill{
+        background-color: transparent;
+    }
+</style>
+<div class="m-search" id="m-search">
+    <label class="u-lb-sm">订单来源</label>
+    <div class="u-txt col-xs-3">
+        <select class="ipt-txt " id="source">
+            <option value="">全部</option>
+            <option value="1">客服增单</option>
+            <option value="2">电子申请</option>
+        </select>
+    </div>
+    <label class="u-lb-sm">订单状态</label>
+    <div class="u-txt col-xs-3">
+        <select class="ipt-txt " id="status">
+            <option value="">全部</option>
+            <option value="1">等待派单</option>
+            <option value="2">处理中</option>
+            <option value="3">申请改派</option>
+            <option value="4">已回单</option>
+            <option value="5">已通过</option>
+        </select>
+    </div>
+    <label class="u-lb-sm">申请日期</label>
+    <div class="u-txt f-ml-m">
+        <input type="text" class="ipt-txt c-gray1" placeholder="开始时间"  id="startTime" style="width: 118px;" />
+    </div>
+    <div class="u-txt">
+        <span class="line" style=" width: 20px;">-</span>
+    </div>
+    <div class="u-txt f-mr-m">
+        <input type="text" class="ipt-txt c-gray1" placeholder="结束时间" id="endTime" style="width: 118px;" />
+    </div>
+    <label class="u-lb-sm">需求类型</label>
+    <div class="u-txt col-xs-3">
+        <select class="ipt-txt " id="subType">
+            <option value="">全部</option>
+            <option value="1">客服增单</option>
+            <option value="2">初次使用</option>
+            <option value="3">软件模块</option>
+            <option value="4">内容服务</option>
+        </select>
+    </div>
+    <div class="u-btn-box1">
+        <input type="button" class="u-btn-mdemptyred" id="query" value="查询" />
+    </div>
+</div>
+<a class="btn-slide btn-slide1 f-mb-m"></a>
+<!--当查询订单来源选择“客服增单”出现以下按钮，则无-->
+<div class="f-mb-xs">
+    <div class="u-btn-addmodule dialog-addorder">
+        <i class="iconfont icon-add"></i>
+        <span>客服增单</span>
+    </div>
+</div>
+<!--/-->
+<div class="m-jm-table">
+    <ul class="table-hander">
+        <li>申请日期</li>
+        <li>店铺名称</li>
+        <li>店主姓名-手机</li>
+        <li style="width: 18%;">店铺地址</li>
+        <li>需求类型</li>
+        <li>订单状态</li>
+        <li>派单操作</li>
+    </ul>
+    <div class="table-body" id="dispatchList">
+
+    </div>
+    <!--分页-->
+    <div id="dispatchToolbar" class="pagination f-fr f-pt-m">
+
+    </div>
+</div>
+
+
+<!--改派操作begin-->
+<div id="dialoginfo-changeorder" class="dialoginfo">
+    <div class="m-tab" id="m-tab3">
+        <ul>
+            <li class="z-sel">派单操作</li>
+            <li>派单历史（0）</li>
+        </ul>
+    </div>
+    <div class="panel-hid1 f-padding-m" style="padding-bottom: 0;">
+        <div class="m-search">
+            <label class="u-lb-msm">渠道商</label>
+            <div class="u-txt col-xs-3">
+                <select class="ipt-txt">
+                    <option value="1">代理商</option>
+                    <option value="1">服务商</option>
+                    <option value="2">个人单位</option>
+                </select>
+            </div>
+            <label class="u-lb-msm">角色等级</label>
+            <div class="u-txt col-xs-3">
+                <select class="ipt-txt">
+                    <option value="1">机构代理 1 级</option>
+                    <option value="2">机构代理 2 级</option>
+                    <option value="2">个人代理</option>
+                </select>
+            </div>
+            <label class="u-lb-msm">姓名</label>
+            <div class="u-txt col-xs-3">
+                <input type="text" class="ipt-txt" placeholder="请输入姓名" />
+            </div>
+            <label class="u-lb-msm">手机号</label>
+            <div class="u-txt col-xs-3">
+                <input type="text" class="ipt-txt" placeholder="请输入手机号" />
+            </div>
+            <label class="u-lb-msm f-mr-m">所在地区</label>
+            <div class="u-txt" style="width: 65px;">
+                <select class="ipt-txt" style="padding: 0 3px;">
+                    <option value="1">福建省</option>
+                </select>
+            </div>
+            <div class="u-txt">
+                <span class="line" style=" width: 10px;">-</span>
+            </div>
+            <div class="u-txt" style="width: 65px;">
+                <select class="ipt-txt" style="padding: 0 3px;">
+                    <option value="1">市</option>
+                </select>
+            </div>
+            <div class="u-txt">
+                <span class="line" style=" width: 10px;">-</span>
+            </div>
+            <div class="u-txt" style="width: 65px;">
+                <select class="ipt-txt" style="padding: 0 3px;">
+                    <option value="1">区</option>
+                </select>
+            </div>
+            <div class="u-btn-box1" style="padding-bottom: 0;">
+                <input type="button" class="u-btn-mdemptyred" value="查询" />
+            </div>
+        </div>
+        <div class="m-jm-table f-mt-m" >
+            <ul class="table-hander">
+                <li style="width: 25%;">渠道商</li>
+                <li>姓名</li>
+                <li>手机号</li>
+                <li>角色等级</li>
+                <li style="width: 20%;">地区</li>
+                <li>选择</li>
+            </ul>
+            <div class="table-body">
+                <ul class="table-container">
+                    <li style="width: 25%;">福建聚米为谷网络科技有限公司</li>
+                    <li>陈小君</li>
+                    <li>13688886666</li>
+                    <li>机构代理 1 级</li>
+                    <li style="width: 20%;">福建省-福州市-鼓楼区</li>
+                    <li>
+                        <div class="u-rb dialog">
+                            <input type="radio" id="radioBox1" value="" />
+                            <label for="radioBox1"></label>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="table-container">
+                    <li style="width: 25%;">福建聚米为谷网络科技有限公司</li>
+                    <li>陈小君</li>
+                    <li>13688886666</li>
+                    <li>机构代理 2 级</li>
+                    <li style="width: 20%;">福建省-福州市-鼓楼区</li>
+                    <li>
+                        <div class="u-rb dialog">
+                            <input type="radio" id="radioBox2" value="" />
+                            <label for="radioBox2"></label>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="table-container">
+                    <li style="width: 25%;">陈君君</li>
+                    <li>陈小君</li>
+                    <li>13688886666</li>
+                    <li>个人代理</li>
+                    <li style="width: 20%;">福建省-福州市-鼓楼区</li>
+                    <li>
+                        <div class="u-rb dialog">
+                            <input type="radio" id="radioBox3" value="" />
+                            <label for="radioBox3"></label>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="table-container">
+                    <li style="width: 25%;">陈君君</li>
+                    <li>陈小君</li>
+                    <li>13688886666</li>
+                    <li>个人代理</li>
+                    <li style="width: 20%;">福建省-福州市-鼓楼区</li>
+                    <li>
+                        <div class="u-rb dialog">
+                            <input type="radio" id="radioBox4" value="" />
+                            <label for="radioBox4"></label>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="table-container">
+                    <li style="width: 25%;">陈君君</li>
+                    <li>陈小君</li>
+                    <li>13688886666</li>
+                    <li>个人代理</li>
+                    <li style="width: 20%;">福建省-福州市-鼓楼区</li>
+                    <li>
+                        <div class="u-rb dialog">
+                            <input type="radio" id="radioBox5" value="" />
+                            <label for="radioBox5"></label>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <!--以下是分页-->
+            <!--设置1页5条列表-->
+            <div id="pageToolbar" class="pagination f-fr f-mt-m">
+                <span class="pagenum">共26条</span>
+                <span class="prev">&lt;</span>
+                <span class="current">1</span>
+                <a href="javascript:void(0)">2</a>
+                <a href="javascript:void(0)">3</a>
+                <em>...</em>
+                <a href="javascript:void(0)">9</a>
+                <a href="javascript:void(0)">10</a>
+                <span class="next">&gt;</span>
+            </div>
+            <!--分页end-->
+        </div>
+    </div>
+    <div class="panel-hid1 f-padding-m" style="padding-bottom: 0;">
+        <div class="m-graypanel f-mb-m">
+            <h3>
+                <strong>2 次派单</strong>
+                <div class="sendorder-history-head">
+                    <ul>
+                        <li class="f-t-off1" style="width: 25%;">
+                            <p title="这里也放渠道商名称数据"><span>渠道商：</span>福建聚米为谷网络科技有限公司限公司限公司</p>
+                        </li>
+                        <li>
+                            <p><span>姓名：</span>陈小君</p>
+                        </li>
+                        <li style="width: 20%;">
+                            <p><span>手机号：</span>13688886666</p>
+                        </li>
+                        <li style="width: 20%;">
+                            <p><span>代理等级：</span>代理机构 1 级</p>
+                        </li>
+                        <li style="width: 22%;">
+                            <p title="这里也放所属地区数据"><span>所属地区：</span>福建省-福州市-鼓楼区</p>
+                        </li>
+                    </ul>
+                </div>
+            </h3>
+            <div class="m-review-txt">
+                <div class="txt-left">受理结果：</div>
+                <div class="txt-right">营业执照照片不清晰，看不清法人姓名<br />营业执照照片不清晰 </div>
+            </div>
+        </div>
+        <div class="m-graypanel f-mb-m">
+            <h3>
+                <strong>1 次派单</strong>
+                <div class="sendorder-history-head">
+                    <ul>
+                        <li class="f-t-off1" style="width: 25%;">
+                            <p title="这里也放渠道商名称数据"><span>渠道商：</span>福建聚米为谷网络科技有限公司限公司限公司</p>
+                        </li>
+                        <li>
+                            <p><span>姓名：</span>陈小君</p>
+                        </li>
+                        <li style="width: 20%;">
+                            <p><span>手机号：</span>13688886666</p>
+                        </li>
+                        <li style="width: 20%;">
+                            <p><span>代理等级：</span>代理机构 1 级</p>
+                        </li>
+                        <li style="width: 22%;">
+                            <p title="这里也放所属地区数据"><span>所属地区：</span>福建省-福州市-鼓楼区</p>
+                        </li>
+                    </ul>
+                </div>
+            </h3>
+            <div class="m-review-txt">
+                <div class="txt-left">受理结果：</div>
+                <div class="txt-right">营业执照照片不清晰，看不清法人姓名<br />营业执照照片不清晰 </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end-->
+<!--查看操作begin-->
+<div id="dialoginfo-seeorder" class="dialoginfo">
+    <div class="m-tab" id="m-tab2">
+        <ul>
+            <li class="z-sel">派单操作</li>
+            <li>派单历史（0）</li>
+        </ul>
+    </div>
+    <div class="panel-hid f-padding-m" style="padding-bottom: 0;">
+        <!--处理中-->
+        <div class="m-tips-warns"><i class="iconfont icon-car1"></i>4 次派单进行中</div>
+        <!--/-->
+        <div class="m-graytable f-mt-m f-pb-xl">
+            <div class="table-head">
+                <ul class="table-hander">
+                    <li>渠道商</li>
+                    <li>姓名</li>
+                    <li>手机号</li>
+                    <li>代理等级</li>
+                    <li>所属地区</li>
+                </ul>
+            </div>
+            <div class="table-body">
+                <ul class="table-container">
+                    <li>福建聚米为谷有限公司</li>
+                    <li>陈小君</li>
+                    <li>13688886666</li>
+                    <li>机构代理 1 级</li>
+                    <li>福建省-福州市-鼓楼区</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="panel-hid f-padding-m" style="padding-bottom: 0;">
+        <div class="m-graypanel f-mb-m">
+            <h3>
+                <strong>2 次派单</strong>
+                <div class="sendorder-history-head">
+                    <ul>
+                        <li class="f-t-off1" style="width: 25%;">
+                            <p title="这里也放渠道商名称数据"><span>渠道商：</span>福建聚米为谷网络科技有限公司限公司限公司</p>
+                        </li>
+                        <li>
+                            <p><span>姓名：</span>陈小君</p>
+                        </li>
+                        <li style="width: 20%;">
+                            <p><span>手机号：</span>13688886666</p>
+                        </li>
+                        <li style="width: 20%;">
+                            <p><span>代理等级：</span>代理机构 1 级</p>
+                        </li>
+                        <li style="width: 22%;">
+                            <p title="这里也放所属地区数据"><span>所属地区：</span>福建省-福州市-鼓楼区</p>
+                        </li>
+                    </ul>
+                </div>
+            </h3>
+            <div class="m-review-txt">
+                <div class="txt-left">受理结果：</div>
+                <div class="txt-right">营业执照照片不清晰，看不清法人姓名<br />营业执照照片不清晰 </div>
+            </div>
+        </div>
+        <div class="m-graypanel f-mb-m">
+            <h3>
+                <strong>1 次派单</strong>
+                <div class="sendorder-history-head">
+                    <ul>
+                        <li class="f-t-off1" style="width: 25%;">
+                            <p title="这里也放渠道商名称数据"><span>渠道商：</span>福建聚米为谷网络科技有限公司限公司限公司</p>
+                        </li>
+                        <li>
+                            <p><span>姓名：</span>陈小君</p>
+                        </li>
+                        <li style="width: 20%;">
+                            <p><span>手机号：</span>13688886666</p>
+                        </li>
+                        <li style="width: 20%;">
+                            <p><span>代理等级：</span>代理机构 1 级</p>
+                        </li>
+                        <li style="width: 22%;">
+                            <p title="这里也放所属地区数据"><span>所属地区：</span>福建省-福州市-鼓楼区</p>
+                        </li>
+                    </ul>
+                </div>
+            </h3>
+            <div class="m-review-txt">
+                <div class="txt-left">受理结果：</div>
+                <div class="txt-right">营业执照照片不清晰，看不清法人姓名<br />营业执照照片不清晰 </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end-->
+<!--审核操作begin-->
+<div id="dialoginfo-auditorder" class="dialoginfo">
+    <div class="m-tab" id="m-tab4">
+        <ul>
+            <li class="z-sel">派单操作</li>
+            <li>派单历史（0）</li>
+        </ul>
+    </div>
+    <div class="panel-hid2 f-padding-m" style="padding-bottom: 0;">
+        <!--通过-->
+        <div class="m-tips-sucs"><i class="iconfont icon-checkboxselected1"></i>3 次派单已完成</div>
+        <!--/-->
+        <div class="m-graytable f-mt-m f-pb-xl">
+            <div class="table-head">
+                <ul class="table-hander">
+                    <li>渠道商</li>
+                    <li>姓名</li>
+                    <li>手机号</li>
+                    <li>代理等级</li>
+                    <li>所属地区</li>
+                </ul>
+            </div>
+            <div class="table-body">
+                <ul class="table-container">
+                    <li>福建聚米为谷有限公司</li>
+                    <li>陈小君</li>
+                    <li>13688886666</li>
+                    <li>机构代理 1 级</li>
+                    <li>福建省-福州市-鼓楼区</li>
+                </ul>
+            </div>
+        </div>
+        <div class="u-btn-box1">
+            <div class="u-btn-agree">
+                <i class="iconfont icon-happy"></i>审核通过
+            </div>
+        </div>
+    </div>
+    <div class="panel-hid2 f-padding-m" style="padding-bottom: 0;">
+        <div class="m-graypanel f-mb-m">
+            <h3>
+                <strong>2 次派单</strong>
+                <div class="sendorder-history-head">
+                    <ul>
+                        <li class="f-t-off1" style="width: 25%;">
+                            <p title="这里也放渠道商名称数据"><span>渠道商：</span>福建聚米为谷网络科技有限公司限公司限公司</p>
+                        </li>
+                        <li>
+                            <p><span>姓名：</span>陈小君</p>
+                        </li>
+                        <li style="width: 20%;">
+                            <p><span>手机号：</span>13688886666</p>
+                        </li>
+                        <li style="width: 20%;">
+                            <p><span>代理等级：</span>代理机构 1 级</p>
+                        </li>
+                        <li style="width: 22%;">
+                            <p title="这里也放所属地区数据"><span>所属地区：</span>福建省-福州市-鼓楼区</p>
+                        </li>
+                    </ul>
+                </div>
+            </h3>
+            <div class="m-review-txt">
+                <div class="txt-left">受理结果：</div>
+                <div class="txt-right">营业执照照片不清晰，看不清法人姓名<br />营业执照照片不清晰 </div>
+            </div>
+        </div>
+        <div class="m-graypanel f-mb-m">
+            <h3>
+                <strong>1 次派单</strong>
+                <div class="sendorder-history-head">
+                    <ul>
+                        <li class="f-t-off1" style="width: 25%;">
+                            <p title="这里也放渠道商名称数据"><span>渠道商：</span>福建聚米为谷网络科技有限公司限公司限公司</p>
+                        </li>
+                        <li>
+                            <p><span>姓名：</span>陈小君</p>
+                        </li>
+                        <li style="width: 20%;">
+                            <p><span>手机号：</span>13688886666</p>
+                        </li>
+                        <li style="width: 20%;">
+                            <p><span>代理等级：</span>代理机构 1 级</p>
+                        </li>
+                        <li style="width: 22%;">
+                            <p title="这里也放所属地区数据"><span>所属地区：</span>福建省-福州市-鼓楼区</p>
+                        </li>
+                    </ul>
+                </div>
+            </h3>
+            <div class="m-review-txt">
+                <div class="txt-left">受理结果：</div>
+                <div class="txt-right">营业执照照片不清晰，看不清法人姓名<br />营业执照照片不清晰 </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end-->
+<!--操作提醒begin-->
+<div id="dialoginfo" class="dialoginfo">
+    <div class="m-sus-box">
+        <img src="{{globalUrl}}/css/pc/img/jmtool1.png" class="f-fl f-mt-m" />
+        <span class="m-sendhandle">
+			<strong>请确认是否指派给渠道商</strong>
+			<p>公司：聚米为谷网络科技有限公司</p>
+			<p>姓名：陈小君</p>
+			<p>手机：18666668888</p>
+		</span>
+    </div>
+    <div class="u-btn-box1 f-mt-m">
+        <input type="button" class="u-btn-smlightgray f-mr-xs" value="取消" />
+        <input type="button" class="u-btn-smlightred" value="确定" />
+    </div>
+</div>
+<!--end-->
+<!--/弹窗部分-->
+<script type="text/javascript">
+   dispatch.review.init();
+</script>

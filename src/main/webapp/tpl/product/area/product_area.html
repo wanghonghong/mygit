@@ -1,0 +1,81 @@
+<style>
+    .select2-container--jumi .select2-results > .select2-results__options::-webkit-scrollbar {
+        width: 14px;
+        height: 14px;
+    }
+    .select2-container--jumi .select2-results > .select2-results__options::-webkit-scrollbar-track,
+    .select2-container--jumi .select2-results > .select2-results__options::-webkit-scrollbar-thumb {
+        border-radius: 999px;
+        border: 5px solid transparent;
+    }
+    .select2-container--jumi .select2-results > .select2-results__options::-webkit-scrollbar-track {
+        box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2) inset;
+    }
+    .select2-container--jumi .select2-results > .select2-results__options::-webkit-scrollbar-thumb {
+        min-height: 20px;
+        background-clip: content-box;
+        box-shadow: 0 0 0 5px #F5BB6F inset;
+    }
+    .select2-container--jumi .select2-results > .select2-results__options::-webkit-scrollbar-corner {
+        background: transparent;
+    }
+</style>
+<div class="m-search" id="m-search">
+    <label class="u-lb-sm">商品名称</label>
+    <div class="u-txt col-xs-3">
+        <input type="text" class="ipt-txt" id="name" placeholder="请输入商品名称"/>
+    </div>
+
+    <label class="u-lb-sm">供货商</label>
+    <div class="u-txt col-xs-3">
+        <input type="text" class="ipt-txt" id="phoneNumber"  placeholder="请输入供货商手机号"/>
+    </div>
+
+    <label class="u-lb-sm">货源类型</label>
+    <div class="u-txt col-xs-3">
+        <div class="u-txt" style="width: 240px; margin-bottom: 0;">
+            <select class="ipt-txt c-gray1" id="product_offer_type" style="width:100%">
+                <option value="-1" selected></option>
+                <option value="0" >暂无</option>
+                <option value="1" >平台供货</option>
+                <option value="2" >地区供货</option>
+            </select>
+        </div>
+    </div>
+
+    <label class="u-lb-sm f-cb">供货地区</label>
+    <div class="form-group szd clearfix col-xs-7" id="distpickerbset" style="padding-top: 0; padding-right: 22px;">
+        <!--<label class="margin-right-m">所在地</label>-->
+        <select class="floatleft form-control" id="provincebset"></select>
+        <span class="f-fl" style="line-height: 36px; padding: 0 5px;">-</span>
+        <select class="floatleft form-control" id="citybset"></select>
+        <span class="f-fl" style="line-height: 36px; padding: 0 5px;">-</span>
+        <select class="floatleft form-control" id="districtbset"></select>
+    </div>
+
+    <div class="u-btn-box1">
+        <input type="button" class="u-btn-mddkbl f-mr-s" value="导出"/>
+        <input type="button" class="u-btn-mddkorg u-w" value="查询" onclick="product.area.search()"/>
+    </div>
+</div>
+
+<a class="btn-slide btn-slide1"></a>
+<div class="m-jm-table f-mt-m">
+    <ul class="table-hander">
+        <li style="width:25%;">主图 - 名称 - 价格</li>
+        <li>库存</li>
+        <li>创建日期</li>
+        <li>状态</li>
+        <li>供货属性</li>
+        <li>操作</li>
+    </ul>
+    <div class="table-body" id="tableBody">
+
+    </div>
+    <div id="pageToolbar" class="pagination f-fr f-mt-s"></div>
+    <input type="hidden" name="count" id="count" value="${counts!}" />
+</div>
+
+<script>
+    product.area.init();
+</script>

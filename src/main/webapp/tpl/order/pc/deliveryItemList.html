@@ -1,0 +1,117 @@
+{%if items.length>0%}
+{% for item in items %}
+    <table  class="m-table-control">
+        <tbody>
+        <tr class="bg-gray">
+            <td colspan="6" style="border-top: none;">
+                <ul>
+                    <li class="f-fl f-pl-s">订单编号：{{item.orderNum}}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{% if item.transactionId %}收款流水号：{{item.transactionId}}{% endif %} </li>
+                    <li class="service f-fr f-pr-s"><a data-id="{{item.userId}}" onclick="ImInfo.openChatWin(this,'{{item.userId}}');">{{item.nickname}}{% if item.headimgurl %}<img class="u-thumbnail-circ" src="{{item.headimgurl}}" />{% else %}<img class="u-thumbnail-circ" src="css/pc/img/s-newshop-lt-img3.jpg" />{% endif %}</a></li>
+                </ul>
+            </td>
+        </tr>
+        {% if item.remark or item.sellerNote%}
+        <tr class="buy-top f-wb-ba">
+            <td colspan="2" style="vertical-align: top;">
+                {% if item.remark %}
+                <p class="f-tl f-pl-s g-table">
+                    <span class="g-table-cell">
+                        <img class="u-thumbnail-circ" src="{{globalUrl}}/css/pc/img/icon_buy.png" />
+                    </span>
+                    <span class="g-table-cell f-pr-s">买家留言：<font color="#6A6A6A">{{item.remark}}</font></span>
+                </p>
+                {% endif %}
+            </td>
+
+            <td colspan="3" style="vertical-align: top;">
+                {% if item.sellerNote %}
+                <p class="f-tl f-pl-s g-table">
+                    <span class="g-table-cell">
+                        <img class="u-thumbnail-circ" src="{{globalUrl}}/css/pc/img/icon_sale.png" />
+                    </span>
+                    <span class="g-table-cell f-pr-s">卖家留言：<font color="#6A6A6A">{{item.sellerNote}}</font></span>
+                </p>
+                {% endif %}
+            </td>
+        </tr>
+        {% endif %}
+        {% for orderDetail in item.orderDetails %}
+        <tr>
+            <td style="width:40%;">
+                <div class="g-table">
+                    <div class="g-table-cell f-vm" style="width: 25%;padding-top: 5px;">
+                        {% if orderDetail.pic %}
+                        <img class="u-thumbnail-squa" src="{{orderDetail.pic}}"/>
+                        {% else %}
+                        <img class="u-thumbnail-squa" src="{{globalUrl}}/css/pc/img/no_picture.png"/>
+                        {% endif %}
+                    </div>
+                    <div class="g-table-cell f-vm f-tl f-pr-s" style="width: 53%;">
+                        <span>{{orderDetail.name}}&nbsp&nbsp&nbsp{{orderDetail.specValueTwo}}</span><br>
+                        <font color="#6a6a6a">{{orderDetail.specValueOne}}&nbsp&nbsp&nbsp{{orderDetail.specValueThree}}</font>
+                    </div>
+                    <div class="g-table-cell f-vm f-tl" style="width: 12%;">
+                        <font color="#e29c3d">{{orderDetail.count}}件</font>
+                    </div>
+                </div>
+            </td>
+            <td class="font-color-black" style="width:15%;" >
+                {{item.createDate}}
+            </td>
+            {% if item.type==5 or item.type==6 %}
+            <td class="font-color-black" style="width:15%;" >
+                <font color="red">礼品单</font>
+            </td>
+            <td class="font-color-black" style="width:20%; padding: 0 10px;" align="left" >
+                <font color="red">礼品单 </font>
+            </td>
+            {% else %}
+            <td class="font-color-black" style="width:15%;" >
+                {{item.userName}}<br>{{item.phoneNumber}}
+            <td class="font-color-black" style="width:20%; padding: 0 10px;" align="left" >
+                {{item.detailAddress}}
+            </td>
+            </td>
+            {% endif %}
+            <td style="width:10%;" >
+                {% if item.status==1 %}
+                <div class="u-btn-smltgry f-mb-xs dialog" sellerNote="{{item.sellerNote}}" remark="{{item.remark}}" orderNum="{{item.orderNum}}" giverName="{{item.nickname}}"  onclick="delivery.list.deliver('{{item.orderInfoId}}','{{item.userId}}','{{item.type}}',this)"><span>立即发货</span></div><br>
+                {% elif item.status==2 %}
+                <span>待收货</span><br>
+                    {% if item.type==5 or item.type==6 %}
+                        {% if  item.parentOrderId %}
+                            <div class="u-btn-smltgry f-mb-xs f-mt-xs" onclick="delivery.list.queryOrderDetail('{{item.orderInfoId}}')"><span>订单详情</span></div>
+                        {% else %}
+                            <div class="u-btn-smltgry f-mb-xs f-mt-xs" onclick="delivery.list.queryDeliveryDispatchDetail('{{item.orderInfoId}}')"><span>订单详情</span></div>
+                        {% endif %}
+                    {% else %}
+                        <div class="u-btn-smltgry f-mb-xs f-mt-xs" onclick="delivery.list.queryOrderDetail('{{item.orderInfoId}}')"><span>订单详情</span></div>
+                    {% endif %}
+                {% elif item.status==3 %}
+                <span>已收货</span><br>
+                    {% if item.type==5 or item.type==6 %}
+                        {% if  item.parentOrderId %}
+                        <div class="u-btn-smltgry f-mb-xs f-mt-xs" onclick="delivery.list.queryOrderDetail('{{item.orderInfoId}}')"><span>订单详情</span></div>
+                        {% else %}
+                        <div class="u-btn-smltgry f-mb-xs f-mt-xs" onclick="delivery.list.queryDeliveryDispatchDetail('{{item.orderInfoId}}')"><span>订单详情</span></div>
+                        {% endif %}
+                    {% else %}
+                    <div class="u-btn-smltgry f-mb-xs f-mt-xs" onclick="delivery.list.queryOrderDetail('{{item.orderInfoId}}')"><span>订单详情</span></div>
+                    {% endif %}
+                {% else %}
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endfor %}
+{%else%}
+<div class="m-jm-err">
+    <img src="{{globalUrl}}/css/pc/img/jm-nodb.png">
+</div>
+{%endif%}
+<script>
+    ImInfo.initData("{{ext.hxAccount}}","{{ext.userid}}","{{ext.nickname}}","{{ext.headImg}}","{{ext.shopId}}");
+    console.log("delivery=======",delivery.list);
+</script>

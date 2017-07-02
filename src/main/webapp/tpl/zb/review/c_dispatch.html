@@ -1,0 +1,82 @@
+<style>
+    input:-webkit-autofill{
+        background-color: inherit;
+    }
+    input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill{
+        background-color: transparent;
+    }
+</style>
+<div class="m-search" id="m-search">
+    <label class="u-lb-sm">订单来源</label>
+    <div class="u-txt col-xs-3">
+        <select class="ipt-txt " id="source">
+            <option value="">全部</option>
+            <option value="1">客服增单</option>
+            <option value="2">电子申请</option>
+        </select>
+    </div>
+    <label class="u-lb-sm">订单状态</label>
+    <div class="u-txt col-xs-3">
+        <select class="ipt-txt " id="status">
+            <option value="">全部</option>
+            <option value="1">等待派单</option>
+            <option value="2">处理中</option>
+            <option value="3">申请改派</option>
+            <option value="4">已回单</option>
+            <option value="5">已通过</option>
+        </select>
+    </div>
+    <label class="u-lb-sm">申请日期</label>
+    <div class="u-txt f-ml-m">
+        <input type="text" class="ipt-txt c-gray1" placeholder="开始时间"  id="startTime" style="width: 118px;" />
+    </div>
+    <div class="u-txt">
+        <span class="line" style=" width: 20px;">-</span>
+    </div>
+    <div class="u-txt f-mr-m">
+        <input type="text" class="ipt-txt c-gray1" placeholder="结束时间" id="endTime" style="width: 118px;" />
+    </div>
+    <label class="u-lb-sm">需求类型</label>
+    <div class="u-txt col-xs-3">
+        <select class="ipt-txt " id="subType">
+            <option value="">全部</option>
+            <option value="5">功能使用</option>
+            <option value="6">服务态度</option>
+            <option value="7">费用疑问</option>
+            <option value="8">新增需求</option>
+        </select>
+    </div>
+    <div class="u-btn-box1">
+        <input type="button" class="u-btn-mdemptyred" id="query" value="查询" />
+    </div>
+</div>
+<a class="btn-slide btn-slide1 f-mb-m"></a>
+<!--当查询订单来源选择“客服增单”出现以下按钮，则无-->
+<div class="f-mb-xs">
+    <div class="u-btn-addmodule dialog-addorder">
+        <i class="iconfont icon-add"></i>
+        <span>客服增单</span>
+    </div>
+</div>
+<!--/-->
+<div class="m-jm-table">
+    <ul class="table-hander">
+        <li>申请日期</li>
+        <li>店铺名称</li>
+        <li>店主姓名-手机</li>
+        <li style="width: 18%;">店铺地址</li>
+        <li>需求类型</li>
+        <li>订单状态</li>
+        <li>派单操作</li>
+    </ul>
+    <div class="table-body" id="dispatchList">
+
+    </div>
+    <!--分页-->
+    <div id="dispatchToolbar" class="pagination f-fr f-pt-m">
+
+    </div>
+</div>
+<script type="text/javascript">
+    c_dispatch.review.init();
+</script>

@@ -1,0 +1,31 @@
+<div class="m-tab">
+            <ul>
+                <li class="z-sel" id="rp_1" onclick="dataAnalysis.rp.init(1)">收支概况</li>
+                <li id="rp_2" onclick="dataAnalysis.rp.initBase2(1,'B')">收入对账</li>
+                <li id="rp_3" onclick="dataAnalysis.rp.initBase3(1,'B')">支出对账</li>
+            </ul>
+</div>
+<div id="m-tab-content">
+        <!--收支概况-->
+        {% include '/tpl/shop/dataAnalysis/rp/basic1.html' %}
+        <!--/-->
+        <!--收入对账-->
+        {% include '/tpl/shop/dataAnalysis/rp/basic2.html' %}
+        <!--/-->
+        <!--支出对账-->
+        {% include '/tpl/shop/dataAnalysis/rp/basic3.html' %}
+        <!--/-->
+</div>
+
+<script type="text/javascript">
+    dataAnalysis.rp.init(1);
+    function cp2(){
+        $("#m-search_cp2").slideToggle("fast");
+        $("#b_2").toggleClass("btn-slide1"); return false;
+    }
+    function cp3(){
+        $("#m-search_cp3").slideToggle("fast");
+        $("#b_3").toggleClass("btn-slide1"); return false;
+    }
+
+</script>

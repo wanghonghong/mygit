@@ -1,0 +1,44 @@
+{% for item in items %}
+<ul class="table-container f-pd">
+    <li class="f-tl" style="width:25%;">
+        <div class="g-table">
+            <div class="g-table-cell f-vm f-tc" style="width:40%;">
+                <img class="u-thumbnail-squa" src="{{item.picSquare}}"/>
+            </div>
+            <div class="g-table-cell f-vm f-tl">
+                <span>{{item.name}}</span>
+                <font color="#f36920">￥{{item.price|default(0,true)/100}}</font>
+            </div>
+        </div>
+    </li>
+    <li>{{item.totalCount}}</li>
+    <li class="f-tl" style="padding-left: 50px; padding-right: 30px;">{{item.createTime}}</li>
+    <li>
+
+        {% if item.status ==0 %}<font color="#f36920"><i class="iconfont icon-shopbag"></i> 在售</font>
+        {% elif item.status ==1 %}<font color="#88b4db"><i class="iconfont icon-timetab"></i> 下架</font>
+        {% elif item.status ==2 %}<font color="#88b4db"><i class="iconfont icon-timetab"></i> 下架</font>
+        {% endif %}</li>
+    </li>
+
+    <li id="offerTyle_{{item.pid}}" value="{{item.offerType}}">{% if item.offerType ==0 %}暂无
+        {% elif item.offerType ==1 %}平台供货
+        {% elif item.offerType ==2 %}地区供货
+        {% endif %}</li>
+    <li>
+        {% if item.offerType ==0 %}
+        <div class="u-btn-smltgry dialog" onclick="product.area.edit('{{item.pid}}')">指定供货</div><br>
+        {% else %}
+        <div class="u-btn-smltgry dialog" onclick="product.area.edit('{{item.pid}}')">指定供货</div><br>
+        <div class="u-btn-smltgry dialog f-mt-xs" onclick="product.area.cancel('{{item.pid}}',0)">取消指定</div>
+        {% endif %}
+    </li>
+</ul>
+{% else %}
+<div class="m-jm-err">
+    <img src="{{globalUrl}}/css/pc/img/jm-nodb.png">
+</div>
+{% endfor %}
+
+
+

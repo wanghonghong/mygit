@@ -1,0 +1,29 @@
+<style>
+    .hideD{
+        display:none;
+    }
+</style>
+<table cellspacing="0"  id="jmtable" class="m-table-control f-mt-m">
+    <thead>
+    <tr >
+        <th style="width:25%;">商品</th>
+        <th style="width:15%;">数量</th>
+        <th style="width:15%;" >下单时间</th>
+        <th style="width:15%;" >收货人-手机号</th>
+        <th style="width:20%;" >收货地址</th>
+        <th style="width:10%;" >订单处理</th>
+    </tr>
+    </thead>
+</table>
+<div id="deliveryItemList" ></div>
+<div id="pageTypeToolbar" class="pagination" align="right" style="margin-top: 10px">
+</div>
+
+<!--<div id="webim_chat" class="hide">
+</div>-->
+<script>
+    ImInfo.init();
+    ImInfo.getHintWin().setting({
+        model:'z-hide'
+    });
+</script>

@@ -1,0 +1,129 @@
+
+	<!--主模块-->
+		<div class="col-xs-12 f-mb-xs" style="padding-left: 0;">
+			<div class="u-txt col-xs-3" style="padding-left: 0;">
+				<input type="text" class="ipt-txt c-gray1" placeholder="请输入用户手机号码" id="chanPhoneNumber" />
+			</div>
+			<input type="button" class="u-btn-mddkorg u-w" value="查询" onclick="comm.auth.query();" />
+		</div>
+		<div class="f-cb" id="allDiv">
+
+		</div>
+
+	<!--/主模块-->
+
+	<!--商品选择-->
+	<div id="dialoginfo-goodsbox" class="dialoginfo">
+		<div class="m-jm-table">
+			<ul class="table-hander">
+				<li>商品主图</li>
+				<li>商品名称</li>
+				<li>选择</li>			
+			</ul>
+			<div class="table-body h-scroll" id="goodsBody">
+
+			</div>
+			<!--以下是分页效果-->
+			<div id="goodsToolbar" class="pagination f-tr f-mt-m">
+			</div>
+			<!--分页end-->
+		</div>
+		<div class="u-btn-box1 f-mt-m"><input type="button" class="u-btn-mainlg" value="确定" onclick="comm.auth.goodsBoxData()" /></div>
+	</div>
+	<!--/-->
+
+		<!--授权窗口-->
+		<div id="startAuthDialog" class="dialoginfo">
+			<div class="col-xs-12">
+				<label class="u-lb-sm f-fl c-deepgray">授权链接</label>
+				<div class="u-txt col-xs-6">
+					<input type="text" class="ipt-txt c-gray1"  id="authText"  />
+					<font color="red">扫描二维码时必须将鼠标光标移至此输入框</font>
+				</div>
+				<div id="authOkDiv" style="display: none">
+				<label class="u-lb-sm f-fl c-deepgray"><font color="green">扫描成功</font></label>
+				</div>
+			</div>
+			<div class="col-xs-12">
+				<label class="u-lb-sm f-fl c-deepgray">条码批号</label>
+				<div class="u-txt col-xs-6">
+					<textarea  class="ipt-txt c-gray1"  id="commAuthIds" readonly />
+				</div>
+			</div>
+			<div class="col-xs-12">
+				<label class="u-lb-sm f-fl c-deepgray">条码数量</label>
+				<div class="u-txt col-xs-6">
+					<input type="text" class="ipt-txt c-gray1" value="0" id="authCount" readonly />
+				</div>
+			</div>
+			<div class="u-btn-box1 f-mt-m"><input type="button" class="u-btn-mainlg" value="确定授权" onclick="comm.auth.confirmAuth()" /></div>
+		</div>
+		<!--/-->
+
+
+	<script type="text/javascript">
+		comm.auth.init();
+
+
+		$(function(){
+			$(".panel-hidden").hide().eq(2).show();			
+		     var tabul = $("#m-tab ul li");
+	         tabul.click(function(){
+		         tabul.eq($(this).index()).addClass("z-sel").siblings().removeClass('z-sel');
+				 $(".panel-hidden").hide().eq($(this).index()).show();		       
+	        });
+	        $(".panel-hid").hide().eq(0).show();			
+		     var tabul1 = $("#m-tab1 ul li");
+	         tabul1.click(function(){
+		         tabul1.eq($(this).index()).addClass("z-sel").siblings().removeClass('z-sel');
+				 $(".panel-hid").hide().eq($(this).index()).show();		       
+	         });
+	        $(".btn-slide").click(function(){
+				$("#m-search").slideToggle("fast");
+				$(this).toggleClass("btn-slide1"); return false;
+			})
+	        $(".btn-slide2").click(function(){
+				$("#m-search2").slideToggle("fast");
+				$(this).toggleClass("btn-slide3"); return false;
+			})
+
+
+			$('#authText').bind('keypress', function (event) {
+				if (event.keyCode == "13") {
+					var str = $(this).val();
+					//需要处理的事情
+					if(str.indexOf("entrance/")>0){
+						var straaa = str.substr(str.indexOf("entrance/"), str.length);//("?shopId=")
+						var strbbb = straaa.substr(0,straaa.indexOf("?shopId="));
+						var strccc = strbbb.substr(strbbb.indexOf("/"),strbbb.length);
+						console.log(strccc);
+						$("#commAuthIds").append(strccc);
+						$("#authText").val("");
+						var authcount = $("#authCount").val()*1;
+						$("#authCount").val(authcount+1);
+
+						$("#authOkDiv").show();
+						setTimeout(function(){
+							$("#authOkDiv").hide();
+						},500);
+
+					}else{
+						var dm = new dialogMessage({
+							type:2,
+							title:'操作提醒',
+							fixed:true,
+							msg:"无效二维码",
+							isAutoDisplay:false
+
+						});
+						dm.render();
+						$('#authText').val("");
+					}
+				}
+			});
+
+
+
+
+		 })
+    </script>

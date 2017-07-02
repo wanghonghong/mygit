@@ -1,0 +1,38 @@
+<div class="m-spec-config  {%if isImg  %} showimg {% endif %}">
+    <div class="stock-info-details-add-info">
+        <div class="u-txt col-xs-3">
+            <select class="ipt-txt " name="specId" oldValue="{{specId}}">
+                {% for spec in specJson %}
+                <option value="{{ spec.id }}" {%if specId==spec.id  %} selected {% endif %}>{{ spec.text }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="f-fl u-add-img-tag">
+            <div class="u-cb">
+                <input type="checkbox" id="checkBox1" value="1"  class="spec-Check-Box"   {%if isImg  %} checked {% endif %}/>
+                <label class="iconfont icon-avoid" for="checkBox1"></label>
+            </div>
+            <label for="checkBox1" class="f-mr-l">添加规格图片</label>
+        </div>
+        <i class="iconfont icon-delete1"></i>
+    </div>
+    <div class="stock-info-details-add-img">
+        <div class="stock-img-show2">
+            <div class="u-btn-smltgry showbtn">
+                <i class="iconfont icon-modified"></i>
+                <span>添加</span>
+            </div>
+            <div class="stock-img-show1-absolute u-txt f-padding-s z-hide">
+                <input type="text" class="ipt-txt" name="popValue" />
+                <div class="u-btn-smltgry  cancelbtn"> 取消 </div>
+                <div class="u-btn-smltorg savebtn"> 保存</div>
+                <span class="out"></span>
+                <span class="iner"></span>
+            </div>
+        </div>
+    </div>
+    <div class="m-tip1">
+        <i class="iconfont icon-lamp"></i>
+        <span>建议尺寸：正方形318*318像素</span>
+    </div>
+</div>

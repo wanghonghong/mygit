@@ -1,0 +1,26 @@
+
+<ul class="table-hander">
+    <li>菜单</li>
+    <li>父类菜单</li>
+    <li>菜单点击次数</li>
+    <li>菜单点击人数</li>
+    <li>人均点击次数</li>
+</ul>
+<div class="table-body">
+    {%if menuAnalysisInfo.length>0 %}
+    {% for item in menuAnalysisInfo %}
+    <ul class="table-container">
+        <li>{{item.name}}</li>
+        <li>{{item.pName}}</li>
+        <li>{{item.count}}</li>
+        <li>{{item.userCount}}</li>
+        <li>{{item.perCapita}}</li>
+    </ul>
+    {%endfor%}
+    {%else%}
+    <div class="m-jm-err">
+        <img src="{{globalUrl}}/css/pc/img/jm-nodb.png">
+    </div>
+    {%endif%}
+
+</div>

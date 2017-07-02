@@ -1,0 +1,19 @@
+<div class="hotSpot-config">
+    <div  class="hotSpot-head">
+        <div class="u-btn-smltgry addspot" ><i class="iconfont icon-plus"></i><span>新增呼吸点</span></div>
+        <div class="u-btn-smltgry clearspot"  ><i class="iconfont icon-delete1"></i><span>清空呼吸点</span></div>
+        <div class="u-btn-smltgry ensurespot" ><i class="iconfont icon-ensure"></i><span>确定</span></div>
+    </div>
+    <div class="hotSpot-set  z-hide">
+
+    </div>
+    <div  class="hotSpot-body">
+        <div class="hotSpotContent">
+            {% if imageUrl %}
+                <img src="{{imageUrl}}"  align="absmiddle" class="" style="width:100%;">
+            {% endif   %}
+        </div>
+        <div class="hotSpotArea" style="width: 100%;height: 100%;position: absolute;top:0;left: 0;">
+        </div>
+    </div>
+</div>

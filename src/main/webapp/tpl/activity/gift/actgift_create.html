@@ -1,0 +1,262 @@
+<input type="hidden" name="subType" value="{{paramsObj.type}}">
+<div class="m-tips-errs" style="margin:5px 0px;display: none" id="error"><i class="iconfont icon-errorhint"></i><span id="tipError"></span></div>
+    <section>
+        <div class="col-xs-4">
+            <div class="m-phone-view" style="margin-left: 0; margin-top: -15px;">
+                <div class="phone-shell-top">
+                </div>
+                <div class="phone-window fxsz">
+                    <img src="{{globalUrl}}/css/pc/img/fxsz.png" />
+                </div>
+                <div class="phone-shell-bottom">
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-8" style="padding: 0;">
+            <div class="m-sell-set bg-white" style=" margin-left: 0;">
+                <div class="sell-set-left f-pt-m">
+                    <h3 style="padding-left: 10px;">红包设置</h3>
+                </div>
+                <div class="sell-set-right f-pt-l f-pb-s">
+                    <!--展示设置-->
+                    <label class="u-lb-md u-rd-lh c-black f-cb">展示设置</label>
+                    <div class="col-xs-10 f-mb-xs">
+                        <div class="u-rb bg-white">
+                            <input type="radio" name="show_form" id="display_form1" value="0" checked="">
+                            <label for="display_form1"></label>
+                        </div>
+                        <label for="display_form1" class="u-rd-wd c-gray1">摇一摇</label>
+                        {%if paramsObj.type==1 or paramsObj.type==2%}
+                        <div class="u-rb bg-white f-ml-xxl">
+                            <input type="radio" name="show_form" id="display_form2" value="1">
+                            <label for="display_form2"></label>
+                        </div>
+                        <label for="display_form2" class="u-rd-wd c-gray1">红包雨</label>
+                        {%endif%}
+                    </div>
+
+                    <label class="u-lb-md u-rd-lh c-black f-cb">摇概率设置</label>
+                    <div class="f-fl col-xs-10">
+                        <div class="u-rb bg-white">
+                            <input type="radio" name="showgl" id="radioshowgl10" value="1" checked="">
+                            <label for="radioshowgl10"></label>
+                        </div>
+                        <label for="radioshowgl10" class="u-rd-wd c-gray1">一次即中</label>
+                        <div class="u-rb bg-white f-ml-xxl">
+                            <input type="radio" name="showgl" id="radioshowgl20" value="3">
+                            <label for="radioshowgl20"></label>
+                        </div>
+                        <label for="radioshowgl20" class="u-rd-wd c-gray1">三次随机</label>
+                    </div>
+                    <!--/-->
+                </div>
+            </div>
+            <!--高级设置-->
+            <div class="m-sell-set f-mb-s bg-white" style=" margin-left: 0;">
+                <div class="sell-set-left f-pt-m">
+                    <h3 style="padding-left: 10px;">高级设置</h3>
+                </div>
+                <div class="sell-set-right f-pb-s f-pt-l">
+                    <label class="u-lb-md c-black f-cb">活动名称</label>
+                    <div class="u-txt col-xs-10 f-mb-m">
+                        <input type="text" id="activityName" class="ipt-txt" placeholder="请输入活动名称" />
+                    </div>
+
+                    <div id="condition" style="display: none;">
+                    <label class="u-lb-md u-rd-lh c-black f-cb">发放限定</label>
+                    <div class="u-txt col-xs-10 f-mb-m">
+                        <div class="ipt-txt11" style="margin-top: -5px; width: 175px;">
+                            <i class="icon-lb-word c-gray">元</i>
+                            <input type="text" class="ipt-txt c-gray1" id="buyMoney_product" value="" placeholder="" />
+                            <!--<input type="text" class="ipt-txt c-gray1"  id="buyMoney_gift" value="" placeholder="礼券转赠达多少 " />-->
+                        </div>
+                    </div>
+                    </div>
+
+                    <label class="u-lb-md u-rd-lh c-black f-cb">性别限定</label>
+                    <div class="f-fl col-xs-10 cbtop c-gray1">
+                        <div class="u-rb bg-white">
+                            <input type="radio" name="giftsex" id="giftsex2" value="2" />
+                            <label for="giftsex2"></label>
+                        </div>
+                        <label for="giftsex2" class="f-mr-xxl">女性</label>
+                        <div class="u-rb bg-white">
+                            <input type="radio" name="giftsex" id="giftsex1" value="1" />
+                            <label for="giftsex1"></label>
+                        </div>
+                        <label for="giftsex1" class="f-mr-xxl">男性</label>
+                        <div class="u-rb bg-white">
+                            <input type="radio" name="giftsex" id="giftsex0" value="0" checked/>
+                            <label for="giftsex0"></label>
+                        </div>
+                        <label for="giftsex0" class="f-mr-xxl">全部</label>
+                    </div>
+                    <label class="u-lb-md u-rd-lh c-black f-cb">角色限定</label>
+                    <div class="col-xs-10 cbtop" style="padding-right: 0;">
+                        <div class="f-fl f-mb-m">
+                            <div class="u-cb bg-white u-rd-mb">
+                                <input type="checkbox" name="roleLimit" id="roleLimit" value="" />
+                                <label class="iconfont icon-avoid" for="roleLimit"></label>
+                            </div>
+                            <label for="roleLimit" class="c-gray1">指定该角色得红包</label>
+                            <div id="role_container" >
+                            <div class="u-btn-smltgry u-more-wh dialog12" id="actgift_role_btn"><span>选择角色</span></div>
+                            <div class="choosegroup1 u-setrole" id="choose_actgift_roles" style="width: 390px;">
+                                <!--  <div class="u-btn-smltgry u-btn-smltgry-1"><span>全部粉丝</span><i class="iconfont icon-delete1 "></i></div>
+                             -->
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="area" >
+                    <label class="u-lb-md u-rd-lh c-black f-cb">地区限定</label>
+                    <div class="col-xs-10 cbtop" style="padding-right: 0;">
+                        <div class="f-fl f-mb-m">
+                            <div class="f-fl u-cb bg-white u-rd-mb">
+                                <input type="checkbox" name="activity_area" id="activity_area" value="" />
+                                <label class="iconfont icon-avoid" for="activity_area"></label>
+                                <input type="hidden" name="activity_area_ids">
+                                <input type="hidden" name="activity_area_name">
+                            </div>
+                            <div class="u-btn-smltgry u-more-wh dialog11" style="margin-left: 5px;" id="activity_region"><span>选择地区</span></div>
+                            <div class="choosegroup1 u-setrole"  id="choose_activity_areas" style="width: 390px;">
+
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                    <div id="group" style="display: none;">
+                    <label class="u-lb-md u-rd-lh c-black">分组限定</label>
+                    <div class="col-xs-10 cbtop" style="padding-right: 0;">
+                        <div class="f-fl f-mb-m">
+                            <div class="f-fl u-cb bg-white u-rd-mb">
+                                <input type="checkbox" name="buy-c" id="checkBox16" value="" />
+                                <label class="iconfont icon-avoid" for="checkBox16"></label>
+                            </div>
+                            <div class="u-btn-smltgry u-more-wh dialog13" style="margin-left: 5px;"><span>选择分组</span></div>
+                            <div class="choosegroup1 u-setrole" style="width: 390px;">
+                                <div class="u-btn-smltgry u-btn-smltgry-1"><span>O2O小组</span><i class="iconfont icon-delete1"></i></div>
+                                <div class="u-btn-smltgry u-btn-smltgry-1"><span>高级VIP小组</span><i class="iconfont icon-delete1"></i></div>
+                                <div class="u-btn-smltgry u-btn-smltgry-1"><span>代理商小组</span><i class="iconfont icon-delete1 "></i></div>
+                                <div class="u-btn-smltgry u-btn-smltgry-1"><span>服务商小组</span><i class="iconfont icon-delete1 "></i></div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <!--/-->
+            <!--礼券调用-->
+            <div class="m-sell-set f-mb-s bg-white" style=" margin-left: 0;">
+                <div class="sell-set-left f-pt-m">
+                    <h3 style="padding-left: 10px;">礼券调用</h3>
+                </div>
+                <div class="sell-set-right f-pt-l f-pb-s">
+                    <label class="u-lb-md u-rd-lh c-black f-cb">礼券属性</label>
+                    <div class="f-fl col-xs-8 cbtop c-gray1">
+                        <div class="u-rb bg-white">
+                            <input type="radio" name="cardType" id="cardType_1" value="1" checked/>
+                            <label for="cardType_1"></label>
+                        </div>
+                        <label for="cardType_1" class="f-mr-xl">限定面值</label>
+                        <div class="u-rb bg-white">
+                            <input type="radio" name="cardType" id="cardType_2" value="2" />
+                            <label for="cardType_2"></label>
+                        </div>
+                        <label for="cardType_2" class="f-mr-xl">随机面值</label>
+                        <div class="u-rb bg-white">
+                            <input type="radio" name="cardType" id="cardType_3" value="3" />
+                            <label for="cardType_3"></label>
+                        </div>
+                        <label for="cardType_3" class="f-mr-xl">礼包组合</label>
+                    </div>
+                    <div class="col-xs-2 f-tr">
+                        <div class="u-btn-smltgry dialog-selectc" id="cardselect_btn"><span>选择礼券</span></div>
+                    </div>
+                    <!--选择礼券begin-->
+                    <div class="f-pt-m f-cb" style="width: 117%; margin-left: -114px; border-top: 1px solid #ececec;">
+                        <div class="m-jm-table1">
+                            <ul class="table-hander u-t-hander font-s14 c-gray1">
+                                <li class="f-tl" style="width: 35%;">礼券标题</li>
+                                <li>面值（元）</li>
+                                <li>数量（张）</li>
+                                <li>总额（元）</li>
+                                <li>操作</li>
+                            </ul>
+                            <div class="table-body c-gray1" id="carddtsCantainer"><div id="preTypeVal" style="display: none;"></div>
+                                <ul class="table-container u-leftborder" id="cardItem" style="display: none;">
+                                    <li style="width: 35%;"></li>
+                                    <li></li>
+                                    <li><input type="text" id="totalCount" class="table-input c-gray1" value="" /></li>
+                                    <li></li>
+                                    <li>
+                                        <div class="u-btn-smltgry" id="cardItem_del"  style="padding-left: 0;"><i class="iconfont icon-delete1" style="color: #f5a08c;"></i><span>删除</span></div>
+                                    </li>
+                                </ul>
+                                <div id="cardItems_1"><div id="delids_1" style="display: none;"></div></div>
+                                <div id="cardItems_2"><div id="delids_2" style="display: none;"></div></div>
+                                <div id="cardItems_3"><div id="delids_3" style="display: none;"></div></div>
+                            </div>
+                            <div class="panel-hidden f-padding-l bg-gray1 u-t3border" id="cardType_Bottom_1" >
+                                <div class="f-fr c-gray1">
+                                    <label class="f-mr-xxl">总计张数：<span id="count_1">0</span> 张</label>
+                                    <label>总额：<span id="total_1">0</span> 元</label>
+                                </div>
+                            </div>
+                            <div class="panel-hidden f-padding-l bg-gray1 u-t3border" id="cardType_Bottom_2" style="display: none;">
+                                <div class="f-fr c-gray1">
+                                    <label class="f-mr-xxl">总计张数：<span id="count_2">0</span> 张</label>
+                                    <label>总额：<span id="total_2">0</span> 元</label>
+                                </div>
+                            </div>
+                            <div class="panel-hidden f-padding-l bg-gray1 u-t3border" id="cardType_Bottom_3" style="display: none;">
+                                 <label class="f-fl f-mr-s c-gray1">发放数量</label>
+                                 <div class="u-txt f-mb-zero">
+                                     <div class="ipt-txt11" style="margin-top: -5px; width: 175px;">
+                                         <i class="icon-lb-word c-gray">包</i>
+                                         <input type="text" class="ipt-txt c-gray1" id="cardType_bags_3" value="0" placeholder="" />
+                                     </div>
+                                 </div>
+                                <div class="f-fr c-gray1">
+                                    <label class="f-mr-xxl">总计张数：<span id="count_3">0</span> 张</label>
+                                    <label>总额：<span id="total_3">0</span> 元</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/-->
+                </div>
+            </div>
+            <!--/-->
+            <!--活动时间-->
+            <div class="m-sell-set f-mb-s bg-white" style=" margin-left: 0;">
+                <div class="sell-set-left f-pt-m">
+                    <h3 style="padding-left: 10px;">活动时间</h3>
+                </div>
+                <div class="sell-set-right f-pt-l f-pb-s">
+                    <label class="u-lb-md c-black f-cb">发放开始</label>
+                    <div class="col-xs-4 f-pt-s">
+                        <div class="u-txt" style="width: 200px; margin-top: -8px;">
+                            <i class="iconfont icon-calendar" style="right: 0;"></i>
+                            <input type="text" class="ipt-txt" id="startTime" placeholder="发放开始" style="padding-right: 28px;" />
+                        </div>
+                    </div>
+                    <div id="endTimeDiv">
+                    <label class="u-lb-md c-black">发放结束</label>
+                    <div class="col-xs-4 f-pt-s">
+                        <div class="u-txt" style="width: 200px; margin-top: -8px;">
+                            <i class="iconfont icon-calendar" style="right: 0;"></i>
+                            <input type="text" class="ipt-txt" id="endTime"  placeholder="发放结束" style="padding-right: 28px;" />
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <!--/-->
+        </div>
+        <div class="u-btn-box1">
+            <input type="button" class="u-btn-lgltgry f-mr-s" id="actgift_cancel_btn" value="取消" style="padding: 0 35px;" />
+            <input type="button" class="u-btn-lgdkorg" id="actgift_save_btn" value="保存" />
+        </div>
+    </section>

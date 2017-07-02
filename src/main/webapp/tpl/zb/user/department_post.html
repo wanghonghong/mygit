@@ -1,0 +1,57 @@
+<div class="m-tab f-mb-l" id="m-tab">
+    <ul>
+        <li class="z-sel">部门</li>
+        <li>岗位</li>
+    </ul>
+</div>
+<div class="panel-hidden">
+    <div class="f-mb-m">
+        <div class="u-btn-addmodule dialog-addorder" onclick="department.post.saveDepartment()">
+            <i class="iconfont icon-add"></i>
+            <span>新增部门</span>
+        </div>
+    </div>
+    <div class="m-jm-table" >
+        <ul class="table-hander">
+            <li>部门</li>
+            <li>创建时间</li>
+            <li>创建人</li>
+            <li>操作</li>
+        </ul>
+        <div class="table-body f-t-off c-deepgray" id="departmentList">
+
+        </div>
+        <!--以下是分页-->
+        <div id="departmentToolbar" class="pagination f-fr f-mt-m">
+
+        </div>
+        <!--分页end-->
+    </div>
+</div>
+<div class="panel-hidden">
+    <div class="f-mb-m">
+        <div class="u-btn-addmodule dialog-addorder" onclick="department.post.savePost()">
+            <i class="iconfont icon-add"></i>
+            <span>新增岗位</span>
+        </div>
+    </div>
+    <div class="m-jm-table" >
+        <ul class="table-hander">
+            <li>岗位</li>
+            <li>创建时间</li>
+            <li>创建人</li>
+            <li>操作</li>
+        </ul>
+        <div class="table-body f-t-off c-deepgray" id="postList">
+
+        </div>
+        <!--以下是分页-->
+        <div id="postToolbar" class="pagination f-fr f-mt-m">
+
+        </div>
+        <!--分页end-->
+    </div>
+</div>
+<script type="text/javascript">
+    department.post.init();
+</script>

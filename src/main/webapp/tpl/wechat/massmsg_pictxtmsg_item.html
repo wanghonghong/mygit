@@ -1,0 +1,25 @@
+
+<div class="col-xs-4 m-message-marketing" style="position: relative"><div id="item_hidid" style="display: none;">{{id}}</div>
+    <div class="scgl-left" style="padding: 0;" >
+        <div class="bigimg1 selborder" style="cursor: pointer;">
+            <span style="padding-top: 10px;">{{title}}</span>
+            <p>{{saveTime}} &nbsp; &nbsp;{{author}}</p>
+            <img src="{{thumbUrl}}" width="260" height="121" />
+            <p class="f-pb-s">{{digest}}</p>
+            {%if wxContentSubVos.length==0 %}
+            <span class="readtext" style="border-top:1px solid #ECECEC; padding-bottom: 10px;" ><a href="{{contentSourceUrl}}" target="_blank">阅读全文</a><i class="iconfont icon-right"></i></span>
+            {%endif%}
+        </div>
+        {%if wxContentSubVos.length>0 %}
+        {%for item in wxContentSubVos%}
+        <div style="margin: 0;padding: 0;" >
+            <div class="readtext-box selborder"  style="cursor: pointer;">
+                <span class="readtext list-lh">{{item.title}}<i><img src="{{item.thumbUrl}}" width="50" height="50" /></i></span>
+
+            </div>
+        </div>
+        {%endfor%}
+        {%endif%}
+    </div>
+    <!-- <a style="position: absolute;bottom: 0;right:-20px;"> 删除</a>-->
+</div>

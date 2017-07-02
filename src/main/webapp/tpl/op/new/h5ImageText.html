@@ -1,0 +1,190 @@
+<!--发布样式-->
+<div class="col-xs-4">
+    <div class="m-phone-view">
+        <div class="phone-shell-top">
+        </div>
+        <div class="phone-window">
+            <img src="{{globalUrl}}/css/pc/img/addti.png"/>
+        </div>
+        <div class="phone-shell-bottom">
+        </div>
+    </div>
+</div>
+
+<div class="col-xs-8  f-pl-s" style=" " id="h5Template">
+    <div class="m-sell-set1 f-mt-l">
+        <form id="h5From" >
+
+        <div class="sell-set-top" style="border-bottom: none; ">
+            <h3>发布样式编辑</h3>
+        </div>
+        <div class="sell-set-cont" style="margin-left: 20px;">
+            <div class="col-xs-12">
+                <label class="u-lb-md">图文分类</label>
+                <div class="u-txt col-xs-7">
+                    <select id="imageTextType" name="imageTextType" class="fn-tinput valid" style="width:150px">
+                        <!--{% for type in imageTextTypes %}-->
+                        <!--<option value="{{type.id}}" {% if imgTextRo.imageTextType==type.id %} selected {% endif %}>-->
+                            <!--{{type.typeName}}-->
+                        <!--</option>-->
+                        <!--{% endfor %}-->
+                    </select>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <label class="u-lb-md">图文标题</label>
+                <div class="u-txt col-xs-7">
+                    <input type="text" name="imageTextTile" class="ipt-txt  " value="{{imgTextRo.imageTextTile}}"
+                           placeholder="请输入标题" required data-msg-required="标题不能为空"/>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <label class="u-lb-md">主图插入</label>
+                <div class=" col-xs-9">
+                    <div class="m-add-img">
+                        <img class="mianImg" src=" {{imgTextRo.imageUrl|default(globalUrl+'/css/pc/img/no_picture.png',ture)}}"/>
+                        <i class="iconfont icon-add"></i>
+                        <input type="hidden" value="{{imgTextRo.imageUrl}}" name="imageUrl"/>
+                    </div>
+                </div>
+            </div>
+            <div class="m-tip4" style="margin-left: 130px;margin-bottom: 10px;">
+                <i class="iconfont icon-lamp"></i>
+                <span>建议尺寸：长<font color="orange"> 750 </font>像素，宽不限</span>
+            </div>
+            <div class="col-xs-12 m-base-info-img">
+                <label class="u-lb-md">分享语摘要</label>
+                <div class="u-txt col-xs-6">
+                    <textarea id="shareText" data-msg-required="摘要不能为空" name="shareText" required
+                              class="ipt-txt txtarea" placeholder="">{{imgTextRo.shareText}}</textarea>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <label class="u-lb-md">音乐上传</label>
+                <div class="u-txt col-xs-7" style="margin-bottom: 0;">
+                    <input type="text" disabled class="ipt-txt"  id="audioResName" name="audioResName" placeholder="" value="{{audioRes.resName}}"/>
+                </div>
+                <div class="m-tip4">
+                    <input type="hidden" id="audioResId" name="audioResId" value="{{audioRes.id}}" />
+                    <div class="u-btn-smltgry" id="chooseAudio" >选择音乐</div>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <label class="u-lb-md">内容图片</label>
+                <input  type="hidden" name="imgResIds" value=""/>
+                <ul class="m-addimg-group1 col-xs-9  imgResList"  >
+
+                    <!--{% for img in imgResList %}-->
+                    <!--<li class="img">-->
+                        <!--<img src="{{img.resUrl}}"/>-->
+                        <!--<i class="iconfont icon-delete3 "></i>-->
+                    <!--</li>-->
+                    <!--{% endfor %}-->
+                    <li class="add" id="imgResAdd">
+                        <i class="iconfont icon-add"></i>
+                    </li>
+                </ul>
+            </div>
+            <div class="m-tip4" style="margin-left: 130px;margin-bottom: 10px;">
+                <i class="iconfont icon-lamp"></i>
+                <span>至多可上传<font color="orange"> 12 </font>张内容图片</span>
+            </div>
+
+        </div>
+        </form>
+    </div>
+    <div class="m-sell-set1 f-mt-m">
+        <div class="sell-set-top" style=" border-bottom: none;">
+            <h3>底页模板</h3>
+        </div>
+        <div class="sell-set-cont" style="margin-left: 20px;">
+            <div class="col-xs-12">
+                <label class="u-lb-md f-fl">风格颜色</label>
+                <div class="col-xs-9 f-pt-s f-pb-xs">
+                    <ul class="m-stylecolorbox">
+                        <li>
+                            <div class="u-cb tmp-blue">
+                                <input type="checkbox" name="stylecolor" id="radiostyle1" value="1"     {% if imgTextRo.colorId==1 %} checked {% endif %}/>
+                                <label for="radiostyle1" class="iconfont icon-avoid"></label>
+                            </div>
+                            <label for="radiostyle1" class="tmp-name">酷密黑</label>
+                        </li>
+                        <li>
+                            <div class="u-cb tmp-blue">
+                                <input type="checkbox" name="stylecolor" id="radiostyle2" value="2" {% if  imgTextRo.colorId==2 %} checked {% endif %}/>
+                                <label for="radiostyle2" class="iconfont icon-avoid"></label>
+                            </div>
+                            <label for="radiostyle2" class="tmp-name">星海蓝</label>
+                        </li>
+                        <li>
+                            <div class="u-cb tmp-red">
+                                <input type="checkbox" name="stylecolor" id="radiostyle3" value="3" {% if imgTextRo.colorId==3 %} checked {% endif %}/>
+                                <label for="radiostyle3" class="iconfont icon-avoid"></label>
+                            </div>
+                            <label for="radiostyle3" class="tmp-name">深情红</label>
+                        </li>
+                        <li>
+                            <div class="u-cb tmp-yellow">
+                                <input type="checkbox" name="stylecolor" id="radiostyle4" value="4" {% if   imgTextRo.colorId==4 %} checked {% endif %}/>
+                                <label for="radiostyle4" class="iconfont icon-avoid"></label>
+                            </div>
+                            <label for="radiostyle4" class="tmp-name">暖橘黄</label>
+                        </li>
+                        <li>
+                            <div class="u-cb tmp-green">
+                                <input type="checkbox" name="stylecolor" id="radiostyle5" value="5" {% if   imgTextRo.colorId==5 %} checked {% endif %}/>
+                                <label for="radiostyle5" class="iconfont icon-avoid"></label>
+                            </div>
+                            <label for="radiostyle5" class="tmp-name">苹果绿</label>
+                        </li>
+                        <li>
+                            <div class="u-cb tmp-bluesw">
+                                <input type="checkbox" name="stylecolor" id="radiostyle6" value="6" {% if    imgTextRo.colorId==6 %} checked {% endif %}/>
+                                <label for="radiostyle6" class="iconfont icon-avoid"></label>
+                            </div>
+                            <label for="radiostyle6" class="tmp-name">沙畹蓝</label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div id="buttonlist">
+                {% for bution in buttonList %}
+                <div class="col-xs-12 f-mt-s linkbox">
+                    <label class="u-lb-md">{% if loop.first %}按钮链接{% else %}&nbsp;&nbsp;&nbsp;&nbsp;{% endif %}</label>
+                    <div class="u-txt col-xs-3" style="margin-bottom: 0;">
+                        <input type="text" class="ipt-txt" placeholder="按钮1名称" name="buttonName" value="{{bution.buttonName}}"/>
+                        <input type="hidden" name="id" value="{{bution.id}}" >
+                    </div>
+                    <div class="u-txt djsz col-xs-5" style="margin-bottom: 0;padding-left: 0;">
+                        <span class="link"><i class="iconfont icon-link "></i>点击设置</span>
+                        <input type="text" class="ipt-txt" name="linkPath" placeholder="链接" value="{{bution.linkPath}}"
+                               style="padding-left: 75px;"/>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <!--<div class="col-xs-12">-->
+            <!--<label class="u-lb-md">按钮链接</label>-->
+            <!--<div class="u-txt col-xs-3" style="margin-bottom: 0;">-->
+            <!--<input type="text" class="ipt-txt" placeholder="按钮1名称" />-->
+            <!--</div>-->
+            <!--<div class="u-txt djsz col-xs-5" style="margin-bottom: 0;padding-left: 0;">-->
+            <!--<span><i class="iconfont icon-link"></i>点击设置</span>-->
+            <!--<input type="text" class="ipt-txt" placeholder="链接" style="padding-left: 75px;"/>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--<div class="col-xs-12 f-mt-s">-->
+            <!--<label class="u-lb-md">&nbsp;&nbsp;&nbsp;&nbsp;</label>-->
+            <!--<div class="u-txt col-xs-3" style="margin-bottom: 0;">-->
+            <!--<input type="text" class="ipt-txt" placeholder="按钮2名称" />-->
+            <!--</div>-->
+            <!--<div class="u-txt djsz col-xs-5" style="margin-bottom: 0;padding-left: 0;">-->
+            <!--<span><i class="iconfont icon-link"></i>点击设置</span>-->
+            <!--<input type="text" class="ipt-txt" placeholder="链接" style="padding-left: 75px;"/>-->
+            <!--</div>-->
+            <!--</div>-->
+        </div>
+    </div>
+</div>
+<!--发布样式-->

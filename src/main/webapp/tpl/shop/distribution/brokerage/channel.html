@@ -1,0 +1,75 @@
+<div class="m-search" id="m-search">
+    <label class="u-lb-sm">手机</label>
+    <div class="u-txt col-xs-3">
+        <input type="text" class="ipt-txt" name="phoneNumber" id="phoneNumber" placeholder="请输入手机" />
+    </div>
+    <label class="u-lb-sm">姓名</label>
+    <div class="u-txt col-xs-3">
+        <input type="text" class="ipt-txt" name="userName" id="userName" placeholder="请输入姓名" />
+    </div>
+    <label class="u-lb-sm">付款平台</label>
+    <div class="u-txt col-xs-3">
+        <select class="ipt-txt c-gray1" name="platForm" id="platForm">
+            <option value="-1">全部</option>
+            <option value="0">微信</option>
+            <option value="1">微博</option>
+        </select>
+    </div>
+    <label class="u-lb-sm">昵称</label>
+    <div class="u-txt col-xs-3">
+        <input type="text" class="ipt-txt" name="nickname" id="nickname" placeholder="请输入昵称" />
+    </div>
+    <label class="u-lb-sm">角色</label>
+    <div class="u-txt col-xs-3">
+        <select class="ipt-txt c-gray1" name="agentRole" id="agentRole">
+            <option value="-1">全部</option>
+            <!--<option value="1">关注客户</option>
+            <option value="1">购买客户</option>
+            <option value="1">分销客户</option>-->
+            <option value="1">代理1档</option>
+            <option value="2">代理2档</option>
+            <option value="3">代理3档</option>
+            <option value="4">代理4档</option>
+            <option value="5">分销1档</option>
+            <option value="6">分销2档</option>
+            <option value="7">分销3档</option>
+            <option value="9">我的小店</option>
+        </select>
+    </div>
+
+    <label class="u-lb-sm">缴费日期</label>
+    <div class="u-txt u-txt-date f-ml-m">
+        <input type="text" class="ipt-txt c-gray1" id="startDate" name="startDate" placeholder="" style="width: 114px;" />
+    </div>
+    <div class="u-txt">
+        <span class="line" style=" width: 24px;">-</span>
+    </div>
+    <div class="u-txt u-txt-date">
+        <input type="text" class="ipt-txt c-gray1" id="endDate" name="endDate" placeholder="" style="width: 114px;" />
+    </div>
+    <div class="u-btn-box1">
+        <input type="button" class="u-btn-mddkbl f-mr-xs" value="导出" />
+        <input type="button" class="u-btn-mddkorg u-w" id="search" value="查询" onclick="channel.search()"/>
+    </div>
+</div>
+<a class="btn-slide btn-slide1"></a>
+<!--查询列表-->
+<div class="m-jm-table f-mt-l" >
+    <ul class="table-hander">
+        <li>头像</li>
+        <li style="width: 20%">昵称-姓名-手机号</li>
+        <li>角色</li>
+        <li>渠道类型</li>
+        <li>收费金额（元）</li>
+        <li>缴费日期</li>
+    </ul>
+    <div class="table-body" id="tableBody">
+
+    </div>
+    <div id="pageToolbar" class="pagination f-fr f-mt-s"></div>
+    <input type="hidden" name="count" id="count" value="${counts!}" />
+</div>
+
+<script>
+    channel.init();
+</script>

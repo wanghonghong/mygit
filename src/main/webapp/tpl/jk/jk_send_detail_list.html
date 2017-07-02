@@ -1,0 +1,83 @@
+{%if items.length>0%}
+<div class="table-body" style="overflow: inherit;">
+
+	{% for item in items %}
+	<ul class="table-container">
+		<li><img class="u-thumbnail-circ" src="{{item.headimgurl}}" />
+		</li>
+		<li>{{item.nickname}}</li>
+		<li>{{item.pubNickName}}</li>
+
+		<li style="position: relative;">限定条件<br />
+			<div class="u-btn-smltgry f-mt-xs" onclick="showDig('{{item.activityUserId}}',this)" id="qConditionBtn{{item.activityUserId}}">查看</div>
+			<div class="m-btn-layer1 condition" id="qCondition{{item.activityUserId}}" style="display: none;">
+				<span class="out"></span> <span class="iner"></span>
+				<div class="m-grade f-wb-ba">
+				{%if (item.areaNames==null or item.areaNames=='')  and (item.sex==null or item.sex=='')%}
+					<p>无条件限制</p>
+			    {%else%}
+			    {%if item.areaNames%}
+						<p>{{item.areaNames}}</p>
+					{%endif%}
+					 {%if item.sex%}
+						{%if item.sex==1%}
+						<p>男</p>
+						{%elif item.sex==2%}
+						<p>女</p>
+						{%elif item.sex==3%}
+						<p>未知</p>
+						{%endif%}
+					 {%endif%}	
+				 		
+			    {%endif%} 
+				</div>
+			
+			</div>
+		</li>
+		<li>{{(item.redMoney/100)|shortNumber(2)}}</li>
+		<li class="f-tl" style="padding-left: 45px;">{{item.createTime}}</li>
+		<li>
+  		{%if item.status==1%}
+      	 	未领取
+		{%elif item.status==0%}
+			未领取
+       	{%elif item.status==2%}
+      		 已领取
+       	{%elif item.status==3%}
+      		 发放失败
+      	{%elif item.status==4%}
+			 已退款
+		{%endif%}
+		</li>
+	</ul>
+	{%endfor%}
+</div>
+{%else%}
+<!--<div class="noData">暂无数据</div>-->
+<div class="m-jm-err">
+	<img src="{{globalUrl}}/css/pc/img/jm-nodb.png"> 
+</div>
+{%endif%}
+
+<script  type="text/javascript">
+
+ function showDig(activityUserId,obj){
+	 var conditions = $(".condition");
+	 conditions.css("display","none");
+	 $.each(conditions,function(i,condition){
+		 var id = $(condition).attr("id");
+		 if(id==="qCondition"+activityUserId){
+			 $(condition).css("display","");
+			 $(".table-body").bind("click",function(event){
+				 var target = event.target;
+				 if($(target).attr("id")!==$(obj).attr("id")){
+					 $(condition).hide();
+					 $(this).unbind("click");
+				 }
+				
+			 });
+		 }
+	 });
+ }
+
+</script>

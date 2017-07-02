@@ -1,0 +1,41 @@
+<style>
+    .enjoy-texture .jm-table .table-body .table-container:last-child li{
+        border-bottom: 1px solid #ebebeb;
+    }
+</style>
+<div class="col-xs-12 enjoy-texture" style="margin-top: 5px; padding:15px 0;">
+    <div class="enjoy-text-titl" style="margin-bottom: 0">
+        <h3>列表显示版式：</h3>
+        <div class="radio-group">
+            <div class="u-rb">
+                <input type="radio" name="image_showFormat" value="1" id="radioBox1" checked>
+                <label for="radioBox1"></label>
+            </div>
+            <label for="radioBox1" class="u-rd-wd">仿微信</label>
+            <div class="u-rb">
+                <input type="radio" name="image_showFormat" id="radioBox2" value="2">
+                <label for="radioBox2"></label>
+            </div>
+            <label for="radioBox2" class="u-rd-wd">画报风</label>
+        </div>
+        <div class="btn btn-lightgray btn-lg" id="op_add_type"
+             style="margin-top: -8px; margin-bottom: 5px; padding: 0 20px;">
+            <i class="iconfont icon-add"></i>
+            <span>新增分类</span>
+        </div>
+    </div>
+    <div class="jm-table new-jm-table">
+        <ul class="table-hander">
+            <li style="width: 20%;">分类</li>
+            <li style="width: 10%;">排序</li>
+            <li style="width: 28%;">分享语</li>
+            <li>分类图片</li>
+            <li style="width: 25%;">操作</li>
+        </ul>
+        <div class="table-body" id="m_type_list">
+        </div>
+    </div>
+    <div id="pageTypeToolbar" class="pagination f-mt-m f-mr-m f-tr">
+
+    </div>
+</div>

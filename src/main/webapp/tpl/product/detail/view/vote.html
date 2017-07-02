@@ -1,0 +1,37 @@
+<div class="custom-vote">
+    {%if voteItemList and voteItemList.length>0%}
+    <ul class="vote-ul vote{{styleType}} ">
+        {% for item in voteItemList %}
+        <li>
+            <div class="imgBox">
+                {% if item.resType==1 %}
+                <img   src="{{item.resUrl|default(globalUrl+'/css/pc/img/no_picture.png',ture)}}">
+                {% elif item.resType ==2 %}
+                <img   src="{{globalUrl}}/css/pc/img/m_video.png">
+                {% elif item.resType ==3 %}
+                <img  src="{{globalUrl}}/css/pc/img/music_stop.png">
+                {% endif %}
+            </div>
+            <div class="infoBox">
+                <label class="titleBox">
+                    {{loop.index}}.{{item.name}}
+                </label>
+                <span class="votesBox">
+						  {{item.votesNum}}票
+				 </span>
+                <div class="votesBtn">
+                    投票
+                    <font>({{item.votesNum}})</font>
+                </div>
+            </div>
+        </li>
+
+
+        {% endfor %}
+    </ul>
+    {% else %}
+    <div class="init-describe">
+        {{name}}
+    </div>
+    {% endif %}
+</div>

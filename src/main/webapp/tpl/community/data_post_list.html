@@ -1,0 +1,24 @@
+{% if items.length>0 %}
+{%for item in items%}
+<ul class="table-container">
+    <li class="f-tl" style="width:40%; padding: 0 20px;">
+        <p title="">{{item.title}}</p>
+    </li>
+    <li>
+        {%if item.type==1%}微博
+        {%else%}微信
+        {%endif%}
+    </li>
+    <li>{{item.createDate}}</li>
+    <li style="width: 28%;">
+        <div class="u-recordnum font-s12">
+            <span><i class="iconfont icon-browse"></i>123467</span>
+            <span><i class="iconfont icon-dotlove"></i>123467</span>
+            <span><i class="iconfont icon-reply"></i>123467</span>
+        </div>
+    </li>
+</ul>
+{%endfor%}
+{%else%}
+{% include "/tpl/system/nodb.html" %}
+{%endif%}

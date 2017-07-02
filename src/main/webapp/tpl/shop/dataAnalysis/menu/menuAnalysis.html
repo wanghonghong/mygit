@@ -1,0 +1,21 @@
+<div class="m-tab">
+            <ul>
+                <li class="z-sel" id="menu_1" onclick="dataAnalysis.menu.initBase(1,'B')">菜单分析</li>
+                <li id="menu_2" onclick="dataAnalysis.menu.initBase(2)">线性分析</li>
+            </ul>
+</div>
+<div id="m-tab-content">
+        <!--菜单分析-->
+        {% include '/tpl/shop/dataAnalysis/menu/basic1.html' %}
+        <!--/-->
+        <!--线性分析-->
+        {% include '/tpl/shop/dataAnalysis/menu/basic2.html' %}
+</div>
+
+<script type="text/javascript">
+    dataAnalysis.menu.init(1,'B');
+    function cp1(){
+        $("#m-search_menu1").slideToggle("fast");
+        $("#b_1").toggleClass("btn-slide1"); return false;
+    };
+</script>

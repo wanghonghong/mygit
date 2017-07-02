@@ -1,0 +1,54 @@
+{% for item in items %}
+		<ul class="table-container">
+			<li style="width:25%;">
+				<div class="g-table">
+					<div class="g-table-cell f-vm" style="width:10%;">
+						<div class="u-cb1">
+							<input type="checkbox" name="pid_check4" id="checkbox_4{{item.pid}}" value="{{item.pid}}" />
+							<label class="iconfont icon-avoid" for="checkbox_4{{item.pid}}"></label>
+						</div>
+					</div>
+					<div class="g-table-cell f-vm">
+						<label  for="checkbox_4{{item.pid}}"> <img   class="u-thumbnail-squa" src="{{item.pic_square}}" alt="暂无图片"> </label>
+					</div>
+					<div class="g-table-cell f-vm">
+						<span>{{item.name}}</span><br> <span class="font-color-orange">￥{{item.price|default(0,true)/100}}</span>
+					</div>
+				</div></li>
+			<li><span>UV:{{item.uv}}</span><br>
+				<span>PV:{{item.pv}}</span>
+			</li>
+			<li>{{item.total_count}}</li>
+			<li>{{item.sale_count}}</li>
+			<li class="f-tl" style="padding-left: 20px;">{{item.create_time}}</li>
+			<li><input type="text" class="table-input" value="{{item.sort}}" onblur="product.list.sort('{{item.pid}}',this.value,'{{item.sort}}')"/>
+			<li style="width:15%;">
+				<a onclick="product.list.copy('{{item.pid}}')">商品复制</a>
+				<br>
+				<button class="copybtn" data-clipboard-text="{{locationUrl}}/product/{{item.pid}}?shopId={{shopId}}" onclick="product.list.copyLink()">链接拷贝</button>
+				<br>
+				{% if item.qrcode_url %}
+				<a onclick="product.list.showQrcode('{{item.qrcode_url}}');">物料二维码</a>
+				{% else %}
+				<a onclick="product.list.getQrcode(this);" data="{{item.pid}}">物料二维码</a>
+				{% endif %}
+			</li>
+
+			<li  class="g-table-cell f-vm">
+				<div class="u-btn-smltgry" style="width:84px " onclick="product.list.toProductEdit('{{item.pid}}')" >编辑</div><br>
+				{% if item.status==0 %}
+				<div class="u-btn-smltgry" style="width:84px " onclick="product.list.oneStatus('{{item.pid}}','1','是否确认下架')">下架</div><br>
+				{% elif item.status==1 %}
+				<div class="u-btn-smltgry" style="width:84px " onclick="product.list.oneStatus('{{item.pid}}','0','是否确认上架')">上架</div><br>
+				{% elif item.status==2 %}
+				<div class="u-btn-smltgry" style="width:84px ">售完</div><br>
+				{% endif %}
+				<div class="u-btn-smltgry">预览</div> <div class="u-btn-smltgry" onclick="product.list.oneStatus('{{item.pid}}','9','是否确认删除')">删除</div>
+			</li>
+		</ul>
+{% else %}
+<div class="m-jm-err">
+	<img src="{{globalUrl}}/css/pc/img/jm-nodb.png">
+</div>
+
+{% endfor %}

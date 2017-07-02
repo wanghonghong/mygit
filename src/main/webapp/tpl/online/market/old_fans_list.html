@@ -1,0 +1,163 @@
+{% if items.length>0 %}
+{% for item in items %}
+<ul class="table-container bg-white" style="position: relative;">
+    <li style="width: 13%;">
+        {% if item.headimgurl %}
+        <img src="{{item.headimgurl}}" alt="用户头像" class="u-thumbnail-circ"  onclick="ImInfo.openChatWin(this,'{{item.userId}}').wxChatModel('{{item.appid}}','{{item.openid}}','{{item.headimgurl}}','{{item.nickname}}');;" style="cursor: pointer;" title="点击聊天">
+        {% else %}
+        <img src="{{globalUrl}}/img/pc/default.png" alt="用户头像" class="u-thumbnail-circ"  onclick="ImInfo.openChatWin(this,'{{item.userId}}').wxChatModel('{{item.appid}}','{{item.openid}}','{{item.headimgurl}}','{{item.nickname}}');;" style="cursor: pointer;" title="点击聊天">
+        {% endif %}
+    </li>
+    <li class="f-tl" style="width: 15%;padding-left: 30px">
+        <span >{{item.nickname}}</span><br>
+        <span>{% if item.user_name %}{{item.user_name}}{% else %}--{% endif %}</span><br>
+        <span>{% if item.phone_number %}{{item.phone_number}} {% else %}--{% endif %}</span>
+    </li>
+    <li>
+        {% if item.isReply==1 %}
+        已招呼
+        {% else %}
+        未招呼
+        {% endif %}
+    </li>
+    <li class="f-tl" style="padding-left: 45px;">
+        <span id="stardate{{loop.index}}" >
+            {% if item.subscribeTime %}
+                {{item.subscribeTime | replace(' ','<br />') |safe   }}
+            {% else %}
+                --
+            {% endif %}
+        </span>
+    </li>
+    <li class="f-tl" style="padding-left: 32px;">
+        <a onclick="customer.operation.topUserPopMsg({{item.userId}})"> 上级客户</a><font color="#d9d9d9"> | </font>
+        <a onclick="customer.operation.lastUserPopMsg({{item.userId}})">下级客户</a></li>
+    </li>
+    <li class="f-tl" style="padding-left: 32px;">
+        <span id="endBuyDate{{loop.index}}">
+            {% if item.lastBuyTime %}
+                {{item.lastBuyTime  | replace(' ','<br />') |safe  }}
+            {% else %}
+                --
+            {% endif %}
+        </span>
+    </li>
+    <li style="width: 15%;">
+        <div id="levelBtn{{item.user_id}}">
+            {% if item.levelName!=null&&item.levelName!='' %}
+            <a class="u-btn-smltgry f-mb-xs" onclick="service.showDialog(this)">{{item.levelName}}</a>
+            {% else %}
+            <div class="u-btn-smltgry f-mb-xs"  onclick="service.showDialog(this)">等级</div>
+            {% endif %}
+        </div>
+        <div class="m-btn-layer hideD" source="dialog" style="right: 125px;">
+            <span class="out"></span>
+            <span class="iner"></span>
+            <div class="m-grade">
+                <div class="h-scroll">
+                    {% set topLoop = loop.index %}
+                    {% if ext.levels.length>0 %}
+                    {% for level in ext.levels %}
+                    <div class="u-txt">
+                        <div class="u-rb">
+                            <input type="radio" name="level" id="level{{topLoop}}{{loop.index}}" value="{{level.id}}"  checked />
+                            <label for="level{{topLoop}}{{loop.index}}"></label>
+                        </div>
+                        <label for="level{{topLoop}}{{loop.index}}" class="u-grade">{{level.levelName}}</label>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="u-btn-box1" style="padding-top: 8px; padding-bottom: 8px;">
+                    <input type="button" class="u-btn-smdkorg" value="保存" onclick="service.saveLevel('{{item.userId}}',this)" />
+                    <input type="button" class="u-btn-smltgry" value="取消" onclick="service.showDialog(this)" />
+                </div>
+            </div>
+        </div>
+        <div id="groupBtn{{item.user_id}}">
+            {% if item.groupName!=null&&item.groupName!=''%}
+            <a class="u-btn-smltgry f-mb-xs" onclick="service.showDialog(this)">{{item.groupName}}</a>
+            {% else %}
+            <div class="u-btn-smltgry f-mb-xs" onclick="service.showDialog(this)">分组</div>
+            {% endif %}
+        </div>
+        <div class="m-btn-layer hideD layer-1" source="dialog" style="right: 125px;">
+            <span class="out"></span>
+            <span class="iner"></span>
+            <div class="m-grade">
+                <div class="h-scroll wx-groups">
+                    {% if ext.groups.length>0 %}
+                    {% for group in ext.groups %}
+                    <div class="u-txt" onclick="service.labelInput(this)">
+                        <div class="u-rb">
+                            <input type="radio" name="groupid" id="group{{topLoop}}{{loop.index}}" value="{{group.groupid}}"  checked />
+                            <label for="group{{topLoop}}{{loop.index}}"></label>
+                        </div>
+                        <input type="text" class="u-grade" disabled value="{{group.name}}"/>
+                        <div class="u-layer-operate">
+                            <i class="iconfont icon-modified"></i>
+                            <i class="iconfont icon-delete"></i>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                    <div class="u-txt f-pb-s">
+                        <div class="u-rb">
+                            <input type="radio" name="groupid" id="newGroup" value="new" />
+                            <label for="newGroup"></label>
+                        </div>
+                        <input type="text" class="u-grades" value="" />
+                    </div>
+                </div>
+                <div class="u-btn-box1" style="padding-top: 8px; padding-bottom: 8px;">
+                    <input type="button" class="u-btn-smdkorg" value="保存" onclick="service.saveGroup('{{item.userId}}',this)" />
+                    <input type="button" class="u-btn-smltgry" value="取消" onclick="service.showDialog(this)" />
+                </div>
+            </div>
+        </div>
+        <div id="remarkBtn{{item.user_id}}">
+            {% if item.remark==null or item.remark=='' %}
+            <span  class="u-btn-smltgry f-mb-xs"  onclick="service.showDialog(this)"> 备注 </span>
+            {% else %}
+            <a class="f-pt-xs f-pb-xs" style="display: inline-block;" onclick="service.showDialog(this)">{{item.remark}}</a>
+            {% endif %}
+        </div>
+
+        <div class="m-btn-layer layer-2 hideD" source="dialog" style="right: 125px;">
+            <span class="out"></span>
+            <span class="iner"></span>
+            <div class="m-grade">
+                <div class="u-txt">
+                    <input type="text" name="remark" class="u-grades" value="{{item.remark}}" />
+                </div>
+                <div class="u-btn-box1" style="padding-top: 8px; padding-bottom: 8px;">
+                    <input type="button" class="u-btn-smdkorg" value="保存" onclick="service.remarkUpdate('{{item.userId}}',this)" />
+                    <input type="button" class="u-btn-smltgry" value="取消" onclick="service.showDialog(this)" />
+                </div>
+            </div>
+        </div>
+    </li>
+    <!--<li>
+        <img src="{{basePath}}/css/pc/img/jmtt-small.png" alt="用户头像" class="u-thumbnail-small" data-id="{{item.user_id}}"
+             onclick="ImInfo.openChatWin(this,'{{item.user_id}}');" style="cursor: pointer;" title="点击聊天" />
+    </li>-->
+</ul>
+<div class="u-lb col-xs-12 m-wxmsg">
+    <span class="f-pl-s">
+        <i class="iconfont icon-wechat"></i>微信留言
+    </span>
+    {{item.lastMsg}}
+</div>
+
+{% endfor %}
+{% else %}
+<div class="m-jm-err">
+    <img src="{{globalUrl}}/css/pc/img/jm-nodb.png">
+</div>
+{% endif %}
+<script>
+    ImInfo.initData("{{ext.hxAccount}}","{{ext.userid}}","{{ext.nickname}}","{{ext.headImg}}",'{{ext.shopid}}');
+    ImInfo.getHintWin().setting({
+        model:"default"
+    });
+</script>

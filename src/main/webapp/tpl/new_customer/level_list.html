@@ -1,0 +1,21 @@
+    <span class="out"></span>
+    <span class="iner"></span>
+    <div class="m-grade">
+        <div class="h-scroll">
+            {%if levels.length>0%}
+            {% for level in levels %}
+            <div class="u-txt active">
+                <div class="u-rb">
+                    <input type="radio" name="levelName{{item.userId}}" id="radioBox{{item.userId}}{{level.id}}" value="{{level.id}}"  />
+                    <label for="radioBox{{item.userId}}{{level.id}}"></label>
+                </div>
+                <label for="radioBox{{item.userId}}{{level.id}}" class="u-grade">{{level.levelName}}</label>
+            </div>
+            {%endfor%}
+            {%endif%}
+        </div>
+        <div class="u-btn-box1" style="padding-top: 8px; padding-bottom: 8px;">
+            <input type="button" class="u-btn-smdkorg" value="保存"/>
+            <input type="button" class="u-btn-smltgry" value="取消"/>
+        </div>
+    </div>

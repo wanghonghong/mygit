@@ -1,0 +1,29 @@
+<div class="m-tab">
+    <ul>
+        <li class="z-sel manager" id="m_1" value="1" onclick="dataAnalysis.manager.init(1)">今日</li>
+        <li id="m_2" value="2" onclick="dataAnalysis.manager.init(2)">昨日</li>
+        <li id="m_3" value="3" onclick="dataAnalysis.manager.init(3)">本月</li>
+    </ul>
+</div>
+
+<div id="m-tab-content">
+    <div class="u-tabchange" style="top: 188px;">
+        <span class="u-tab1 active"  style="width: 51px;padding-left: 15px;" onclick="dataAnalysis.manager.platForm(1)">微信</span>
+        <span class="u-tab2" style="padding-left: 8px;width: 41px;" onclick="dataAnalysis.manager.platForm(2)" >微博</span>
+    </div>
+    <div>
+    <!--今日-->
+    {% include '/tpl/shop/dataAnalysis/manager/basic1.html' %}
+    <!--/-->
+    <!--昨日-->
+    {% include '/tpl/shop/dataAnalysis/manager/basic2.html' %}
+    <!--/-->
+    <!--本月-->
+    {% include '/tpl/shop/dataAnalysis/manager/basic3.html' %}
+    <!--/-->
+    </div>
+</div>
+
+<script type="text/javascript">
+    dataAnalysis.manager.init(1);
+</script>

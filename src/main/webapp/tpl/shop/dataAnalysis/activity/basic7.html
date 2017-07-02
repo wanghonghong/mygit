@@ -1,0 +1,67 @@
+<!--活动类别-->
+<ul class="m-orderinfo-dialog f-mt-m f-mb-m">
+    <li>
+        <div class="bg-gray1">活动名称</div>
+        <div>{{activityInfo.activityName}}</div>
+        <div class="bg-gray1">活动类型</div>
+        <div>
+            {% if activityInfo.type==1 %}
+            现金红包
+            {%elif activityInfo.type==2 %}
+            卡券红包
+            {%elif activityInfo.type==3 %}
+            金券红包
+            {% else %}
+            {% endif %}
+        </div>
+    </li>
+    <li>
+        <div class="bg-gray1">活动小类</div>
+        <div>
+            {% if activityInfo.subType==1 %}
+            首次关注发红包
+            {%elif activityInfo.subType==3 %}
+            购买商品发红包
+            {%elif activityInfo.subType==5 %}
+            卡卷转赠发红包
+            {% else %}
+            {% endif %}
+        </div>
+        <div class="bg-gray1">活动时间</div>
+        <div>{{activityInfo.startTime}} 至 {{activityInfo.endTime}}</div>
+    </li>
+    <li>
+        <div class="bg-gray1">活动状态</div>
+        <div>
+            {% if activityInfo.status==3 %}
+            已结束
+            {%elif activityInfo.status==2 %}
+            暂停
+            {%elif activityInfo.status==1 %}
+            进行中
+            {% else %}
+            {% endif %}
+        </div>
+    </li>
+</ul>
+<!--/-->
+
+
+
+
+<style>
+    .m-orderinfo-dialog li > div:nth-child(odd){
+        width: 20%;
+        padding-right: 0;
+        color: #484848;
+        border-right: 1px solid #eeeeee;
+        text-align: center;
+    }
+    .m-orderinfo-dialog li > div:nth-child(3){
+        border-left: 1px solid #eeeeee;
+    }
+    .m-orderinfo-dialog li > div:nth-child(even) {
+        padding-left: 30px;
+        color: #8d8d8d;
+    }
+</style>

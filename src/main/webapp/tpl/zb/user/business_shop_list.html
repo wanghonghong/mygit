@@ -1,0 +1,18 @@
+
+    {% if items.length>0 %}
+    {%for item in items%}
+    <ul class="table-container">
+        <li>
+            <img src="{{item.pubQrcodeUrl}}"  class="u-thumbnail-circ" style="border-radius: inherit;">
+        </li>
+        <li style="width: 18%;">{{item.shopName}}</li>
+        <li>微信</li>
+        <li>{{item.createDate}}</li>
+        <li>官方直营</li>
+        <li>无假货承诺</li>
+    </ul>
+    {%endfor%}
+    {%else%}
+    {% include "/tpl/system/nodb.html" %}
+    {%endif%}
+

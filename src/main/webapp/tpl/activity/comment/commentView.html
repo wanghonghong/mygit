@@ -1,0 +1,51 @@
+<style>
+    .m-commentbox .box-body {
+        height: 480px;
+        max-height: 480px;
+        overflow-y: auto;
+        padding: 0 15px;
+        border: 1px solid #f0f0f0;
+        border-radius: 5px;
+    }
+
+    .m-commentbox .box-body ul li:first-child {
+        border-bottom: none;
+    }
+
+    .m-btn-layer.layer-2 {
+        right: -10px;
+        top: -115px;
+        width: 100px;
+    }
+
+    .m-btn-layer.layer-2 span.out {
+        padding: 0;
+        left: 15px;
+        top: 100px;
+        border-color: #ebebeb transparent transparent transparent;
+    }
+
+    .m-btn-layer.layer-2 span.iner {
+        padding: 0;
+        left: -9px;
+        top: 98px;
+        border-color: #fdfdfd transparent transparent transparent;
+    }
+    .ui-dialog .ui-dialog-content{
+        padding: 0;
+    }
+</style>
+<div id="commentView">
+    <div id="searchform2">
+        <input name="targetId" value="{{id}}" type="hidden">
+        <input name="targetType" value="1" type="hidden">
+    </div>
+    <div class="m-commentbox">
+        <div class="box-body h-scroll" id="tableBody2">
+
+        </div>
+        <div id="pageToolbar2" class="pagination f-tr f-mt-m">
+
+        </div>
+    </div>
+</div>

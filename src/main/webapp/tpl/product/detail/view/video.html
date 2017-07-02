@@ -1,0 +1,15 @@
+<div class="custom-audio">
+{%if txResUrl %}
+        <embed src="{{txResUrl}}"
+               align="middle",
+               allowFullScreen="true"
+               allowScriptAccess="always"
+               type="application/x-shockwave-flash">
+        </embed>
+{%else %}
+    <div class="init-describe">
+        {{name}}
+    </div>
+{%endif %}
+
+</div>

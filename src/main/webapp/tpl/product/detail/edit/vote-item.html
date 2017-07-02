@@ -1,0 +1,17 @@
+<ul class="table-container">
+    <li>
+        {% if voteType==1 %}
+        <img class="u-thumbnail-squa" src="{{resUrl|default(globalUrl+'/css/pc/img/no_picture.png',ture)}}">
+        {% elif voteType ==2 %}
+        <img class="u-thumbnail-squa" src="{{globalUrl}}/css/pc/img/m_video.png">
+        {% elif voteType ==3 %}
+        <img class="u-thumbnail-squa" src="{{globalUrl}}/css/pc/img/music_stop.png">
+        {% endif %}
+        <!--<img class="u-thumbnail-squa" src="css/pc/img/no_picture.png">-->
+  </li>
+    <li style="width: 45%;">{{name}}</li>
+    <li style="width: 30%;">
+        <!--<div class="u-btn-smltgry f-mr-xs"><i class="iconfont icon-modified"></i><span>编辑</span></div>-->
+        <div class="u-btn-smltgry delbtn"><i class="iconfont icon-delete1"></i><span>删除</span></div>
+    </li>
+</ul>

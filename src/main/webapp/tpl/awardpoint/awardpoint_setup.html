@@ -1,0 +1,286 @@
+<style>
+    em{
+        font-style: normal;
+    }
+    label.error{
+        position: absolute;
+        z-index: 20;
+        border: 1px solid #eb684d;
+        color: #ff6445;
+        font-size: 12px;
+        white-space: nowrap;
+        background-color: #ffeced;
+        padding: 5px;
+        margin-left: 10px;
+        border-radius: 5px;
+        top:1px;
+        left: 118px;
+        width:200px;
+        text-align: left;
+        text-indent: 0;
+    }
+    label#award_award_second-error{
+        left: -10px;
+        top:40px;
+    }
+    #randomIntegral_5-error{
+        left: -5px;
+        top:40px;
+    }
+</style>
+<input type="hidden" value="{{id}}" id="awardpoint_id">
+<form id="awardpoint_form">
+<div class="panel-hidden">
+    <div class="m-deploy-manage">
+        <div class="m-deploy-manage-box f-pb-xl">
+            <p class="f-fl f-ml-s">
+                开通积分功能
+            </p>
+            <div class="f-fl f-pt-s">
+                <div class="u-rb f-ml-xxl">
+                    {%if isOpen==1%}
+                      <input type="radio" name="award_setup" id="award_setup1" value="1" checked>
+                    {%else%}
+                      <input type="radio" name="award_setup" id="award_setup1" value="1">
+                    {%endif%}
+
+                    <label for="award_setup1"></label>
+                </div>
+                <label for="award_setup1" class="c-gray1">开通</label>
+                <div class="u-rb f-ml-xl">
+                    {%if isOpen==0%}
+                    <input type="radio" name="award_setup" id="award_setup2" value="0" checked>
+                    {%elif isOpen==1%}
+                    <input type="radio" name="award_setup" id="award_setup2" value="0">
+                    {%else%}
+                    <input type="radio" name="award_setup" id="award_setup2" value="0" checked>
+                    {%endif%}
+                    <label for="award_setup2"></label>
+                </div>
+                <label for="award_setup2" class="c-gray1">关闭</label>
+            </div>
+            <div class="col-xs-10 f-mt-l f-cb" style="margin-left: 165px;">
+                <span>换算规则：&nbsp;&nbsp;1 <em>元</em>&nbsp;&nbsp;=&nbsp;&nbsp;</span>
+                <div class="u-select">
+                    <i class="icon-lb-word">积分</i>
+                    <select class="ipt-txt c-gray1" id="awardpoint_unit">
+                        <option value="1">1</option>
+                        <option value="10">10</option>
+                        <option value="100">100</option>
+                    </select>
+                </div>
+                <div class="m-tip3">
+                    <i class="f-fl iconfont icon-lamp"></i>
+                    <span>倍数仅限1、10、100三种，经营中途修改比例，老用户积分系统将自动进行等值放大或缩小</span>
+                </div>
+            </div>
+            <div class="col-xs-10 f-mt-m f-cb" style="margin-left: 165px;">
+                <span>积分单位设置&nbsp;</span>
+                <div class="u-btn-mdltgry" id="custom_units" style="float:left;margin-right:5px;width:150px;">自定义单位</div>
+                <div class="u-txt" id="jf_setup">
+                    <select class="ipt-txt c-gray1" id="units_setup" name="units_select">
+
+                    </select>
+                </div>
+
+                <div class="m-tip3">
+                    <i class="f-fl iconfont icon-lamp"></i>
+                    <span>请选择或录入自定义的积分单位，最多5个字符</span>
+                </div>
+            </div>
+        </div>
+        <div class="m-deploy-manage-box f-pb-l f-pt-l" id="award_reward_box" style="display:none">
+            <p class="f-fl">
+                开通积分可奖励
+            </p>
+            <div class="f-fl f-pt-s f-pl-s">
+                <div class="u-rb f-ml-xxl">
+                    {%if isAward==1%}
+                      <input type="radio" name="award_pointswitch" id="award_pointswitch1" value="1" checked>
+                    {%else%}
+                    <input type="radio" name="award_pointswitch" id="award_pointswitch1" value="1">
+                    {%endif%}
+                    <label for="award_pointswitch1"></label>
+                </div>
+                <label for="award_pointswitch1" class="c-gray1">开通</label>
+                <div class="u-rb f-ml-xl">
+                    {%if isAward==0%}
+                    <input type="radio" name="award_pointswitch" id="award_pointswitch2" value="0" checked>
+                    {%elif isAward==1%}
+                    <input type="radio" name="award_pointswitch" id="award_pointswitch2" value="0">
+                    {%else%}
+                    <input type="radio" name="award_pointswitch" id="award_pointswitch2" value="0" checked>
+                    {%endif%}
+                    <label for="award_pointswitch2"></label>
+                </div>
+                <label for="award_pointswitch2" class="c-gray1">关闭</label>
+            </div>
+            <div class="col-xs-12">
+                <div class="f-mt-xl m-deploy-tt f-pb-xs" style="margin-left: 165px;">
+                    <div class="u-cb f-fl f-mt-xs">
+                        {%if isLogin==1%}
+                        <input type="checkbox" id="checkBox1" name="checkBox1" checked/>
+                        {%else%}
+                        <input type="checkbox" id="checkBox1" name="checkBox1"/>
+                        {%endif%}
+                        <label class="iconfont icon-avoid" for="checkBox1"></label>
+                    </div>
+                    <p class="mrdl f-fl f-ml-xs">
+                        <label for="checkBox1">每日登入</label>
+                    </p>
+                    <label class="u-lb-sm f-mr-m">奖励</label>
+                    <div class="u-txt" style="position: relative;">
+                        <i class="icon-lb-word award-unit">币</i>
+                        <input type="text" class="ipt-txt" name="award_amount" id="award_amount" value="{{loginAward}}">
+                    </div>
+                </div>
+                <div class="f-mt-l m-deploy-tt f-pb-m" style="margin-left: 165px;">
+                    <div class="u-cb f-fl f-mt-xs">
+                        {%if isRecommend==1%}
+                        <input type="checkbox" id="checkBox2" name="checkBox2" checked/>
+                        {%else%}
+                        <input type="checkbox" id="checkBox2" name="checkBox2"/>
+                        {%endif%}
+                        <label class="iconfont icon-avoid" for="checkBox2"></label>
+                    </div>
+                    <p class="tjgz f-fl f-ml-xs">
+                        <label for="checkBox2">推荐关注</label>
+                    </p>
+                    <div class="col-xs-10">
+                        <div class="col-xs-5">
+                            <label class="u-lb-sm f-mr-m">第<font color="#f89a14"> 1 </font>级奖励</label>
+                            <div class="u-txt" style="position: relative;">
+                                <i class="icon-lb-word award-unit">币</i>
+                                <input type="text" class="ipt-txt" name="award_award_one" id="award_award_one" value="{{oneRecommendAward}}">
+                            </div>
+                            <span class="f-cb dj f-pl-s">（只填写本级，即推荐关注奖励只有 1 级）</span>
+                        </div>
+                        <div class="col-xs-6">
+                            <label class="u-lb-sm f-mr-m">第<font color="#f89a14"> 2 </font>级奖励</label>
+                            <div class="u-txt" style="position: relative;">
+                                <i class="icon-lb-word award-unit">币</i>
+                                <input type="text" class="ipt-txt" name="award_award_second" id="award_award_second" value="{{ null if twoRecommendAward==0 else twoRecommendAward}}">
+                            </div>
+                            <span class="f-cb dj f-pl-s">（填写到本级，即推荐关注奖励 2 级）</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </form>
+        <div class="m-deploy-manage-box f-pt-l f-pt-l" id="award_exchange_box" style="display: none;">
+            <p class="f-fl" style="width:180px;">
+                开通积分可商品换购
+            </p>
+            <div class="f-fl f-pt-s">
+                <div class="u-rb">
+                    {%if isExchange==1%}
+                      <input type="radio" name="on1" id="radioBox1" value="1" checked>
+                    {%else%}
+                      <input type="radio" name="on1" id="radioBox1" value="1">
+                    {%endif%}
+                    <label for="radioBox1"></label>
+                </div>
+                <label for="radioBox1" class="c-gray1">开通</label>
+                <div class="u-rb f-ml-xl">
+                    {%if isExchange==0%}
+                      <input type="radio" name="on1" id="radioBox2" value="0" checked>
+                    {%elif isExchange==1%}
+                      <input type="radio" name="on1" id="radioBox2" value="0">
+                    {%else%}
+                    <input type="radio" name="on1" id="radioBox2" value="0" checked>
+                    {%endif%}
+
+                    <label for="radioBox2"></label>
+                </div>
+                <label for="radioBox2" class="c-gray1">关闭</label>
+            </div>
+        </div>
+<div class="m-deploy-manage-box f-pt-l f-pt-l" style="border-bottom: none;display: none;" id="award_content_box">
+    <p class="f-fl" style="width: 180px;">
+        开通内容奖励
+    </p>
+    <div class="f-fl f-pt-s">
+        <div class="u-rb">
+            {%if isContent==1%}
+              <input type="radio" name="on_content" id="radioBox10" value="1" checked>
+            {%else%}
+              <input type="radio" name="on_content" id="radioBox10" value="1">
+            {%endif%}
+            <label for="radioBox10"></label>
+        </div>
+        <label for="radioBox10" class="c-gray1">开通</label>
+        <div class="u-rb f-ml-xl">
+            {%if isContent==0%}
+            <input type="radio" name="on_content" id="radioBox12" value="0" checked>
+            {%elif isContent==1%}
+            <input type="radio" name="on_content" id="radioBox12" value="0">
+            {%else%}
+            <input type="radio" name="on_content" id="radioBox12" value="0" checked>
+            {%endif%}
+            <label for="radioBox12"></label>
+        </div>
+        <label for="radioBox12" class="c-gray1">关闭</label>
+    </div>
+    <div class="col-xs-10" style="margin-left: 165px; width: 88%;">
+        <div class="f-mt-l m-deploy-tt f-pb-xs">
+            <p class="csxd f-fl">
+                次数限定
+            </p>
+            <label class="u-lb-ssm f-mr-m">每天</label>
+            <div class="u-txt">
+                <i class="icon-lb-word">次</i>
+                <input type="text" class="ipt-txt" name="times"  value="{{times}}">
+            </div>
+        </div>
+        <div class="f-mt-l m-deploy-tt f-pb-xs">
+            <p class="jlfs f-fl">
+                奖励方式
+            </p>
+            <div class="col-xs-10 f-pt-s" style="padding-left: 0; padding-right: 0; width: 85%;">
+                <div class="f-cb">
+
+                    <label class="c-gray1 f-fl f-mr-m">固定积分</label>
+                    <div class="u-txt" style="top: -10px; margin-bottom: 20px;">
+                        <i class="icon-lb-word award-unit">币</i>
+                        <input type="text" class="ipt-txt" placeholder="" name="fixedIntegral" value="{{contentCount}}">
+                        <!--选择了这个，则把input的disabled去除-->
+                    </div>
+                </div>
+                <div class="f-cb">
+
+                    <label class="c-gray1 f-fl f-mr-m">随机积分</label>
+                    <div class="u-txt f-mr-s" style="top: -10px;">
+                        <i class="icon-lb-word award-unit">币</i>
+                        <input type="text" name="randomIntegral" class="ipt-txt" placeholder="" id="randomIntegral_1">
+                    </div>
+                    <div class="u-txt f-mr-s" style="top: -10px;">
+                        <i class="icon-lb-word award-unit">币</i>
+                        <input type="text" name="randomIntegral" class="ipt-txt" placeholder="" id="randomIntegral_2">
+                    </div>
+                    <div class="u-txt f-mr-s" style="top: -10px;">
+                        <i class="icon-lb-word award-unit">币</i>
+                        <input type="text" name="randomIntegral" class="ipt-txt" placeholder="" id="randomIntegral_3">
+                    </div>
+                    <div class="u-txt f-mr-s" style="top: -10px;">
+                        <i class="icon-lb-word award-unit">币</i>
+                        <input type="text" name="randomIntegral" class="ipt-txt" placeholder="" id="randomIntegral_4">
+                    </div>
+                    <div class="u-txt f-mr-s" style="top: -10px;">
+                        <i class="icon-lb-word award-unit">币</i>
+                        <input type="text" name="randomIntegral" class="ipt-txt" placeholder="" id="randomIntegral_5">
+                    </div>
+                    <div class="m-tip3 f-cb" style="margin-left: 70px;">
+                        <i class="f-fl iconfont icon-lamp"></i>
+                        <span>选择随机积分，至少填写两个积分值</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    </div>
+    <div class="u-btn-box1">
+        <input type="button" id="awardpoint_save" class="u-btn-mainlg" value="保存">
+    </div>
+</div>

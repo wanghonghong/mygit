@@ -1,0 +1,30 @@
+编号：<input type="text"  id="softId" value="{{softId}}" style="border: solid 1px;"/><br><br>
+名称：<input type="text"  id="name" value="{{name}}" style="border: solid 1px;"/><br><br>
+<input type="button" class="u-btn-mddkorg u-w" value="保存" onclick="saveC1C()" >
+
+<script>
+	function saveC1C() {
+		var id = $("#softId").val();
+        var name = $("#name").val();
+        var co = {};
+        co.id=id;
+        co.name = name;
+        var jsonData = JSON.stringify(co);
+        $.ajaxJson(CONTEXT_PATH+"/zbSoft/save",jsonData,{
+            "done":function (res) {
+                if(res.code===0){
+                    var dm = new dialogMessage({
+                        type:1,
+                        fixed:true,
+                        msg:res.data.msg,
+                        isAutoDisplay:true,
+                        time:3000
+                    });
+                    dm.render();
+                    dialog.get('show-dialog').close().remove();
+                    queryCC();
+                }
+            }
+        });
+    }
+</script>

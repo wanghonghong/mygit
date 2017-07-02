@@ -1,0 +1,18 @@
+<div id="waiting">
+    <div class="m-tab f-mb-m">
+        <ul>
+            <li class="z-sel">微信订单</li>
+            <!--<li>微博订单</li>-->
+        </ul>
+    </div>
+</div>
+<div id="delivery_detatil">
+{% include "/tpl/order/pc/deliveryConditions.html" %}
+{% include "/tpl/order/pc/deliveryItem.html" %}
+<input type="hidden" id="status" name="status" value="{{paramsObj.status}}">
+</div>
+<div id="delivery_detail_content" style="display: none" >
+</div>
+<script type="text/javascript">
+    delivery.list.init();
+</script>

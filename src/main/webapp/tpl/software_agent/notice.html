@@ -1,0 +1,115 @@
+<style>
+    .gmn{
+        float:left;
+        width: 1148px;
+        padding-left: 38px;
+        padding-top: 25px;
+    }
+</style>
+<!--主模块-->
+<section class="g-mn">
+    <div class="m-search" id="m-search">
+        <label class="u-lb-sm">通知类别</label>
+        <div class="u-txt col-xs-3">
+            <select class="ipt-txt" >
+                <option value="1">所有平台</option>
+                <option value="2">平台1</option>
+                <option value="3">平台2</option>
+            </select>
+        </div>
+
+        <label class="u-lb-sm">日期</label>
+        <div class="u-txt col-xs-3" style="width: 12.3%; padding-right: 10px;">
+            <select class="ipt-txt">
+                <option value="1">所有平台</option>
+                <option value="2">平台1</option>
+                <option value="3">平台2</option>
+            </select>
+        </div>
+        <span style="width: 5px;display: inline-block;float: left;line-height: 36px;">-</span>
+        <div class="u-txt col-xs-3" style="width: 12.3%;padding-left: 10px;">
+            <select class="ipt-txt">
+                <option value="1">所有平台</option>
+                <option value="2">平台1</option>
+                <option value="3">平台2</option>
+            </select>
+        </div>
+        <div class="u-btn-box1">
+            <input type="button" class="u-btn-mddkorg" value="查询" />
+        </div>
+    </div>
+    <a class="btn-slide btn-slide1"></a>
+    <div class="m-jm-table f-mt-l">
+        <ul class="table-hander">
+            <li style="width: 35%;">标题</li>
+            <li>通知类别</li>
+            <li>日期</li>
+            <li>授权查看</li>
+        </ul>
+        <div class="table-body" id="noticeList">
+
+        </div>
+        <!--以下是分页-->
+        <div id="noticeToolbar" class="pagination f-fr f-mt-m">
+
+        </div>
+        <!--分页end-->
+    </div>
+
+</section>
+<!--/主模块-->
+<div id="dialoginfo1" class="dialoginfo">
+    <div class="m-authorize">
+        <div class="u-select-control1 ">
+            <input type="text" class="" name="goodsName" placeholder="" />
+            <i class="iconfont icon-belowtriangle  after-border"></i>
+            <i class="iconfont icon-search" id="searchBtn"></i>
+        </div>
+        <ul class="m-select-rb">
+            <li>
+                <label  for="radioBox1" class="active select-tt">运营服务商</label>
+                <div class="u-rb">
+                    <input type="radio" name="sexradio" id="radioBox1" value=""  checked/>
+                    <label  for="radioBox1"></label>
+                </div>
+            </li>
+            <li>
+                <label for="radioBox2" class="select-tt">运营服务商</label>
+                <div class="u-rb">
+                    <input type="radio" name="sexradio" id="radioBox2" value=""/>
+                    <label for="radioBox2"></label>
+                </div>
+            </li>
+            <li>
+                <label for="radioBox3" class="select-tt">运营服务商</label>
+                <div class="u-rb">
+                    <input type="radio" name="sexradio" id="radioBox3" value=""/>
+                    <label for="radioBox3"></label>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="u-btn-box1 f-mt-m"><input type="button" class="u-btn-mddkorg" value="确定" /></div>
+</div>
+<script>
+    agent.notice.init();
+    $(function(){
+        $("#u-logo").click(function(){
+            $("#othermemu").toggleClass("z-change");
+        })
+
+        $(".btn-slide").click(function(){
+            $("#m-search").slideToggle("fast");
+            $(this).toggleClass("btn-slide1"); return false;
+        })
+
+        $(".dialog1").click(function(){
+            var elem1 = document.getElementById('dialoginfo1');
+            dialog({
+                title: "受理详情",
+                content: elem1,
+
+            }).width(400).showModal();
+        })
+    })
+</script>

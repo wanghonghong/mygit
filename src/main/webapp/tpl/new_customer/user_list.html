@@ -1,0 +1,28 @@
+{%if items.length>0%}
+{% for item in items %}
+<style>
+    .ui-dialog-body{
+        padding:15px 15px 5px;
+    }
+    .ui-dialog .ui-dialog-content{
+        padding: 0;
+    }
+</style>
+<ul class="table-container">
+    <li>
+        <img class="u-thumbnail-circ" src="{{item.headImg}}"/>
+    </li>
+    <li>{{item.userName}}</li>
+    <li>{{item.phoneNumber}}</li>
+    <li>{{item.roleName}}</li>
+    <li>
+        <div class="u-btn-smltgry f-mb-xs dialog" onclick="customer.user.authDialog({{item.userId}},{{item.roleId}},{{item.id}})" > 更改授权 </div>
+        <div class="u-btn-smltgry dialog1" onclick="customer.user.del({{item.id}})"> 删除</div>
+    </li>
+</ul>
+{%endfor%}
+{% else %}
+<div class="m-jm-err">
+    <img src="{{globalUrl}}/css/pc/img/jm-nodb.png">
+</div>
+{%endif%}

@@ -1,0 +1,89 @@
+
+<!--弹窗部分-->
+<div id="dialoginfo" class="dialoginfo" style="display: block">
+    <div class="m-tab" id="m-tab1">
+        <ul>
+            <li class="z-sel">审核执行</li>
+            <li>审核历史({{checkList.length}})<font color="#f2784e"></font></li>
+        </ul>
+    </div>
+    <div class="panel-hidden f-padding-m" style="height: 516px; padding-bottom: 0;">
+        {%if item.status==3 %}
+        <div class="m-tips-sucs f-mb-m"><i class="iconfont icon-checkboxselected1"></i>2次审核已通过</div>
+        {%endif%}
+        <div class="m-graypanel f-mb-m">
+            <h4>审批角色</h4>
+            <!--<input type="text" class="" id="" value="{{item.applyRole}}" disabled/>-->
+            <div class="u-txt col-xs-4 u-slt-opt">
+                <select class="ipt-txt" disabled="disabled">
+                    <option value="" >{{item.applyRole}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="m-graypanel" style="padding: 2px 1px;">
+            <h4>商户信息</h4>
+            <div class="m-review-hander">
+                <ul>
+                    <li style="width: 16%;">营业执照图片</li>
+                    <li>经营地址</li>
+                    <li>经营人数</li>
+                    <li>公司邮箱</li>
+                    <li>公司地址</li>
+                </ul>
+            </div>
+        </div>
+        <div class="m-review-body">
+            <ul class="m-review-container">
+                <li style="width: 16%;">
+                    <img src="{{item.businessLicense}}" class="u-thumbnail-lg90"  />
+                </li>
+                <li class="f-tl">{{item.province}}-{{item.city}}-{{item.district}}{{item.address}}</li>
+                <li>{{item.manageNum}}</li>
+                <li>{{item.email}}</li>
+                <li>{{item.companyUrl}}</li>
+            </ul>
+            <ul class="m-review-container">
+                <li class="review-con">
+                    <h3>公司简介</h3>
+                    <p class="company-text">{{item.companyDesc}}</p>
+                    <em class="company-more">全文</em>
+                </li>
+            </ul>
+        </div>
+        <!--当出现2次审核通过提示框的时候，以下内容消失-->
+        {%if item.status!=3%}
+        <div class="m-graypanel f-mb-m">
+            <h4>审核意见</h4>
+            <div class="u-txt u-textarea">
+                <textarea name="shared" class="ipt-txt txtarea" maxlength="300" id="reviewAdvice" onKeyUp="jumi.wordNumber('reviewAdvice',300)" onblur="jumi.wordNumber('reviewAdvice',300)"></textarea>
+                <span class="number" ><span id="reviewAdvice1" style="color:#f38925"> 0</span>/300</span>
+            </div>
+        </div>
+        <div class="u-btn-box1">
+            <div class="u-btn-refuse f-mr-s" id="refuse_btn">
+                <i class="iconfont icon-sorry"></i>拒绝
+            </div>
+            <div class="u-btn-agree" id="agree_btn">
+                <i class="iconfont icon-happy"></i>同意
+            </div>
+        </div>
+        {%endif%}
+        <!--end-->
+    </div>
+    <div class="panel-hidden f-padding-m" style="height: 516px; padding-bottom: 0;">
+        <div class="h-scroll" style="max-height: 500px;">
+        {%for check in checkList %}
+        <div class="m-graypanel f-mb-s ">
+            <h4>审核意见 <span>{{loop.index}}</span>:</h4>
+            <div class="m-review-txt">
+                <div class="txt-top">
+                    <b>审核人：<span>{{check.checkerName}}</span></b>
+                    <b>审核时间：<span>{{check.checkTime}}</span></b>
+                </div>
+                <p>{{check.checkContext}}</p>
+            </div>
+        </div>
+        {%endfor%}
+        </div>
+    </div>
+</div>

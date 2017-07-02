@@ -1,0 +1,149 @@
+<style>
+    .error {
+        font-size: 12px;
+        color:orangered;
+    }
+    .wrap-title-box-xyh {
+        width: 83px;
+        display: inline-block;
+    }
+    .wrap-title-box-xyh h2 {
+        line-height: 16px;
+        font-size: 14px;
+        font-weight: normal;
+        margin: 0 0 0 1px;
+        border-left: 4px solid #f2784e;
+        padding-left: 10px;
+    }
+</style>
+
+<div id="dialoginfo" class="dialoginfo" >
+    <div class="m-tab f-mb-l">
+        <ul id="menus">
+            <li class="z-sel" data-index="1" data-tpl-name="/zb/user/agent_class_dialog_data" data-url="/zb/class_data">基本资料</li>
+            <li data-index="2" data-tpl-name="/zb/user/agent_class_dialog_money" data-url="">资产信息</li>
+            <li data-index="3" data-tpl-name="/zb/user/agent_class_dialog_role" data-url="">用户角色</li>
+            <li data-index="4" data-tpl-name="/zb/user/agent_class_dialog_staff" data-url="">所辖员工</li>
+        </ul>
+    </div>
+        <div id="context">
+            <div class="container-fluid form-list p-0 popup-tab-1-box">
+                <!--基本资料页面-->
+                <ul class="list-group">
+                    <li class="col-xs-6 m-b-10">
+                        <div class="form-group">
+                            <div class="col-xs-2 p-l-0">
+                                <label for="">姓名</label>
+                            </div>
+                            <div class="col-xs-10 p-l-0">
+                                <input type="datetime" class="form-control" id="userName" value="{{userName}}">
+                            </div>
+                        </div>
+                    </li>
+                    <li class="col-xs-6 m-b-10">
+                        <div class="form-group">
+                            <div class="col-xs-2 p-l-0">
+                                <label for="">手机</label>
+                            </div>
+                            <div class="col-xs-10 p-l-0">
+                                <input type="datetime" class="form-control" id="phoneNumber" value="{{phoneNumber}}">
+                            </div>
+                        </div>
+                    </li>
+                    <li class="col-xs-6 m-b-10">
+                        <div class="form-group">
+                            <div class="col-xs-2 p-l-0">
+                                <label for="">微信</label>
+                            </div>
+                            <div class="col-xs-10 p-l-0">
+                                <input type="datetime" class="form-control" id="wxnum" value="{{wxnum}}">
+                            </div>
+                        </div>
+                    </li>
+                    <li class="col-xs-6 m-b-10">
+                        <div class="form-group">
+                            <div class="col-xs-2 p-l-0">
+                                <label for="">邮箱</label>
+                            </div>
+                            <div class="col-xs-10 p-l-0">
+                                <input type="datetime" class="form-control" id="email"  value="{{email}}">
+                            </div>
+                        </div>
+                    </li>
+                    <li class="col-xs-12 m-b-10">
+                        <div class="form-group">
+                            <div class="col-xs-1 p-l-0">
+                                <label for="">所属地区</label>
+                            </div>
+                            <div class="col-xs-11 p-l-0 city-box distpicker"  >
+
+                                <select id="province" value="{{province}}" class="form-control" style="width: 32.1%;" >
+                                </select>
+                                <span class="line">-</span>
+                                <select id="city"  value="{{city}}" class="form-control" style="width: 32.1%;" >
+                                </select>
+                                <span class="line">-</span>
+                                <select id="district" value="{{district}}" class="form-control" style="width: 32.1%;" >
+                                </select>
+                            </div>
+                            <input type="hidden" name="_province" id="_province" value="{{province}}"/>
+                            <input type="hidden" name="_city" id="_city" value="{{city}}"/>
+                            <input type="hidden" name="_district" id="_district" value="{{district}}"/>
+                        </div>
+                    </li>
+                    <li class="col-xs-12 m-b-10">
+                        <div class="form-group">
+                            <div class="col-xs-1 p-l-0">
+                                <label for="">详细地址</label>
+                            </div>
+                            <div class="col-xs-11 p-l-0">
+                                <input type="datetime" class="form-control" id="address" value="{{address}}">
+                            </div>
+                        </div>
+                    </li>
+                    <li class="col-xs-6 m-b-10">
+                        <div class="form-group">
+                            <div class="col-xs-2 p-l-0">
+                                <label for="">公司名称</label>
+                            </div>
+                            <div class="col-xs-10 p-l-0">
+                                <input type="datetime" class="form-control" id="companyName"  value="{{companyName}}">
+                            </div>
+                        </div>
+                    </li>
+                    <li class="col-xs-6 m-b-10">
+                        <div class="form-group">
+                            <div class="col-xs-2 p-l-0">
+                                <label for="">经营人数</label>
+                            </div>
+                            <div class="col-xs-10 p-l-0">
+                                <input type="datetime" class="form-control" id="manageNum" value="{{manageNum}}">
+                            </div>
+                        </div>
+                    </li>
+                    <li class="col-xs-12 m-b-10">
+                        <div class="form-group">
+                            <div class="col-xs-1 p-l-0">
+                                <label for="">公司网址</label>
+                            </div>
+                            <div class="col-xs-11 p-l-0">
+                                <input type="datetime" class="form-control" id="companyUrl" value="{{companyUrl}}">
+                            </div>
+                        </div>
+                    </li>
+                    <li class="col-xs-12 cert-box">
+                        <div class="col-xs-1 p-l-0">
+                            <label for="">营业执照</label>
+                        </div>
+                        <div class="col-xs-11 p-l-0">
+                            <img src="{{businessLicense}}" class="cert-img" />
+                        </div>
+                    </li>
+                </ul>
+                <div class="g-submit-btn-box-xyh">
+                    <button class="submite-btn" id="update_btn">保存</button>
+                </div>
+            </div>
+        </div>
+    <input type="hidden" name="userId" id="userId" value="{{userId}}"/>
+</div>

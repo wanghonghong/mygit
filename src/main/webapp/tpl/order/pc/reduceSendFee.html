@@ -1,0 +1,29 @@
+<style>
+    .ui-dialog .ui-dialog-content{
+        padding: 20px;
+    }
+</style>
+<div id="dialoginfo4">
+    <label class="u-lb-ssm f-mr-l">减收</label>
+    <input type="hidden" id="r_productPrice" name="r_productPrice" value="{{data.totalPrice/100}}" />
+    <input type="hidden" id="r_sendFee" name="r_sendFee" value="{{data.sendFee/100}}"/>
+    <input type="hidden" id="r_realPrice" name="r_realPrice" value="{{data.realPrice/100}}"/>
+    <div class="u-select" style="width: 142px;">
+        <i class="icon-lb-word">元</i>
+        <input type="text" class="ipt-txt" style="width: 140px;" id="r_discountAmount" name="r_discountAmount" readonly="readonly" placeholder="" onkeyup="clearReduceNoNum(this)" value="{{data.sendFee/100}}"/>
+    </div>
+    <label class="u-lb-sm f-mr-l">实际总价</label>
+    <div class="u-select " style="width: 142px;">
+        <i class="icon-lb-word">元</i>
+        {% if(data.realPrice-data.sendFee<=0) %}
+            <input type="text" class="ipt-txt" style="width: 140px;" id="r_totalPrice5" name="r_totalPrice5" placeholder="" value="0.01" readonly="readonly" />
+        {% else %}
+            <input type="text" class="ipt-txt" style="width: 140px;" id="r_totalPrice6" name="r_totalPrice6" placeholder="" value="{{(data.realPrice-data.sendFee)/100}}"  readonly="readonly" />
+        {% endif %}
+    </div>
+    <div class="m-tip4 f-mb-s">
+        <i class="iconfont icon-lamp"></i>
+        <span>商品金额+运费金额=实际总价</span>
+    </div>
+</div>
+<script src="{{basePath}}/js/busi-js/pc/order/updatePrice.js" type="text/javascript" charset="utf-8"></script>

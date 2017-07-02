@@ -1,0 +1,33 @@
+<style>
+    .m-panel .panel-heading i.u-change {
+        position: initial;
+        float: initial;
+        top: initial;
+        right: initial;
+        margin-right: 3px;
+        margin-left: 0;
+    }
+</style>
+<div id="vote">
+    <div id="voteBox">
+        <div class="m-tab f-mb-m" id="m-tab">
+            <ul>
+                <li class="z-sel" data-target="voteItemBox">创建对象</li>
+                <li data-target="voteThemeBox">活动管理</li>
+            </ul>
+        </div>
+        <!--创建对象-->
+        <div class="panel-hidden" id="voteItemBox">
+            {% include 'tpl/activity/vote/voteItemBox.html' %}
+        </div>
+        <!--活动管理-->
+        <div class="panel-hidden z-hide" id="voteThemeBox">
+            {% include 'tpl/activity/vote/voteThemeBox.html' %}
+        </div>
+    </div>
+    <div id="voteThemeEdit" class="z-hide">
+    </div>
+</div>
+<script>
+    vote.index.init();
+</script>

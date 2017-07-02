@@ -1,0 +1,129 @@
+<style>
+    .g-zbUser-list-xyh .g-zbUser-edit-box-xyh span{
+        display: inline-block;
+        padding: 5px 6px;
+        border: 1px solid #ebebeb;
+        color: #868686;
+        border-radius: 2px;
+        background: #fafafa;
+        font-size: 12px;
+        margin-left: 13px;
+        cursor: pointer;
+    }
+    .error {
+        font-size: 12px;
+        color:orangered;
+    }
+    .list-group li label.error {
+        font-size: 12px;
+        color:orangered;
+        text-align: left;
+        cursor: default;
+    }
+</style>
+    <input type="hidden" name="userId" id="userId" value="{{userId}}"/>
+<div class="m-tab f-mb-l" id="m-tab">
+    <ul>
+        <li class="z-sel">基础资料</li>
+        <li>密码修改</li>
+        <li>登录记录</li>
+    </ul>
+</div>
+
+<!--基础资料-->
+<div class="panel-hidden">
+    <form id="form1" >
+    <label class="u-lb-sm f-pt-s f-cb">头像</label>
+    <div class="u-txt col-xs-3 f-mb-m">
+        <img src="{{headImg}}" id="headImg" name="headImg" class="u-thumbnail-circ f-vm" style="width: 70px; height: 70px;" />
+        <div class="u-btn-smltgry f-ml-m" id="m-add-img">修改头像</div>
+    </div>
+    <label class="u-lb-sm f-cb">姓名</label>
+    <div class="u-txt col-xs-3 f-mb-m">
+        <input type="text" class="ipt-txt" id="userName" name="userName" value="{{userName}}" placeholder="请输入姓名"  />
+    </div>
+    <label class="u-lb-sm f-cb">性别</label>
+    <div class="u-txt col-xs-3 f-mb-m">
+        <select class="ipt-txt" id="sex">
+            {%if sex==1 or sex==null %}
+            <option value="1">男</option>
+            <option value="2">女</option>
+            {%else%}
+            <option value="2">女</option>
+            <option value="1">男</option>
+            {%endif%}
+        </select>
+    </div>
+    <label class="u-lb-sm f-cb">手机</label>
+    <div class="u-txt col-xs-3 f-mb-m">
+        <input type="text" class="ipt-txt" id="phoneNumber" name="phoneNumber" value="{{phoneNumber}}" placeholder="请输入手机号" disabled />
+    </div>
+    <label class="u-lb-sm f-cb">邮箱</label>
+    <div class="u-txt col-xs-3 f-mb-m">
+        <input type="text" class="ipt-txt" id="mail" name="email" value="{{mail}}" placeholder="请输入邮箱"  />
+    </div>
+    <label class="u-lb-sm f-cb">微信号</label>
+    <div class="u-txt col-xs-3 f-mb-m">
+        <input type="text" class="ipt-txt" id="wxnum" name="wxnum" value="{{wxnum}}" placeholder="请输入微信号" />
+    </div>
+    <label class="u-lb-sm f-cb">员工号</label>
+    <div class="u-txt col-xs-3 f-mb-m">
+        <input type="text" class="ipt-txt" id="staffCode" value="{{staffCode}}" name="staffCode" placeholder="" disabled />
+    </div>
+    <label class="u-lb-sm f-cb">部门</label>
+    <div class="u-txt col-xs-3 f-mb-m">
+        <input type="text" class="ipt-txt"  data-id="{{zbDepartment}}" id="zbDepartment" value="{{departmentName}}" name="zbDepartment"  disabled />
+    </div>
+    </form>
+    <div class="u-btn-box">
+        <input type="button" id="save1" class="u-btn-mdlightred" value="保存" />
+    </div>
+</div>
+<!--/-->
+<!--密码修改-->
+<div class="panel-hidden">
+    <form id="form2">
+    <label class="u-lb-sm f-cb">手机</label>
+    <div class="u-txt col-xs-3 f-mb-m">
+        <input type="text" class="ipt-txt" id="phoneNumber2" name="phoneNumber2" value="{{phoneNumber}}" disabled style="padding-right: 90px;" />
+        <span class="u-sendcode" id="codeFor">发送验证码</span>
+        <div id="phone-error1"></div>
+    </div>
+    <label class="u-lb-sm f-cb">验证码</label>
+    <div class="u-txt col-xs-3 f-mb-m">
+        <input type="text" class="ipt-txt" id="code" name="code" placeholder="请输入验证码" />
+        <div id="code-error1"></div>
+    </div>
+    <label class="u-lb-sm f-cb">新密码</label>
+    <div class="u-txt col-xs-3 f-mb-m">
+        <input type="text" class="ipt-txt" id="password" name="password" placeholder="请输入新密码" />
+    </div>
+    <label class="u-lb-sm f-cb">确认密码</label>
+    <div class="u-txt col-xs-3 f-mb-m">
+        <input type="text" class="ipt-txt" id="password2" name="password2" placeholder="请再次输入密码" />
+        <div id="password2-error1" class="error"  style="display: none">两次输入的密码不相同！</div>
+    </div>
+    </form>
+    <div class="u-btn-box">
+        <input type="button" class="u-btn-mdlightred" id="save2" value="保存" />
+    </div>
+</div>
+<!--/-->
+<!--登录记录-->
+<div class="panel-hidden" id="login_log">
+    <ul class="m-loginrecord" id="loginLogList">
+
+    </ul>
+    <!--以下是分页-->
+    <div id="loginLogbar" class="pagination f-tr f-pt-m f-pr-m">
+
+    </div>
+    <!--分页end-->
+</div>
+<!--/-->
+</div>
+    <script>
+
+        user.userdata.init();
+
+    </script>

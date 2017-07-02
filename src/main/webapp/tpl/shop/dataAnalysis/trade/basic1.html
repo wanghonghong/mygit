@@ -1,0 +1,51 @@
+<div class="panel-hidden_t1">
+    <div class="m-search f-mt-m f-pb-s" id="m-search_t1">
+        <label class="u-lb-sm">查询时间</label>
+        <div class="u-txt u-txt-date f-ml-m">
+            <i class="iconfont icon-calendar"></i>
+            <input type="text" id="beginDate1"  class="ipt-txt c-gray1" placeholder="" style="width: 111px;" />
+        </div>
+        <div class="u-txt">
+            <span class="line" style=" width: 20px;">至</span>
+        </div>
+        <div class="u-txt u-txt-date f-mr-m">
+            <i class="iconfont icon-calendar"></i>
+            <input type="text" id="endDate1" class="ipt-txt c-gray1" placeholder="" style="width: 111px;" />
+        </div>
+        <label class="u-lb-sm" style=" width: 120px;">交易平台</label>
+        <div class="u-txt col-xs-3">
+            <select class="ipt-txt c-gray1" id="platForm1">
+                <option value="1">微信</option>
+                <option value="2">微博</option>
+            </select>
+        </div>
+        <div class="col-xs-3">
+            <!--<input type="button" class="u-btn-mddkbl f-mr-xs" value="导出" />-->
+            <input type="button" class="u-btn-mddkorg u-w" onclick="dataAnalysis.trade.initBase(1,$('#beginDate1').val(),$('#endDate1').val())" value="查询" />
+        </div>
+    </div>
+    <!--<a class="btn-slide btn-slide1" id="btn_1" onclick="t(1)"></a>-->
+    <div id="u-tab3">
+    </div>
+
+</div>
+
+<script type="text/javascript">
+    $("#beginDate1").datetimepicker({
+        showSecond : false,
+        timeFormat : 'hh:mm:ss',
+        dateFormat : 'yy-mm-dd',
+        stepHour : 1,
+        stepMinute : 1,
+        stepSecond : 1
+    });
+    $("#endDate1").datetimepicker({
+        showSecond : false,
+        timeFormat : '23:59:59',
+        dateFormat : 'yy-mm-dd',
+        stepHour : 1,
+        stepMinute : 1,
+        stepSecond : 1
+    });
+
+</script>

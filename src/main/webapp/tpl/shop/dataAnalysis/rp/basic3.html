@@ -1,0 +1,118 @@
+<style>
+    .m-subtab ul li.z-sel:nth-child(4) ~ .current {
+        left: 17.5%;
+    }
+    .m-subtab ul li.z-sel:nth-child(5) ~ .current {
+        left: 24%;
+    }
+</style>
+<div class="panel-hidden_rp3" style="display: none;">
+    <!--<img src="css/pc/img/jm-indlp.png" style="padding-left: 300px;padding-top: 200px;">-->
+    <div class="m-search f-mt-m" id="m-search_cp3">
+        <label class="u-lb-sm">查询时间</label>
+        <div class="u-txt u-txt-date f-ml-m">
+            <i class="iconfont icon-calendar"></i>
+            <input type="text" id="startDate3"  class="ipt-txt c-gray1" placeholder="" style="width: 112px;" />
+        </div>
+        <div class="u-txt">
+            <span class="line" style=" width: 20px;">至</span>
+        </div>
+        <div class="u-txt u-txt-date f-mr-m">
+            <i class="iconfont icon-calendar"></i>
+            <input type="text" id="endDate3" class="ipt-txt c-gray1" placeholder="" style="width: 112px;" />
+        </div>
+        <label class="u-lb-sm">支付平台</label>
+        <div class="u-txt col-xs-3">
+            <select class="ipt-txt c-gray1" id="platForm3" onchange="changeSel2($('#platForm3').val())">
+                <option value="1">微信</option>
+                <option value="2">微博</option>
+            </select>
+        </div>
+        <label class="u-lb-sm">支出分类</label>
+        <div class="u-txt col-xs-3" id="pStatus1">
+            <select class="ipt-txt c-gray1" id="pTypeId">
+                <option value="0">全部</option>
+                <option value="1">商品退款</option>
+                <option value="2">活动红包</option>
+                <option value="3">商家发佣</option>
+                <option value="4">佣金提现</option>
+                <option value="5">积分提现</option>
+            </select>
+        </div>
+        <div class="u-txt col-xs-3" id="pStatus2" style="display: none">
+            <select class="ipt-txt c-gray1" id="pTypeId2">
+                <option value="0">全部</option>
+                <option value="1">商品退款</option>
+            </select>
+        </div>
+        <label class="u-lb-sm">订单编号</label>
+        <div class="u-txt col-xs-3">
+            <input type="text" id="orderNumP" style="width: 246px;" class="ipt-txt" placeholder="请输入订单编号" />
+        </div>
+        <label class="u-lb-sm" style="width: 77px;">支付方式</label>
+        <div class="u-txt col-xs-3">
+            <select class="ipt-txt c-gray1">
+                <option value="1">微信支付</option>
+                <!--<option value="2">支付宝</option>
+                <option value="3">外部转款</option>-->
+            </select>
+        </div>
+        <label class="u-lb-sm" style="width: 85px;">付款编号</label>
+        <div class="u-txt col-xs-3">
+            <input type="text" id="transactionIdP" class="ipt-txt" placeholder="请输入付款编号" />
+        </div>
+        <div class="u-btn-box1">
+            <input type="button" class="u-btn-mddkbl f-mr-xs" ONCLICK="dataAnalysis.rp.exportCsv(3)" value="导出" />
+            <input type="button" class="u-btn-mddkorg u-w" onclick="dataAnalysis.rp.initBase3(0,'A')" value="查询" />
+        </div>
+    </div>
+    <a class="btn-slide btn-slide1" id="b_3" onclick="cp3()"></a>
+    <!--查询列表-->
+    <div class="m-subtab f-mt-xs" id="m-subtab2">
+        <ul>
+            <li id="p_1" class="z-sel" onclick="dataAnalysis.rp.initBase3(1,'B')">今日</li>
+            <li id="p_2" onclick="dataAnalysis.rp.initBase3(2,'C')" >本周</li>
+            <li id="p_3" onclick="dataAnalysis.rp.initBase3(3,'D')">本月</li>
+            <li id="p_4" onclick="dataAnalysis.rp.initBase3(4,'F')">开业至今</li>
+            <li id="p_5">自定义</li>
+            <div class="current">
+                <i class="iconfont icon-uptriangle"></i>
+            </div>
+        </ul>
+    </div>
+    <div id="u-tab3-1">
+    </div>
+    <div class="m-jm-table panel-hid2" id="u-tab3">
+    </div>
+    <div id="pageToolbar3" class="pagination f-fr f-pt-s"></div>
+</div>
+
+<script>
+    $("#startDate3").datetimepicker({
+        showSecond : false,
+        timeFormat : 'hh:mm:ss',
+        dateFormat : 'yy-mm-dd',
+        stepHour : 1,
+        stepMinute : 1,
+        stepSecond : 1
+    });
+    $("#endDate3").datetimepicker({
+        showSecond : false,
+        timeFormat : '23:59:59',
+        dateFormat : 'yy-mm-dd',
+        stepHour : 1,
+        stepMinute : 1,
+        stepSecond : 1
+    });
+
+    function changeSel2(n){
+        if(n==1){
+            $("#pStatus1").show();
+            $("#pStatus2").hide();
+        }else{
+            $("#pStatus1").hide();
+            $("#pStatus2").show();
+        }
+    }
+
+</script>

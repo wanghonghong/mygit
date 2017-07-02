@@ -1,0 +1,85 @@
+<style>
+    /*.u-newtimetxt label.error{*/
+        /*position: absolute;*/
+        /*font-size: 12px;*/
+        /*color: #ff6543;*/
+        /*padding: 2px;*/
+        /*width: 200px;*/
+    /*}*/
+    label.error{
+        position: absolute;
+        z-index: 20;
+        border: 1px solid #eb684d;
+        color: #ff6445;
+        font-size: 12px;
+        white-space: nowrap;
+        background-color: #ffeced;
+        padding: 5px;
+        margin-left: 10px;
+        border-radius: 5px;
+        top:0;
+        left: 110px;
+        width:170px;
+        text-align: left;
+        text-indent: 0;
+    }
+    .u-related1{
+        cursor:move;
+    }
+    .portlet-placeholder {
+        border: 1px dotted #5bc0de;
+        height: 30px;
+        margin-left:70px;
+    }
+</style>
+<input type="hidden">
+<div class="col-xs-4">
+    <div class="m-phone-view">
+        <div class="phone-shell-top" style="height: 62px;">
+        </div>
+        <div class="phone-window fxsz">
+        </div>
+        <div class="phone-shell-bottom">
+        </div>
+    </div>
+    <div class="m-js-add-region col-xs-11">
+        <span class="arrow"> </span>
+        <div class="add-region" id="add_Content">
+            <h3 class="f-mt-xs"><i class="iconfont icon-add"></i>添加内容</h3>
+
+        </div>
+    </div>
+</div>
+<div class="col-xs-8" style="margin-left: -15px;">
+    <div class="m-tt f-mt-l panel-hidden">
+        <p class="f-fl f-mt-s">
+            固定部署系统设置，本系统免费使用
+        </p>
+        <div class="f-fl close f-ml-l f-mt-xs">
+                <input type="checkbox" name="activity_action" id="activity_action" value="0" on-text="开通" off-text="关闭">
+        </div>
+        <div class="f-fl f-ml-l u-btn-oval f-mt-xs" style="line-height: 28px;">
+            <i class="iconfont icon-Application"></i>
+            <span>运用说明</span>
+        </div>
+    </div>
+    <input type="hidden" id="edit" value="0">
+    <form id="activity_form">
+    <div class="m-deploy-panel f-mt-xl">
+        <ul class="m-deploy-lt m-newdeploy-lt">
+            <li>
+            </li>
+            <li id="activity_name" style="width: 710px;">
+
+            </li>
+        </ul>
+    </div>
+    </form>
+</div>
+<div class="u-btn-box">
+    <input type="button" class="u-btn-mainlg" id="activity_save" value="保存" />
+    <!--<input type="button" class="u-btn-lgdkorg" value="保存" id="activity_save">-->
+</div>
+<script>
+    activity.focus.init();
+</script>

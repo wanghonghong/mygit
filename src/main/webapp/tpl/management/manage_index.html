@@ -1,0 +1,107 @@
+<style>
+        .manage_send_btn{
+                position: relative;
+        }
+        .manage_send_btn input{
+                opacity: 0;
+                position: absolute;
+                width:150px;
+                height:50px;
+                left:0px;
+                top:0px;
+        }
+        .m_choose_group{
+                height: 150px;
+                overflow-y:auto;
+        }
+</style>
+<div  class="m-goodsList-tab">
+        <div class="m-tab f-mb-l" id="manage_tab">
+                <ul>
+                        <li class="z-sel" data-index="1">图片</li>
+                        <li data-index="2">视频</li>
+                        <li data-index="3">语音</li>
+                </ul>
+        </div>
+        <div class="u-select-control ">
+                <input type="text" class="" name="goodsName" placeholder="请输入素材名称" />
+                <i class="iconfont icon-belowtriangle  after-border"></i>
+                <i class="iconfont icon-search" id="searchBtn"></i>
+        </div>
+</div>
+<div id="manage_send_btn" class="manage_send_btn">
+<div class="u-btn-lgltgry1"  id="manage_add_1" style="display:none;">
+        <i class="iconfont icon-add"></i><span>上传图片</span>
+
+</div>
+        <div class="u-btn-lgltgry1"  id="manage_add_2" style="display:none;">
+                <i class="iconfont icon-add"></i><span>上传视频</span>
+        </div>
+        <div class="u-btn-lgltgry1"  id="manage_add_3" style="display:none;">
+                <i class="iconfont icon-add"></i><span>上传音频</span>
+                <input type="file" id="fileupload_add_3" name="myfile" multiple>
+        </div>
+</div>
+<div class="m-material-center f-mt-m">
+        <div class="material-center-left" id="management-left">
+
+        </div>
+        <div class="m-material-center-right">
+                <div class="m-page-cb" id="m-page-cb-box-t">
+                        <div class="u-cb">
+                                <input type="checkbox" name="m_checkAll_group-t" id="m_checkBoxAll-t" value="" />
+                                <label class="iconfont icon-avoid" for="m_checkBoxAll-t"></label>
+                        </div>
+                        <label for="m_checkBoxAll-t" class="f-mr-l" id="m_choose_All-t">全选本组</label>
+                        <div class="u-btn-smltgry" id="m_modify_group-t"><i class="iconfont icon-modified"></i><span>修改本组</span></div>
+                        <div class="u-btn-smltgry" id="m_delete_group-t"><i class="iconfont icon-delete"></i><span>删除</span></div>
+                        <div id="m_modify-groups-t" class="m-revise-group" style="z-index:100;top:25px;bottom:auto;display:none;">
+
+                                <h4>选择分组</h4>
+
+                                <ul id="m_choose_group-t" class="m_choose_group">
+
+                                </ul>
+                                <div class="f-tr f-padding-s">
+                                        <div  class="u-btn-smltgry" id="m_modify_group_cancel-t"> 取消 </div>
+                                        <div  class="u-btn-smltorg" id="m_modify_group_share-t"> 确认</div>
+                                </div>
+
+                        </div>
+
+                </div>
+                <ul class="material-center" id="management-right">
+
+
+                </ul>
+                <div class="m-page-cb f-fl" id="m-page-cb-box">
+                        <div class="u-cb">
+                                <input type="checkbox" name="m_checkAll_group" id="m_checkBoxAll" value="" />
+                                <label class="iconfont icon-avoid" for="m_checkBoxAll"></label>
+                        </div>
+                        <label for="m_checkBoxAll" class="f-mr-l" id="m_choose_All">全选本组</label>
+                        <div class="u-btn-smltgry" id="m_modify_group"><i class="iconfont icon-modified"></i><span>修改本组</span></div>
+                        <div class="u-btn-smltgry" id="m_delete_group"><i class="iconfont icon-delete"></i><span>删除</span></div>
+                        <div id="m_modify-groups" class="m-revise-group" style="z-index:100;display:none;">
+
+                                <h4>选择分组</h4>
+
+                                <ul id="m_choose_group" class="m_choose_group">
+
+                                </ul>
+                                <div class="f-tr f-padding-s">
+                                        <div  class="u-btn-smltgry" id="m_modify_group_cancel"> 取消 </div>
+                                        <div  class="u-btn-smltorg" id="m_modify_group_share"> 确认</div>
+                                </div>
+
+                        </div>
+
+                </div>
+                <div id="pageToolbar" class="pagination f-fr" style="margin-top: 3px"></div>
+        </div>
+</div>
+</section>
+
+<script>
+        manage.material.init();
+</script>

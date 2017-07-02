@@ -1,0 +1,46 @@
+<div class="m-jm-table">
+    <div class="col-xs-12" style="padding: 0;">
+        <div class="m-panel bg-white f-mb-s">
+            <div class="panel-heading m-tt panel-hidden" style="border-bottom: 0;">
+                <p class="f-mt-s col-xs-9 u-bgline" style="width: 89%;"><span style="background-color: #fff;">体验装专项佣金</span></p>
+                <div class="f-fr f-pr-m">
+                    <div class="f-fl f-ml-s u-btn-oval">
+                        <i class="iconfont icon-Application"></i>
+                        <span>运用说明</span>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body" style="background-color: #ffffff;">
+                <div class="m-jm-table m-taste" style="overflow: inherit;">
+                    <ul class="table-hander">
+                        <li style="width: 40%;">商品名称</li>
+                        <li>上 1 级佣金（元）</li>
+                        <li>上 2 级佣金（元）</li>
+                        <li>去佣角色</li>
+                    </ul>
+                    <div class="table-body c-gray1" style="overflow: inherit;" id="tableBody">
+
+                    </div>
+                </div>
+
+                <div id="pageToolbar" class="pagination f-tr f-mt-s f-mr-m"></div>
+                <input type="hidden" name="count" id="count" value="${counts!}" />
+
+            </div>
+
+            <div class="panel-total m-tip1" style="margin-left: 0; padding: 0; padding-left: 8px;">
+                <i class="iconfont icon-lamp" style="font-size: 16px;"></i>
+                <span>佣金金额有填写，该级用户才会得到现金红包，无填写则无；去佣角色有勾选，则该角色不做体验装佣金配置；</span>
+            </div>
+        </div>
+        <!-- /分享分销系统 —— 普通版-->
+
+    </div>
+    <div class="u-btn-box1">
+        <input type="button" class="u-btn-lgdkorg" value="保存" onclick="brokerage.product.save()"/>
+    </div>
+</div>
+
+<script>
+    brokerage.product.init();
+</script>

@@ -1,0 +1,39 @@
+{%if items.length>0%}
+{% for item in items %}
+<ul class="table-container">
+	<li><label for="userId{{item.userId}}">{{item.nickname}}</label></li>
+	<li>{{item.phoneNumber}}</li>
+	<li>
+		{%if item.agentRole==1 %}
+			代理商1档
+			{%elif item.agentRole==2 %}
+			代理商2档
+			{%elif item.agentRole==3 %}
+			代理商3档
+			{%elif item.agentRole==4 %}
+			代理商4档
+			{%elif item.agentRole==5 %}
+			分销商1档
+			{%elif item.agentRole==6 %}
+			分销商2档
+			{%elif item.agentRole==7 %}
+			分销商3档
+			{%elif item.agentRole==8 %}
+			分享客
+			{%else%}
+			-
+		{%endif%}
+	</li>
+	<li>
+		<div class="u-rb">
+			<input type="radio" name="channelBox" id="userId{{item.userId}}" value="{{item.userId}},{{item.nickname}},{{item.phoneNumber}},{{item.agentRole}}" />
+			<label for="userId{{item.userId}}"></label>
+		</div>
+	</li>
+</ul>
+{%endfor%}
+{% else %}
+<div class="m-jm-err">
+	<img src="{{globalUrl}}/css/pc/img/jm-nodb.png">
+</div>
+{%endif%}

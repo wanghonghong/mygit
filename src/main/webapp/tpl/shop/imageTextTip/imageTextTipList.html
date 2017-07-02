@@ -1,0 +1,69 @@
+<!--/图文收入-->
+<div class="panel-hidden_tip1">
+    <div class="m-search" id="m-search_tip1" style="padding-bottom: 10px;">
+        <label class="u-lb-sm">具体图文</label>
+        <div class="u-txt col-xs-3">
+            <input type="text" class="ipt-txt" id="imageTextTitle" placeholder="请输入具体图文" />
+        </div>
+        <label class="u-lb-sm">打赏平台</label>
+        <div class="u-txt col-xs-3">
+            <select class="ipt-txt c-gray1" id="platForm">
+                <option value="0">微信</option>
+                <option value="1">微博</option>
+            </select>
+        </div>
+        <label class="u-lb-sm">上架日期</label>
+        <div class="u-txt u-txt-date f-ml-m">
+            <i class="iconfont icon-calendar"></i>
+            <input type="text" id="startDate1"  class="ipt-txt c-gray1" placeholder="" style="width: 112px;" />
+        </div>
+        <div class="u-txt">
+            <span class="line" style=" width: 20px;">-</span>
+        </div>
+        <div class="u-txt u-txt-date f-mr-m">
+            <i class="iconfont icon-calendar"></i>
+            <input type="text" id="endDate1" class="ipt-txt c-gray1" placeholder="" style="width: 112px;" />
+        </div>
+        <label class="u-lb-sm">状态</label>
+        <div class="u-txt col-xs-3">
+            <select class="ipt-txt c-gray1" id="status">
+                <option value="99">全部</option>
+                <option value="0" selected>上架</option>
+                <option value="1">下架</option>
+                <option value="-1">删除</option>
+            </select>
+        </div>
+        <div class="u-btn-box1">
+            <input type="button" class="u-btn-mddkorg u-w" onclick="imageTextTip.tip.initBase(1)" value="查询" />
+        </div>
+    </div>
+    <a class="btn-slide btn-slide1" id="b_1" onclick="cp1()"></a>
+    <div class="m-jm-table panel-hid1 f-mt-m" id="u-tab1" >
+    </div>
+    <div id="pageToolbar1" class="pagination f-fr f-pt-s"></div>
+</div>
+
+<script>
+    $("#startDate1").datetimepicker({
+        showSecond : false,
+        timeFormat : 'hh:mm:ss',
+        dateFormat : 'yy-mm-dd',
+        stepHour : 1,
+        stepMinute : 1,
+        stepSecond : 1
+    });
+    $("#endDate1").datetimepicker({
+        showSecond : false,
+        timeFormat : '23:59:59',
+        dateFormat : 'yy-mm-dd',
+        stepHour : 1,
+        stepMinute : 1,
+        stepSecond : 1
+    });
+    function cp1(){
+        $("#m-search_tip1").slideToggle("fast");
+        $("#b_1").toggleClass("btn-slide1"); return false;
+    }
+</script>
+
+

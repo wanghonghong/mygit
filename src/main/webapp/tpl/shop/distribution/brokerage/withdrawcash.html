@@ -1,0 +1,33 @@
+<ul class="table-container">
+    <li>
+        <img src="{{headimgurl}}" alt="暂无图片" class="u-thumbnail-circ">
+    </li>
+    <li style="width: 15%; padding: 0 30px;" class="f-tl">
+        <span>{{nickname| default('-',true)}}</span><br><span>{{userName | default('-',true)}}</span><br><span>{{phoneNumber| default('-',true)}}</span>
+    </li>
+    <li>
+        {% if agentRole ==0 %}普通用户
+        {% elif agentRole ==1 %}代理1档
+        {% elif agentRole ==2 %}代理2档
+        {% elif agentRole ==3 %}代理3档
+        {% elif agentRole ==4 %}代理4档
+        {% elif agentRole ==5 %}分销1档
+        {% elif agentRole ==6 %}分销2档
+        {% elif agentRole ==7 %}分销3档
+        {% elif agentRole ==8 %}分享客
+        {% endif %}
+    </li>
+    <li>{{totalCount|default(0,ture) /100}}</li>
+    <li>{{(totalCount-kitBalance)|default(0,ture) /100}}</li>
+    <li>{{kitBalance|default(0,ture) /100}}</li>
+    <li>{% if platForm ==0 %}微信 {% elif platForm ==1 %}微博{% endif %}</li>
+    <li class="f-tl" style="padding-left: 20px;">{{kitDate|default(0,ture) }}</li>
+    <li>{{kitMoney|default(0,ture)/100 }}</li>
+    <li>
+        {% if status ==0 %}
+        <div class="u-btn-smltgry dialog" onclick="sales.waiting.review(this)">审核</div>
+        {% elif status ==2 %}
+             已审核
+        {% endif %}
+    </li>
+</ul>

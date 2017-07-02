@@ -1,0 +1,59 @@
+<style>
+    em{
+        font-style:normal;
+    }
+</style>
+{%if items.length>0%}
+{%for item in items%}
+<ul class="table-container f-pd f-t-off">
+    <li class="f-tl" style="width:25%;">
+        <p title="">{{item.activityName}}</p>
+    </li>
+    <li>
+        {%if item.subType==1%}
+        首次关注发红包
+        {%elif item.subType==2%}
+        已关注粉丝发红包
+        {%elif item.subType==3%}
+        购买商品发红包
+        {%elif item.subType==4%}
+        确认收货发红包
+        {%else%}
+        卡卷转赠发红包
+        {%endif%}
+    </li>
+    <li>{{item.totalMoney/100}}</li>
+    <li>{{item.preFansCount}}</li>
+    <li>{{item.startTime}}</li>
+    <li>{{item.endTime}}</li>
+    {%if item.status==0%}
+    <li style="width:16%;">
+        <div class="u-btn-smltgry" onclick="activity.redPaper.modify('{{item.id}}','{{item.subType}}','{{item.status}}')">修改 </div>
+        <div class="u-btn-smltgry" onclick="activity.redPaper.del('{{item.id}}','{{item.activityName}}')">取消 </div>
+    </li>
+    {%elif item.status==1%}
+    <li style="width:16%;">
+        <div class="u-btn-smltgry" onclick="activity.redPaper.watch('{{item.id}}','{{item.subType}}')">查看 </div>
+        <div class="u-btn-smltgry" onclick="activity.redPaper.set('{{item.id}}','{{item.activityName}}','{{item.status}}')"><i class="iconfont icon-righttriangle"></i>启动</div>
+        <div class="u-btn-smltgry" onclick="activity.redPaper.del('{{item.id}}','{{item.activityName}}')">取消 </div>
+    </li>
+    {%elif item.status==2%}
+    <li style="width:16%;">
+        <div class="u-btn-smltgry" onclick="activity.redPaper.watch('{{item.id}}','{{item.subType}}')">查看 </div>
+        <div class="u-btn-smltgry" onclick="activity.redPaper.set('{{item.id}}','{{item.activityName}}','{{item.status}}')"><i class="iconfont icon-pause c-lightred"></i>暂停</div>
+        <div class="u-btn-smltgry" onclick="activity.redPaper.del('{{item.id}}','{{item.activityName}}')">取消 </div>
+    </li>
+    {%elif item.status==3%}
+    <li style="width:16%;">
+        <div class="u-btn-smltgry" onclick="activity.redPaper.effect('{{item.id}}')">效果</div>
+        <div class="u-btn-smltgry" onclick="activity.redPaper.watch('{{item.id}}','{{item.subType}}')">查看 </div>
+        <div class="u-btn-smltgry" onclick="activity.redPaper.moreOne('{{item.id}}','{{item.subType}}')">再来一场</div>
+    </li>
+    {%endif%}
+</ul>
+{%endfor%}
+{%else%}
+<div class="m-jm-err">
+    <img src="{{globalUrl}}/css/pc/img/jm-nodb.png">
+</div>
+{%endif%}

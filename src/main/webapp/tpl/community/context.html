@@ -1,0 +1,357 @@
+<section class="g-bbsbox">
+    <!--左栏内容-->
+    <div class="g-bbsleft">
+        <div class="m-leftbox">
+            <div class="m-bbscontent">
+                <div class="title-top">
+                    <strong>{{item.title}}</strong>
+                    <div class="panel-hidden">
+                        <div class="f-fl">
+                            <span>{{item.createDate}}</span>
+                            <span><a class="copylinks">复制链接</a></span>
+                        </div>
+                        <div class="u-recordnum f-fr f-pr-xl">
+                            <span><i class="iconfont icon-browse"></i>{{item.readCount}}</span>
+                            <span><i class="iconfont icon-dotlove"></i>{{item.zanCount}}</span>
+                            <span><i class="iconfont icon-reply"></i>{{item.replyCount}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="title-body">
+                    {{item.postContext|safe}}
+                </div>
+                <div class="title-putgood">
+                    <div>
+                        <b>
+                            {%if item.isZan==0%}
+                            <div class="getlove" id="like1" rel="like" onclick="community.context.saveZan('{{item.id}}')" ></div>
+                            {%else%}
+                            <div class="getlove" id="like1" rel="like" style="background-position:right"></div>
+                            {%endif%}
+                            <font class="likeCount" id="likeCount1">{{item.zanCount}}</font>
+                        </b>
+                    </div>
+                    <span><a>回复</a></span>
+                    <span><a class="dialog-artscore" onclick="community.context.showScore()">评分</a></span>
+                    <span><a>收藏</a></span>
+                    <span><a>举报</a></span>
+                </div>
+                <ul class="title-quickreply">
+                    <li>
+                        <div class="u-txt">
+                            <input type="text" class="ipt-txt" id="quickReply"  placeholder="" />
+                        </div>
+                    </li>
+                    <li>
+                        <input type="button" class="u-btn-mddkorg" value="快速回复" onclick="community.context.saveQuickRepley('{{item.id}}')"/>
+                    </li>
+                </ul>
+                <div class="title-scorelist">
+                    <div class="list-head">
+                        <span style="width: 15%;">已有 <font>15</font> 人评分</span>
+                        <span class="f-tc" style="width: 10%;">积分</span>
+                        <span style="width: 65%; padding-left: 20px;">理由</span>
+                        <span><a id="packup">收起<i class="iconfont icon-up"></i></a></span>
+                    </div>
+                    <div class="list-body" id="packupbox">
+                        <ul>
+                            <li style="width: 15%;">
+                                <div class="u-scoreuser">
+                                    <img src="css/pc/img/addti-tp.png" class="u-scorepic f-fl" />
+                                    <p>一叶子</p>
+                                </div>
+                            </li>
+                            <li class="f-tc" style="width: 10%;">+1</li>
+                            <li style="width: 65%; padding-left: 20px;"><p>赞一个！</p></li>
+                            <li>&nbsp;</li>
+                        </ul>
+                        <ul>
+                            <li style="width: 15%;">
+                                <div class="u-scoreuser">
+                                    <img src="css/pc/img/shopimg2.png" class="u-scorepic f-fl" />
+                                    <p>你是我的例外</p>
+                                </div>
+                            </li>
+                            <li class="f-tc" style="width: 10%;">+1</li>
+                            <li style="width: 65%; padding-left: 20px;"><p>文案不错。</p></li>
+                            <li>&nbsp;</li>
+                        </ul>
+                        <ul>
+                            <li style="width: 15%;">
+                                <div class="u-scoreuser">
+                                    <img src="css/pc/img/shopimg2.png" class="u-scorepic f-fl" />
+                                    <p>你是我的例外</p>
+                                </div>
+                            </li>
+                            <li class="f-tc" style="width: 10%;">+1</li>
+                            <li style="width: 65%; padding-left: 20px;"><p>文案不错。</p></li>
+                            <li>&nbsp;</li>
+                        </ul>
+                    </div>
+                    <div class="list-count">
+                        <span>总评分：积分 <font>+15</font></span>
+                        <span><a>查看全部评分</a></span>
+                    </div>
+                </div>
+                <div class="m-commentbox">
+                    <div class="box-head">
+                        <span class="active"><i class="iconfont icon-dotlove"></i>赞数最多</span>
+                        <span><i class="iconfont icon-reply"></i>最强回复</span>
+                        <span class="dialog-useprop"><i class="iconfont icon-magicWand"></i>使用道具</span>
+                        <div class="m-dialog-useprop" style="display: none;">
+                            <div></div>
+                        </div>
+                    </div>
+                    <div class="box-body" id="replyList">
+
+                    </div>
+                    <div id="pageToolbar" class="pagination f-tc f-mt-m">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="m-bbsreplybox">
+            <div class="m-writebox replyContext" style="height: 240px;">
+
+            </div>
+            <div class="m-botbox">
+                <div class="u-cb">
+                    <input type="checkbox" name="" id="checkbox1" value="" />
+                    <label class="iconfont icon-avoid" for="checkbox1"></label>
+                </div>
+                <label class="u-lb-noname" for="checkbox1">我要匿名</label>
+                <input type="button" class="u-btn-mddkorg u-w" onclick="community.context.saveRepley('{{item.id}}')" value="回复" />
+            </div>
+        </div>
+    </div>
+    <!--/左栏内容-->
+    <!--右栏内容-->
+    <div class="g-bbsright">
+        <div class="m-usercolumn">
+            <ul class="userbox">
+                <li class="f-vm"><img src="{{item.headImg}}" class="u-userpic-lg" /></li>
+                <li>
+                    <b>{{item.nickname}}</b>
+                    <span>积分：978</span>
+                    <span>帖子：{{item.postNum}}</span>
+                </li>
+            </ul>
+            <div class="u-btn-lgdkorg u-sletter dialog-psnletter"><span>私信</span></div>
+        </div>
+        <div class="m-rightlistbox f-mb-m">
+            <h2>公众号推荐</h2>
+            <div class="box-body">
+                <ul class="m-apprecommend">
+                    <li><img src="css/pc/img/jmtool1.png" /><span title="糗事百科"><a href="#">糗事百科</a></span></li>
+                    <li><img src="css/pc/img/music_disc.png" /><span title="星座大全"><a href="#">星座大全</a></span></li>
+                    <li><img src="css/pc/img/shopimg2.png" /><span title="Keep"><a href="#">Keep</a></span></li>
+                    <li><img src="css/pc/img/u-btn-weixin.png" /><span title="装逼神器"><a href="#">装逼神器</a></span></li>
+                    <li><img src="css/pc/img/jmtt-big.png" /><span title="哗哩哗哩动画动画"><a href="#">哗哩哗哩动画动画</a></span></li>
+                    <li><img src="css/pc/img/addti-tp.png" /><span title="优酷视频"><a href="#">优酷视频</a></span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="m-rightlistbox f-mb-m">
+            <h2>最新活动</h2>
+            <div class="box-body">
+                <div class="m-newsactivity">
+                    <!--<img src="css/pc/img/s-newshop-lt-img1.jpg" />-->
+                    <div class="m-rollbanner">
+                        <ol>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ol>
+                        <ul>
+                            <li><img src="css/pc/img/s-newshop-lt-img1.jpg" /></li>
+                            <li><img src="css/pc/img/s-newshop-lt-img2.jpg" /></li>
+                            <li><img src="css/pc/img/s-newshop-lt-img3.jpg" /></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="m-rightlistbox f-mb-s">
+            <h2>热门话题</h2>
+            <div class="box-body">
+                <ul class="m-hottopic">
+                    <li><a href="#">聚米为谷商城入驻事项</a></li>
+                    <li><a href="#">阿里泰国开课教电商</a></li>
+                    <li><a href="#">电商与新经济业态</a></li>
+                    <li><a href="#">电商贷款平台有哪些</a></li>
+                    <li><a href="#">聚米为谷网络科技的产品新动态</a></li>
+                    <li><a href="#">聚米为谷网络科技的产品新动态、新姿势、新创意</a></li>
+                    <li><a href="#">微商城三级分销赚钱模式</a></li>
+                    <li><a href="#">微商城怎么推广</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="m-rightlistbox f-mb-m">
+            <h2>聚米先锋用户</h2>
+            <div class="box-body">
+                <ul class="m-jmvanuser">
+                    <li title="例外">
+                        <img src="css/pc/img/shopimg2.png" />
+                        <p>例外</p>
+                    </li>
+                    <li title="鬼鬼">
+                        <img src="css/pc/img/s-newshop-lt-img1.jpg" />
+                        <p>鬼鬼</p>
+                    </li>
+                    <li title="小野布谷">
+                        <img src="css/pc/img/s-newshop-lt-img2.jpg" />
+                        <p>小野布谷</p>
+                    </li>
+                    <li title="MEb">
+                        <img src="css/pc/img/s-newshop-lt-img3.jpg" />
+                        <p>MEb</p>
+                    </li>
+                    <li title="传仁袜业">
+                        <img src="css/pc/img/shoptlp-img3.png" />
+                        <p>传仁袜业</p>
+                    </li>
+                    <li title="原叶酒酿">
+                        <img src="css/pc/img/shoptlp-img2.png" />
+                        <p>原叶酒酿</p>
+                    </li>
+                    <li title="美眉你好美眉你好美眉你好">
+                        <img src="css/pc/img/addti-tp.png" />
+                        <p>美眉你好美眉你好美眉你好</p>
+                    </li>
+                    <li title="一叶子">
+                        <img src="css/pc/img/diamondlogo.png" />
+                        <p>一叶子</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="m-rightlistbox f-mb-m">
+            <h2>聚米 APP 下载</h2>
+            <div class="box-body">
+                <div class="m-jmappdown">
+                    <img src="css/pc/img/wem1.png" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/右栏内容-->
+    <input type="hidden" id="postId" value="{{item.id}}">
+</section>
+<!--复制链接-->
+<div class="m-dialog-copysus" style="display: none;">
+    <div class="closebtn"><i class="iconfont icon-delete1"></i></div>
+    <img src="css/pc/img/copysus.png" />
+    <b>复制成功</b>
+</div>
+<!--/-->
+
+<!--私信-->
+<div class="m-dialog-bbsbox m-bbschatbox" style="display: none;">
+    <div class="bbsdialog-title">
+        <h4>小野布谷先生&nbsp;[<span>离线</span>]<i class="iconfont icon-collect"></i></h4>
+        <i class="iconfont icon-delete1"></i>
+    </div>
+    <div class="bbsdialog-body">
+        <div class="chatcon">
+            <div class="chattop">
+
+            </div>
+            <div class="chatmid">
+                <span><i class="iconfont icon-issue"></i></span>
+                <span><i class="iconfont icon-happy"></i></span>
+                <span><i class="iconfont icon-posting"></i></span>
+                <span><i class="iconfont icon-image"></i></span>
+                <div class="msgrecord">
+                    <i class="iconfont icon-time"></i><a>消息记录<i class="iconfont icon-belowtriangle"></i></a>
+                </div>
+            </div>
+            <div class="chatbot">
+
+            </div>
+        </div>
+        <div class="m-btn-botbox">
+            <div class="u-refresh"><i class="iconfont icon-loading"></i><font>刷新</font></div>
+            <input type="button" class="u-btn-mddkorg u-w" value="发送" />
+        </div>
+    </div>
+</div>
+<!--/-->
+<!--回复-->
+<div class="m-dialog-bbsbox m-bbsreply" style="display: none;">
+    <div class="bbsdialog-title">
+        <h4>回复</h4>
+        <i class="iconfont icon-delete1"></i>
+    </div>
+    <div class="bbsdialog-body">
+        <div class="reply-con" style="height: 200px;">
+        <img src="css/pc/img/bianji.png" />
+    </div>
+        <div class="m-btn-botbox">
+        <div class="u-cb">
+            <input type="checkbox" name="" id="replybox" value="" />
+            <label class="iconfont icon-avoid" for="replybox"></label>
+        </div>
+        <label class="u-lb-noname" for="replybox">我要匿名</label>
+        <input type="button" class="u-btn-mddkorg u-w" value="回复" />
+    </div>
+    </div>
+</div>
+<!--/-->
+<script>
+    community.context.init();
+    $(function(){
+        $('body').prop('scrollTop','0');//无动画
+        $("#u-logo").click(function(){
+            $("#othermemu").toggleClass("z-change");
+        });
+        $(".m-newsactivity").luara({width:"208",height:"143",interval:4000,selected:"seleted"});
+        //复制链接
+        $(".copylinks").click(function(){
+            $(".m-dialog-copysus").show();
+            $(".closebtn i").click(function(){
+                $(".m-dialog-copysus").hide();
+            });
+        });
+        //end
+        //私信
+        $(".dialog-psnletter").click(function(){
+            $(".m-bbschatbox").show();
+            $(".bbsdialog-title i").click(function(){
+                $(".m-bbschatbox").hide();
+            });
+        });
+//        //评分
+//        $(".dialog-artscore").click(function(){
+//            $(".m-artscore").show();
+//            $(".bbsdialog-title i").click(function(){
+//                $(".m-artscore").hide();
+//            });
+//        });
+//        //end
+        //收起评分列表
+        $("#packup").click(function(){
+            if($(this).text() == "收起"){
+                $(this).html("展开<i class='iconfont icon-down'></i>");
+            }
+            else{
+                $(this).html("收起<i class='iconfont icon-up'></i>");
+            }
+            $("#packupbox").slideToggle();
+        });
+        //end
+        //使用道具
+        $(".dialog-useprop").click(function(){
+            $(".m-dialog-useprop").fadeToggle();
+        });
+        //end
+        //回复帖子
+        $(".replyhead").click(function(){
+            $(".m-bbsreply").show();
+            $(".bbsdialog-title i").click(function(){
+                $(".m-bbsreply").hide();
+            });
+        });
+        //end
+    })
+
+</script>

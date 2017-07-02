@@ -1,0 +1,33 @@
+
+<div class="video-config">
+    <div class="video-panel">
+        <div class="row f-cf">
+            <label class="u-lb-md">腾讯视频地址</label>
+            <div class="u-txt col-xs-6">
+                <input type="text" class="ipt-txt txResName" value="{{txResName}}" placeholder="请点击视频库选择视频" readonly="readonly">
+            </div>
+            <input type="button" class="u-btn-mdltgry txbtn" value="视频库">  </input>
+        </div>
+        <div class="row f-cf">
+            <label class="u-lb-md">请选择图片</label>
+            <div class="u-txt col-xs-9">
+                <div class="image-item ">
+                    <!--{{globalUrl}}/css/pc/img/jm-nodb.png-->
+                    <!--	<img src="{{globalUrl}}/css/pc/img/jm-nodb.png">-->
+                    {%if txImgUrl %}
+                    <img src="{{txImgUrl}}" align="absmiddle" class="videoImg">
+                    {% else %}
+                    <img src="{{globalUrl}}/css/pc/img/noc_picture.png" align="absmiddle" class="videoImg">
+                    {% endif%}
+                    <div class="optbtn">
+                        <span class="chooseimg">选择图片</span>
+                        <span class="delimg">删除图片</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-info">
+            <i class="iconfont icon-lamp"></i><span>微信公众号的粉丝访问显示腾讯视频 </span>
+        </div>
+    </div>
+</div>

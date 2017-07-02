@@ -1,0 +1,29 @@
+{% if items.length>0 %}
+{% if items.type==1 %}
+{%for item in items%}
+<ul class="table-container">
+    <li>{{item.departmentName}}</li>
+    <li>{{item.createDate}}</li>
+    <li>{{item.userName}}</li>
+    <li>
+        <div class="u-btn-smltgry f-mr-xs dialog-xg updateDepartment" data-id="{{item.departmentId}}" onclick="department.post.updateDepartment('{{item.departmentId}}')"><span>修改</span></div>
+        <div class="u-btn-smltgry dialog-sc deleteDepartment" data-id="{{item.departmentId}}" data-name="{{item.departmentName}}"><span>删除</span></div>
+    </li>
+</ul>
+{%endfor%}
+{%else%}
+{%for item in items%}
+<ul class="table-container">
+    <li>{{item.postName}}</li>
+    <li>{{item.createDate}}</li>
+    <li>{{item.userName}}</li>
+    <li>
+        <div class="u-btn-smltgry f-mr-xs dialog-xg updatePost" data-id="{{item.postId}}" onclick="department.post.updatePost('{{item.postId}}')"><span>修改</span></div>
+        <div class="u-btn-smltgry dialog-sc deletePost" data-id="{{item.postId}}" data-name="{{item.postName}}"><span>删除</span></div>
+    </li>
+</ul>
+{%endfor%}
+{%endif%}
+{%else%}
+{% include "/tpl/system/nodb.html" %}
+{%endif%}

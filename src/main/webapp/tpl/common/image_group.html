@@ -1,0 +1,12 @@
+<div  class="m-xltip">
+    <li class="active" data-id="0" id="group_0">
+        <span>聚米为谷<i class="iconfont icon-righttriangle"></i></span>
+    </li>
+</div>
+{%for item in items%}
+<div  class="m-xltip">
+    <li id="group_{{item.id}}" data-id="{{item.id}}">
+        <span>{{item.groupName}}</span>
+    </li>
+</div>
+{%endfor%}

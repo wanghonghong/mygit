@@ -1,0 +1,234 @@
+<!--主模块-->
+	<div class="m-tab f-mb-m">
+		<ul>
+			<li class="z-sel">微信商场</li>
+			<li>微博商场</li>
+			<li>APP 商场</li>
+		</ul>
+	</div>
+	<!--微信商场-->
+	<div class="panel-hidden">
+		<div class="m-sell-set" style="margin-left: 0;">
+			<div class="sell-set-left">
+				<h3 class="c-gray1">微信支付设置</h3>
+			</div>
+			<div class="sell-set-right">
+				<label class="u-lb-md c-black">账号选择</label>
+				<div class="u-txt col-xs-4">
+					<select class="ipt-txt c-gray1"  onchange="shop.wxauth.changeWay(this);" id="payway" >
+						<!--<option value="1">请点击选择支付方式</option>-->
+						<option value="2">使用代申请的微信支付账户</option> <!-- 1  -->
+						<option value="3">自有微信企业支付账户</option><!-- 0  -->
+						<!--<option value="4">委托申请微信支付账号</option>  2  -->
+					</select>
+				</div>
+				<!--option value2说明-->
+				<dl class="col-xs-10 u-wx-explain u-noborder" style="margin-left: 115px;" id="dl1">
+					<dt style="font-size: 14px;"><i class="iconfont icon-lamp"></i>提示说明：</dt>
+					<dd>1、聚米为谷微信支付授权特约商户，具备微信支付官方授权的商家微信支付代理申请资格；</dd>
+					<dd>2、通过聚米为谷申请的微信支付特约子商户，具备更强大的营销互动功能使用，如红包拓客、佣金支付功能。</dd>
+				</dl>
+				<!--option value3说明-->
+				<dl class="col-xs-10 u-wx-explain u-noborder" style="margin-left: 115px;display: none" id="dl2">
+					<dt style="font-size: 14px;"><i class="iconfont icon-lamp"></i>提示说明：</dt>
+					<dd>1、您使用公众号必须为认证过的服务号，微信支付已通过微信的审核并已正常开通！</dd>
+					<dd>2、使用自有微信支付，货款直接入账至您的财付通账户，由财付通自动扣除相应交易手续费。</dd>
+					<dd>3、订单如需退款，请自行通过财务通后台手动完成退款操作，并在订单中做“标记退款”。</dd>
+					<dd>4、使用自有微信支付，将无法使用聚米为谷商城相应的红包推广、红包佣金支付功能，建议使用【聚米为谷代申请微信企业支付账户】收款。</dd>
+				</dl>
+			</div>
+		</div>
+		<div id="div1">
+				<div class="m-sell-set" style="margin-left: 0;">
+					<div class="sell-set-left">
+						<h3 class="c-gray1">账户信息填写</h3>
+					</div>
+					<div class="sell-set-right">
+						<label class="u-lb-md c-black"><font class="c-red">*</font> 商务号</label>
+						<div class="u-txt col-xs-4">
+							<input type="text" class="ipt-txt" placeholder="请输入商务号" id="mchId" />
+						</div>
+						<div class="m-tip4 col-xs-6">
+							<i class="iconfont icon-lamp"></i>
+							<span>该商户号是您在申请微信企业支付后邮件收到的商户号，不是财付通的商户号</span>
+						</div>
+						<label class="u-lb-md c-black f-cb"><font class="c-red">*</font> 密　钥</label>
+						<div class="u-txt col-xs-4">
+							<input type="text" class="ipt-txt" placeholder="请输入密钥" id="appKey" />
+						</div>
+					</div>
+				</div>
+				<div class="u-btn-box f-cb">
+					<input type="button" class="u-btn-mainlg dialog" value="提交" id="subBtn" onclick="shop.wxauth.save();" />
+				</div>
+				<!--<div class="u-btn-box f-cb"><input type="button" class="u-btn-lgdkorg dialog" value="提交" id="subBtn" onclick="shop.wxauth.save();" /></div>-->
+		</div>
+
+
+		<div id="div2" style="display: none;">
+				<div class="m-sell-set" style="margin-left: 0;">
+					<div class="sell-set-left">
+						<h3 class="c-gray1">联系信息</h3>
+					</div>
+					<div class="sell-set-right">
+						<label class="u-lb-md c-black"><font class="c-red">*</font> 联系人姓名</label>
+						<div class="u-txt col-xs-4">
+							<input type="text" class="ipt-txt" placeholder="请输入联系人姓名" />
+						</div>
+						<div class="m-tip4 col-xs-6">
+							<i class="iconfont icon-lamp"></i>
+							<span>请填写贵公司微信支付业务联系人</span>
+						</div>
+						<label class="u-lb-md c-black f-cb"><font class="c-red">*</font> 联系人手机</label>
+						<div class="u-txt col-xs-4">
+							<input type="text" class="ipt-txt" placeholder="请输入联系人手机" />
+						</div>
+						<div class="m-tip4 col-xs-6">
+							<i class="iconfont icon-lamp"></i>
+							<span>该号码将接收微信支付管理相关的重要信息</span>
+						</div>
+						<label class="u-lb-md c-black f-cb"><font class="c-red">*</font> 联系人邮箱</label>
+						<div class="u-txt col-xs-4">
+							<input type="text" class="ipt-txt" placeholder="请输入联系人邮箱" />
+						</div>
+						<div class="m-tip4 col-xs-6">
+							<i class="iconfont icon-lamp"></i>
+							<span>该邮箱将接收商户平台登录帐号密码等重要信息</span>
+						</div>
+						<label class="u-lb-md c-black f-cb"><font class="c-red">*</font> 客服电话</label>
+						<div class="u-txt col-xs-4">
+							<input type="text" class="ipt-txt" placeholder="请输入客服电话" />
+						</div>
+						<div class="m-tip4 col-xs-6">
+							<i class="iconfont icon-lamp"></i>
+							<span>该号码将日常用于客户咨询、投诉</span>
+						</div>
+						<label class="u-lb-md c-black f-cb">公司网站</label>
+						<div class="u-txt col-xs-4">
+							<input type="text" class="ipt-txt" placeholder="请输入公司网站" />
+						</div>
+						<div class="m-tip4 col-xs-6">
+							<i class="iconfont icon-lamp"></i>
+							<span>若没有可不填</span>
+						</div>
+					</div>
+				</div>
+				<div class="m-sell-set" style="margin-left: 0;">
+					<div class="sell-set-left">
+						<h3 class="c-gray1">经营信息</h3>
+					</div>
+					<div class="sell-set-right">
+						<label class="u-lb-md c-black"><font class="c-red">*</font> 选择经营类目</label>
+						<div class="u-txt col-xs-4">
+							<select class="ipt-txt c-gray1">
+								<option value="1">衣服裤子系列</option>
+								<option value="2">生活用品系列</option>
+							</select>
+						</div>
+						<div class="col-xs-5 f-pt-xs">
+							<div class="u-btn-smltgry"><i class="iconfont icon-classify1 c-green"></i><span>类目说明</span></div>
+						</div>
+						<label class="u-lb-md c-black f-cb"><font class="c-red">*</font> 售卖商品简述</label>
+						<div class="u-txt col-xs-8">
+							<textarea class="ipt-txt txtarea" placeholder="请输入售卖商品简述"></textarea>
+						</div>
+						<div class="m-tip4 col-xs-8 f-mb-m" style="margin-left: 100px;">
+							<i class="iconfont icon-lamp"></i>
+							<span>请简要描述售卖的商品或提供的服务，必须在营业执照经营范围内，且必须与所选类目对应一致。<br />　　请勿直接照抄营业执照中的经营范围，否则将会导致您的申请资料被驳回。</span>
+						</div>
+						<label class="u-lb-md c-black f-cb"><font class="c-red">*</font> 营业执照</label>
+						<div class="col-xs-2 f-mb-m">
+							<div class="m-add-img">
+								<img src="{{globalUrl}}/css/pc/img/no_picture.png" />
+								<i class="iconfont icon-add"></i>
+							</div>
+						</div>
+						<div class="m-tip4 col-xs-6 f-pt-xl">
+							<i class="iconfont icon-lamp"></i>
+							<span>原件正面照或扫描件</span>
+						</div>
+						<label class="u-lb-md c-black f-cb"><font class="c-red">*</font> 开户许可证</label>
+						<div class="col-xs-2 f-mb-m">
+							<div class="m-add-img">
+								<img src="{{globalUrl}}/css/pc/img/no_picture.png" />
+								<i class="iconfont icon-add"></i>
+							</div>
+						</div>
+						<div class="m-tip4 col-xs-6 f-pt-xl">
+							<i class="iconfont icon-lamp"></i>
+							<span>原件正面照或扫描件</span>
+						</div>
+						<label class="u-lb-md c-black f-cb"><font class="c-red">*</font> 组织机构代码证</label>
+						<div class="col-xs-2 f-mb-m">
+							<div class="m-add-img">
+								<img src="{{globalUrl}}/css/pc/img/no_picture.png" />
+								<i class="iconfont icon-add"></i>
+							</div>
+						</div>
+						<div class="m-tip4 col-xs-6 f-pt-xl">
+							<i class="iconfont icon-lamp"></i>
+							<span>原件正面照或扫描件</span>
+						</div>
+						<label class="u-lb-md c-black f-cb"><font class="c-red">*</font> 联系人身份证</label>
+						<div class="col-xs-4">
+							<div class="m-add-img f-fl">
+								<img src="{{globalUrl}}/css/pc/img/no_picture.png" />
+								<i class="iconfont icon-add"></i>
+							</div>
+							<div class="m-add-img f-fl f-ml-m">
+								<img src="{{globalUrl}}/css/pc/img/no_picture.png" />
+								<i class="iconfont icon-add"></i>
+							</div>
+						</div>
+						<div class="m-tip4 col-xs-6 f-pt-xl">
+							<i class="iconfont icon-lamp"></i>
+							<span>原件正、反面照，或者正、反扫描件</span>
+						</div>
+					</div>
+				</div>
+				<div class="u-btn-box f-cb">
+					<!--这是第二种情况出现的按钮，提交变成 重新提交-->
+					<input type="button" class="u-btn-lgnagry" value="申请中" />
+					<!--end-->
+					<input type="button" class="u-btn-lgdkorg dialog" value="提交" />
+				</div>
+		</div>
+	</div>
+	<!--/微信商场-->
+	<!--微博商场-->
+	<div class="panel-hidden">
+	</div>
+	<!--/微博商场-->
+	<!--APP 商场-->
+	<div class="panel-hidden">
+	</div>
+	<!--/APP 商场-->
+<!--/主模块-->
+	 	<footer class="g-ft">
+	 	   <label> Copyright  版权由聚米为谷科技所有 </label>
+	 	</footer>
+	 <div id="dialoginfo" class="dialoginfo">
+		<div class="g-table m-dialog-box">
+			<label><span>第 <font class="c-orange1">1</font> 步：</span>登录您的公众号　　<a href="#"><font class="c-orange1">【点击登录】</font></a></label>
+			<label>
+				<span>第 <font class="c-orange1">2</font> 步：</span>请将以下 3 点参数修改到公众号里的 3 个地方的 HTTPS 配置（参考图片）
+				<p class="f-pl-xxl"><span class="c-orange1">·</span> 支付授权目录：<font class="c-orange1">https://trade.koudaitong.com/wxpay/</font></p>
+				<p class="f-pl-xxl"><span class="c-orange1">·</span> 测试授权目录：<font class="c-orange1">https://trade.koudaitong.com/test/</font></p>
+				<p class="f-pl-xxl"><span class="c-orange1">·</span> 支付回调 URL：<font class="c-orange1">https://trade.koudaitong.com/wxpay/getpackage</font></p>
+			</label>
+			<div class="u-usewx-explain f-mt-s f-mb-s"><img src="{{globalUrl}}/css/pc/img/usewx-explain.png" /></div>
+			<label><span>第 <font class="c-orange1">3</font> 步：</span>确认填写准确后，返回聚米为谷的<a href="#"><font class="c-orange1">【支付设置】</font></a>勾选　　确认已配置完成请打勾</label>
+			<dl class="col-xs-12 u-wx-explain">
+				<dt>温馨提示：</dt>
+				<dd><font class="c-orange1">*</font> 选择自有微信账户收款，务必尽快完成以上设置避免影响您的客户的正常下单！</dd>
+				<dd><font class="c-orange1">*</font> 配置修改系统需要十分钟左右的生效时间， 请务必在下单少的低谷时段操作，或者先切换至微信支付-代销，生效后再切换回微信支付-自有！</dd>
+				<dd><font class="c-orange1">*</font> 操作过程中遇到任何问题， 请联系聚米为谷服务人员协助处理；</dd>
+				<dd><font class="c-orange1">*</font> 以上说明若还不会操作，请点击　　<a href="#">查看视频教程</a></dd>
+			</dl>
+		</div>
+	</div>
+
+
+	<script>
+		shop.wxauth.init();
+	</script>

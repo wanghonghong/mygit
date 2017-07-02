@@ -1,0 +1,30 @@
+<div class="panel-hidden_menu2">
+    <div class="m-search f-mt-m" id="m-search_a2">
+        <label class="u-lb-sm">平台</label>
+        <div class="u-txt col-xs-3">
+            <select class="ipt-txt c-gray1">
+                <option value="1">微信</option>
+            </select>
+        </div>
+        <label class="u-lb-sm">菜单名称</label>
+        <div class="u-txt col-xs-3">
+            <select class="ipt-txt c-gray1" name="menuName2" id="menuName2" style="width: 100%;">
+                <option></option>
+            </select>
+        </div>
+        <label class="u-lb-sm">时间筛选:</label>
+        <div class="u-txt col-xs-3">
+            <select class="ipt-txt c-gray1" id="selectDate" >
+                <option value="A">最近10天</option>
+                <option value="B">最近28天</option>
+            </select>
+        </div>
+        <div class="u-btn-box1">
+            <input type="button" class="u-btn-mddkorg u-w" onclick="dataAnalysis.menu.lineAnalysis($('#selectDate').val(),$('#menuName2').val())" value="查询" />
+        </div>
+        </div>
+    <div class="f-mt-m f-cb">
+        <!--线性数据分析-->
+        <div id="chartmenuanalyse" style="width: 1110px; height: 440px;"></div>
+    </div>
+</div>

@@ -1,0 +1,33 @@
+<!-- <img src="css/pc/img/jm-indlp.png" style="padding-left: 300px;padding-top: 200px;">-->
+<ul class="table-hander">
+    <li>时间</li>
+    <li>支出分类</li>
+    <li style="width: 15%;">订单编号/付款流水号</li>
+    <li>支付平台</li>
+    <li>支付方式</li>
+    <li>金额</li>
+    <li>收款人</li>
+    <li>状态</li>
+</ul>
+<div class="table-body">
+    {%if items.length>0 %}
+    {% for item in items %}
+    <ul class="table-container">
+        <li class="f-tl" style="padding: 0 30px;">{{item.date}}</li>
+        <li>{{item.typeName}}</li>
+        <li class="f-wb-ba" style="width: 15%; padding-left: 10px; padding-right: 10px;">
+            {{item.orderNum}} / <br> {{item.transactId}}
+        </li>
+        <li>{{item.plat}}</li>
+        <li>{{item.payWay}}</li>
+        <li>{{(item.money/100) | shortNumber(2)}}</li>
+        <li class="f-tl" style="width: 12%; padding-left: 30px;"><span>{{item.nickName | default('--',true)}}</span><br><span>{{item.userName  | default('--',true)}}</span><br><span>{{item.phoneNum  | default('--',true)}}</span></li>
+        <li>{{item.evenName}}</li>
+    </ul>
+    {%endfor%}
+    {%else%}
+    <div class="m-jm-err">
+        <img src="{{globalUrl}}/css/pc/img/jm-nodb.png">
+    </div>
+    {%endif%}
+</div>

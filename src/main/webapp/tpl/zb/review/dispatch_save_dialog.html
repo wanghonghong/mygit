@@ -1,0 +1,62 @@
+<!--创建工单begin-->
+<div id="dialoginfo-addorder" class="dialoginfo" style="display: block">
+    <div class="col-xs-12">
+        <label class="u-lb-lg f-ml-l c-black">需求类型</label>
+        <div class="u-txt col-xs-7" style="margin-bottom: 15px; overflow: inherit;">
+            <select id="select_subType" class="ipt-txt " style="width: 100%; overflow: inherit;">
+                <option value="1">客服增单</option>
+                <option value="2">初次使用</option>
+                <option value="3">软件模块</option>
+                <option value="4">内容服务</option>
+            </select>
+        </div>
+        <form id="form1">
+            <label class="u-lb-lg f-ml-l c-black">商家姓名</label>
+            <div class="u-txt col-xs-7" style="margin-bottom: 15px;">
+                <input type="text" name="businessName" id="businessName" class="ipt-txt" placeholder="请输入商家姓名" />
+            </div>
+            <label class="u-lb-lg f-ml-l c-black">联系手机</label>
+            <div class="u-txt col-xs-7" style="margin-bottom: 15px;">
+                <input type="text" name="phoneNumber" id="phoneNumber" class="ipt-txt" placeholder="请输入联系手机" />
+            </div>
+            <label class="u-lb-lg f-ml-l c-black">公司名称</label>
+            <div class="u-txt col-xs-7" style="margin-bottom: 15px;">
+                <input type="text" name="companyName" id="companyName" class="ipt-txt" placeholder="请输入公司名称" />
+            </div>
+            <label class="u-lb-lg f-ml-l c-black f-mr-m">公司地址</label>
+            <div class="f-fl distpicker" >
+                <div class="u-txt" style="width: 98px;">
+                    <select id="province" class="ipt-txt c-gray1">
+                    </select>
+                </div>
+                <div class="u-txt">
+                    <span class="line" style="width: 19px;">-</span>
+                </div>
+                <div class="u-txt" style="width: 98px;">
+                    <select id="city" class="ipt-txt c-gray1">
+                    </select>
+                </div>
+                <div class="u-txt">
+                    <span class="line" style="width: 19px;">-</span>
+                </div>
+                <div class="u-txt" style="width: 98px;">
+                    <select id="district" class="ipt-txt c-gray1">
+                    </select>
+                </div>
+            </div>
+            <label class="u-lb-lg f-ml-l c-black">详细地址</label>
+            <div class="u-txt col-xs-7 f-mt-xs" style="margin-bottom: 15px;">
+                <textarea name="address" id="address" class="ipt-txt txtarea" placeholder="" style="height: 60px;"></textarea>
+            </div>
+            <label class="u-lb-lg f-ml-l c-black">需求留言</label>
+            <div class="u-txt col-xs-7" style="margin-bottom: 15px;">
+                <textarea name="need" id="need" class="ipt-txt txtarea" maxlength="120" onKeyUp="jumi.wordNumber('need',120)" onblur="jumi.wordNumber('need',120)" placeholder=""></textarea>
+                <span class="number c-gray font-s12"><span id="need1" style="color:#f38925"> 0</span>/120</span>
+            </div>
+        </form>
+        <div class="u-btn-box1">
+            <input type="button" id="saveDispatch" class="u-btn-mdlightred" value="录入完成" />
+        </div>
+    </div>
+</div>
+<!--end-->

@@ -1,0 +1,28 @@
+
+{% if items.length>0 %}
+{%for item in items%}
+<ul class="table-container f-pd">
+    <li>
+        {{item.createDate}}
+    </li>
+    <li>{{item.companyName}}</li>
+    <li>{{item.businessName}} <br /> {{item.phoneNumber}}</li>
+    <li class="f-tl" style="width: 25%;">{{item.province}}-{{item.city}}-{{item.district}}{{item.address}}</li>
+    <li>总部派单</li>
+    <li>初次使用</li>
+    <li style="width: 15%;">
+        <div class="u-btn-smltgry"> 员工授权 </div>
+        <div class="u-btn-smltgry"> 受理执行 </div>
+    </li>
+</ul>
+<div class="m-message">
+    <img src="{{globalUrl}}/img/pc/service.png"/>
+    <span>总部客服留言</span>
+    <span>{{item.need}}</span>
+</div>
+{%endfor%}
+{%else%}
+<div class="m-jm-err">
+    <img src="{{globalUrl}}/css/pc/img/jm-nodb.png">
+</div>
+{%endif%}

@@ -1,0 +1,101 @@
+<div class="m-search f-mt-m" id="m-search">
+    <label class="u-lb-sm">收货手机</label>
+    <div class="u-txt col-xs-3">
+        <input type="text" class="ipt-txt" id="consigneePhone" name="consigneePhone" placeholder="请输入收货手机" />
+    </div>
+    <label class="u-lb-sm">订单编号</label>
+    <div class="u-txt col-xs-3">
+        <input type="text" class="ipt-txt" id="orderNum" name="orderNum" placeholder="请输入订单编号" />
+    </div>
+    <label class="u-lb-sm">订单日期</label>
+    <div class="u-txt col-xs-3" style="width: 12.3%;padding-right: 10px;">
+        <input type="text" class="ipt-txt" id="orderBeginDate" name="orderBeginDate" placeholder="开始时间" />
+    </div>
+    <span style="width: 5px;display: inline-block;float: left;line-height: 36px;">-</span>
+    <div class="u-txt col-xs-3" style="width: 12.3%;padding-left: 10px;">
+        <input type="text" class="ipt-txt" id="orderEndDate" name="orderEndDate" placeholder="结束时间" />
+    </div>
+    <label class="u-lb-sm">收货姓名</label>
+    <div class="u-txt col-xs-1" style="width: 10%;">
+        <input type="text" class="ipt-txt" id="consigneeName" name="consigneeName" placeholder="请输入姓名" />
+    </div>
+    <label class="u-lb-ssm">昵称</label>
+    <div class="u-txt col-xs-2" style="width: 12.2%;">
+        <input type="text" class="ipt-txt" id="nickname" name="nickname" placeholder="请输入买家昵称" />
+    </div>
+
+    <label class="u-lb-sm">物流方式</label>
+    <div class="u-txt col-xs-3">
+        <select class="ipt-txt" name="d_sendWay" id="d_sendWay" style="width: 100%">
+        </select>
+    </div>
+    <label class="u-lb-sm">购买平台</label>
+    <div class="u-txt col-xs-3">
+        <select class="ipt-txt" name="d_platform" id="d_platform" style="width: 100%"></select>
+    </div>
+    <label class="u-lb-sm">订单类型</label>
+    <div class="u-txt col-xs-3">
+        <select class="ipt-txt" name="orderType" id="orderType" style="width: 100%">
+        </select>
+    </div>
+    <div class="u-btn-box1">
+        <a target="_blank" class="u-btn-mddkbl f-mr-xs" value="导出" onclick="delivery.list.exportDelivery();" >导出</a>
+        <input type="button" class="u-btn-mddkorg u-w" value="查询" onclick="delivery.list.query();"/>
+    </div>
+</div>
+<a class="btn-slide btn-slide1"></a>
+<script type="text/javascript">
+    $(function(){
+        var d_platformList = [{id: "0", text: "全部"}, {id: "1", text: "微信"}, {id: "2", text: "微博"}];
+        var d_sendWayList = [{id:"0", text:"全部"},{id:"1", text:"快递"},{id:"2", text:"快运"},{id:"3", text:"门店自取"}];
+        var d_orderTypeList = [{id:"0", text:"全部"},{id:"1", text:"标准单"},{id:"2", text:"礼品单"}]
+        var defaults = {
+            d_platformList: d_platformList,
+            d_sendWayList:d_sendWayList,
+            d_orderTypeList:d_orderTypeList,
+        };
+        $("#tableBody .m-table-control").each(function(i){
+            console.log(i)
+            $(this).rowspan([1,2,3,4,5]);
+        });
+
+        $(".btn-slide").click(function(){
+            $("#m-search").slideToggle("fast");
+            $(this).toggleClass("btn-slide1"); return false;
+        })
+
+        $("#d_platform").select2({
+            theme: "jumi",
+            data: defaults.d_platformList
+        });
+
+        $("#d_sendWay").select2({
+            theme: "jumi",
+            data: defaults.d_sendWayList
+        });
+
+        $("#orderType").select2({
+            theme: "jumi",
+            data: defaults.d_orderTypeList
+        });
+    })
+
+    $("#orderBeginDate").datetimepicker({
+        showSecond : true,
+        timeFormat : 'hh:mm:ss',
+        dateFormat : 'yy-mm-dd',
+        stepHour : 1,
+        stepMinute : 1,
+        stepSecond : 1
+    });
+    $("#orderEndDate").datetimepicker({
+        showSecond : true,
+        timeFormat : 'hh:mm:ss',
+        dateFormat : 'yy-mm-dd',
+        stepHour : 1,
+        stepMinute : 1,
+        stepSecond : 1
+    });
+
+
+</script>

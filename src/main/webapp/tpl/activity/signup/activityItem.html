@@ -1,0 +1,34 @@
+
+{% for item in items %}
+<ul class="table-container">
+    <li style="width: 12%;">
+        <img class="u-thumbnail-squa" src="{{item.img|default(globalUrl+'/css/pc/img/no_picture.png',ture)}} "/>
+    </li>
+    <li class="f-tl" style="width: 25%; padding: 0 20px;">
+        <p>{{item.activityName}}</p>
+    </li>
+    <li class="f-tl" style="padding-left: 30px;">{{item.createDate}}</li>
+    <li class="f-tl" style="width: 13%;">
+        <span>{{item.startDate}} </span><br /><span>{{item.endDate}}</span>
+    </li>
+    <li>{{item.count}}</li>
+    <li>
+        {% if item.status==0 %}<font>未开始</font> {% elif item.status ==1 %} <font class="c-green">执行中</font> {% elif item.status ==2 %} <font class="c-red">已结束</font> {% endif %}
+    </li>
+    <li style="width: 15%;">
+        {% if item.status==0 %}
+        <div class="u-btn-smltgry" data-id="{{item.id}}" onclick="signup.activity.updataActivity(this)">编辑</div>
+        <div class="u-btn-smltgry" data-id="{{item.id}}" onclick="signup.activity.removeActivity(this)">删除</div>
+        {% elif item.status ==1 %}
+        <div class="u-btn-smltgry dialog-bmdetail"  data-id="{{item.id}}" onclick="signup.index.usersView(this)">查看</div>
+        {% elif item.status ==2 %}
+        <div class="u-btn-smltgry dialog-bmdetail"  data-id="{{item.id}}" onclick="signup.index.usersView(this)">查看</div>
+        {% endif %}
+    </li>
+</ul>
+{% else %}
+<div class="m-jm-err">
+    <img src="{{globalUrl}}/css/pc/img/jm-nodb.png">
+</div>
+
+{% endfor %}

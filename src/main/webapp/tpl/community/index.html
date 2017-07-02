@@ -1,0 +1,186 @@
+
+<!--主模块-->
+<section class="g-bbsbox">
+    <!--左栏内容-->
+    <div class="g-bbsleft">
+        <div class="m-bbsbanner">
+            <!--<div>
+                <img src="css/pc/img/bbsbanner-img1.png" />
+            </div>-->
+            <div id="bannerslider">
+                <ul id="show_pic" style="left:0;">
+                    <li><img src="css/pc/img/shoptlp-img1.png" alt="" title="" /></li>
+                    <li><img src="css/pc/img/shoptlp-img2.png" alt="" title="" /></li>
+                    <li><img src="css/pc/img/shoptlp-img3.png" alt="" title="" /></li>
+                </ul>
+                <ul id="icon_num">
+                    <li class="active"><i></i></li>
+                    <li><i></i></li>
+                    <li><i></i></li>
+                </ul>
+            </div>
+        </div>
+        <div class="m-leftbox">
+            <div class="m-bbslistbox">
+                <div class="top-column">
+                    <span>今日：15689 人</span>
+                    <span>昨日：156895 人</span>
+                    <span>发布帖子：{{postNum}}</span>
+                    <span>欢迎：<strong>{{nickname}}</strong></span>
+                </div>
+                <div class="m-bbs-table">
+                    <ul class="table-header" id="postMenu">
+                        <li><a class="active"  onclick="community.index.allPost()" >全部</a></li>
+                        <li><a data-index=2 onclick="community.index.hotPost()">热门</a></li>
+                        <li><a  data-index=3 onclick="community.index.jingPost()">精华</a></li>
+                        <li>
+                            <div class="u-txt">
+                                <select class="ipt-txt c-gray1">
+                                    <option value="1">产品广告</option>
+                                    <option value="2">店铺通知</option>
+                                    <option value="3">微商城玩法</option>
+                                </select>
+                            </div>
+                        </li>
+                        <li class="f-fr">
+                            <div class="u-select-control">
+                                <input type="text" class="" name="goodsName" id="searchPost" placeholder="用户 / 帖子" />
+                                <i class="iconfont icon-belowtriangle  after-border"></i>
+                                <i class="iconfont icon-search" id="searchBtn" onclick="community.index.searchPost()"></i>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="table-body" id="zbPostList">
+                    </div>
+                    <div id="pageToolbar" class="pagination f-tc f-mt-m">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!--/左栏内容-->
+    <!--右栏内容-->
+    <div class="g-bbsright">
+        <div class="u-btn-lgdkorg u-btn-posting" onclick="community.index.post()"><i class="iconfont icon-posting"></i><span>发帖</span></div>
+        <div class="m-timebox">
+            <div class="u-btn-lgdkorg">
+                <span>{{week}}<br />{{date}}</span>
+                <em>已签到 <font>1259008</font> 人</em>
+            </div>
+            <div class="u-signbox">
+                <div class="u-btnsign f-mb-xs">签到</div>
+                <div class="u-btnsign">抽奖</div>
+            </div>
+        </div>
+        <div class="m-rightlistbox f-mb-m">
+            <h2>公众号推荐</h2>
+            <div class="box-body">
+                <ul class="m-apprecommend">
+                    <li><img src="css/pc/img/jmtool1.png" /><span title="糗事百科"><a href="#">糗事百科</a></span></li>
+                    <li><img src="css/pc/img/music_disc.png" /><span title="星座大全"><a href="#">星座大全</a></span></li>
+                    <li><img src="css/pc/img/shopimg2.png" /><span title="Keep"><a href="#">Keep</a></span></li>
+                    <li><img src="css/pc/img/u-btn-weixin.png" /><span title="装逼神器"><a href="#">装逼神器</a></span></li>
+                    <li><img src="css/pc/img/jmtt-big.png" /><span title="哗哩哗哩动画动画"><a href="#">哗哩哗哩动画动画</a></span></li>
+                    <li><img src="css/pc/img/addti-tp.png" /><span title="优酷视频"><a href="#">优酷视频</a></span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="m-rightlistbox f-mb-m">
+            <h2>最新活动</h2>
+            <div class="box-body">
+                <div class="m-newsactivity">
+                    <!--<img src="css/pc/img/s-newshop-lt-img1.jpg" />-->
+                    <div class="m-rollbanner">
+                        <ol>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ol>
+                        <ul>
+                            <li><img src="css/pc/img/s-newshop-lt-img1.jpg" /></li>
+                            <li><img src="css/pc/img/s-newshop-lt-img2.jpg" /></li>
+                            <li><img src="css/pc/img/s-newshop-lt-img3.jpg" /></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="m-rightlistbox f-mb-s">
+            <h2>热门话题</h2>
+            <div class="box-body">
+                <ul class="m-hottopic">
+                    {%for post in jmPosts%}
+                    <li><a href="#" onclick="community.index.showPost('{{post.id}}')">{{post.title}}</a></li>
+                    {%endfor%}
+                    <!--<li><a href="#">阿里泰国开课教电商</a></li>-->
+                    <!--<li><a href="#">电商与新经济业态</a></li>-->
+                    <!--<li><a href="#">电商贷款平台有哪些</a></li>-->
+                    <!--<li><a href="#">聚米为谷网络科技的产品新动态</a></li>-->
+                    <!--<li><a href="#">聚米为谷网络科技的产品新动态、新姿势、新创意</a></li>-->
+                    <!--<li><a href="#">微商城三级分销赚钱模式</a></li>-->
+                    <!--<li><a href="#">微商城怎么推广</a></li>-->
+                </ul>
+            </div>
+        </div>
+        <div class="m-rightlistbox f-mb-m">
+            <h2>聚米先锋用户</h2>
+            <div class="box-body">
+                <ul class="m-jmvanuser">
+                    <li title="例外">
+                        <img src="css/pc/img/shopimg2.png" />
+                        <p>例外</p>
+                    </li>
+                    <li title="鬼鬼">
+                        <img src="css/pc/img/s-newshop-lt-img1.jpg" />
+                        <p>鬼鬼</p>
+                    </li>
+                    <li title="小野布谷">
+                        <img src="css/pc/img/s-newshop-lt-img2.jpg" />
+                        <p>小野布谷</p>
+                    </li>
+                    <li title="MEb">
+                        <img src="css/pc/img/s-newshop-lt-img3.jpg" />
+                        <p>MEb</p>
+                    </li>
+                    <li title="传仁袜业">
+                        <img src="css/pc/img/shoptlp-img3.png" />
+                        <p>传仁袜业</p>
+                    </li>
+                    <li title="原叶酒酿">
+                        <img src="css/pc/img/shoptlp-img2.png" />
+                        <p>原叶酒酿</p>
+                    </li>
+                    <li title="美眉你好美眉你好美眉你好">
+                        <img src="css/pc/img/addti-tp.png" />
+                        <p>美眉你好美眉你好美眉你好</p>
+                    </li>
+                    <li title="一叶子">
+                        <img src="css/pc/img/diamondlogo.png" />
+                        <p>一叶子</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="m-rightlistbox f-mb-m">
+            <h2>聚米 APP 下载</h2>
+            <div class="box-body">
+                <div class="m-jmappdown">
+                    <img src="css/pc/img/wem1.png" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/右栏内容-->
+</section>
+<!--/主模块-->
+<script src="js/third-js/rollbanner/rollbanner.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" charset="utf-8">
+    community.index.init();
+    $(function(){
+        $("#u-logo").click(function(){
+            $("#othermemu").toggleClass("z-change");
+        });
+        $(".m-newsactivity").luara({width:"208",height:"143",interval:4000,selected:"seleted"});
+    })
+</script>

@@ -1,0 +1,67 @@
+
+<ul class="table-hander graybg">
+    <li>头像</li>
+    <li>昵称-姓名-手机号</li>
+    <li>角色</li>
+    <li>操作</li>
+</ul>
+{% for item in items %}
+<ul class="table-container">
+    <li><img src="{{item.headimgurl}}" class="u-thumbnail-circ" /></li>
+    <li class="f-tl" style="padding-left: 55px;">
+        <span>{{item.nickname}}</span><br><span>{{item.userName}}</span><br><span>{{item.phoneNumber}}</span>
+    </li>
+    <li>
+        {%if item.agentRole==1 %}
+        代理商1档
+        {%elif item.agentRole==2 %}
+        代理商2档
+        {%elif item.agentRole==3 %}
+        代理商3档
+        {%elif item.agentRole==4 %}
+        代理商4档
+        {%elif item.agentRole==5 %}
+        分销商1档
+        {%elif item.agentRole==6 %}
+        分销商2档
+        {%elif item.agentRole==7 %}
+        分销商3档
+        {%elif item.agentRole==8 %}
+        分享客
+        {%else%}
+        -
+        {%endif%}
+    </li>
+    <li><div class="u-btn-smltgry" onclick="setTopUser('{{item.userId}}','{{lastUserId}}')">设为上级</div></li>
+</ul>
+{%endfor%}
+
+<script>
+    function setTopUser(userId,lastUserId){
+        var url = CONTEXT_PATH + "/customer/setTopUser/"+userId+"/"+lastUserId;
+        $.ajaxJsonGet(url,null,{
+            done:function(res) {
+                if(res.data.code==0){
+                    var dm = new dialogMessage({
+                        type:1,
+                        fixed:true,
+                        msg:res.data.msg,
+                        isAutoDisplay:true,
+                        time:3000
+                    });
+                    dm.render();
+                }else{
+                    var dm = new dialogMessage({
+                        type:2,
+                        title:'操作提醒',
+                        fixed:true,
+                        msg:res.data.msg,
+                        isAutoDisplay:false
+
+                    });
+                    dm.render();
+                }
+            }
+        });
+    }
+</script>

@@ -1,0 +1,86 @@
+<div class="m-search" id="m-search">
+    <label class="u-lb-sm">买家昵称</label>
+    <div class="u-txt col-xs-3">
+        <input type="text" class="ipt-txt" id="nickname" name="nickname" placeholder="请输入昵称" />
+    </div>
+    <label class="u-lb-sm">平台选择</label>
+    <div class="u-txt col-xs-3">
+        <select class="ipt-txt" name="platform" id="platform" style="width: 100%">
+        </select>
+    </div>
+    <!--<label class="u-lb-sm">客服选择</label>
+    <div class="u-txt col-xs-3">
+        <select class="ipt-txt" name="customerWay" id="customerWay" style="width: 100%">
+        </select>
+    </div>-->
+    <label class="u-lb-sm">买家姓名</label>
+    <div class="u-txt col-xs-3">
+        <input type="text" class="ipt-txt" id="consigneeName" name="consigneeName" placeholder="请输入收货姓名" />
+    </div>
+    <label class="u-lb-sm">买家手机</label>
+    <div class="u-txt col-xs-3">
+        <input type="text" class="ipt-txt" id="phoneNumber" name="phoneNumber" placeholder="请输入手机号" />
+    </div>
+    <label class="u-lb-sm">订单日期</label>
+    <div class="u-txt u-txt-date f-ml-m">
+        <i class="iconfont icon-calendar"></i>
+        <input type="text" class="ipt-txt" id="beginDate" name="beginDate" placeholder="开始时间"  style="width: 112px;" />
+    </div>
+    <div class="u-txt">
+        <span class="line" style=" width: 25px;">-</span>
+    </div>
+    <div class="u-txt u-txt-date f-mr-m" >
+        <i class="iconfont icon-calendar"></i>
+        <input type="text" class="ipt-txt" id="endDate" name="endDate" placeholder="结束时间" style="width: 112px;" />
+    </div>
+    <div class="u-btn-box1"><input type="button" class="u-btn-mddkorg u-w" value="查询" onclick="shoppingCart.list.query();" /></div>
+</div>
+<a class="btn-slide btn-slide1"></a>
+<script type="text/javascript">
+    $(function(){
+        var platformList = [{id: "0", text: "全部"}, {id: "1", text: "微信"}, {id: "2", text: "微博"}];
+
+        var sendWayList = [{id:"0", text:"全部"},{id:"1", text:"快递"},{id:"2", text:"快运"},{id:"3", text:"门店自取"}];
+        var defaults = {
+            platformList: platformList,
+            sendWayList:sendWayList,
+        };
+
+        $("#tableBody .m-table-control").each(function(i){
+            console.log(i)
+            $(this).rowspan([1,2,3,4,5]);
+        });
+
+        $(".btn-slide").click(function(){
+            $("#m-search").slideToggle("fast");
+            $(this).toggleClass("btn-slide1"); return false;
+        });
+
+        $("#platform").select2({
+            theme: "jumi",
+            data: defaults.platformList
+        });
+
+        $("#sendWay").select2({
+            theme: "jumi",
+            data: defaults.sendWayList
+        });
+    })
+
+    $("#beginDate").datetimepicker({
+        showSecond : true,
+        timeFormat : 'hh:mm:ss',
+        dateFormat : 'yy-mm-dd',
+        stepHour : 1,
+        stepMinute : 1,
+        stepSecond : 1
+    });
+    $("#endDate").datetimepicker({
+        showSecond : true,
+        timeFormat : 'hh:mm:ss',
+        dateFormat : 'yy-mm-dd',
+        stepHour : 1,
+        stepMinute : 1,
+        stepSecond : 1
+    });
+</script>

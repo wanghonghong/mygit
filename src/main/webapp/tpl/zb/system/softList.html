@@ -1,0 +1,177 @@
+{% for item in items %}
+<ul class="table-container">
+	<li>{{item.id}}</li>
+	<li>{{item.name}}</li>
+	<li>{{item.createDate}}</li>
+	<li style="width: 30%" >
+		<div class="u-btn-smltgry f-mb-xs" onclick="editCD('{{item.id}}','{{item.name}}')">
+			编辑
+		</div>
+		<div class="u-btn-smltgry f-mb-xs" onclick="editRes('{{item.id}}')">
+			菜单授权
+		</div>
+		<div class="u-btn-smltgry f-mb-xs" onclick="setRoleD('{{item.id}}')">
+			角色设置
+		</div>
+		<div class="u-btn-smltgry f-mb-xs" onclick="editRole('{{item.id}}')">
+			权限授权
+		</div>
+	</li>
+	<li>
+		<div class="u-btn-smltgry f-mb-xs" onclick="editUserCenter('{{item.id}}')">
+			会员中心配置
+		</div>
+	</li>
+</ul>
+{% endfor %}
+
+<script>
+	//版本角色设置
+	function setRoleD(softId){
+        var url=CONTEXT_PATH+"/zbSoft/findRole/"+softId;
+        $.ajaxJsonGet(url,null,{
+            "done":function (res) {
+                if (res.code === 0) {
+                    var data = {};
+                    data.softId = softId;
+                    data.items = res.data;
+                    jumi.template('zb/system/softRoleEdit',data,function(tpl){
+                        $("#softRole").empty();
+                        $('#softRole').html(tpl);
+                        popMsg("版本角色编辑","#softRole",666);
+                    });
+                }
+            }
+            });
+
+	}
+
+	//版本菜单
+    function editRes(softId){
+        var treeNodes;
+        var url=CONTEXT_PATH+"/zbSoft/res/0";
+        $.ajaxJsonGet(url,null,{
+            "done":function (res) {
+                if(res.code===0){
+                    treeNodes = res.data;//把后台封装好的简单Json格式赋给treeNodes
+                    var t = $("#area_tree");
+                    t = $.fn.zTree.init(t, setting, treeNodes);
+                    $("#softResId").val(softId);
+                    url = CONTEXT_PATH+"/zbSoft/getResIds/"+softId;
+                    $.get(url, function(data){
+                        if(data.msg!=""){
+                            _setAreaSelect(data.msg,"area_tree");
+                        }
+                    });
+                    popMsg("软件版本资源",'#dialogRes',590);
+                }
+            }
+        })
+    }
+
+    //版本角色菜单
+    function editRole(softId){
+        var url=CONTEXT_PATH+"/zbSoft/findRole/"+softId;
+        $.ajaxJsonGet(url,null, {
+            "done": function (res) {
+                if(res.code == 0){
+                    $("#softRoleId").val(softId);
+                    $("#allRole").empty();
+                    var ipt='固定角色：<div class="u-btn-smltgry f-mb-xs" onclick="getSoftResD('+softId+',2)" data-id="2" >店主</div><br>';
+                    $("#allRole").append(ipt);
+                    for(var i=0;i<res.data.length;i++){
+                        var ipt='<div class="u-btn-smltgry f-mb-xs" onclick="getSoftResD('+softId+','+res.data[i].roleId+')" data-id="'+res.data[i].roleId+'" >'+res.data[i].roleName+'</div> &nbsp;&nbsp;';
+                        $("#allRole").append(ipt);
+					}
+                    popMsg("角色版本编辑","#dialogRole",300);
+				}
+            }
+        });
+	}
+
+	//角色选择菜单弹窗
+	function getSoftResD(softId,roleId) {
+        var treeNodes;
+        var url=CONTEXT_PATH+"/zbSoft/getSoftResIds/"+softId;
+        $.ajaxJsonGet(url,null,{
+            "done":function (res) {
+                if(res.code===0){
+                    treeNodes = res.data;//把后台封装好的简单Json格式赋给treeNodes
+                    var t = $("#role_tree");
+                    t = $.fn.zTree.init(t, setting, treeNodes);
+                    $("#softRoleResId").val(softId);
+                    $("#roleId").val(roleId);
+                    url = CONTEXT_PATH+"/zbSoft/getRoleResIds/"+roleId+"/"+softId;
+                    $.get(url, function(data){
+                        if(data.msg!=""){
+                            _setAreaSelect(data.msg,"role_tree");
+						}
+                    });
+
+                    var elem = $("#light");
+                    memudialog=dialog({
+                        id:'show-dialog565',
+                        width: 555,
+                        title: "角色菜单",
+                        content: elem
+                    });
+                    memudialog.show();
+                    //document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'
+                }
+            }
+        })
+    };
+
+
+    var _setAreaSelect=function (str,id) {
+        var pnodes = "";
+        var treeObj = $.fn.zTree.getZTreeObj(id);
+        if (str!=null&&str!="" &&str!=="-1") { //排除 未选地区统一运费模板
+            var nodesArr = str.split(",");
+            for (var i = 0, l = nodesArr.length; i < l; i++) {
+                var node = treeObj.getNodeByParam("id", nodesArr[i], null);
+                treeObj.checkNode(node, true, false, false);
+                var temp = nodesArr[i].substring(2, nodesArr[i].length);
+                if (temp === "0000") {
+                    var parentnode = treeObj.transformToArray(node);
+                    for (var j = 0, num = parentnode.length; j < num; j++) {
+                        pnodes += parentnode[j].id + ",";
+                    }
+                }
+            }
+            if (pnodes.length > 0) {
+                var unsel = $("#unselectednodes").text();
+                pnodes = pnodes.substring(0, pnodes.length - 1);
+                var newval = _.difference(pnodes.split(","), nodesArr);
+                var temp = newval.join(",");
+                unsel += temp;
+                $("#unselectednodes").text("");
+                $("#unselectednodes").text(unsel);
+            }
+        }
+    }
+
+    //会员中心菜单配置
+    function editUserCenter(softId){
+        var treeNodes;
+        var url=CONTEXT_PATH+"/zbSoft/getUserCenterFuns/1";
+        $.ajaxJsonGet(url,null,{
+            "done":function (res) {
+                if(res.code===0){
+                    treeNodes = res.data;//把后台封装好的简单Json格式赋给treeNodes
+                    var t = $("#funs_tree");
+                    t = $.fn.zTree.init(t, setting, treeNodes);
+                    $("#useCenterSoftId").val(softId);
+					url = CONTEXT_PATH+"/zbSoft/findUserCenterFuns/"+softId;
+                    $.get(url, function(data){
+                        if(data.msg!=""){
+                            _setAreaSelect(data.msg,"funs_tree");
+                        }
+                    });
+                    popMsg("软件版本资源",'#useCenterTreeDialog',590);
+                }
+            }
+        });
+	}
+
+</script>

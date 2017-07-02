@@ -1,0 +1,93 @@
+<style type="text/css">
+    .ui-datepicker td {
+        border: 0;
+        padding: 2px;
+    }
+    .hideD{
+        display:none;
+    }
+    .manage .form-group label {
+        font-size: 14px;
+    }
+    .manage div .col-xs-12{
+        padding-left: 0;
+    }
+    .m-jm-table{
+        min-height: 0;
+    }
+    .u-cb label{
+        top:0;
+    }
+</style>
+<div class=""id="vapp">
+    <div class="m-search" id="panel">
+        <label class="u-lb-sm">姓名</label>
+        <div class="u-txt col-xs-3">
+            <input type="text" class="ipt-txt" placeholder="请输入姓名" name="name" id="name"  />
+        </div>
+        <label class="u-lb-sm">昵称</label>
+        <div class="u-txt col-xs-3">
+            <input type="text" class="ipt-txt" placeholder="请输入昵称" name="nickname" id="nickname"  />
+        </div>
+        <label class="u-lb-sm">关注时间</label>
+        <div class="u-txt u-txt-date f-ml-m">
+            <i class="iconfont icon-calendar"></i>
+            <input type="text" class="ipt-txt" id="startTime"  placeholder="开始时间" style="width: 112px;" name="startTime" />
+        </div>
+        <div class="u-txt">
+            <span class="line" style=" width: 25px;">-</span>
+        </div>
+        <div class="u-txt u-txt-date">
+            <i class="iconfont icon-calendar"></i>
+            <input type="text"  class="ipt-txt" id="endTime"  placeholder="结束时间" style="width: 112px;"id="endTime" />
+        </div>
+        <div class="f-cb"></div>
+        <label class="u-lb-sm">手机</label>
+        <div class="u-txt col-xs-3">
+            <input type="text" class="ipt-txt" placeholder="请输入手机" name="phoneNum" id="phoneNum" />
+        </div>
+
+        <label class="u-lb-sm">性别</label>
+        <div class="u-txt col-xs-3">
+            <select class="ipt-txt c-gray1" id="sex"  name="sex"  >
+                <option value="">全部</option>
+                <option value="1">男</option>
+                <option value="2">女</option>
+            </select>
+        </div>
+        <div class="f-cb"></div>
+        <div class="form-group" id="customer_content">
+
+        </div>
+        <div class="u-btn-box1" >
+            <input type="button" class="u-btn-mddkorg u-w" value="查询" onclick="oldFans.query()"  />
+        </div>
+    </div>
+    <a class="btn-slide btn-slide1"></a>
+    <div class="m-person-totle1 f-mt-m">老粉丝：<span id="count"></span>人</div>
+    <div class="m-jm-table f-mt-m" style="overflow: visible;">
+        <div class="panel-hidden" style="overflow: visible;">
+            <ul class="table-hander">
+                <li style="width: 13%;">头像</li>
+                <li style="width: 15%;">昵称 - 姓名 - 手机</li>
+                <li>营销状态</li>
+                <li>关注时间</li>
+                <li>上下级</li>
+                <li>最后购买</li>
+                <li style="width: 15%;">微操作</li>
+                <!--<li>回复</li>-->
+            </ul>
+            <div class="table-body" id="table-body" style="overflow: visible;">
+
+            </div>
+        </div>
+        <div class="clearfix margin-bottom-xl">
+            <div id="Pagination1" class="pagination"><!-- 这里显示分页 --></div>
+        </div>
+    </div>
+</div>
+<div id="dialoginfo33" class="dialoginfo dhk" style="display: none;"></div>
+<script type="text/javascript">
+    oldFans.init();
+    ImInfo.init();
+</script>

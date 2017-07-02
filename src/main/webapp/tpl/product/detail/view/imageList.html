@@ -1,0 +1,20 @@
+
+{% if subEntry and  subEntry.length>0 %}
+<div class="custom-imageList">
+    {% for item in subEntry %}
+    <div class="imageItem">
+        <img src="{{item.imageUrl}}">
+
+        <div class="custom-hotSpot">
+            {% for spot in item.spotlist %}
+            <div class="hotSpot" style="top:{{spot.y}}%;left: {{spot.x}}%;"></div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% else   %}
+<div class="init-describe">
+    {{name}}
+</div>
+{% endif %}

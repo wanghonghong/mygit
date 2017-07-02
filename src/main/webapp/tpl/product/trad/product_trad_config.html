@@ -1,0 +1,141 @@
+<div id="create_trad">
+<form id="trad_set_form">
+<div class="m-sell-set bg-white" style="margin: 0; margin-bottom: 20px; box-shadow: none;">
+    <div class="sell-set-left c-gray1">
+        <h3 style="padding-left: 15px; margin-top: 0; font-size: 16px;">选择交易模式</h3>
+    </div>
+    <div class="sell-set-right">
+        <div class="col-xs-12" style="padding-left: 60px;">
+            <div class="u-rb">
+                <input type="radio" name="hdxz" id="radioBox1" value="2" checked/>
+                <label for="radioBox1"></label>
+            </div>
+            <label for="radioBox1" class="u-rd-wd c-gray1 f-mr-l">拼团</label>
+            <div class="u-rb">
+                <input type="radio" name="hdxz" id="radioBox2" value="1"/>
+                <label for="radioBox2"></label>
+            </div>
+            <label for="radioBox2" class="u-rd-wd c-gray1 f-mr-l">一元夺宝</label>
+
+        </div>
+    </div>
+</div>
+<!--拼团-->
+<div class="m-sell-set bg-white" style="margin: 0; margin-bottom: 20px; box-shadow: none;">
+    <div class="sell-set-left c-gray1">
+        <h3 style="padding-left: 15px; margin-top: 0; font-size: 16px;">活动详情设置</h3>
+    </div>
+    <div class="sell-set-right">
+        <div class="col-xs-12">
+            <label class="u-lb-sm c-gray1">活动名称</label>
+            <div class="u-txt col-xs-3 f-mb-m">
+                <input type="text" name="action_name" class="ipt-txt c-gray1" placeholder="请输入活动名称" />
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <label class="u-lb-sm c-gray1">选择商品</label>
+            <div class="u-more f-fl f-ml-m dialog-barbox" id="chooseProduct">
+                点击选择<span></span>
+            </div>
+            <div id="chooseProductBox" class="col-xs-6 f-ml-m m-selectbarbox f-t-off1" style="height: 36px; border-color: #f7f7f7; font-size: 14px;">
+
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <label class="u-lb-sm c-gray1">预览效果</label>
+            <div class="col-xs-10 f-mb-m">
+                <div class="u-previewxg">
+                    <img id="xg_preview" src="{{globalUrl}}/css/pc/img/addti-tp.png" class="xg-img" />
+                    <img id="img_position" src="{{globalUrl}}/css/pc/img/pinstyle1.png" class="xg-ys" style="bottom: 0; top: 0;" />
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <label class="u-lb-sm c-gray1 f-pt-m">选择图片样式</label>
+            <div class="col-xs-10 u-selectstyle f-pt-s f-mb-m" id="trad_img_type">
+
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <label class="u-lb-sm c-gray1">选择图片位置</label>
+            <div class="col-xs-10 f-pt-s f-mb-m">
+                <!--<div class="u-rb">-->
+                    <!--<input type="radio" data-positon="right,top" name="weiz" id="radiowz1" value="1" checked>-->
+                    <!--<label for="radiowz1"></label>-->
+                <!--</div>-->
+                <!--<label for="radiowz1" class="u-rd-wd f-mr-l">右上角</label>-->
+                <!--<div class="u-rb">-->
+                    <!--<input type="radio" data-positon="right,bottom" name="weiz" id="radiowz2" value="2">-->
+                    <!--<label for="radiowz2"></label>-->
+                <!--</div>-->
+                <!--<label for="radiowz2" class="u-rd-wd f-mr-l">右下角</label>-->
+                <div class="u-rb">
+                    <input type="radio" data-positon="left,top" name="weiz" id="radiowz3" value="3" checked>
+                    <label for="radiowz3"></label>
+                </div>
+                <label for="radiowz3" class="u-rd-wd f-mr-l">左上角</label>
+                <!--<div class="u-rb">-->
+                    <!--<input type="radio" data-positon="left,bottom"  name="weiz" id="radiowz4" value="4" checked>-->
+                    <!--<label for="radiowz4"></label>-->
+                <!--</div>-->
+                <!--<label for="radiowz4" class="u-rd-wd f-mr-l">左下角</label>-->
+            </div>
+        </div>
+        <div class="col-xs-12 f-mb-s">
+            <label class="u-lb-sm c-gray1">商品拼团价</label>
+            <div class="u-txt col-xs-3">
+                <div class="ipt-txt11" style="width: 100%;">
+                    <i class="icon-lb-word c-gray">元</i>
+                    <input type="text" name="product_price" class="ipt-txt c-gray1" value="" />
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 f-mb-s">
+            <label class="u-lb-sm c-gray1">拼团人数</label>
+            <div class="u-txt col-xs-3">
+                <select class="ipt-txt c-gray1" id="trad_type">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+</form>
+
+<div class="u-btn-box f-mt-xl">
+    <input type="button" class="u-btn-mainlg" value="保存" id="button_save"/>
+</div>
+</div>
+<div id="create_sus" style="display: none;">
+<div class="m-sell-set bg-white" style="margin: 0; margin-bottom: 20px; box-shadow: none;">
+    <div class="sell-set-left c-gray1">
+        <h3 style="padding-left: 15px; margin-top: 0; font-size: 16px;">操作详情</h3>
+    </div>
+    <div class="sell-set-right">
+        <div class="col-xs-12 m-wx-sus">
+            <div class="m-sus-box">
+                <img class="f-fl" src="{{globalUrl}}/css/pc/img/jmtool22.png">
+                <span class="f-pt-m">
+								恭喜您，拼团活动创建成功<br>
+							</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="u-btn-box f-mt-xl">
+    <input type="button" class="u-btn-gymainlg" value="返回" id="btn_return">
+</div>
+</div>
+<script>
+    trad.create.init();
+</script>

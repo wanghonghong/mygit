@@ -1,0 +1,39 @@
+{% for item in groupListJson   %}
+<ul class="table-container">
+    <li style="width:25%;">
+        <div class="g-table">
+            {% if ischeck %}
+            <div class="u-cb1  f-vm">
+                <input type="checkbox" name="groupId" id="groupId{{item.groupId}}" value="{{item.groupId}}">
+                <label class="iconfont icon-avoid" for="groupId{{item.groupId}}"></label>
+            </div>
+            {% else %}
+            <div class="   f-vm">
+
+            </div>
+            {% endif %}
+            <div class="g-table-cell f-vm f-tl">
+                <label for="groupId{{item.groupId}}">{{item.groupName}}</label>
+            </div>
+        </div>
+    </li>
+    <li>{{item.groupSort}}</li>
+    <li>{{item.groupSlogan}}</li>
+    <li>
+        <img class="u-thumbnail-squa" src="{{item.groupImagePath|default(globalUrl+'/css/pc/img/no_picture.png',true)}}">
+    </li>
+    <li>
+        <div class="u-btn-smltgry modifybtn" groupId="{{item.groupId}}"><i class="iconfont icon-modified"></i><span>修改</span></div>
+        <div class="u-btn-smltgry deletebtn" groupId="{{item.groupId}}"><i class="iconfont icon-delete1" style="color: #f5a08b;"></i><span>删除</span></div>
+    </li>
+</ul>
+
+{% else %}
+<div class="f-ma-l f-tc empty-info">
+    <img src="{{globalUrl}}/css/pc/img/icon_error.png" align="absmiddle"/>
+    <span class="f-font-ming-md infoTxt">
+                   暂无分类，请点击左上角'新增分类' 按钮添加属于你的分类哦!
+             </span>
+</div>
+
+{% endfor %}

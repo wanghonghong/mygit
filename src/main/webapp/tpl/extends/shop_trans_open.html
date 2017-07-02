@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+    <title>新建运费模板</title>
+
+  <!--  <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">-->
+    <!-- 聚米组件样式 -->
+    <link rel="stylesheet" type="text/css" href="https://www.jumiweigu.com/system/css/pc/jm-module.css">
+    <!-- 框架样式 -->
+    <link rel="stylesheet" type="text/css" href="https://www.jumiweigu.com/system/css/pc/frame.css" />
+    <!-- 主模块内容样式 -->
+    <link rel="stylesheet" type="text/css" href="https://www.jumiweigu.com/system/css/pc/mian-model.css"/>
+    <!-- 手机壳样式 -->
+    <link rel="stylesheet" type="text/css" href="https://www.jumiweigu.com/system/css/pc/phone-shell.css" />
+    <!-- 商品发布详情 和 商城首页搭建所要用到 wap版样式 -->
+    <link rel="stylesheet" type="text/css" href="https://www.jumiweigu.com/system/css/pc/wapcss/index.css"/>
+    <!-- 店铺管理样式 -->
+    <link rel="stylesheet" type="text/css" href="https://www.jumiweigu.com/system/css/pc/shop-manage.css"/>
+
+    <!-- 聚米新版样式 -->
+    <link rel="stylesheet" type="text/css" href="https://www.jumiweigu.com/system/css/pc/index.css">
+    <!-- 弹窗的内容样式 -->
+    <link rel="stylesheet" type="text/css" href="https://www.jumiweigu.com/system/css/pc/dialog-box.css"/>
+    <!-- 弹窗css -->
+    <link rel="stylesheet" type="text/css" href="https://www.jumiweigu.com/third/util/artDialog/css/ui-dialog.css" />
+    <link rel="stylesheet" type="text/css" href="https://www.jumiweigu.com/system/js/our-js/zxMsgBox/css/zxMsgBox.css" />
+    <!--select2选择样式 -->
+    <link rel="stylesheet" type="text/css" href="https://www.jumiweigu.com/third/util/select2/css/select2.css" />
+    <link rel="stylesheet" type="text/css" href="https://www.jumiweigu.com/third/util/select2/css/select2.jumi.css" />
+    <!--ztree样式 -->
+    <link rel="stylesheet" type="text/css" href="https://www.jumiweigu.com/third/jquery/ztree/v3.3/css/ztreestyle/ztreestyle.css"/>
+</head>
+<body class="body-bg">
+<div class="container" id="container">
+    <div id="transcontent">
+
+    </div>
+</div>
+
+<script>
+     STATIC_URL = localStorage.getItem('URL');
+     CONTEXT_PATH = STATIC_URL;
+     TPL_CACHE =localStorage.getItem('TPL_CACHE');//缓存路径
+     values =getUrlParms_singil();//获URL参数
+    //获取Url参数
+    function getUrlParms_singil(url) {
+        if (!url) {
+            url = location.search.substring(1);
+        } else {
+            url = url.substr(url.indexOf('?') + 1);
+        }
+        var args = new Object();   // 声明并初始化一个 "类"
+        // 获得地址(URL)"?"后面的字符串.
+        var query = decodeURI(url);
+        var pairs = query.split("&");  // 分割URL(别忘了'&'是用来连接下一个参数)
+        for (var i = 0; i < pairs.length; i++) {
+            var pos = pairs[i].indexOf('=');
+            if (pos == -1) continue; // 它在找有等号的 数组[i]
+            var argname = pairs[i].substring(0, pos); // 参数名字
+            var value = pairs[i].substring(pos + 1);  // 参数值
+            // 以键值对的形式存放到"args"对象中
+            args[argname] = decodeURI(value);
+        }
+        return args;
+    }
+</script>
+
+<script src="https://www.jumiweigu.com/third/jquery/jquery-1.11.0.js" type="text/javascript" charset="utf-8"></script>
+<!--前端模版引擎 -->
+
+<script src="https://www.jumiweigu.com/third/framework/nunjucks/nunjucks.js" type="text/javascript" charset="utf-8"></script>
+<!--数据渲染 -->
+<script src="https://www.jumiweigu.com/third/framework/underscore/underscore.js" type="text/javascript" charset="utf-8"></script>
+<!-- 弹窗插件 -->
+<script src="https://www.jumiweigu.com/third/util/artDialog/js/dialog.js" type="text/javascript" charset="utf-8"></script>
+
+
+<script src="https://www.jumiweigu.com/system/js/our-js/common.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://www.jumiweigu.com/system/js/our-js/jmClient.js" type="text/javascript" charset="utf-8"></script>
+<!--zree-->
+<script src="https://www.jumiweigu.com/third/jquery/ztree/v3.3/js/jquery.ztree.core-3.5.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://www.jumiweigu.com/third/jquery/ztree/v3.3/js/jquery.ztree.excheck-3.5.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://www.jumiweigu.com/system/js/busi-js/pc/transTemp/trans_temp.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://www.jumiweigu.com/system/js/busi-js/pc/system/zTreeCheck.js" type="text/javascript" charset="utf-8"></script>
+<!--zree_end-->
+<script src="https://www.jumiweigu.com/third/framework/nunjucks/nunjucks-extends.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://www.jumiweigu.com/system/js/our-js/jumi.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://www.jumiweigu.com/system/js/busi-js/pc/product/product_transtemplate.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- 上下文路径 -->
+<script type="text/javascript" charset="utf-8">
+
+
+
+    product.transtemplate.shop_trans_inneropen();
+
+</script>
+
+</body>
+</html>

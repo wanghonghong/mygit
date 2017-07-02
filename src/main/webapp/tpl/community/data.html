@@ -1,0 +1,33 @@
+<style>
+    .order-number{
+        border-top: 1px solid #f0f0f0;
+        color: #4b4b4b;
+    }
+    .order-number span{
+        color: #6b6b6b;
+    }
+</style>
+<!--主模块-->
+<section class="g-bbsbox">
+    <div class="m-bbsbox f-mt-m f-pt-m f-pb-m" style="min-height: 625px;">
+        <div class="m-tab">
+            <ul>
+                <li class="z-sel" id="tabcontent_1" data-index="1" data-tpl-name="/community/data_basic" data-url="/community">基本资料</li>
+                <li id="tabcontent_2" data-index="2"data-tpl-name="/community/data_point" data-url="">我的积分</li>
+                <li id="tabcontent_3" data-index="3" data-tpl-name="/community/data_post" data-url="">我的帖子</li>
+            </ul>
+        </div>
+        <div id="content"> </div>
+    </div>
+</section>
+<!--/主模块-->
+<script type="text/javascript" charset="utf-8">
+    community.data.init();
+    $(function(){
+        $("#u-logo").click(function(){
+            $("#othermemu").toggleClass("z-change");
+        });
+        $(".panel-hidden").hide().eq(0).show();
+
+    })
+</script>

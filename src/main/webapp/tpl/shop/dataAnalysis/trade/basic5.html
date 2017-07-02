@@ -1,0 +1,31 @@
+<div class="panel-hidden_t3">
+    <div class="f-fr f-mt-m font-s12" style="margin-right: 60px;">
+        <label class="u-lb-sm f-pr-s" style="line-height: 30px; color: #F9A242; letter-spacing: 2px;"><b>平台筛选:</b></label>
+        <div class="u-txt f-mb-zero" style="width: 90px;">
+            <select class="ipt-txt c-gray1" style="height: 30px; line-height: 30px;" id="platForm3" >
+                <option value="1">微信</option>
+                <option value="2">微博</option>
+            </select>
+        </div>
+        <label class="u-lb-sm f-pr-s" style="line-height: 30px; color: #F9A242; letter-spacing: 2px;"><b>时间筛选:</b></label>
+        <div class="u-txt f-mb-zero" style="width: 90px;">
+            <select class="ipt-txt c-gray1" style="height: 30px; line-height: 30px;" id="selectDate">
+                <option value="A">最近10天</option>
+                <option value="B">最近28天</option>
+            </select>
+        </div>
+        <input type="button" class="u-btn-mddkorg f-fl f-ml-m" onclick="dataAnalysis.trade.lineAnalysis($('#selectDate').val())" value="查询" style="font-size: 12px; line-height: 28px;" />
+    </div>
+    <div></div>
+    <div class="f-pt-m f-cb">
+        <!--线性数据分析-->
+        <div id="chartbuyanalyse" style="width: 1110px; height: 440px;"></div>
+    </div>
+    </br>
+    <hr style="border:2px double#e86d74 ;" />
+    </br>
+    <div class="f-mt-m">
+        <!--线性数据分析-->
+        <div id="chartMoneyanalyse" style="width: 1110px; height: 440px;"></div>
+    </div>
+</div>

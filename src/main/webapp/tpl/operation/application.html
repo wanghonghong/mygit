@@ -1,0 +1,161 @@
+<style>
+    /*消除外框begin*/
+    .g-content {
+        width: auto;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+    /*end*/
+    .fsvs{
+        height:100%;
+        width:100%;
+        position:fixed;
+        top:0;
+        left:0;
+        overflow:hidden;
+    }
+    .fsvs #fsvs-body{
+        -webkit-backface-visibility:hidden;
+        -webkit-perspective:1000;
+        position:absolute;
+        top:0;
+        left:0;
+        z-index:1;
+        height:100%;
+        width:100%;
+        min-width: 480px;
+    }
+    .fsvs #fsvs-body>*{
+        height:100%;
+        width:100%;
+        overflow:hidden;
+        -webkit-backface-visibility:hidden;
+        -webkit-perspective:1000;
+    }
+    .fsvs.demo #fsvs-body>.slide{
+        position: relative;
+        overflow: hidden;
+        padding-top: 93px;
+        text-align:center;
+    }
+    .fsvs.demo #fsvs-body>.slide img{
+        max-width:100%;
+        height:auto;
+    }
+    .fsvs.demo #fsvs-body>.slide span{
+        display: inline-block;
+        position: absolute;
+        left: 50%;
+        margin-top: 14%;
+        width: 27%;
+        margin-left: -13%;
+        max-width: 370px;
+    }
+    .fsvs.demo #fsvs-body>.slide span img{
+        width: 47%;
+        max-width: 172px;
+        margin-right: 0.3%;
+    }
+    .fsvs.demo #fsvs-body>.slide .slide-first-2{
+        display: none;
+    }
+
+    .fsvs.demo #fsvs-body>.slide.nth-class-1{
+        background-color: #ffffff;
+    }
+    .fsvs.demo #fsvs-body>.slide.nth-class-2{
+        background-color: #ffffff;
+    }
+    .fsvs.demo #fsvs-body>.slide.nth-class-3{
+        background-color: #ffffff;
+    }
+    .fsvs.demo #fsvs-body>.slide.nth-class-4{
+        background-color: #fffbf5;
+    }
+    .fsvs.demo #fsvs-body>.slide.nth-class-5{
+        background-color: #ffffff;
+    }
+    @media only screen and (min-width:1600px ) {
+        .fsvs.demo #fsvs-body>.slide:first-child {
+            background: url({{globalUrl}}/css/pc/img/fsvs-firstbg.png) repeat-x 0 93px;
+        }
+        .fsvs.demo #fsvs-body>.slide img{
+            width:1600px;
+            margin: 0 auto;
+        }
+        .fsvs.demo #fsvs-body>.slide span{
+            margin-left: -180px;
+            margin-top: 230px;
+        }
+        .fsvs.demo #fsvs-body>.slide .slide-first-1{
+            display: none;
+        }
+        .fsvs.demo #fsvs-body>.slide .slide-first-2{
+            display: block;
+        }
+    }
+</style>
+<!--主模块-->
+<div id="fsvs-body">
+    <div class="slide">
+        <div>
+                <span>
+                    <img src="{{globalUrl}}/css/pc/img/personal-join.png" onclick="_getPJoin()" />
+                    <img src="{{globalUrl}}/css/pc/img/company-join.png" onclick="_getCJoin()"/>
+                </span>
+            <img class="slide-first-2" src="{{globalUrl}}/css/pc/img/fsvs-img1.png"/>
+            <img class="slide-first-1" src="{{globalUrl}}/css/pc/img/fsvs-img1s.png"/>
+        </div>
+    </div>
+    <div class="slide">
+        <div><img src="{{globalUrl}}/css/pc/img/fsvs-img2.png"/></div>
+    </div>
+    <div class="slide">
+        <div><img src="{{globalUrl}}/css/pc/img/fsvs-img3.png"/></div>
+    </div>
+    <div class="slide">
+        <div><img src="{{globalUrl}}/css/pc/img/fsvs-img4.png"/></div>
+    </div>
+    <div class="slide">
+        <div><img src="{{globalUrl}}/css/pc/img/fsvs-img5.png"/></div>
+    </div>
+</div>
+<input type="hidden" id="phoneNumber" value="{{jmJoin.phoneNumber}}" />
+<input type="hidden" id="roles" value="{{jmJoin.roles}}" />
+<!--/主模块-->
+<!-- fsvs begin -->
+<script src="{{THIRD_URL}}/third/jquery/fsvs/jquery.swipe-events.js"></script>
+<script src="{{THIRD_URL}}/third/jquery/fsvs/fsvs.js"></script>
+<script src="{{THIRD_URL}}/third/jquery/fsvs/main.js"></script>
+<script src="{{THIRD_URL}}/third/jquery/fsvs/i8.js" charset="utf-8" async="true"></script>
+<!--end-->
+<script>
+    $(function(){
+        $("#u-logo").click(function(){
+            $("#othermemu").toggleClass("z-change");
+        })
+    });
+    var _getPJoin = function () {
+        var data = {};
+        var joinVoUrl = CONTEXT_PATH + "/join/apply/2";
+        $.ajaxJsonGet(joinVoUrl, null, {
+            "done": function (res) {
+                data.jmJoin = res.data;
+                jumi.template('operation/personal_join',data,function(tpl){
+                    $('#operationBody').empty();
+                    $('#operationBody').html(tpl);
+                });
+            }
+        })
+    }
+    var _getCJoin = function () {
+        var phoneNumber = $('#phoneNumber').val();
+        var data = {
+            phoneNumber:phoneNumber
+        }
+        jumi.template('operation/company_join',data,function(tpl){
+            $('#operationBody').empty();
+            $('#operationBody').html(tpl);
+        });
+    }
+</script>

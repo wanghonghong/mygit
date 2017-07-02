@@ -1,0 +1,84 @@
+<div class="m-search" id="m-search">
+    <label class="u-lb-sm">昵称</label>
+    <div class="u-txt col-xs-3">
+        <input type="text" class="ipt-txt" id="nickName_" placeholder="请输入昵称" />
+    </div>
+    <label class="u-lb-sm">地区</label>
+    <div class="u-txt col-xs-3">
+        <select class="ipt-txt" id="area_">
+            <option value="">全部</option>
+            <option value="1">福建省</option>
+            <option value="2">浙江省</option>
+        </select>
+    </div>
+    <label class="u-lb-sm">关注时间</label>
+    <div class="u-txt f-ml-m">
+        <input type="text" class="ipt-txt c-gray1" id="startTime" placeholder="开始时间" style="width: 116px;" />
+    </div>
+    <div class="u-txt">
+        <span class="line" style=" width: 20px;">-</span>
+    </div>
+    <div class="u-txt">
+        <input type="text" class="ipt-txt c-gray1" id="endTime" placeholder="结束时间" style="width: 116px;" />
+    </div>
+
+    <label class="u-lb-sm f-cb">姓名</label>
+    <div class="u-txt col-xs-1" style="width: 11.1%;">
+        <input type="text" class="ipt-txt" id="userName_" placeholder="请输入姓名" />
+    </div>
+    <label class="u-lb-ssm">手机</label>
+    <div class="u-txt col-xs-2" style="width: 11.2%;">
+        <input type="text" class="ipt-txt" id="phoneNumber_" placeholder="请输入手机" />
+    </div>
+    <label class="u-lb-sm">性别</label>
+    <div class="u-txt col-xs-3">
+        <select class="ipt-txt" id="sex_">
+            <option value="">全部</option>
+            <option value="1">男</option>
+            <option value="2">女</option>
+        </select>
+    </div>
+    <label class="u-lb-sm">角色</label>
+    <div class="u-txt col-xs-3">
+        <select class="ipt-txt" id="role_">
+            <option value="">全部</option>
+            <option value="1">1星商家</option>
+            <option value="2">2星商家</option>
+            <option value="3">3星商家</option>
+        </select>
+    </div>
+
+    <label class="u-lb-sm f-cb">代理归属</label>
+    <div class="u-txt col-xs-3">
+        <input type="text" class="ipt-txt" id="agent_" placeholder="请输入代理归属" />
+    </div>
+    <div class="u-btn-box1">
+        <input type="button" class="u-btn-mdemptyred" id="search_btn" value="查询" />
+    </div>
+</div>
+<a class="btn-slide btn-slide1"></a>
+<div class="m-jm-table f-mt-m" >
+    <ul class="table-hander">
+        <li>头像</li>
+        <li style="width: 14%;">姓名-手机</li>
+        <li>角色</li>
+        <li>地区</li>
+        <li style="width: 14%;">代理归属</li>
+        <li>在网店铺</li>
+        <li>经营状态</li>
+        <li>注册时间</li>
+        <li>管理</li>
+    </ul>
+    <div class="table-body" id="businessList">
+    </div>
+    <!--以下是分页-->
+    <div id="businessToolbar" class="pagination f-fr f-mt-m">
+
+    </div>
+    <!--分页end-->
+</div>
+
+<!--/弹窗部分-->
+<script type="text/javascript">
+    business.class.init();
+</script>

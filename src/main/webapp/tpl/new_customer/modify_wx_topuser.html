@@ -1,0 +1,82 @@
+<style>
+    .ui-dialog-body{
+        padding:0 5px 10px;
+    }
+</style>
+<div>
+    <div class="col-xs-12 f-mb-xs" style="padding-left: 0;">
+        <div class="u-txt col-xs-3" style="padding-left: 0;padding-right: 10px;">
+            <input type="text" class="ipt-txt" placeholder="请输入手机号" id="phoneNumber" />
+        </div>
+        <input type="button" class="u-btn-mddkorg dialog-noquery" value="手机号查询" style="padding: 0 20px;" onclick="queryUserD()" />
+    </div>
+    <div class="m-jm-table">
+        <div class="table-body" id="userbody">
+        </div>
+    </div>
+
+	<div class="m-person-totle1 f-mt-m">人数：<span id="count">{{items.length }}</span></div>
+	<div class="m-jm-table" >
+		<ul class="table-hander">
+			<li>头像</li>
+			<li>昵称-姓名-手机号</li>
+			<li>关注时间</li>
+			<li>微平台</li>
+			<li>等级</li>
+		</ul>
+		<div class="table-body">
+			{%if items.length>0%}
+			{% for item in items %}
+			<ul class="table-container">
+				<li><img src="{{item.headimgurl}}" class="u-thumbnail-circ"></li>
+				<li>
+					<span>{{item.nickname}}</span><br><span>{{item.userName}}</span><br><span>{{item.phoneNumber}}</span>
+				</li>
+				<li>{{item.subscribeTime}}</li>
+				<li>微博</li>
+				<li>
+					{{item.levelName}}
+				</li>
+			</ul>
+			{%endfor%}
+			{% else %}
+			<div class="m-jm-err">
+				<img src="{{globalUrl}}/css/pc/img/jm-nodb.png">
+			</div>
+			{%endif%}
+		</div>
+		<div id="pageToolbar" class="pagination f-fr f-mt-m">
+
+		</div>
+	</div>
+
+</div>
+<script>
+	function queryUserD(){
+		var userId = '{{userid}}';
+		var phoneNumber = $("#phoneNumber").val();
+        if(phoneNumber ==false){
+            alert("请输入电话号码！");
+            return;
+        }
+        var params = {
+            phoneNumber:phoneNumber
+        };
+        var newUrl = CONTEXT_PATH+'/commonQrcode/userData';
+        $.ajaxJson(newUrl, params, {
+            "done": function (res) {
+                var data = {
+                    items:res.data,
+                    lastUserId : userId
+                };
+                jumi.template('new_customer/topuser_query',data,function(tpl){
+                    $('#userbody').empty();
+                    $('#userbody').html(tpl);
+                });
+
+            }
+        });
+
+	}
+</script>
+

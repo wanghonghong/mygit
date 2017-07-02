@@ -1,0 +1,63 @@
+<div class="app-config app-fields">
+    <div class="app-field">
+        <div class="control-group">
+            <div class="custom-head">
+                <i class="iconfont icon-left"></i>
+                <span>{{name}}</span>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="app-fields">
+    <div class="app-field">
+        <div class="control-group" style="min-height:0;">
+            {% if voteType==1 %}
+                {% if imageResUrl %}
+                <div class="imageItem">
+                    <img src="{{imageResUrl}}">
+                </div>
+                {% endif %}
+            {% elif voteType==2 %}
+                {% if videoResUrl %}
+                <div class="custom-audio">
+                    <embed src="{{videoResUrl}}"
+                           align="middle" ,
+                           allowFullScreen="true"
+                           allowScriptAccess="always"
+                           type="application/x-shockwave-flash">
+                    </embed>
+                </div>
+                {% endif %}
+            {% elif voteType==3 %}
+                {% if audioResUrl %}
+                <div class="custom-audio">
+                    <div class="audio ">
+                        <div class="audio-box">
+                            <div class="audio-img  f-ml-xs">
+                                <div class="music-box">
+                                    <img class="music_disc" src="{{globalUrl}}/css/pc/img/music_disc.png">
+                                </div>
+                            </div>
+                            <div class="audio-info">
+                                <div class="info-box">
+                                    <i class="iconfont icon-31shengbo f-ml-s f-fl"></i>
+                                    <span>{{audioResName}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            {% endif %}
+        </div>
+    </div>
+    <div class="app-field">
+        <div class="control-group">
+            <div class="custom-richtext">
+                {{detail|safe}}
+            </div>
+        </div>
+    </div>
+</div>

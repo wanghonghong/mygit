@@ -1,0 +1,25 @@
+<div class="m-tab" id="activity-tab">
+    <ul id="activity-tab-ul">
+        {%for item in items%}
+          {%if loop.index==1%}
+          <li data-index="{{loop.index}}" class="z-sel" data-type="{{item.type}}" data-interfaceconfig="{{item.interfaceconfig}}">{{item.teskname}}</li>
+          {%else%}
+          <li data-index="{{loop.index}}" data-type="{{item.type}}" data-interfaceconfig="{{item.interfaceconfig}}">{{item.teskname}}</li>
+          {%endif%}
+        {%endfor%}
+    </ul>
+    <div class="u-select-control">
+        {%if paramsObj.isSearch==1%}
+           <input type="text" name="activity_Name" placeholder="标题">
+        <i class="iconfont icon-belowtriangle  after-border"></i>
+        <i class="iconfont icon-search" id="searchBtn"></i>
+        {%endif%}
+    </div>
+</div>
+<div id="tab_content">
+
+</div>
+<div id="activityPage" class="pagination f-fr f-mt-m"></div>
+<div class="u-btn-box1 f-mt-m">
+    <input type="button" class="u-btn-mddkorg" value="确定" id="activity_btn">
+</div>

@@ -1,0 +1,55 @@
+<!--查询列表-->
+<div class="m-goodsanalyse-list f-mt-m">
+    <div class="analyse-hander"><b>商品信息</b></div>
+    <div class="analyse-body">
+        <ul class="analyse-container">
+            <li>
+                <span>在售商品（件）</span>
+                <b>{{productInfo.up|default(0,true)}}</b>
+            </li>
+            <li>
+                <span>下架商品（件）</span>
+                <b>{{productInfo.down|default(0,true)}}</b>
+            </li>
+            <li>
+                <span>合计商品（件）</span>
+                <b>{{productInfo.count|default(0,true)}}</b>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="m-goodsanalyse-list">
+     <div class="analyse-hander"><b>访问数据</b></div>
+     <div class="analyse-body">
+         <ul class="analyse-container">
+             <li>
+                 <span>被访问数（件）</span>
+                 <b>{{pVisitInfo.pcount|default(0,true)}}</b>
+             </li>
+             <li>
+                 <span>来访人数（人）</span>
+                 <b>{{pVisitInfo.ucount|default(0,true)}}</b>
+             </li>
+             <li>
+                 <span>来访人次（PV）</span>
+                 <b>{{pVisitInfo.pv|default(0,true)}}</b>
+             </li>
+         </ul>
+     </div>
+ </div>
+<!--
+ <div class="m-goodsanalyse-list">
+     <div class="analyse-hander"><b>转化数据</b></div>
+     <div class="analyse-body">
+         <ul class="analyse-container">
+             <li>
+                 <span>销售转化</span>
+                 <b>25</b>
+             </li>
+             <li>
+                 <span>详情页转化率</span>
+                 <b>1</b>
+             </li>
+         </ul>
+     </div>
+ </div>-->

@@ -1,0 +1,30 @@
+{%if items.length>0%}
+{% for item in items %}
+<ul class="table-container" id="massmsg_table_container_{{item.id}}">
+    <li style="width:45%;">
+        <div class="g-table" >
+            <div class="g-table-cell f-vm"  style="width: 90px;">
+                <img class="u-thumbnail-squa" src="{{item.imageUrl}}"/>
+
+            </div>
+            <div class="g-table-cell f-vm f-tl" style="color: #5E5E5E;">
+                {{item.imageTextTile}}
+            </div>
+        </div>
+    </li>
+    <li>{{item.createTime}}</li>
+    <li>
+        <div class="u-rb">
+         <!--   <input type="radio" name="sex" id="radioBox{{item.id}}" onclick="mm.massmsg.mm_xm_click('{{item.id}}');" value="{{item.id}}"  />-->
+            <input type="radio" name="wxradio" id="radioBox{{item.id}}" value="{{item.id}}"  />
+            <label for="radioBox{{item.id}}"></label>
+        </div>
+    </li>
+</ul>
+{%endfor%}
+{%else%}
+<!--<div class="noData">暂无数据</div>-->
+<div class="m-jm-err">
+    <img src="{{globalUrl}}/css/pc/img/jm-nodb.png">
+</div>
+{%endif%}

@@ -1,0 +1,38 @@
+{% if modules.length>0 %}
+{% for module in modules %}
+<ul class="tag-details" id="tag_{{loop.index}}">
+    {% if links.length>0 %}
+    {% for link in links %}
+    {% if module.id == link.parent_id %}
+        {% if link.link_type =='1'and link.type=='view' %}
+        <li class='sort'    link_name='{{link.link_name}}' link_url="{{link.link_url}}" link_key="{{link.link_key}}" link_type="{{link.link_type}}"
+                            type="{{link.type}}" shop_id="{{options.shop_id}}" parent_id="{{link.parent_id}}">
+            {{link.link_name}}
+            <input type='checkbox'/>
+            <label class='iconfont icon-avoid'></label>
+        </li>
+        {% elif link.link_type=='1'and link.type=='click'%}
+        <li class='addgoods-btn event'  link_name='{{link.link_name}}' link_url="{{link.link_url}}" link_key="{{link.link_key}}" link_type="{{link.link_type}}"
+                                        type="{{link.type}}" shop_id="{{options.shop_id}}" parent_id="{{link.parent_id}}">
+            {{link.link_name}}
+            <span></span>
+        </li>
+        {% elif link.link_type=='2'and link.type=='view' %}
+        <li class='addgoods-btn link'   link_name='{{link.link_name}}' link_url="{{link.link_url}}" link_key="{{link.link_key}}" link_type="{{link.link_type}}"
+                                        type="{{link.type}}" shop_id="{{options.shop_id}}" parent_id="{{link.parent_id}}">
+            {{link.link_name}}
+            <span></span>
+        </li>
+        {% elif  link.type=='qrcode' %}
+        <li class='sort qrcode'   link_name='{{link.link_name}}' link_url="{{link.link_url}}" link_key="{{link.link_key}}" link_type="{{link.link_type}}"
+            type="{{link.type}}" shop_id="{{options.shop_id}}" parent_id="{{link.parent_id}}">
+            {{link.link_name}}
+            <label class='iconfont icon-avoid'></label>
+        </li>
+        {% endif %}
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+</ul>
+{% endfor %}
+{% endif %}

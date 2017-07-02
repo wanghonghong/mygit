@@ -1,0 +1,14 @@
+<div target="{{target}}" class="webim-contact-item" target-name="{{target_name}}" road="{{road}}">
+    <div class="webim-avatar-icon">
+        {% if headimgurl!=null&&headimgurl!= ''%}
+            <img class="w100" src="{{headimgurl}}">
+        {% else %}
+            <img class="w100" src="{{staticUrl}}/img/pc/default.png">
+        {% endif %}
+    </div>
+    <span>
+        {{target_name}}
+    </span>
+    <em >{{offLineMsg}}</em>
+    <i data-count="0" class="webim-msg-prompt" count="0" ></i>
+</div>

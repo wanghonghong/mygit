@@ -1,0 +1,420 @@
+	<style>
+		/*查看下载弹窗*/
+		.m-orderinfo-dialog li > div:nth-child(1) {
+			width: 28%;
+		}
+		/*备注*/
+		.m-jm-table .table-body .table-container {
+			position: relative;
+		}
+		.m-btn-layer.layer-2 {
+			top: 5px;
+		}
+		.m-btn-layer.layer-2 span.out {
+			top: 35px;
+		}
+		.m-btn-layer.layer-2 span.iner {
+			top: 35px;
+		}
+		.ui-dialog .ui-dialog-content{
+			padding: 0;
+		}
+	</style>
+
+	<!--主模块-->
+	<!--<section class="g-mn">-->
+		<div class="m-tab f-mb-l" id="m-tab">
+			<ul>
+				<li class="z-sel">创建条码</li>
+				<li>下载条码</li>
+				<li>使用效果</li>
+			</ul>
+		</div>
+		<!--创建条码-->
+		<div class="panel-hidden">
+			<form id="createForm">
+			<div class="m-sell-set" style="margin-right: 0; margin-left: 0px;">
+				<div class="sell-set-left c-gray1">
+					<h3 style="padding-left: 15px;">条码设置</h3>
+				</div>
+				<div class="sell-set-right">
+					<div class="col-xs-12">
+						<label class="u-lb-sm f-fl c-deepgray">选择渠道</label>
+						<div class="col-xs-10 f-pt-xs">
+							<div class="u-btn-smltgry dialog-barbox"><span>点击选择</span></div>
+							<input type="hidden" id="chanUserId" />
+							<div class="m-selectbarbox f-ml-s" style="width: 430px;" id="chanData">
+
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-12 f-mb-m">
+						<label class="u-lb-sm f-fl c-deepgray">指定商品</label>
+						<div class="col-xs-10 f-pt-s">
+							<div class="u-txt f-mb-zero">
+								<div class="u-btn-smltgry dialog-goodsbox"><span>点击选择</span></div>
+								<input type="hidden" id="goodsId" />
+								<div class="m-selectbarbox f-ml-s f-t-off1" style="width: 430px;">
+									<p title="" id="goodsName"></p>
+								</div>
+							</div>
+						</div>
+
+					</div>
+					<div class="col-xs-12 f-mb-xs">
+						<label class="u-lb-sm f-fl c-deepgray">条码名称</label>
+						<div class="u-txt col-xs-7">
+							<input type="text" class="ipt-txt c-gray1" placeholder="" id="qrcodeName"
+								   onKeyUp="mm.picturemsg.picturemss_fontnum('#qrcodeName','#abs_num',40)"
+								   onblur="mm.picturemsg.picturemss_fontnum('#qrcodeName','#abs_num',40)" />
+							<span class="number font-s12" > <span id="abs_num" style="color:#f38925"> 0</span>/40</span>
+						</div>
+					</div>
+					<div class="col-xs-12 f-mb-xs">
+						<label class="u-lb-sm f-fl c-deepgray">条码类型</label>
+						<div class="u-txt col-xs-7">
+							<select class="ipt-txt c-gray1" id="qrcodeType">
+								<option value="1">二维码</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-xs-12 f-mb-xs">
+						<label class="u-lb-sm f-fl c-deepgray">有效日期</label>
+						<div class="f-fl f-pl-m f-pt-s">
+							<div class="u-rb f-mb-zero">
+								<input type="radio" name="rdate" id="radiodate2" value="" />
+								<label for="radiodate2"></label>
+							</div>
+							<label for="radiodate2" class="f-mr-xxl">永久</label>
+							<div class="u-rb f-mb-zero">
+								<input type="radio" name="rdate" id="validType" value="1" checked />
+								<label for="validType"></label>
+							</div>
+							<label for="validType">限期</label>
+						</div>
+
+						<div class="u-txt f-ml-m">
+							<input type="text" class="ipt-txt c-gray1" placeholder="" id="startTime" style="width:154px;" />
+						</div>
+						<div class="u-txt">
+							<span class="line" style="width: 20px;">-</span>
+						</div>
+						<div class="u-txt">
+							<input type="text" class="ipt-txt c-gray1" placeholder="" id="endTime" style="width: 154px;" />
+						</div>
+					</div>
+					<div class="col-xs-12">
+						<label class="u-lb-sm f-fl c-deepgray">备注说明</label>
+						<div class="u-txt col-xs-7">
+							<textarea id="remark" class="ipt-txt txtarea" placeholder=""
+									  onKeyUp="mm.picturemsg.picturemss_fontnum('#remark','#abs_num1',60)"
+									  onblur="mm.picturemsg.picturemss_fontnum('#remark','#abs_num1',60)"></textarea>
+							<span class="number font-s12" > <span id="abs_num1" style="color:#f38925"> 0</span>/60</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			</form>
+			<div class="u-btn-box f-mt-xl">
+				<input type="button" class="u-btn-mainlg" value="生成条码" onclick="channel.qrcode.addGoodsQrcode();" />
+			</div>
+		</div>
+		<!--/创建条码-->
+		<!--下载条码-->
+		<div class="panel-hidden">
+			<div class="m-search" id="m-search">
+				<label class="u-lb-sm">条码名称</label>
+				<div class="u-txt col-xs-3">
+					<input type="text" class="ipt-txt" placeholder="请输入条码名称" id="channelName" />
+				</div>
+				<label class="u-lb-sm">截效日期</label>
+				<div class="u-txt u-txt-date f-ml-m">
+					<i class="iconfont icon-calendar"></i>
+					<input type="text" class="ipt-txt c-gray1" placeholder="" style="width: 115px;" id="startEndTime" />
+				</div>
+				<div class="u-txt">
+					<span class="line" style="width: 22px;">-</span>
+				</div>
+				<div class="u-txt u-txt-date">
+					<i class="iconfont icon-calendar"></i>
+					<input type="text" class="ipt-txt c-gray1" placeholder="" style="width: 115px;" id="endEndTime" />
+				</div>
+				<label class="u-lb-sm f-ml-m">创建日期</label>
+				<div class="u-txt u-txt-date f-ml-m">
+					<i class="iconfont icon-calendar"></i>
+					<input type="text" class="ipt-txt c-gray1" placeholder="" style="width: 115px;" id="startCreateTime" />
+				</div>
+				<div class="u-txt">
+					<span class="line" style="width: 22px;">-</span>
+				</div>
+				<div class="u-txt u-txt-date">
+					<i class="iconfont icon-calendar"></i>
+					<input type="text" class="ipt-txt c-gray1" placeholder="" style="width: 115px;" id="endCreateTime" />
+				</div>
+				<div></div>
+				<label class="u-lb-sm">商品名称</label>
+				<div class="u-txt col-xs-3">
+					<input type="text" class="ipt-txt" placeholder="请输入指定商品" id="downProductName" />
+				</div>
+				<label class="u-lb-sm">渠道昵称</label>
+				<div class="u-txt col-xs-3">
+					<input type="text" class="ipt-txt" placeholder="请输入指定渠道" id="downChannelName" />
+				</div>
+				<label class="u-lb-sm">使用状态</label>
+				<div class="u-txt col-xs-3">
+					<select class="ipt-txt c-gray1" id="downFansType" >
+						<option value="0">全部</option>
+						<option value="1">无粉</option>
+						<option value="2">有粉</option>
+					</select>
+				</div>
+				<div class="u-btn-box1">
+					<input type="button" class="u-btn-mddkorg u-w" value="查询" onclick="channel.qrcode.downListData()" />
+				</div>
+			</div>
+			<a class="btn-slide btn-slide1"></a>
+			<div class="m-jm-table f-mt-m">
+				<ul class="table-hander">
+					<li>头像</li>
+					<li>渠道商</li>
+					<li style="width: 12%;">条码名称</li>
+					<li style="width: 11%;">指定商品</li>
+					<li style="width: 8%;">类型</li>
+					<li>创建日期</li>
+					<li>截效日期</li>
+					<li>使用状态</li>
+					<li style="width: 12%;">印刷备注</li>
+					<li>操作</li>
+				</ul>
+				<div class="table-body" id="downBody">
+
+				</div>
+				<!--以下是分页效果-->
+				<div id="downToolbar" class="pagination f-tr f-mt-m">
+				</div>
+				<!--分页end-->
+			</div>
+		</div>
+		<!--/下载条码-->
+		<!--使用效果-->
+		<div class="panel-hidden">
+			<div class="m-search" id="m-search2">
+				<label class="u-lb-sm">条码名称</label>
+				<div class="u-txt col-xs-3">
+					<input type="text" class="ipt-txt" placeholder="请输入条码名称" id="effectName" />
+				</div>
+				<label class="u-lb-sm">截效日期</label>
+				<div class="u-txt u-txt-date f-ml-m">
+					<i class="iconfont icon-calendar"></i>
+					<input type="text" class="ipt-txt c-gray1" placeholder="" style="width: 115px;" id="effectStartEndTime" />
+				</div>
+				<div class="u-txt">
+					<span class="line" style="width: 22px;">-</span>
+				</div>
+				<div class="u-txt u-txt-date">
+					<i class="iconfont icon-calendar"></i>
+					<input type="text" class="ipt-txt c-gray1" placeholder="" style="width: 115px;" id="effectEndEndTime" />
+				</div>
+				<label class="u-lb-sm f-ml-m">创建日期</label>
+				<div class="u-txt u-txt-date f-ml-m">
+					<i class="iconfont icon-calendar"></i>
+					<input type="text" class="ipt-txt c-gray1" placeholder="" style="width: 115px;" id="effectStartCreateTime" />
+				</div>
+				<div class="u-txt">
+					<span class="line" style="width: 22px;">-</span>
+				</div>
+				<div class="u-txt u-txt-date">
+					<i class="iconfont icon-calendar"></i>
+					<input type="text" class="ipt-txt c-gray1" placeholder="" style="width: 115px;" id="effectEndCreateTime" />
+				</div>
+				<label class="u-lb-sm">指定商品</label>
+				<div class="u-txt col-xs-3">
+					<input type="text" class="ipt-txt" placeholder="请输入指定商品" id ="effectProductName" />
+				</div>
+				<label class="u-lb-sm">指定渠道</label>
+				<div class="u-txt col-xs-3">
+					<input type="text" class="ipt-txt" placeholder="请输入指定渠道" id="effectChannelName" />
+				</div>
+				<label class="u-lb-sm">使用状态</label>
+				<div class="u-txt col-xs-3">
+					<select class="ipt-txt c-gray1" id="effFansType">
+						<option value="0">全部</option>
+						<option value="1">无粉</option>
+						<option value="2">有粉</option>
+					</select>
+				</div>
+				<div class="u-btn-box1">
+					<input type="button" class="u-btn-mddkorg u-w" value="查询" onclick="channel.qrcode.effectListData();" />
+				</div>
+			</div>
+			<a class="btn-slide2 btn-slide3"></a>
+			<div class="m-jm-table f-mt-m">
+				<ul class="table-hander">
+					<li>头像</li>
+					<li>渠道商</li>
+					<li style="width: 12%;">条码名称</li>
+					<li style="width: 11%;">指定商品</li>
+					<li style="width: 7%;">类型</li>
+					<li>创建日期</li>
+					<li>截效日期</li>
+					<li>使用状态</li>
+					<li style="width: 12%;">印刷备注</li>
+					<li style="width: 15%;">管理</li>
+				</ul>
+				<div class="table-body" id="effectBody">
+
+				</div>
+				<div class="panel-hid1 f-pt-m">
+					<div class="u-cb">
+						<input type="checkbox" name="" id="checkbox0" value="" />
+						<label class="iconfont icon-avoid" for="checkbox0"></label>
+					</div>
+					<label for="checkbox0" class="font-s12">全选</label>
+					<div class="u-btn-smltgry f-ml-s"><i class="iconfont icon-delete1" style="color: #f6a18d; font-weight: bold;"></i>清空授权</div>
+					<!--以下是分页效果-->
+					<div id="effectToolbar" class="pagination f-tr f-mt-m">
+					</div>
+					<!--分页end-->
+				</div>
+			</div>
+		</div>
+		<!--/使用效果-->
+	<!--</section>-->
+	<!--/主模块-->
+
+<!--渠道商选择-->
+<div id="dialoginfo-barbox" class="dialoginfo">
+	<div class="m-jm-table">
+		<div class="u-select-control col-xs-4 f-mb-s" style="position: relative; top: 0; padding: 0;">
+			<input type="text"  placeholder="请输入手机号" id="chanPhoneNumber" />
+			<i class="iconfont icon-belowtriangle after-border"></i>
+			<i class="iconfont icon-search" id="searchBtn" onclick="channel.qrcode.channelData()"></i>
+		</div>
+		<ul class="table-hander">
+			<li>姓名</li>
+			<li>手机号</li>
+			<li>角色</li>
+			<li>选择</li>
+		</ul>
+		<div class="table-body h-scroll" id="channelBody">
+
+		</div>
+		<!--以下是分页效果-->
+		<div id="channelToolbar" class="pagination f-fr f-mt-m">
+
+		</div>
+		<!--分页end-->
+	</div>
+	<div class="u-btn-box1 f-mt-m"><input type="button" class="u-btn-mainlg" value="确定"  onclick="channel.qrcode.channelBoxData()"/></div>
+</div>
+<!--/-->
+<!--商品选择-->
+<div id="dialoginfo-goodsbox" class="dialoginfo">
+	<div class="m-jm-table">
+		<ul class="table-hander">
+			<li>商品主图</li>
+			<li>商品名称</li>
+			<li>选择</li>
+		</ul>
+		<div class="table-body h-scroll" id="goodsBody">
+
+		</div>
+		<!--以下是分页效果-->
+		<div id="goodsToolbar" class="pagination f-fr">
+
+		</div>
+		<!--分页end-->
+	</div>
+	<div class="u-btn-box1 f-mt-m"><input type="button" class="u-btn-mainlg" value="确定" onclick="channel.qrcode.goodsBoxData();" /></div>
+</div>
+<!--/-->
+<!--查看下载-->
+<!--顶部有样式控制-->
+<div id="dialoginfo-seedown" class="dialoginfo">
+
+</div>
+<!--/-->
+<!--查看效果-->
+<div id="dialoginfo-see" class="dialoginfo">
+
+</div>
+<!--/-->
+<!--清空授权-->
+<div id="dialoginfo-clear" class="dialoginfo">
+	<div class="m-err-box" style="overflow: hidden;">
+		<img class="f-fl" src="" id="cancelAuthImg" />
+		<span style="line-height: 28px;">
+				确定对该渠道商、该批次码<br />清空授权？
+			</span>
+		<span></span>
+	</div>
+	<div class="u-btn-box1 f-mt-l f-cb">
+		<input type="hidden" id="cancelAuthId" >
+		<input type="button" class="u-btn-mddkgry f-mr-xs" value="取消" onclick="channel.qrcode.closeCancelAuth();" />
+		<input type="button" class="u-btn-mddkorg u-w" value="确定" onclick="channel.qrcode.cancelAuth();" />
+	</div>
+</div>
+<!--/-->
+
+    <script>
+        $(function(){
+            $("#startTime,#endTime,#startEndTime,#endEndTime,#startCreateTime,#endCreateTime,#effectStartEndTime,#effectEndEndTime,#effectEndCreateTime,#effectStartCreateTime").datetimepicker({
+                showSecond : true,
+                timeFormat : 'hh:mm:ss',
+                dateFormat : 'yy-mm-dd',
+                stepHour : 1,
+                stepMinute : 1,
+                stepSecond : 1
+            });
+
+            $(".panel-hidden").hide().eq(0).show();
+            var tabul = $("#m-tab ul li");
+            tabul.click(function(){
+                tabul.eq($(this).index()).addClass("z-sel").siblings().removeClass('z-sel');
+                $(".panel-hidden").hide().eq($(this).index()).show();
+                if($(this).index()==0){
+
+                }else if($(this).index()==1){
+					channel.qrcode.downListData();
+                }else if($(this).index()==2){
+					channel.qrcode.effectListData();
+                }
+
+            });
+            $(".panel-hid").hide().eq(0).show();
+
+            $(".btn-slide").click(function(){
+                $("#m-search").slideToggle("fast");
+                $(this).toggleClass("btn-slide1"); return false;
+            })
+            $(".btn-slide2").click(function(){
+                $("#m-search2").slideToggle("fast");
+                $(this).toggleClass("btn-slide3"); return false;
+            })
+            //渠道商选择
+            $(".dialog-barbox").click(function() {
+                var elembarbox = document.getElementById('dialoginfo-barbox');
+                dialog({
+                    title: "渠道商选择",
+                    content: elembarbox,
+                    id:'channelDialog'
+                }).width(755).showModal();
+
+            });
+            //商品选择
+            $(".dialog-goodsbox").click(function() {
+                var elemgoodsbox = document.getElementById('dialoginfo-goodsbox');
+                dialog({
+                    title: "商品选择",
+                    content: elemgoodsbox,
+                    id:'goodsDialog'
+                }).width(755).showModal();
+
+            });
+
+
+        });
+    </script>
+	<script>
+		channel.qrcode.init();
+	</script>

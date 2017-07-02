@@ -1,0 +1,42 @@
+<style>
+    .ztree li {
+        margin-bottom: 8px;
+    }
+
+    .ztree li ul {
+        padding-top: 5px;
+        padding-left: 30px;
+    }
+
+    .ztree li ul li ul {
+        padding-left: 35px;
+    }
+
+    .ztree li span {
+        font-weight: 100;
+        font-size: 14px;
+    }
+</style>
+<div class="col-xs-12 m-panel-area f-mb-m h-scroll" style="height: 350px;overflow-y: auto;">
+    <div class="panel-lt f-pt-xs font-s12" >
+        <ul class="ztree" id="resource_tree" >
+
+        </ul>
+    </div>
+</div>
+<div class="col-xs-12">
+    <div class="u-cb">
+        <input type="checkbox" name="checkbox" id="selectAll"/>
+        <label class="iconfont icon-avoid" for="selectAll" style="top:-5px;"></label>
+    </div>
+    <label for="selectAll" class="c-gray1">全选</label>
+</div>
+<div class="u-btn-box1">
+    <input type="button" class="u-btn-smlightgray f-mr-xs" id="cancelPower" value="取消" />
+    <input type="button" class="u-btn-smlightred" id="savePower" onclick="zbRole.power.savePower('{{roleId}}')" value="保存" style="width: 100px;" />
+</div>
+<input type="hidden" id="getRoleId" value="{{roleId}}">
+
+<script>
+    zbRole.power.initResource();
+</script>

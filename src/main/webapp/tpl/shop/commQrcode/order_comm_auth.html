@@ -1,0 +1,70 @@
+<!--授权窗口-->
+<div style="display: none">
+	<input type="text" id="authUserId" value="{{userId}}">
+	<input type="checkbox" id="authType"  value="1" checked >
+</div>
+	<div class="col-xs-12">
+		<label class="u-lb-sm f-fl c-deepgray">授权链接</label>
+		<div class="u-txt col-xs-6">
+			<input type="text" class="ipt-txt c-gray1"  id="authText"  />
+			<font color="red">扫描二维码时必须将鼠标光标移至此输入框</font>
+		</div>
+		<div id="authOkDiv" style="display: none">
+			<label class="u-lb-sm f-fl c-deepgray"><font color="green">扫描成功</font></label>
+		</div>
+	</div>
+	<div class="col-xs-12">
+		<label class="u-lb-sm f-fl c-deepgray">条码批号</label>
+		<div class="u-txt col-xs-6">
+			<textarea  class="ipt-txt c-gray1"  id="commAuthIds" readonly />
+		</div>
+	</div>
+	<div class="col-xs-12">
+		<label class="u-lb-sm f-fl c-deepgray">条码数量</label>
+		<div class="u-txt col-xs-6">
+			<input type="text" class="ipt-txt c-gray1" value="0" id="authCount" readonly />
+		</div>
+	</div>
+	<div class="u-btn-box1 f-mt-m"><input type="button" class="u-btn-mainlg" value="确定授权" onclick="comm.auth.confirmAuth()" /></div>
+<!--/-->
+
+
+
+	<script type="text/javascript">
+		$(function(){
+			$('#authText').focus();
+			$('#authText').bind('keypress', function (event) {
+				if (event.keyCode == "13") {
+					var str = $(this).val();
+					//需要处理的事情
+					if(str.indexOf("entrance/")>0){
+						var straaa = str.substr(str.indexOf("entrance/"), str.length);//("?shopId=")
+						var strbbb = straaa.substr(0,straaa.indexOf("?shopId="));
+						var strccc = strbbb.substr(strbbb.indexOf("/"),strbbb.length);
+						console.log(strccc);
+						$("#commAuthIds").append(strccc);
+						$("#authText").val("");
+						var authcount = $("#authCount").val()*1;
+						$("#authCount").val(authcount+1);
+
+						$("#authOkDiv").show();
+						setTimeout(function(){
+							$("#authOkDiv").hide();
+						},500);
+
+					}else{
+						var dm = new dialogMessage({
+							type:2,
+							title:'操作提醒',
+							fixed:true,
+							msg:"无效二维码",
+							isAutoDisplay:false
+
+						});
+						dm.render();
+						$('#authText').val("");
+					}
+				}
+			});
+		 });
+    </script>

@@ -1,0 +1,29 @@
+<ul class="table-hander">
+    <li style="width: 35%;">具体图文</li>
+    <li>上架日期</li>
+    <li>累计打赏（元）</li>
+    <li>状态</li>
+    <li>操作</li>
+</ul>
+<div class="table-body f-t-off">
+    {%if items.length>0 %}
+    {% for item in items %}
+    <ul class="table-container">
+        <li class="f-tl" style="width: 35%; padding: 0 20px;">
+            <p title="">{{item.title}}</p>
+        </li>
+        <li>{{item.upperTime}}</li>
+        <li>{{(item.tip/100) | shortNumber(2)}}</li>
+        <li><b style="font-size: 10px;color: #f60">{{item.statusName}}</b></li>
+        <li>
+            <!--{{item.platForm}}{{item.id}}-->
+            <div class="u-btn-smltgry dialog-see" onclick="imageTextTip.tip.tipDetail('{{item.id}}','{{item.platForm}}')">明细查看</div>
+        </li>
+    </ul>
+    {% endfor %}
+    {%else%}
+    <div class="m-jm-err">
+        <img src="{{globalUrl}}/css/pc/img/jm-nodb.png">
+    </div>
+    {%endif%}
+</div>

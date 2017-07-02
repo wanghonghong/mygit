@@ -1,0 +1,25 @@
+<table cellspacing="0"  id="jmtable" class="m-table-control f-mt-m">
+    <thead>
+    <tr >
+        <th style="width:25%;">商品</th>
+        {% if paramsObj.type==0 %}
+            <th style="width:10%;">单价/数量</th>
+        {% endif %}
+        <th style="width:10%;">微平台</th>
+        <th style="width:10%;">下单时间</th>
+        <th style="width:10%;">订单状态</th>
+        {% if paramsObj.type==0 %}
+            <th style="width:10%;">实付金额</th>
+        {% endif %}
+    </tr>
+    </thead>
+</table>
+<div id="shoppingCartList"></div>
+<div id="pageTypeToolbar" class="pagination" align="right" style="margin-top: 10px">
+</div>
+
+<!--<div id="webim_chat" class="hide">
+</div>-->
+<script>
+    ImInfo.init();
+</script>

@@ -1,0 +1,32 @@
+<!--商品分类 -->
+<div class="m-goods-details" id="image-text-details">
+    <header class="details-hander">
+        <span>发布样式编辑</span>
+        <div class="u-rb">
+            <input type="radio" name="formatCode" id="formatCode1" value="1"/>
+            <label for="formatCode1" data-toggle="weixinImage"></label>
+        </div>
+        <label for="formatCode1" class="f-mr-l" data-toggle="weixinImage">仿微信页</label>
+
+        <div class="u-rb">
+            <input type="radio" name="formatCode" id="formatCode3" value="3"/>
+            <label for="formatCode3" data-toggle="Imageh5version"></label>
+        </div>
+        <label for="formatCode3" class="f-mr-l" data-toggle="Imageh5version">H5海报</label>
+    </header>
+    <section id="weixinImage" class="m-config-panel f-mt-l z-sel" style="border-top: 1px solid #e9e9e9;">
+        {% set version='weixinImage' %}
+        {% include 'tpl/op/new/config-panel.html' %}
+    </section>
+
+    <section id="Imageh5version" class="m-config-panel f-mt-l" style="border-top: 1px solid #e9e9e9;">
+    </section>
+    <div class="u-btn-box">
+        <input type="button" class="u-btn-mddkbl " id="returnbtn" value="返回"/>
+        <input type="button" class="u-btn-mddkorg" id="saveimagebtn" value="保存"/>
+    </div>
+
+    <div id="link_content" style="display: none;"></div>
+</div>
+
+<!--/商品分类-->

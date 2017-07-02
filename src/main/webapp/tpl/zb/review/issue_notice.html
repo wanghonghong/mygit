@@ -1,0 +1,72 @@
+
+<div class="m-search" id="m-search">
+    <label class="u-lb-sm f-ml-m">选择公告类型</label>
+    <div class="u-txt col-xs-3 f-mb-m">
+        <select class="ipt-txt" id="type">
+            <option value="1">系统公告</option>
+            <option value="2">功能使用</option>
+            <option value="3">市场政策</option>
+            <option value="4">市场活动</option>
+            <option value="5">费用结算</option>
+            <option value="6">公司动态</option>
+            <option value="7">行业动态</option>
+        </select>
+    </div>
+    <label class="u-lb-sm f-ml-s">选择渠道商</label>
+    <div class="u-txt col-xs-6 f-mb-m">
+        <select class="ipt-txt" data-placeholder="请选择渠道商" multiple id="joinType">
+        {%if item.id %}
+            {%if isAll==1%}
+                <option value="[0]" selected>全部</option>
+                {% for join in joinList %}
+                <option value="[{{join.id}}]">{{join.joinName}}</option>
+                {%endfor%}
+            {%else%}
+                <option value="[0]" >全部</option>
+                {% for join in joinList %}
+                {%if join.isChecked==1%}
+                <option value="[{{join.id}}]" selected>{{join.joinName}}</option>
+                {%else%}
+                <option value="[{{join.id}}]" >{{join.joinName}}</option>
+                {%endif%}
+                {%endfor%}
+            {%endif%}
+        {%else%}
+            <option value="[0]" >全部</option>
+            {% for join in joinList %}
+            <option value="[{{join.id}}]">{{join.joinName}}</option>
+            {%endfor%}
+        {%endif%}
+        </select>
+        <span id="selectJoin" style="font-size: 12px;color: red;display: none">请选择查看渠道商</span>
+        <!--<input type="text" class="ipt-txt dialog" placeholder="请输入选择权限" />-->
+    </div>
+    <label class="u-lb-sm f-ml-m f-cb">标题</label>
+    <div class="u-txt col-xs-10 f-mb-zero">
+        {%if item.title%}
+        <input type="text" class="ipt-txt" id="title" value="{{item.title}}" placeholder="请输入标题" />
+        {%else%}
+        <input type="text" class="ipt-txt" id="title" placeholder="请输入标题" />
+        {%endif%}
+        <span id="title-error" style="font-size: 12px;color: red;display: none">请输入标题</span>
+    </div>
+</div>
+<input type="hidden" id="noticeContext" value="{{item.noticeContext}}">
+<div class="panel-textarea f-mt-m noticeContext" style="padding-right: 2px; border: none;">
+
+</div>
+<div class="u-btn-box f-mt-s">
+    <input type="button" class="u-btn-mdlightgray f-mr-xs" value="返回" onclick="review.notice.backClick()"/>
+    {%if item.id %}
+    <input type="button" class="u-btn-mddeepgray f-mr-xs" value="保存草稿" onclick="review.notice.updateDraft()"/>
+    <input type="button" class="u-btn-mdlightred" id="issue" value="发布" onclick="review.notice.updateNotice()"/>
+    {%else%}
+    <input type="button" class="u-btn-mddeepgray f-mr-xs" value="保存草稿" onclick="review.notice.draftClick()"/>
+    <input type="button" class="u-btn-mdlightred" id="issue" value="发布" onclick="review.notice.issueNotice()"/>
+    {%endif%}
+</div>
+<input id="noticeId" value="{{item.id}}" type="hidden">
+<script type="text/javascript">
+    review.notice.init();
+    $(".select2-search__field").css("width","100%");
+</script>

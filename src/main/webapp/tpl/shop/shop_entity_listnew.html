@@ -1,0 +1,35 @@
+{% if items.length >0 %}
+{%for item in items%}
+
+<ul class="table-container">
+    <li style="width:25%;">
+        <div class="g-table">
+
+            <div class="g-table-cell f-vm">
+                <img class="u-thumbnail-squa" src="{{item.storeImg}}"/>
+            </div>
+            <div class="g-table-cell f-vm f-tl">
+                <span>{{item.storeName}} </span><br>
+                <span>{{item.phoneNumber}}</span>
+            </div>
+        </div>
+    </li>
+    <li><span>am {{item.officeHoursStart}} <br>pm {{item.officeHoursEnd}}</span></li>
+    <li>{{item.province}}-{{item.city}}-{{item.district}}</li>
+    <li class="f-tl" style="width:25%;">{{item.address}}</li>
+    <li style="width:15%;">
+        <div class="u-btn-smltgry f-mb-xs dialog" id="shopenupdate{{item.storeId}}"> 编辑 </div>
+        <div class="u-btn-smltgry" id="shopview{{item.storeId}}"> 预览 </div>
+        <div class="u-btn-smltgry" id="shopendel{{item.storeId}}"> 删除 </div>
+        <div id="showitem{{item.storeId}}" style="display: none;">{{itemsString}}</div>
+    </li>
+</ul>
+{%endfor%}
+{% else %}
+<div class="m-jm-err">
+    <img src="{{globalUrl}}/css/pc/img/jm-nodb.png">
+</div>
+{% endif %}
+<script>
+    shop.entitystore.init();
+</script>

@@ -1,0 +1,90 @@
+<style>
+    .resUrlType{
+        position: relative;
+        overflow: hidden;
+        width: 100px;
+    }
+    .resUrlType label{
+         position: absolute;
+        bottom:0px;
+        height: 24px;
+        width: 100%;
+        left: 0px;
+        text-align: center;
+        color: #fff;
+        background:#9d9d9d;
+        cursor: pointer;
+    }
+    .ui-dialog .ui-dialog-content{
+        padding: 0;
+    }
+</style>
+<div id="voteItemConfig"  >
+    <div class="col-xs-12" style="padding: 0;">
+        <div class="col-xs-4">
+            <div class="m-phone-view">
+                <div class="phone-shell-top" style="height: 62px;">
+                </div>
+                <div class="phone-window">
+                    <div class="m-app-main"  id="phoneWindow" style="max-height: 550px;  overflow: hidden;">
+                    </div>
+                </div>
+                <div class="phone-shell-bottom">
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-8 f-pt-xxl" style="padding-left: 0; padding-right: 0;">
+            <label class="u-lb-sm c-deepgray1" style="margin-left: -10px;">发布类型</label>
+            <div class="col-xs-10 f-pt-s">
+                <div class="u-rb">
+
+                    <input type="radio" name="voteType" id="radiofs1" value="1"   {% if  voteType == 1 %}checked{% endif %}>
+                    <label for="radiofs1"></label>
+                </div>
+                <label for="radiofs1" class="f-mr-xxl">图片</label>
+                <div class="u-rb">
+                    <input type="radio" name="voteType" id="radiofs2" value="2" {% if  voteType == 2 %}checked{% endif %}>
+                    <label for="radiofs2"></label>
+                </div>
+                <label for="radiofs2" class="f-mr-xxl">视频</label>
+                <div class="u-rb">
+                    <input type="radio" name="voteType" id="radiofs3" value="3" {% if  voteType == 3 %}checked{% endif %}>
+                    <label for="radiofs3"></label>
+                </div>
+                <label for="radiofs3" class="f-mr-xxl">音频</label>
+            </div>
+            <label class="u-lb-sm c-deepgray1 f-cb" style="margin-left: -10px;">内容上传</label>
+            <div class="m-add-pic col-xs-3 f-mb-m">
+                <div id="votetype1" class="resUrlType {% if  voteType == 1 %}{%else%}z-hide{% endif %} ">
+                    <img  id="imageResUrl" class="resUrl" src="{{globalUrl}}/css/pc/img/no_picture.png">
+                    <label id="imageLabel" class="resName">选择图片</label>
+                    <input type="hidden" id="imageResId" value="">
+                </div>
+                <div id="votetype2" class="resUrlType {% if  voteType == 2 %}{%else%}z-hide{% endif %} ">
+                    <img class="resUrl"id="videoResUrl" src="{{globalUrl}}/css/pc/img/m_video.png">
+                    <label id="videoLabel"class="resName">选择视频</label>
+                    <input type="hidden" id="videoResId" value="">
+                </div>
+                <div id="votetype3" class="resUrlType {% if  voteType == 3 %}{%else%}z-hide{% endif %}  ">
+                    <img class="resUrl" id="audioResUrl" src="{{globalUrl}}/css/pc/img/music_stop.png">
+                    <label id="audioLabel" class="resName">选择音频</label>
+                    <input type="hidden" id="audioResId" value="">
+                </div>
+            </div>
+            <label class="u-lb-sm c-deepgray1 f-cb" style="margin-left: -10px;">标题名称</label>
+            <div class="u-txt col-xs-7 f-mb-m">
+                <input type="text" class="ipt-txt" id="voteItemName" name="name" value="{{name}}" placeholder="请输入标题名称">
+            </div>
+            <label class="u-lb-sm c-deepgray1 f-cb" style="margin-left: -10px;">详情编辑</label>
+            <div class="col-xs-10">
+                <div class="panel-textarea" name="detail">
+                    <div class="richtextContainer">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="f-cb"></div>
+
+</div>

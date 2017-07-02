@@ -1,0 +1,73 @@
+
+    <div class="col-xs-12" style="padding: 0;">
+        <form id="form1">
+        <label class="u-lb-md f-cb">姓名</label>
+        <div class="u-txt col-xs-8 f-mb-m">
+            <input type="text" class="ipt-txt" id="userName_" name="userName" value="{{item.userName}}" placeholder="请输入姓名" />
+        </div>
+        <label class="u-lb-md f-cb">性别</label>
+        <div class="u-txt col-xs-8 f-mb-m">
+            <select class="ipt-txt" id="sex_">
+                {%if item.sex==1 %}
+                <option value="1">男</option>
+                <option value="2">女</option>
+                {%elif item.sex==2%}
+                <option value="2">女</option>
+                <option value="1">男</option>
+                {%else%}
+                <option value="1">男</option>
+                <option value="2">女</option>
+                {%endif%}
+            </select>
+        </div>
+        <label class="u-lb-md f-cb">手机</label>
+        <div class="u-txt col-xs-8 f-mb-m">
+            <input type="text" class="ipt-txt" placeholder="请输入手机" id="phoneNumber_" value="{{item.phoneNumber}}" disabled/>
+        </div>
+        <label class="u-lb-md f-cb">微信号</label>
+        <div class="u-txt col-xs-8 f-mb-m">
+            <input type="text" class="ipt-txt" id="wxnum_" name="wxnum" value="{{item.wxnum}}" placeholder="请输入微信号" />
+        </div>
+        </form>
+        <label class="u-lb-md f-cb">员工号码</label>
+        <div class="u-txt col-xs-8 f-mb-m">
+            <input type="text" class="ipt-txt" placeholder="请输入员工号码" id="staffCode_" value="{{item.newStaffCode}}" disabled/>
+        </div>
+        <label class="u-lb-md f-cb">部门</label>
+        <div class="u-txt col-xs-8 f-mb-m">
+            <select class="ipt-txt" data-placeholder="请选择部门" id="department_">
+                <option></option>
+                {% for zbDepartment in zbDepartmentList%}
+                <option value="{{zbDepartment.departmentId}}">{{zbDepartment.departmentName}}</option>
+                {%endfor%}
+            </select>
+            <span id="department_error" style="font-size: 12px;color:red;display: none;" >请选择部门</span>
+        </div>
+        <label class="u-lb-md f-cb">岗位</label>
+        <div class="u-txt col-xs-8">
+            <select class="ipt-txt" data-placeholder="请选择岗位" id="post_">
+                <option></option>
+                {% for post in zbPostList%}
+                <option value="{{post.postId}}">{{post.postName}}</option>
+                {%endfor%}
+            </select>
+            <span id="post_error" style="display: none;color: red;font-size: 12px;">请选择岗位</span>
+        </div>
+        <label class="u-lb-md f-cb">角色</label>
+        <div class="u-txt col-xs-8">
+            <select class="ipt-txt"  data-placeholder="请选择角色" id="role_">
+                {% for zbRole in zbRoleList%}
+                {%if zbRole.id==item.roleId%}
+                <option value="{{zbRole.id}}" selected>{{zbRole.roleName}}</option>
+                {%else%}
+                <option value="{{zbRole.id}}">{{zbRole.roleName}}</option>
+                {%endif%}
+                {%endfor%}
+            </select>
+            <span id="role_error" style="display: none;color: red;font-size: 12px;">请选择角色</span>
+        </div>
+        <div class="u-btn-box1">
+            <input type="button" id="update_btn" class="u-btn-mdlightred" value="录入完成" />
+        </div>
+
+    </div>

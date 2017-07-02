@@ -1,0 +1,37 @@
+<!--商品配置框架-->
+<ul class="m-step-bar-box">
+    <li class="first-step current-step" data-toggle="goodsGroups">
+        <label><span>1</span><i class="iconfont icon-avoid"></i></label>
+        <h5>商品分类</h5>
+    </li>
+    <li  data-toggle="goodsBasic">
+        <label><span>2</span><i class="iconfont icon-avoid"></i></label>
+        <h5>商品规格</h5>
+    </li>
+    <li data-toggle="goodsdetails">
+        <label><span>3</span><i class="iconfont icon-avoid"></i></label>
+        <h5>商品详情</h5>
+    </li>
+</ul>
+<section id="goodsGroups" class="m-step-panel z-sel">
+    {% set ischeck=true %}
+    {% include 'tpl/product/group/product_groups.html' %}
+</section>
+<section id="goodsBasic"  class="m-step-panel">
+</section>
+<section id="goodsdetails"  class="m-step-panel">
+    {% include 'tpl/product/detail/product_detail.html' %}
+</section>
+ <input type="hidden" id="tmppid" value="{{pid | default(0,true)}}"/>
+
+<!--/商品配置框架-->
+<script>
+    var pid=$("#tmppid").val()*1;
+//        product.config.init({pid:38});
+//product.config.init({pid:38});
+        var data={
+            pid:pid
+        }
+        console.log(data);
+        product.config.init(data);
+</script>

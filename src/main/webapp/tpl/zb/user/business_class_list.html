@@ -1,0 +1,34 @@
+
+    {% if items.length>0 %}
+    {%for item in items%}
+    <ul class="table-container">
+        <li>
+            <img src="{{item.headImg}}"  class="u-thumbnail-circ">
+        </li>
+        <li class="f-tl" style="width: 14%; padding-left: 30px;">
+           <span>{%if item.userName%}{{item.userName}}{%else%}--{%endif%}</span><br><span>{%if item.phoneNumber%}{{item.phoneNumber}}{%else%}--{%endif%}</span>
+        </li>
+        <li>商家</li>
+        <li>--</li>
+        <li style="width: 14%;">--</li>
+        <li>{{item.shopCount}}家店<br /><div class="u-btn-smltgry f-mt-xs dialog-see searchShop " id="searchShop_{{item.userId}}" data-id="{{item.userId}}">查看</div></li>
+        <li><div class="u-btn-smltgry dialog-see2 searchManage" id="searchManage_{{item.userId}}" data-id="{{item.userId}}">查看</div></li>
+        <li>{{item.createDate}}</li>
+        <li>
+            <div class="f-mb-xs">
+                <div class="u-btn-smltgry">编辑</div>
+            </div>
+            <div class="f-mb-xs">
+                <div class="u-btn-smltgry">上级</div>
+                <div class="u-btn-smltgry">下级</div>
+            </div>
+            <div>
+                <div class="u-btn-smltgry" style="padding: 0 12px;">米币二维码</div>
+            </div>
+        </li>
+    </ul>
+    {%endfor%}
+    {%else%}
+    {% include "/tpl/system/nodb.html" %}
+    {%endif%}
+

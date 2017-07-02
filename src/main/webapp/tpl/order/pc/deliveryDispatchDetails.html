@@ -1,0 +1,102 @@
+<div class="panel-hid">
+    <div class="m-shipinfo-lt">
+        <ul class="table-hander">
+            <li style="width: 18%;">商品主图</li>
+            <li>名称</li>
+            <li>规格</li>
+            <li>数量</li>
+        </ul>
+        {% for orderDetail in data.orderDetails %}
+        <div class="table-body u-4border">
+            <ul class="table-container">
+                {% if orderDetail.pic %}
+                <li style="width: 18%;"><img class="u-thumbnail-squa" src="{{orderDetail.pic}}"/></li>
+                {% else %}
+                <li style="width: 18%;"><img src="css/pc/img/no_picture.png" class="u-shipimg" /></li>
+                {% endif %}
+                <li class="f-tl" style="padding: 0 20px;">{{orderDetail.name}}</li>
+                <li>{{orderDetail.specValueTwo}} {{orderDetail.specValueThree}} {{orderDetail.specValueOne}}</li>
+                <li>{{orderDetail.count}}</li>
+            </ul>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="picScroll-left" style="border-top: none;">
+        <div class="superslide-hd">
+            <a class="next"><i class="iconfont icon-righttriangle"></i></a>
+            <a class="prev"><i class="iconfont icon-lefttriangle"></i></a>
+        </div>
+        <div class="superslide-bd">
+            <ul class="picList">
+                {% for orderAndDeliveryVo in data.orderAndDeliveryVos %}
+                <li {%if loop.index ==1 %} class="z-sel" {%endif%}>包裹{{loop.index}}<span><i class="iconfont icon-uptriangle"></i></span></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <!--订单信息-->
+    {% for orderAndDeliveryVo in data.orderAndDeliveryVos %}
+    <div class="m-order-info orderinfonum" style="position: absolute; margin-top: 20px; width: 555px; height: 515px;">
+        <h3>订单信息</h3>
+        <div class="m-info-lt">
+            <p>
+                <b>订单编号：</b>
+                <span>{{orderAndDeliveryVo.orderNum}}</span>
+            </p>
+            <p>
+                <b>买家昵称：</b>
+                <span>{{orderAndDeliveryVo.nickname}}</span>
+            </p>
+            <p>
+                <b>买家手机：</b>
+                <span>{{orderAndDeliveryVo.phoneNumber}}</span>
+            </p>
+        </div>
+        <div class="m-info-lt">
+            <p>
+                <b>收货信息：</b>
+                <span>{{orderAndDeliveryVo.userName}}<br />{{orderAndDeliveryVo.phoneNumber}}<br />{{orderAndDeliveryVo.detailAddress}}</span>
+            </p>
+            <p class="c-salecolor">
+                <b>卖家留言：</b>
+                <span>{{orderAndDeliveryVo.sellerNote}}</span>
+            </p>
+        </div>
+    </div>
+    <!--/-->
+    <!--包裹-->
+    <div class="panel-hidden">
+        <div class="m-orderstate" style="border-top: none;">
+            <div class="u-infolistbg">
+                <div class="m-order-info f-fl" style="height: 515px;"></div>
+                <div class="m-order-info f-fl">
+                    <h3>物流信息</h3>
+                    <div class="orderinfo-title">
+                        <p>物流公司：<span>{{orderAndDeliveryVo.transCompany}}</span></p>
+                        <p>物流单号：<span>{{orderAndDeliveryVo.transNumber}}</span></p>
+                    </div>
+                    <ul>
+                        <li>
+                            <div><i class="iconfont icon-car1"></i></div>
+                            <div>
+                                {% if orderAndDeliveryVo.transMsg=='ERROR' %}
+                                <p><font color="red">此单号无记录，请核对快递公司名称和运单号码是否正确！</font></p>
+                                {% else %}
+                                <p>
+                                    <iframe id="orderDetailFrame" src="{{orderAndDeliveryVo.transMsg}}" scrolling="no" width="550px" height="260px"></iframe>
+                                </p>
+                                {% endif %}
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    <div class="u-btn-box f-mt-l">
+        <input type="button" class="u-btn-mddkorg f-mr-xs" value="返回" onclick="delivery.list.closeD();" />
+    </div>
+</div>
+<!--多包裹滚动-->

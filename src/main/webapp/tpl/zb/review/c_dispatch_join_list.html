@@ -1,0 +1,21 @@
+
+{%if items.length>0%}
+{% for item in items %}
+<ul class="table-container">
+    <li style="width: 25%;">{{item.companyName}}</li>
+    <li>{{item.userName}}</li>
+    <li>{{item.phoneNumber}}</li>
+    <li>{{item.roleName}}</li>
+    <li style="width: 20%;">{{item.province}}-{{item.city}}-{{item.district}}</li>
+    <li>
+        <div class="u-rb">
+            <input type="radio" name="dispatch_select" id="radioBox_{{item.id}}" value="" />
+            <label for="radioBox_{{item.id}}" joinId="{{item.id}}" userName="{{item.userName}}" companyName="{{item.companyName}}" phoneNumber="{{item.phoneNumber}}" province="{{item.province}}" city="{{item.city}}" district="{{item.district}}" roleName="{{item.roleName}}" id="label_{{item.id}}"></label>
+        </div>
+    </li>
+</ul>
+{%endfor%}
+{%else%}
+{% include "/tpl/system/nodb.html" %}
+{%endif%}
+

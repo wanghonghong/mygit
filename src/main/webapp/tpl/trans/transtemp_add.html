@@ -1,0 +1,145 @@
+<style>
+    .m-jm-table .table-body .table-container li .u-btn-smltgry .icon-delete1 {
+        color: #f89a14;
+        font-weight: bold;
+    }
+</style>
+
+<div class="m-panel m-panel-freight f-mt-m">
+    <div class="panel-heading">
+        <h4>
+            {%if items%}
+            <input type="text" value="{{items.templatesName}}" placeholder="请输入模板名称" id="templatesName"
+                   class="ipt-fillbox"/>
+            <span id="edit_templatesId" style="display: none;">{{items.templatesId}}</span>
+            {%else%}
+            <input type="text" value="" placeholder="请输入模板名称" id="templatesName" class="ipt-fillbox"/>
+            {%endif%}
+        </h4>
+    </div>
+    <div class="panel-body">
+        <div class="m-jm-table bg-white">
+            <ul class="table-hander">
+                <li class="f-tl" style="width: 35%;">可配送地点</li>
+                <li>首件（个）</li>
+                <li>运费（元）</li>
+                <li>续件（个）</li>
+                <li>续费（元）</li>
+                <li style="width: 10%;">操作</li>
+            </ul>
+            <div class="table-body" id="transTEM0">
+                <div class="">
+                    <div class="page-left f-padding-l" style="margin-top: 0;float: left;">
+                        <div class="u-btn-smltgry" id="forareatrans" style="float: left;"><span>添加可配送区域和运费</span></div>
+                        <div class="text-center" id="onloadmsg" style="float: left; margin-left: 50px;display: none;"><i
+                                class="iconfont icon-loading" style="float: left;"></i>
+                            <div style="float: left;color:#f78211;">请稍后...</div>
+                        </div>
+                    </div>
+                    <div id="dialogAreainfo" class="dialoginfo dhk">
+
+                        <div class="jm-table jm-table1">
+                            <ul class="table-hander">
+                                <li>
+                                    <i class="iconfont icon-classify1"></i>
+                                    可选省、市、区
+                                </li>
+                            </ul>
+                            <ul id="area_tree" class="ztree h-scroll" style="border: 1px solid #617775; height: 380px; max-height: 380px;">
+
+                            </ul>
+                        </div>
+                        <div class="sell-third-checkbox" style="margin-top: 10px;">
+                            <div class="checkBox"><input type="checkbox" name="checkbox" id="selectAll"/>
+                                <label class="iconfont icon-avoid" for="selectAll"></label></div>
+                            <label class="authfont" for="selectAll"> 全选</label>&nbsp;&nbsp;
+                            <div class="checkBox"><input type="checkbox" name="checkbox" id="sltReverse"/>
+                                <label class="iconfont icon-avoid" for="sltReverse"></label></div>
+                            <label class="authfont" for="sltReverse">反选</label>
+                        </div>
+                    </div>
+                </div>
+                {%if items.transRelationList.length>0%}
+                <ul class="table-container f-t-off1" style="display:none ;" id="first-table-container">
+                    <li class="f-tl" style="width: 35%;">
+                    </li>
+                    <li><input type="text" class="ipt-tablebox" value=""/></li>
+                    <li><input type="text" class="ipt-tablebox" value=""/></li>
+                    <li><input type="text" class="ipt-tablebox" value=""/></li>
+                    <li><input type="text" class="ipt-tablebox" value=""/></li>
+                    <li style="width: 10%;">
+                        <div class="u-btn-smltgry"><span class='delete'><i class="iconfont icon-delete1"></i>删除</span></div>
+                    </li>
+                </ul>
+
+                {% for childitem in items.transRelationList %}
+                <ul class="table-container f-t-off1 transtempitemobj">
+                    {%if childitem.sendAreaId==-1%}
+                    <li class="f-tl" style="width: 35%;">
+                        <p areaids="{{childitem.sendAreaId}}" class='showtitle c-gray1'>{{childitem.sendArea}}</p><span
+                            class='areaidhid' style='display: none;'>{{childitem.sendAreaId}}</span>
+                    </li>
+                    {%else%}
+                    <li class="f-tl" style="width: 35%;">
+                        <p areaids="{{childitem.sendAreaId}}" class='showtitle'>{{childitem.sendArea}}</p><span
+                            class='areaidhid' style='display: none;'>{{childitem.sendAreaId}}</span>
+                    </li>
+                    {%endif%}
+                    <li><input type="text" class="ipt-tablebox" value="{{childitem.firstNumber}}"/></li>
+                    <li><input type="text" class="ipt-tablebox" value="{{childitem.transFare/100}}"/></li>
+                    <li><input type="text" class="ipt-tablebox" value="{{childitem.nextNumber}}"/></li>
+                    <li><input type="text" class="ipt-tablebox" value="{{childitem.nextTransFare/100}}"/></li>
+                    {%if childitem.sendAreaId==-1%}
+                    <li style="width: 10%;">
+                    </li>
+                    {%else%}
+                    <li style="width: 10%;">
+                        <div class="u-btn-smltgry"><span class='delete'><i class="iconfont icon-delete1"></i>删除</span></div>
+                    </li>
+                    {%endif%}
+                </ul>
+                {%endfor%}
+                {%else%}
+                <ul class="table-container f-t-off1" style="display:none ;" id="first-table-container">
+                    <li class="f-tl" style="width: 35%;">
+                    </li>
+                    <li><input type="text" class="ipt-tablebox" value=""/></li>
+                    <li><input type="text" class="ipt-tablebox" value=""/></li>
+                    <li><input type="text" class="ipt-tablebox" value=""/></li>
+                    <li><input type="text" class="ipt-tablebox" value=""/></li>
+                    <li style="width: 10%;">
+                        <div class="u-btn-smltgry"><span class='delete'><i class="iconfont icon-delete1"></i>删除</span></div>
+                    </li>
+                </ul>
+                <ul class="table-container f-t-off1">
+                    <li class="f-tl" style="width: 35%;">
+                        <p areaids="-1" class='showtitle c-gray1'>未选地区统一运费模板</p><span
+                            class='areaidhid' style='display: none;'>""</span>
+                    </li>
+                    <li><input type="text" class="ipt-tablebox" value="0"/></li>
+                    <li><input type="text" class="ipt-tablebox" value="0"/></li>
+                    <li><input type="text" class="ipt-tablebox" value="0"/></li>
+                    <li><input type="text" class="ipt-tablebox" value="0"/></li>
+                    <li style="width: 10%;">
+
+                    </li>
+                </ul>
+                {%endif%}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="u-btn-box f-mt-l">
+    <input type="button" class="u-btn-lgltgry u-p34 f-mr-s" id="backTransTempBtn" value="返回" style="display: none;"/>
+    <input type="button" class="u-btn-mainlg" id="addTransTempBtn" value="保存"/>
+</div>
+<div id="selectednodes" style="display:none ;"></div>
+<div id="unselectednodes" style="display: none;"></div>
+<script>
+    onLoadZTree();
+    transtemp.end.forareatrans();
+    transtemp.end.stran_selectAll();
+    transtemp.end.stran_selectReverse();
+    transtemp.end.add_TransTemplate();
+  //  transtemp.end.temp_back();
+</script>

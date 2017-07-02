@@ -1,0 +1,33 @@
+
+    {% if items.length>0 %}
+    {%for item in items%}
+    <ul class="table-container">
+        <li>
+            <img src="{{item.imgUrl}}"  class="u-thumbnail-circ">
+        </li>
+        <li>
+            <img src="{{item.pubQrcodeUrl}}"  class="u-thumbnail-circ" style="border-radius: inherit;">
+        </li>
+        <li>{{item.shopName}}</li>
+        <li class="f-tl" style="width: 11%; padding-left: 30px;">
+            <span></span><br><span>{{item.operUserName}}</span><br><span>{{item.operPhoneNumber}}</span>
+        </li>
+        <li class="f-tl" style="width: 11%; padding-left: 30px;">
+            <span></span><br><span></span><br><span></span>
+        </li>
+        <li>微信</li>
+        <li>{{item.createDate}}</li>
+        <li>开通</li>
+        <li>
+            <div class="u-btn-smltgry"><i class="iconfont icon-signout" style="color: #f69f8e;"></i>关停</div>
+        </li>
+        <li style="width: 15%;">
+            <div class="u-btn-smltgry f-mr-xs">查看</div>
+            <div class="u-btn-smltgry dialog-use">授权使用</div>
+        </li>
+    </ul>
+    {%endfor%}
+    {%else%}
+    {% include "/tpl/system/nodb.html" %}
+    {%endif%}
+

@@ -1,0 +1,69 @@
+<header class="u-set-header">
+    <i class="iconfont icon-left"></i>
+    <span>
+        {% if feeType==1 %}
+        升级收费
+        {% elif feeType==2 %}
+        代理收费
+        {% endif%}
+    </span>
+</header>
+<section class="u-set-section">
+    <div class="u-img">
+        <img src="{{imgUrl}}" />
+    </div>
+    <ul class="u-upgrade-ul">
+        {% set sign = 0 %}
+        {% for money in moneylist %}
+        {% set sign = sign+1 %}
+        <li>
+            <div class="diamond-area">
+                {% for i in range( sign) %}
+                <i class="iconfont icon-diamond"></i>
+                {% endfor %}
+            </div>
+            <span>￥</span><span class="f-font-yahei-md">{{ money }}</span>
+            <i class="iconfont icon-checkboxnormal icon-checkboxselected1  "></i>
+        </li>
+        {% endfor %}
+
+        <!--<li>-->
+            <!--<div class="diamond-area">-->
+                <!--<i class="iconfont icon-diamond"></i>-->
+                <!--<i class="iconfont icon-diamond"></i>-->
+            <!--</div>-->
+            <!--<span>￥</span><span class="f-font-yahei-md">3000</span>-->
+            <!--<i class="iconfont icon-checkboxnormal  "></i>-->
+        <!--</li>-->
+        <!--<li>-->
+            <!--<div class="diamond-area">-->
+                <!--<i class="iconfont icon-diamond"></i>-->
+                <!--<i class="iconfont icon-diamond"></i>-->
+                <!--<i class="iconfont icon-diamond"></i>-->
+                <!--<i class="iconfont icon-diamond"></i>-->
+            <!--</div>-->
+            <!--<span>￥</span><span class="f-font-yahei-md">3000</span>-->
+            <!--<i class="iconfont icon-checkboxnormal "></i>-->
+        <!--</li>-->
+    </ul>
+    <div class="u-upgrade-info">
+        <header>
+            <img src="{{globalUrl}}/css/pc/img/diamondlogo.png" align="absmiddle" />
+            <label >水云间</label>
+            <span  >进入店铺 <i class="iconfont icon-right"></i></span>
+        </header>
+        <section  >
+            {{instruction | safe}}
+        </section>
+    </div>
+</section>
+<footer class="u-set-footer">
+    <div class="u-supprot">
+        <img src="{{globalUrl}}/css/pc/img/logo_min.png"/>
+
+    </div>
+    <div class="u-bottom-btn">
+        <i class="iconfont icon-diamond"></i>
+        <span>立即升级</span>
+    </div>
+</footer>

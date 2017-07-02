@@ -1,0 +1,22 @@
+<div  id="shopIndexbody">
+
+</div>
+<script>
+    $(function () {
+        var data = {};
+        var shoplistUrl = CONTEXT_PATH + "/shop/list";
+        $.ajaxJsonGet(shoplistUrl, null, {
+            "done": function (res) {
+                data.items = res.data;
+                data.CONTEXT_PATH = CONTEXT_PATH;
+                jumi.template('shop/shop_index_list',data,function(tpl){
+                    $('#shopIndexbody').empty();
+                    $('#shopIndexbody').html(tpl);
+                });
+
+            }
+        });
+
+    });
+
+</script>

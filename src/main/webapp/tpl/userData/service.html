@@ -1,0 +1,139 @@
+<input type="hidden" name="subType" id="subType" value="2"/>
+<div id="tabcontent3" class="tabcontent">
+    <div class=" djfe-bjth shop-jbsz">
+        <div class="goods-sell-set goods-sell-set1 margin-top-xl">
+            <div class="sell-set-details">
+                <div class="sell-set-details-left">
+                    <div >服务角色</div>
+                </div>
+                <div class="sell-set-details-right">
+                    <div id="service_content" style="display: inline-block">
+                        <i class="iconfont icon-edit"></i>
+                        <span class="service_role"  data-id="{{applyRoleId}}" data-name="{{applyRole}}" >{{applyRole}}</span>
+                    </div>
+                    <div  class="btn  btn-lightgray btn-sm dialog" id="service_modify_btn"> 修改申请 </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="goods-sell-set goods-sell-set2 margin-top-xl">
+
+            <div class="sell-set-details">
+                <div class="sell-set-details-left">
+                    <div >机构资料</div>
+                </div>
+                <div class="sell-set-details-right">
+                    <form id="signupForm3" method="post" action="">
+                    <div class="form-group">
+                        <label class="margin-right-m">公司名称</label>
+                        <input type="text" class="form-control" id="companyName2" name="companyName2" value="{{companyName}}" placeholder="聚米为谷网络科技有限公司" />
+                    </div>
+                    <div class="form-group form-time margin-bottom-m">
+                        <label class="margin-right-m">开通时间</label>
+                        <input type="text" class="form-control" value="{{createDate}}" placeholder="2015-12-12" disabled/>
+                    </div>
+                    <div class="form-group form-ztc">
+                        <label class="margin-right-x">营业执照</label>
+                        <div class="stock-info-details stock-info-tips">
+                            <div class="">
+                                <div class="stock-info-details-add-img img-pzsc">
+                                    <div>
+                                        <div id="m-add-img4"  class="m-add-img2">
+                                            {%if businessLicense %}
+                                            <img id="businessLicense" class="businessLicense" src="{{businessLicense}}">
+                                            {%else%}
+                                            <img id="businessLicense" class="businessLicense" src="{{globalUrl}}/css/pc/img/no_picture.png">
+                                            {%endif%}
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="tag-tips ">
+                                    <i class="iconfont icon-lamp"></i>
+                                    <span style="margin-left: 0">仅支持营业执照原件照片或者原件扫描件</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="margin-right-m">经营人数</label>
+                        <input type="text" id="manageNum2" name="manageNum2" value="{{manageNum}}" class="form-control" placeholder="" />
+                    </div>
+                    <div class="form-group szd clearfix form-szd distpicker" data-autoselect="0" data-province="省">
+                        <label class="margin-right-m">经营地址</label>
+                        <select id="province2" name="province2" value="{{province}}" class="form-control floatleft" >
+                        </select>
+                        <span class="floatleft">-</span>
+                        <select id="city2" name="city2" value="{{city}}" class="floatleft form-control">
+                        </select>
+                        <span class="floatleft">-</span>
+                        <select id="district2" name="district2" value="{{district}}" class="floatleft form-control">
+                        </select>
+                    </div>
+                        <input type="hidden" name="_province2" id="_province2" value="{{province}}"/>
+                        <input type="hidden" name="_city2" id="_city2" value="{{city}}"/>
+                        <input type="hidden" name="_district2" id="_district2" value="{{district}}"/>
+                    <div class="form-group form-fxy">
+                        <label class="margin-right-m">详细地址</label>
+                        <textarea id="address" name="address"  class="form-control" placeholder="">{{address}}</textarea>
+                    </div>
+                    <div class="form-group form-gswz">
+                        <label class="margin-right-m">公司网址</label>
+                        <input type="text" id="companyUrl2" name="companyUrl2" value="{{companyUrl}}" class="form-control" placeholder="" />
+                    </div>
+
+                    <div class="form-group form-fxy">
+                        <label class="margin-right-m">公司简介</label>
+                        <textarea id="companyDesc2" name="companyDesc2" class="form-control" placeholder="">{{companyDesc}}</textarea>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div style="margin: 40px 0 20px;">
+        <div style="padding:0 30px;" class="btn btn-darkorange btn-radius-5 btn-lg col-xs-offset-5" id="save3">提交修改</div>
+    </div>
+</div>
+
+<div id="dialoginfo" class="dialoginfo">
+
+    <div class="tag-tips">
+        <i class="iconfont icon-lamp"></i>
+        <span>服务商角色最多只能选1个</span>
+    </div>
+    <div class="tag-details">
+        {%for zbRole in roles %}
+        <div class="sort">
+            {{zbRole.roleName}}
+            <input type="checkbox"  name="zbRole" id="zbRole{{zbRole.roleId}}" value="{{zbRole.roleId}}"  data-name="{{zbRole.roleName}}" />
+            <label class="iconfont icon-avoid" ></label>
+        </div>
+        {%endfor%}
+    </div>
+</div>
+<script>
+
+    $(function(){
+        $("#dialoginfo").on("click",".sort",function(event){
+            event.stopPropagation();
+            $('.sort').find('input').attr("checked",false);
+            $(this).children("input").prop("checked",false);
+            $(this).toggleClass("sort-active").siblings().removeClass('sort-active');
+            $(this).children("input").attr("checked",true);
+            $(this).children("input").prop("checked",true);
+//            var has=$(this).hasClass("sort-active");
+//            if(has==true){
+//
+//                $(this).children("input").attr("checked",true);
+//                $(this).children("input").prop("checked",true);
+//            }
+//            else{
+//                $(this).children("input").attr("checked",false);
+//                $(this).children("input").prop("checked",false);
+//            }
+        })
+
+    })
+</script>

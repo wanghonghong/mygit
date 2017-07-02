@@ -1,0 +1,82 @@
+
+{%if paramsObj.status==1%}
+{%if type==9%}
+<div class="u-related" id="u-related_{{num}}" data-id="{{num}}" data-title="{{title}}" data-type="{{type}}">
+    <div class="u-related1">
+        <i class="iconfont icon-delete1 f-ml-xs f-fl" id="focus_delete_{{num}}" onclick="activity.focus.delSub('{{num}}');"></i>
+        <label class="f-fl f-pr-m f-ml-xs">提示语</label>
+        <div class="u-txt tarea-dep">
+            <textarea class="ipt-txt txtarea h-scroll"  maxlength="120" placeholder="请输入文字" id="focus_content_{{num}}" style="height:60px;"></textarea>
+            <div class="m-tip1" style="margin-left: 0;width:180px;">
+                <i class="iconfont icon-lamp"></i>
+                <span>你想告诉或者提醒粉丝的话</span>
+            </div>
+        </div>
+        <div class="u-newtimetxt f-pl-s">
+            <i class="iconfont">秒</i>
+            <input type="text" class="ipt-txt" id="focus_time_{{num}}" name="Intervaltime" placeholder="间隔时间">
+        </div>
+    </div>
+</div>
+{%else%}
+<div class="u-related" id="u-related_{{num}}" data-id="{{num}}" data-title="{{title}}" data-type="{{type}}">
+    <div class="u-related1">
+        <i class="iconfont icon-delete1 f-ml-xs dialog-del" id="focus_delete_{{num}}" onclick="activity.focus.delSub('{{num}}');"></i>
+        <label class="f-pr-m">{{title}}</label>
+        {%if type==2 or type==8%}
+          <input type="hidden" id="focus_id_{{num}}" value="{{type}}" data-id="{{num}}">
+        {%else%}
+          <input type="hidden" id="focus_id_{{num}}" value="" data-id="{{num}}">
+          <div class="u-btn-smltgry bg-white dialog" onclick="activity.focus.selectTask('{{type}}','{{num}}')"><span id="focus_content_{{num}}">请选择推送任务</span></div>
+        {%endif%}
+
+        <!--初始默认 选择任务 点击从弹框选择的内容覆盖文字显示-->
+        <div class="u-newtimetxt f-pl-s">
+            <i class="iconfont">秒</i>
+            <input type="text" class="ipt-txt" id="focus_time_{{num}}" name="Intervaltime" placeholder="间隔时间">
+        </div>
+    </div>
+</div>
+{%endif%}
+{%elif paramsObj.status==2%}
+    {%if items.length>0%}
+    {%for item in items%}
+        {%if item.pushType==9 %}
+            <div class="u-related" id="u-related_{{loop.index}}" data-id="{{loop.index}}" data-title="{{item.title}}" data-type="{{item.pushType}}">
+                <div class="u-related1">
+                    <i class="iconfont icon-delete1 f-ml-xs f-fl" id="focus_delete_{{loop.index}}" onclick="activity.focus.delSub('{{loop.index}}');"></i>
+                    <label class="f-fl f-pr-m f-ml-xs">{{item.title}}</label>
+                    <div class="u-txt tarea-dep">
+                        <textarea class="ipt-txt txtarea h-scroll" maxlength="100" placeholder="请输入文字" id="focus_content_{{loop.index}}" style="height:60px;">{{item.pushContext}}</textarea>
+                        <div class="m-tip1" style="margin-left: 0;width:180px;">
+                            <i class="iconfont icon-lamp"></i>
+                            <span>你想告诉或者提醒粉丝的话</span>
+                        </div>
+                    </div>
+                    <div class="u-newtimetxt f-pl-s">
+                        <i class="iconfont">秒</i>
+                        <input type="text" class="ipt-txt" id="focus_time_{{loop.index}}" name="Intervaltime" placeholder="间隔时间" value="{{item.intervalSecond}}">
+                    </div>
+                </div>
+            </div>
+        {%else%}
+        <div class="u-related" id="u-related_{{loop.index}}" data-title="{{item.title}}" data-id="{{loop.index}}" data-type="{{item.pushType}}">
+            <div class="u-related1">
+                <i class="iconfont icon-delete1 f-ml-xs dialog-del" id="focus_delete_{{loop.index}}" onclick="activity.focus.delSub('{{loop.index}}');"></i>
+                <label class="f-pr-m">{{item.title}}</label>
+                <input type="hidden" id="focus_id_{{loop.index}}" data-id="{{loop.index}}" value="{{item.pushContext}}">
+                {%if item.pushType!=8 and item.pushType!=2 %}
+                <div class="u-btn-smltgry bg-white dialog"  onclick="activity.focus.selectTask('{{item.pushType}}','{{loop.index}}')"><span id="focus_content_{{loop.index}}">{{item.pushName}}</span></div>
+                {%endif%}
+                <!--初始默认 选择任务 点击从弹框选择的内容覆盖文字显示-->
+                <div class="u-newtimetxt f-pl-s">
+                    <i class="iconfont">秒</i>
+                    <input type="text" class="ipt-txt" id="focus_time_{{loop.index}}" name="Intervaltime" placeholder="间隔时间" value="{{item.intervalSecond}}">
+                </div>
+            </div>
+        </div>
+        {%endif%}
+
+    {%endfor%}
+    {%endif%}
+{%endif%}

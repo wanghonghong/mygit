@@ -1,0 +1,50 @@
+<div id="dialoginfo1" >
+	<ul class="m-orderinfo-dialog">
+		<li>
+			<div>订单编号</div>
+			<div>{{data.orderNum}}</div>
+		</li>
+		{% if data.transactionId %}
+		<li>
+			<div>支付流水号</div>
+			<div>{{data.transactionId}}</div>
+		</li>
+		{% endif %}
+		<li>
+			<div>购买平台</div>
+			{% if data.platform==0 %}
+				<div>微信</div>
+			{% else %}
+				<div>微博</div>
+			{% endif %}
+		</li>
+		<li>
+			<div>付款方式</div>
+			{% if data.platform==0 %}
+				<div>微信安全支付</div>
+			{% else %}
+				<div>微博安全支付</div>
+			{% endif %}
+		</li>
+		<li>
+			<div>买家昵称</div>
+			<div>{{data.nickname}}</div>
+		</li>
+		<li>
+			<div>买家手机</div>
+			<div>{{data.phoneNumber}}</div>
+		</li>
+		<li>
+			<div>收货信息</div>
+			<div>{{data.userName}}<br />{{data.phoneNumber}}<br />{{data.detailAddress}}</div>
+		</li>
+		<li class="c-buycolor">
+			<div>买家留言</div>
+			<div class="f-wb-ba">{{data.remark}}</div>
+		</li>
+		<li class="c-salecolor">
+			<div>卖家留言</div>
+			<div class="f-wb-ba">{{data.sellerNote}}</div>
+		</li>
+	</ul>
+</div>

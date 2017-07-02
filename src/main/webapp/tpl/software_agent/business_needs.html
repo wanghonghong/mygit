@@ -1,0 +1,287 @@
+<style>
+    .gmn{
+        float:left;
+        width: 1148px;
+        padding-left: 38px;
+        padding-top: 25px;
+    }
+</style>
+    <div class="m-search" id="m-search">
+        <label class="u-lb-sm">订单状态</label>
+        <div class="u-txt col-xs-3">
+            <select class="ipt-txt" id="status">
+                <option value="">全部</option>
+                <option value="1">等待派单</option>
+                <option value="2">处理中</option>
+                <option value="3">申请改派</option>
+                <option value="4">已回单</option>
+                <option value="5">已通过</option>
+            </select>
+        </div>
+        <label class="u-lb-sm">需求类型</label>
+        <div class="u-txt col-xs-3">
+            <select class="ipt-txt" id="subType">
+                <option value="">全部</option>
+                <option value="1">客服增单</option>
+                <option value="2">初次使用</option>
+                <option value="3">软件模块</option>
+                <option value="4">内容服务</option>
+            </select>
+        </div>
+        <label class="u-lb-sm">接洽受理</label>
+        <div class="u-txt col-xs-3">
+            <select class="ipt-txt" >
+                <option value="1">所有平台</option>
+                <option value="2">平台1</option>
+                <option value="3">平台2</option>
+            </select>
+        </div>
+
+        <label class="u-lb-sm">操作人员</label>
+        <div class="u-txt col-xs-3">
+            <select class="ipt-txt" id="doperson">
+                <option value="1">员工</option>
+                <option value="2">老板</option>
+            </select>
+        </div>
+        <label class="u-lb-sm">申请日期</label>
+        <div class="u-txt col-xs-3" style="width: 12.3%;">
+            <select class="ipt-txt" id="startTime">
+                <option value="1">所有平台</option>
+                <option value="2">平台1</option>
+                <option value="3">平台2</option>
+            </select>
+        </div>
+        <span style="width: 5px;display: inline-block;float: left;line-height: 36px;">-</span>
+        <div class="u-txt col-xs-3" style="width: 12.3%;">
+            <select class="ipt-txt" id="endTime">
+                <option value="1">所有平台</option>
+                <option value="2">平台1</option>
+                <option value="3">平台2</option>
+            </select>
+        </div>
+        <div class="u-btn-box1">
+            <input type="button" class="u-btn-mddkorg" value="查询" />
+        </div>
+    </div>
+    <a class="btn-slide btn-slide1"></a>
+    <div class="m-jm-table f-mt-l" id="person1">
+        <ul class="table-hander">
+            <li>日期</li>
+            <li>店铺名称</li>
+            <li>店铺姓名-手机号</li>
+            <li style="width: 25%;">店铺地址</li>
+            <li>订单状态</li>
+            <li>需求类型</li>
+            <li style="width: 15%;">受理操作</li>
+
+        </ul>
+        <div class="table-body" id="needsList">
+
+        </div>
+        <!--以下是分页-->
+        <div id="needsToolbar" class="pagination f-fr f-mt-m">
+
+        </div>
+        <!--分页end-->
+    </div>
+    <div class="m-jm-table f-mt-l" id="person2">
+        <ul class="table-hander">
+            <li>日期</li>
+            <li>店铺名称</li>
+            <li>店铺姓名-手机号</li>
+            <li style="width: 25%;">店铺地址</li>
+            <li>订单状态</li>
+            <li>需求类型</li>
+            <li style="width: 15%;">受理操作</li>
+
+        </ul>
+        <div class="table-body">
+            <ul class="table-container f-pd">
+                <li>
+                    2016-05-26
+                </li>
+                <li>王小二的店</li>
+                <li>王小二 <br /> 18286402159</li>
+                <li class="f-tl" style="width: 25%;">福建省-福州市-鼓楼区 邮电公寓3楼JRT</li>
+                <li>总部派单</li>
+                <li>功能使用</li>
+                <li style="width: 15%;">
+                    <div class="u-btn-smltgry dialog"> 员工授权 </div>
+                    <div class="u-btn-smltgry dialog1"> 受理执行 </div>
+                </li>
+
+            </ul>
+            <div class="m-message">
+                <img src="{{globalUrl}}/css/pc/img/service.png"/>
+                <span>聚米留言</span>
+                <span>身高163cm，l号的会不会太大？</span>
+            </div>
+        </div>
+    </div>
+<div id="dialoginfo" class="dialoginfo">
+    <div class="m-authorize">
+        <div class="u-select-control1 ">
+            <input type="text" class="" name="goodsName" placeholder="" />
+            <i class="iconfont icon-belowtriangle  after-border"></i>
+            <i class="iconfont icon-search" id="searchBtn"></i>
+        </div>
+        <ul class="m-select-rb">
+            <li>
+                <label  for="radioBox1" class="active select-tt">运营服务商</label>
+                <div class="u-rb">
+                    <input type="radio" name="sexradio" id="radioBox1" value=""  checked/>
+                    <label  for="radioBox1"></label>
+                </div>
+            </li>
+            <li>
+                <label for="radioBox2" class="select-tt">运营服务商</label>
+                <div class="u-rb">
+                    <input type="radio" name="sexradio" id="radioBox2" value=""/>
+                    <label for="radioBox2"></label>
+                </div>
+            </li>
+            <li>
+                <label for="radioBox3" class="select-tt">运营服务商</label>
+                <div class="u-rb">
+                    <input type="radio" name="sexradio" id="radioBox3" value=""/>
+                    <label for="radioBox3"></label>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="u-btn-box1 f-mt-m"><input type="button" class="u-btn-mddkorg" value="确定" /></div>
+</div>
+<div id="dialoginfo1" class="dialoginfo">
+    <div class="m-authorize-dialog">
+        <div class="authorize-dialog-left f-pt-l">
+            <h3>第&nbsp;1&nbsp;次</h3>
+        </div>
+        <div class="authorize-dialog-right f-pt-m">
+            <div class="col-xs-12">
+                <label class="u-lb-md">处理人员</label>
+                <div class="u-txt col-xs-9">
+                    <input type="text" class="ipt-txt" placeholder="王子鸣" />
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <label class="u-lb-md">电话回访</label>
+                <div class="u-txt col-xs-9">
+                    <select class="ipt-txt ">
+                        <option value="1"></option>
+                        <option value="2"></option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <label class="u-lb-md">上门时间</label>
+                <div class="u-txt col-xs-9">
+                    <select class="ipt-txt ">
+                        <option value="1"></option>
+                        <option value="2"></option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-xs-12 m-base-info-img">
+                <label class="u-lb-md">需求描述</label>
+                <div class="u-txt col-xs-9">
+                    <textarea name="shared" class="ipt-txt txtarea" placeholder=""></textarea>
+                    <span class="number">0/60</span>
+                </div>
+            </div>
+            <div class="col-xs-12 f-mb-xs">
+                <label class="u-lb-md">处理结果</label>
+                <div class="u-txt col-xs-9">
+                    <input type="text" class="ipt-txt" placeholder="" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="m-authorize-dialog f-mt-m">
+        <div class="authorize-dialog-left f-pt-l">
+            <h3>第&nbsp;2&nbsp;次</h3>
+        </div>
+        <div class="authorize-dialog-right f-pt-m">
+            <div class="col-xs-12">
+                <label class="u-lb-md">处理人员</label>
+                <div class="u-txt col-xs-9">
+                    <input type="text" class="ipt-txt" placeholder="王子鸣" />
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <label class="u-lb-md">电话回访</label>
+                <div class="u-txt col-xs-9">
+                    <select class="ipt-txt ">
+                        <option value="1"></option>
+                        <option value="2"></option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <label class="u-lb-md">上门时间</label>
+                <div class="u-txt col-xs-9">
+                    <select class="ipt-txt ">
+                        <option value="1"></option>
+                        <option value="2"></option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-xs-12 m-base-info-img">
+                <label class="u-lb-md">需求描述</label>
+                <div class="u-txt col-xs-9">
+                    <textarea name="shared" class="ipt-txt txtarea" placeholder=""></textarea>
+                    <span class="number">0/60</span>
+                </div>
+            </div>
+            <div class="col-xs-12 f-mb-xs">
+                <label class="u-lb-md">处理结果</label>
+                <div class="u-txt col-xs-9">
+                    <input type="text" class="ipt-txt" placeholder="" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="u-btn-lgltgry3 f-mt-m"><i class="iconfont icon-add"></i><span>添加执行</span></div>
+    <div class="m-authorize-do f-mt-m"><i class="iconfont icon-checkboxselected1"></i><span>第4次执行完毕</span></div>
+    <div class="u-btn-box1">
+        <input type="button" class="u-btn-mddkorg f-mr-xs" value="保存" />
+        <input type="button" class="u-btn-mddkbl" value="处理完毕" />
+    </div>
+</div>
+<script>
+    agent.business.init();
+    $(function(){
+
+        $(".m-jm-table").hide().eq(0).show();
+        var tabul = $("#doperson");
+        tabul.change(function(){
+            var select_val =$(this).val();
+            $(".m-jm-table").each(function(){
+                var num =$(this).attr("id").replace("person","");
+                if(select_val==num){
+                    $(".m-jm-table").hide();
+                    $(this).show();
+                }
+            });
+        });
+        $(".dialog").click(function(){
+            var elem = document.getElementById('dialoginfo');
+            dialog({
+                title: "受理详情",
+                content: elem,
+
+            }).width(400).showModal();
+        });
+        $(".dialog1").click(function(){
+            var elem1 = document.getElementById('dialoginfo1');
+            dialog({
+                title: "员工接单授权",
+                content: elem1,
+
+            }).width(600).showModal();
+        });
+    })
+
+</script>

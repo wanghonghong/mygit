@@ -1,0 +1,27 @@
+{% if sizeType==0 %}
+{% set sizeClass="small-Img" %}
+{% set size=4 %}
+{% elif sizeType==1 %}
+{% set sizeClass="big-Img" %}
+{% set size=3 %}
+{% elif sizeType==2 %}
+{% set sizeClass="rectangle-Img" %}
+{% set size=3 %}
+{% elif sizeType==3 %}
+{% set sizeClass="big-small-Img" %}
+{% set size=3 %}
+{% endif %}
+<ul class="goodsul {{sizeClass}}"  >
+    {% set goodsbgcolorArray = ["#81D5FA", "#FF7EC4", "#FFBD33", "#CDDC39", "#4CAF50", "#2196F3", "#E91E63", "#00BCD4", "#673AB7", "#9E9E9E", "#FFEB3B", "#F44336"] %}
+    {% if items  and items.length>0 %}
+        {% for item in items   %}
+          {% include 'goods-item.html' %}
+        {% endfor %}
+    {% else %}
+        {% for i in range(size) %}
+           {% set item={ name:"商品名称", price:75.00 } %}
+             {% include 'goods-item.html' %}
+        {% endfor %}
+
+    {% endif %}
+</ul>

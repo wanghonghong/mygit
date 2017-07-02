@@ -1,0 +1,37 @@
+{% for item in items %}
+<ul class="table-container">
+    <li class="f-tl" style="width: 22%; padding: 0 20px;">
+        <p title="">{{item.name}}</p>
+    </li>
+    <li class="f-tl" style="padding-left: 35px;">{{item.startTime}}</li>
+    <li class="f-tl" style="padding-left: 35px;">{{item.endTime}}</li>
+    <li>{{item.votenum}}</li>
+    <li> {% if item.voteType==1 %}图片 {% elif item.voteType ==2 %} 视频 {% elif item.voteType ==3 %} 音频 {% endif %}</li>
+    <li>
+        {% if item.status==1 %}<font>未发布</font> {% elif item.status ==2 %} <font class="c-green">执行中</font> {% elif item.status ==3 %} <font class="c-red">已结束</font> {% endif %}
+    </li>
+    <li>
+        {% if item.status==1 %}
+         --
+        {% elif item.status ==2 or  item.status ==3 %}
+         <div class="u-btn-smltgry" data-id="{{item.id}}" onclick="vote.item.viewResults(this)">查看结果</div>
+        {% endif %}
+    </li>
+    <li>
+        {% if item.status==1 %}
+        <div class="u-btn-smltgry" data-id="{{item.id}}" onclick="vote.theme.updataTheme(this)" >编辑</div>
+        <div class="u-btn-smltgry" data-id="{{item.id}}" onclick="vote.theme.delTheme(this)" >删除</div>
+        {% elif item.status ==2 %}
+        <!--<div class="u-btn-smltgry" data-id="{{item.id}}" onclick="" >查看</div>-->
+        {% elif item.status ==3 %}
+        <!--<div class="u-btn-smltgry" data-id="{{item.id}}" onclick="" >查看</div>-->
+        <div class="u-btn-smltgry" data-id="{{item.id}}" onclick="vote.theme.delTheme(this)" >删除</div>
+        {% endif %}
+    </li>
+</ul>
+{% else %}
+<div class="m-jm-err">
+    <img src="{{globalUrl}}/css/pc/img/jm-nodb.png">
+</div>
+
+{% endfor %}

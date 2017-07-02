@@ -1,0 +1,85 @@
+<style>
+    .gmn{
+        float:left;
+        width: 1148px;
+        padding-left: 38px;
+        padding-top: 25px;
+    }
+</style>
+<!--主模块-->
+<section class="g-mn">
+    <div class="m-search" id="m-search">
+        <label class="u-lb-sm">投诉类型</label>
+        <div class="u-txt col-xs-3">
+            <select class="ipt-txt" >
+                <option value="1">所有平台</option>
+                <option value="2">平台1</option>
+                <option value="3">平台2</option>
+            </select>
+        </div>
+        <label class="u-lb-sm">接洽处理</label>
+        <div class="u-txt col-xs-3">
+            <select class="ipt-txt" >
+                <option value="1">所有平台</option>
+                <option value="2">平台1</option>
+                <option value="3">平台2</option>
+            </select>
+        </div>
+        <label class="u-lb-sm">日期</label>
+        <div class="u-txt col-xs-3" style="width: 12.3%; padding-right: 10px;">
+            <select class="ipt-txt">
+                <option value="1">所有平台</option>
+                <option value="2">平台1</option>
+                <option value="3">平台2</option>
+            </select>
+        </div>
+        <span style="width: 5px;display: inline-block;float: left;line-height: 36px;">-</span>
+        <div class="u-txt col-xs-3" style="width: 12.3%;padding-left: 10px;">
+            <select class="ipt-txt">
+                <option value="1">所有平台</option>
+                <option value="2">平台1</option>
+                <option value="3">平台2</option>
+            </select>
+        </div>
+        <div class="u-btn-box1">
+            <input type="button" class="u-btn-mddkorg" value="查询" />
+        </div>
+    </div>
+    <a class="btn-slide btn-slide1"></a>
+    <div class="m-jm-table f-mt-l">
+        <ul class="table-hander">
+            <li>日期</li>
+            <li>店铺名称</li>
+            <li>店铺姓名-手机号</li>
+            <li style="width: 25%;">店铺地址</li>
+            <li>订单状态</li>
+            <li>需求类型</li>
+            <li style="width: 15%;">受理操作</li>
+
+        </ul>
+        <div class="table-body" id="complainList">
+
+        </div>
+        <!--以下是分页-->
+        <div id="complainToolbar" class="pagination f-fr f-mt-m">
+
+        </div>
+        <!--分页end-->
+    </div>
+
+</section>
+<!--/主模块-->
+</div>
+<script>
+    business.complain.init();
+    $(function(){
+        $("#u-logo").click(function(){
+            $("#othermemu").toggleClass("z-change");
+        })
+
+        $(".btn-slide").click(function(){
+            $("#m-search").slideToggle("fast");
+            $(this).toggleClass("btn-slide1"); return false;
+        })
+    })
+</script>

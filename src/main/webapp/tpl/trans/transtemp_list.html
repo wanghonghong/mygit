@@ -1,0 +1,71 @@
+<style>
+    .m-panel.m-panel-freight .panel-body .m-jm-table .table-body .table-container:nth-of-type(2){
+        border-top: none;
+    }
+</style>
+<div id="transtemp_add" style="display: none;"></div>
+<div id="transtemp_list">
+
+    {%if items.length>0%}
+    {% for item in items %}
+    <div class="m-panel m-panel-freight f-mt-m">
+        <div class="panel-heading">
+            <h4>
+                <span>{{item.templatesName}}</span>
+                <div class="f-fr f-pr-s">
+                    <div class="u-btn-smltgry" id="edit_{{item.templatesId}}">
+                        <i class="iconfont icon-modified"></i><span>编辑</span>
+                    </div>
+                    <div class="u-btn-smltgry" id="del_{{item.templatesId}}">
+                        <i class="iconfont icon-delete1"></i><span>删除</span>
+                    </div>
+                </div>
+            </h4>
+        </div>
+        <div class="panel-body">
+            <div class="m-jm-table bg-white">
+                <ul class="table-hander">
+                    <li class="f-tl" style="width: 40%;">可配送地点</li>
+                    <li>首件（个）</li>
+                    <li>运费（元）</li>
+                    <li>续件（个）</li>
+                    <li>续费（元）</li>
+                </ul>
+                <div class="table-body">
+                    {%if item.transRelationList.length>0%}
+                    {% for childitem in item.transRelationList %}
+                    <ul class="table-container f-t-off1">
+
+                        {%if childitem.sendAreaId==-1%}
+                        <li class="f-tl" style="width: 40%;">
+                            <p class='showtitle c-gray1'>{{childitem.sendArea}}</p>
+                        </li>
+                        {%else%}
+                        <li class="f-tl" style="width: 40%;">
+                            <p class='showtitle'>{{childitem.sendArea}}</p>
+                        </li>
+                        {%endif%}
+                        <li>{{childitem.firstNumber}}</li>
+                        <li>{{childitem.transFare/100}}</li>
+                        <li>{{childitem.nextNumber}}</li>
+                        <li>{{childitem.nextTransFare/100}}</li>
+                    </ul>
+                    {%endfor%}
+                    {%endif%}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {%endfor%}
+    {%else%}
+    <div class="m-jm-err">
+        <img src="{{globalUrl}}/css/pc/img/jm-nodb.png">
+    </div>
+    {%endif%}
+</div>
+<script>
+   transtemp.end.temp_edit();
+   transtemp.end.temp_del();
+   transtemp.end.temp_showareafortitle();
+</script>

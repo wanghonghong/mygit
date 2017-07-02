@@ -1,0 +1,20 @@
+<div class="m-jm-table">
+    <ul class="table-hander">
+        <li>图文标题</li>
+        <li>创建人</li>
+        <li>日期</li>
+        <li>选择</li>
+
+    </ul>
+    <div class="table-body h-scroll" style="max-height: 250px;">
+        {%for item in items%}
+        <ul class="table-container">
+            <li>{{item.imageTextTile}}</li>
+            <li>{{item.userName}}</li>
+            <li>{{item.createTime}}</li>
+            <!--<li><div class='radioBox'><label onClick="setMemuLink('{{item.ultype}}','{{item.ulurlname}}','{{item.ulkey}}','{{item.ulnewurl}}{{item.id}}','{{item.ulshopId}}')"  ></label> </div></li>-->
+            <li><div class='radioBox'><label onClick="setMemuLink('{{item.ultype}}','{{item.ulurlname}}','{{item.ulkey}}','{{item.ulnewurl}}{{item.id}}','{{item.ulshopId}}')"  ></label> </div></li>
+        </ul>
+        {%endfor%}
+    </div>
+</div>

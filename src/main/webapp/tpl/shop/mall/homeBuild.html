@@ -1,0 +1,37 @@
+<!--商品分类 -->
+<div class="m-goods-details" id="goods-details">
+    <input  type="hidden" id="shopname" name="shopname" value=""/>
+    <header class="details-hander">
+        <span>展示样式</span>
+        <div class="u-rb">
+            <input type="radio" name="showStyle" id="showStyle1"/>
+            <label for="showStyle1" data-toggle="standard"></label>
+        </div>
+        <label for="showStyle1" class="f-mr-l" data-toggle="standard">标准版</label>
+        <div class="u-rb">
+            <input type="radio" name="showStyle" id="showStyle2"/>
+            <label for="showStyle2" data-toggle="h5version"></label>
+        </div>
+        <label for="showStyle2" class="f-mr-l" data-toggle="h5version">H5商城</label>
+    </header>
+    {% set curpage='homepage' %}
+    <section id="standard" class="m-config-panel f-mt-l z-sel" style="border-top: 1px solid #e9e9e9;">
+        {% set version='mallstandard' %}
+        {% include 'tpl/product/detail/config-panel.html' %}
+    </section>
+    <section id="h5version" class="m-config-panel f-mt-l" style="border-top: 1px solid #e9e9e9;">
+        <div class="f-ma-xxl f-tc">
+            该功能正在开发中。。。。
+        </div>
+
+    </section>
+    <div class="u-btn-box">
+        <input type="button" class="u-btn-mainlg" id="savedetailbtn" value="保存" />
+    </div>
+    <!--<div class="f-tc f-margin-s">-->
+        <!--<div class="u-btn-mddkorg u-w" id="savedetailbtn"> 保存</div>-->
+    <!--</div>-->
+    <div id="link_content" style="display: none;"></div>
+</div>
+
+<!--/商品分类-->

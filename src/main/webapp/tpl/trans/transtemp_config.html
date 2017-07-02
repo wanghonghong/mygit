@@ -1,0 +1,49 @@
+<div class="m-panel-head m-tips-freight f-mt-m">
+    <div class="m-freightcon col-xs-2" style="padding-right: 0;">
+        <h3>运费计算可选条件</h3>
+    </div>
+    <div class="m-freightcon col-xs-10" style="padding-left: 0; margin-left: -15px;">
+        <p>
+        <div class="u-cb">
+            {%if transCondition0ne==1%}
+            <input type="checkbox" name="option" id="transCondition0ne" value="1" checked/>
+            {%else%}
+            <input type="checkbox" name="option" id="transCondition0ne" value="0" />
+            {%endif%}
+            <label class="iconfont icon-avoid" for="transCondition0ne"></label>
+        </div>
+        <label for="transCondition0ne" class="c-gray1">同个订单出现免运费商品与需运费商品，不计算运费</label>
+        </p>
+        <p>
+        <div class="u-cb">
+            {%if transConditionTwo==1%}
+            <input type="checkbox" name="option" id="transConditionTwo" value="1" checked/>
+            {%else%}
+            <input type="checkbox" name="option" id="transConditionTwo" value="0"/>
+            {%endif%}
+
+            <label class="iconfont icon-avoid" for="transConditionTwo"></label>
+        </div>
+        <label for="transConditionTwo" class="c-gray1">同个订单多商品使用“统一邮费”，只收最高运费那款商品的运费金额 1 次</label>
+        </p>
+        <p>
+        <div class="u-cb">
+            {%if transConditionThree==1%}
+            <input type="checkbox" name="option" id="transConditionThree" value="1" checked/>
+            {%else%}
+            <input type="checkbox" name="option" id="transConditionThree" value="0"/>
+            {%endif%}
+
+            <label class="iconfont icon-avoid" for="transConditionThree"></label>
+        </div>
+        <label for="transConditionThree" class="c-gray1">同个订单多商品使用“不同运费模板”，只收运费最高模板的商品运费</label>
+        </p>
+    </div>
+</div>
+<div class="u-btn-box f-mt-l">
+    <input type="button" class="u-btn-mainlg" id="saveTransOptBtn" value="保存" />
+</div>
+<script>
+    transtemp.end.temp_option();
+</script>
+

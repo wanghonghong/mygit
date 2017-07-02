@@ -1,0 +1,85 @@
+版本Id:<input type="text" value="{{softId}}" id="softIdDDD" >
+
+<div class="m-jm-table1 f-mt-s m-hsfloorlimit">
+	<ul class="table-hander">
+		<li>角色名称(name)</li>
+		<li>类型(Type)</li>
+		<li>操作</li>
+	</ul>
+	<div class="table-body c-gray1" id="specDataDD">
+		{% for item in items %}
+			<ul class="table-container" >
+			<li>
+				<input type="text" class="table-input c-gray1" value="{{item.roleName}}" name="roleName" />
+			</li>
+			<li>
+				<!--<input type="text" class="table-input c-gray1" value="{{item.type}}" name="type" />-->
+				<select name="types" style="width: 150px">
+					<option value="1" {% if item.type==1 %} selected {%endif%}>员工</option>
+					<option value="2" {% if item.type==2 %} selected {%endif%}>供货商</option>
+					<option value="4" {% if item.type==4 %} selected {%endif%}>服务商</option>
+					<option value="5" {% if item.type==5 %} selected {%endif%}>代理商</option>
+				</select>
+			</li>
+			<li>
+				<i class="iconfont icon-delete1" onclick="remove(this)" ></i>
+			</li>
+		</ul>
+		{%endfor%}
+	</div>
+	<div class="u-btn-lgltgry2 f-margin-s addSpecData" onclick="add()" >
+		<i class="iconfont icon-add"></i><span>添加角色</span>
+	</div>
+	<input type="button" class="u-btn-mddkorg u-w" value="保存" onclick="saveRoleD()" />
+</div>
+<script>
+	function add(){
+        jumi.template("zb/system/softRoleEditList",function(tpl) {
+            $('#specDataDD').append(tpl);
+        });
+    }
+
+    function remove(vthis) {
+		$(vthis).parent().parent().remove();
+    }
+
+    function saveRoleD(){
+	    var all = $('#specDataDD');
+	    var ul = all.children();
+	    var softId = $("#softIdDDD").val();
+	    var vo = {};
+        var roles = [];
+	    vo.softId = softId;
+	    for(var i = 0 ; i<ul.length;i++){
+            var roleName = $(ul[i]).find("[name='roleName']").val();
+            //var type = $(ul[i]).find("[name='type']").val();
+            var type = $(ul[i]).find("[name='types']").val();
+            if(type<=0){
+				alert("type不能小于1");//
+				return;
+			}
+            var role = {};
+            role.roleName = roleName;
+            role.type = type;
+            roles.push(role)
+		}
+        vo.roles = roles;
+        var jsonData = JSON.stringify(vo);
+        $.ajaxJson(CONTEXT_PATH+"/zbSoft/saveSoftRole",jsonData,{
+            "done":function (res) {
+                if(res.code===0){
+                    var dm = new dialogMessage({
+                        type:1,
+                        fixed:true,
+                        msg:res.data.msg,
+                        isAutoDisplay:true,
+                        time:3000
+                    });
+                    dm.render();
+                    dialog.get('show-dialog').close().remove();
+                }
+            }
+        });
+	}
+
+</script>

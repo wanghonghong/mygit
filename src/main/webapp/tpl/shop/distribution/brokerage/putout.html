@@ -1,0 +1,33 @@
+<ul class="table-container">
+    <li>
+        <img src="{{headimgurl}}" alt="暂无图片" class="u-thumbnail-circ">
+    </li>
+    <li style="width: 15%; padding: 0 30px;" class="f-ellipsis f-tl">
+        <span>{{userName | default('-',true)}}</span><br><span>{{nickname| default('-',true)}}</span><br><span>{{phoneNumber| default('-',true)}}</span>
+    </li>
+    <li>
+        {% if agentRole ==0 %}普通用户
+        {% elif agentRole ==1 %}代理1档
+        {% elif agentRole ==2 %}代理2档
+        {% elif agentRole ==3 %}代理3档
+        {% elif agentRole ==4 %}代理4档
+        {% elif agentRole ==5 %}分销1档
+        {% elif agentRole ==6 %}分销2档
+        {% elif agentRole ==7 %}分销3档
+        {% elif agentRole ==8 %}分享客
+        {% endif %}
+    </li>
+    <li>{{totalCount|default(0,ture) /100}}</li>
+    <li>{{(totalCount-kitBalance)|default(0,ture) /100}}</li>
+    <li>{{kitBalance|default(0,ture) /100}}</li>
+    <li>微信</li>
+    <li>
+        <div class="u-btn-smltgry dialog1" onclick="sales.waiting.lookup(this)">查看</div>
+        {% if kitBalance>=100 %}
+        {% set fontcolor ='' %}
+        {% set bordercolor ='' %}
+
+            <div class="u-btn-smltgry dialog1 {{fontcolor}}  {{bordercolor}}" onclick="sales.waiting.auditOrder(this)">发放 </div>
+        {% endif %}
+    </li>
+</ul>

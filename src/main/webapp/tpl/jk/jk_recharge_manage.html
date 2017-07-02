@@ -1,0 +1,109 @@
+<style>
+    .gmn{
+        padding: 23px 24px 23px 0;
+        width: 1154px;
+        float: left;
+    }
+</style>
+<!--主模块-->
+<!--<div class="m-search" id="m-search">
+    &lt;!&ndash; <label class="u-lb-sm">商家昵称</label>
+                <div class="u-txt col-xs-3">
+                    <input type="text" class="ipt-txt" placeholder="请输入商家昵称" />
+                </div> &ndash;&gt;
+
+
+    <label class="u-lb-sm">手机</label>
+    <div class="u-txt u-txt-date f-ml-m">
+        <i class="iconfont icon-calendar"></i> <input type="text" id="phoneNumber" class="ipt-txt c-gray1" placeholder=""style="width: 150px;" />
+    </div>
+
+
+    <label class="u-lb-sm">昵称</label>
+    <div class="u-txt u-txt-date f-ml-m">
+        <i class="iconfont icon-calendar"></i> <input type="text" id="nickname" class="ipt-txt c-gray1" placeholder=""style="width: 150px;" />
+    </div>
+
+    <label class="u-lb-sm">发放日期</label>
+    <div class="u-txt u-txt-date f-ml-m">
+        <i class="iconfont icon-calendar"></i> <input type="text" id="startDate2" class="ipt-txt c-gray1" placeholder="" style="width: 150px;" />
+    </div>
+    <div class="u-txt">
+        <span class="line" style=" width: 20px;">至</span>
+    </div>
+    <div class="u-txt u-txt-date f-mr-m">
+        <i class="iconfont icon-calendar"></i> <input type="text"id="endDate2" class="ipt-txt c-gray1" placeholder=""style="width: 150px;" />
+    </div>
+
+    </div>
+
+
+
+
+    <div class="u-btn-box1">
+        &lt;!&ndash;  <input type="button" class="u-btn-mddkbl f-mr-xs" value="导出" />&ndash;&gt;
+        <input type="button" onclick="juke.manages.recharge.queryList()" class="u-btn-mddkorg" value="查询" />
+    </div>-->
+
+<div class="" >
+    <div class="m-search" id="panel">
+        <label class="u-lb-sm">手机</label>
+        <div class="u-txt col-xs-3">
+            <input type="text" class="ipt-txt" placeholder="请输入手机号码" name="phoneNumber" id="phoneNumber" />
+        </div>
+        <label class="u-lb-sm">昵称</label>
+        <div class="u-txt col-xs-3">
+            <input type="text" class="ipt-txt" placeholder="请输入昵称" name="nickname" id="nickname" />
+        </div>
+        <label class="u-lb-sm">发放日期</label>
+        <div class="u-txt u-txt-date f-ml-m">
+            <i class="iconfont icon-calendar"></i>
+            <input type="text" class="ipt-txt" id="startDate2"  placeholder="开始时间" style="width: 112px;"  />
+        </div>
+        <div class="u-txt">
+            <span class="line" style=" width: 25px;">-</span>
+        </div>
+        <div class="u-txt u-txt-date">
+            <i class="iconfont icon-calendar"></i>
+            <input type="text"  class="ipt-txt" id="endDate2"  placeholder="结束时间" style="width: 112px;" />
+        </div>
+        <div class="f-cb"></div>
+
+        <div class="form-group" id="customer_content"  style="margin-left: 30px;">
+
+        </div>
+
+        <div class="u-btn-box1">
+            <input type="button" class="u-btn-mddkorg u-w" value="查询"  onclick="juke.manages.recharge.queryList();" />
+        </div>
+    </div>
+
+</div>
+<a class="btn-slide btn-slide1"></a>
+<div class="m-person-totle1 f-mt-m">
+    本页合计金额：<span id="cout_j" style="color:green;font-size:16px;font-weight:500"></span>元
+</div>
+<div class="m-jm-table f-mt-m" style="overflow: inherit;">
+    <ul class="table-hander">
+        <li>头像</li>
+        <li>昵称</li>
+        <li>手机</li>
+        <li>上级</li>
+        <li>发放日期</li>
+        <li>金额</li>
+        <li>支付方式</li>
+
+    </ul>
+
+    <div id="send_list">
+        <!--  发送列表 -->
+
+    </div>
+    <div id=sendRecordPaperToolbar class="pagination f-mt-s f-mr-s f-fr">
+
+    </div>
+</div>
+<script>
+    juke.manages.recharge.init();
+</script>
+

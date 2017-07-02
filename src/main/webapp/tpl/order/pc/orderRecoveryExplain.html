@@ -1,0 +1,65 @@
+<!--回收说明-->
+<div class="panel-hidden">
+    <div class="col-xs-12" style="padding: 0; padding-left: 15px;">
+        <div class="m-sell-set m-myshopset" style="padding: 15px 0; box-shadow: none;" id="explainTemplate">
+            <div class="sell-set-left">
+                <h3 style="color: #6f6f6f; font-size: 16px;">说明设置</h3>
+            </div>
+            <div class="sell-set-right">
+                <div class="col-xs-12">
+                    <label class="u-lb-sm c-black">内容图片</label>
+                    <input  type="hidden" name="imgResIds" value=""/>
+                    <ul class="m-addimg-group1 col-xs-9  imgResList"  >
+                        <li class="add" id="imgResAdd">
+                            <i class="iconfont icon-add"></i>
+                        </li>
+                    </ul>
+                </div>
+                <div class="m-tip1 f-fl f-cb" style="margin: 0 0 0 115px;">
+                    <i class="iconfont icon-lamp"></i>
+                    <span>建议尺寸（宽*高）：<font class="c-orange2">750*320</font>像素</span>
+                </div>
+                <div class="col-xs-12">
+                    <label class="u-lb-sm c-black">启用模块</label>
+                    <div class="u-txt col-xs-10 f-mt-s f-mb-zero">
+                        <!--命名框一-->
+                        <div class="u-cb f-mb-zero f-fl bg-white">
+                            <input type="checkbox" name="usingModule1" id="usingModule1" value="1" {% if usingModule1==1 %} checked {% endif %} />
+                            <label class="iconfont icon-avoid" for="usingModule1"></label>
+                        </div>
+                        <input type="text" class="ipt-txt c-gray1 f-ml-xs" id="module1" name="module1" value="{{module1}}" placeholder="请命名" style="width: 170px; margin-top: -8px;" />
+                        <!--/-->
+                        <!--命名框二-->
+                        <div class="u-cb f-mb-zero f-fl bg-white f-ml-xl">
+                            <input type="checkbox" name="usingModule2" id="usingModule2" value="1" {% if usingModule2==1 %} checked {% endif %} />
+                            <label class="iconfont icon-avoid" for="usingModule2"></label>
+                        </div>
+                        <input type="text" class="ipt-txt c-gray1 f-ml-xs" id="module2" name="module2" value="{{module2}}" placeholder="请命名" style="width: 170px; margin-top: -8px;" />
+                        <!--/-->
+                    </div>
+                </div>
+
+                <div class="col-xs-12" >
+                    <label class="u-lb-sm c-black">说明编写</label>
+                    <div class="col-xs-8 f-pt-s">
+                        <div class="explainContainer">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12" >
+                    <label class="u-lb-sm c-black">公益编写</label>
+                    <div class="col-xs-8 f-pt-s">
+                        <div class="explainContainer1">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="u-btn-box f-mt-xl">
+            <input type="button" class="u-btn-mainlg" onclick="orderRecoverBusiness.list.addRecycleExplain();" value="保存" />
+        </div>
+    </div>
+</div>
+<script>
+    orderRecoverBusiness.list.recoveryExplainAddImg();
+</script>

@@ -1,0 +1,25 @@
+<div class="m-jm-table f-mb-m">
+    <ul class="table-hander">
+        <li>图文标题</li>
+        <li>创建人</li>
+        <li>日期</li>
+        <li>选择</li>
+
+    </ul>
+    <div class="table-body">
+        {%for item in items%}
+        <ul class="table-container f-t-off font-s12">
+            <li class="f-tl"><p title="{{item.imageTextTile}}">{{item.imageTextTile}}</p></li>
+            <li>{{item.userName}}</li>
+            <li>{{item.createTime}}</li>
+            <!--<li><div class='radioBox'><label onClick="setMemuLink('{{item.ultype}}','{{item.ulurlname}}','{{item.ulkey}}','{{item.ulnewurl}}{{item.id}}','{{item.ulshopId}}')"  ></label> </div></li>-->
+            <li>
+                <div class='radioBox'>
+                    <label  link_url="{{item.ulnewurl}}" link_type="{{item.ultype}}" type="{{item.type}}" shop_id="{{item.ulshopId}}" data-name="{{item.imageTextTile}}"
+                            link_key="{{item.ulkey}}" link_name="{{item.ulurlname}}" link_id="{{item.id}}" parent_id="{{item.parent_id}}"></label>
+                </div>
+            </li>
+        </ul>
+        {%endfor%}
+    </div>
+</div>

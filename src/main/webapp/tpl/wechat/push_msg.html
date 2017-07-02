@@ -1,0 +1,170 @@
+
+<style>
+    .u-cb1 label:before{
+        top: 3px;
+    }
+    .ui-dialog-body{
+        padding: 0 15px 15px;
+    }
+    .djsz .dialog {
+        position: absolute;
+        height: 35px;
+        line-height: 35px;
+        border-top-left-radius: 2px;
+        border-bottom-left-radius: 2px;
+        padding: 0 5px;
+        font-size: 12px;
+        top: 0;
+        left: 15px;
+        background-color: #bbc6cc;
+        color: #ffffff;
+        cursor: pointer;
+    }
+    .select2-container--jumi .select2-selection--single .select2-selection__arrow{ height: 33px;}
+    .m-sell-set .sell-set-right .u-txt label.error{
+        color:#ff6543;
+        font-size: 12px;
+        position: absolute;
+        width: 230px;
+        margin-left: 10px;
+        line-height: 36px;
+     }
+    .sell-set-right .col-xs-12{
+        position: relative;
+    }
+    .u-rightdelete{
+        position: absolute;
+        right: 20px;
+        top: 5px;
+    }
+</style>
+<div class="m-tab f-mb-m">
+    <ul>
+        <li class="z-sel">新建群发</li>
+        <li>已发送</li>
+    </ul>
+</div>
+<div id="pushmsg_container" class="panel-hidden">
+    <div class="m-search" id="push-m-search">
+        <label class="u-lb-sm">分组选择</label>
+        <div class="u-txt col-xs-3">
+            <select name="userGroup" id="userGroup"   style="width:248px;display: inline-block;height: 30px"></select>
+        </div>
+        <label class="u-lb-sm">性别选择</label>
+        <div class="u-txt col-xs-3">
+            <select name="sex" id="sex" style="width:248px;">
+                <option value="-1">--全部--</option>
+                <option value="0">无</option>
+                <option value="1">男</option>
+                <option value="2">女</option>
+            </select>
+        </div>
+        <label class="u-lb-sm">角色选择</label>
+        <div class="u-txt col-xs-3">
+            <select class="ipt-txt" name="zbRole" id="zbRole" style="width: 247px;">
+
+            </select>
+        </div>
+        <label class="u-lb-sm f-cb">关注时间</label>
+        <div class="u-txt u-txt-date f-ml-m">
+            <i class="iconfont icon-calendar"></i>
+            <input type="text" class="ipt-txt c-gray1" id="subStartDate" placeholder="" style="width: 114px;" />
+        </div>
+        <div class="u-txt">
+            <span class="line" style=" width: 20px;">-</span>
+        </div>
+        <div class="u-txt u-txt-date">
+            <i class="iconfont icon-calendar"></i>
+            <input type="text" class="ipt-txt c-gray1" id="subEndtDate"  placeholder="" style="width: 114px;" />
+        </div>
+        <div class="f-cb"></div>
+        <div class="col-xs-12" style="padding: 0;">
+            <div class="form-group" id="customer_content">
+
+            </div>
+        </div>
+        <div class="u-btn-box1">
+            <input type="button" class="u-btn-lgdkorg1" id="push_select" value="筛选" /><input type="hidden" id="getoption" value="">
+        </div>
+    </div>
+    <a class="btn-slide btn-slide1" id="push_pagebtn"></a>
+    <form id="push_msg_form">
+    <div class="m-sell-set bg-white f-mt-s" style="margin-right: 0; margin-left: 0px; padding: 15px 0 5px;box-shadow: none;">
+        <div class="sell-set-left c-gray1">
+            <h3 style="padding-left: 15px;">推送内容</h3>
+        </div>
+        <div class="sell-set-right">
+            <div class="col-xs-12">
+                <label class="u-lb-sm">标题</label>
+                <div class="u-txt col-xs-8">
+                    <input type="text" class="ipt-txt" placeholder="请输入标题" id="first" value=""   name="first"/>
+                </div>
+            </div>
+
+            <div class="col-xs-12">
+                <label class="u-lb-sm">链接</label>
+                <div class="u-txt djsz col-xs-8">
+                    <span class="dialog" id="showset"><i class="iconfont icon-link"></i>点击设置</span>
+                    <input type="text" class="ipt-txt" readonly  placeholder="点击选择跳转链接" id="urlLink"  name="urlLink" style="padding-left: 80px; padding-right: 45px;"/>
+                    <input type="hidden" id="urlName" value=""/>
+
+                </div>
+
+            </div>
+            <div class="col-xs-12">
+                <label class="u-lb-sm">摘要</label>
+                <div class="u-txt col-xs-8">
+                    <textarea class="ipt-txt txtarea" placeholder="请输入摘要信息" id="remark"  name="remark" style="height: 60px"></textarea>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <label class="u-lb-sm">主图</label>
+                <div class="m-add-pic col-xs-2 f-mb-m">
+                    <img data-url="" id="abstract" src="{{globalUrl}}/css/pc/img/no_picture.png">
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="u-txt">
+                    <div class="u-rb" style="margin-left: 100px;">
+                        <input type="radio" name="sex_11" id="sendType11" value="0" checked />
+                        <label for="sendType11"></label>
+                    </div>
+                    <label for="sendType11"  class="f-mr-l" style="color: black;">立即推送</label>
+
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div class="u-txt">
+                    <div class="u-rb" style="margin-bottom: 10px;margin-left: 100px;">
+                        <input type="radio" name="sex_11" id="sendType12" value="1" >
+                        <label for="sendType12"></label>
+                    </div>
+                    <label for="sendType12" class="f-mr-l" style="color:black;">定时推送</label>
+                </div>
+                <div class="u-txt u-txt-date f-ml-m" style="margin-top: -6px;">
+                    <i class="iconfont icon-calendar"></i>
+                    <input type="text" class="ipt-txt c-gray1" placeholder="" id="timemassmsg" style="width: 162px;" />
+                </div>
+            </div>
+        </div>
+    </div>
+    </form>
+    <div class="u-btn-box1 f-mt-m">
+        <input type="button" class="u-btn-mainlg" id="pushmsg" value="发送" />
+        <!--<input type="button" class="u-btn-mddkorg u-w" id="pushmsg" value="发送" />-->
+    </div>
+<div id="link_content" class="hide"></div>
+</div>
+<div id="sended_container" class="panel-hidden" style="overflow: visible;">
+    <div id="table-body"></div>
+    <div id="pageToolbar" class="pagination"  style="float: right; margin: 15px 4px 0 0; ">
+
+    </div>
+</div>
+<script>
+
+    mm.wepushmsg.init();
+    mm.wepushmsg.mm_push();
+    mm.wepushmsg.mm_filter();
+    mm.wepushmsg.mm_slide();
+</script>

@@ -1,0 +1,38 @@
+
+<!--<div class="f-tl f-ml-l">
+    <label style="font-size: 14px;color: #666;text-indent: 12px;">关注公众号后，才能接收图文消息预览</label>
+</div>
+<div class="u-txt col-xs-12 f-mt-s">
+    <input type="text" id="wxhao" class="ipt-txt" placeholder="请输入微信号" />
+</div>
+
+<div class="u-btn-box1 f-mt-m">
+    <input type="button" class="u-btn-mddkgry f-mr-xs" id="sdMobilecancel" onclick="mm.picturemsg.mm_mobile_cancel();" value="取消" />
+    <input type="button" class="u-btn-mddkorg" id="sdMobileView" onclick="mm.picturemsg.mm_mobile_view();" value="确认" />
+</div>-->
+
+
+<div class="col-xs-9 f-mt-m" style="border-right: 1px solid #e3e3e3; padding-left: 0;">
+    <div class="f-tl f-ml-m">
+        <label style="font-size: 12px;">关注公众号后，才能接收图文消息预览</label>
+    </div>
+    <div class="u-txt col-xs-12 f-mt-s">
+        <input type="text" class="ipt-txt" id="wxhao" placeholder="请输入微信号" />
+    </div>
+    <div class="m-sendpre">
+        <p >预览功能仅用于公众号查看文章效果，不适用于公众传播，预览链接会在短期内失效</p>
+        <ul id="sCodeMsg" style="display: none;">
+            <li>1.接收预览消息的微信尚未关注公众号，请先扫码关注</li>
+            <li>2.如果已经关注公众号，请查看微信的隐私设置（在手机微信的“我->设置->隐私”中），并开启“通过QQ号搜索到我“或者“可通过手机号搜索到我”</li>
+        </ul>
+    </div>
+</div>
+<div class="col-xs-3 f-mt-l" style="padding-right: 0;">
+    <div class="f-tc"><img src="{{data}}" style="width: 120px;height:120px;"/></div>
+    <p class="f-tc f-mt-l f-font-ming-sm">扫描关注我哦</p>
+</div>
+<div class="f-cf"></div>
+<div class="u-btn-box1 f-mt-l">
+    <input type="button" class="u-btn-mddkgry f-mr-xs" onclick="mm.picturemsg.mm_mobile_cancel();" value="取消" />
+    <input type="button" class="u-btn-mddkorg" onclick="mm.picturemsg.mm_mobile_view();" value="确认" />
+</div>

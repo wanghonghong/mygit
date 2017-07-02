@@ -1,0 +1,148 @@
+<div class="m-search f-mt-m" id="m-search">
+    <label class="u-lb-sm">收货手机</label>
+    <div class="u-txt col-xs-3">
+        <input type="text" class="ipt-txt" id="consigneePhone" name="consigneePhone" placeholder="请输入收货手机" />
+    </div>
+    <label class="u-lb-sm">订单编号</label>
+    <div class="u-txt col-xs-3">
+        <input type="text" class="ipt-txt" id="orderNum" name="orderNum" placeholder="请输入订单编号" />
+    </div>
+    <label class="u-lb-sm">订单日期</label>
+    <div class="u-txt u-txt-date f-ml-m">
+        <i class="iconfont icon-calendar"></i>
+        <input type="text" class="ipt-txt" id="orderBeginDate" name="orderBeginDate" placeholder="开始时间"  style="width: 112px;" />
+    </div>
+    <div class="u-txt">
+        <span class="line" style=" width: 25px;">-</span>
+    </div>
+    <div class="u-txt u-txt-date f-mr-m" >
+        <i class="iconfont icon-calendar"></i>
+        <input type="text" class="ipt-txt" id="orderEndDate" name="orderEndDate" placeholder="结束时间" style="width: 112px;" />
+    </div>
+    <label class="u-lb-sm">收货姓名</label>
+    <div class="u-txt col-xs-3">
+        <input type="text" class="ipt-txt" id="consigneeName" name="consigneeName" placeholder="请输入收货姓名" />
+    </div>
+
+    <label class="u-lb-sm">购买平台</label>
+    <div class="u-txt col-xs-3">
+        <select class="ipt-txt" name="platform" id="platform" style="width: 100%">
+        </select>
+    </div>
+    {% if paramsObj.status!=0 and paramsObj.status!=4 %}
+    <label class="u-lb-sm">收款流水号</label>
+    <div class="u-txt col-xs-3">
+        <input type="text" class="ipt-txt" id="transactionId" name="transactionId" placeholder="请输入收款流水号" />
+    </div>
+     <div class="f-cb"></div>
+    {% endif %}
+    <label class="u-lb-sm">买家昵称</label>
+    <div class="u-txt col-xs-3">
+        <input type="text" class="ipt-txt" id="nickname" name="nickname" placeholder="请输入买家昵称" />
+    </div>
+    {% if paramsObj.status==11 %}
+    <label class="u-lb-sm">订单状态</label>
+    <div class="u-txt col-xs-3">
+        <select class="ipt-txt" name="orderStatus" id="orderStatus" style="width: 100%">
+
+        </select>
+    </div>
+    {% endif%}
+    {% if paramsObj.status!=0 and paramsObj.status!=4 %}
+    <label class="u-lb-sm">物流方式</label>
+    <div class="u-txt col-xs-3">
+        <select class="ipt-txt" name="sendWay" id="sendWay" style="width: 100%">
+
+        </select>
+    </div>
+    {% endif %}
+    <label class="u-lb-sm">订单类型</label>
+    <div class="u-txt col-xs-3">
+        <select class="ipt-txt" name="orderType" id="orderType" style="width: 100%">
+        </select>
+    </div>
+    {% if paramsObj.status==5 %}
+    <label class="u-lb-sm">退款流水号</label>
+    <div class="u-txt col-xs-3">
+        <input type="text" class="ipt-txt" id="refundId" name="refundId" placeholder="请输入退款流水号" />
+    </div>
+    <div class="f-cb"></div>
+    {% endif %}
+    <div class="u-btn-box1">
+        <a target="_blank" class="u-btn-mddkbl f-mr-xs" value="导出" onclick="order.list.exportOrder();" >导出</a>
+        <input type="button" class="u-btn-mddkorg u-w" value="查询" onclick="order.list.query();" />
+    </div>
+</div>
+    <a class="btn-slide btn-slide1"></a>
+<script type="text/javascript">
+    $(function(){
+        var platformList = [{id: "0", text: "全部"}, {id: "1", text: "微信"}, {id: "2", text: "微博"}];
+
+        var orderStatusList = [{id: "-1", text:"全部"},{id: "0", text:"待付款"},{id: "1", text:"待发货"},{id: "2", text:"待收货"},
+                                {id: "3", text:"已收货"},{id: "4", text:"订单关闭"},{id: "6", text:"退货中"},{id: "5", text:"待退款"},
+                                {id: "7", text:"已退款"},{id: "8", text:"拒绝退款"}];
+
+        var sendWayList = [{id:"0", text:"全部"},{id:"1", text:"快递"},{id:"2", text:"快运"},{id:"3", text:"门店自取"}];
+        var orderTypeList = [{id:"0", text:"全部"},{id:"1", text:"标准单"},{id:"2", text:"礼品单"}]
+        var defaults = {
+            platformList: platformList,
+            orderStatusList:orderStatusList,
+            sendWayList:sendWayList,
+            orderTypeList:orderTypeList,
+        };
+
+        $("#tableBody .m-table-control").each(function(i){
+            console.log(i)
+            $(this).rowspan([1,2,3,4,5]);
+        });
+
+        $(".btn-slide").click(function(){
+            $("#m-search").slideToggle("fast");
+            $(this).toggleClass("btn-slide1"); return false;
+        });
+
+        $("#platform").select2({
+            theme: "jumi",
+            data: defaults.platformList
+        });
+
+        $("#orderStatus").select2({
+            theme: "jumi",
+            data: defaults.orderStatusList
+        });
+
+        $("#sendWay").select2({
+            theme: "jumi",
+            data: defaults.sendWayList
+        });
+
+        $("#orderType").select2({
+            theme: "jumi",
+            data: defaults.orderTypeList
+        });
+
+        $(".panel-hidden").hide().eq(0).show();
+        var tabul = $(".m-tab ul li");
+        tabul.click(function(){
+            tabul.eq($(this).index()).addClass("z-sel").siblings().removeClass('z-sel');
+            $(".panel-hidden").hide().eq($(this).index()).show();
+        });
+    })
+
+    $("#orderBeginDate").datetimepicker({
+        showSecond : true,
+        timeFormat : 'hh:mm:ss',
+        dateFormat : 'yy-mm-dd',
+        stepHour : 1,
+        stepMinute : 1,
+        stepSecond : 1
+    });
+    $("#orderEndDate").datetimepicker({
+        showSecond : true,
+        timeFormat : 'hh:mm:ss',
+        dateFormat : 'yy-mm-dd',
+        stepHour : 1,
+        stepMinute : 1,
+        stepSecond : 1
+    });
+</script>

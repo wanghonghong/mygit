@@ -1,0 +1,43 @@
+<style>
+    .u-thumbnail-circ{
+        display: inline-block;
+        line-height: 1.42857143;
+        background-color: #fff;
+        border: 1px solid #eaeaea;
+        width: 70px;
+        height: 70px;
+        border-radius: 0%;
+    }
+
+</style>
+{% if items.length >0 %}
+{%for item in items%}
+<ul class="table-container" style="height: 106px;" >
+    <li class="table-wid">
+        <div class="table-cell vertical-middle" style=" width: 70px; height: 70px; float:left;vertical-align:middle;text-align:center;">
+            <img src="{{item.storeImg}}" alt="暂无图片" class="u-thumbnail-circ">
+        </div>
+        <div class="table-cell vertical-middle padding-left-m">
+            <span >{{item.storeName}} </span><br>
+            <span class="font-color-orange" >{{item.phoneNumber}}</span>
+        </div>
+    </li>
+    <li>
+        <span>am {{item.officeHoursStart}} <br>pm {{item.officeHoursEnd}}</span>
+    </li>
+    <li>{{item.province}}-{{item.city}}-{{item.district}}</li>
+    <li>{{item.address}}</li>
+    <li>
+        <div   class="btn  btn-lightgray btn-sm" id="shopenupdate{{item.storeId}}"> 编辑 </div>
+        <div   class="btn  btn-lightgray btn-sm" id="shopview{{item.storeId}}"> 预览 </div>
+        <div   class="btn  btn-lightgray btn-sm" id="shopendel{{item.storeId}}"> 删除 </div>
+        <div id="showitem{{item.storeId}}" style="display: none;">{{itemsString}}</div>
+    </li>
+</ul>
+{%endfor%}
+{% else %}
+<div class='noData' style="padding-top: 15px;">暂无数据</div>
+{% endif %}
+<script>
+shop.entitystore.init();
+</script>

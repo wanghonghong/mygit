@@ -1,0 +1,28 @@
+<div class="m-tt">
+    <p style="padding-left: 10px;">地区分布</p>
+</div>
+<div class="col-xs-12 f-pb-m f-pt-s">
+    <div id="chartmap" style="width: 500px; height: 360px; float: left;"></div>
+    <div class="m-shipinfo-lt f-fl f-mt-m" style="width: 570px;">
+        <ul class="table-hander font-s14">
+            <li>排名</li>
+            <li>地区</li>
+            <li>吸粉数</li>
+            <li>购买人数</li>
+            <li>转化率(%)</li>
+        </ul>
+        <div class="table-body">
+            {% for funs in activityAnalysisInfo %}
+            {%if loop.index<=10 %}
+            <ul class="table-container">
+                <li>{{loop.index}}</li>
+                <li>{{funs.name}}</li>
+                <li>{{funs.addCount}}</li>
+                <li>{{funs.buyCount}}</li>
+                <li>{{funs.percent}}</li>
+            </ul>
+            {%endif%}
+            {%endfor%}
+        </div>
+    </div>
+</div>

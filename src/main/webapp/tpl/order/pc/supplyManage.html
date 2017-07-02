@@ -1,0 +1,11 @@
+<div id="supply_detatil">
+    {% include "/tpl/order/pc/supplyConditions.html" %}
+    {% include "/tpl/order/pc/supplyItem.html" %}
+    <input type="hidden" id="status" name="status" value="{{paramsObj.status}}">
+    <input type="hidden" id="goodStatus" name="goodStatus" value="{{paramsObj.good_status}}">
+</div>
+<div id="supply_detail_content" style="display: none" >
+</div>
+<script type="text/javascript">
+    supply.list.init();
+</script>

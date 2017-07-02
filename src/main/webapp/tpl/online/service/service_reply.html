@@ -1,0 +1,165 @@
+<style>
+	.hideD{
+		display:none;
+	}
+	.btn-lg{
+		border:none;
+		height:37px;
+
+		padding:0 40px;
+	}
+	.btn.btn-lg{
+		line-height:37px;
+	}
+	.manage .form-group label {
+		font-size: 14px;
+	}
+	.manage div .col-xs-12{
+		padding-left: 0;
+	}
+</style>
+
+<div class="" >
+	<div class="manage">
+		<div class="m-search" id="m-search">
+			<label class="u-lb-sm">手机</label>
+			<div class="u-txt col-xs-3">
+				<input type="text" class="ipt-txt" placeholder="请输入手机号" id="phoneNum" />
+			</div>
+			<label class="u-lb-sm">平台选择</label>
+			<div class="u-txt col-xs-3">
+				<select class="ipt-txt c-gray1" name="test" id="group" selectValue="1">
+					<option value="1">微信</option>
+					<option value="2">微博</option>
+				</select>
+			</div>
+			<label class="u-lb-sm">关注时间</label>
+			<div class="u-txt u-txt-date f-ml-m">
+				<i class="iconfont icon-calendar"></i>
+				<input type="text" class="ipt-txt c-gray1" placeholder="" style="width: 117px;" id="starSubscribeTime" />
+			</div>
+			<div class="u-txt">
+				<span class="line" style=" width: 15px;">-</span>
+			</div>
+			<div class="u-txt u-txt-date">
+				<i class="iconfont icon-calendar"></i>
+				<input type="text" class="ipt-txt c-gray1" placeholder="" style="width: 117px;" id="endSubscribeTime" />
+			</div>
+			<label class="u-lb-sm f-cb">姓名</label>
+			<div class="u-txt col-xs-1" style="width: 11%;">
+				<input type="text" class="ipt-txt" placeholder="请输入姓名" id="userName" />
+			</div>
+			<label class="u-lb-ssm" style="margin-left: 2px;">昵称</label>
+			<div class="u-txt col-xs-1" style="width: 11%;">
+				<input type="text" class="ipt-txt" placeholder="请输入昵称" id="nickname" />
+			</div>
+			<label class="u-lb-sm">客服选择</label>
+			<div class="u-txt col-xs-3">
+				<select class="ipt-txt c-gray1" name="test" id="service" selectValue="1">
+					<option value="1">客服一</option>
+					<option value="2">客服二</option>
+				</select>
+			</div>
+			<label class="u-lb-sm">购买时间</label>
+			<div class="u-txt u-txt-date f-ml-m">
+				<i class="iconfont icon-calendar"></i>
+				<input type="text" class="ipt-txt c-gray1" placeholder="" style="width: 117px;" id="starBuyTime" />
+			</div>
+			<div class="u-txt">
+				<span class="line" style=" width: 15px;">-</span>
+			</div>
+			<div class="u-txt u-txt-date">
+				<i class="iconfont icon-calendar"></i>
+				<input type="text" class="ipt-txt c-gray1" placeholder="" style="width: 117px;" id="endBuyTime" />
+			</div>
+			<div class="u-btn-box1">
+				<input type="button" class="u-btn-mddkorg u-w" value="查询" id="queryBtn" />
+			</div>
+		</div>
+		<a class="btn-slide btn-slide1"></a>
+		<!--<div id="webim_chat" style="height:0px;width:auto; border: none;" class="hide  ui-widget-content"></div>-->
+		<!--/查询列表-->
+		<div class="m-jm-table f-mt-m" style="overflow: visible;">
+			<!--<div class="m-tab">
+				<ul>
+					<li class="z-sel">全纪录</li>
+				</ul>
+			</div>-->
+			<div class="panel-hidden" style="overflow: visible;">
+				<ul class="table-hander">
+					<li style="width: 10%;">头像</li>
+					<li style="width: 15%;">昵称 - 姓名 - 手机</li>
+					<li>性别</li>
+					<li>角色</li>
+					<li>关注时间</li>
+					<li>最后对话</li>
+					<li>最后购买</li>
+					<li>微平台</li>
+					<li style="width: 12%;">微操作</li>
+					<!--<li>回复</li>-->
+				</ul>
+				<div class="table-body" id="table-body" style="overflow: visible;">
+
+				</div>
+			</div>
+			<div class="panel-hidden">
+
+			</div>
+			<div class="clearfix margin-bottom-xl">
+
+				<div id="Pagination" class="pagination"><!-- 这里显示分页 --></div>
+			</div>
+		</div>
+
+		<!--<div class="tab">-->
+			<!--<ul>-->
+				<!--<li class="active">未回复</li>-->
+				<!--<li>全纪录</li>-->
+			<!--</ul>-->
+		<!--</div>-->
+		<!--<div class="jm-table jm-table1" >-->
+			<!--<ul class="table-hander table-hander1 margin-top-l">-->
+				<!--<li class="user-sum" >用户总数：1256</li>-->
+			<!--</ul>-->
+			<!--<ul class="table-hander">-->
+				<!--<li>头像</li>-->
+				<!--<li style="width: 15%;">昵称 - 姓名 - 手机号</li>-->
+				<!--<li>角色</li>-->
+				<!--<li>关注时间</li>-->
+				<!--<li>最后对话</li>-->
+				<!--<li>最后购买</li>-->
+				<!--<li>微平台</li>-->
+				<!--<li style="width: 15%;">微操作</li>-->
+				<!--<li>回复</li>-->
+			<!--</ul>-->
+			<!--<div class="table-body" id="table-body">-->
+
+			<!--</div>-->
+		<!--</div>-->
+		<!--<div class="clearfix margin-bottom-xl">-->
+
+			<!--<div id="Pagination" class="pagination">&lt;!&ndash; 这里显示分页 &ndash;&gt;</div>-->
+		<!--</div>-->
+
+	</div>
+</div>
+<script type="text/javascript" >
+	/*var d = dialog({
+		id:'dialog_1',
+		content:"<div  class='text-center'><i class='iconfont icon-loading'></i></div><div class='text-center'>请稍后...</div>",
+	}).showModal();*/
+	$(function(){
+		service.init();
+		ImInfo.init();
+		//伸缩查询框
+		$(".btn-slide").click(function(){
+			$("#m-search").slideToggle("fast");
+			$(this).toggleClass("btn-slide1"); return false;
+		});
+	});
+	/*setTimeout(function(){
+		dialog.get('dialog_1').close().remove();
+	},1500)*/
+</script>
+
+

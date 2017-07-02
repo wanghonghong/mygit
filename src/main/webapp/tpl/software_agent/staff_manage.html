@@ -1,0 +1,100 @@
+<style>
+    .gmn{
+        float:left;
+        width: 1148px;
+        padding-left: 38px;
+        padding-top: 25px;
+    }
+</style>
+<!--主模块-->
+<section class="g-mn">
+    <div class="m-tab">
+        <ul>
+            <li class="z-sel">员工授权</li>
+            <li>抽成设定</li>
+            <li>抽成账表</li>
+        </ul>
+    </div>
+    <div class="col-lg-12 f-mt-l" style="padding-left: 0;">
+        <div class="u-txt col-xs-4" style="padding-left: 0;">
+            <input type="text" class="ipt-txt" placeholder="请输入文字" />
+        </div>
+        <input type="button" class="u-btn-mddkorg" value="员工查询" />
+    </div>
+    <div class="m-person-totle">员工总数：122人</div>
+    <div class="m-jm-table">
+        <ul class="table-hander">
+            <li >头像</li>
+            <li>姓名</li>
+            <li>手机号</li>
+            <li>店铺角色</li>
+            <li>管理</li>
+        </ul>
+        <div class="table-body">
+            <ul class="table-container">
+                <li>
+                    <img class="u-thumbnail-circ" src="{{globalUrl}}/img/pc/no_picture.png"/>
+                </li>
+                <li>零食类</li>
+                <li>1000</li>
+                <li>196</li>
+                <li >
+                    <div class="u-btn-smltgry dialog"> 更改授权 </div>
+                    <div class="u-btn-smltgry"> 删除 </div>
+
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</section>
+<!--/主模块-->
+<div id="dialoginfo" class="dialoginfo">
+    <div class="m-authorize">
+        <div class="u-select-control1 ">
+            <input type="text" class="" name="goodsName" placeholder="" />
+            <i class="iconfont icon-belowtriangle  after-border"></i>
+            <i class="iconfont icon-search" id="searchBtn"></i>
+        </div>
+        <ul class="m-select-rb">
+            <li>
+                <label  for="radioBox1" class="active select-tt">运营服务商</label>
+                <div class="u-rb">
+                    <input type="radio" name="sexradio" id="radioBox1" value=""  checked/>
+                    <label  for="radioBox1"></label>
+                </div>
+            </li>
+            <li>
+                <label for="radioBox2" class="select-tt">运营服务商</label>
+                <div class="u-rb">
+                    <input type="radio" name="sexradio" id="radioBox2" value=""/>
+                    <label for="radioBox2"></label>
+                </div>
+            </li>
+            <li>
+                <label for="radioBox3" class="select-tt">运营服务商</label>
+                <div class="u-rb">
+                    <input type="radio" name="sexradio" id="radioBox3" value=""/>
+                    <label for="radioBox3"></label>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="u-btn-box1 f-mt-m"><input type="button" class="u-btn-mddkorg" value="确定" /></div>
+</div>
+<script>
+    $(function(){
+        $("#u-logo").click(function(){
+            $("#othermemu").toggleClass("z-change");
+        })
+
+        $(".dialog").click(function(){
+            var elem = document.getElementById('dialoginfo');
+            dialog({
+                title: "员工授权",
+                content: elem,
+
+            }).width(400).showModal();
+        })
+    })
+</script>

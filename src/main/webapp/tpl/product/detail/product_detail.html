@@ -1,0 +1,34 @@
+<!--商品分类 -->
+<div class="m-goods-details f-mt-l" id="goods-details">
+    <header class="details-hander">
+        <span>展示样式</span>
+        <div class="u-rb">
+            <input type="radio" name="showStyle" id="showStyle1" />
+            <label for="showStyle1" data-toggle="standard"></label>
+        </div>
+        <label for="showStyle1" class="f-mr-l" data-toggle="standard">标准版</label>
+        <div class="u-rb">
+            <input type="radio" name="showStyle" id="showStyle2" />
+            <label for="showStyle2" data-toggle="weixin"></label>
+        </div>
+        <label for="showStyle2" class="f-mr-l" data-toggle="weixin">仿微信版</label>
+    </header>
+    {% set curpage='detailpage' %}
+    <section id="standard" class="m-config-panel f-mt-l z-sel" style="border-top: 1px solid #e9e9e9;">
+        {% set version='standard' %}
+        {% include 'tpl/product/detail/config-panel.html' %}
+    </section>
+    <section id="weixin" class="m-config-panel f-mt-l" style="border-top: 1px solid #e9e9e9;">
+        {% set version='weixin' %}
+        {% include 'tpl/product/detail/config-panel.html' %}
+    </section>
+    <div class="f-tc f-margin-s" style="margin-top: 50px;">
+        <div    class="u-btn-mddkgry f-mr-xs" id="detailprevbtn"> 上一步 </div>
+        <div    class="u-btn-mdltbl f-mr-xs" id="detailsavebtn"> 暂存下架 </div>
+        <div    class="u-btn-mddkorg" id="detailshelfbtn"> 保存上架 </div>
+    </div>
+</div>
+<div id="link_content" style="display: none;"></div>
+
+
+<!--/商品分类-->

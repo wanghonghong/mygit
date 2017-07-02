@@ -1,0 +1,19 @@
+{%if type==1%}
+<label class="u-lb-ssm f-cb">部门</label>
+<div class="u-txt col-xs-10">
+    <input type="text" class="ipt-txt" id="addDepartmentName" placeholder="请输入部门名称" value="" />
+</div>
+<div class="u-btn-box1">
+    <input type="button" class="u-btn-smlightgray f-mr-xs" id="cancel1" value="取消" />
+    <input type="button" class="u-btn-smlightred" value="保存" id="saveDepartment" style="width: 100px;" />
+</div>
+{%else%}
+<label class="u-lb-ssm f-cb">岗位</label>
+<div class="u-txt col-xs-10">
+    <input type="text" class="ipt-txt" id="addPostName" placeholder="请输入岗位名称" value="" />
+</div>
+<div class="u-btn-box1">
+    <input type="button" class="u-btn-smlightgray f-mr-xs" id="cancel1" value="取消" />
+    <input type="button" class="u-btn-smlightred" value="保存" id="savePost" style="width: 100px;" />
+</div>
+{%endif%}

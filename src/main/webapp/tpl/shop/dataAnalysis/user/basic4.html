@@ -1,0 +1,144 @@
+<div class="m-panel-head f-mt-m">
+    <div class="m-tt">
+        <p style="padding-left: 10px;">性别</p>
+    </div>
+    <div class="col-xs-12 f-pb-m">
+        <div id="chartsex" style="width: 350px; height: 200px;"></div>
+    </div>
+</div>
+<div class="m-panel-head f-mt-m">
+    <div class="m-tt">
+        <p style="padding-left: 10px;">等级</p>
+    </div>
+    <div class="col-xs-12 f-pb-m">
+        <div id="chartgrade" style="width: 350px; height: 200px; float: left;"></div>
+
+        <div class="m-shipinfo-lt f-fl" style="width: 700px;">
+            <ul class="table-hander font-s14">
+                <li>积分</li>
+                <li>人数</li>
+                <li>占比</li>
+            </ul>
+            <div class="table-body">
+                <ul class="table-container">
+                    <li>金卡</li>
+                    <li>{{levelInfo.gold}}</li>
+                    <li>{{levelInfo.goldPercent}}</li>
+                </ul>
+                <ul class="table-container">
+                    <li>银卡</li>
+                    <li>{{levelInfo.silver}}</li>
+                    <li>{{levelInfo.silverPercent}}</li>
+                </ul>
+                <ul class="table-container">
+                    <li>铜卡</li>
+                    <li>{{levelInfo.copper}}</li>
+                    <li>{{levelInfo.copperPercent}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+ <div class="m-panel-head f-mt-m">
+     <div class="m-tt">
+         <p style="padding-left: 10px;">角色</p>
+     </div>
+     <div class="col-xs-12 f-mt-m f-pb-m">
+         <div class="m-jm-table">
+             <ul class="table-hander font-s14">
+                 <li>&nbsp;</li>
+                 <li>新增粉丝</li>
+                 <li>跑路粉丝</li>
+                 <li>购买客户</li>
+                 <li>分销客户</li>
+                 <li>代理客户</li>
+                 <li>分享客</li>
+                 <li>分销A档</li>
+                 <li>分销B档</li>
+                 <li>分销C档</li>
+                 <li>代理A档</li>
+                 <li>代理B档</li>
+                 <li>代理C档</li>
+                 <li>代理D档</li>
+             </ul>
+             <div class="table-body">
+                 <ul class="table-container">
+                     <li class="font-s14 bg-gray1">数据分析</li>
+                     <li>{{roleInfo.addCount}}</li>
+                     <li>{{roleInfo.offCount}}</li>
+                     <li>{{roleInfo.buyCount}}</li>
+                     <li>{{roleInfo.distriCount}}</li>
+                     <li>{{roleInfo.agentCount}}</li>
+                     <li>{{roleInfo.d_d}}</li>
+                     <li>{{roleInfo.d_a}}</li>
+                     <li>{{roleInfo.d_b}}</li>
+                     <li>{{roleInfo.d_c}}</li>
+                     <li>{{roleInfo.a_a}}</li>
+                     <li>{{roleInfo.a_b}}</li>
+                     <li>{{roleInfo.a_c}}</li>
+                     <li>{{roleInfo.a_d}}</li>
+                 </ul>
+                 <ul class="table-container">
+                     <li class="font-s14 bg-gray1">占比(%)</li>
+                     {% if roleInfo.count==0 %}
+                         <li>0%</li>
+                         <li>0%</li>
+                         <li>0%</li>
+                         <li>0%</li>
+                         <li>0%</li>
+                         <li>0%</li>
+                         <li>0%</li>
+                         <li>0%</li>
+                         <li>0%</li>
+                         <li>0%</li>
+                         <li>0%</li>
+                         <li>0%</li>
+                         <li>0%</li>
+                     {%else%}
+                         <li>{{(roleInfo.addCount/roleInfo.count*100) | shortNumber(2)}}%</li>
+                         <li>{{(roleInfo.offCount/roleInfo.count*100) | shortNumber(2)}}%</li>
+                         <li>{{(roleInfo.buyCount/roleInfo.count*100) | shortNumber(2)}}%</li>
+                         <li>{{(roleInfo.distriCount/roleInfo.count*100) | shortNumber(2)}}%</li>
+                         <li>{{(roleInfo.agentCount/roleInfo.count*100) | shortNumber(2)}}%</li>
+                         <li>{{(roleInfo.d_d/roleInfo.count*100) | shortNumber(2)}}%</li>
+                         <li>{{(roleInfo.d_a/roleInfo.count*100) | shortNumber(2)}}%</li>
+                         <li>{{(roleInfo.d_b/roleInfo.count*100) | shortNumber(2)}}%</li>
+                         <li>{{(roleInfo.d_c/roleInfo.count*100) | shortNumber(2)}}%</li>
+                         <li>{{(roleInfo.a_a/roleInfo.count*100) | shortNumber(2)}}%</li>
+                         <li>{{(roleInfo.a_b/roleInfo.count*100) | shortNumber(2)}}%</li>
+                         <li>{{(roleInfo.a_c/roleInfo.count*100) | shortNumber(2)}}%</li>
+                         <li>{{(roleInfo.a_d/roleInfo.count*100) | shortNumber(2)}}%</li>
+                     {%endif%}
+
+
+                 </ul>
+             </div>
+         </div>
+     </div>
+ </div>
+<div class="m-panel-head f-mt-m">
+    <div class="m-tt">
+        <p style="padding-left: 10px;">地区分布</p>
+    </div>
+    <div class="col-xs-12 f-pb-m f-pt-s">
+        <div id="chartmap" style="width: 500px; height: 360px; float: left;"></div>
+        <div class="m-shipinfo-lt f-fl f-mt-m" style="width: 570px;">
+            <ul class="table-hander font-s14">
+                <li>排名</li>
+                <li>地区</li>
+                <li>粉丝数</li>
+            </ul>
+            <div class="table-body">
+                {% for funs in funsInfo %}
+                {%if loop.index<=10 %}
+                <ul class="table-container">
+                    <li>{{loop.index}}</li>
+                    <li>{{funs.name}}</li>
+                    <li>{{funs.value}}</li>
+                </ul>
+                {%endif%}
+                {%endfor%}
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,37 @@
+{%if paramsObj.subType!=1 %}
+<div class="m-select-all f-mb-l">
+    <div class="m-select-rb f-mb-l">
+        <div class="u-cb">
+            <input type="checkbox" id="allcheckbox">
+            <label class="iconfont icon-avoid" for="allcheckbox"></label>
+        </div>
+        <label for="allcheckbox" class="select-tt">全部粉丝</label>
+    </div>
+</div>
+
+{%endif%}
+<div class="h-scroll" style="padding-right: 10px;">
+    <ul class="m-select-rb" style="position: relative; overflow: hidden;">
+        {%for item in items%}
+        <li>
+            <div class="u-cb">
+                {%if item.ischecked==0 and item.id!=99%}
+                  <input type="checkbox" name="zbRole" id="role_checkBox_{{loop.index}}" value="{{item.id}}" data-tip="{{item.name}}">
+                {%elif item.id!=99%}
+                  <input type="checkbox" name="zbRole" id="role_checkBox_{{loop.index}}" value="{{item.id}}" data-tip="{{item.name}}" checked>
+                {%elif paramsObj.subType==2 and item.ischecked==0%}
+                  <input type="checkbox" name="zbRole" id="role_checkBox_{{loop.index}}" value="{{item.id}}" data-tip="{{item.name}}">
+                {%elif paramsObj.subType==2%}
+                  <input type="checkbox" name="zbRole" id="role_checkBox_{{loop.index}}" value="{{item.id}}" data-tip="{{item.name}}" checked>
+                {%endif%}
+                <label class="iconfont icon-avoid" for="role_checkBox_{{loop.index}}"></label>
+            </div>
+            <label for="role_checkBox_{{loop.index}}" class="select-tt">{{item.name}}</label>
+        </li>
+        {%endfor%}
+    </ul>
+</div>
+<div class="u-btn-box1 f-mt-m">
+    <input type="button" id="activity_role_btn" class="u-btn-mddkorg" value="确定">
+</div>
+

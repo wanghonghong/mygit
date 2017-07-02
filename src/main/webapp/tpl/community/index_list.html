@@ -1,0 +1,54 @@
+{% if items.length>0 %}
+{%for item in items%}
+<ul class="homelist">
+    <li class="f-vm" style="width: 8%;">
+        {%if loop.index==1%}
+        <i class="u-topnum"><img src="css/pc/img/icon-num1.png" /></i>
+        {%elif loop.index==2%}
+        <i class="u-topnum"><img src="css/pc/img/icon-num2.png" /></i>
+        {%elif loop.index==3%}
+        <i class="u-topnum"><img src="css/pc/img/icon-num3.png" /></i>
+        {%endif%}
+        <img src="{{item.headImg}}" class="u-userpic-m" />
+    </li>
+    <li>
+        <div class="title-txt">
+            <strong>
+                {%if item.feature==1%}
+                <b class="u-tj"><a href="#" onclick="community.index.showPost('{{item.id}}')">{{item.title}}</a></b>
+                <span class="u-tj">强烈推荐</span>
+                {%elif item.feature==2%}
+                <b class="u-rt"><a href="#" onclick="community.index.showPost('{{item.id}}')">{{item.title}}</a></b>
+                <span class="u-rt">热帖</span>
+                {%elif item.feature==3%}
+                <b class="u-jing"><a href="#" onclick="community.index.showPost('{{item.id}}')">{{item.title}}</a></b>
+                <span class="u-jing">精</span>
+                {%else%}
+                <b><a href="#" onclick="community.index.showPost('{{item.id}}')">{{item.title}}</a></b>
+                {%endif%}
+            </strong>
+            <p>
+                <span>{{item.nickname}}</span>
+                <span>{{item.createDate}}</span>
+                <span>
+                    {%if item.type==1%}微信
+                {%else%}微博
+                {%endif%}
+                </span>
+            </p>
+        </div>
+    </li>
+    <li class="f-vb" style="width: 35%;">
+        <div class="u-recordnum">
+            <span><i class="iconfont icon-browse"></i>{{item.readCount}}</span>
+            <span><i class="iconfont icon-dotlove"></i>{{item.zanCount}}</span>
+            <span><i class="iconfont icon-reply"></i>{{item.replyCount}}</span>
+        </div>
+    </li>
+</ul>
+{%endfor%}
+{%else%}
+<div class="m-jm-err">
+    <img src="{{globalUrl}}/css/pc/img/jm-nodb.png">
+</div>
+{%endif%}

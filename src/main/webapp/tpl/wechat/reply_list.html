@@ -1,0 +1,107 @@
+
+<style>
+    .m-panel-zdhf ul li{cursor: pointer;}
+    .m-mall-link > div span {
+        display: block;
+        width: 120px;
+    }
+    .panel-hidden .panel-body .panel-list a:link{
+        color:#f89a14;
+    }
+
+    .panel-hidden .panel-body .panel-list a:active{
+        color:#f89a14;
+    }
+    .panel-hidden .panel-body .panel-list a:hover{
+        color:#f89a14;
+    }
+    .panel-hidden .panel-body .panel-list a:visited{
+        color:#f89a14;
+    }
+
+</style>
+
+<div class="m-tab">
+    <ul>
+        <li class="z-sel">固定回复</li>
+        <li>关键字回复</li>
+        <li>尾链接</li>
+    </ul>
+</div>
+<!--被添加关注回复-->
+<!--<div class="panel-hidden"  id="reply_content_beadd">-->
+    <!--<div class="m-panel-zdhf">-->
+        <!--<ul class="panel-top">-->
+            <!--<li><i class="iconfont icon-issue"></i>文本</li>-->
+            <!--<li style=" position: relative; visibility: hidden;"><em id="beadd_face" style="font-style: normal;"><i class="icon-smile iconfont" ></i><span style="font-size: 14px;">表情</span></em>-->
+                <!--<div id="beadd_qqC" style="display: none;" ></div>-->
+            <!--</li>-->
+            <!--<li class="dialog" id="bdadd_imgdg"><i class="iconfont icon-image"></i>图片</li>-->
+            <!--&lt;!&ndash;<li class="music dialog2">音频</li>&ndash;&gt;-->
+            <!--&lt;!&ndash;<li class="movie">视频</li>&ndash;&gt;-->
+            <!--&lt;!&ndash;<li><i class="iconfont icon-link"></i>外网连接</li>&ndash;&gt;-->
+            <!--<li></li>-->
+            <!--&lt;!&ndash; <li class="">-->
+                 <!--<i class="iconfont icon-link"></i>商城连接-->
+             <!--</li>&ndash;&gt;-->
+        <!--</ul>-->
+        <!--<div class="panel-body">-->
+            <!--<div class="panel-list">-->
+                <!--<textarea rows="" cols="" id="beadd_text" placeholder="请输入文本" name="" ></textarea>-->
+            <!--</div>-->
+            <!--<div class="panel-list">-->
+                <!--<textarea rows="" cols="" name="" ></textarea>-->
+            <!--</div>-->
+            <!--<div class="panel-list" style="height: 205px;padding:15px;">-->
+
+                <!--<div class="m-add-img" id="newmass_imgdiv" style="display: none;margin-top: 38px;position:relative;"><span  id="beadd_imgstatus"  style="display: none">0</span>-->
+                    <!--<img id="beadd_img" src="{{globalUrl}}/css/pc/img/no_picture.png" />-->
+                    <!--<i class="iconfont icon-add"></i><a style="position: absolute;bottom: 0;left:110px;"  id="beadd_imgdel" > 删除</a>-->
+                <!--</div>-->
+
+            <!--</div>-->
+            <!--<div class="panel-list">-->
+                <!--<textarea rows="" cols="" name="" ></textarea>-->
+            <!--</div>-->
+
+            <!--<div class="panel-list">-->
+                <!--<textarea rows="" cols="" name="" ></textarea>-->
+            <!--</div>-->
+            <!--<div class="panel-list"><div id="beadd_outsl_status" style="display: none;">0</div>-->
+                <!--<textarea rows="" id="beadd_outsidelink" placeholder="请输入外网连接" cols="" name="" ></textarea>-->
+            <!--</div>-->
+            <!--&lt;!&ndash;<div class="panel-list box" id="beadd_shoplink"><input type="button" class="u-btn-lgdkorg1 f-margin-m" id="beadd_resultType" value=""  style="display: none;"/><a href=""  id="beadd_resultUrl" ></a><span id="beadd_linkid" style="display: none;"></span></div>&ndash;&gt;-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="u-btn-box1" style="padding-top:20px ;">-->
+        <!--<input type="button" class="u-btn-mainlg" id="bdadd_save" onclick="mm.autoreply.reply_bdadd_save();" value="保存" />-->
+        <!--&lt;!&ndash;<input type="button" class="u-btn-lgdkorg" id="bdadd_save" onclick="mm.autoreply.reply_bdadd_save();" value="保存" />&ndash;&gt;-->
+    <!--</div>-->
+<!--</div>-->
+<!--&lt;!&ndash;被添加关注回复&ndash;&gt;-->
+<!--固定回复-->
+
+<div class="panel-hidden" id="reply_content_fixed">
+
+</div>
+<!--固定回复-->
+<!--关键字回复-->
+<div class="panel-hidden" id="reply_content_keyword">
+    <!--  <div class="m-jm-err">
+          <img src="{{globalUrl}}/css/pc/img/jm-indlp.png">
+      </div>-->
+</div>
+<!--关键字回复-->
+<!--尾链接-->
+<div class="panel-hidden" id="reply_content_tlink" style="display: none;">
+    <!-- <div class="m-jm-err">
+         <img src="{{globalUrl}}/css/pc/img/jm-indlp.png">
+     </div>-->
+</div>
+<div id="link_content" class="hide"></div>
+<!--尾链接-->
+<script>
+    mm.autoreply.init();
+
+
+</script>

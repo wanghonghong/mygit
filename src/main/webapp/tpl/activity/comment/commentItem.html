@@ -1,0 +1,55 @@
+<ul id="commentUi_{{id}}" class="commentUi">
+    <li style="width: 8%;">
+        <img src="{{headimgurl}}" class="u-userpic-s" />
+    </li>
+    <li>
+        <div class="reply-user">
+            <b style="color: #000000;">{{nickname}}</b>
+            <span class="f-pl-l" style="font-size: 14px;"> {{createTime}}</span>
+        </div>
+        <div class="reply-con c-deepgray" style="min-height: 90px;">
+            {{comment}}
+        </div>
+        <!--回复楼层-->
+        <div  class="panel-hidden addCommentBox " id="addCommentBox_{{id}}" style="display: none;min-height: 55px" >
+        <!--作者回复-->
+        <div class="reply-user">
+            <b style="color: #f47950;">作者回复</b>
+        </div>
+        <div class="reply-con c-deepgray f-mb-s" id="addComment_{{id}}">
+        </div>
+        </div>
+        <div class="m-plreplybox" >
+            <div class="u-txt col-xs-12" style="padding: 0;">
+                <textarea name="shared" class="ipt-txt txtarea" placeholder=""></textarea>
+                <!--<span class="number font-s12" style="bottom: 5px; right: 10px;">0/100</span>-->
+            </div>
+            <div class="u-btn-box1 f-tr" style="padding: 0;">
+                <input type="button" class="u-btn-smltgry f-mr-xs cancelbtn" value="取消">
+                <input type="button" class="u-btn-smdkorg savebtn" value="保存">
+            </div>
+        </div>
+    </li>
+    <li class="f-tc" style="width: 20%; position: relative;">
+        <div class="u-recordnum" style="overflow: visible;">
+            <div class="u-btn-smltgry replyBtn"  ><i class="iconfont icon-reply" style="color: #84c766;"></i>回复</div>
+            <div class="u-btn-smltgry delBtn"><i class="iconfont icon-delete1" style="color: #fe908f;"></i>删除</div>
+            <div class="u-btn-smltgry sortBtn"><i class="iconfont icon-classify1" style="color: #66adef;"></i>排序</div>
+            <div class="m-btn-layer layer-2 sortbox"  style="display: none;"  >
+                <span class="out"></span>
+                <span class="iner"></span>
+                <div class="m-grade" style="margin-top: -20px;">
+                    <div class="u-txt" style="padding-left: 10px;">
+                        <input type="number" min="1" max="10" name="sort" class="u-grades" value="1" style="width: 80px;">
+                    </div>
+                    <div class="u-btn-box1" style="padding: 8px 0;">
+                        <input type="button" class="u-btn-smltgry cancelbtn " value="取消">
+                        <input type="button" class="u-btn-smdkorg savebtn " value="保存">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </li>
+
+</ul>

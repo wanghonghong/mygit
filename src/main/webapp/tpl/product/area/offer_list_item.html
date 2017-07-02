@@ -1,0 +1,20 @@
+{% for item in items %}
+<ul class="table-container" >
+    <li class="f-tl" style="width: 20%; padding-left: 20px;">
+        <span>{{item.userName}}</span><br/><span>{{item.phoneNumber}}</span>
+    </li>
+    <li class="f-tl f-t-off" style="position: relative; padding: 0 20px;">
+        <p onclick="area.dialog.show_diolag(this.id)" id="area_{{item.id}}">{{item.areaName}}</p>
+    </li>
+    <li class="f-tl" style="width: 20%; padding-left: 20px;">
+        <span>{{item.supplyPrice|default(0,true)/100}}</span>
+    </li>
+    <li  style="width: 15%;">
+        <div class="u-btn-smltgry" onclick="area.dialog.delete('{{item.id}}')" ><i class="iconfont icon-delete1"></i><span>删除</span></div>
+    </li>
+</ul>
+{% else %}
+<div class="m-jm-err">
+    <img src="{{globalUrl}}/css/pc/img/jm-nodb.png">
+</div>
+{% endfor %}

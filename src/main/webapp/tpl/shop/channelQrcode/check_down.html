@@ -1,0 +1,26 @@
+<ul class="m-orderinfo-dialog">
+	<li>
+		<div class="bg-gray1">条码名称</div>
+		<div>{{name}}</div>
+	</li>
+	<li>
+		<div class="bg-gray1">条码编号</div>
+		<div>{{number}}</div>
+	</li>
+	<li>
+		<div class="bg-gray1">条码图片</div>
+		<div style="padding-bottom: 5px;"><img src="{{qrcode}}" alt="暂无图片" class="u-thumbnail-squa" /></div>
+	</li>
+	<li>
+		<div class="bg-gray1">商品名称</div>
+		<div>{{productName}}</div>
+	</li>
+	<li>
+		<div class="bg-gray1">商品主图</div>
+		<div style="padding-bottom: 5px;"><img src="{{productImg}}" alt="暂无图片" class="u-thumbnail-squa" /></div>
+	</li>
+</ul>
+<div class="u-btn-box1 f-mt-m">
+	<!--<input type="button" class="u-btn-mainlg" value="下载" />-->
+	<a class="u-btn-mainlg" href="{{qrcode}}" target="_blank">下载</a>
+</div>

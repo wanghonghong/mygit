@@ -1,0 +1,43 @@
+<ul class="m-redbage-effect f-mb-s">
+    <li>
+        <p>计划金额：<span>{{totalMoney/100}}</span> 元</p>
+        <p>计划礼券：<span>{{cardTotalCount}}</span> 张</p>
+        <p>计划人数：<span>{{preFansCount}}</span> 人</p>
+        <p>开始时间：{{startTime}}</p>
+    </li>
+    <li>
+        <p>实发金额：<font><span>{{money/100}}</span> 元</font></p>
+        <p>实发礼券：<font><span>{{cardUseCount}}</span> 张</font></p>
+        <p>覆盖人数：<font><span>{{fansCount}}</span> 人</font></p>
+        {%if subType!=2%}
+        <p>结束时间：{{endTime}}</p>
+        {%endif%}
+    </li>
+</ul>
+<div class="m-tab f-mb-s" id="m-tab1">
+    <ul>
+        <li class="z-sel">礼券活动</li>
+        <li>现金活动</li>
+    </ul>
+</div>
+<div class="m-jm-table" id="gold_effect_tab">
+    <ul class="table-hander" >
+        <li>头像</li>
+        <li style="width:18%">昵称</li>
+        <li style="width:22%">卡券标题</li>
+        <li>面值（元）</li>
+        <li style="width: 20%;">时间</li>
+        <li>领取状态</li>
+    </ul>
+    <ul class="table-hander" style="display: none;">
+        <li>头像</li>
+        <li style="width:20%">昵称</li>
+        <li>金额（元）</li>
+        <li style="width: 25%;">时间</li>
+        <li>领取状态</li>
+    </ul>
+    <div id="gold_table_grid"></div>
+</div>
+<div id="gold_pageToolbar" class="pagination f-fr f-mt-m">
+
+</div>

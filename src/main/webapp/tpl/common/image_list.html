@@ -1,0 +1,63 @@
+<style>
+    audio{
+        opacity: 0;
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        width: 100px;
+        height: 100px;
+        z-index: 1000;
+    }
+</style>
+{%if resType==1 or resType==2%}
+    <ul class="m-uploadmsgvideo">
+        {%else%}
+     <ul class="m-uploadmsgvideo u-msgpic">
+{%endif%}
+{%if items.length>0 and resType==1%}
+{% for item in items %}
+<li>
+    <img src="{{item.resUrl}}" width="100" height="100" />
+    <div class="img-text">
+        <div class="u-cb">
+        <input type="checkbox" name="map" id="checkBox_{{loop.index}}" value="{{item|toString}}" data-url="{{item.resUrl}}"/>
+        <label class="iconfont icon-avoid" for="checkBox_{{loop.index}}"></label>
+        </div>
+        <label for="checkBox_{{loop.index}}" class="f-mr-l">{{item.resName}}</label>
+        <span>{{item.resName}}</span>
+    </div>
+</li>
+{%endfor%}
+{%elif items.length>0 and resType==2%}
+{%for item in items%}
+ <li>
+     <img src="{{globalUrl}}/css/pc/img/m_video.png" width="100" height="100" />
+     <div class="img-text">
+         <div class="u-cb">
+             <input type="checkbox" name="map" id="checkBox_{{loop.index}}" value="{{item|toString}}" data-url="{{item.resUrl}}"/>
+             <label class="iconfont icon-avoid" for="checkBox_{{loop.index}}"></label>
+         </div>
+         <label for="checkBox_{{loop.index}}" class="f-mr-l">{{item.resName}}</label>
+         <span>{{item.resName}}</span>
+     </div>
+ </li>
+{%endfor%}
+{%elif items.length>0 and resType==3%}
+{% for item in items %}
+<li>
+    <img id="m_img_url_{{loop.index}}" src="{{globalUrl}}/css/pc/img/music_stop.png" width="100" height="100" />
+    <audio data-id="{{loop.index}}" src="{{item.resUrl}}" controls="controls" id="m_audio_{{loop.index}}">
+    </audio>
+    <div class="img-text">
+        <div class="u-cb">
+            <input type="checkbox" name="map" id="checkBox_{{loop.index}}" value="{{item|toString}}" data-url="{{item.resUrl}}"/>
+        <label class="iconfont icon-avoid" for="checkBox_{{loop.index}}"></label>
+    </div>
+    <label for="checkBox_{{loop.index}}" class="f-mr-l">{{item.resName}}</label>
+        <span>{{item.resName}}</span>
+    </div>
+</li>
+{%endfor%}
+{%else%}
+<div>暂无数据</div>
+{%endif%}

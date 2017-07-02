@@ -1,0 +1,38 @@
+<div class="goodslist-config f-cf">
+    <div class="row">
+        <div class="col-xs-12">
+            <label class="u-lb-md   f-pr-m col-xs-3">活动类型</label>
+            <div class="goodsItemGroup col-xs-9">
+                <select name="activityType" style="width:100% " id="{{randomNum}}-activityType"  >
+                    <option value="0"    >请选择</option>
+                    <!--<option value="1">夺宝</option>-->
+                    <option value="2" {%if activityType==2%}selected{%endif%}>拼团</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <label class="u-lb-md   f-pr-m col-xs-3">选择商品</label>
+            <div class="goodsItemGroup col-xs-9">
+
+                <div class="goodsItem addbtn"  >
+                    <i class="iconfont icon-add add-btn"> </i>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <label class="u-lb-md   f-pr-m col-xs-3">商品样式</label>
+            <div class="col-xs-9 f-pt-s ">
+                <div class="u-rb">
+                    <input type="radio" name="sizeType" id="sizeType-{{randomNum}}-0"  value="0"  {% if sizeType==0 %} checked {% endif %} >
+                    <label for="sizeType-{{randomNum}}-0"></label>
+                </div>
+                <label for="sizeType-{{randomNum}}-0" class="f-mr-s">小图</label>
+                <div class="u-rb">
+                    <input type="radio" name="sizeType" id="sizeType-{{randomNum}}-1"  value="1"  {% if sizeType==1 %} checked {% endif %} >
+                    <label for="sizeType-{{randomNum}}-1"></label>
+                </div>
+                <label for="sizeType-{{randomNum}}-1" class="f-mr-s">大图</label>
+            </div>
+        </div>
+    </div>
+</div>

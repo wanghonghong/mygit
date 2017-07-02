@@ -1,0 +1,43 @@
+<style>
+    .noData{
+        font-size:16px;
+        line-height: 300px;
+        min-height:300px;
+        text-align: center;
+    }
+    .jm-table .table-container li{
+        line-height: 20px;
+    }
+</style>
+{%if items.length>0%}
+{% for item in items %}
+<ul class="table-container f-t-off" id="op_table_container_{{item.id}}">
+    <li class="f-tl" style="width: 25%; padding: 0 15px;">
+        <p title="{{item.imageTextTile}}">{{item.imageTextTile}}</p></li>
+    <li style="width: 14%;"><p title="{{item.typeName}}">{{item.typeName}}</p></li>
+    {%if item.formatCode == 1%}
+    <li>仿微信页</li>
+    {%elif item.formatCode == 2%}
+    <li>自由编辑</li>
+    {%else%}
+    <li>H5海报</li>
+    {%endif%}
+    <li class="f-tl" style="padding-right: 5px;">{{item.createTime}}</li>
+    <li>{{item.userName}}</li>
+    <li>
+        <div class="btn  btn-lightgray btn-sm dialog" data-id="{{item.id}}" id="op_img_list_edit_{{item.id}}"> 编辑</div>
+        <div class="btn  btn-lightgray btn-sm" id="op_img_list_del_{{item.id}}" data-del-id="{{item.id}}"> 删除 </div>
+        <div class="btn  btn-lightgray btn-sm" data-id="{{item.id}}" id="op_img_watch_edit_{{item.id}}"> 预览 </div>
+        {%if item.status==0%}
+        <div class="btn  btn-lightgray btn-sm" data-name="{{item.imageTextTile}}" data-status="{{item.status}}" data-id="{{item.id}}" id="op_img_grounp_{{item.id}}">下架</div>
+        {%else%}
+        <div class="btn  btn-lightgray btn-sm" data-name="{{item.imageTextTile}}" data-status="{{item.status}}" data-id="{{item.id}}" id="op_img_grounp_{{item.id}}">上架</div>
+        {%endif%}
+    </li>
+</ul>
+{%endfor%}
+{%else%}
+<div class="m-jm-err">
+    <img src="{{globalUrl}}/css/pc/img/jm-nodb.png">
+</div>
+{%endif%}

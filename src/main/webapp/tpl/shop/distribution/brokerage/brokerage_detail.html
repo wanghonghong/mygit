@@ -1,0 +1,98 @@
+<table cellspacing="0"  id="jmtable" class="m-table-control">
+    <thead>
+    <tr >
+        <th style="width:29%;">主图-名称-颜色-尺寸</th>
+        <th style="width:10%;">单价/数量</th>
+        <th style="width:13%;" >积分使用</th>
+        <th style="width:13%;" >下单时间</th>
+        <th style="width:13%;" >订单状态</th>
+        <th style="width:22%;" >实付金额</th>
+    </tr>
+    </thead>
+</table>
+<div id="tableBody" class="f-scrollbar" style="max-height: 440px;">
+    <table class="m-table-control" id="detailtable">
+        <tbody style="max-height: 420px;display: block;overflow: auto">
+        <tr class="bg-gray">
+            <td colspan="6">
+                <ul class="font-s14">
+                    <li class="f-fl f-pl-s">订单编号：{{orderInfo.orderNum}}</li>
+                    <li class="service f-fr f-pr-s font-s12">
+                        {% if(userName and userName!="" )%}{{userName}}-  {%endif%}
+                        {% if(phoneNumber and phoneNumber!="" )%}{{phoneNumber}}- {%endif%}
+                        {% if(nickname and nickname!="" )%}{{nickname}}  {%endif%}
+                        <a>{{orderInfo.weChatName}}</a>&nbsp;<img class="u-thumbnail-circ" src="{{headimgurl}}" />
+                    </li>
+                </ul>
+            </td>
+        </tr>
+
+        {% for item in brokerageDetails %}
+        <td style="width:39%;">
+            <div class="g-table">
+                <div class="g-table-cell f-vm" style="width: 25%;padding-top: 5px;">
+                    <img class="u-thumbnail-squa" src="{{item.picSquare}}" style="width: 90px; height: 90px;" />
+                </div>
+                <div class="g-table-cell f-vm f-tl" style="width: 50%;">
+                    <span>{{item.name}}</span><br>
+                    <font color="#6a6a6a">{{item.specValueOne}} {{item.specValueTwo}} {{item.specValueThree}}</font>
+                </div>
+                <div class="g-table-cell f-vm" style="width: 25%;">
+                    <span>￥{{item.price|default(0,ture) /100}} </span><br>
+                    <font color="#6a6a6a">（{{item.count}}个）</font>
+                </div>
+            </div>
+        </td>
+        <td style="width:13%;" >
+        </td>
+        <td class="f-tl" style="width:13%; padding-left: 45px;" >
+            {{orderInfo.createDate}}
+        </td>
+        <td style="width:13%;" >
+            <!--"状态 0：待付款; 1:待发货（已付款）; 2:待收货（已发货）; 3:已完成; 4:已关闭; 5:退款中"-->
+           {% if  orderInfo.status == 0 %}
+            <span>待付款</span><br>
+            <span> {{orderInfo.createDate}}</span><br>
+            {% elif orderInfo.status == 1 %}
+               <span>待发货</span><br>
+            {% elif orderInfo.status == 2 %}
+             <span>待收货</span><br>
+            <span> {{orderInfo.payDate}}</span><br>
+            {% elif orderInfo.status == 3 %}
+              <span>已完成</span><br>
+            <span> {{orderInfo.takeDate}}</span><br>
+            {% elif orderInfo.status == 4 %}
+             <span>已关闭</span><br>
+            {% elif orderInfo.status == 5 %}
+             <span>退款中</span><br>
+            {% endif %}
+        </td>
+        <td style="width:22%;" >
+            <span>￥{{orderInfo.totalPrice|default(0,ture) /100}}</span><br>
+            <span>
+                 {% if  orderInfo.sendFee == 0 %}
+                 （免运费）
+                 {% else %}
+            （含运费：{{orderInfo.sendFee|default(0,ture) /100}}）
+                {% endif %}
+            </span><br>
+        </td>
+        </tr>
+        {% endfor %}
+        <tr class="buy-footer">
+            <td colspan="6">
+                <p class="f-tl f-pl-s"><img class="u-thumbnail-circ" src="{{globalUrl}}/css/pc/img/icon_buy.png" />	买家留言：<font color="#6A6A6A">{{orderInfo.remark|default('暂无留言') }} </font></p>
+            </td>
+        </tr>
+        <tr class="buy-footer">
+            <td colspan="6"  >
+                <p class="f-tl f-pl-s"><img class="u-thumbnail-circ" src="{{globalUrl}}/css/pc/img/icon_sale.png" />	卖家留言：<font color="#6A6A6A">{{orderInfo.sellerNote|default('暂无留言') }} </font></p>
+            </td>
+        </tr>
+        <tr class="buy-footer">
+            <td colspan="6">
+                <p class="f-tl f-pl-s"><img class="u-thumbnail-circ" src="{{globalUrl}}/css/pc/img/icon_pd.png" />	物流留言：<font color="#6A6A6A">{{orderInfo.deliveryNote|default('暂无留言') }} </font></p>
+            </td>
+        </tr>
+        </tbody>
+    </table>

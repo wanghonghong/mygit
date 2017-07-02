@@ -1,0 +1,138 @@
+<style>
+    .m-subtab ul li.z-sel:nth-child(4) ~ .current {
+        left: 17.5%;
+    }
+    .m-subtab ul li.z-sel:nth-child(5) ~ .current {
+        left: 24%;
+    }
+</style>
+<div class="panel-hidden_rp2" style="display: none;">
+    <!--<img src="css/pc/img/jm-indlp.png" style="padding-left: 300px;padding-top: 200px;">-->
+    <div class="m-search f-mt-m" id="m-search_cp2">
+        <label class="u-lb-sm">查询时间</label>
+        <div class="u-txt u-txt-date f-ml-m">
+            <i class="iconfont icon-calendar"></i>
+            <input type="text" id="startDate2"  class="ipt-txt c-gray1" placeholder="" style="width: 112px;" />
+        </div>
+        <div class="u-txt">
+            <span class="line" style=" width: 20px;">至</span>
+        </div>
+        <div class="u-txt u-txt-date f-mr-m">
+            <i class="iconfont icon-calendar"></i>
+            <input type="text" id="endDate2" class="ipt-txt c-gray1" placeholder="" style="width: 112px;" />
+        </div>
+        <label class="u-lb-sm">交易平台</label>
+        <div class="u-txt col-xs-3">
+            <select class="ipt-txt c-gray1" id="platForm2" onchange="changeSel($('#platForm2').val())">
+                <option value="1" >微信</option>
+                <option value="2">微博</option>
+            </select>
+        </div>
+        <label class="u-lb-sm">收入分类</label>
+        <div class="u-txt col-xs-3" id="rStatus1">
+            <select class="ipt-txt c-gray1" id="rTypeId" onchange="show($('#rTypeId').val())">
+                <option value="0">全部</option>
+                <option value="1">商品订单</option>
+                <option value="2">我的小店收费</option>
+                <option value="3">分销收费</option>
+                <option value="4">代理收费</option>
+                <option value="5">红包回款</option>
+                <option value="6">积分充值</option>
+                <option value="7">图文打赏</option>
+            </select>
+        </div>
+        <div class="u-txt col-xs-3" id="rStatus2" style="display: none;">
+            <select class="ipt-txt c-gray1" id="rTypeId2" onchange="show($('#rTypeId2').val())">
+                <option value="0">全部</option>
+                <option value="1">商品订单</option>
+                <option value="7">图文打赏</option>
+            </select>
+        </div>
+        <label class="u-lb-sm">订单编号</label>
+        <div class="u-txt col-xs-3">
+            <input type="text" id="orderNum" class="ipt-txt" style=" width: 244px;" placeholder="请输入订单编号" />
+        </div>
+        <label class="u-lb-sm" style="width: 77px;">收款编号</label>
+        <div class="u-txt col-xs-3">
+            <input type="text" id="transactionId" class="ipt-txt" placeholder="请输入收款编号" />
+        </div>
+        <div id="order-status" style="display: none;">
+            <label class="u-lb-sm">订单状态</label>
+            <div class="u-txt col-xs-3">
+                <select class="ipt-txt c-gray1" id="orderStatus">
+                    <option value="0">全部</option>
+                    <option value="1">待发货</option>
+                    <option value="2">待收货</option>
+                    <option value="3">已收货</option>
+                    <option value="4">待退款</option>
+                    <option value="5">拒绝退款</option>
+                    <option value="6">已退货/退款</option>
+                    <option value="7">异常单</option>
+                </select>
+            </div>
+        </div>
+        <div class="u-btn-box1">
+            <input type="button" class="u-btn-mddkbl f-mr-xs" value="导出" onclick="dataAnalysis.rp.exportCsv(2)"/>
+            <input type="button" class="u-btn-mddkorg u-w" onclick="dataAnalysis.rp.initBase2(0,'A')" value="查询" />
+        </div>
+    </div>
+    <a class="btn-slide btn-slide1" id="b_2" onclick="cp2()"></a>
+    <!--查询列表-->
+    <div class="m-subtab f-mt-xs" id="m-subtab1">
+        <ul>
+            <li id="r_1" class="z-sel" onclick="dataAnalysis.rp.initBase2(1,'B')">今日</li>
+            <li id="r_2" onclick="dataAnalysis.rp.initBase2(2,'C')" >本周</li>
+            <li id="r_3" onclick="dataAnalysis.rp.initBase2(3,'D')">本月</li>
+            <li id="r_4" onclick="dataAnalysis.rp.initBase2(4,'F')">开业至今</li>
+            <li id="r_5">自定义</li>
+            <div class="current">
+                <i class="iconfont icon-uptriangle"></i>
+            </div>
+        </ul>
+    </div>
+    <div id="u-tab2-1">
+    </div>
+    <div class="m-jm-table panel-hid1" id="u-tab2" >
+    </div>
+    <div id="pageToolbar2" class="pagination f-fr f-pt-s"></div>
+</div>
+
+<script>
+    $("#startDate2").datetimepicker({
+        showSecond : false,
+        timeFormat : 'hh:mm:ss',
+        dateFormat : 'yy-mm-dd',
+        stepHour : 1,
+        stepMinute : 1,
+        stepSecond : 1
+    });
+    $("#endDate2").datetimepicker({
+        showSecond : false,
+        timeFormat : '23:59:59',
+        dateFormat : 'yy-mm-dd',
+        stepHour : 1,
+        stepMinute : 1,
+        stepSecond : 1
+    });
+
+    function show(n){
+        if(n==1){
+            $("#order-status").show();
+        }else{
+            $("#order-status").hide();
+        }
+    }
+    function changeSel(n){
+        if(n==1){
+            $("#rStatus1").show();
+            $("#rStatus2").hide();
+            show($('#rTypeId').val());
+        }else{
+            $("#rStatus1").hide();
+            $("#rStatus2").show();
+            show($('#rTypeId2').val());
+        }
+
+
+    }
+</script>

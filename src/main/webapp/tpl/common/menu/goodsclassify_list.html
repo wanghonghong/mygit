@@ -1,0 +1,27 @@
+<div class="m-jm-table f-mb-m">
+    <ul class="table-hander">
+        <li>商品主图</li>
+        <li>分类名称</li>
+        <li>选择</li>
+    </ul>
+    <div class="table-body">
+        {%if items.length>0%}
+        {%for item in items%}
+        <ul class="table-container">
+            <li>
+                <img src="{{item.group_image_path|default('../css/pc/img/no_picture.png',true)}}" height="50" width="50" alt="">
+            </li>
+            <li>{{item.group_name}}</li>
+            <li>
+                <div class='radioBox'>
+                    <label link_url="{{item.ulnewurl}}" link_type="{{item.ultype}}" type="{{item.type}}" shop_id="{{item.ulshopId}}" data-name="{{item.group_name}}"
+                           link_key="{{item.ulkey}}" link_name="{{item.ulurlname}}" link_id="{{item.group_id}}" parent_id="{{item.parent_id}}"></label>
+                </div>
+            </li>
+        </ul>
+        {%endfor%}
+        {%else%}
+        <div>暂无数据</div>
+        {%endif%}
+    </div>
+</div>

@@ -1,0 +1,32 @@
+{% for item in items %}
+<ul class="table-container f-t-off" style="position: relative;" id="{{item.pid}}">
+    <input type="hidden" id="{{item.pid}}_id" value="{{item.id}}">
+
+    <li class="f-tl" style="width: 40%;">
+        <p title="">{{item.name}}</p>
+    </li>
+    <li><input type="text" class="table-input c-gray1" value="{{item.oneBrokerage|default(0,true)/100}}" id="{{item.pid}}_one"/></li>
+    <li><input type="text" class="table-input c-gray1" value="{{item.twoBrokerage|default(0,true)/100}}" id="{{item.pid}}_two"/></li>
+    <li>
+        <div class="u-txt f-ml-xl f-mr-l">
+            <div class="u-cb">
+                <input type="checkbox" name="bulid" id="{{item.pid}}_1" value="" {%if item.haveOne %} checked="checked" {% endif %} />
+                <label class="iconfont icon-avoid" for="{{item.pid}}_1"></label>
+            </div>
+            <label for="{{item.pid}}_1" class="u-grade">分销商</label>
+        </div>
+        <div class="u-txt">
+            <div class="u-cb">
+                <input type="checkbox" name="bulid" id="{{item.pid}}_2" value="" {%if item.haveTwo %} checked="checked" {% endif %}/>
+                <label class="iconfont icon-avoid" for="{{item.pid}}_2"></label>
+            </div>
+            <label for="{{item.pid}}_2" class="u-grade">代理商</label>
+        </div>
+    </li>
+</ul>
+{% else %}
+<div class="m-jm-err">
+    <img src="{{globalUrl}}/css/pc/img/jm-nodb.png">
+</div>
+{% endfor %}
+

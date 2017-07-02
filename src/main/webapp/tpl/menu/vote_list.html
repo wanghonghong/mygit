@@ -1,0 +1,28 @@
+<div class="m-jm-table f-mb-m">
+    <ul class="table-hander">
+        <li>投票标题</li>
+        <li>投票类型</li>
+        <li>开始日期</li>
+        <li>结束日期</li>
+        <li>操作</li>
+    </ul>
+    <div class="table-body h-scroll" style="max-height: 230px;">
+        {%for item in items%}
+        <ul class="table-container f-t-off font-s12">
+            <li class="f-tl"><p title="{{item.name}}">{{item.name}}</p></li>
+            <li>
+                {% if item.voteType == 1%}
+                    图片
+                {%elif item.voteType==2%}
+                    视频
+                {% elif item.voteType==3%}
+                    音频
+                {%endif%}
+            </li>
+            <li>{{item.startTime}}</li>
+            <li>{{item.endTime}}</li>
+            <li><div class='radioBox'><label onClick="setMemuLink('{{item.ultype}}','{{item.ulurlname}}','{{item.ulkey}}','{{item.ulnewurl}}{{item.id}}','{{item.ulshopId}}')"  ></label> </div></li>
+        </ul>
+        {%endfor%}
+    </div>
+</div>

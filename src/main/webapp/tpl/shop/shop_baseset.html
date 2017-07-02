@@ -1,0 +1,127 @@
+<style>
+    .goods-sell-set .sell-set-details .sell-set-details-left{color:#999;}
+
+    .form-group span.select2-container{ left: 20px;}
+    .form-group span.select2-container .select2-selection__rendered{ line-height: 36px;}
+    .sell-set-details .sell-set-details-right .form-group span{ margin-left: 0;}
+</style>
+<div class="floatleft col-xs-4" style="padding-left:0;padding-right:0;width:350px;">
+    <div class="phone-view phone-view-mini phone-billd phone-marketing">
+        <div class="phone-shell-top">
+        </div>
+        <div class="phone-window">
+            <div  class="fxsz shop">
+            </div>
+            <div id="app-memu-panel">
+                <ul class="app-bottom-memu" id="app-bottom-memu">
+                </ul>
+            </div>
+        </div>
+        <div class="phone-shell-bottom">
+        </div>
+    </div>
+</div>
+<div class="floatleft col-xs-8 djfe-bjth shop-jbsz dialoginfo-lstk">
+    <div class="goods-sell-set  margin-top-m"  >
+        <div class="sell-set-details">
+            <div class="sell-set-details-left">
+                <div >店铺设置</div>
+                <input type="hidden" name="tempId" id="tempId" value="{{shop.tempId}}"/>
+                <input type="hidden" name="status" id="status" value="{{shop.status}}"/>
+                <input type="hidden" name="shopId" id="shopId" value="{{shop.shopId}}"/>
+            </div>
+            <div class="sell-set-details-right">
+                <div class="form-group">
+                    <label class="margin-right-m">店铺名称</label>
+                    <input type="text" class="form-control" placeholder="" name="shopName" id="shopName1" value="{{shopName}}"/>
+                </div>
+                <div class="form-group">
+                    <label class="margin-right-m">主营类目</label>
+                  <!--  <select class="form-control" id="shopType" name="shopType">
+                    </select>-->
+                    <select name="shopType" id="shopType"   style="width:225px;">
+                    </select>
+
+                </div>  <div id="shiptypehid" style="display:none;">{{shopType}}</div>
+                <div class="form-group">
+                    <label class="margin-right-m">创建时间</label>
+                    <input type="text" class="form-control"  id="shopctdate" value="{{createDate}}" readOnly="true"/>
+                </div>
+
+
+                <div class="form-group stock-info-details-right">
+                    <label class="margin-right-x">店铺LOGO</label>
+                    <div class="stock-info-details stock-info-tips margin-bottom-m">
+                        <div class="">
+                            <div class="stock-info-details-add-img img-pzsc">
+                                <div id="imgupload">
+                                    <img alt="" width="100px" height="100px" src="{{imgUrl}}" id="imgUrl">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="base-info-img-tips" style="vertical-align: baseline;padding-top: 50px;width: 200px;float: left;">
+                            <i  class="iconfont icon-lamp"></i>
+                            建议尺寸：长<span style="font-family: '微软雅黑', Verdana, Arial, Helvetica, sans-serif;">96*96</span>像素
+                        </div>
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="margin-right-m">分享语摘要</label>
+                    <textarea class="form-control" placeholder="" id="shareLan1" name="shareLan1">{{shareLan1}}</textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="goods-sell-set">
+        <div class="sell-set-details">
+            <div class="sell-set-details-left">
+                <div >联系我们</div>
+            </div>
+            <div class="sell-set-details-right">
+                <div class="form-group">
+                    <label class="margin-right-m">联系人</label>
+                    <input type="text" class="form-control" placeholder="" id="linkMan" name="linkMan" value="{{linkMan}}" />
+                </div>
+                <div class="form-group">
+                    <label class="margin-right-m">手机号</label>
+                    <input type="text" class="form-control" placeholder="" id="phoneNumber" name="phoneNumber" value="{{phoneNumber}}" />
+                </div>
+                <div class="form-group">
+                    <label class="margin-right-m">微信号</label>
+                    <input type="text" class="form-control" placeholder="" id="wxNum" name="wxNum" value="{{wxNum}}" />
+                </div>
+                <div class="form-group">
+                    <label class="margin-right-m">QQ邮箱</label>
+                    <input type="text" class="form-control" placeholder="" id="qqMail" name="qqMail" value="{{qqMail}}" />
+                </div>
+                <div class="form-group szd clearfix" id="distpickerbset">
+                    <label class="margin-right-m">所在地</label>
+                    <select class="floatleft form-control" id="provincebset"></select>
+                    <select class="floatleft form-control" id="citybset"></select>
+                    <select class="floatleft form-control" id="districtbset"></select><div style="display:none;" id="basesetaddr">{{province}},{{city}},{{district}}</div>
+                </div>
+                <div class="form-group">
+                    <label class="margin-right-m">详细地址</label>
+                    <input type="text" class="form-control" placeholder="" id="specificAddr" name="specificAddr" value="{{specificAddr}}" />
+                </div>
+
+                <!-- <div class="form-group">
+                     <label class="margin-right-m">地图标注</label>
+                     <textarea class="form-control" placeholder="" id="shareLan2" name="shareLan2">{{shareLan2}}</textarea>
+                 </div>-->
+
+            </div>
+        </div>
+    </div>
+</div>
+<div >
+    <div style="padding:0 30px; margin-top: 60px;" class="btn btn-darkorange btn-radius-5 btn-lg col-xs-offset-6" id="shop_baseset_save">保存</div>
+</div>
+
+<script>
+    shop.shopmanage.shop_baseset_photo();
+    shop.shopmanage.shop_baseset_area();
+    //shop.shopmanage.bindcreatedate();
+    shop.shopmanage.shop_baseset_update();
+</script>

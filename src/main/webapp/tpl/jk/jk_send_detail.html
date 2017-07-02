@@ -1,0 +1,104 @@
+<style>
+	.gmn{
+		padding: 23px 24px 23px 0;
+		width: 1154px;
+		float: left;
+	}
+</style>
+<!--主模块-->
+	<div class="m-search" id="m-search">
+		<!-- <label class="u-lb-sm">商家昵称</label>
+					<div class="u-txt col-xs-3">
+						<input type="text" class="ipt-txt" placeholder="请输入商家昵称" />
+					</div> -->
+		<label class="u-lb-sm">公众号</label>
+		<div class="u-txt col-xs-3">
+			<input type="text" class="ipt-txt" placeholder="请输入公众号名称" id="pubNickName" />
+		</div>
+		<label class="u-lb-sm">发放状态</label>
+		<div class="u-txt col-xs-3">
+			<select class="ipt-txt" id="status">
+				<option value="-1">所有</option>
+				<option value="2">已领取</option>
+				<option value="1">未领取</option>
+				<option value="4">已退款</option>
+			</select>
+		</div>
+
+		<label class="u-lb-sm">发放日期</label>
+		<div class="u-txt u-txt-date f-ml-m">
+			<i class="iconfont icon-calendar"></i> <input type="text"
+				id="startDate2" class="ipt-txt c-gray1" placeholder=""
+				style="width: 112px;" />
+		</div>
+		<div class="u-txt">
+			<span class="line" style=" width: 20px;">至</span>
+		</div>
+		<div class="u-txt u-txt-date f-mr-m">
+			<i class="iconfont icon-calendar"></i> <input type="text"
+				id="endDate2" class="ipt-txt c-gray1" placeholder=""
+				style="width: 112px;" />
+		</div>
+		<div class="f-cb"></div>
+		<label class="u-lb-sm">限定条件</label>
+		<div class="u-txt col-xs-3">
+			<select class="ipt-txt" id="platform">
+				<option value="0">所有平台</option>
+				<option value="1">微信</option>
+				<option value="2">微博</option>
+			</select>
+		</div>
+		<div class="u-btn-box1">
+			<!--  <input type="button" class="u-btn-mddkbl f-mr-xs" value="导出" />-->
+			<input type="button" onclick="juke.jukeRed.getSendRedord()" class="u-btn-mddkorg" value="查询" />
+		</div>
+	</div>
+	<a class="btn-slide btn-slide1"></a>
+	<div class="m-jm-table f-mt-m" style="overflow: inherit;">
+		<ul class="table-hander">
+			<li>头像</li>
+			<li>昵称</li>
+			<li>公众号</li>
+			<li>限定条件</li>
+			<li>金额（元）</li>
+			<li>发放日期</li>
+			<li>红包状态</li>
+		</ul>
+		<div id="send_list">
+			<!--  发送列表 -->
+		</div>
+		<div class="col-xs-6" style="float: right;">
+			<!--以下是分页效果-->
+			<div id=sendRecordPaperToolbar class="pagination f-fr f-mt-m">
+
+			</div>
+			<!--分页end-->
+		</div>
+	</div>
+ 
+
+<script type="text/javascript">
+	juke.jukeRed.getSendRedord();//初始化加载列表
+
+	$("#startDate2").datetimepicker({
+		showSecond : false,
+		timeFormat : 'hh:mm:ss',
+		dateFormat : 'yy-mm-dd',
+		stepHour : 1,
+		stepMinute : 1,
+		stepSecond : 1
+	});
+	$("#endDate2").datetimepicker({
+		showSecond : false,
+		timeFormat : '23:59:59',
+		dateFormat : 'yy-mm-dd',
+		stepHour : 1,
+		stepMinute : 1,
+		stepSecond : 1
+	});
+	//伸缩查询框
+	$(".btn-slide").click(function(){
+		$("#m-search").slideToggle("fast");
+		$(this).toggleClass("btn-slide1"); return false;
+	})
+</script>		

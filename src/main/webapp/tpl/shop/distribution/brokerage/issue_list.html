@@ -1,0 +1,103 @@
+<div id="issue">
+    <div class="m-search" id="m-search">
+        <form id="searchform1">
+        <label class="u-lb-sm">手机</label>
+        <div class="u-txt col-xs-3">
+            <input type="text" name="phoneNumber" id="phoneNumber" class="ipt-txt" placeholder="请输入手机"/>
+        </div>
+        <label class="u-lb-sm">发放流水号</label>
+        <div class="u-txt col-xs-3">
+            <input type="number" id="sendNum" name="sendNum" class="ipt-txt" placeholder="请输入发放流水号"/>
+        </div>
+        <label class="u-lb-sm">付款平台</label>
+        <div class="u-txt col-xs-3">
+            <select class="ipt-txt c-gray1" id="platForm" name="platForm">
+                <option value="-1">全部</option>
+                <option value="0">微信红包</option>
+                <option value="1">微博红包</option>
+            </select>
+        </div>
+        <label class="u-lb-sm">昵称</label>
+        <div class="u-txt col-xs-3">
+            <input type="text" class="ipt-txt" id="nickname" name="nickname" placeholder="请输入昵称"/>
+        </div>
+        <label class="u-lb-sm">发放方式</label>
+        <div class="u-txt col-xs-3">
+            <select class="ipt-txt c-gray1" id="putType"  name="putType">
+                <option value="-1">全部</option>
+                <option value="1">商家发放</option>
+                <option value="2">客户提现</option>
+            </select>
+        </div>
+        <label class="u-lb-sm">发放日期</label>
+        <div class="u-txt u-txt-date f-ml-m">
+            <input type="text" class="ipt-txt c-gray1" id="startDate" name="startDate" placeholder="" style="width: 114px;"/>
+        </div>
+        <div class="u-txt">
+            <span class="line" style=" width: 24px;">-</span>
+        </div>
+        <div class="u-txt u-txt-date">
+            <input type="text" class="ipt-txt c-gray1" id="endDate" name="endDate" placeholder="" style="width: 114px;"/>
+        </div>
+        <label class="u-lb-sm f-cb">姓名</label>
+        <div class="u-txt col-xs-3">
+            <input type="text" class="ipt-txt" placeholder="请输入姓名" id="userName" name="userName"/>
+            <!--<input type="text" class="z-hide"  value="-1" id="status" name="status"/>-->
+        </div>
+            <label class="u-lb-sm">红包状态</label>
+            <div class="u-txt col-xs-3">
+                <select class="ipt-txt c-gray1" id="status"  name="status">
+                    <option value="-1">全部</option>
+                    <option value="1">发放中</option>
+                    <option value="2">已发放待领取</option>
+                    <option value="3">发放失败</option>
+                    <option value="4">已领取</option>
+                    <option value="5">退款中</option>
+                    <option value="6">已退款</option>
+                </select>
+            </div>
+        <!--<label class="u-lb-sm">用户角色</label>-->
+        <!--<div class="u-txt col-xs-3">-->
+            <!--<select class="ipt-txt c-gray1">-->
+                <!--<option value="-1">全部</option>-->
+                <!--<option value="1">分销客户</option>-->
+                <!--<option value="2">分销a档</option>-->
+                <!--<option value="2">分销b档</option>-->
+                <!--<option value="2">分销c档</option>-->
+                <!--<option value="2">代理A档</option>-->
+                <!--<option value="2">代理B档</option>-->
+                <!--<option value="2">代理C档</option>-->
+                <!--<option value="2">代理D档</option>-->
+            <!--</select>-->
+        <!--</div>-->
+        <div class="u-btn-box1">
+            <input type="button" class="u-btn-mddkbl f-mr-xs" value="导出"/>
+            <input type="button" class="u-btn-mddkorg u-w searchbtn" value="查询"/>
+        </div>
+        </form>
+    </div>
+    <a class="btn-slide btn-slide1"></a>
+    <!--查询列表-->
+    <div class="m-jm-table f-mt-m">
+        <ul class="table-hander">
+            <li>头像</li>
+            <li style="width: 15%">昵称-姓名-手机号</li>
+            <li>用户角色</li>
+            <li>发放日期</li>
+            <li>发放金额（元）</li>
+            <li>付款平台</li>
+            <li>发放方式</li>
+            <li>发放限定</li>
+            <li>红包状态</li>
+        </ul>
+        <div class="table-body" id="tableBody1">
+
+        </div>
+        <div class="table-footer f-mt-s"  >
+            <div id="pageToolbar1" class="pagination f-fr"></div>
+        </div>
+    </div>
+</div>
+<script>
+    sales.issue.init();
+</script>

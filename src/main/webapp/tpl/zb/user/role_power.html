@@ -1,0 +1,61 @@
+<div class="m-tab f-mb-l" id="m-tab">
+    <ul>
+        <li class="z-sel">角色管理</li>
+        <li>类型管理</li>
+    </ul>
+</div>
+<div class="panel-hidden">
+    <div class="f-mb-m">
+        <div class="u-btn-addmodule dialog-addorder" onclick="zbRole.power.saveRole()">
+            <i class="iconfont icon-add"></i>
+            <span>新增角色</span>
+        </div>
+    </div>
+    <div class="m-jm-table" >
+        <ul class="table-hander">
+            <li>角色</li>
+            <li style="width: 15%;">类型</li>
+            <li>创建时间</li>
+            <li>创建人</li>
+            <li>操作</li>
+        </ul>
+        <div class="table-body f-t-off c-deepgray" id="zbRoleList">
+
+        </div>
+        <div class="f-pt-s"  id="delete" style="position: absolute;" >
+            <div class="u-btn-smltgry"><i class="iconfont icon-delete1"></i><span>删除</span></div>
+        </div>
+        <!--以下是分页-->
+        <div id="roleToolbar" class="pagination f-fr f-mt-m">
+
+        </div>
+        <!--分页end-->
+    </div>
+</div>
+<div class="panel-hidden">
+    <div class="f-mb-m">
+        <div class="u-btn-addmodule dialog-addorder" onclick="zbRole.power.saveType()">
+            <i class="iconfont icon-add"></i>
+            <span>新增类型</span>
+        </div>
+    </div>
+    <div class="m-jm-table" >
+        <ul class="table-hander">
+            <li>类型</li>
+            <li>创建时间</li>
+            <li>创建人</li>
+            <li>操作</li>
+        </ul>
+        <div class="table-body f-t-off c-deepgray" id="typeList">
+
+        </div>
+        <!--以下是分页-->
+        <div id="typeToolbar" class="pagination f-fr f-mt-m">
+
+        </div>
+        <!--分页end-->
+    </div>
+</div>
+<script type="text/javascript">
+    zbRole.power.init();
+</script>

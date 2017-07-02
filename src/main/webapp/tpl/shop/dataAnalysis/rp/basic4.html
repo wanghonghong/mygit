@@ -1,0 +1,49 @@
+
+<ul class="table-hander">
+    <li>时间</li>
+    <li>收入分类</li>
+    <li style="width: 15%;">订单编号/收款流水号</li>
+    <li>交易平台</li>
+    <li>支付方式</li>
+    <li>订单金额</li>
+    <li>优惠金额</li>
+    <li>实收金额</li>
+    <li style="width: 12%;">昵称-购买人-手机</li>
+    <li>状态</li>
+    <li>操作</li>
+</ul>
+<div class="table-body">
+    {%if items.length>0 %}
+    {% for item in items %}
+    <ul class="table-container">
+        <li>{{item.payEndDate}}</li>
+        <li>{{item.typeName}}</li>
+        <li class="f-wb-ba" style="width: 15%; padding-left: 10px; padding-right: 10px;">
+            {{item.orderNum}} / <br> {{item.transactionId}}
+        </li>
+        <li>{{item.plat}}</li>
+        <li>{{item.payWay}}</li>
+        <li>{{(item.totalMoney/100) | shortNumber(2)}}</li>
+        <li>{{((item.totalMoney - item.payMoney)/100) | shortNumber(2)}}</li>
+        <li>{{(item.payMoney/100) | shortNumber(2)}}</li>
+        <li class="f-tl" style="width: 12%; padding-left: 10px; padding-right: 10px;"><span>{{item.nickName | default('--',true)}}</span><br><span>{{item.userName  | default('--',true)}}</span><br><span>{{item.phoneNum  | default('--',true)}}</span></li>
+        <li>{{item.evenName}}</li>
+        {%if item.typeName=='商品订单' %}
+            <li>
+                <div class="u-btn-smltgry" onclick="order.list.queryDialogOrderDetailForm('{{item.orderNum}}')">查看订单</div>
+            </li>
+        {%else%}
+        <li>
+            无
+        </li>
+        {%endif%}
+
+    </ul>
+    {%endfor%}
+    {%else%}
+    <div class="m-jm-err">
+        <img src="{{globalUrl}}/css/pc/img/jm-nodb.png">
+    </div>
+    {%endif%}
+
+</div>

@@ -1,0 +1,38 @@
+{%if items.length>0%}
+{%for item in items %}
+<ul class="table-container f-pd f-t-off">
+    <li class="f-tl" style="width:25%; padding: 0 15px;">
+        <p title="">{{item.cardName}}</p>
+    </li>
+    <li>{{item.cardMoney}}</li>
+    <li>
+        {%if item.userLimit== 0%}
+        全店通用
+        {%endif%}
+        {%if item.userLimit== 1%}
+        指定商品
+        {%endif%}
+    </li>
+
+    {%if item.periodType== 2%}
+    <li>{{item.startTime}}<br />{{item.endTime}} </li>
+    {%endif%}
+    {%if item.periodType== 1%}
+    <li>  {{item.fixDate}}天</li>
+    {%endif%}
+
+    <li>{{item.createTime}}</li>
+    <li>
+        <div class="u-cb">
+            <input type="checkbox" name="" id="agcard_check_{{item.id}}" value="{{item.id}}" />
+            <label class="iconfont icon-avoid" for="agcard_check_{{item.id}}"></label>
+        </div>
+        <input type="hidden" id="agcard_item_dt_{{item.id}}" value="{{item|toString}}"/>
+    </li>
+</ul>
+{%endfor%}
+{%else%}
+<div class="m-jm-err">
+    <img src="{{globalUrl}}/css/pc/img/jm-nodb.png">
+</div>
+{%endif%}

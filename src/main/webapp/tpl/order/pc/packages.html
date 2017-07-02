@@ -1,0 +1,115 @@
+<style>
+    .f-pb-s{
+        min-height: 30px;
+    }
+</style>
+<div class="m-panel-head f-mb-s" id="package{{packageId}}">
+    <div class="m-tt c-orange1 f-pb-s">
+
+        {% if isSend %}
+        <p class="f-fl">包裹{{packageId}}<font style="color:#6dc87b">(已发送)</font></p>
+        {%else%}
+        <p class="f-fl">包裹{{packageId}}</p>
+        <div class="u-cb f-ml-xs">
+            <input type="checkbox" name="" id="pack{{packageId}}" v-model="pack"   />
+            <label class="iconfont icon-avoid" for="pack{{packageId}}" pack-id ="{{packageId}}"></label>
+        </div>
+
+        <div class="u-mtt-del">
+            <i class="iconfont icon-delete1 del{{packageId}}" ></i>
+        </div>
+        {% endif %}
+    </div>
+    <div class="m-bagbox f-pt-m" >
+        <div class="col-xs-4 f-mb-xs" style="padding: 0;">
+            <label class="u-lb-sm font-s12">物流公司</label>
+            <div class="u-txt col-xs-9">
+                {% if isSend %}
+                <label class="u-lb-sm font-s12">{{transCompany}}</label>
+                {% else %}
+                <select class="ipt-txt " name="d_transCompany" id="transCompany{{packageId}}" style="width: 100%" v-model="transCompany" >
+                    <option value="">请选择</option>
+                    {%for item in companys%}
+                    <option value="{{item.name}},{{item.code}}">{{item.name}}</option>
+                    {%endfor%}
+                </select>
+                {% endif %}
+            </div>
+            <label class="u-lb-sm font-s12 f-cb">物流单号</label>
+            <div class="u-txt col-xs-9">
+                {% if isSend %}
+                <label class="u-lb-sm font-s12">{{transNumber}}</label>
+                {% else %}
+                <input type="text" class="ipt-txt" id="transNumber{{packageId}}" name="d_transNumber" placeholder="请输入物流单号" v-model.trim="transNumber" />
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-xs-8 f-mb-xs" style="padding: 0;">
+            <label class="u-lb-md font-s12">物流备注</label>
+            <div class="u-txt col-xs-10">
+                {% if isSend %}
+                <label class="u-lb-sm font-s12">{{deliveryNote}}</label>
+                {% else %}
+                <textarea name="shared" class="ipt-txt txtarea" id="deliveryNote{{packageId}}" name="d_deliveryNote" placeholder="请输入物流备注" v-model.trim="deliveryNote"></textarea>
+                <span class="number font-s12">{{remarkCount}}/60</span>
+                {% endif %}
+            </div>
+        </div>
+        <div class="m-shipinfo-lt f-cb">
+            <ul class="table-hander">
+                <li style="width: 20%;">商品主图</li>
+                <li>名称</li>
+                <li>规格</li>
+                <li>数量</li>
+                <li style="width: 13%;">操作</li>
+            </ul>
+            <div class="table-body">
+                {% for data in orderDetails %}
+                <ul class="table-container">
+                    <li style="width: 20%;" >
+                        <div class="col-xs-3">
+                            <div class="u-cb f-mt-xl">
+                                <input type="checkbox" data-id="orderDetail{{data.orderDetailId}}" name="oderDetailId" id="checkbox{{packageId}}{{loop.index}}" value="{{data.orderDetailId}}"  v-model="orderDetail"  {% if isSend %}disabled="disable"{% endif %}  />
+                                <label class="iconfont icon-avoid" for="checkbox{{packageId}}{{loop.index}}" pack-id ="{{packageId}}" v-on:click = "{{checkboxFun }}($event)" ></label>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-6">
+                            {% if data.pic %}
+                            <img class="u-thumbnail-squa" src="{{data.pic}}"/>
+                            {% else %}
+                            <img class="u-thumbnail-squa" src="{{globalUrl}}/css/pc/img/no_picture.png"/>
+                            {% endif %}
+                        </div>
+                    </li>
+                    <li>{{data.name}}</li>
+                    <li>{{data.specValueTwo}}{{data.specValueThree}} {{data.specValueOne}}</li>
+                    <li>{{data.count}}</li>
+                    <li style="width: 13%;">
+                        <div class="u-btn-smltgry" onclick="comm.auth.callAuthDialog('{{userId}}')"><span>物料二维码授权</span></div>
+                    </li>
+                </ul>
+                {% endfor %}
+            </div>
+            {% if isSend %}
+            {%else%}
+            <div class="u-countinfo">
+                <div class="f-fl f-ml-l f-pt-s" style="line-height: 20px;">
+                    <div class="u-cb">
+                        <input type="checkbox" name="" id="selectAll{{packageId}}" v-model="all" value="all"  />
+                        <label class="iconfont icon-avoid" for="selectAll{{packageId}}" pack-id ="{{packageId}}"></label>
+                    </div>
+                    <label for="selectAll{{packageId}}" pack-id ="{{packageId}}">全选</label>
+                </div>
+
+                包裹{{packageId}} 共 <font class="c-orange1" >{{productCount}}</font> 件商品
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<!--通码授权窗口-->
+<div id="commAuthDialog" class="dialoginfo">
+
+</div>

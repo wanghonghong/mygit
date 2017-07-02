@@ -1,0 +1,213 @@
+
+<style>
+	.black_overlay{
+		display: none;  position: absolute;  top: 0%;  left: 0%;  width: 100%;
+		height: 100%;  background-color: black;  z-index:11110;  -moz-opacity: 0.8;  opacity:.80;
+		filter: alpha(opacity=80);  }
+	.white_content {  display: none;  position: absolute;  top: 25%;  left: 25%;  width: 30%;  height: 70%;
+		padding: 16px;  border: 1px solid black;  background-color: white;  z-index:11111;  overflow: auto;
+	}
+</style>
+
+<div class="m-search" id="m-search">
+		<label class="u-lb-sm">软件版本名称</label>
+		<div class="u-txt col-xs-3">
+			<input type="text" class="ipt-txt" placeholder="请输入软件版本名称" id="softName" />
+		</div>
+
+	<input type="button" class="u-btn-mddkorg u-w" value="新增" onclick="editCD();" />
+	<input type="button" class="u-btn-mddkorg u-w" value="查询" onclick="queryCC();" />
+	</div>
+	<div class="m-jm-table">
+		<ul class="table-hander">
+			<li>id</li>
+			<li>名称</li>
+			<li>创建时间</li>
+			<li style="width: 30%">店铺 菜单/角色 配置</li>
+			<li>会员中心菜单配置</li>
+		</ul>
+		<div class="table-body" id="table-body">
+		</div>
+		<div class="f-fr">
+			<!--以下是分页效果-->
+			<div id="pageToolbar" class="pagination f-fr">
+			</div>
+			<!--分页end-->
+		</div>
+	</div>
+
+	<div id="dialoginfo33" class="dialoginfo dhk" style="display: none;"></div>
+	<!--版本菜单-->
+	<div id="dialogRes" class="dialoginfo dhk" style="display: none;">
+		版本Id：<input type="text" id="softResId" >
+		<ul id="area_tree" class="ztree h-scroll"
+			style="border: 1px solid #617775; padding: 10px 30px; max-height: 390px;">
+		</ul>
+		<br>
+		<input type="button" class="u-btn-mddkorg u-w" value="保存" onclick="savDDD()" />
+	</div>
+	<!--版本菜单 end-->
+	<!--角色-->
+	<div id="dialogRole" class="dialoginfo dhk" style="display: none;">
+		版本Id：<input type="text" id="softRoleId" >
+		<div id="allRole">
+		</div>
+	</div>
+	<!--角色end -->
+	<!--角色资源-->
+	<div id="light" class="dialoginfo dhk" style="display: none;">
+		版本Id：<input type="text" id="softRoleResId" ><br>
+		角色Id: <input type="text" id="roleId" >
+		<ul id="role_tree" class="ztree h-scroll"
+			style="border: 1px solid #617775; padding: 10px 30px; max-height: 390px;">
+		</ul><br>
+		<input type="button" class="u-btn-mddkorg u-w" value="保存" onclick="saveRoleRes();" />
+		<input type="button" class="u-btn-mddkorg u-w" value="关闭"  onclick="dialog.get('show-dialog565').close().remove();" />
+	</div>
+	<div id="fade" class="black_overlay">
+	</div>
+	<!--角色资源end -->
+	<!--版本角色编辑-->
+	<div id="softRole" class="dialoginfo dhk" style="display: none;">
+	</div>
+	<!--版本角色编辑 -->
+
+	<!--会员中心菜单配置-->
+	<div id="useCenterTreeDialog" class="dialoginfo dhk" style="display: none;">
+		版本Id：<input type="text" id="useCenterSoftId" >
+		<ul id="funs_tree" class="ztree h-scroll"
+			style="border: 1px solid #617775; padding: 10px 30px; max-height: 390px;">
+		</ul>
+		<br>
+		<input type="button" class="u-btn-mddkorg u-w" value="保存" onclick="saveUserCentVer();"  />
+	</div>
+	<!--版本菜单 end-->
+
+	<script>
+        function popMsg(title,elemName,width){
+            var elem = $(elemName);
+            memudialog=dialog({
+                id:'show-dialog',
+                width: width,
+                title: title,
+                content: elem
+            });
+            memudialog.show();
+        };
+
+		function editCD(id,name){
+            var data = {};
+		    if(id!=undefined && name!=undefined){
+				data.softId=id;
+                data.name=name;
+			}
+            jumi.template('zb/system/softEdit',data,function(tpl){
+                $("#dialoginfo33").empty();
+                $('#dialoginfo33').html(tpl);
+                popMsg("软件版本编辑","#dialoginfo33",300);
+            });
+		}
+		function queryCC() {
+			var name = $("#softName").val();
+            var params = {
+                pageSize:10,
+                name:name
+            };
+            var url = CONTEXT_PATH+"/zbSoft/findAll";
+            jumi.pagination('#pageToolbar',url,params,function(res,curPage){
+                var data = {
+                    items:res.data.items
+                };
+                jumi.template("zb/system/softList",data,function(tpl) {
+                    $('#table-body').empty();
+                    $('#table-body').html(tpl);
+                });
+            });
+        }
+
+		function savDDD() {
+            var treeObj = $.fn.zTree.getZTreeObj("area_tree");
+            var nodes = treeObj.getCheckedNodes(true); //获取选中的数据
+            var ids = common_area.getAreaIds(nodes);
+            var id = $("#softResId").val();
+            var co = {};
+            co.softId=id;
+            co.resourceIds = ids;
+            var jsonData = JSON.stringify(co);
+            $.ajaxJson(CONTEXT_PATH+"/zbSoft/saveSoftMenu",jsonData,{
+                "done":function (res) {
+                    if(res.code===0){
+                        var dm = new dialogMessage({
+                            type:1,
+                            fixed:true,
+                            msg:res.data.msg,
+                            isAutoDisplay:true,
+                            time:3000
+                        });
+                        dm.render();
+                        dialog.get('show-dialog').close().remove();
+                    }
+                }
+            });
+        }
+
+        function saveRoleRes() {
+			var softId = $("#softRoleResId").val();
+            var roleId = $("#roleId").val();
+            var treeObj = $.fn.zTree.getZTreeObj("role_tree");
+            var nodes = treeObj.getCheckedNodes(true); //获取选中的数据
+            var ids = common_area.getAreaIds(nodes);
+            var co = {};
+            co.softId=softId;
+            co.roleId=roleId;
+            co.resourceIds = ids;
+            var jsonData = JSON.stringify(co);
+            $.ajaxJson(CONTEXT_PATH+"/zbSoft/saveSoftRoleRes",jsonData,{
+                "done":function (res) {
+                    if(res.code===0){
+                        //document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none';
+                        var dm = new dialogMessage({
+                            type:1,
+                            fixed:true,
+                            msg:res.data.msg,
+                            isAutoDisplay:true,
+                            time:3000
+                        });
+                        dm.render();
+                        dialog.get('show-dialog565').close().remove();
+                    }
+                }
+            });
+        }
+
+        //保存会员中心配置
+        function saveUserCentVer(){
+			var softId= $("#useCenterSoftId").val(); //版本id
+            var treeObj = $.fn.zTree.getZTreeObj("funs_tree");
+            var nodes = treeObj.getCheckedNodes(true); //获取选中的数据
+            var ids = common_area.getAreaIds(nodes);
+            var co = {};
+            co.softId=softId;
+            co.resourceIds = ids;
+            var jsonData = JSON.stringify(co);
+            $.ajaxJson(CONTEXT_PATH+"/zbSoft/saveUserCenterFuns",jsonData,{
+                "done":function (res) {
+                    if(res.code===0){
+                        document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none';
+                        var dm = new dialogMessage({
+                            type:1,
+                            fixed:true,
+                            msg:res.data.msg,
+                            isAutoDisplay:true,
+                            time:3000
+                        });
+                        dm.render();
+                        dialog.get('show-dialog').close().remove();
+                    }
+                }
+            });
+		}
+
+
+        queryCC();
+	</script>

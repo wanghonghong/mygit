@@ -1,0 +1,30 @@
+<div id="signup">
+    <div id="activityBox">
+        <div class="m-tab f-mb-m" id="m-tab">
+            <ul>
+                <li class="z-sel" data-target="setInfoContainer">设定信息</li>
+                <li data-target="activityContainer">活动管理</li>
+            </ul>
+        </div>
+        <div class="panel-hidden" id="setInfoContainer">
+            <div class="u-btn-lgltgry1 f-mb-m dialog-infonew" onclick="signup.index.enrolmentConfAdd()"><i
+                    class="iconfont icon-add"></i><span>新增版本</span></div>
+            <div id="tableBody1">
+            </div>
+            <!--以下是分页效果-->
+            <div id="pageToolbar1" class="pagination f-tr f-pt-m f-pr-m">
+            </div>
+            <!--分页end-->
+        </div>
+        <div class="panel-hidden z-hide" id="activityContainer">
+            {% include 'tpl/activity/signup/activityContainer.html' %}
+        </div>
+    </div>
+    <div id="activityEdit" class="z-hide">
+    </div>
+
+</div>
+
+<script>
+    signup.index.init();
+</script>

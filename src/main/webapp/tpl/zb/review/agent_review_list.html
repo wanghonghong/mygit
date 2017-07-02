@@ -1,0 +1,38 @@
+
+{%if items.length>0%}
+{% for item in items %}
+<ul class="table-container">
+    <li>
+        <img src="{{item.headImg}}" class="u-thumbnail-circ" >
+    </li>
+    <li class="f-tl" style="padding-left: 40px;">
+        <span>{{item.userName}}</span><br><span>{{item.phoneNumber}}</span>
+    </li>
+    <li style="width: 18%;">{{item.companyName}}</li>
+    {%if item.subType==1 %}
+    <li>个人</li>
+    {%elif item.subType==2 %}
+    <li>机构</li>
+    {%endif%}
+    <li>{{item.applyRole}}</li>
+    <li>{{item.createDate}}</li>
+    {%if index==2 or index==3%}
+    <li>{{item.checkerName}}</li>
+    {%endif%}
+    <li>
+        {%if item.status==1 %}
+        <div id="reviewbutton_{{item.userId}}" data-type-id="{{item.userId}}" class="u-btn-smltgry dialog" >审核</div>
+        {%elif item.status==2 %}
+        <div id="reviewbutton_{{item.userId}}" data-type-id="{{item.userId}}" class="u-btn-smltgry dialog" >2次审核</div>
+        {%elif item.status==3 %}
+        <div id="reviewbutton_{{item.userId}}" data-type-id="{{item.userId}}" class="u-btn-smltgry dialog" >查看</div>
+        {%endif%}
+        <div id="delete_btn" data-type-id="{{item.userId}}" class="u-btn-smltgry dialog">删除</div>
+    </li>
+</ul>
+<input type="hidden" name="reviewTime" id="reviewTime" value="{{reviewTime}}"/>
+{%endfor%}
+{%else%}
+{% include "/tpl/system/nodb.html" %}
+{%endif%}
+

@@ -1,0 +1,62 @@
+
+<div class="panel-hidden">
+    <div class="m-search" id="m-search">
+        <label class="u-lb-sm">粉丝姓名</label>
+        <div class="u-txt col-xs-3">
+            <input type="text" class="ipt-txt" placeholder="请输入粉丝姓名" name="award_username">
+        </div>
+        <label class="u-lb-sm">粉丝昵称</label>
+        <div class="u-txt col-xs-3">
+            <input type="text" class="ipt-txt" placeholder="请输入粉丝昵称" name="award_nic">
+        </div>
+        <label class="u-lb-sm">奖励日期</label>
+        <div class="u-txt u-txt-date f-ml-m" >
+            <i class="iconfont icon-calendar"></i>
+            <input type="text" id="startTime" class="ipt-txt c-gray1" placeholder="开始时间" style="width: 112px;">
+        </div>
+        <div class="u-txt">
+            <span class="line" style=" width: 25px;">-</span>
+        </div>
+        <div class="u-txt u-txt-date">
+            <i class="iconfont icon-calendar"></i>
+            <input type="text" id="overTime" class="ipt-txt c-gray1" placeholder="结束时间" style="width: 112px;">
+        </div>
+        <label class="u-lb-sm">粉丝手机</label>
+        <div class="u-txt col-xs-3">
+            <input type="text" class="ipt-txt" placeholder="请输入粉丝手机" name="phoneNumber">
+        </div>
+        <label class="u-lb-sm">奖励项目</label>
+        <div class="u-txt col-xs-3">
+            <select class="ipt-txt c-gray1" id="awardpoint_project">
+                <option value="">全部</option>
+                <option value="1">每日登入</option>
+                <option value="2">推荐关注</option>
+                <option value="3">购买返利</option>
+                <option value="4">回收奖励</option>
+                <option value="5">图文奖励</option>
+                <option value="11">积分换购</option>
+            </select>
+        </div>
+        <div class="u-btn-box1">
+            <!--<input type="button" class="u-btn-mddkbl f-mr-xs" value="导出">-->
+            <input type="button" class="u-btn-mddkorg u-w" value="查询" id="awardpoint_search">
+        </div>
+    </div>
+    <a class="btn-slide btn-slide1"></a>
+    <div class="m-jm-table f-mt-m panel-per">
+        <ul class="table-hander">
+            <li style="width: 15%;">粉丝头像</li>
+            <li style="width: 20%;">昵称-姓名-手机号</li>
+            <li style="width: 15%;">奖励日期</li>
+            <li>奖励项目</li>
+            <li>奖励数量<i id="award-unit"></i></li>
+            <li style="width: 12%;">微平台</li>
+        </ul>
+        <div class="table-body" id="reward_list">
+        </div>
+        <div id="pageAwardToolbar" class="pagination" style="text-align:right;margin-top:10px;"></div>
+    </div>
+</div>
+<script>
+    awardpoint.reward.init();
+</script>

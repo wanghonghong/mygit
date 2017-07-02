@@ -1,0 +1,46 @@
+<div class="m-sell-set f-mt-l" id="freightBox" style="margin-left: 0;">
+    <div class="sell-set-left">
+        <h3>运费/排版</h3>
+    </div>
+    <div class="sell-set-right">
+        <div class="col-xs-12 m-transport">
+            <label class="u-lb-md u-rd-lh"><span class="f-star">*&nbsp;</span>邮费</label>
+            <div class="m-transport-details">
+                <div class="col-xs-12">
+                    <div class="u-txt">
+                        <div class="u-rb">
+                            <input type="radio" name="isUseTrans" id="isUseTrans1" value="1" checked />
+                            <label for="isUseTrans1"></label>
+                        </div>
+                        <label for="isUseTrans1" class="u-rd-wd">统一邮费</label>
+                    </div>
+                    <div class="u-txt">
+                        <input type="number" class="ipt-txt" placeholder="请输入运费" name="transFare" id="transFare" value="{{product.transFare | default(0,true)/100 }}" />
+                    </div>
+                    <div class="m-tip4">
+                        <i class="iconfont icon-lamp"></i>
+                        <span>数字为0，商品显示为包邮</span>
+                    </div>
+                </div>
+                <div class="col-xs-12">
+                    <div class="u-txt">
+                        <div class="u-rb">
+                            <input type="radio" name="isUseTrans" id="isUseTrans2" value="2"   />
+                            <label for="isUseTrans2"></label>
+                        </div>
+                        <label for="isUseTrans2" class="u-rd-wd">运费模板</label>
+                    </div>
+                    <div class="u-txt">
+                        <select class="ipt-txt" name="transId" id="transId" style="width: 100%">
+                        </select>
+                    </div>
+                    <div class="m-tip4">
+                        <div  class="u-btn-smltgry" id="new_template"  >新建运费模板 </div>
+                        <div  class="u-btn-smltgry" id="refreshBtn"> 刷新 </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

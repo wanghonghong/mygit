@@ -1,0 +1,28 @@
+{%if items.length>0%}
+{%for item in items%}
+<ul class="table-container">
+    <li style="width:25%;">
+        <div class="g-table">
+            <div class="g-table-cell f-vm" style="width:10%;">
+                <div class="u-cb1">
+                    <input type="checkbox" name="pid_check" id="checkbox_{{item.pid}}" value="{{item.pid}}">
+                    <label class="iconfont icon-avoid" for="checkbox_{{item.pid}}"></label>
+                </div>
+            </div>
+            <div class="g-table-cell f-vm">
+                <label for="checkbox_{{item.pid}}"> <img src="{{item.pic_square}}" alt="暂无图片" class="u-thumbnail-squa"> </label>
+            </div>
+            <div class="g-table-cell f-vm">
+                <span>{{item.name}}</span><br> <span class="font-color-orange">￥{{item.price/100}}</span>
+            </div>
+        </div>
+    </li>
+    <li>{{item.create_time}}</li>
+    <li style="width: 15%;"><div id="awardproduct_{{item.pid}}" class="u-btn-smltgry dialog" data-price="{{item.price/100}}" data-id="{{item.pid}}"><i class="iconfont icon-modified"></i><span>设置积分</span></div></li>
+</ul>
+{%endfor%}
+{%else%}
+<div class="m-jm-err">
+    <img src="{{globalUrl}}/css/pc/img/jm-nodb.png">
+</div>
+{%endif%}

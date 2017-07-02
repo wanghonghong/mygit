@@ -1,0 +1,15 @@
+{% if items.length>0 %}
+{%for item in items%}
+<ul class="table-container">
+    <li>{{item.typeName}}</li>
+    <li>{{item.createDate}}</li>
+    <li>{{item.userName}}</li>
+    <li>
+        <div class="u-btn-smltgry f-mr-xs dialog-xg updateType" data-id="{{item.id}}" onclick="zbRole.power.updateType('{{item.id}}')"><span>修改</span></div>
+        <div class="u-btn-smltgry dialog-sc deleteType" data-id="{{item.id}}" data-name="{{item.typeName}}"><span>删除</span></div>
+    </li>
+</ul>
+{%endfor%}
+{%else%}
+{% include "/tpl/system/nodb.html" %}
+{%endif%}

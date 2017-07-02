@@ -1,0 +1,33 @@
+{%if items.length>0 %}
+{% for item in items %}
+<ul class="table-container">
+    <li style="width: 25%;">
+        <div class="g-table">
+            <div class="g-table-cell f-vm" style="width: 40%;">
+                <img class="u-thumbnail-squa" src="{{item.imgUrl}}"/>
+            </div>
+            <div class="g-table-cell f-vm f-tl">
+                <span>{{item.name}}</span><br>
+                <font color="#f36920">￥{{item.price/100 | default(0,true)}}</font>
+            </div>
+        </div>
+    </li>
+    <li class="f-wb-ba">{{item.specName | default('无',true)}}</li>
+    <li>{{item.visiters}}</li>
+    <li>{{item.visitCount}}</li>
+    <li>{{item.cusCount}}</li>
+    <li>{{item.orderCount}}</li>
+    <li>{{item.percent}}</li>
+    <li>
+        <div>{{item.buyCount}}</div>
+        <!--<div class="u-btn-smltgry dialog">趋势图分析</div>-->
+    </li>
+    <li><font color="#f36920">{{item.pstatus}}</font></li>
+</ul>
+{%endfor%}
+{%else%}
+<div class="m-jm-err">
+    <img src="{{globalUrl}}/css/pc/img/jm-nodb.png">
+</div>
+{%endif%}
+

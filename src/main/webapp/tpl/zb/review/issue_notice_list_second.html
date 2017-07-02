@@ -1,0 +1,26 @@
+
+{% if items.length>0 %}
+{%for item in items%}
+<ul class="table-container">
+    <li class="f-tl" id="notice_{{item.id}}" data-id="{{item.id}}" style="width: 45%; padding: 0 50px;"><p class="u-curpot">{{item.title}}</p></li>
+    <li>
+        {%if item.type==1%}系统公告
+        {%elif item.type==2%}功能使用
+        {%elif item.type==3%}市场政策
+        {%elif item.type==4%}市场活动
+        {%elif item.type==5%}费用结算
+        {%elif item.type==6%}公司动态
+        {%elif item.type==7%}行业动态
+        {%else %}无类别
+        {%endif%}
+    </li>
+    <li>{{item.createDate}}</li>
+    <li style="width: 22%;">
+        <div class="u-btn-smltgry" onclick="review.first.editNotice('{{item.id}}')"><i class="iconfont icon-modified"></i><span>编辑</span></div>
+        <div class="u-btn-smltgry" id="deleteNotice"  onclick="review.first.deleteNotice('{{item.id}}')"><i class="iconfont icon-delete1"></i><span >删除</span></div>
+    </li>
+</ul>
+{%endfor%}
+{%else%}
+{% include "/tpl/system/nodb.html" %}
+{%endif%}

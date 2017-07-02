@@ -1,0 +1,223 @@
+<style>
+    em{
+        font-style: normal;
+    }
+    .sell-set-right,.m-sell-set .u-lb-md{
+        font-family: '微软雅黑', Verdana, Arial, Helvetica, sans-serif;
+        font-size: 14px;
+    }
+    .u-btn-mddkorg{
+        font-family: '微软雅黑', Verdana, Arial, Helvetica, sans-serif;
+    }
+</style>
+<input type="hidden" name="subType" value="{{paramsObj.subType}}">
+<div class="m-tips-errs" style="margin:5px 0px;display: none;" id="error"><i class="iconfont icon-errorhint"></i><em id="tipError"></em></div>
+<div class="m-tips-errs" style="margin:5px 0px;display: none;" id="error"><i class="iconfont icon-errorhint"></i><em id="tipError"></em></div>
+<section>
+    <div class="col-xs-12" style="padding: 0;">
+        <!--红包设置-->
+        <div class="m-sell-set" style=" margin-left: 0;">
+            <div class="sell-set-left f-pt-l">
+                <h3 style="padding-left: 10px;">红包设置</h3>
+            </div>
+            <div class="sell-set-right f-pt-l f-pb-s">
+                <label class="u-lb-md u-rd-lh c-black">活动平台</label>
+                <div class="f-fl col-xs-10">
+                    <div class="u-rb bg-white">
+                        <input type="radio" name="activity_space" id="radioBox1" value="1" checked>
+                        <label for="radioBox1"></label>
+                    </div>
+                    <label for="radioBox1" class="u-rd-wd c-gray1">微信公众号</label>
+                    <!--<div class="u-rb bg-white f-ml-xxl">-->
+                    <!--<input type="radio" name="activity_space" id="radioBox2" value="2">-->
+                    <!--<label for="radioBox2"></label>-->
+                    <!--</div>-->
+                    <!--<label for="radioBox2" class="u-rd-wd c-gray1">微博公众号</label>-->
+                </div>
+                <label class="u-lb-md c-black">活动标题</label>
+                <div class="u-txt col-xs-10">
+                    <input type="text" id="actionName" class="ipt-txt" placeholder="请输入活动标题">
+                </div>
+                <label class="u-lb-md u-rd-lh c-black f-cb">摇一摇设置</label>
+                <div class="f-fl col-xs-10">
+                    <div class="u-rb bg-white">
+                        <input type="radio" name="yaoy" id="radioyao1" value="1" checked>
+                        <label for="radioyao1"></label>
+                    </div>
+                    <label for="radioyao1" class="u-rd-wd c-gray1">1 次摇中</label>
+                    <div class="u-rb bg-white f-ml-xxl">
+                        <input type="radio" name="yaoy" id="radioyao2" value="3">
+                        <label for="radioyao2"></label>
+                    </div>
+                    <label for="radioyao2" class="u-rd-wd c-gray1">3 次随机摇中</label>
+                </div>
+                {%if paramsObj.type==3%}
+                <form id="form2">
+                    <label class="u-lb-md u-rd-lh c-black">发放限定</label>
+                    <div class="u-txt col-xs-10" style="margin-top:5px;">
+                        <div class="ipt-txt11" style="margin-top: -8px; width: 175px;">
+                            <i class="icon-lb-word c-gray">元</i>
+                            <input type="text" class="ipt-txt c-gray1" placeholder="购买商品达多少 " name="activity_shop" id="activity_shop">
+                        </div>
+                    </div>
+                </form>
+                {%endif%}
+            </div>
+        </div>
+        <!--/-->
+        <!--高级设置-->
+        <div class="m-sell-set f-mt-l" style=" margin-left: 0;">
+            <div class="sell-set-left f-pt-l">
+                <h3 style="padding-left: 10px;">高级设置</h3>
+            </div>
+            <div class="sell-set-right f-pt-xl f-pb-m">
+                <label class="u-lb-md u-rd-lh c-black">性别限定</label>
+                <div class="f-fl col-xs-10 cbtop f-mb-s c-gray1">
+                    <div class="u-rb bg-white">
+                        <input type="radio" name="activity_sex" id="sexbox1" value="2" />
+                        <label for="sexbox1"></label>
+                    </div>
+                    <label for="sexbox1" class="u-rd-wd">女性</label>
+                    <div class="u-rb bg-white">
+                        <input type="radio" name="activity_sex" id="sexbox2" value="1" />
+                        <label for="sexbox2"></label>
+                    </div>
+                    <label for="sexbox2" class="u-rd-wd">男性</label>
+                    <div class="u-rb bg-white">
+                        <input type="radio" name="activity_sex" id="sexbox3" value="0" checked/>
+                        <label for="sexbox3"></label>
+                    </div>
+                    <label for="sexbox3" class="u-rd-wd">全部</label>
+                </div>
+                <label class="u-lb-md u-rd-lh c-black">地区限定</label>
+                <div class="col-xs-10 cbtop" style="padding-right: 0;">
+                    <div class="f-fl f-mb-m">
+                        <div class="f-fl u-cb bg-white u-rd-mb">
+                            <input type="checkbox" name="activity_area" id="checkBox015">
+                            <label class="iconfont icon-avoid" for="checkBox015"></label>
+                            <input type="hidden" name="activity_area_ids">
+                            <input type="hidden" name="activity_area_name">
+                            <label class="iconfont icon-avoid" for="checkBox015"></label>
+                        </div>
+                        <div id="activity_region" class="u-btn-smltgry u-more-wh dialog11" style="margin-left: 5px;"><span>选择地区</span></div>
+                        <div class="choosegroup1 u-setrole u-setarea" style="width: 390px;" id="choose_activity_areas">
+
+                        </div>
+                    </div>
+                </div>
+
+                {%if paramsObj.type==2 %}
+                <input type="button" id="fansCal" class="u-btn-mddkbl f-mt-xs" value="粉丝筛选" style="margin-left: 235px;">
+                {%endif%}
+            </div>
+        </div>
+        <!--/-->
+        <!--金额设定-->
+        <div id="activity_box">
+            <form id="form1" novalidate="novalidate">
+                <div class="m-sell-set f-mt-l" id="activity_set_newfans" style="margin-left: 0;">
+                    <div class="sell-set-top f-pt-l f-pb-s">
+                        <h3>金额设定</h3>
+                        <label class="u-lb-md c-black">投放金额</label>
+                        <div class="u-txt f-ml-m">
+                            <div class="ipt-txt11" style="top: 0;">
+                                <i class="icon-lb-word c-gray">元</i>
+                                <input type="text" class="ipt-txt c-gray1" id="red_amount" name="red_amount">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sell-set-bottom f-pb-s">
+
+                        <div class="m-jm-table1">
+                            <ul class="table-hander">
+                                <li style=" color: #000000; text-align: left;">
+                                    <font class="font-s14">获奖百分比</font>（100%）
+                                </li>
+                                <li>
+                                    <input type="text" name="percent" id="percent_1" data-id="percent_1" class="table-input c-gray1" value="30"><span class="tb-ipt-per">%</span>
+                                    <input type="hidden">
+                                </li>
+                                <li>
+                                    <input type="text" name="percent" id="percent_2" data-id="percent_2" class="table-input c-gray1" value="25"><span class="tb-ipt-per">%</span>
+                                    <input type="hidden">
+                                </li>
+                                <li>
+                                    <input type="text" name="percent" id="percent_3" data-id="percent_3" class="table-input c-gray1" value="25"><span class="tb-ipt-per">%</span>
+                                    <input type="hidden">
+                                </li>
+                                <li>
+                                    <input type="text" name="percent" id="percent_4" data-id="percent_4" class="table-input c-gray1" value="20"><span class="tb-ipt-per">%</span>
+                                    <input type="hidden">
+                                </li>
+                            </ul>
+                            <div class="table-body c-gray1">
+                                <ul class="table-container">
+                                    <li>
+                                        分段消耗金额（元）
+                                    </li>
+                                    <li data-id="consume_1"></li>
+                                    <li data-id="consume_2"></li>
+                                    <li data-id="consume_3"></li>
+                                    <li data-id="consume_4"></li>
+
+                                </ul>
+                                <ul class="table-container">
+                                    <li>
+                                        单人中奖金额（元）
+                                    </li>
+                                    <li style="position:relative;"><input type="text" name="single" data-index="1" id="single_1" data-id="single_1" class="table-input c-gray1"></li>
+                                    <li><input type="text" name="single" data-index="2" id="single_2" data-id="single_2" class="table-input c-gray1"></li>
+                                    <li><input type="text" name="single" data-index="3" id="single_3" data-id="single_3" class="table-input c-gray1"></li>
+                                    <li><input type="text" name="single" data-index="4" id="single_4" data-id="single_4" class="table-input c-gray1"></li>
+
+                                </ul>
+                                <ul class="table-container">
+                                    <li>
+                                        分段中奖人数（个）
+                                    </li>
+                                    <li data-id="winners_1"></li>
+                                    <li data-id="winners_2"></li>
+                                    <li data-id="winners_3"></li>
+                                    <li data-id="winners_4"></li>
+
+                                </ul>
+
+                            </div>
+                        </div>
+                        <div class="m-tip1">
+                            <i class="iconfont icon-lamp"></i>
+                            <span class="f-mb-s">本次活动投放金额为 <code id="amount"></code>元，预计可覆盖粉丝数：</span>
+                            <span class="fansbg">
+					<em id="activity_amount_num">0</em>
+			</span>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!--时间设定-->
+        <div class="m-sell-set f-mt-l" style="margin-left: 0;">
+            <div class="sell-set-left f-pt-l">
+                <h3 style="padding-left: 10px;">时间设定</h3>
+            </div>
+            <div class="sell-set-right f-pt-l f-pb-s">
+                <label class="u-lb-md c-black">开始时间</label>
+                <div class="u-txt col-xs-3" style="width: 31%;">
+                    <i class="iconfont icon-calendar"></i>
+                    <input type="text" id="startTime" name="start" class="ipt-txt" placeholder="开始时间" style="padding-right: 28px;">
+                </div>
+
+                <label class="u-lb-md c-black">结束时间</label>
+                <div class="u-txt col-xs-3" style="width: 31%;">
+                    <i class="iconfont icon-calendar"></i>
+                    <input type="text" id="overTime" name="over" class="ipt-txt" placeholder="结束时间" style="padding-right: 28px;">
+                </div>
+
+            </div>
+        </div>
+        <!--/-->
+    </div>
+    <div class="u-btn-box1">
+        <input type="button" class="u-btn-mddkorg" value="保存" id="activity_ensure_button">
+    </div>
+</section>

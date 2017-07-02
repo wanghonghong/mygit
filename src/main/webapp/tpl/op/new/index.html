@@ -1,0 +1,34 @@
+<style>
+    .new-jm-table .table-hander{
+        background: url("{{globalUrl}}/css/pc/img/bg_TableTitle_03.png") repeat center;
+    }
+    .new-jm-table .table-hander li{
+        border-left: 1px solid #f9c480;
+        border-right: 1px solid #e29c3d;
+        color: #fff;
+    }
+</style>
+<section id="ImageTextContainer">
+    <div class="m-tab f-mb-m" id="officialTab">
+        <ul>
+            <li data-target="addTypeBox" class="z-sel"> 新增分类</li>
+            <li data-target="ImgTexBoxListBox">图文列表</li>
+        </ul>
+    </div>
+    <div id="officialContent" style="width: 100%; overflow:hidden;">
+        <div class="z-sel" id="addTypeBox">
+            {% include 'tpl/op/new/imageTextTypeList.html' %}
+        </div>
+        <div class="z-hide" id="ImgTexBoxListBox">
+            {% include 'tpl/op/new/imageTextList.html' %}
+        </div>
+    </div>
+</section>
+
+
+<script>
+    var data = {
+        typeId: 1
+    }
+    official.index.init( data);
+</script>

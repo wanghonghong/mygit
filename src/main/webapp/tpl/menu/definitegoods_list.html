@@ -1,0 +1,22 @@
+<div class="m-jm-table">
+    <ul class="table-hander">
+        <li>商品名称</li>
+        <li>价格</li>
+        <li>库存</li>
+        <li>选择</li>
+    </ul>
+    <div class="table-body h-scroll" style="max-height: 250px;">
+        {%if items.length>0%}
+        {%for item in items%}
+        <ul class="table-container f-t-off1">
+            <li><p>{{item.name}}</p></li>
+            <li>{{item.ulprice}}</li>
+            <li>{{item.total_count}}</li>
+            <li><div class='radioBox'><label onClick="setMemuLink('{{item.ultype}}','{{item.ulurlname}}','{{item.ulkey}}','{{item.ulnewurl}}{{item.pid}}','{{item.ulshopId}}')"  ></label> </div></li>
+        </ul>
+        {%endfor%}
+        {%else%}
+        <div>暂无数据</div>
+        {%endif%}
+    </div>
+</div>

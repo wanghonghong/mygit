@@ -1,0 +1,41 @@
+<div class="m-jm-table f-mb-m">
+    <ul class="table-hander">
+        <li>报名标题</li>
+        <li>主图</li>
+        <li>开始日期</li>
+        <li>结束日期</li>
+        <li>活动状态</li>
+        <li>操作</li>
+    </ul>
+    <div class="table-body">
+        {%if items.length>0%}
+        {%for item in items%}
+        <ul class="table-container f-t-off font-s12">
+            <li class="f-tl"><p title="{{item.activityName}}">{{item.activityName}}</p></li>
+            <li><img src="{{item.img}}"  height="50" width="50" ></li>
+            <li>{{item.startDate}}</li>
+            <li>{{item.endDate}}</li>
+            <li>
+                {%if item.status == 0 %}
+                    未开始
+                {%elif item.status == 1 %}
+                    进行中
+                {%elif item.status == 2 %}
+                    已结束
+                {%elif item.status == 3 %}
+                    删除
+                {% endif %}
+            </li>
+            <li>
+                <div class='radioBox'>
+                    <label  link_url="{{item.ulnewurl}}" link_type="{{item.ultype}}" type="{{item.type}}" shop_id="{{item.ulshopId}}" data-name="{{item.imageTextTile}}"
+                            link_key="{{item.ulkey}}" link_name="{{item.ulurlname}}" link_id="{{item.id}}" parent_id="{{item.parent_id}}"></label>
+                </div>
+            </li>
+        </ul>
+        {%endfor%}
+        {%else%}
+        <div>暂无数据</div>
+        {%endif%}
+    </div>
+</div>

@@ -1,0 +1,74 @@
+<div class="vote-config">
+    <div class="sell-set-cont f-cf" style="margin-left: 0;">
+        <label class="u-lb-sm c-black f-cb">活动名称</label>
+        <div class="u-txt col-xs-6 f-mb-m">
+            <input type="text" class="ipt-txt c-gray1" placeholder="请输入活动名称" name="themeName" value="{{themeName}}">
+        </div>
+        <label class="u-lb-sm c-black f-cb">活动时间</label>
+        <div class="u-txt f-ml-m">
+            <input type="text" class="ipt-txt c-gray1" name="startTime" value="{{startTime}}" placeholder="" style="width: 155px;">
+        </div>
+        <div class="u-txt">
+            <span class="line" style="width: 20px;">-</span>
+        </div>
+        <div class="u-txt">
+            <input type="text" class="ipt-txt c-gray1" name="endTime" value="{{endTime}}" placeholder="" style="width: 155px;">
+        </div>
+        <label class="u-lb-sm c-black f-cb">页面布局</label>
+        <div class="col-xs-10 f-pt-s">
+            <div class="u-rb f-mb-zero">
+                <input type="radio" name="styleType" id="styleType-{{randomNum}}-1" value="1"  {% if styleType==1 %} checked {% endif %}>
+                <label for="styleType-{{randomNum}}-1"></label>
+            </div>
+            <label for="styleType-{{randomNum}}-1" class="f-mr-xxl c-gray1">版式 1</label>
+            <div class="u-rb f-mb-zero">
+                <input type="radio" name="styleType" id="styleType-{{randomNum}}-2" value="2" {% if styleType==2 %} checked {% endif %}>
+                <label for="styleType-{{randomNum}}-2"></label>
+            </div>
+            <label for="styleType-{{randomNum}}-2" class="f-mr-xxl c-gray1">版式 2</label>
+            <div class="u-rb f-mb-zero">
+                <input type="radio" name="styleType" id="styleType-{{randomNum}}-3" value="3" {% if styleType==3 %} checked {% endif %}>
+                <label for="styleType-{{randomNum}}-3"></label>
+            </div>
+            <label for="styleType-{{randomNum}}-3" class="f-mr-xxl c-gray1">版式 3</label>
+        </div>
+        <label class="u-lb-sm c-black f-cb">投票类型</label>
+        <div class="col-xs-10 f-pt-s">
+            <div class="u-rb f-mb-zero">
+                <input type="radio" name="voteType" id="voteType-{{randomNum}}-1" value="1" {% if voteType==1 %} checked {% endif %}>
+                <label for="voteType-{{randomNum}}-1"></label>
+            </div>
+            <label for="voteType-{{randomNum}}-1" class="f-mr-xxl c-gray1">图 &nbsp; 片</label>
+            <div class="u-rb f-mb-zero">
+                <input type="radio" name="voteType" id="voteType-{{randomNum}}-2" value="2" {% if voteType==2 %} checked {% endif %}>
+                <label for="voteType-{{randomNum}}-2"></label>
+            </div>
+            <label for="voteType-{{randomNum}}-2" class="f-mr-xxl c-gray1">视 &nbsp;  频</label>
+            <div class="u-rb f-mb-zero">
+                <input type="radio" name="voteType" id="voteType-{{randomNum}}-3" value="3" {% if voteType==3 %} checked {% endif %}>
+                <label for="voteType-{{randomNum}}-3"></label>
+            </div>
+            <label for="voteType-{{randomNum}}-3" class="f-mr-xxl c-gray1">音 &nbsp; 频</label>
+        </div>
+    </div>
+    <div class="m-sell-set1  f-mt-m f-cb" style="padding-bottom: 5px; display: block;">
+        <div class="sell-set-cont f-pt-s" style="margin-left: 0;">
+            <label class="u-lb-sm c-black f-cb choise">投票选择</label>
+            <div class="col-xs-10 f-mb-m f-pt-xs">
+                <div class="u-btn-smltgry chooseItem">选择</div>
+            </div>
+            <div class="m-shipinfo-lt f-cb listbody" style="display: none;  ">
+                <ul class="table-hander font-s14" style="border-right: none; border-left: none;">
+                    <li>上传内容</li>
+                    <li style="width: 45%;">标题名称</li>
+                    <li style="width: 30%;">操作</li>
+                </ul>
+                <div class="table-body">
+
+                </div>
+            </div>
+            <!--<div class="u-btn-lgltgry1 f-mt-m f-mb-s f-ml-m"><i class="iconfont icon-add"></i><span>新增对象</span></div>-->
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,96 @@
+
+<div class="title-config">
+    <div class="f-cf">
+        <label class="u-lb-md">图文分类</label>
+        <div class="u-txt col-xs-9">
+            {% if isEdit==1%}
+           <select name="typeName" style="width:100% " id="{{randomNum}}-typeName" disabled>
+
+           </select>
+            {%else%}
+            <select name="typeName" style="width:100% " id="{{randomNum}}-typeName">
+
+            </select>
+            {%endif%}
+        </div>
+    </div>
+    <div class="f-cf">
+        <label class="u-lb-md">图文主题</label>
+        <div class="u-txt col-xs-9">
+            <input type="text" class="ipt-txt" name="imageTextTile" value="{{imageTextTile}}" id="{{randomNum}}-imageTextTile" placeholder="请输入文字"/>
+        </div>
+    </div>
+    <div class="f-cf">
+        <label class="u-lb-md">主图插入</label>
+        <div class="u-txt  col-xs-9">
+            <div class="m-add-img">
+                <img src="{{imageUrl|default(globalUrl+'/css/pc/img/no_picture.png',ture)}}" id="{{randomNum}}-imageUrl"/>
+                <i class="iconfont icon-add"></i>
+            </div>
+        </div>
+    </div>
+    <div class="f-cf">
+        <label class="u-lb-md">分享语摘要</label>
+        <div class="u-txt col-xs-9">
+            <input type="text" class="ipt-txt" placeholder="请输入分享语摘要" value="{{shareText}}" name="shareText" id="{{randomNum}}-shareText"/>
+        </div>
+    </div>
+    <div class="f-cf">
+        <label class="u-lb-md">版式 </label>
+        <div  style="top: 10px;left: 10px;position: relative;">
+            <div class="u-rb">
+                <input type="radio" name="formattype" id="{{randomNum}}-formattype1" value="1" {%if formatCode=='1' %}checked{%endif%}   />
+                <label for="{{randomNum}}-formattype1"></label>
+            </div>
+            <label for="{{randomNum}}-formattype1" class="f-mr-l">仿微信版</label>
+            <div class="u-rb">
+                <input type="radio" name="formattype" id="{{randomNum}}-formattype2" value="2" {%if formatCode=='2' %}checked{%endif%}  />
+                <label for="{{randomNum}}-formattype2"></label>
+            </div>
+            <label for="{{randomNum}}-formattype2" class="f-mr-l">自由编辑</label>
+        </div>
+    </div>
+
+    <hr style="height:1px;border:none;border-top:1px dashed #e2e2e2;">
+    <div class="f-cf">
+        <label class="u-lb-md">设定秒数</label>
+        <div class="u-txt col-xs-4 f-pl-m">
+            <i class="icon-lb-word">秒</i>
+            <input type="number" class="ipt-txt" name="awardSecond" style="padding-right: 40px" value="{{awardSecond}}" id="{{randomNum}}-awardSecond" placeholder="请输入秒数"/>
+        </div>
+    </div>
+    <div class="f-cf">
+        <div class="f-cb u-cb f-fl f-mb-zero f-margin-s">
+            <input type="checkbox" id="{{randomNum}}-awardType1" name="awardType" value="0"     />
+            <label class="iconfont icon-avoid" for="{{randomNum}}-awardType1"></label>
+        </div>
+        <label for="{{randomNum}}-awardType1" class="u-lb-sm" style="width: 65px;">积分奖励</label>
+        <div   class="  col-xs-7  f-pt-s">
+            <div class="u-rb">
+                <input type="radio" name="integralType" id="{{randomNum}}-integralType1" value="0" {%if integralType=='0' %}checked{%endif%}   />
+                <label for="{{randomNum}}-integralType1"></label>
+            </div>
+            <label for="{{randomNum}}-integralType1" class="f-mr-l">固定</label>
+            <div class="u-rb">
+                <input type="radio" name="integralType" id="{{randomNum}}-integralType2" value="1" {%if integralType=='1' %}checked{%endif%}  />
+                <label for="{{randomNum}}-integralType2"></label>
+            </div>
+            <label for="{{randomNum}}-integralType2" class="f-mr-l">随机</label>
+        </div>
+    </div>
+    <div class="f-cf">
+    <div class="f-cb u-cb f-fl f-mb-zero f-margin-s">
+        <input type="checkbox" id="{{randomNum}}-awardType2" name="awardType" value="1"  />
+        <label class="iconfont icon-avoid" for="{{randomNum}}-awardType2"></label>
+    </div>
+    <label for="{{randomNum}}-awardType2" class="u-lb-sm" style="width: 65px;">礼券奖励</label>
+    <div class="u-txt col-xs-7">
+        <input type="text" class="ipt-txt" name="cardName" value="{{cardName}}" readonly placeholder="请选择一个礼券库" />
+    </div>
+    <div class="u-more f-fl dialog-moban" id="{{randomNum}}-giftbtn"  style="width: 50px; height: 36px; margin-bottom: 0; font-size: 12px;">
+        礼券库<span></span>
+    </div>
+    </div>
+</div>
+
+</div>

@@ -1,0 +1,16 @@
+<div class="app-field">
+    <div class="control-group">
+    </div>
+    <div class="control-mask"></div>
+    {% if not fixedTop and not  fixedBottom %}
+    <div class="actions">
+        <span class="up">向上</span>
+        <span class="down">向下</span>
+        <span class="editspan">编辑</span>
+        {% if not fixedMiddle %}
+            <span class="delspan">删除</span>
+        {% endif %}
+    </div>
+    {% endif %}
+
+</div>

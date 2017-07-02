@@ -1,0 +1,151 @@
+
+<style>
+    /*消除外框begin*/
+    .g-content {
+        width: auto;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+    /*end*/
+    .fsvs{
+        height:100%;
+        width:100%;
+        position:fixed;
+        top:0;
+        left:0;
+        overflow:hidden;
+    }
+    .fsvs #fsvs-body{
+        -webkit-backface-visibility:hidden;
+        -webkit-perspective:1000;
+        position:absolute;
+        top:0;
+        left:0;
+        z-index:1;
+        height:100%;
+        width:100%;
+        min-width: 480px;
+    }
+    .fsvs #fsvs-body>*{
+        height:100%;
+        width:100%;
+        overflow:hidden;
+        -webkit-backface-visibility:hidden;
+        -webkit-perspective:1000;
+    }
+    .fsvs.demo #fsvs-body>.slide{
+        position: relative;
+        overflow: hidden;
+        padding-top: 93px;
+        text-align:center;
+    }
+    .fsvs.demo #fsvs-body>.slide img{
+        max-width:100%;
+        height:auto;
+    }
+    .fsvs.demo #fsvs-body>.slide span{
+        display: inline-block;
+        position: absolute;
+        left: 68%;
+        margin-top: 30%;
+        width: 27%;
+        max-width: 370px;
+    }
+    .fsvs.demo #fsvs-body>.slide span img{
+        width: 47%;
+        max-width: 172px;
+        margin-right: 0.3%;
+    }
+    .fsvs.demo #fsvs-body>.slide .slide-first-2{
+        display: none;
+    }
+    .fsvs.demo #fsvs-body>.slide:nth-child(1){
+        background-color: #ffffff;
+    }
+    .fsvs.demo #fsvs-body>.slide:nth-child(2){
+        background: url({{globalUrl}}/img/pc/index02_02.png) repeat-x 0 93px;
+    }
+    .fsvs.demo #fsvs-body>.slide:nth-child(3){
+        background: url({{globalUrl}}/img/pc/index03_02.png) repeat-x 0 93px;
+    }
+    .fsvs.demo #fsvs-body>.slide:nth-child(4){
+        background: url({{globalUrl}}/img/pc/index04_02.png) repeat-x 0 93px;
+    }
+    @media only screen and (min-width:1600px ) {
+        .fsvs.demo #fsvs-body>.slide:first-child {
+            background: url({{globalUrl}}/img/pc/index-line.png) repeat-x 0 93px;
+        }
+        .fsvs.demo #fsvs-body>.slide img{
+            width:1600px;
+            margin: 0 auto;
+        }
+        .fsvs.demo #fsvs-body>.slide span{
+            margin-top: 480px;
+            margin-left: -60px;
+        }
+        .fsvs.demo #fsvs-body>.slide .slide-first-1{
+            display: none;
+        }
+        .fsvs.demo #fsvs-body>.slide .slide-first-2{
+            display: block;
+        }
+    }
+</style>
+
+<div id="fsvs-body">
+    <div class="slide">
+        <div>
+                <span>
+                   <img src="{{globalUrl}}/css/pc/img/personal-join.png" onclick="_getPJoin()"/>
+                   <img src="{{globalUrl}}/css/pc/img/company-join.png" onclick="_getCJoin()"/>
+                </span>
+            <img class="slide-first-2" src="{{globalUrl}}/img/pc/index01.png"/>
+            <img class="slide-first-1" src="{{globalUrl}}/img/pc/index01s.png"/>
+        </div>
+</div>
+<div class="slide">
+    <div><img src="{{globalUrl}}/img/pc/index02.png" alt="" /></div>
+</div>
+<div class="slide">
+    <div><img src="{{globalUrl}}/img/pc/index03.png" alt="" /></div>
+</div>
+<div class="slide">
+    <div><img src="{{globalUrl}}/img/pc/index04.png" alt="" /></div>
+</div>
+</div>
+<input type="hidden" id="phoneNumber" value="{{jmJoin.phoneNumber}}" />
+
+<script src="{{THIRD_URL}}/third/jquery/fsvs/jquery.swipe-events.js"></script>
+<script src="{{THIRD_URL}}/third/jquery/fsvs/fsvs.js"></script>
+<script src="{{THIRD_URL}}/third/jquery/fsvs/main.js"></script>
+<script src="{{THIRD_URL}}/third/jquery/fsvs/i8.js" charset="utf-8" async="true"></script>
+
+<script>
+    $(function(){
+        $("#u-logo").click(function(){
+            $("#othermemu").toggleClass("z-change");
+        })
+    })
+    var _getPJoin = function () {
+        $('#shopIndexLeftmenu').hide();
+        var phoneNumber = $('#phoneNumber').val();
+        var data = {
+            phoneNumber:phoneNumber
+        }
+        jumi.template('software_agent/personal_join',data,function(tpl){
+            $('#agentBody').empty();
+            $('#agentBody').html(tpl);
+        });
+    }
+    var _getCJoin = function () {
+        $('#shopIndexLeftmenu').hide();
+        var phoneNumber = $('#phoneNumber').val();
+        var data = {
+            phoneNumber:phoneNumber
+        }
+        jumi.template('software_agent/company_join',data,function(tpl){
+            $('#agentBody').empty();
+            $('#agentBody').html(tpl);
+        });
+    }
+</script>

@@ -1,0 +1,164 @@
+<!--地区限定-->
+<style>
+    .showtitle:hover{
+        color: #f78211;
+    }
+</style>
+<div class="panel-hidden" style="overflow: visible;">
+    <div class="m-graywtable" style="overflow: visible;">
+        <ul class="table-hander">
+            <li>服务地区</li>
+            <li style="width: 15%;">快递商</li>
+            <li style="width: 25%;">收货地址</li>
+            <li style="width: 20%;">操作</li>
+        </ul>
+        <div class="table-body f-t-off1" style="overflow-y: visible;" >
+            {% for item in items %}
+            <ul class="table-container" style="position: relative;">
+                <li class="f-tl" style="padding-left: 30px;cursor: pointer;">
+                    <p class="showtitle" onclick="orderRecoverBusiness.list.showDetail(this,'地区')">{{item.areaName}}</p>
+                </li>
+                <li class="f-tl" style="width: 15%; padding-left: 35px;">
+                    <div class="u-btn-smltgry f-mr-xs" style="float: left" onclick="orderRecoverBusiness.list.showKdDialog('{{item.id}}')">选择</div>
+                    <p class="showtitle" id="kdName{{item.id}}" onclick="orderRecoverBusiness.list.showDetail(this,'快递')">{{item.kdName}}</p>
+                    <!--<font>快递商</font>-->
+                    <!--弹窗-->
+                    <div class="m-btn-layernew" style="right: 655px;display: none" id="kdDialog{{item.id}}">
+                        <span class="out"></span>
+                        <span class="iner"></span>
+                        <div class="conbox">
+                            <div class="box-head">
+                                <h3>快递商选择</h3>
+                            </div>
+                            <div class="box-body">
+                                <label class="u-lb-sm" style="width: 60px;">快递商</label>
+                                <div class="u-txt col-xs-10 f-mb-zero" style="padding-right: 0;">
+                                    <select class="ipt-txt c-gray1" id="kdSelect{{item.id}}">
+                                        <option value="1">全一</option>
+                                        <option value="2">邮政</option>
+                                        <option value="3">菜鸟</option>
+                                        <option value="4">中通</option>
+                                        <option value="5">圆通</option>
+                                        <option value="6">韵达</option>
+                                        <option value="7">德邦</option>
+                                        <option value="8">成忠</option>
+                                        <option value="9">建华</option>
+                                        <option value="10">万博</option>
+                                        <option value="11">D速</option>
+                                        <option value="12">富吉</option>
+                                        <option value="13">丰程</option>
+                                        <option value="14">呦客</option>
+                                        <option value="15">中青旅</option>
+                                        <option value="16">如风达</option>
+                                        <option value="17">门对门</option>
+                                        <option value="18">众人行</option>
+                                        <option value="19">天地速递</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="u-btn-box1 f-tr">
+                                <input type="button" class="u-btn-smltgry" value="取消" onclick="orderRecoverBusiness.list.hideKdDialog('{{item.id}}')">
+                                <input type="button" class="u-btn-smdkorg" value="确定" onclick="orderRecoverBusiness.list.saveKd('{{item.id}}')">
+                            </div>
+                        </div>
+                    </div>
+                    <!--/-->
+                </li>
+                <li style="width:25%;">{{item.recAddress}}</li>
+                <li style="width: 20%;">
+                    <div class="u-btn-smltgry f-mr-xs" onclick="orderRecoverBusiness.list.editServiceArea('{{item.id}}','{{item.areaCode}}','{{item.recAddress}}','{{item.kdId}}')">
+                        <i class="iconfont icon-modified"></i>
+                        <span>编辑</span>
+                    </div>
+                    <div class="u-btn-smltgry" onclick="orderRecoverBusiness.list.delServiceArea('{{item.id}}')">
+                        <i class="iconfont icon-delete1"></i>
+                        <span>删除</span>
+                    </div>
+                </li>
+            </ul>
+            {%endfor%}
+        </div>
+
+        <div class="u-btn-lgltgry1 f-mt-m f-mb-m f-ml-xl" onclick="orderRecoverBusiness.list.editServiceArea()">
+            <i class="iconfont icon-add"></i>
+            <span>新增地区</span>
+        </div>
+    </div>
+</div>
+<!--以下是分页效果-->
+<div id="pageTypeToolbar" class="pagination" align="right" style="margin-top: 10px">
+</div>
+
+<div id="serviceArea" class="dialoginfo dhk" >
+    <div id="serviceAreaData">
+        <!--数据回填-->
+        <input type="hidden" id="orderBookAreaId" value="" />
+        <label class="u-lb-sm">选择物流：</label>
+        <div class="u-txt col-xs-3" style="width: 300px;">
+            <select class="ipt-txt c-gray1" id="kdSelect">
+                <option value="" >请选择</option>
+                <option value="1">全一</option>
+                <option value="2">邮政</option>
+                <option value="3">菜鸟</option>
+                <option value="4">中通</option>
+                <option value="5">圆通</option>
+                <option value="6">韵达</option>
+                <option value="7">德邦</option>
+                <option value="8">成忠</option>
+                <option value="9">建华</option>
+                <option value="10">万博</option>
+                <option value="11">D速</option>
+                <option value="12">富吉</option>
+                <option value="13">丰程</option>
+                <option value="14">呦客</option>
+                <option value="15">中青旅</option>
+                <option value="16">如风达</option>
+                <option value="17">门对门</option>
+                <option value="18">众人行</option>
+                <option value="19">天地速递</option>
+            </select>
+        </div>
+        <div class="f-cb"></div>
+        <label class="u-lb-sm">收货地址：</label>
+        <div class="u-txt col-xs-3" style="width: 500px;">
+            <input type="text" class="ipt-txt" placeholder="请输入收货地址" id="recAddress" value="" />
+        </div>
+    </div>
+
+    <div class="jm-table jm-table1 f-cb f-pt-s">
+        <ul class="table-hander" style="padding: 0;">
+            <li style="padding: 5px 0;">
+                <i class="iconfont icon-classify1"></i>
+                可选省、市、区
+            </li>
+        </ul>
+        <ul id="area_tree" class="ztree h-scroll"
+            style="border: 1px solid #617775; padding: 10px 30px; max-height: 390px;">
+        </ul>
+    </div>
+    <div class="sell-third-checkbox" style="margin-top: 10px;">
+
+        <div class="u-cb">
+            <input type="checkbox" name="checkbox" id="selectAll"/>
+            <label class="iconfont icon-avoid" for="selectAll" style="top:-5px;"></label>
+        </div>
+        <label for="selectAll" class="c-gray1">全选</label>
+        &nbsp;&nbsp;
+        <div class="u-cb">
+            <input type="checkbox" name="checkbox" id="sltReverse"/>
+            <label class="iconfont icon-avoid" for="sltReverse" style="top:-5px;"></label>
+        </div>
+        <label for="sltReverse" class="c-gray1">反选</label>
+
+        <span style="color: #a1a1a1;padding-left:28px;">
+                    <i class="iconfont icon-lamp c-orange1"></i>
+                    不可选地区，代表您已有设置过其他供货商，请先解除后方能再重新选择指定！
+            </span>
+    </div>
+    <div class="u-btn-box1">
+        <input type="button" class="u-btn-mddkorg" onclick="orderRecoverBusiness.list.saveServiceArea()" value="保存">
+    </div>
+</div>
+<script>
+    common_area.initArea();
+</script>

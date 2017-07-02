@@ -1,0 +1,54 @@
+
+{%if items.length>0%}
+{% for item in items %}
+<ul class="table-container">
+    <li>{{item.createDate}}</li>
+    <li>{{item.companyName}}</li>
+    <li class="f-tl" style="padding-left: 40px;">
+        <span>{{item.businessName}}</span><br /><span>{{item.phoneNumber}}</span>
+    </li>
+    <li class="f-tl" style="width: 18%; padding: 0 30px;">
+        {{item.province}}-{{item.city}}-{{item.district}}{{item.address}}
+    </li>
+    <li>
+        {%if item.subType==5 %}功能使用
+        {%elif item.subType==6 %}服务态度
+        {%elif item.subType==7 %}费用疑问
+        {%elif item.subType==8 %}新增需求
+        {%else%}其他类型
+        {%endif%}
+    </li>
+    <li>
+        {%if item.status==1 %}等待派单
+        {%elif item.status==2 %}处理中
+        {%elif item.status==3 %}申请改派
+        {%elif item.status==4 %}已回单
+        {%elif item.status==5 %}已通过
+        {%else%}其他状态
+        {%endif%}
+    </li>
+    <li>
+        <!--弹窗类dialog-sendorder-->
+        {%if item.status==1 %}
+        <div class="u-btn-smltgry dialog-sendorder" id="dispatch_{{item.id}}" data-type-id="{{item.id}}">派单</div>
+        {%elif item.status==2 or item.status==5 %}
+        <div class="u-btn-smltgry dialog-sendorder" id="search_{{item.id}}" data-status="{{item.status}}" data-type-id="{{item.id}}">查看</div>
+        {%elif item.status==3 %}
+        <div class="u-btn-smltgry dialog-sendorder" id="change_dispatch_{{item.id}}" data-type-id="{{item.id}}">改派</div>
+        {%elif item.status==4 %}
+        <div class="u-btn-smltgry dialog-sendorder" id="check_dispatch_{{item.id}}" data-type-id="{{item.id}}">审核</div>
+        {%else%}
+        <div class="u-btn-smltgry dialog-sendorder">其他</div>
+        {%endif%}
+    </li>
+</ul>
+<div class="u-lb col-xs-12 m-wxmsg">
+					<span>
+						<i class="iconfont icon-service2"></i>总部客服留言
+					</span>
+    {{item.need}}
+</div>
+{%endfor%}
+{%else%}
+{% include "/tpl/system/nodb.html" %}
+{%endif%}

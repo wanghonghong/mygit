@@ -1,0 +1,56 @@
+{%if items.length>0 %}
+{% for item in items %}
+<ul class="table-container">
+    <li style="width: 30%;">
+        <div class="g-table">
+            <div class="g-table-cell f-vm" style="width: 40%">
+                <div class="u-cb">
+                    <input type="checkbox" name="product_ac" id="checkbox{{item.id}}" value="{{item.id}}">
+                    <label class="iconfont icon-avoid" for="checkbox{{item.id}}" style="top: 0;"></label>
+                </div>
+                <label for="checkbox{{item.id}}"><img class="u-thumbnail-squa f-vm" src="{{item.picSquare}}"></label>
+            </div>
+            <div class="g-table-cell f-vm f-tl" style="width: 60%; padding-right: 10px;">
+                <span>{{item.productName}}</span><br>
+                <font color="#6a6a6a">￥{{item.productPrice/100}}</font>
+            </div>
+        </div>
+    </li>
+    <li class="f-tl" style="width: 25%; padding: 0 15px;">
+        <p title="">{{item.name}}</p>
+    </li>
+    <li>{{item.price/100}}</li>
+    {%if item.status==0%}
+       <li><font color="#6dc87b">未开始</font></li>
+    {%elif item.status==1%}
+      <li><font color="#fe5224">进行中</font></li>
+    {%elif item.status==2%}
+      <li><font color="#6dc87b">已暂停</font></li>
+    {%elif item.status==3%}
+    <li><font>已结束</font></li>
+    {%endif%}
+
+    <li style="width: 18%;">
+        {%if item.status==0 or item.status==2%}
+        <div class="u-btn-smltgry f-mb-xs dialog-start" onclick="trad.groups.startAction('{{item.name}}','{{item.id}}')"><i class="iconfont icon-righttriangle c-green" ></i>启动</div>
+        {%else%}
+        <div class="u-btn-smltgry f-mb-xs dialog-start" onclick="trad.groups.stopAction('{{item.name}}','{{item.id}}')"><i class="iconfont icon-signout c-red" ></i>暂停</div>
+        {%endif%}
+
+        <div class="u-btn-smltgry f-mb-xs" onclick="trad.groups.modifyAction('{{item.id}}')">修改</div>
+        <div class="u-btn-smltgry f-mb-xs dialog-del" onclick="trad.groups.deleteAction('{{item.name}}','{{item.id}}')">删除</div><br />
+        <div class="u-btn-smltgry f-mb-xs dialog-details" onclick="trad.groups.watchAction('{{item.id}}')">查看详情</div>
+        <div class="u-btn-smltgry f-mb-xs dialog-joingroup">参团情况</div>
+    </li>
+</ul>
+{% else %}
+<div class="m-jm-err">
+    <img src="{{globalUrl}}/css/pc/img/jm-nodb.png">
+</div>
+{% endfor %}
+{%else%}
+<div class="m-jm-err">
+    <img src="{{globalUrl}}/css/pc/img/jm-nodb.png">
+</div>
+{%endif%}
+

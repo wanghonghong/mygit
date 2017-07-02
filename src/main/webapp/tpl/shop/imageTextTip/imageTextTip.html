@@ -1,0 +1,33 @@
+<style>
+    .m-sell-set1 .sell-set-top h3{
+        padding-left: 15px;
+        font-family: '微软雅黑';
+        font-size: 16px;
+    }
+</style>
+
+<div class="m-tab f-mb-m" id="m-tab">
+    <ul>
+        <li class="z-sel" id="tip_1" onclick="imageTextTip.tip.init(1)">图文收入</li>
+        <li id="tip_2" onclick="imageTextTip.tip.init(2)">实时收入</li>
+        <li id="tip_3" onclick="imageTextTip.tip.init(3)">打赏设置</li>
+    </ul>
+</div>
+
+<div id="m-tab-content">
+    <!--图文收入-->
+    {% include '/tpl/shop/imageTextTip/imageTextTipList.html' %}
+    <!--实时收入-->
+    {% include '/tpl/shop/imageTextTip/tipList.html' %}
+    <!--打赏设置-->
+    {% include '/tpl/shop/imageTextTip/tipSet.html' %}
+</div>
+
+<!-- dialog 针对某个图文的详细的打赏金额 -->
+<div id="dialoginfo-see" class="dialoginfo">
+    {% include '/tpl/shop/imageTextTip/tipDetail.html' %}
+</div>
+
+<script type="text/javascript">
+    imageTextTip.tip.init(1);
+</script>

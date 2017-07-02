@@ -1,0 +1,25 @@
+<div class="m-tab f-mb-m" id="activity">
+    <ul>
+        <li id="activity_1" class="z-sel" onclick="dataAnalysis.activity.init(1)">活动概况</li>
+        <li id="activity_2" onclick="dataAnalysis.activity.init(2)">效果分析</li>
+    </ul>
+</div>
+<div id="m-tab-content">
+    <!--活动概况-->
+    {% include '/tpl/shop/dataAnalysis/activity/basic1.html' %}
+    <!--/-->
+    <!--效果分析-->
+    {% include '/tpl/shop/dataAnalysis/activity/basic2.html' %}
+    <!--/-->
+</div>
+
+<script type="text/javascript">
+
+    function a(n){
+        $("#m-search_a"+n).slideToggle("fast");
+        $("#btn_"+n).toggleClass("btn-slide1"); return false;
+    }
+</script>
+<script type="text/javascript">
+    dataAnalysis.activity.init(1);
+</script>

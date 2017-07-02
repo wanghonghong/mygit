@@ -1,0 +1,29 @@
+<div class="panel-hid1 f-mt-s" style="display: block;">
+    <div class="m-jm-table">
+        <ul class="table-hander">
+            <li style="width: 30%;">二维码标题</li>
+            <li>二维码图片</li>
+            <li>创建日期</li>
+            <li>选择</li>
+        </ul>
+        <div class="table-body h-scroll u-zero-fpmb">
+            {%for item in items%}
+                <ul class="table-container">
+                    <li style="width: 30%;">{{item.posterName}}</li>
+                    <li><label for="checkbox_{{loop.index}}"><img class="u-thumbnail-squa" src="{{item.imageSrc}}"></label></li>
+                    <li>{{item.uploadTime}}</li>
+                    <li>
+                        <div class="u-rb f-mt-m">
+                            {%if item.type == 1 %}
+                            <input type="radio" data-name="{{item.posterName}}" data-id="{{item.qrcodeId}}" name="activity-code" id="checkbox_{{loop.index}}" checked>
+                            {%else%}
+                            <input type="radio" data-name="{{item.posterName}}" data-id="{{item.qrcodeId}}" name="activity-code" id="checkbox_{{loop.index}}">
+                            {%endif%}
+                            <label for="checkbox_{{loop.index}}"></label>
+                        </div>
+                    </li>
+                </ul>
+            {%endfor%}
+        </div>
+    </div>
+</div>

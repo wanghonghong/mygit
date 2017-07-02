@@ -1,0 +1,29 @@
+{%if items.length>0%}
+
+<div class="table-body">
+    {% for item in items %}
+    <ul class="table-container">
+        <li><img class="u-thumbnail-squa" src="{{item.headImg}}" alt="头像"></li>
+        <li>{{item.nickName}}</li>
+        <li>
+            {{item.appid}}
+        </li>
+        <li>{{item.userName}}</li>
+        {%if item.alias%}
+            <li>{{item.alias}}</li>
+        {%else%}
+        <li>--</li>
+        {%endif%}
+
+        <li>{{item.phoneNumber}}</li>
+    </ul>
+
+    {%endfor%}
+
+</div>
+{%else%}
+<!--<div class="noData">暂无数据</div>-->
+<div class="m-jm-err">
+    <img src="{{globalUrl}}/css/pc/img/jm-nodb.png">
+</div>
+{%endif%}

@@ -1,0 +1,26 @@
+<div class="m-tab">
+    <ul>
+        <li class="z-sel" id="trade_1" onclick="dataAnalysis.trade.init(1,'B')">转化分析</li>
+        <li id="trade_2" onclick="dataAnalysis.trade.init(2,'B')">客户分析</li>
+        <li id="trade_3" onclick="dataAnalysis.trade.init(3)">线性分析</li>
+    </ul>
+</div>
+<div id="m-tab-content">
+    <!--转化分析-->
+    {% include '/tpl/shop/dataAnalysis/trade/basic1.html' %}
+    <!--/-->
+    <!--客户分析-->
+    {% include '/tpl/shop/dataAnalysis/trade/basic2.html' %}
+    <!--/-->
+    <!--线性分析-->
+    {% include '/tpl/shop/dataAnalysis/trade/basic5.html' %}
+    <!--/-->
+</div>
+
+<script type="text/javascript">
+    function t(n){
+        $("#m-search_t"+n).slideToggle("fast");
+        $("#btn_"+n).toggleClass("btn-slide1"); return false;
+    }
+    dataAnalysis.trade.init(1,'B');//当天
+</script>

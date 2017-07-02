@@ -1,0 +1,91 @@
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:noNamespaceSchemaLocation="ehcache.xsd">
+	<cache name="default_cache"
+		   maxElementsInMemory="300"
+		   eternal="false"
+		   overflowToDisk="true"
+		   maxEntriesLocalHeap="200"
+		   timeToLiveSeconds="600">
+	</cache>
+	<cache name="pc_shop_cache"
+		   maxElementsInMemory="1000"
+		   eternal="false"
+		   overflowToDisk="true"
+		   maxEntriesLocalHeap="200"
+		   timeToLiveSeconds="120">
+	</cache>
+	<cache name="IntegralSet"
+		   maxElementsInMemory="300"
+		   eternal="false"
+		   overflowToDisk="true"
+		   maxEntriesLocalHeap="200"
+		   timeToLiveSeconds="60">
+	</cache>
+	<cache name="wx_pub_account"
+		   maxElementsInMemory="1000"
+		   eternal="false"
+		   overflowToDisk="true"
+		   maxEntriesLocalHeap="200"
+		   timeToLiveSeconds="120">
+	</cache>
+	<cache name="pc_shop_appid"
+		   maxElementsInMemory="1000"
+		   eternal="false"
+		   overflowToDisk="true"
+		   maxEntriesLocalHeap="200"
+		   timeToLiveSeconds="120">
+	</cache>
+	<cache name="HxUser"
+		   maxElementsInMemory="1000"
+		   eternal="false"
+		   overflowToDisk="true"
+		   maxEntriesLocalHeap="200"
+		   timeToLiveSeconds="120">
+	</cache>
+	<cache name="BrokerageSet"
+		   maxElementsInMemory="1000"
+		   eternal="false"
+		   overflowToDisk="true"
+		   maxEntriesLocalHeap="200"
+		   timeToLiveSeconds="120">
+	</cache>
+
+	<cache name="ActivityConditionCache"
+		   maxElementsInMemory="1000"
+		   eternal="false"
+		   overflowToDisk="true"
+		   maxEntriesLocalHeap="200"
+		   timeToLiveSeconds="120">
+	</cache>
+
+	<cache name="product_cache"
+		   maxElementsInMemory="1000"
+		   eternal="false"
+		   overflowToDisk="true"
+		   maxEntriesLocalHeap="200"
+		   timeToLiveSeconds="120">
+	</cache>
+	<cache name="image_text_cache"
+		   maxElementsInMemory="1000"
+		   eternal="false"
+		   overflowToDisk="true"
+		   maxEntriesLocalHeap="200"
+		   timeToLiveSeconds="120">
+	</cache>
+	<cache name="product_group_cache"
+		   maxElementsInMemory="1000"
+		   eternal="false"
+		   overflowToDisk="true"
+		   maxEntriesLocalHeap="200"
+		   timeToLiveSeconds="120">
+	</cache>
+
+	<cache name="trad_sign"
+		   maxElementsInMemory="1000"
+		   eternal="false"
+		   overflowToDisk="true"
+		   maxEntriesLocalHeap="200"
+		   timeToLiveSeconds="120">
+	</cache>
+
+</ehcache>

@@ -1,0 +1,42 @@
+{% if items.length>0 %}
+{%for item in items%}
+<ul>
+    <li style="width: 6%;">
+        <img src="{{item.headImg}}" class="u-userpic-s" />
+    </li>
+    <li>
+        <div class="reply-zbUser">
+            <b>{{item.nickname}}</b>
+            <span>发表于&nbsp{{item.createDate}}</span>
+            <span><a>只看该作者</a></span>
+            <span><a class="dialog-psnletter">私信</a></span>
+            <span><a>举报</a></span>
+        </div>
+        <div class="reply-con">
+            {{item.context|safe}}
+        </div>
+    </li>
+    <li class="f-tc" style="width: 20%; position: relative;">
+        {%if item.index==1%}
+        <div class="u-floortip u-onefloor">沙发</div>
+        {%elif item.index==2%}
+        <div class="u-floortip u-twofloor">板凳</div>
+        {%elif item.index==3%}
+        <div class="u-floortip u-threefloor">地板</div>
+        {%elif item.index==5%}
+        <div class="u-floortip u-lastfloor">地下铁</div>
+        {%else%}
+        <div class="u-floortip">{{item.index}}楼</div>
+        {%endif%}
+        <div class="u-recordnum">
+            <span><i class="iconfont icon-love"></i><font>126</font><em id="add-num">+1</em></span>
+            <span><i class="iconfont icon-reply replyhead"></i><font>15</font></span>
+        </div>
+    </li>
+</ul>
+{%endfor%}
+{%else%}
+<div class="m-jm-err">
+    <img src="{{globalUrl}}/css/pc/img/jm-nodb.png">
+</div>
+{%endif%}

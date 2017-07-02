@@ -1,0 +1,37 @@
+<!--地区限定-->
+<div class="panel-hidden">
+    <div class="m-sell-set bg-gray2" style="margin-right: 0; margin-left: 0px; padding: 10px 0 5px 0; box-shadow: none;">
+        <div class="sell-set-left c-gray1">
+            <h3 style="padding-left: 15px;">地区限定</h3>
+        </div>
+        <div class="sell-set-right">
+            <div class="col-xs-12 f-pt-xs">
+                <div class="u-txt">
+                    <div class="u-rb bg-white">
+                        {% if areaLimit==0 %}
+                        <input type="radio" name="areaLimit" id="radioarea1" value="{{areaLimit}}" {% if areaLimit==0 %} checked {% endif %} />
+                        {% else %}
+                        <input type="radio" name="areaLimit" id="radioarea1" value="0" checked/>
+                        {% endif %}
+                        <label for="radioarea1"></label>
+                    </div>
+                    <label for="radioarea1" class="c-gray1">不限地区</label>
+                </div>
+                <div class="u-txt f-cb f-mb-zero">
+                    <div class="u-rb bg-white">
+                        {% if areaLimit==1  %}
+                        <input type="radio" name="areaLimit" id="radioarea2" value="{{areaLimit}}" {% if areaLimit==1 %} checked {% endif %} />
+                        {% else %}
+                        <input type="radio" name="areaLimit" id="radioarea2" value="1" />
+                        {% endif %}
+                        <label for="radioarea2"></label>
+                    </div>
+                    <label for="radioarea2" class="c-gray1">限定地区</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="u-btn-box f-mt-xl">
+        <input type="button" class="u-btn-mainlg addOrderBookArea" value="保存" />
+    </div>
+</div>

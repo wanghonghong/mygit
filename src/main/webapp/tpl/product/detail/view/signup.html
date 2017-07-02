@@ -1,0 +1,31 @@
+<div class="custom-signup">
+    {% if attrList %}
+    {% for attrItem in attrList%}
+    {% if attrItem.type=='input' %}
+    <div class="u-group">
+        <label>{{attrItem.name}}</label>
+        <div class="ipt-box">
+            <input type="text" value="" placeholder="{{attrItem.placeholder}}"/>
+        </div>
+    </div>
+    {% elif attrItem.type=='radio' %}
+    <div class="u-group ">
+        <label>{{attrItem.name}}</label>
+        <div class="ipt-box g-flexbox">
+            {% for item in attrItem.items%}
+            <div class="u-radio   g-flex  {% if item.active  %}active{% endif %} ">{{item.itemname}}</div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+    <div class="u-iptbtn">
+        <input type="button" class="ipt-redbtn  " value="确认报名"/>
+    </div>
+    {% else %}
+    <div class="init-describe">
+        {{name}}
+    </div>
+    {% endif %}
+
+</div>

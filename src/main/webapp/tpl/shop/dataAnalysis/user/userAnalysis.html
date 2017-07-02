@@ -1,0 +1,26 @@
+	<div class="m-tab" id="p">
+			<ul>
+				<li class="z-sel"id="p_1" onclick="dataAnalysis.user.init(1)">日常增减</li>
+				<li id="p_2" onclick="dataAnalysis.user.init(2)">分类资料</li>
+				<li id="p_3" onclick="dataAnalysis.user.init(3)">访问行为</li>
+			</ul>
+	</div>
+	<div id="m-tab-content">
+			<!--日常增减-->
+			{% include '/tpl/shop/dataAnalysis/user/basic1.html' %}
+			<!--/-->
+			<!--分类资料-->
+			{% include '/tpl/shop/dataAnalysis/user/basic2.html' %}
+			<!--/-->
+			<!--访问行为-->
+			{% include '/tpl/shop/dataAnalysis/user/basic3.html' %}
+			<!--/-->
+		</div>
+
+<script type="text/javascript">
+	dataAnalysis.user.init(1);
+	function  u(n) {
+		$("#m-search"+n).slideToggle("fast");
+		$("#btn_"+n).toggleClass("btn-slide1"); return false;
+	}
+</script> 

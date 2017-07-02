@@ -1,0 +1,151 @@
+<style>
+    em{
+        height:22px;line-height:22px;text-align:center;font-size: 12px;
+    }
+    .u-related{
+        cursor:move;
+    }
+</style>
+{%if paramsObj.qrcode!=1%}
+{%for item in items%}
+{%if item.codeFormat == 0%}
+{%for i in range(0,item.codeCount)%}
+<div class="col-xs-12 f-mb-l" id="qr_code_{{item.codeFormat}}_{{loop.index}}">
+    <div class="u-rb f-fl f-mt-xs f-ml-l">
+        {%if item.type==1%}
+        <input type="radio" checked id="radioBox_{{item.codeFormat}}_{{loop.index}}" name="activity_code" data-id="{{item.codeFormat}}_{{loop.index}}">
+        {%else%}
+        <input type="radio" id="radioBox_{{item.codeFormat}}_{{loop.index}}" name="activity_code" data-id="{{item.codeFormat}}_{{loop.index}}">
+        {%endif%}
+        <label for="radioBox_{{item.codeFormat}}_{{loop.index}}"></label>
+        <input type="hidden" id="qr_hidden_{{item.codeFormat}}_{{loop.index}}" data-upTime="{{item.uploadTime}}" data-nleft="{{item.nickNameleftPosition}}"  data-ntop="{{item.nickNametopPosition}}" data-format="{{item.codeFormat}}" data-uleft="{{item.userBoxleftPosition}}" data-utop="{{item.userBoxtopPosition}}" data-id="{{item.codeFormat}}_{{loop.index}}" data-qrcodeId="{{item.qrcodeId}}"  data-name="{{item.posterName}}" data-src="{{item.imageSrc}}" data-top="{{item.topPosition}}" data-left="{{item.leftPosition}}" data-font="{{item.fontSize}}" data-color="{{item.fontColor}}">
+    </div>
+    <label for="radioBox_{{item.codeFormat}}_{{loop.index}}" class="f-fl f-mt-xs f-pl-s" style="width: 100px;">第 {{loop.index}} 张 A 版</label>
+    <div class="u-txt col-xs-7">
+        <input type="text" data-id="{{item.codeFormat}}_{{loop.index}}" value="{{item.posterName}}" id="activity_name_{{item.codeFormat}}_{{loop.index}}" class="ipt-txt c-gray1" placeholder="左边是模版展示案例,请上传您的海报模版。">
+    </div>
+    <div class="u-btn-ewmcode" id="send_{{item.codeFormat}}_{{loop.index}}" data-id="{{item.codeFormat}}_{{loop.index}}">上传模版</div>
+</div>
+{%endfor%}
+{%else%}
+{%for i in range(0,item.codeCount)%}
+<div class="col-xs-12" id="qr_code_{{item.codeFormat}}_{{loop.index}}">
+    <div class="u-rb f-fl f-mt-xs f-ml-l">
+        {%if item.type==1%}
+        <input type="radio" checked id="radioBox_{{item.codeFormat}}_{{loop.index}}" name="activity_code" data-id="{{item.codeFormat}}_{{loop.index}}">
+        {%else%}
+        <input type="radio" id="radioBox_{{item.codeFormat}}_{{loop.index}}" name="activity_code" data-id="{{item.codeFormat}}_{{loop.index}}">
+        {%endif%}
+        <label for="radioBox_{{item.codeFormat}}_{{loop.index}}"></label>
+        <input type="hidden" id="qr_hidden_{{item.codeFormat}}_{{loop.index}}" data-upTime="{{item.uploadTime}}" data-nleft="{{item.nickNameleftPosition}}" data-ntop="{{item.nickNametopPosition}}" data-name="{{item.posterName}}" data-font="{{item.fontType}}" data-color="#{{item.fontColor}}" data-format="{{item.codeFormat}}" data-id="{{item.codeFormat}}_{{loop.index}}" data-utop="{{item.userBoxtopPosition}}" data-qrcodeId="{{item.qrcodeId}}"  data-name="{{item.posterName}}" data-src="{{item.imageSrc}}" data-top="{{item.topPosition}}" data-left="{{item.leftPosition}}" data-uleft="{{item.userBoxleftPosition}}">
+    </div>
+    <label for="radioBox_{{item.codeFormat}}_{{loop.index}}" class="f-fl f-mt-xs f-pl-s" style="width: 100px;">第{{loop.index}}张 B 版</label>
+    <div class="u-txt col-xs-7">
+        <input type="text" data-id="{{item.codeFormat}}_{{loop.index}}" id="activity_name_{{item.codeFormat}}_{{loop.index}}" class="ipt-txt c-gray1" placeholder="左边是模版展示案例,请上传您的海报模版。" value="{{item.posterName}}">
+    </div>
+    <div class="u-btn-ewmcode" id="send_{{item.codeFormat}}_{{loop.index}}" data-id="{{item.codeFormat}}_{{loop.index}}">上传模版</div>
+</div>
+<div class="m-uppostertlp col-xs-10 f-mt-s" style="margin-left: 65px;">
+    <label class="u-lb-w90 f-fl f-cb">昵称字体</label>
+    <div class="m-couponcolor f-fl f-ml-m f-mb-m m-cpc2" style="width: 170px;">
+        <span style="width: 125px;height:25px;line-height:25px;" id="fontFamilySpan">宋体</span>
+        <i class="iconfont icon-belowtriangle" id="fontFamBtn"></i>
+        <div class="u-couponcolor u-cpc2" style="width: 170px; z-index: 2;" id="setFont">
+            <em style="width:60px;font-family:'宋体'" onclick="activity.code.setFont('宋体')">宋体</em>
+            <em style="width:60px;font-family:'楷体'" onclick="activity.code.setFont('楷体')">楷体</em>
+            <em style="width:60px;font-family:'黑体'" onclick="activity.code.setFont('黑体')">黑体</em>
+            <em style="width:60px;font-family:'魏体'" onclick="activity.code.setFont('仿宋')">仿宋</em>
+            <em style="width:60px;font-family:'华文新魏'" onclick="activity.code.setFont('华文新魏')">华文新魏</em>
+            <em style="width:60px;font-family:'行体'" onclick="activity.code.setFont('微软雅黑')">微软雅黑</em>
+        </div>
+    </div>
+
+    <label class="u-lb-w90 f-fl f-cb">昵称字体色</label>
+    <div class="m-couponcolor f-fl f-ml-m f-mb-m m-cpc2" style="width: 170px;">
+        <span style="width: 125px; background-color: #252525;" id="fontSpan"></span>
+        <i class="iconfont icon-belowtriangle" id="fontBtn"></i>
+        <div class="u-couponcolor u-cpc2" style="width: 170px" id="fontColor">
+            <em style="background-color: #22c2fe;" onclick="activity.code.setColor('#22c2fe')"></em>
+            <em style="background-color: #fe6382;" onclick="activity.code.setColor('#fe6382')"></em>
+            <em style="background-color: #fdc412;" onclick="activity.code.setColor('#fdc412')"></em>
+            <em style="background-color: #ff2a22;" onclick="activity.code.setColor('#ff2a22')"></em>
+            <em style="background-color: #f08501;" onclick="activity.code.setColor('#f08501')"></em>
+            <em style="background-color: #e65dc7;" onclick="activity.code.setColor('#e65dc7')"></em>
+            <em style="background-color: #b1c700;" onclick="activity.code.setColor('#b1c700')"></em>
+            <em style="background-color: #252525;" onclick="activity.code.setColor('#252525')"></em>
+        </div>
+    </div>
+</div>
+{%endfor%}
+{%endif%}
+{%endfor%}
+{%else%}
+{%for item in items%}
+{%if item.codeFormat == 0%}
+<div class="col-xs-12 f-mb-l" id="qr_code_{{item.codeFormat}}_{{loop.index}}">
+    <div class="u-rb f-fl f-mt-xs f-ml-l">
+        {%if item.type==1%}
+        <input type="radio" checked id="radioBox_{{item.codeFormat}}_{{loop.index}}" name="activity_code" data-id="{{item.codeFormat}}_{{loop.index}}">
+        {%else%}
+        <input type="radio" id="radioBox_{{item.codeFormat}}_{{loop.index}}" name="activity_code" data-id="{{item.codeFormat}}_{{loop.index}}">
+        {%endif%}
+        <label for="radioBox_{{item.codeFormat}}_{{loop.index}}"></label>
+        <input type="hidden" id="qr_hidden_{{item.codeFormat}}_{{loop.index}}" data-upTime="{{item.uploadTime}}" data-nleft="{{item.nickNameleftPosition}}"  data-ntop="{{item.nickNametopPosition}}" data-format="{{item.codeFormat}}" data-uleft="{{item.userBoxleftPosition}}" data-utop="{{item.userBoxtopPosition}}" data-id="{{item.codeFormat}}_{{loop.index}}" data-qrcodeId="{{item.qrcodeId}}"  data-name="{{item.posterName}}" data-src="{{item.imageSrc}}" data-top="{{item.topPosition}}" data-left="{{item.leftPosition}}" data-font="{{item.fontSize}}" data-color="{{item.fontColor}}">
+    </div>
+    <label for="radioBox_{{item.codeFormat}}_{{loop.index}}" class="f-fl f-mt-xs f-pl-s" style="width: 100px;">第 {{loop.index}} 张 A 版</label>
+    <div class="u-txt col-xs-7">
+        <input type="text" data-id="{{item.codeFormat}}_{{loop.index}}" value="{{item.posterName}}" id="activity_name_{{item.codeFormat}}_{{loop.index}}" class="ipt-txt c-gray1" placeholder="左边是模版展示案例,请上传您的海报模版。">
+    </div>
+    <div class="u-btn-ewmcode" id="send_{{item.codeFormat}}_{{loop.index}}" data-id="{{item.codeFormat}}_{{loop.index}}">上传模版</div>
+</div>
+{%else%}
+<div class="col-xs-12" id="qr_code_{{item.codeFormat}}_{{loop.index}}">
+    <div class="u-rb f-fl f-mt-xs f-ml-l">
+        {%if item.type==1%}
+        <input type="radio" checked id="radioBox_{{item.codeFormat}}_{{loop.index}}" name="activity_code" data-id="{{item.codeFormat}}_{{loop.index}}">
+        {%else%}
+        <input type="radio" id="radioBox_{{item.codeFormat}}_{{loop.index}}" name="activity_code" data-id="{{item.codeFormat}}_{{loop.index}}">
+        {%endif%}
+        <label for="radioBox_{{item.codeFormat}}_{{loop.index}}"></label>
+        <input type="hidden" id="qr_hidden_{{item.codeFormat}}_{{loop.index}}" data-nleft="{{item.nickNameleftPosition}}" data-ntop="{{item.nickNametopPosition}}" data-name="{{item.posterName}}" data-font="{{item.fontType}}" data-color="#{{item.fontColor}}" data-format="{{item.codeFormat}}" data-id="{{item.codeFormat}}_{{loop.index}}" data-utop="{{item.userBoxtopPosition}}" data-qrcodeId="{{item.qrcodeId}}"  data-name="{{item.posterName}}" data-src="{{item.imageSrc}}" data-top="{{item.topPosition}}" data-left="{{item.leftPosition}}" data-uleft="{{item.userBoxleftPosition}}">
+    </div>
+    <label for="radioBox_{{item.codeFormat}}_{{loop.index}}" class="f-fl f-mt-xs f-pl-s" style="width: 100px;">第{{loop.index}}张 B 版</label>
+    <div class="u-txt col-xs-7">
+        <input type="text" data-id="{{item.codeFormat}}_{{loop.index}}" id="activity_name_{{item.codeFormat}}_{{loop.index}}" class="ipt-txt c-gray1" placeholder="左边是模版展示案例,请上传您的海报模版。" value="{{item.posterName}}">
+    </div>
+    <div class="u-btn-ewmcode" id="send_{{item.codeFormat}}_{{loop.index}}" data-id="{{item.codeFormat}}_{{loop.index}}">上传模版</div>
+</div>
+<div class="m-uppostertlp col-xs-10 f-mt-s" style="margin-left: 65px;">
+    <label class="u-lb-w90 f-fl f-cb">昵称字体</label>
+    <div class="m-couponcolor f-fl f-ml-m f-mb-m m-cpc2" style="width: 170px;">
+        <span style="width: 125px;height:25px;line-height:25px;" id="fontFamilySpan">宋体</span>
+        <i class="iconfont icon-belowtriangle" id="fontFamBtn"></i>
+        <div class="u-couponcolor u-cpc2" style="width: 170px" id="setFont">
+            <em style="width:60px;font-family:'宋体'" onclick="activity.code.setFont('宋体')">宋体</em>
+            <em style="width:60px;font-family:'楷体'" onclick="activity.code.setFont('楷体')">楷体</em>
+            <em style="width:60px;font-family:'黑体'" onclick="activity.code.setFont('黑体')">黑体</em>
+            <em style="width:60px;font-family:'魏体'" onclick="activity.code.setFont('仿宋')">仿宋</em>
+            <em style="width:60px;font-family:'华文新魏'" onclick="activity.code.setFont('华文新魏')">华文新魏</em>
+            <em style="width:60px;font-family:'行体'" onclick="activity.code.setFont('微软雅黑')">微软雅黑</em>
+        </div>
+    </div>
+
+    <label class="u-lb-w90 f-fl f-cb">昵称字体色</label>
+    <div class="m-couponcolor f-fl f-ml-m f-mb-m m-cpc2" style="width: 170px;">
+        <span style="width: 125px; background-color: #252525;" id="fontSpan"></span>
+        <i class="iconfont icon-belowtriangle" id="fontBtn"></i>
+        <div class="u-couponcolor u-cpc2" style="width: 170px" id="fontColor">
+            <em style="background-color: #22c2fe;" onclick="activity.code.setColor('#22c2fe')"></em>
+            <em style="background-color: #fe6382;" onclick="activity.code.setColor('#fe6382')"></em>
+            <em style="background-color: #fdc412;" onclick="activity.code.setColor('#fdc412')"></em>
+            <em style="background-color: #ff2a22;" onclick="activity.code.setColor('#ff2a22')"></em>
+            <em style="background-color: #f08501;" onclick="activity.code.setColor('#f08501')"></em>
+            <em style="background-color: #e65dc7;" onclick="activity.code.setColor('#e65dc7')"></em>
+            <em style="background-color: #b1c700;" onclick="activity.code.setColor('#b1c700')"></em>
+            <em style="background-color: #252525;" onclick="activity.code.setColor('#252525')"></em>
+        </div>
+    </div>
+</div>
+{%endif%}
+{%endfor%}
+{%endif%}

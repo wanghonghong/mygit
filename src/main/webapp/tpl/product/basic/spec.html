@@ -1,0 +1,35 @@
+<div class="m-sell-set f-mt-l" style="margin-left: 0;">
+    <div class="sell-set-left">
+        <h3>规格库存</h3>
+    </div>
+    <div class="sell-set-right">
+        <div id="specform">
+        <div class="col-xs-12">
+            <label class="u-lb-md">商品编码</label>
+            <div class="u-txt col-xs-4">
+                <input type="text" class="ipt-txt" placeholder="请填写商品编码" name="code" value="{{product.code}}"/>
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <label class="u-lb-md">总库存</label>
+            <div class="u-txt col-xs-2">
+                <input type="number" class="ipt-txt" placeholder="请填写库存数量" name="totalCount" id="goodstotalCount" value="{{product.totalCount | default(10,true)}}"/>
+            </div>
+            <div class="m-tip4">
+                <i class="iconfont icon-lamp"></i>
+                <span>总库存填写零，该商品只能暂存下架；当商品有多规则，这里自动统计各个子商品的库存合计</span>
+            </div>
+        </div>
+        </div>
+        <div class="col-xs-12">
+            <div class="m-spec-box" >
+                <label class="u-lb-md">商品规格</label>
+                <div class="m-details-add" id="specBox"></div>
+            </div>
+            <div class="u-btn-lgltgry2 u-btn-lgltgrywh" id="addSpecbtn" style="padding: 0 20px;"><i class="iconfont icon-add"></i><span>添加商品规格</span></div>
+        </div>
+        <div class="col-xs-12 f-mt-s">
+            <div class="g-table-standard" id="specTable"></div>
+        </div>
+    </div>
+</div>

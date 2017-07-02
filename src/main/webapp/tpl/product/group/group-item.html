@@ -1,0 +1,41 @@
+<div class="group-item-window">
+    <form name="groupform" id="groupform">
+        <input type="hidden"   name="groupId" value="{{groupId}}">
+    <div class="col-xs-12">
+        <label class="u-lb-md col-xs-3">分类名称</label>
+        <div class="u-txt col-xs-6">
+            <input type="text" class="ipt-txt" name="groupName" placeholder="请输入分类名称" value="{{groupName}}">
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label class="u-lb-md col-xs-3">排序</label>
+        <div class="u-txt col-xs-6">
+            <input type="number" class="ipt-txt" placeholder="请输入排序号" name="groupSort"  value="{{groupSort| default(0,true)}}">
+        </div>
+    </div>
+    <div class="col-xs-12 f-cf">
+        <label class="u-lb-md col-xs-3 f-pt-l">上传分类主图</label>
+        <div class="  col-xs-6 ">
+            <div class="m-addimg" id="group_img">
+                {% if groupImagePath %}
+                <img src="{{groupImagePath| default('',true) }}" class=" ">
+                {% else %}
+                <div class="add  " >
+                    <i class="iconfont icon-add"></i>
+                </div>
+
+                <img src="" class="z-hide">
+                {% endif  %}
+                <input type="text" name="groupImagePath"  value="{{groupImagePath| default('',true) }}">
+            </div>
+
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label class="u-lb-md col-xs-3" style="width: 110px; margin-left: -10px; padding: 0;">转发分享引导语</label>
+        <div class="u-txt col-xs-6">
+            <textarea name="groupSlogan"  class="ipt-txt txtarea" rows="" required cols="4" placeholder="请输入转发分享引导语">{{groupSlogan}}</textarea>
+        </div>
+    </div>
+    </form>
+</div>

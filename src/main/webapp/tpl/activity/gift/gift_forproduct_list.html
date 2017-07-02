@@ -1,0 +1,20 @@
+
+            {%if items.length>0%}
+            {%for item in items %}
+            <ul class="table-container">
+                <li><img class="u-thumbnail-squa" src="{{item.pic_square}}"/>	</li>
+                <li class="f-tl" style="width: 45%; padding: 0 20px;" >{{item.name}} </li>
+                <li>
+                    <div class="u-cb f-mb-zero">
+                        <input type="checkbox" name="rd-goodscon" id="checkproduct_{{item.pid}}" value="{{item.name}}" />
+                        <label class="iconfont icon-avoid" for="checkproduct_{{item.pid}}"></label>
+                    </div>
+                </li>
+            </ul>
+            {%endfor%}
+            {%else%}
+            <div class="m-jm-err">
+                <img src="{{globalUrl}}/css/pc/img/jm-nodb.png">
+            </div>
+            {%endif%}
+

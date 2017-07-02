@@ -1,0 +1,203 @@
+<style>
+    .ui-dialog .ui-dialog-content{
+        padding: 0;
+    }
+</style>
+<input type="hidden" name="subType" value="{{paramsObj.type}}">
+<div class="m-tips-errs" style="margin:5px 0px;display: none" id="error"><i class="iconfont icon-errorhint"></i><span id="tipError"></span></div>
+    <section>
+        <div class="col-xs-12">
+            <!--红包设置-->
+            <div class="m-sell-set f-mb-s bg-white" style=" margin-left: 0;">
+                <div class="sell-set-left f-pt-m">
+                    <h3 style="padding-left: 10px;">红包设置</h3>
+                </div>
+                <div class="sell-set-right f-pt-l f-pb-xs">
+
+                    <label class="u-lb-md c-black">活动标题</label>
+                    <div class="u-txt col-xs-10 f-mb">
+                        <input type="text" class="ipt-txt" id="activityName"  placeholder="请输入活动标题" />
+                    </div>
+                    <label class="u-lb-md c-black">祝福语</label>
+                    <div class="u-txt col-xs-10 f-mb-m">
+                        <textarea class="ipt-txt txtarea" id="blessings" placeholder="请输入祝福语"></textarea>
+                    </div>
+                    <!--展示设置-->
+                    <label class="u-lb-md u-rd-lh c-black f-cb">展示设置</label>
+                    <div class="col-xs-10 f-mb-xs">
+                        <div class="u-rb bg-white">
+                            <input type="radio" name="show_form" id="display_form1" value="0" checked="">
+                            <label for="display_form1"></label>
+                        </div>
+                        <label for="display_form1" class="u-rd-wd c-gray1">摇一摇</label>
+                        {%if paramsObj.type==1 or paramsObj.type==2%}
+                        <div class="u-rb bg-white f-ml-xxl">
+                            <input type="radio" name="show_form" id="display_form2" value="1">
+                            <label for="display_form2"></label>
+                        </div>
+                        <label for="display_form2" class="u-rd-wd c-gray1">红包雨</label>
+                        {%endif%}
+                    </div>
+
+                    <label class="u-lb-md u-rd-lh c-black f-cb">摇概率设置</label>
+                    <div class="f-fl col-xs-10">
+                        <div class="u-rb bg-white">
+                            <input type="radio" name="showgl" id="radioshowgl10" value="1" checked="">
+                            <label for="radioshowgl10"></label>
+                        </div>
+                        <label for="radioshowgl10" class="u-rd-wd c-gray1">一次即中</label>
+                        <div class="u-rb bg-white f-ml-xxl">
+                            <input type="radio" name="showgl" id="radioshowgl20" value="3">
+                            <label for="radioshowgl20"></label>
+                        </div>
+                        <label for="radioshowgl20" class="u-rd-wd c-gray1">三次随机</label>
+                    </div>
+                    <!--/-->
+                </div>
+            </div>
+            <!--/-->
+            <!--高级设置-->
+            <div class="m-sell-set f-mb-s bg-white" style=" margin-left: 0;">
+                <div class="sell-set-left f-pt-m">
+                    <h3 style="padding-left: 10px;">高级设置</h3>
+                </div>
+                <div class="sell-set-right f-pt-xl f-pb-m">
+                    <div id="putout_limit" style="display: none;">
+                        <label class="u-lb-md u-rd-lh c-black">发放限定</label>
+                        <div class="col-xs-10 f-mb-xs">
+                            <div class="u-txt">
+                                <div class="ipt-txt11" style="width: 180px; top: -7px;">
+                                    <i class="icon-lb-word c-gray" id="putout_unit">元</i>
+                                    <input type="text" class="ipt-txt c-gray1"  id="putout_txt" placeholder="购买商品达多少元" value="" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <label class="u-lb-md u-rd-lh c-black">性别限定</label>
+                    <div class="col-xs-10 cbtop f-mb-s c-gray1">
+                        <div class="u-rb bg-white">
+                            <input type="radio" name="gold_sex" id="sex_2" value="2">
+                            <label for="sex_2"></label>
+                        </div>
+                        <label for="sex_2" class="u-rd-wd">女性</label>
+                        <div class="u-rb bg-white">
+                            <input type="radio" name="gold_sex" id="sex_1" value="1">
+                            <label for="sex_1"></label>
+                        </div>
+                        <label for="sex_1" class="u-rd-wd">男性</label>
+                        <div class="u-rb bg-white">
+                            <input type="radio" name="gold_sex" id="sex_0" value="0" checked>
+                            <label for="sex_0"></label>
+                        </div>
+                        <label for="sex_0" class="u-rd-wd">全部</label>
+
+                    </div>
+                    <label class="u-lb-md u-rd-lh c-black">角色限定</label>
+                    <div class="col-xs-10 cbtop" style="padding-right: 0;">
+                        <div class="f-fl f-mb-m">
+                            <div class="u-cb bg-white u-rd-mb">
+                                <input type="checkbox" name="roleLimit" id="roleLimit" value="" />
+                                <label class="iconfont icon-avoid" for="roleLimit"></label>
+                            </div>
+                            <div id="rolemsg_1" >
+                            <label for="roleLimit" class="c-gray1">指定角色的下级客户得红包 </label>
+                            <div class="m-tip1 m-tip11" style="display: inline-block; margin: 0;">
+										<span>
+											<i class="iconfont icon-lamp"></i>
+											该项未勾选，则默认所有新关注粉丝都有机会得到红包
+										</span>
+                            </div>
+                            </div>
+                            <div id="rolemsg_2" style="display: inline-block;">
+                                <label for="roleLimit" class="c-gray1">指定该角色得红包 </label>
+                            </div>
+                            <div id="role_container" >
+                            <div class="u-btn-smltgry u-more-wh dialog12" id="actgift_role_btn"><span>选择角色</span></div>
+                            <div class="choosegroup1 u-setrole" id="choose_actgift_roles" style="width: 390px;">
+
+                            </div>
+                           </div>
+                        </div>
+                    </div>
+                    <label class="u-lb-md u-rd-lh c-black">地区限定</label>
+                    <div class="col-xs-10 cbtop" style="padding-right: 0;">
+                        <div class="f-fl f-mb-m">
+                            <div class="f-fl u-cb bg-white u-rd-mb">
+                                <input type="checkbox" name="activity_area" id="activity_area" value="" />
+                                <label class="iconfont icon-avoid" for="activity_area"></label>
+                                <input type="hidden" name="activity_area_ids">
+                                <input type="hidden" name="activity_area_name">
+                            </div>
+                            <div  id="activity_region" class="u-btn-smltgry u-more-wh dialog11" style="margin-left: 5px;"><span>选择地区</span></div>
+                            <div class="choosegroup1 u-setrole" id="choose_activity_areas" style="width: 390px;">
+
+                            </div>
+                        </div>
+                    </div>
+              <div id="fansCalDiv" style="display: none;">  <input type="button" id="fansCal" class="u-btn-mddkbl f-mt-xs" value="粉丝筛选" style="margin-left: 235px;"></div>
+                </div>
+            </div>
+            <!--/-->
+            <!--金额设定-->
+          <div id="goldset_container"></div>
+            <!--/-->
+            <!--礼券调用-->
+            <div class="m-sell-set f-mb-s bg-white" style=" margin-left: 0;">
+                <div class="sell-set-left f-pt-s">
+                    <h3 style="padding-left: 10px;">礼券调用</h3>
+                </div>
+                <div class="sell-set-right f-pt-s f-pb-s">
+                    <label class="u-lb-md"><div class="u-btn-smltgry dialog-selectc" id="cardselect_btn">选择礼券 </div></label>
+                    <div class="col-xs-10 f-mt-xs">
+                        <div class="u-showcoupontt" id="card_content" style="display: none;"><div id="delstr" style="display: none;"></div>
+                            <p>不知道为什么就想发个大红包</p>
+                            <span ><font >10</font> 元</span>
+                            <i class="iconfont icon-delete1" id="card_icon"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--/-->
+            <!--提示语-->
+            <div class="m-sell-set f-mb-s bg-white" style=" margin-left: 0;">
+                <div class="sell-set-left f-pt-m">
+                    <h3 style="padding-left: 10px;">提示语</h3>
+                </div>
+                <div class="sell-set-right f-pt-l f-pb-s">
+                    <label class="u-lb-md c-black">现金红包提示语</label>
+                    <div class="u-txt col-xs-10">
+                        <textarea class="ipt-txt txtarea" id="winInfo" placeholder="您的手气非常棒！恭喜你中奖了！"></textarea>
+                    </div>
+                    <label class="u-lb-md c-black">礼券红包提示语</label>
+                    <div class="u-txt col-xs-10">
+                        <textarea class="ipt-txt txtarea" id="noWinInfo" placeholder="您的手气非常棒！恭喜你中奖了！"></textarea>
+                    </div>
+                </div>
+            </div>
+            <!--/-->
+            <!--时间设定-->
+            <div class="m-sell-set f-mb-s bg-white" style="margin-left: 0;">
+                <div class="sell-set-left f-pt-m">
+                    <h3 style="padding-left: 10px;">时间设定</h3>
+                </div>
+                <div class="sell-set-right f-pt-l f-pb-s">
+                    <label class="u-lb-md c-black">开始时间</label>
+                    <div class="u-txt col-xs-3" style="width: 31%;">
+                        <i class="iconfont icon-calendar"></i>
+                        <input type="text" class="ipt-txt" id="startTime" placeholder="开始时间" style="padding-right: 28px;" />
+                    </div>
+                    <div id="endTimeDiv">
+                    <label class="u-lb-md c-black">结束时间</label>
+                    <div class="u-txt col-xs-3" style="width: 31%;">
+                        <i class="iconfont icon-calendar"></i>
+                        <input type="text" class="ipt-txt" id="endTime" placeholder="结束时间" style="padding-right: 28px;" />
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <!--/-->
+        </div>
+        <div class="u-btn-box1">
+            <input type="button" class="u-btn-lgdkorg" id="actGold_save" value="保存" />
+        </div>
+    </section>

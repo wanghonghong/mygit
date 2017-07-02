@@ -1,0 +1,71 @@
+<div class="m-tab" style="margin-top: 5px;">
+    <ul>
+        <li data-target="tabcontent1" class="z-sel">供货选择</li>
+        <li data-target="tabcontent2" onclick="area.dialog.getAreaOffer()">供货列表</li>
+    </ul>
+</div>
+
+<div id="tabcontent1" class="panel-hidden z-sel">
+    <div class=" dhk">
+        <input value="" id="offer_area_id" type="hidden">
+        <div class="f-cb f-mt-s">
+            <label class="u-lb-sm f-mr-l c-black" style="width: 65px;">供货商</label>
+            <div class="u-txt" style="width: 240px; margin-bottom: 0;">
+                <select class="ipt-txt c-gray1" id="offerRoles" style="width:100%">
+                    <option></option>
+                    {% if offerRoles %}
+                    {% for offerRole in offerRoles %}
+                    <option value="{{offerRole.userId}}" id="{{offerRole.userId}}">{{offerRole.userName}}&nbsp;&nbsp;&nbsp;{{offerRole.phoneNumber}}</option>
+                    {% endfor %}
+                    {% endif %}
+                </select>
+            </div>
+            <label class="u-lb-sm f-mr-l c-black">供货价:</label>
+            <div class="u-txt ipt-txt11">
+                <i class="icon-lb-word c-gray">元</i>
+                <input value="" id="supply_price" name="supply_price" class="ipt-txt">
+            </div>
+        </div>
+
+        <div class="jm-table jm-table1 f-cb f-pt-s">
+            <ul class="table-hander" style="padding: 0;">
+                <li style="padding: 5px 0;">
+                    <i class="iconfont icon-classify1"></i>
+                    可选省、市、区
+                </li>
+            </ul>
+            <ul id="area_tree" class="ztree h-scroll"
+                style="border: 1px solid #617775; padding: 10px 30px; max-height: 390px;">
+            </ul>
+        </div>
+        <div class="sell-third-checkbox" style="margin-top: 10px;">
+
+            <div class="u-cb">
+                <input type="checkbox" name="checkbox" id="selectAll"/>
+                <label class="iconfont icon-avoid" for="selectAll" style="top:-5px;"></label>
+            </div>
+            <label for="selectAll" class="c-gray1">全选</label>
+            &nbsp;&nbsp;
+            <div class="u-cb">
+                <input type="checkbox" name="checkbox" id="sltReverse"/>
+                <label class="iconfont icon-avoid" for="sltReverse" style="top:-5px;"></label>
+            </div>
+            <label for="sltReverse" class="c-gray1">反选</label>
+
+            <span style="color: #a1a1a1;padding-left:28px;">
+                    <i class="iconfont icon-lamp c-orange1"></i>
+                    不可选地区，代表您已有设置过其他供货商，请先解除后方能再重新选择指定！
+            </span>
+        </div>
+    </div>
+    <div id="selectednodes" style="display:none ;"></div>
+    <div id="unselectednodes" style="display: none;"></div>
+    <div class="u-btn-box1">
+
+        <input type="button" class="u-btn-mddkorg" onclick="area.dialog.saveAreaOffer()" value="保存"/>
+    </div>
+</div>
+
+<div id="tabcontent2" class="panel-hidden f-pt-m" style="display: none;overflow: inherit">
+    {% include "/tpl/product/area/offer_list.html" %}
+</div>

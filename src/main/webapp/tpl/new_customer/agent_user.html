@@ -1,0 +1,245 @@
+
+<style type="text/css">
+	body {
+		font: 14px/21px "microsoft yahei";
+	}
+	.m-jm-table .table-body .table-container li{
+		padding:16px 0 12px;
+	}
+	.ui-datepicker td {
+		border: 0;
+		padding: 2px;
+	}
+	.ui-datepicker {
+		width: 290px;
+	}
+	#panel {
+		background: linear-gradient(#ffffff, #fcfcfc);
+		padding: 10px 0 15px;
+		width: 100%;
+		display: none;
+		border: 1px solid #efefef;
+	}
+	.btn-slide {
+		background:url({{globalUrl}}/img/app/Pull.png) no-repeat center bottom;
+		background-size: 61px 12px;
+		height: 12px;
+		margin-top: -13px;
+		border: none;
+	}
+	.btn-slide1{
+		background:url({{globalUrl}}/img/app/down.png) no-repeat center top ;
+		background-size: 97px 19px;
+		height: 27px;
+		margin-top: 0;
+		border: 1px solid #efefef;
+		text-decoration: none;
+	}
+	.m-jm-table .table-body .table-container li .u-cb label{
+		top:0;
+	}
+	.m-page-cb{
+		position:relative;
+	}
+	.m-page-cb .u-cb{
+		top:1px;
+		position:absolute;
+	}
+	.m-page-cb .f-mr-l{
+		padding-left: 30px;
+	}
+	/*@leixy*/
+	.ui-dialog .ui-dialog-title {
+		float: inherit;
+	}
+
+</style>
+<div class="" >
+	<div class="m-search" id="panel">
+		<label class="u-lb-sm">姓名</label>
+		<div class="u-txt col-xs-3">
+			<input type="text" class="ipt-txt" placeholder="请输入姓名" name="name" id="name" />
+		</div>
+		<label class="u-lb-sm">昵称</label>
+		<div class="u-txt col-xs-3">
+			<input type="text" class="ipt-txt" placeholder="请输入昵称" name="nikename" id="nikename" />
+		</div>
+		<label class="u-lb-sm">加盟日期</label>
+		<div class="u-txt u-txt-date f-ml-m">
+			<i class="iconfont icon-calendar"></i>
+			<input type="text" class="ipt-txt" id="startTime"  placeholder="开始时间" style="width: 112px;"  />
+		</div>
+		<div class="u-txt">
+			<span class="line" style=" width: 25px;">-</span>
+		</div>
+		<div class="u-txt u-txt-date">
+			<i class="iconfont icon-calendar"></i>
+			<input type="text"  class="ipt-txt" id="endTime"  placeholder="结束时间" style="width: 112px;" />
+		</div>
+		<div class="f-cb"></div>
+		<label class="u-lb-sm">手机</label>
+		<div class="u-txt col-xs-3">
+			<input type="text" class="ipt-txt" placeholder="请输入手机" name="phoneNum" id="phoneNum" />
+		</div>
+
+		<label class="u-lb-sm">性别</label>
+		<div class="col-xs-3">
+			<select class="ipt-txt" name="select3" id="select3" style="width: 100%" >
+			</select>
+		</div>
+
+		<label class="u-lb-sm">角色选择</label>
+		<div class="col-xs-3">
+			<select class="ipt-txt" name="select4" id="select4" style="width: 100%" >
+			</select>
+		</div>
+		<div class="f-cb"></div>
+
+		<label class="u-lb-sm">平台</label>
+		<div class="col-xs-3">
+			<select class="ipt-txt" name="platform" id="platform" style="width: 100%" >
+			</select>
+		</div>
+
+		<div class="f-cb"></div>
+		<div class="form-group" id="customer_content"  style="margin-left: 30px;">
+		</div>
+		<div class="u-btn-box1" >
+			<input type="button" class="u-btn-mddkorg u-w" value="查询" onclick="customer.agentuser.query();" />
+		</div>
+	</div>
+	<a class="btn-slide btn-slide1"></a>
+	<div class="m-person-totle1 f-mt-m">
+		<font color="orange" style="font-size: 14px;" id="platformFont">微信</font>
+		用户总数：<span id="userCount"></span>
+	</div>
+	<div class="m-jm-table" style="min-height: 0; overflow: visible;">
+		<ul class="table-hander">
+			<li style="width: 10%;">头像</li>
+			<li style="width: 11%;">昵称-姓名-手机</li>
+			<li style="width: 5%;">性别</li>
+			<li>角色</li>
+			<li>关注日期</li>
+			<li>加盟日期</li>
+			<li>累计佣金</li>
+			<li>已发放</li>
+			<li>未发放</li>
+			<li>最近出佣</li>
+			<li style="width: 10%;">微操作</li>
+			<li style="width: 12%;">上下级</li>
+		</ul>
+		<div class="table-body" id="table-body"   style="overflow: visible;">
+
+		</div>
+	</div>
+	<div class="f-cf f-mt-m">
+		<div class="m-page-cb" style="display: inline-block; position:relative;">
+			<div class="u-cb">
+				<input type="checkbox" name="" id="check4" value="" onclick="customer.operation.selAll(this)" />
+				<label class="iconfont icon-avoid"  for="check4"></label>
+			</div>
+			<label for="check4" class="f-mr-l">全选</label>
+			<div  class="u-btn-smltgry f-mb-xs f-mr-xs" onclick="customer.operation.plLevelDialog(this)" >
+				<i class="iconfont  icon-collect1" style="font-size: 14px;color: #f99c4e;margin-right: 0" ></i>
+				等级
+			</div>
+			<div class="m-btn-layer bottom-layer" style="left: 45px;display: none;">
+				<span class="out"></span>
+				<span class="iner"></span>
+				<div class="m-grade">
+					<div class="h-scroll" style="min-height: 35px;" id="customerAllD">
+
+					</div>
+					<div class="u-btn-box1" style="padding-top: 8px; padding-bottom: 8px;">
+						<input type="button" class="u-btn-smdkorg" value="保存" onclick="customer.operation.plSaveLevel()" />
+						<input type="button" class="u-btn-smltgry" value="取消" onclick="customer.operation.cancel();" />
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<div id="pageToolbar" class="pagination f-fr">
+
+		</div>
+	</div>
+</div>
+
+<div id="dialoginfo33" class="dialoginfo dhk" style="display: none;"></div>
+<div id="userDetail" class="dialoginfo dhk" style="display: none;"></div>
+<div id="dialoginfo22" class="dialoginfo dhk" style="display: none;">
+	<img style="width: 280px;height: 280px;" id ="qrcodeImg">
+</div>
+<!--<div id="webim_chat" class="hide"></div>-->
+<script>
+	var sexList = [{id: " ", text: "全部"},{id: "1", text: "男"},{id: "2", text: "女"}];
+	$("#select3").select2({
+		theme: "jumi",
+		data: sexList
+	});
+
+	var dlList = [{id: " ", text: "全部"},{id: "1", text: "代理商1档"},{id: "2", text: "代理商2档"},{id: "3", text: "代理商3档"},{id: "4", text: "代理商4档"}];
+	$("#select4").select2({
+		theme: "jumi",
+		data: dlList
+	});
+
+	var platformList = [{id: "0", text: "微信"},{id: "1", text: "微博"}];
+	$("#platform").select2({
+		theme: "jumi",
+		data: platformList
+	});
+
+	customer.agentuser.init();
+	customer.operation.init();
+	ImInfo.init();
+	ImInfo.getHintWin().setting({
+		model:'z-hide'
+	});
+	function reload() {
+		var newpage= $("#pageToolbar_page").val();
+		if(newpage != 0){
+			curPage = $("#pageToolbar_page").val();
+		}
+		customer.agentuser.query(curPage);
+	}
+</script>
+
+<script>
+	$(function(){
+		$("#startTime").datetimepicker({
+			showSecond : true,
+			timeFormat : 'hh:mm:ss',
+			dateFormat : 'yy-mm-dd',
+			stepHour : 1,
+			stepMinute : 1,
+			stepSecond : 1
+		});
+		$("#endTime").datetimepicker({
+			showSecond : true,
+			timeFormat : 'hh:mm:ss',
+			dateFormat : 'yy-mm-dd',
+			stepHour : 1,
+			stepMinute : 1,
+			stepSecond : 1
+		});
+		$(".btn-slide").click(function(){
+			$("#panel").slideToggle("fast");
+			$(this).toggleClass("btn-slide1"); return false;
+		});
+		$(".btn-slide").click();
+
+		var num_entries=33;
+		$("#Pagination").pagination(num_entries, {
+			num_edge_entries: 1, //边缘页数
+			num_display_entries: 3, //主体页数
+			prev_text:"<li class='iconfont icon-left  '></li>",
+			next_text:"<li class='iconfont icon-right  '></li>",
+			callback: pageselectCallback,
+			items_per_page:1 //每页显示1项
+		});
+		function pageselectCallback(page_index, jq){
+			return false;
+		}
+	})
+
+</script>

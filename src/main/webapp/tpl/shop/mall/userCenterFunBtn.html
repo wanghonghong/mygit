@@ -1,0 +1,11 @@
+{% if items.length>0 %}
+    {% for item in items %}
+        {% if  item.isShow==0 %}
+    <div class="col-xs-12 f-mb-s" data-item="{{item|toString}}" onclick="mall.memberCenter.addCollection(this)">
+        <div class="u-btn-mdltgry col-xs-12" funId="{{item.funId}}"><span>{{item.funName}}</span></div>
+    </div>
+{% endif %}
+    {% endfor %}
+{% else %}
+
+{% endif %}

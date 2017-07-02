@@ -1,0 +1,74 @@
+<style>
+    .pagination{
+        text-align: right;
+        padding-right: 10px;
+    }
+    .m-material-center .material-center-left ul{
+        border-bottom:none;
+    }
+</style>
+<ul id="manage_group">
+
+<div  class="m-xltip">
+    <li class="active" data-id="0" id="group_0">
+        <span>聚米为谷</span>
+    </li>
+
+</div>
+{%for item in items %}
+    <div class="m-xltip">
+        <li id="group_{{item.id}}" data-id="{{item.id}}" data-tip="{{item.groupName}}" data-flag="{{item.groupFlag}}">
+            {%if item.groupFlag=='N'%}
+            <span>{{item.groupName}}</span>
+            {%else%}
+            <span>{{item.groupName}}<i class="iconfont icon-delete1" style="display:none;" data-id="{{item.id}}" id="manage_delete_{{item.id}}"></i></span>
+            {%endif%}
+        </li>
+        <div class="m-add-group" id="m_modify_group_{{item.id}}" style="display:none">
+            <span class="out"></span>
+            <span class="iner"></span>
+            <h4>{{item.groupName}}</h4>
+            <div class="u-txt">
+                <input type="text" class="ipt-txt" value="{{item.groupName}}" name="m_modify_name" placeholder="请输入文字" />
+            </div>
+            <div class="f-tr f-padding-s">
+                <div  class="u-btn-smltgry" id="m_modify_cancel_{{item.id}}" data-id="{{item.id}}"> 取消 </div>
+                <div  class="u-btn-smltorg" data-id="{{item.id}}" id="m_modify_share_{{item.id}}"> 确认</div>
+            </div>
+        </div>
+
+    </div>
+ {%endfor%}
+
+</ul>
+<div class="m-xltip" id="manage_option">
+    <li class="u-btn">
+        <div class="u-btn-smltgry " id="manage_add_group"><i class="iconfont icon-add"></i><span>添加</span></div>
+        <div class="u-btn-smltgry" id="manage_modify_group"><i class="iconfont icon-modified"></i><span>重命名</span></div>
+
+    </li>
+
+
+    <div class="m-add-group" style="display:none" id="m_add_group">
+        <span class="out"></span>
+        <span class="iner"></span>
+        <h4>图组名称</h4>
+        <div class="u-txt">
+            <input type="text" class="ipt-txt" name="group_name" placeholder="请输入文字">
+        </div>
+        <div class="f-tr f-padding-s">
+            <div class="u-btn-smltgry" id="m-add-cancel"> 取消 </div>
+            <div class="u-btn-smltorg"  id="m-add-save"> 确认</div>
+        </div>
+    </div>
+    <div class="m-delete-group" style="display: none;" id="m_remove_group">
+        <span class="out"></span>
+        <span class="iner"></span>
+
+        <label>确定删除【<em id="g_name"></em>】这个分组吗?</label>
+        <div class="f-tr f-padding-s">
+            <div class="u-btn-smltgry" id="m_del_cancel"> 取消 </div>
+            <div class="u-btn-smltorg" id="m_del_save">确定</div>
+        </div>
+    </div>
+</div>

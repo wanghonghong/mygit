@@ -1,0 +1,43 @@
+<style>
+    .error {
+        font-size: 12px;
+        color:orangered;
+    }
+</style>
+<div class="g-mn" id="erp_content" >
+    <div class="tab" id="account_tab">
+        <ul>
+            <li id="tabcontent_1" data-target="tabcontent1" data-index="1" class="active" data-tpl-name="/userData/basic_data" data-url="/basic_data">基础资料</li>
+            {%if softwareStatus%}
+            {%if softwareStatus==1%}
+            <li id="tabcontent_2" data-target="tabcontent2" data-index="2" data-tpl-name="/userData/join_wait" >代理商</li>
+            {%elif softwareStatus==3 %}
+            {%if softwareType==1 %}
+            <li id="tabcontent_2" data-target="tabcontent2" data-index="2" data-tpl-name="/userData/p_agent" data-url="/join/1">代理商</li>
+            {%elif softwareType==2 %}
+            <li id="tabcontent_2" data-target="tabcontent2" data-index="2" data-tpl-name="/userData/agent" data-url="/join/1">代理商</li>
+            {%endif%}
+            {%endif%}
+            {%endif%}
+            {%if operationStatus%}
+            {%if operationStatus==1%}
+            <li id="tabcontent_3" data-target="tabcontent3" data-index="3" data-tpl-name="/userData/join_wait" >服务商</li>
+            {%elif operationStatus==3 %}
+            {%if operationType==1 %}
+            <li id="tabcontent_3" data-target="tabcontent3" data-index="3" data-tpl-name="/userData/p_service" data-url="/join/2">服务商</li>
+            {%elif operationType==2 %}
+            <li id="tabcontent_3" data-target="tabcontent3" data-index="3" data-tpl-name="/userData/service" data-url="/join/2">服务商</li>
+            {%endif%}
+            {%endif%}
+            {%endif%}
+        </ul>
+        <input type="hidden" name="userId" id="userId" value="{{userId}}"/>
+    </div>
+    <div id="msa_content"> </div>
+
+</div>
+<script>
+
+    account.cert.init();
+
+</script>

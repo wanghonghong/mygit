@@ -1,0 +1,99 @@
+<div class="panel-hidden_g2" id="panel_g2" >
+    <div class="m-search f-mt-m" id="m-search_g2">
+        <label class="u-lb-sm">查询时间</label>
+        <div class="u-txt u-txt-date f-ml-m">
+            <i class="iconfont icon-calendar"></i>
+            <input type="text" id="beginDate2"  class="ipt-txt c-gray1" placeholder="" style="width: 112px;" />
+        </div>
+        <div class="u-txt">
+            <span class="line" style=" width: 20px;">至</span>
+        </div>
+        <div class="u-txt u-txt-date f-mr-m">
+            <i class="iconfont icon-calendar"></i>
+            <input type="text" id="endDate2" class="ipt-txt c-gray1" placeholder="" style="width: 112px;" />
+        </div>
+        <label class="u-lb-sm">交易平台</label>
+        <div class="u-txt col-xs-3">
+            <select class="ipt-txt c-gray1" id="platForm2">
+                <option value="1">微信</option>
+                <option value="2">微博</option>
+            </select>
+        </div>
+      <!--  <label class="u-lb-sm">商品分类</label>
+        <div class="u-txt col-xs-3">
+			<select class="ipt-txt c-gray1" name="groupId" id="groupId">
+				<option></option>
+			</select>
+		</div>-->
+        <label class="u-lb-sm">商品名称</label>
+        <div class="u-txt col-xs-3">
+            <input type="text" class="ipt-txt" style="width: 244px;" placeholder="请输入商品名称" id="productName" />
+        </div>
+        <label class="u-lb-sm" style=" width: 65px;">状态</label>
+        <div class="u-txt col-xs-3" style="padding-left: 35px;padding-right: 3px;">
+            <select class="ipt-txt c-gray1" name="status" id="status">
+                <option value="0">全部</option>
+                <option value="1" selected="selected">在售</option>
+                <option value="2">停售</option>
+                <option value="3">下架</option>
+                <option value="4">售完下架</option>
+                <option value="5">已删除</option>
+            </select>
+        </div>
+        <label class="u-lb-sm" style="width: 80px;">排序</label>
+
+        <div class="u-txt col-xs-3" style="padding-left: 33px;width: 300px;">
+            <select class="ipt-txt c-gray1" name="sort" id="sort">
+                <option value="createTime">默认</option>
+                <option value="visiters">浏览人数</option>
+                <option value="visitCount">浏览人次</option>
+                <option value="cusCount">销售人次</option>
+                <option value="orderCount">销售单次</option>
+                <option value="buyCount">销售数量</option>
+            </select>
+        </div>
+        <div class="u-btn-box1">
+            <input type="button" class="u-btn-mddkbl f-mr-xs" value="导出" onclick="dataAnalysis.good.exportCsv(2)"/>
+            <input type="button" class="u-btn-mddkorg u-w" value="查询" onclick="dataAnalysis.good.initPagination(2,$('#beginDate2').val(),$('#endDate2').val())" />
+        </div>
+    </div>
+
+    <a class="btn-slide btn-slide1" id="btn_2" onclick="g(2)"></a>
+    <!--查询列表-->
+    <div class="m-jm-table f-mt-m" >
+        <ul class="table-hander">
+            <li style="width: 25%;">商品信息</li>
+            <li>规格</li>
+            <li>浏览人数</li>
+            <li>浏览人次</li>
+            <li>销售人次</li>
+            <li>销售单次</li>
+            <li>单品转化率</li>
+            <li>销售数量</li>
+            <li>状态</li>
+        </ul>
+        <div class="table-body" id="u-tab4">
+        </div>
+        <!--以下是分页效果-->
+        <div id="pageToolbar" class="pagination f-fr f-pt-s"></div>
+    </div>
+
+</div>
+<script>
+    $("#beginDate2").datetimepicker({
+        showSecond : false,
+        timeFormat : 'hh:mm:ss',
+        dateFormat : 'yy-mm-dd',
+        stepHour : 1,
+        stepMinute : 1,
+        stepSecond : 1
+    });
+    $("#endDate2").datetimepicker({
+        showSecond : false,
+        timeFormat : '23:59:59',
+        dateFormat : 'yy-mm-dd',
+        stepHour : 1,
+        stepMinute : 1,
+        stepSecond : 1
+    });
+</script>

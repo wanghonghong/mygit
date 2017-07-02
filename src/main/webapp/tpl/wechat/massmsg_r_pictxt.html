@@ -1,0 +1,81 @@
+<style>
+
+    .m-fine-push{
+        right:150px;
+    }
+    .m-fine-push span.iner{
+       top:80px;
+    }
+    .m-fine-push span.out{
+        top:80px;
+    }
+    .m-jm-table .table-body .table-container li {
+        vertical-align: top;
+        padding-top: 43px;
+    }
+    .m-jm-table .table-body .table-container li:first-child {
+        vertical-align: middle;
+        padding: 18px 0 12px;
+    }
+</style>
+<ul class="table-hander">
+    <li style="width: 40%;">主图-标题-作者</li>
+    <li>发送日期</li>
+    <li style="width: 12%">发送人</li>
+    <li>发送状态</li>
+    <li>操作</li>
+</ul>
+<div class="table-body" style="overflow: visible">
+    {% if items.length >0 %}
+    {%for item in items%}
+
+    <ul class="table-container" style="position: relative;">
+
+        <li style="width: 40%;">
+            <div class="g-table">
+                <div class="g-table-cell f-vt" style="width: 100px; ">
+                    {%if item.thumbUrl != null%}
+                    <img class="u-thumbnail-squa" src="{{item.thumbUrl}}"/>
+        {%else%}
+                    <img class="u-thumbnail-squa" src="{{globalUrl}}/css/pc/img/no_picture.png"/>
+        {%endif%}
+
+                </div>
+                <div class="g-table-cell f-vm f-tl">
+
+                    {%if item.wxContentSubVos!=null %}
+
+                       <span>1.{{item.title}}</span><br>
+                       {%for itt in item.wxContentSubVos%}
+                           <span>{{loop.index+1}}.{{itt.title}}</span><br>
+                       {%endfor%}
+                    {%else%}
+                    <span>{{item.title}}</span><br>
+                    {%endif%}
+                    <font color="#999999">{{item.author}}</font>
+                </div>
+            </div>
+        </li>
+        <li>{{item.sendTime}}</li>
+        <li style="width:12%;">{{item.userName}}</li>
+        <li>{{item.statusName}}</li>
+        <li>
+            <div class="u-btn-smltgry" id="clickview_{{loop.index}}"  > 点击查看</div><input type="hidden" id="pushview_{{loop.index}}" value="{{item|toString}}"/>
+            <div class="m-btn-layer m-fine-push" id="pushcontainer_{{loop.index}}" style="display: none;">
+
+            </div >
+            <div class="u-btn-smltgry dialog2"  id="del_{{item.id}}"> <i class="iconfont icon-delete1"></i>删除 </div>
+        </li>
+    </ul>
+    {%endfor%}
+    {% else %}
+    <div class="m-jm-err">
+        <img src="{{globalUrl}}/css/pc/img/jm-nodb.png">
+    </div>
+    {% endif %}
+
+</div>
+<script>
+    mm.massmsg.mm_picandtext_del();
+
+</script>

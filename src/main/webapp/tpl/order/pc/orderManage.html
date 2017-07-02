@@ -1,0 +1,19 @@
+<div id="order_info_detatil">
+    <div id="waiting">
+        <div class="m-tab f-mb-m">
+            <ul>
+                <li class="z-sel">微信订单</li>
+                <li>微博订单</li>
+            </ul>
+        </div>
+    </div>
+    {% include "/tpl/order/pc/orderConditions.html" %}
+    {% include "/tpl/order/pc/orderItem.html" %}
+<input type="hidden" id="status" name="status" value="{{paramsObj.status}}">
+</div>
+<div id="order_detail_content" style="display: none" >
+</div>
+<div id="dialoginfo33" class="dialoginfo dhk" style="display: none;"></div>
+<script type="text/javascript">
+    order.list.init();
+</script>

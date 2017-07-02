@@ -1,0 +1,58 @@
+{%if items.length>0%}
+{% for item in items %}
+<ul class="table-container">
+	<li>
+		<div class="u-cb">
+			<input type="checkbox" name="listDetailId" id="checknum{{item.commonQrcodeDetailId}}" value="" />
+			<label class="iconfont icon-avoid" for="checknum{{item.commonQrcodeDetailId}}" style="top: 0;"></label>
+		</div>
+		<label for="checknum{{item.commonQrcodeDetailId}}">{{item.commonQrcodeDetailId}}</label>
+	</li>
+	<li class="f-tl" style="padding-left: 15px;">{{item.name}}</li>
+	<li class="f-tl" style="padding-left: 15px;"><p title="{{item.productName}}">{{item.productName}}</p></li>
+	<li style="width: 7%;">{%if item.codeType==1 %}
+		二维码
+		{%else%}
+		条形码
+		{%endif%}</li>
+	<li class="f-tl" style="padding-left: 25px;">{{item.createTime}}</li>
+	<li class="f-tl" style="padding-left: 25px;">
+		{%if item.validType==1 %}
+		永久有效
+		{%else%}
+		{{item.endTime}}
+		{%endif%}
+	</li>
+	<li style="width: 15%;">
+		<div class="g-table">
+			{%if item.headimgurl==null and item.nickname==null and item.phoneNumber==null %}
+				未授权
+			{%else%}
+			<div class="g-table-cell f-vm">
+				<img src="{{item.headimgurl}}" alt="暂无图片" class="u-thumbnail-circ" />
+			</div>
+			<div class="g-table-cell f-vm f-tl f-t-off1">
+				<p class="f-mb-xs">{%if item.nickname=='' or item.nickname==null %}-{%else%}<span title="{{item.nickname}}">{{item.nickname}}{%endif%}</span></p>
+				<span>{%if item.phoneNumber=='' or item.phoneNumber==null %}-{%else%}{{item.phoneNumber}}{%endif%}</span>
+			</div>
+			{%endif%}
+		</div>
+	</li>
+	<li style="width: 8%;">
+		{%if item.userCount==0 %}
+		无粉
+		{%else%}
+		有粉
+		{%endif%}
+	</li>
+	<li style="width: 15%;">
+		<div class="u-btn-smltgry f-mr-xs dialog-clear" onclick="comm.qrcode.cancelAuthDialog({{item.commonQrcodeDetailId}})">清空授权</div>
+		<div class="u-btn-smltgry dialog-see" onclick="comm.qrcode.checkEffect({{item.commonQrcodeDetailId}})">查看效果</div>
+	</li>
+</ul>
+{%endfor%}
+{% else %}
+<div class="m-jm-err">
+	<img src="{{globalUrl}}/css/pc/img/jm-nodb.png">
+</div>
+{%endif%}

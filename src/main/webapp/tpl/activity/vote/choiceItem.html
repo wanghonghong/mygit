@@ -1,0 +1,21 @@
+<ul class="table-container">
+    <li>
+        {% if voteType==1 %}
+        <img class="u-thumbnail-squa" src="{{resUrl|default(globalUrl+'/css/pc/img/no_picture.png',ture)}}">
+        {% elif voteType ==2 %}
+        <img class="u-thumbnail-squa" src="{{globalUrl}}/css/pc/img/m_video.png">
+        {% elif voteType ==3 %}
+        <img class="u-thumbnail-squa" src="{{globalUrl}}/css/pc/img/music_stop.png">
+        {% endif %}
+    </li>
+    <li style="width: 32%; padding: 0 20px;">
+        <p title=""><label for="checkbox{{id}}">{{name}}</label></p>
+    </li>
+    <li class="f-tl" style="padding-left: 55px;">{{createTime}}</li>
+    <li>
+        <div class="u-cb1">
+            <input type="checkbox" name="" id="checkbox{{id}}" value="{{id}}" />
+            <label class="iconfont icon-avoid" for="checkbox{{id}}"></label>
+        </div>
+    </li>
+</ul>

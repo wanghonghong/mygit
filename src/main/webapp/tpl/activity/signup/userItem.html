@@ -1,0 +1,18 @@
+
+{% for item in items %}
+<ul class="table-container">
+    <li class="userName">{{item.userName}}</li>
+    <li  class="sex"> {% if item.sex==1 %}男{% elif item.sex ==2 %}女{% endif %}</li>
+    <li  class="telPhone">{{item.telPhone}}</li>
+    <li  class="position">{{item.position}}</li>
+    <li  class="email">{{item.email}}</li>
+    <li  class="webUrl">{{item.webUrl}}</li>
+    <li  class="address"  >{{item.address}}</li>
+    <!--<li class=" company"  > {{item.company}}   </li>-->
+</ul>
+{% else %}
+<div class="m-jm-err">
+    <img src="{{globalUrl}}/css/pc/img/jm-nodb.png">
+</div>
+
+{% endfor %}

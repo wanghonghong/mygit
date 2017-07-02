@@ -1,0 +1,66 @@
+<style>
+    .ui-dialog-body{
+        padding:0 10px 15px 10px;
+    }
+</style>
+{%if items.length>0%}
+<div id="dialoginfo33" class="dialoginfo dhk" style="display: none;"></div>
+{% for item in items %}
+    <table  class="m-table-control">
+        <tbody>
+        <tr class="bg-gray">
+            <td colspan="5" style="border-top: none;">
+                <ul>
+                    <li class="f-fl f-pl-s">订单编号：{{item.orderNum}}</li>
+                    <li class="service f-fr f-pr-s"><a onclick="customer.operation.topUserPopMsg('{{item.userId}}')"> 上级</a><font color="#d9d9d9"> | </font>
+                        <a onclick="customer.operation.lastUserPopMsg('{{item.userId}}')">下级</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                        <a data-id="{{item.userId}}" onclick="ImInfo.openChatWin(this,'{{item.userId}}');">{{item.nickname}}{% if item.headimgurl %}<img class="u-thumbnail-circ" src="{{item.headimgurl}}" />{% else %}<img class="u-thumbnail-circ" src="css/pc/img/s-newshop-lt-img3.jpg" />{% endif %}</a></li>
+                </ul>
+            </td>
+        </tr>
+        {% for orderDetail in item.orderDetails %}
+        <tr>
+            <td style="width:40%;">
+                <div class="g-table">
+                    <div class="g-table-cell f-vm" style="width: 20%;padding-top: 5px;">
+                        {% if orderDetail.pic %}
+                        <img class="u-thumbnail-squa" src="{{orderDetail.pic}}"/>
+                        {% else %}
+                        <img class="u-thumbnail-squa" src="{{globalUrl}}/css/pc/img/no_picture.png"/>
+                        {% endif %}
+                    </div>
+                    <div class="g-table-cell f-vm f-tl" style="width: 57%;">
+                        <span>{{orderDetail.name}}&nbsp&nbsp&nbsp{{orderDetail.specValueTwo}}</span><br>
+                        <font color="#6a6a6a">{{orderDetail.specValueOne}}&nbsp&nbsp&nbsp{{orderDetail.specValueThree}}</font>
+                    </div>
+                </div>
+            </td>
+            <td class="font-color-black" style="width:15%;" >
+                {{item.createDate}}
+            </td>
+            <td style="width:15%;" >
+                {% if item.status==1 %}
+                <span class="font-color-black" ><font color="#fe5224"> 待发货</font></span><br>
+                <div class="u-btn-smltgry f-mb-xs  f-mt-xs" onclick="order.list.queryDialogOrderDetail('{{item.orderInfoId}}')"> <span>订单详情</span></div><br>
+                {% elif item.status==2 %}
+                <span class="font-color-black" ><font color="#6dc87b"> 已发货</font></span><br>
+                <div class="u-btn-smltgry f-mb-xs  f-mt-xs" onclick="order.list.queryOrderDetail('{{item.orderInfoId}}')"> <span>订单详情</span></div><br>
+                {% elif item.status==3 and item.goodStatus!=1 %}
+                <span class="font-color-black" ><font color="#6dc87b"> 已收货</font></span><br>
+                <div class="u-btn-smltgry f-mb-xs  f-mt-xs" onclick="order.list.queryOrderDetail('{{item.orderInfoId}}')"> <span>订单详情</span></div><br>
+                {% else %}
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endfor %}
+{%else%}
+<div class="m-jm-err">
+    <img src="{{globalUrl}}/css/pc/img/jm-nodb.png">
+</div>
+{%endif%}
+<script>
+    ImInfo.initData("{{ext.hxAccount}}","{{ext.userid}}","{{ext.nickname}}","{{ext.headImg}}","{{ext.shopId}}");
+</script>

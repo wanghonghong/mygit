@@ -1,0 +1,82 @@
+{% if type=='txt'%}
+<div class="webim-msg-container rel">
+    <div data-reactroot="" class="rel {{model}}">
+        <div class="webim-avatar-icon {{model}} small">
+            {% if userimg!=null&&userimg!=''%}
+            <img class="w100" src="{{userimg}}">
+            {% else %}
+            <img class="w100" src="{{STATIC_URL}}/img/pc/default.png">
+            {% endif %}
+        </div>
+        <p class="{{model}}">{{name}} {{time}}</p>
+        <div class="webim-msg-value {{model}}">
+            <span class="webim-msg-icon font">
+                {% if model=='right' %}  I {% elif model=='left' %} H {% endif %}
+            </span>
+            {% if ext==null %}
+            {% if model=='left'%}
+            <pre class="tcfont">{{msg | safe }}</pre>
+            {% else %}
+            <pre>{{msg | safe }}</pre>
+            {% endif %}
+            {% else %}
+            <ul class="m-box-goods">
+                <li>
+                    <img style="width:60px;height:60px;" src="{{ext.imgUrl}}"/>
+                </li>
+                <li>
+                    <p>{{ext.name}}</p><em>¥{{ext.price}}</em>
+                </li>
+            </ul>
+            {% endif%}
+        </div>
+    </div>
+</div>
+{% elif type=='file' %}
+<div class="webim-msg-container rel">
+    <div data-reactroot="" class="rel {{model}}">
+        <div class="webim-avatar-icon {{model}} small"><img class="w100" src="{{STATIC_URL}}/img/pc/default.png"></div>
+        <p class="right">{{hxAccount}} {{time}}</p>
+        <div class="webim-msg-value">
+            <span class="webim-msg-icon font">
+            {% if model=='right' %}  I {% elif model=='left' %} H {% endif %}
+            </span>
+            <div><p class="webim-msg-header">文件</p>
+                <div>
+                    <span class="webim-msg-header-icon font small">S</span>
+                    <span class="webim-msg-name">{{fileName}}</span>
+                    <a href="{{href}}" target="_blank">点击下载</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% elif type=='pic' %}
+<div class="webim-msg-container rel">
+    <div data-reactroot="" class="rel {{model}}">
+        <div class="webim-avatar-icon {{model}} small">
+            {% if userimg!=null&&userimg!=''%}
+            <img class="w100" src="{{userimg}}">
+            {% else %}
+            <img class="w100" src="{{STATIC_URL}}/img/pc/default.png">
+            {% endif %}
+        </div>
+        <p class="{{model}}">{{name}} {{time}}</p>
+        <div class="webim-msg-value webim-img-msg-wrapper">
+            <span class="webim-msg-icon font">
+                {% if model=='right' %}  I {% elif model=='left' %} H {% endif %}
+            </span>
+            <div>
+                {% if source=='wx' %}
+                    <img class="webim-msg-img " src="{{PIC_SRC}}" >
+                {% else %}
+                    <img class="webim-msg-img "    src="{{PIC_SRC}}" >
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+
+</script>
+{% endif %}

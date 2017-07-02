@@ -1,0 +1,99 @@
+<div class="m-sell-set f-mt-l" id="saleBox" style="margin-left: 0;">
+    <div class="sell-set-left">
+        <h3>销售设置</h3>
+    </div>
+    <div class="sell-set-right">
+        <div class="col-xs-12 m-transport">
+            <label class="u-lb-md u-rd-lh">自购送礼</label>
+            <div class="m-transport-details">
+                <div class="col-xs-12">
+                    <div class="u-txt">
+                        <div class="u-cb">
+                            <input type="checkbox" name="isLimitCount" id="isLimitCount" value="1" {% if product.isLimitCount==1 %} checked {% endif  %} />
+                            <label class="iconfont icon-avoid" for="isLimitCount"></label>
+                        </div>
+                        <label for="isLimitCount" class="u-rd-wd">每人限购</label>
+                    </div>
+                    <div class="u-txt">
+                        <input type="text" class="ipt-txt" placeholder="请输入限购数" id="limitCount" name="limitCount" value="{{product.limitCount  | default(1,true) }}" />
+                    </div>
+                    <div class="m-tip4">
+                        <i class="iconfont icon-lamp"></i>
+                        <span>打勾则自购、送礼仅限所填写数字的单数</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 m-transport">
+            <label class="u-lb-md u-rd-lh">送礼限定</label>
+            <div class="m-transport-details">
+                <div class="col-xs-12 f-mb-m">
+                    <div class="u-txt f-mb-zero">
+                        <div class="u-cb">
+                            <input type="checkbox" name="gift" id="gift" value="1" {% if product.gift==1 %} checked {% endif  %} />
+                            <label class="iconfont icon-avoid" for="gift"></label>
+                        </div>
+                        <label for="gift" class="u-rd-wd"  >设为体验装</label>
+                    </div>
+                    <div class="m-tip4  " style="width: 64%">
+                        <i class="iconfont icon-lamp"></i>
+                        <span>将该商品设置为体验装，选择0则该角色不限定数量;若同时勾选上面的每人限购,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;则该角色仅限送礼可多数量,自购执行每人限购量</span>
+                    </div>
+                    <div id="giftsetBox" class="m-jm-table u-4border f-cb" style="width: 60%; margin-left: 45px;   {% if product.gift!=1 %} display: none {% endif  %}">
+                        <ul class="table-hander">
+                            <li>指定角色</li>
+                            <li>限购数量</li>
+                        </ul>
+                        <div class="table-body bg-white" id="giftsetDody">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 m-transport">
+            <label class="u-lb-md u-rd-lh">开售时间</label>
+            <div class="m-transport-details">
+                <div class="col-xs-12">
+                    <div class="u-txt">
+                        <div class="u-rb">
+                            <input type="radio" name="isPerSale" id="isPerSale1" value="0" checked />
+                            <label for="isPerSale1"></label>
+                        </div>
+                        <label for="isPerSale1" class="u-rd-wd">立即销售</label>
+                    </div>
+                </div>
+                <div class="col-xs-12">
+                    <div class="u-txt">
+                        <div class="u-rb">
+                            <input type="radio" name="isPerSale" id="isPerSale2" value="1"   />
+                            <label for="isPerSale2"></label>
+                        </div>
+                        <label for="isPerSale2" class="u-rd-wd">定时销售</label>
+                    </div>
+                    <label class="u-lb-md u-rd-lh f-mr-l">开始时间</label>
+                    <div class="u-txt">
+                        <input type="text" class="ipt-txt"    id="timingStart" name="perSaleStartTime" />
+                    </div>
+                </div>
+                <div class="col-xs-12">
+                    <div class="u-txt">
+                        <div class="u-rb">
+                            <input type="radio" name="isPerSale" id="isPerSale3" value="2"   />
+                            <label for="isPerSale3"></label>
+                        </div>
+                        <label for="isPerSale3" class="u-rd-wd">限时销售</label>
+                    </div>
+                    <label class="u-lb-md u-rd-lh f-mr-l">开始时间</label>
+                    <div class="u-txt">
+                        <input type="text" class="ipt-txt"  id="timeLimitStart"  name="perSaleStartTime" />
+                    </div>
+                    <label class="u-lb-md u-rd-lh f-mr-l">结束时间</label>
+                    <div class="u-txt">
+                        <input type="text" class="ipt-txt"   id="timeLimitEnd"   name="perSaleEndTime"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

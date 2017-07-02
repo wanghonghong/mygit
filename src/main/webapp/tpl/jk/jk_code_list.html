@@ -1,0 +1,26 @@
+<style>
+    em{
+        height:22px;line-height:22px;text-align:center;font-size: 12px;
+    }
+    .u-related{
+        cursor:move;
+    }
+</style>
+{%for item in items%}
+<div class="col-xs-12 f-mb-l" id="qr_code_{{item.codeFormat}}_{{loop.index}}">
+    <div class="u-rb f-fl f-mt-xs f-ml-l">
+        {%if item.type==1%}
+        <input type="radio" checked id="radioBox_{{item.codeFormat}}_{{loop.index}}" name="activity_code" data-id="{{item.codeFormat}}_{{loop.index}}">
+        {%else%}
+        <input type="radio" id="radioBox_{{item.codeFormat}}_{{loop.index}}" name="activity_code" data-id="{{item.codeFormat}}_{{loop.index}}">
+        {%endif%}
+        <label for="radioBox_{{item.codeFormat}}_{{loop.index}}"></label>
+        <input type="hidden" id="qr_hidden_{{item.codeFormat}}_{{loop.index}}" data-upTime="{{item.uploadTime}}" data-nleft="{{item.nickNameleftPosition}}"  data-ntop="{{item.nickNametopPosition}}" data-format="{{item.codeFormat}}" data-uleft="{{item.userBoxleftPosition}}" data-utop="{{item.userBoxtopPosition}}" data-id="{{item.codeFormat}}_{{loop.index}}" data-qrcodeId="{{item.qrcodeId}}"  data-name="{{item.posterName}}" data-src="{{item.imageSrc}}" data-top="{{item.topPosition}}" data-left="{{item.leftPosition}}" data-font="{{item.fontSize}}" data-color="{{item.fontColor}}">
+    </div>
+    <label for="radioBox_{{item.codeFormat}}_{{loop.index}}" class="f-fl f-mt-xs f-pl-s" style="width: 100px;">第 {{loop.index}} 张 A 版</label>
+    <div class="u-txt col-xs-7">
+        <input type="text" data-id="{{item.codeFormat}}_{{loop.index}}" value="{{item.posterName}}" id="activity_name_{{item.codeFormat}}_{{loop.index}}" class="ipt-txt c-gray1" placeholder="左边是模板展示案例,请上传您的海报模板。">
+    </div>
+    <div class="u-btn-ewmcode" id="send_{{item.codeFormat}}_{{loop.index}}" data-id="{{item.codeFormat}}_{{loop.index}}">上传模板</div>
+</div>
+{%endfor%}

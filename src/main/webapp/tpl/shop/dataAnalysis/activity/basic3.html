@@ -1,0 +1,29 @@
+<ul class="table-hander">
+    <li style="width: 25%;">活动名称</li>
+    <li>活动类型</li>
+    <li>活动子类</li>
+    <li>开始时间</li>
+    <li>结束时间</li>
+    <li>状态</li>
+    <li>操作</li>
+</ul>
+<div class="table-body" >
+    {%if items.length>0 %}
+    {% for item in items %}
+    <ul class="table-container">
+        <li style="width: 25%;">{{item.activityName}}</li>
+        <li>{{item.typeName}}</li>
+        <li>{{item.subTypeName}}</li>
+        <li>{{item.startTime}}</li>
+        <li>{{item.endTime}}</li>
+        <li>{{item.status}}</li>
+        <li><div class="u-btn-smltgry" onclick="dataAnalysis.activity.redirectAnalysis('{{item.id}}','{{item.subType}}')">活动分析</div></li>
+    </ul>
+    {%endfor%}
+    {%else%}
+    <div class="m-jm-err">
+        <img src="{{globalUrl}}/css/pc/img/jm-nodb.png">
+    </div>
+    {%endif%}
+
+</div>

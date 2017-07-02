@@ -1,0 +1,59 @@
+<style>
+    .ui-dialog-body{
+        padding:10px 0 0;
+    }
+    .error{
+        font-size: 12px;
+        float: left;
+        color: #ff6543;
+        width: 200px;
+        padding-top: 5px;
+    }
+</style>
+<form id="awardpoint_set_form">
+{%if paramsObj.type==1%}
+<input type="hidden" value="{{id}}" id="award_set">
+{%endif%}
+<div class="col-xs-12 c-gray1 f-mt-m">
+    <div class="u-txt m-deduction">
+        <div class="u-rb dialog1">
+            {%if type==0 %}
+              <input type="radio" name="award_buy-r" id="radioBox4" value="0" checked>
+            {%elif type==1%}
+            <input type="radio" name="award_buy-r" id="radioBox4" value="0">
+            {%else%}
+            <input type="radio" name="award_buy-r" id="radioBox4" value="0" checked>
+            {%endif%}
+
+            <label for="radioBox4"></label>
+        </div>
+        <label for="radioBox4" class="u-rd-wd">全额抵扣</label>
+        <div class="m-tip2">
+            <i class="f-fl iconfont icon-lamp"></i>
+            <span>等于{{price}}元</span>
+        </div>
+    </div>
+
+    <div class="u-txt m-deduction">
+        <div class="u-rb">
+            {%if type==1 %}
+                <input type="radio" name="award_buy-r" id="radioBox6" value="1" checked>
+              {%else%}
+              <input type="radio" name="award_buy-r" id="radioBox6" value="1">
+            {%endif%}
+            <label for="radioBox6"></label>
+        </div>
+        <label for="radioBox6" class="u-rd-wd">限额抵扣</label>
+        <label>最多抵扣</label>
+        <div class="u-txt" style="right: 120px;">
+            <i class="icon-lb-word c-gray">积分</i>
+            <input type="text" class="ipt-txt c-gray1" id="award_integral" name="award_integral" value="{{integral}}">
+        </div>
+        <div class="m-tip3 f-ml-xxl">
+            <i class="f-fl iconfont icon-lamp"></i>
+            <span>等于{{price}}元</span>
+        </div>
+    </div>
+    </form>
+</div>
+<div class="u-btn-box1"><input type="button" data-pid="{{pid}}" class="u-btn-mddkorg" value="保存" id="awardpoint_save"></div>

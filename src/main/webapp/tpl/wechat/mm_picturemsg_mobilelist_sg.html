@@ -1,0 +1,92 @@
+<style type="text/css">
+    .m-message-marketing .scgl-left .hnct span{
+        display: inline;
+
+    }
+    @media screen and (max-height:720px){
+        #Preview {
+            width:281px;
+            height:590px;
+            margin-left:-140px;
+            margin-top:-295px;
+        }
+        .btb-close {
+            position: absolute;
+            left: 92%;
+            top: 3%;
+            z-index: 103;
+        }
+        .m-phone-view .phone-shell-top{
+            width: 85%;
+        }
+        .m-phone-view .phone-window{
+            height: 450px;
+            width: 85%;
+        }
+        .m-phone-view .phone-height .m-message-marketing{
+            max-height: 430px;
+        }
+        .m-phone-view .phone-height1 .m-message-marketing{
+            max-height: 450px;
+        }
+        .m-phone-view .phone-shell-bottom{
+            width: 85%;
+        }
+        .u-btn-lgdkorg{
+            padding: 0 35px;
+        }
+        .u-btn-lgdkbl{
+            padding: 0 20px;
+        }
+    }
+    .m-message-marketing .scgl-left .hnct{
+        padding: 0 10px;
+    }
+</style>
+<div id="shade"></div>
+<div id="Preview">
+    <div class="btb-preview">
+        <a ><input type="button" class="u-btn-lgdkorg" onclick="mm.picturemsg.pictxt_mobile_close();" value="关闭" /></a><br  />
+        <a><input type="button" class="u-btn-lgdkbl f-mt-xs" onclick="mm.picturemsg.mm_mobile_view_dg();" value="手机预览"/></a>
+    </div>
+    <a class="btb-close" onClick="mm.picturemsg.pictxt_mobile_close();"><i class="iconfont icon-delete2"></i></a>
+    <div class="m-phone-view">
+        <div class="phone-shell-top">
+        </div>
+        <div class="phone-window phone-height" style="background-color: #f7f7f7;padding:10px 20px;">
+            <div class=" m-message-marketing h-scroll" >
+
+                <div class="scgl-left" style="padding: 0;">
+                    <div class="bigimg1 selborder"  style="cursor: pointer;" onclick="mm.picturemsg.mm_mobile_viewDetailbig('{{id}}','wechat/mm_picturemsg_mobiledt_sg');">
+                        <span style="padding-top: 10px;" >{{title}}</span>
+                        <p><font >{{saveTime}}</font> &nbsp; &nbsp;<font >{{author}}</font></p>
+                        <img src="{{thumbUrl}}"  width="260" height="121" />
+                        <p class="f-pb-s"><font >{{digest}}</font></p>
+                        {%if wxContentSubVos.length==0 and contentSourceUrl!=""%}
+
+                        <span class="readtext" style="border-top:1px solid #ECECEC; padding-bottom: 10px;" >阅读全文<i class="iconfont icon-right"></i></span>
+
+                        {%endif%}
+
+                    </div>
+                    <div style="margin: 0;padding: 0;">
+                        {%if wxContentSubVos.length>0 %}
+                        {%for item in wxContentSubVos%}
+                        <div class="readtext-box selborder" style="cursor: pointer;"  onclick="mm.picturemsg.mm_mobile_viewDetailsmall('{{item.id}}','wechat/mm_picturemsg_mobiledt_sg');">
+                            <span class="readtext list-lh"><font  style="width: 70%;display: inline-block;line-height: 22px">{{item.title}}</font><i><img  src="{{item.thumbUrl}}" width="50" height="50" /></i></span>
+                        </div>
+                        {%endfor%}
+                        {%endif%}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="phone-shell-bottom">
+        </div>
+    </div>
+
+</div>
+
+
+

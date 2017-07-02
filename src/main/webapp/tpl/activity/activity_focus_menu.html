@@ -1,0 +1,15 @@
+{%for item in items%}
+{%if item.category==1 or item.category==3 or item.category==2 or item.category==6 or item.category==7 %}
+<div class="btn-row"  onclick="activity.focus.addSub('{{item.pushType}}','{{item.title}}','{{item.isOpen}}')">
+    <div class="col-xs-12 u-btn-mdltgry {{'active' if item.category==3}}">
+        <span>{{item.title}}</span>
+    </div>
+</div>
+{%elif item.category==5%}
+<div class="btn-row  half-btn-row" onclick="activity.focus.addSub('{{item.pushType}}','{{item.title}}','{{item.isOpen}}')">
+    <div class="col-xs-12 u-btn-mdltgry">
+        <span>{{item.title}}</span>
+    </div>
+</div>
+{%endif%}
+{%endfor%}

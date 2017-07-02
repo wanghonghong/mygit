@@ -1,0 +1,134 @@
+<style>
+    /*.error{*/
+        /*color: #ff6543;*/
+        /*font-size: 12px;*/
+    /*}*/
+    label.error{
+        position: absolute;
+        z-index: 20;
+        border: 1px solid #eb684d;
+        color: #ff6445;
+        font-size: 12px;
+        white-space: nowrap;
+        background-color: #ffeced;
+        padding: 5px;
+        margin-left: 10px;
+        border-radius: 5px;
+        top:2px;
+        left: 118px;
+        width:210px;
+        text-align: left;
+        text-indent: 0;
+    }
+     label#pay_three-error{
+         left: 55px;
+     }
+</style>
+<input type="hidden" value="{{id}}" id="award_senior_point_id">
+
+<div class="panel-hidden">
+    <form id="award_senior_form">
+        <!--<div class="m-deploy-manage">-->
+            <!--<p class="f-fl">-->
+                <!--开通积分可提现-->
+            <!--</p>-->
+            <!--<div class="f-fl close f-ml-l">-->
+                <!--<div class="m-switch-Control data-on" style="margin-right: 0;">-->
+                    <!--<input type="checkbox" name="switch1" id="switch1" value="0" on-text="开通" off-text="关闭" checked="checked">-->
+                    <!--<label>开启</label>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="col-xs-9">-->
+                <!--<div class="col-xs-12">-->
+                    <!--<span>最低提现</span>-->
+                    <!--<div class="u-txt">-->
+                        <!--<i class="icon-lb-word">元</i>-->
+                        <!--<input type="text" class="ipt-txt c-gray1" value="">-->
+                    <!--</div>-->
+                    <!--<div class="m-tip3">-->
+                        <!--<i class="f-fl iconfont icon-lamp"></i>-->
+                        <!--<span>单次最高提现为<font color="#f89a14"> 200 </font>元</span>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="col-xs-12 f-mt-s">-->
+                    <!--<span>每天提现</span>-->
+                    <!--<div class="u-txt">-->
+                        <!--<i class="icon-lb-word">次</i>-->
+                        <!--<input type="text" class="ipt-txt c-gray1" value="">-->
+                    <!--</div>-->
+                    <!--<div class="m-tip3">-->
+                        <!--<i class="f-fl iconfont icon-lamp"></i>-->
+                        <!--<span>最多提现次数</span>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <div class="m-deploy-manage">
+        <p class="f-fl">
+            开通积分可充值
+        </p>
+        <div class="f-fl close f-ml-l">
+            <input type="checkbox" name="awardpoint_ispay" id="awardpoint_ispay" value="0" on-text="开通" off-text="关闭">
+        </div>
+        <div class="col-xs-9" style="padding-left: 25px;">
+            <div class="col-xs-4">
+                <span>第 1 种</span>
+                <div class="u-txt">
+                    <i class="icon-lb-word">元</i>
+                    <input type="text" class="ipt-txt c-gray1 m-tips-err" id="pay_one" name="pay_one">
+
+
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <span>第 2 种</span>
+                <div class="u-txt">
+                    <i class="icon-lb-word">元</i>
+                    <input type="text" class="ipt-txt c-gray1" id="pay_two" name="pay_two">
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <span>第 3 种</span>
+                <div class="u-txt">
+                    <i class="icon-lb-word">元</i>
+                    <input type="text" class="ipt-txt c-gray1" id="pay_three" name="pay_three">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="m-deploy-manage">
+        <div class="">
+            <p class="gmfx f-fl">
+                购买返利
+            </p>
+            <div class="f-fl close f-ml-l">
+                <input type="checkbox" name="awardpoint_isbuy" id="awardpoint_isbuy" value="0" on-text="开通" off-text="关闭">
+            </div>
+            <div class="col-xs-9">
+                <div class="col-xs-4 f-ml-xs" style="width: 220px;">
+                    <label class="u-lb-md " style="width: 50px; margin-right: 8px;">每买</label>
+                    <div class="u-txt">
+                        <i class="icon-lb-word">元</i>
+                        <input type="text" class="ipt-txt" id="award_buymoney" name="award_buymoney">
+                    </div>
+                </div>
+                <div class="col-xs-3 f-ml-xxl" style="width: 210px;">
+                    <label class="u-lb-md f-mr-m" style="width: 40px;margin-right: 8px;">返还</label>
+                    <div class="u-txt">
+                        <i class="icon-lb-word award-unit">币</i>
+                        <input type="text" class="ipt-txt" id="award_Integral" name="award_Integral">
+                    </div>
+
+                </div>
+                <div class="m-tip3">
+                    <i class="f-fl iconfont icon-lamp"></i>
+                    <span>金额仅限1、10、100的倍数</span>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    </form>
+    <div class="u-btn-box f-mt-xl"><input type="button" class="u-btn-mainlg" id="award_setting_save" value="保存"></div>
+</div>

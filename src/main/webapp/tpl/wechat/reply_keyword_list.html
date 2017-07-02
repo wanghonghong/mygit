@@ -1,0 +1,47 @@
+<style>
+    .keyword_bigtitle:hover{ background-color: #f7f7f7;}
+
+</style>
+{%if items.length>0%}
+{% for item in items %}
+<div class="keyword_biglist" style="margin-bottom: 10px; cursor: pointer;">
+    <div class="panel-heading keyword_bigtitle" id="edititem_{{item.id}}" style="cursor: pointer;" >
+        <h4>规则{{loop.index}}：{{item.ruleName}}</h4>
+        <i class="iconfont icon-belowtriangle" id="belowtriangle_{{loop.index}}"></i>
+        <div class="u-btn-smltgry" style="right: 112px;" id="belowDelete_{{loop.index}}">
+            <i class="iconfont icon-delete1" style="color: #f68c42; font-size: 16px;"></i>删除
+        </div>
+        <div class="u-btn-smltgry">
+            <span class="iconfont icon-modified "></span>
+            编辑
+        </div>
+    </div>
+
+    <div class="panel-body1 keyword_bigitem">
+        <div class="gjz">
+            <label>关键字</label>
+            {%if item.keyNameArr.length>0%}
+            {%for key in item.keyNameArr %}
+            <div  class="u-btn-smltgry"> {{key}}</div>
+            {%endfor%}
+            {%endif%}
+        </div>
+        <div class="gjz">
+            <label>回复</label>
+            <span><i>（{{item.contentTypeMsg}}）</i></span>
+        </div>
+    </div>
+    <div class="keyword_bigdetail" style="display: none;"></div>
+</div>
+{%endfor%}
+
+{%else%}
+<div class="m-jm-err">
+    <img src="{{globalUrl}}/css/pc/img/jm-nodb.png">
+</div>
+{%endif%}
+<script>
+  /*  autor.autoreply.kwrule_biglist_status();*/
+</script>
+
+

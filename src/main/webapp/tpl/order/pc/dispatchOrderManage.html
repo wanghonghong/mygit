@@ -1,0 +1,8 @@
+<div id="order_info_detatil">
+{% include "/tpl/order/pc/dispatchOrderConditions.html" %}
+{% include "/tpl/order/pc/dispatchOrderItem.html" %}
+<input type="hidden" id="status" name="status" value="{{paramsObj.status}}">
+</div>
+<script type="text/javascript">
+    dispatchOrder.list.init();
+</script>

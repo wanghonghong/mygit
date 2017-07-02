@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>html5</title>
+    <link rel="stylesheet" href="http://testres.jumiweigu.com/css/pc/index.css">
+    <link href="http://testres.jumiweigu.com/third/util/artDialog/css/ui-dialog.css" rel="stylesheet" type="text/css" />
+    <style>
+        .g-content{
+            width: 100%;
+            padding-top: 0;
+        }
+        .g-content .g-mn{
+            float: inherit;
+            width: 100%;
+            padding-top: 0;
+        }
+        label.error{
+            font-size: 14px;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<!-- 头部模块 -->
+<header class="g-hd" style="display: none;">
+</header>
+<!-- /头部模块 -->
+<!-- 主界面 -->
+<div class="g-content">
+    <!-- 左侧菜单 -->
+    <aside class="g-sd-left" style="display: none;">
+    </aside>
+    <!-- /左侧菜单 -->
+    <!--主模块-->
+    <section class="g-mn">
+        <div class="m-wbgrantpower">
+            <div class="tophow">授权情况：<span>未授权</span></div>
+            <div class="stepbox">
+                <label><i>1</i>登录新浪微博，进入个人页面，点击菜单管理中心 -> 粉丝服务。</label>
+                <div>
+                    <p><img src="http://testres.jumiweigu.com/css/pc/img/wbgrantpower-img1.jpg" class="img" /></p>
+                    <p><img src="http://testres.jumiweigu.com/css/pc/img/wbgrantpower-img2.jpg" class="img" /></p>
+                    <p><img src="http://testres.jumiweigu.com/css/pc/img/wbgrantpower-img3.jpg" class="img" /></p>
+                    <p><span class="c-orange2">关闭</span>自定义菜单和自动回复。</p>
+                </div>
+            </div>
+            <div class="stepbox">
+                <label><i>2</i>开启开发模式，配置服务器信息</label>
+                <div>
+                    <p><img src="http://testres.jumiweigu.com/css/pc/img/wbgrantpower-img4.jpg" class="img" /></p>
+                    <p>1. 选中消息推送服务</p>
+                    <p>&nbsp;</p>
+                    <p>2. 把下列 URL 和 APPKEY 填写到微博服务器配置信息的输入框（可以点击[ 复制 ]按钮复制）；如果以前填写过URL和Token，请点击[ 修改 ] ，再填写以下信息</p>
+                    <p>&nbsp;</p>
+                    <p>
+                        <label class="u-lb-md">URL：</label>
+                    <div class="u-txt col-xs-5">
+                        <input type="text" id="ipt-txt1" class="ipt-txt" value="http://testres.jumiweigu.com/v2/api/weibo/receive/16067406" style="cursor: not-allowed;" disabled />
+                    </div>
+                    <div class="u-btn-smltgry f-fl" id="copy-ipt1" >复制</div>
+                    </p>
+                    <p class="f-cb">
+                        <label class="u-lb-md">APPKEY：</label>
+                    <div class="u-txt col-xs-5">
+                        <input type="text" id="ipt-txt2" class="ipt-txt" value="25748205" style="cursor: not-allowed;" disabled />
+                    </div>
+                    <div class="u-btn-smltgry f-fl" id="copy-ipt2">复制</div>
+                    </p>
+                    <p class="f-cb">&nbsp;</p>
+                    <p>3. 点击[ 保存 ]已启用服务器配置</p>
+                </div>
+            </div>
+            <div class="stepbox" style="margin-bottom: 0;">
+                <label><i>3</i>保存之后会出现如下信息。</label>
+                <div>
+                    <p><img src="http://testres.jumiweigu.com/css/pc/img/wbgrantpower-img5.jpg" class="img" /></p>
+                    <p>将 access_token 填写到下面。如果设置过access_token，请点击右侧[ 修改 ]重新设置</p>
+                    <p>&nbsp;</p>
+                    <p>
+                        <label class="u-lb-md">access_token：</label>
+                    <div class="u-txt col-xs-5">
+                        <form id="auth">
+                        <input type="text" id="access_token" name="access_token" class="ipt-txt" value="" />
+                        </form>
+                    </div>
+                    </p>
+                </div>
+            </div>
+            <div class="u-btn-box1">
+                <input type="button" id="wbAuth" class="u-btn-mainlg" value="授权">
+            </div>
+        </div>
+    </section>
+    <!-- /主模块 -->
+</div>
+<!--调整角色确认-->
+<div id="dialoginfo-fail" class="dialoginfo">
+    <div class="m-err-box f-pl-l">
+        <img class="f-fl" src="http://testres.jumiweigu.com/css/pc/img/jmtool1.png" />
+        <span style="padding-top: 10px;">
+				授权失败
+			</span>
+    </div>
+    <div class="f-cb"></div>
+    <div class="u-btn-box1 f-mt-m">
+        <!--<input type="button" class="u-btn-mdltgry f-mr-xs" value="取消" />-->
+        <input type="button" id="sure" class="u-btn-mddkorg u-w" value="确认" />
+    </div>
+</div>
+<!--/end-->
+
+<!--调整角色确认-->
+<div id="dialoginfo-success" class="dialoginfo">
+    <div class="m-err-box f-pl-l f-pt-l">
+        <img class="f-fl" src="http://testres.jumiweigu.com/css/pc/img/jmtool1.png" />
+        <span>
+				授权成功<br />
+				<font class="f-pt-xs font-s14" style="display: inline-block; color: #fa9916;">
+					关闭倒计时 <i id="time" style="font-style: normal;">5</i> 秒
+				</font>
+			</span>
+    </div>
+    <div class="f-cb"></div>
+    <div class="u-btn-box1 f-mt-m">
+        <input type="button" class="u-btn-mddkorg u-w" id="sure2" value="确认" />
+    </div>
+</div>
+<!--/end-->
+
+<!--调整角色确认-->
+<div id="dialoginfo-fail2" class="dialoginfo">
+    <div class="m-err-box f-pl-l">
+        <img class="f-fl" src="http://testres.jumiweigu.com/css/pc/img/jmtool1.png" />
+        <span style="padding-top: 10px;">
+				授权失败，该token已经被其他店铺授权过，请认真核查!
+			</span>
+    </div>
+    <div class="f-cb"></div>
+    <div class="u-btn-box1 f-mt-m">
+        <!--<input type="button" class="u-btn-mdltgry f-mr-xs" value="取消" />-->
+        <input type="button" id="sure3" class="u-btn-mddkorg u-w" value="确认" />
+    </div>
+</div>
+<!--/end-->
+
+<!-- /主界面 -->
+</body>
+</html>
+<script src="http://testres.jumiweigu.com/third/jquery/jquery-1.11.0.js" type="text/javascript" charset="utf-8"></script>
+<script src="http://testres.jumiweigu.com/third/jquery/jquery.validate/jquery.validate.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="http://testres.jumiweigu.com/third/util/artDialog/js/dialog-min.js" type="text/javascript" charset="utf-8"></script>
+<script src="http://testres.jumiweigu.com/third/util/zClip/ZeroClipboard.min.js" charset="utf-8"></script>
+<script type="text/javascript" charset="utf-8">
+    $(function () {
+        copy();
+        var url = window.location.href;
+        var args = getUrlParms(url);
+        var partentUrl = window.opener.location.origin;
+        $('#wbAuth').click(function () {
+            var url =  partentUrl+'/msa//saveWbShopToken';
+            var access_token = $('#access_token').val();
+            var shopId = args.shopId;
+            var form = $("#auth");
+            if (form.valid()) {
+                var wbShopUserCo = {};
+                wbShopUserCo.shopId = shopId;
+                wbShopUserCo.accessToken = access_token;
+                var data = JSON.stringify(wbShopUserCo);
+                ajaxPost(url,data);
+            } else {
+               return;
+            }
+        });
+
+    })
+
+    //获取url后面的参数变成一个对象
+    getUrlParms = function(url){
+        if (!url) {
+            url = location.search.substring(1);
+        } else {
+            url = url.substr(url.indexOf('?') + 1);
+        }
+        var args = new Object();   // 声明并初始化一个 "类"
+        // 获得地址(URL)"?"后面的字符串.
+        var query = decodeURI(url);
+        var pairs = query.split("&");  // 分割URL(别忘了'&'是用来连接下一个参数)
+        for (var i = 0; i < pairs.length; i++) {
+            var pos = pairs[i].indexOf('=');
+            if (pos == -1) continue; // 它在找有等号的 数组[i]
+            var argname = pairs[i].substring(0, pos); // 参数名字
+            var value = pairs[i].substring(pos + 1);  // 参数值
+            args[argname] = decodeURI(value);
+        }
+        return args;
+    }
+
+    var validate = $("#auth").validate({
+        rules:{
+            access_token:"required"
+        },
+        messages:{
+            access_token:"access_token不能为空"
+        }
+    });
+
+    function ajaxPost(url,data){
+        $.ajax({
+            type : 'POST',
+            contentType : 'application/json',
+            url:url,
+            processData : false,
+            async:false,
+            dataType : 'json',
+            data : data,
+            success : function(data) {
+                if(data.code==0){
+                    var elem = document.getElementById('dialoginfo-success');
+                    dialog({
+                        title: "提醒",
+                        content: elem,
+                        id:'dialoginfo-success',
+                        onshow:function () {
+                            var count = 4;
+                            var countdown = setInterval(CountDown, 1000);
+                            function CountDown() {
+                                $("#time").html(count);
+                                if (count == 0) {
+                                    window.close();
+                                    window.opener.location.reload();
+                                }
+                                count--;
+                            }
+                        },
+                        onclose:function () {
+                            window.close();
+                            window.opener.location.reload();
+                        }
+                    }).width(330).showModal();
+                    $('#sure2').click(function () {
+                        dialog.get('dialoginfo-success').remove().close();
+                        window.close();
+                        window.opener.location.reload();
+                    })
+                }else {
+                    var elem = document.getElementById('dialoginfo-fail2');
+                    dialog({
+                        title: "提醒",
+                        content: elem,
+                        id:'dialoginfo-fail2',
+                        onclose:function () {
+                        }
+                    }).width(300).showModal();
+                    $('#sure3').click(function () {
+                        dialog.get('dialoginfo-fail2').remove().close();
+                    })
+                }
+            },
+            error :function () {
+                var elem = document.getElementById('dialoginfo-fail');
+                dialog({
+                    title: "提醒",
+                    content: elem,
+                    id:'dialoginfo-fail',
+                    onclose:function () {
+                    }
+                }).width(330).showModal();
+                $('#sure').click(function () {
+                    dialog.get('dialoginfo-fail').remove().close();
+                })
+            }
+        });
+    }
+
+    var copy = function () {
+        $("#copy-ipt1").zclip({
+            path: 'http://testres.jumiweigu.com/third/util/zClip/ZeroClipboard.swf',
+            copy: function(){
+                return $("#ipt-txt1").val();
+            },
+            afterCopy: function(){
+                alert("复制成功！");
+            }
+        });
+        $("#copy-ipt2").zclip({
+            path: 'http://testres.jumiweigu.com/third/util/zClip/ZeroClipboard.swf',
+            copy: function(){
+                return $("#ipt-txt2").val();
+            },
+            afterCopy: function(){
+                alert("复制成功！");
+            }
+        });
+
+    }
+
+</script>

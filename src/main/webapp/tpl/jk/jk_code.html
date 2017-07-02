@@ -1,0 +1,59 @@
+<style>
+    .gmn{
+        padding: 23px 24px 23px 0;
+        width: 1154px;
+        float: left;
+    }
+</style>
+<!--二维码海报-->
+<div class="col-xs-35">
+    <div class="m-phone-view" style="margin-top:-15px">
+        <div class="phone-shell-top">
+        </div>
+        <div class="phone-window fxsz" id="code_wrapper" style="position: relative;overflow: hidden;">
+            <div id="code_wrap" style="width:300px;height:533px;margin:0 auto;position: relative;">
+                <img id="code_wrapper_img">
+                <div class="drag" id="drag" style="position:absolute;width:72px;height:72px;">
+                    <img src="{{globalUrl}}/css/pc/img/code.jpg" alt="二维码" style="width:72px;height:72px;">
+                </div>
+                <div class="u-phonecon u-moveheadimg" style="display:none;" id="u-drag">
+                    <span><img src="{{globalUrl}}/css/pc/img/fanshead.png"/></span>
+                </div>
+                <div class="u-phonecon u-moveheadimg" id="u-move-drag" style="top: 120px;display:none;">
+                    <label style="font-family:'宋体'" id="labelFont">粉丝昵称</label>
+                </div>
+            </div>
+
+        </div>
+        <div class="phone-shell-bottom">
+        </div>
+    </div>
+</div>
+<div class="col-xs-85" style="padding: 0;">
+<dl class="col-xs-12 u-wx-explain f-mt-s f-mb-l">
+    <dt>温馨提示：</dt>
+    <dd><font class="u-exp-dot">·</font><a target="_blank" href="{{globalUrl}}/css/pc/img/hyzx/qrcode_demo1.png">查看客户案例</a></dd>
+    <dd><font class="u-exp-dot">·</font>二维码海报仅限微信、微博商场使用</dd>
+    <dd><font class="u-exp-dot">·</font>海报模板尺寸（宽*高）：<font class="c-orange1">750 * 1334</font> PX，上传尺寸错误将影响海报生成</dd>
+</dl>
+</div>
+<div class="col-xs-85" style="padding: 0;">
+    <div class="m-settings-poster">
+        <div class="m-tt f-mt-s font-s16">
+            <p>上传海报模板</p>
+        </div>
+        <div class="g-table f-mt-l" id="code_list">
+
+        </div>
+    </div>
+
+</div>
+<div class="u-btn-box">
+    <input type="button" class="u-btn-gymainlg f-mr-xs" id="activity_code_return" value="返回">
+    <input type="button" class="u-btn-dgymainlg" id="activity_code_down" value="下载" />
+    <input type="button" class="u-btn-mainlg" id="activity_code_save" value="保存" />
+
+</div>
+<script>
+    juke.code.init();
+</script>

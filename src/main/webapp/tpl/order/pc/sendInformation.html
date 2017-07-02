@@ -1,0 +1,7 @@
+<div id="dialoginfo">
+    {% if url=='ERROR' %}
+    <p><font color="red">此单号无记录，请核对快递公司名称和运单号码是否正确！</font></p>
+    {% else %}
+    <iframe id="frame" src="{{url}}" scrolling="no" width="550px" height="260px"></iframe>
+    {% endif %}
+</div>

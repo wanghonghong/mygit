@@ -1,0 +1,63 @@
+<input type="hidden" name="subType" id="subType" value="1"/>
+<div id="tabcontent2" class="tabcontent">
+    <div class=" djfe-bjth shop-jbsz">
+        <div class="goods-sell-set goods-sell-set1 margin-top-l" style="margin-bottom: 20px">
+            <div class="sell-set-details">
+                <div class="sell-set-details-left">
+                    <div >代理等级   </div>
+                </div>
+                <div class="sell-set-details-right">
+                    <i class="iconfont icon-edit"></i>
+                    <span>个人代理</span>
+                </div>
+            </div>
+        </div>
+        <div class="goods-sell-set goods-sell-set2">
+            <div class="sell-set-details">
+                <div class="sell-set-details-left">
+                    <div >个人资料</div>
+                </div>
+                <div class="sell-set-details-right">
+                    <form id="signupForm2" method="post" action="">
+                    <div class="form-group">
+                        <label class="margin-right-m">联系名称</label>
+                        <input type="text" id="userName" name="userName" value="{{userName}}" class="form-control" placeholder="聚米为谷网络科技有限公司" />
+                    </div>
+                    <div class="form-group form-time margin-bottom-m">
+                        <label class="margin-right-m">开通时间</label>
+                        <input type="text" class="form-control" value="{{createDate}}" placeholder="2015-12-12" disabled/>
+                    </div>
+                    <div class="form-group form-gswz">
+                        <label class="margin-right-m">业绩</label>
+                        <input type="text" id="performance" name="performance" value="{{performance}}" class="form-control" placeholder="" />
+                    </div>
+                    <div class="form-group szd clearfix form-szd distpicker"  >
+                        <label class="margin-right-m">经营地址</label>
+                        <select id="province" name="province" value="{{province}}" class="form-control floatleft">
+                        </select>
+                        <span class="floatleft">-</span>
+                        <select id="city" name="city" value="{{city}}" class="floatleft form-control">
+                        </select>
+                        <span class="floatleft">-</span>
+                        <select id="district" name="district" value="{{district}}" class="floatleft form-control">
+                        </select>
+                    </div>
+                        <input type="hidden" name="_province" id="_province" value="{{province}}"/>
+                        <input type="hidden" name="_city" id="_city" value="{{city}}"/>
+                        <input type="hidden" name="_district" id="_district" value="{{district}}"/>
+                    <div class="form-group form-fxy">
+                        <label class="margin-right-m">详细地址</label>
+                        <textarea class="form-control" id="address"  name="address" placeholder="">{{address}}</textarea>
+                    </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <div style="margin: 40px 0 20px;">
+        <div style="padding:0 30px;" class="btn btn-darkorange btn-radius-5 btn-lg col-xs-offset-5" id="save2">提交修改</div>
+    </div>
+</div>
+

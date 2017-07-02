@@ -1,0 +1,27 @@
+<div class="table-body h-scroll u-zero-fpm">
+    {%if items.length>0%}
+    {%for item in items%}
+    {%if item.cardId>0 %}
+    <ul class="table-container f-t-off">
+        <li><img class="u-thumbnail-circ" src="{{item.headimgurl}}"></li>
+        <li style="width:18%;">{{item.nickname}}</li>
+        <li class="f-tl f-wb-ba" style="width:22%; padding-left: 15px;"><p>{{item.cardName}}</p></li>
+        <li>{{item.cardMoney}}</li>
+        <li style="width: 20%;">{{item.cardCreateTime}}</li>
+        {%if item.cardStatus==0%}
+        <li>未领取</li>
+        {%elif item.cardStatus==1%}
+        <li>未使用</li>
+        {%elif item.cardStatus==2%}
+        <li>已使用</li>
+        {%endif%}
+    </ul>
+    {%endif%}
+    {%endfor%}
+    {%else%}
+    <div class="m-jm-err">
+        <img src="{{globalUrl}}/css/pc/img/jm-nodb.png">
+    </div>
+    {%endif%}
+
+</div>

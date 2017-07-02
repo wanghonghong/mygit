@@ -1,0 +1,92 @@
+<div id="detailWindow">
+<div class="u-panel-total">
+    <input type="hidden" id="tmpuserid" value="{{userId}}" >
+    <span>合计佣金：{{totalCount|default(0,ture) /100}} 元</span>
+    <span>已发放：{{(totalCount-kitBalance)|default(0,ture) /100}} 元</span>
+    <i class="iconfont icon-Application"></i>
+    <div class="m-addressbox z-hide">
+        <div class="box-body">
+            <span class="u-ipt-outtop"></span>
+            <span class="u-ipt-intop"></span>
+            <div>
+                <p><i></i>合计佣金为“已结算”佣金的总和</p>
+                <p><i></i>合计佣金不统计未收货、已收货未满7天的订单</p>
+                <p><i></i>无效佣金为购买客户退单，相应佣金扣除</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="m-tab f-mt-s f-mb-s" id="m-tab1" style="position: relative;">
+    <ul>
+        <li class="z-sel" data-target="panel-hid1" >未收货</li>
+        <li data-target="panel-hid2" >已收货未满 7 天</li>
+        <li data-target="panel-hid3" >已结算</li>
+        <li data-target="panel-hid4" >无效佣金</li>
+    </ul>
+    <div class="u-total">
+        <span>合计佣金：<span id="brokerageTotal">0</span> 元</span>
+    </div>
+</div>
+<div class="panel-hid z-hide" id="panel-hid1" >
+    <div class="m-jm-table" >
+        <ul class="table-hander">
+            <li style="width: 25%;">订单编号</li>
+            <li>订单金额（元）</li>
+            <li>佣金比例（%）</li>
+            <li>本次佣金（元）</li>
+            <li>收货日期</li>
+        </ul>
+        <div class="table-body" id="itemtableBody1" style="max-height: 320px;">
+        </div>
+        <div id="itempageToolbar1" class="pagination f-fr f-mt-s">
+        </div>
+    </div>
+</div>
+<div class="panel-hid z-hide" id="panel-hid2">
+    <div class="m-jm-table" >
+        <ul class="table-hander">
+            <li style="width: 25%;">订单编号</li>
+            <li>订单金额（元）</li>
+            <li>佣金比例（%）</li>
+            <li>本次佣金（元）</li>
+            <li>收货日期</li>
+        </ul>
+        <div class="table-body" id="itemtableBody2" style="max-height: 320px;">
+        </div>
+        <div id="itempageToolbar2" class="pagination f-fr f-mt-s">
+        </div>
+    </div>
+
+</div>
+<div class="panel-hid z-hide" id="panel-hid3">
+    <div class="m-jm-table" >
+        <ul class="table-hander">
+            <li style="width: 25%;">订单编号</li>
+            <li>订单金额（元）</li>
+            <li>佣金比例（%）</li>
+            <li>本次佣金（元）</li>
+            <li>收货日期</li>
+        </ul>
+        <div class="table-body" id="itemtableBody3" style="max-height: 320px;">
+        </div>
+        <div id="itempageToolbar3" class="pagination f-fr f-mt-s">
+        </div>
+    </div>
+
+</div>
+<div class="panel-hid z-hide" id="panel-hid4">
+    <div class="m-jm-table" >
+        <ul class="table-hander">
+            <li style="width: 25%;">订单编号</li>
+            <li>订单金额（元）</li>
+            <li>佣金比例（%）</li>
+            <li>本次佣金（元）</li>
+            <li>收货日期</li>
+        </ul>
+        <div class="table-body" id="itemtableBody4" style="max-height: 320px;">
+        </div>
+        <div id="itempageToolbar4" class="pagination f-fr f-mt-s">
+        </div>
+    </div>
+</div>
+</div>

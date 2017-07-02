@@ -1,0 +1,113 @@
+<style>
+    .stock-info-details-right .stock-info-details .stock-info-details-add-img > div i{
+        padding:0;
+        width: 100px;
+        height:100px;
+        line-height:90px;
+        margin-top:0;
+    }
+    #address-error{
+        position: absolute;
+        color: red;
+    }
+    .line {
+        width:60px;
+        height: 36px;
+        float: left;
+        line-height: 36px;
+        color: #999;
+        text-align: center;
+    }
+    .ui-dialog-body{
+        padding:20px 0 0;
+    }
+
+
+</style>
+<form id="shop_Entity_Form" class="bl-form bl-formhor" novalidate="novalidate">
+    <div class="select select-ffcz">
+        <div class="col-xs-12">
+            <div class="form-group col-xs-6" style="padding-top: 5px;">
+                <label class="margin-right-m">门店名称</label>
+                <input type="text" class="form-control" id="storeName" placeholder="请输入门店名称" value="{{storeName}}"/>
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <div class="form-group col-xs-6" style="padding-top: 5px;">
+                <label class="margin-right-m">联系电话</label>
+                <input type="text" class="form-control" id="phoneNumberentity" placeholder="请输入联系电话" value="{{phoneNumber}}"/>
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <div class="form-group col-xs-6" style="padding-top: 5px;" id="distpickerentt" >
+                <label class="margin-right-m" style="width: 220px;">所属地区</label>
+                <select class="form-control floatleft" id="provinceentt" ></select> <span
+                    class="line">-</span>
+                <select class="form-control floatleft" id="cityentt"></select> <span class="line">-
+</span>
+                <select class="form-control floatleft" id="districtentt"></select><div
+                    style="display:none;" id="addresshid">{{province}},{{city}},{{district}}</div>
+
+            </div>
+
+
+        </div>
+        <div class="col-xs-12">
+            <div class="form-group col-xs-6" style="padding-top: 5px;margin-bottom:5px;width:59%;position:
+relative;">
+                <label class="margin-right-m" style="margin-right:5px;">详细地址</label>
+                <textarea class="form-control h-scroll"  placeholder="请输入详细地址" style="width:68.5%;height: 80px;padding-top: 5px; line-height: 20px;"
+                          id="address" name="address"  data-msg-required="详细地址不能为空" required class="form-control" >{{address}}</textarea>
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <!--<div class="form-group col-xs-6" style="padding-top: 5px;">-->
+            <!--<label class="margin-right-m " style="width:145px;">营业时间</label>-->
+            <!--<i class="iconfont icon-calendar"></i>-->
+            <!--<input type="text" class="form-control"  readonly="readonly" id="officeHoursStart"
+value="{{officeHoursStart}}"/>-->
+            <!--<span class="floatleft spanwid line">-</span>-->
+            <!--<i class="iconfont icon-calendar"></i>-->
+            <!--<input type="text" class="form-control"  readonly="readonly" id="officeHoursEnd"
+value="{{officeHoursEnd}}"/>-->
+            <!--</div>-->
+            <label class="u-lb-sm">营业时间</label>
+            <div class="u-txt u-txt-date f-ml-s" style="margin-bottom: 5px;">
+                <i class="iconfont icon-calendar"></i>
+                <input type="text" class="ipt-txt"  readonly="readonly" id="officeHoursStart"
+                       value="{{officeHoursStart}}"/>
+            </div>
+            <div class="u-txt" style="margin-bottom: 5px;">
+                <span class="line" style=" width: 25px;">-</span>
+            </div>
+            <div class="u-txt u-txt-date" style="margin-bottom: 5px;">
+                <i class="iconfont icon-calendar"></i>
+                <input type="text" class="ipt-txt"  readonly="readonly" id="officeHoursEnd"
+                       value="{{officeHoursEnd}}"/>
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <div class="form-group stock-info-details-right col-xs-6" style="padding-top: 5px;">
+                <label class="margin-right-xs">门店照片</label>
+                <div id="shopentit_xy" class="m-add-img">
+                    {%if storeImg.length>0%}
+                    <img src="{{storeImg}}" alt="" id="shopentit_img"/>
+                    {%else%}
+                    <img src="{{globalUrl}}/css/pc/img/no_picture.png" alt=""  id="shopentit_img"/>
+                    {%endif%}
+                    <i class="iconfont icon-add"></i>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <div class="form-group  col-xs-6" style="width: 955px;padding-top: 5px;">
+                <label class="margin-right-xs">定位地图</label>
+                <div class="map" style="height: 260px">
+                    <div id="allmap" style="width:842px;height:260px;" ></div>
+                    <span id="pointll" style="display: none;" ></span>
+                    <span id="defaultlnglat" style="display: none;">{{longitude}},{{latitude}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

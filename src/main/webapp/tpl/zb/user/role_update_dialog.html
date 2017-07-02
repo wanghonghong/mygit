@@ -1,0 +1,25 @@
+<style>
+    .ui-dialog .ui-dialog-content{
+        padding:0;
+    }
+</style>
+<label class="u-lb-ssm f-cb">角色</label>
+<div class="u-txt col-xs-10">
+    <input type="text" class="ipt-txt" id="roleName" placeholder="请输入角色名称" value="{{item.roleName}}" />
+</div>
+<label class="u-lb-ssm f-cb">类型</label>
+<div class="u-txt col-xs-10">
+    <select class="ipt-txt" id="type2" style="width: 100%;">
+       {%for type in types%}
+        {%if type.id==item.roleType%}
+        <option value="{{type.id}}" selected>{{type.typeName}}</option>
+        {%else%}
+        <option value="{{type.id}}">{{type.typeName}}</option>
+        {%endif%}
+        {%endfor%}
+    </select>
+</div>
+<div class="u-btn-box1">
+    <input type="button" class="u-btn-smlightgray f-mr-xs" id="cancel2" value="取消" />
+    <input type="button" class="u-btn-smlightred" value="保存" id="updateRole" style="width: 100px;" />
+</div>

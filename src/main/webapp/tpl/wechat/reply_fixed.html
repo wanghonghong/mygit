@@ -1,0 +1,65 @@
+<div class="m-deploy-manage f-mt-m" style="background-color: #f8f8f8;padding: 10px 0;margin-bottom: 10px;">
+    <h3 class="f-fl">
+        固定回复
+    </h3>
+    <div class="f-fl close f-ml-l">
+        <div class="m-switch-Control data-off"  onclick="mm.autoreply.reply_auto('#switch1');">
+            <input type="checkbox" name="switch1" id="switch1" value="0" on-text="开通" off-text="关闭" >
+            <label>关闭</label>
+        </div>
+    </div>
+    <div class="m-tip3">
+        <i class="f-fl iconfont icon-lamp"></i>
+        <span >消息托管模式开启后，不管粉丝给你发什么信息，未触发其他自动回复规则时就会自动回复以下你设置的内容。</span>
+    </div>
+
+</div>
+<div class="m-panel-zdhf" style="margin-top: 10px;">
+    <ul class="panel-top">
+        <li><i class="iconfont icon-issue"></i>文本</li>
+        <li  style=" position: relative;display:none">
+            <em id="fixed_face" style="font-style: normal;"><i class="icon-smile iconfont"></i><span>表情</span></em>
+            <div id="fixed_qqC" style="display: none;" ></div>
+        </li>
+        <li style="margin-left:-5px;"><i class="iconfont icon-image"></i>图片</li>
+        <!--<li class="music">音频</li>-->
+        <!--<li class="movie">视频</li>-->
+        <!--<li><i class="iconfont icon-link"></i>外网连接</li>-->
+    </ul>
+    <div class="panel-body">
+        <div class="panel-list" id="panel_bedd">
+            <script id="panel_beadd_text" name="content" type="text/plain"></script>
+        </div>
+        <div class="panel-list">
+            <textarea rows="" cols="" name="" ></textarea>
+        </div>
+        <div class="panel-list" style="height: 205px;padding:15px;">
+            <div class="m-add-img f-fl" id="fixed_imgdiv" style="display: none;position:relative;" >
+                <span id="fixed_imgstatus" style="display: none">0</span>
+                <img id="befixed_img" src="{{globalUrl}}/css/pc/img/no_picture.png" />
+            </div>
+            <div class="u-btn-smltgry f-fl f-mt-xl" id="fixed_imgdel" style="margin-left: 115px;"><i class="iconfont icon-delete1"></i><span>删除</span></div>
+        </div>
+        <div class="panel-list">
+            <textarea rows="" cols="" name="" ></textarea>
+        </div>
+
+        <div class="panel-list">
+            <textarea rows="" cols="" name="" ></textarea>
+        </div>
+        <div class="panel-list">
+            <div id="fixed_outsl_status" style="display: none;">0</div>
+            <textarea rows="" id="fixed_outsidelink" cols="" placeholder="请输入外网连接"  name="" ></textarea>
+        </div>
+       <!-- <div class="panel-list box" id="fixed_shoplink"><input type="button" class="u-btn-lgdkorg1 f-margin-m" id="fixed_resultType" value=""  style="display: none;"/><a href=""  id="fixed_resultUrl" ></a><span id="fixed_linkid" style="display: none;"></span></div>-->
+    </div>
+
+</div>
+<div class="u-btn-box1" style="padding-top:20px ;">
+    <input type="button" class="u-btn-mainlg" id="fixed_save" onclick="mm.autoreply.reply_fixed_save();" value="保存" />
+    <!--<input type="button" class="u-btn-lgdkorg" id="fixed_save" onclick="mm.autoreply.reply_fixed_save();" value="保存" />-->
+</div>
+<script>
+    mm.autoreply.reply_fixed_imgdel();
+
+</script>

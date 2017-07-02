@@ -1,0 +1,30 @@
+<li>
+    <div class="goods">
+        {% if item.picSquare %}
+        <div class="goodsimg">
+            <img src="{{item.imageUrl}}" class="markicon" />
+            <a href="#">
+            {% if sizeClass=="halfgroup" %}
+            <img src="{{item.picSquare}}" style="height: 150px;line-height: 150px; " class="goods-img">
+            {% elif sizeClass=="fullgroup" %}
+            <img src="{{item.picRectangle}}" style="height: 150px;line-height: 150px; " class="goods-img">
+            {% endif %}
+            </a>
+        </div>
+        {% else  %}
+        <div class="goodsimg" style="background-color: {{goodsbgcolorArray[loop.revindex0]}};">
+            <img src="{{globalUrl}}/css/pc/img/pinstyle1.png" class="markicon" />
+            <a href="#" style="height: 150px;line-height: 150px;color: #ffffff">  第{{loop.index}}个商品  </a>
+        </div>
+        {% endif %}
+        <div class="goodsname">
+            <p> {{item.name}}</p>
+            <span>￥</span><span>{{item.price /100}} </span>
+        </div>
+        <div class="goodspin">
+            <span><i class="iconfont icon-sheng"></i>拼团省<label>{{(item.productPrice-item.price)/100}}</label>元</span>
+            <span><i class="iconfont icon-checkbox2"></i>已<label>{{item.count}}</label>人开团</span>
+            <div class="pinbtn">去开团<i class="iconfont icon-right"></i></div>
+        </div>
+    </div>
+</li>

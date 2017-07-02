@@ -1,0 +1,17 @@
+{%if items.length>0%}
+{% for item in items %}
+<li>
+    <div class="img">
+        <img src="{{item.resUrl}}" width="100" height="100">
+        <div class="u-cb">
+            <input type="checkbox" name="map" id="checkBox_{{loop.index}}" value="{{item.resUrl}}">
+            <label class="iconfont icon-avoid" for="checkBox_{{loop.index}}"></label>
+        </div>
+        <label for="checkBox_{{loop.index}}" class="f-mr-l"></label>
+        <span>{{item.resName}}</span>
+    </div>
+</li>
+{%endfor%}
+{%else%}
+<div>暂无数据</div>
+{%endif%}

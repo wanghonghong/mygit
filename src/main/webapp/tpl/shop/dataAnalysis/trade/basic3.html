@@ -1,0 +1,89 @@
+<div class="m-buyanalyse f-mt-m f-pb-xs">
+    <div class="m-analysebox f-fl" style="width: 650px;">
+        <div class="box-body">
+            <ul style="border-left-color: #ffcccc;">
+                <li>
+                    <span>浏览人数</span>
+                    <b>{{visitUsers.count}}</b>
+                </li>
+            </ul>
+        </div>
+        <div class="box-body">
+            <ul style="border-left-color: #9999cc;">
+                <li>
+                    <span>下单人数</span>
+                    <b>{{placeOrderInfo.userCount}}</b>
+                </li>
+                <li>
+                    <span>下单笔数</span>
+                    <b>{{placeOrderInfo.orderCount}}</b>
+                </li>
+                <li>
+                    <span>下单金额</span>
+                    <b>{{placeOrderInfo.money/100}}</b>
+                </li>
+            </ul>
+        </div>
+        <div class="box-body">
+            <ul style="border-left-color: #66cccc;">
+                <li>
+                    <span>退单人数</span>
+                    <b>{{returnOrderInfo.userCount}}</b>
+                </li>
+                <li>
+                    <span>退单单数</span>
+                    <b>{{returnOrderInfo.returnCount}}</b>
+                </li>
+                <li>
+                    <span>退款金额</span>
+                    <b>{{returnOrderInfo.money/100}}</b>
+                </li>
+                <li>
+                    <span>退款件数</span>
+                    <b>{{returnOrderInfo.count}}</b>
+                </li>
+            </ul>
+        </div>
+        <div class="box-body">
+            <ul style="border-left-color: #ff9933;">
+                <li>
+                    <span>付款人数</span>
+                    <b>{{payOrderInfo.userCount}}</b>
+                </li>
+                <li>
+                    <span>付款订单数</span>
+                    <b>{{payOrderInfo.payCount}}</b>
+                </li>
+                <li>
+                    <span>付款金额（元）</span>
+                    <b>{{payOrderInfo.money/100}}</b>
+                </li>
+                <li>
+                    <span>付款件数</span>
+                    <b>{{payOrderInfo.count}}</b>
+                </li>
+                <li>
+                    <span>客单价（元）</span>
+                    <b>{{(payOrderInfo.singleMoney/100)|shortNumber(2)}}</b>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="m-chartbuyladder f-fl">
+        <div class="buyladderbox" style="width: 500px;">
+            {%if visitUsers.count==0 %}
+            <span>下单转化率<b>0%</b></span>
+            <span style="padding-left: 88px;">全店转化率<b>0%</b></span>
+            {%else%}
+            <span>下单转化率<b>{{(placeOrderInfo.userCount/visitUsers.count*100) |shortNumber(2)}}%</b></span>
+            <span style="padding-left: 88px;">全店转化率<b>{{(payOrderInfo.userCount/visitUsers.count*100) | shortNumber(2)}}%</b></span>
+            {%endif%}
+            {%if placeOrderInfo.userCount==0 %}
+            <span>付款转化率<b>0%</b></span>
+            {%else%}
+            <span>付款转化率<b>{{(payOrderInfo.userCount/placeOrderInfo.userCount*100) | shortNumber(2)}}%</b></span>
+            {%endif%}
+        </div>
+    </div>
+
+</div>

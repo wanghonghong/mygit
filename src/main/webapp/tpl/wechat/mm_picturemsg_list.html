@@ -1,0 +1,54 @@
+<style>
+    .m-jm-table .table-body .table-container li .g-table .g-table-cell span {
+        line-height: 24px;
+    }
+</style>
+
+{% if items.length >0 %}
+{%for item in items%}
+<ul class="table-container">
+    <li style="width:35%;">
+        <div class="g-table" >
+            <div class="g-table-cell f-vt"  style="width: 90px;">
+                <!--<img class="u-thumbnail-squa" src="css/pc/img/no_picture.png"/>-->
+                {%if item.thumbUrl != null%}
+                <img class="u-thumbnail-squa" src="{{item.thumbUrl}}"/>
+                {%else%}
+                <img class="u-thumbnail-squa" src="{{globalUrl}}/css/pc/img/no_picture.png"/>
+                {%endif%}
+            </div>
+            <div class="g-table-cell f-vm f-tl" style="color: #5E5E5E;">
+              <!--  <span>1. 当遇见更好的人时，却已用完了最好的自己! </span>
+                <span>2. dhxfytyens </span>
+                <span>3. dhxfytyens </span>-->
+                {%if item.wxContentSubVos!=null %}
+                <span>1.{{item.title}}</span>
+                {%for itt in item.wxContentSubVos%}
+                <span>{{loop.index+1}}.{{itt.title}}</span>
+                {%endfor%}
+                {%else%}
+                <span>{{item.title}}</span>
+                {%endif%}
+            </div>
+        </div>
+    </li>
+    <li>{{item.author}}</li>
+    <li>{{item.saveTime}}</li>
+    <li style="width:20%;">
+        <div class="u-btn-smltgry f-mb-xs dialog" id="view_{{item.id}}"> 预览 </div>
+        <div class="u-btn-smltgry dialog1" id="edit_{{item.id}}"> 编辑 </div><div id="status_{{item.id}}_{{item.status}}" style="display:none;">{{item.status}}</div>
+        <div class="u-btn-smltgry dialog2" id="del_{{item.id}}"> 删除 </div>
+    </li>
+</ul>
+{%endfor%}
+{%else%}
+<!--<div class="noData">暂无数据</div>-->
+<div class="m-jm-err">
+    <img src="{{globalUrl}}/css/pc/img/jm-nodb.png">
+</div>
+{%endif%}
+<script>
+    mm.picturemsg.bind_data_view();
+    mm.picturemsg.bind_data_edit();
+    mm.picturemsg.mm_pictxt_del();
+</script>

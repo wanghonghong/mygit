@@ -1,0 +1,219 @@
+<style>
+    .showNone {
+        display: none;
+    }
+    .show {
+        display: block;
+    }
+</style>
+<div class="g-mn">
+    <div class="tab">
+        <ul id="account_tab">
+            <li data-target="tabcontent1" class="active">余额充值</li>
+            <li data-target="tabcontent2">加盟费缴纳</li>
+        </ul>
+    </div>
+    <div><div id="tabcontent1" class="tabcontent active">
+        <div class=" djfe-bjth shop-jbsz">
+            <div class="goods-sell-set goods-sell-set1 margin-top-l" style="margin-bottom: 20px">
+                <div class="sell-set-details">
+                    <div class="sell-set-details-left">
+                        <div >米币金额</div>
+                    </div>
+                    <div class="sell-set-details-right">
+                        <h1 style="display:inline;">0.00</h1><label>&nbsp;币</label>
+                    </div>
+                </div>
+                <div class="tag-tips tag-tips2">
+                    <i class="iconfont icon-lamp"></i>
+                    <span>1 米币= 1 人民币</span>
+                </div>
+            </div>
+            <div class="goods-sell-set goods-sell-set1" style="margin-bottom: 20px">
+                <div class="sell-set-details">
+                    <div class="sell-set-details-left">
+                        <div >现金金额</div>
+                    </div>
+                    <div class="sell-set-details-right">
+                        <h1 style="display:inline;margin-top: 20px;">0.00</h1><label>&nbsp;元</label>
+                    </div>
+
+                </div>
+                <div class="form-group form-jes tag-tips2">
+                    <input type="text" class="form-control" placeholder="输入其他金额" style="margin-right: 10px;"/>
+                    <ul class="tag-details">
+                        <li class="sort sort-active">
+                            300
+                            <input type="checkbox"  />
+                            <label class="iconfont icon-avoid" ></label>
+                        </li>
+                        <li class="sort">
+                            500
+                            <input type="checkbox"  />
+                            <label class="iconfont icon-avoid" ></label>
+                        </li>
+                        <li class="sort">
+                            1000
+                            <input type="checkbox"  />
+                            <label class="iconfont icon-avoid" ></label>
+                        </li>
+                        <li class="sort">
+                            5000
+                            <input type="checkbox"  />
+                            <label class="iconfont icon-avoid" ></label>
+                        </li>
+                        <li class="sort">
+                            10000
+                            <input type="checkbox"  />
+                            <label class="iconfont icon-avoid" ></label>
+                        </li>
+                    </ul>
+                    <div class="btn btn-lightorange btn-radius-5 btn-lg dialog">现金充值</div>
+                </div>
+            </div>
+            <div class="goods-sell-set goods-sell-set1">
+                <div class="sell-set-details">
+                    <div class="sell-set-details-left">
+                        <div >支付宝</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="form-group col-xs-4 margin-left-xxl">
+                                <label class="margin-right-s">账号</label>
+                                <input type="text" class="form-control"  />
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <div class="form-group col-xs-4 margin-left-xxl">
+                                <label class="margin-right-s">名称</label>
+                                <input type="text" class="form-control"  />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tag-tips tag-tips2">
+                    <i class="iconfont icon-lamp"></i>
+                    <span>个人服务商与软件代理商可复选，软件代理商只能二选一</span>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div  id="tabcontent2" class="tabcontent showNone">
+            <div class=" djfe-bjth shop-jbsz">
+                <div class="goods-sell-set goods-sell-set1 margin-top-l" style="margin-bottom: 20px">
+
+                    <div class="form-group form-rjdls margin-left-xl margin-top-m">
+                        <ul>
+                            <li>
+
+                                <div class="radioBox">
+                                    <input type="radio" name="sexradio" id="radioBox1" value=""  checked  />
+                                    <label    for="radioBox1"></label>
+                                </div>
+                                <span>个人服务商</span>
+                                <input type="button" class="form-btn form-control" value="15000元" />
+                            </li>
+                            <li>
+                                <div class="radioBox">
+                                    <input type="radio" name="sexradio" id="radioBox2" value="" />
+                                    <label   for="radioBox2"></label>
+                                </div>
+                                <span>软件代理商</span>
+                                <input type="button" class="form-btn form-control" value="15000元" />
+                            </li>
+                            <li>
+                                <div class="radioBox">
+                                    <input type="radio" name="sexradio" id="radioBox3" value="" />
+                                    <label   for="radioBox3"></label>
+                                </div>
+                                <span>软件代理商</span>
+                                <input type="button" class="form-btn form-control" value="15000元" />
+                            </li>
+                        </ul>
+                    </div>
+                    <div style="margin: 20px 0 20px;">
+                        <div class="btn btn-lightorange btn-radius-5 btn-lg col-xs-offset-5">缴纳加盟费</div>
+                    </div>
+                </div>
+                <div class="app-config-region">
+                    <div class="panel  config-panel" style="background-color: #fff;">
+                        <div class="panel-heading">
+                            <h4 style="font-weight: normal;">缴纳记录</h4>
+                        </div>
+                        <div class="panel-body" style="padding: 0;">
+                            <div class="jm-table">
+                                <ul class="table-hander">
+
+                                    <li>日期</li>
+                                    <li>分类角色</li>
+                                    <li>金额（元）</li>
+                                    <li>失效时间</li>
+                                </ul>
+                                <div class="table-body">
+                                    <ul class="table-container">
+                                        <li>2016-06-01</li>
+                                        <li>个人服务商</li>
+                                        <li>800</li>
+                                        <li>2016-06-01</li>
+                                    </ul>
+                                    <ul class="table-container">
+                                        <li>2016-06-01</li>
+                                        <li>个人服务商</li>
+                                        <li>800</li>
+                                        <li>2016-06-01</li>
+                                    </ul>
+                                    <ul class="table-container">
+                                        <li>2016-06-01</li>
+                                        <li>个人服务商</li>
+                                        <li>800</li>
+                                        <li>2016-06-01</li>
+                                    </ul>
+                                    <ul class="table-container">
+                                        <li>2016-06-01</li>
+                                        <li>个人服务商</li>
+                                        <li>800</li>
+                                        <li>2016-06-01</li>
+                                    </ul>
+                                    <ul class="table-container">
+                                        <li>2016-06-01</li>
+                                        <li>个人服务商</li>
+                                        <li>800</li>
+                                        <li>2016-06-01</li>
+                                    </ul>
+                                    <ul class="table-container boder-bottom">
+                                        <li>2016-06-01</li>
+                                        <li>个人服务商</li>
+                                        <li>800</li>
+                                        <li>2016-06-01</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div></div>
+
+</div>
+<div id="dialoginfo" class="dialoginfo">
+    <div class="buybox clearfix">
+        <div class="floatleft col-xs-6 text-center">
+            <p>微信支付</p>
+            <img class="img-buy" src="{{globalUrl}}/img/pc/QRcode.png"/>
+            <p>扫码支付</p>
+            <div class="btn btn-lightorange btn-radius-5 btn-lg" style="background-color: #44bb00;">立即支付</div>
+        </div>
+        <div class="floatleft col-xs-6 text-center">
+            <p>支付宝支付</p>
+            <img class="img-buy" src="{{globalUrl}}/img/pc/QRcode.png" />
+            <p>扫码支付</p>
+            <div class="btn btn-blue btn-radius-5 btn-lg" style="background-color: #00aaee;">立即支付</div>
+        </div>
+    </div>
+</div>
+<script>
+    account.balance.init();
+
+</script>

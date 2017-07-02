@@ -1,0 +1,68 @@
+<style>
+    .error{
+        font-family: '宋体', Verdana, Arial, Helvetica, sans-serif;
+        font-size: 12px;
+        color: red;
+    }
+</style>
+<!--主模块-->
+<section class="g-bbsbox">
+    <div class="m-bbsreplybox">
+        <div class="m-notetitle">
+            <span>发布帖子</span>
+            <div class="f-fr draftbox">
+                <i class="iconfont icon-drafts"></i>草稿箱（{{posts.length}}）
+            </div>
+            <ul class="draftlist" style="display: none;">
+                {%for post in posts%}
+                <li onclick="community.post.getContext('{{post.title}}','{{post.postContext}}')">
+                    <p title="这里放标题字段" >{{post.title}}</p>
+                    <span>{{post.createDate}}</span>
+                </li>
+                {%endfor%}
+            </ul>
+        </div>
+        <div class="col-xs-12 f-mb-s" style="padding: 0;">
+            <div class="u-txt col-xs-9 f-mb-zero" style="padding: 0;">
+                <form id="form1">
+                <input type="text" class="ipt-txt" name="title" id="title" placeholder="请输入标题" />
+                <span class="number font-s12" style="right: 8px;">0/100</span>
+                </form>
+            </div>
+            <div class="col-xs-3" style="padding: 0;">
+                <label class="u-lb-sm f-pr-s c-deepgray">主题分类</label>
+                <div class="u-txt f-mb-zero" style="width: 235px;">
+                    <select class="ipt-txt c-gray1" id="type">
+                        <option value="1">微信</option>
+                        <option value="2">微博</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="m-writebox f-cb postContext" style="height: 590px;">
+            <!--<img src="css/pc/img/bianji.png" style="margin-bottom: 100px;" />-->
+
+        </div>
+        <div class="m-btn-botbox">
+            <div class="u-cb">
+                <input type="checkbox" name="" id="checkbox1" value="" />
+                <label class="iconfont icon-avoid" for="checkbox1"></label>
+            </div>
+            <label class="u-lb-noname" for="checkbox1">我要匿名</label>
+            <input type="button" class="u-btn-mddkorg u-w" onclick="community.post.save(1)" value="发布" />
+            <input type="button" class="u-btn-mddkbl f-ml-xs" onclick="community.post.save(2)" value="保存草稿" />
+        </div>
+    </div>
+</section>
+<!--/主模块-->
+<script>
+    community.post.init()
+    $(function(){
+        $("#u-logo").click(function(){
+            $("#othermemu").toggleClass("z-change");
+        });
+        $(".draftbox").click(function(){
+            $(".draftlist").fadeToggle();
+        });
+    })
+</script>

@@ -1,0 +1,112 @@
+<style>
+    .ui-dialog .ui-dialog-content{
+        padding:0;
+    }
+</style>
+<div class="m-tab f-mb-l">
+    <ul id="dialog_common">
+        {%if paramsObj.resType==1%}
+            {% set tipTitle1= "网络图片" %}
+            {% set tipTitle2 = "本地图片" %}
+            <li class="z-sel">上传图片</li>
+            <li>历史图库</li>
+        {%elif paramsObj.resType==2%}
+            <li class="z-sel">上传视频</li>
+            <li>历史视频</li>
+        {%elif paramsObj.resType==3%}
+            {% set tipTitle1= "音频素材" %}
+            {% set tipTitle2= "本地音频" %}
+            <li class="z-sel">上传音频</li>
+            <li>历史音频</li>
+        {%endif%}
+    </ul>
+</div>
+<div>
+<div class="m-upload" id="dia_0">
+    <input type="hidden" id="map_files">
+    <div class="col-xs-12">
+        <label class="u-lb-md"><span class="f-star">*&nbsp;&nbsp;</span>选择分组</label>
+        <div class="u-txt col-xs-9">
+            <select class="ipt-txt" id="ipt_group">
+
+            </select>
+        </div>
+    </div>
+    {%if paramsObj.resType==2%}
+        <div class="col-xs-12">
+            <label class="u-lb-md">视频原名</label>
+            <div class="u-txt col-xs-8">
+                <input type="text" class="ipt-txt" placeholder="原网址的视频名称" name="sitename">
+            </div>
+        </div>
+    <form id="vidio_m">
+        <div class="col-xs-12">
+            {%if paramsObj.resSubType==0%}
+                {% set tip= "腾讯" %}
+            {%else%}
+                {% set tip= "优酷" %}
+            {%endif%}
+            <label class="u-lb-md"><span class="f-star">*&nbsp;&nbsp;</span>{{tip}}视频</label>
+            <div class="u-txt col-xs-8">
+                <input type="text" class="ipt-txt" placeholder="http://请添加视频地址" name="httpSite">
+            </div>
+        </div>
+    </form>
+        <div class="m-tip3  f-mb-m" style="margin-left: 130px;">
+            <i style="" class="iconfont icon-lamp"></i>
+            <span>请准确填写分别来源网址，微信粉丝将自动显示腾讯视频，微博显示优酷视频；填写错误将无法显示！</span>
+        </div>
+    {%endif%}
+    {%if paramsObj.resType==1%}
+    <div class="col-xs-12">
+        <label class="u-lb-md">{{tipTitle1}}</label>
+        <div class="u-txt col-xs-9">
+            <span class="pick" id="m_pick" style="right: 15px;">提取</span>
+            <input type="text" name="network_picture" id="network_picture" class="ipt-txt" placeholder="请添加以http://开头的网络图片地址" />
+            <div class="col-xs-12">
+                <div class="display" id="display_img" style="margin-top:10px;display:none"><img width="200" height="200" src="" alt=""></div>
+            </div>
+        </div>
+    </div>
+    {%endif%}
+    {%if paramsObj.resType!=2%}
+    <div class="col-xs-12">
+        <label class="u-lb-md">{{tipTitle2}}</label>
+        <ul class="m-addimg-group col-xs-10" id="m-addimg-group">
+            <li class="add">
+                <i class="iconfont icon-add" style="margin-top: 0"></i>
+                {%if paramsObj.resType==1%}
+                <input type="file" id="map_fileupload_add_1" accept="image/gif,image/jpeg,image/png" name="myfile"/>
+                {%elif paramsObj.resType==3%}
+                <input type="file" id="map_fileupload_add_1" accept="audio/mp3" name="myfile"/>
+                {%endif%}
+            </li>
+        </ul>
+        <div class="m-tip3 col-xs-9 f-mb-m" style="margin-top: 5px">
+            <i style="" class="iconfont icon-lamp"></i>
+            {%if paramsObj.resType==1%}
+            <span>仅支持jpg、gif、png三种格式，大小30k-300k</span>
+            {%else%}
+            <span>仅支持mp3三种格式</span>
+            {%endif%}
+        </div>
+    </div>
+    {%endif%}
+    <div class="u-btn-box1 f-mt-m"><input id="map_dialog_btn" type="button" class="u-btn-mddkorg" value="确定" /></div>
+</div>
+<div class="m-upload" style="display: none;"  id="dia_1">
+    <div class="m-material-center m-material-center1">
+        <div class="material-center-left">
+            <ul id="m-group-list" style="border-bottom: none">
+                
+            </ul>
+        </div>
+        <div class="m-material-center-right" id="material-center1" style="width:100%">
+
+        </div>
+
+    </div>
+    <div id="image_common_page" class="pagination" style="text-align: right"></div>
+    <div class="u-btn-box1"><input type="button" class="u-btn-mddkorg" value="确定" id="map_choose_btn"/></div>
+</div>
+</div>

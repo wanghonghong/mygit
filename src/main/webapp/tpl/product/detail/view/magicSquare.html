@@ -1,0 +1,19 @@
+{% if subEntry and  subEntry.length>0 %}
+<div class="magicSquare f-mt-s" >
+    <table class="magic-view-table">
+        <tbody>
+        {% for i in range(4) %}
+        <tr>
+            {% for j in range(4) %}
+            <td class="empty" data-x={{j}} data-y={{i}}>虚位以待</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% else   %}
+<div class="init-describe">
+    {{name}}
+</div>
+{% endif %}

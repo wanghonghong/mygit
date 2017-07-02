@@ -1,0 +1,20 @@
+<div id="operation-dialog" class="dialoginfo" style="display: block">
+    <ul class="m-select-rb">
+        {%set x=1%}
+        {%for zbRole in roles%}
+        <li>
+            <div class="u-rb">
+                <input type="radio" class="operation" name="operation" id="select_{{x}}" value="{{zbRole.roleId}}"  data-name="{{zbRole.roleName}}"/>
+                <label class="ability" for="select_{{x}}" id="ability_{{x}}" data-id="{{x}}"></label>
+            </div>
+            <label  for="select_{{x}}"  class="select-tt" id="roles_select_{{x}}">{{zbRole.roleName}}</label>
+        </li>
+        {%set x=x+1%}
+        {%endfor%}
+    </ul>
+    <div class="m-tip4 f-mb-s">
+        <i style="" class="iconfont icon-lamp"></i>
+        <span>仅支持最多选&nbsp;<font color="#f38925">1</font>&nbsp;个，以后可以申请修改</span>
+    </div>
+    <div class="u-btn-box1 f-mt-m" ><input type="button" class="u-btn-mddkorg" onclick="agent.join.sure()" value="确定" /></div>
+</div>

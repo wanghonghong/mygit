@@ -1,0 +1,65 @@
+<style>
+    /*.closeBtn {*/
+        /*background:url('{{BASE_PATH}}/img/pc/close.png')no-repeat;*/
+        /*background-size: 20px 20px;*/
+        /*cursor:pointer;*/
+        /*width: 15px;*/
+        /*height: 15px;*/
+    /*}*/
+    .hide {
+        display: none;
+    }
+</style>
+<link rel="stylesheet" type="text/css" href="{{THIRD_URL}}//third/util/web-im/static/css/webim.css" />
+<div id="webim_win" class="webim ui-widget-content">
+
+    <div class="webim-logo hide"><img src="{{globalUrl}}/img/pc/logo.png"></div>
+    <div class="webim-chat">
+        <div class="webin-top" id="webim-title">
+            <span class="webim-chatwindow-title"></span>
+            <i class="u-offline" onclick="ImInfo.offline();">下线</i>
+            <i class="closeBtn right" onclick="ImInfo.hideWin();" id="webimClose">隐藏</i>
+        </div>
+        <div class="webim-leftbar hide">
+            <div class="webim-avatar-icon webim-profile-avatar small">
+                <img class="w100" src="{{globalUrl}}/img/pc/default.png" title="hx_02">
+            </div>
+            <div id="friends" class="rel top50">
+                <i title="好友" class="webim-leftbar-icon font small selected">E</i>
+                <i class="webim-msg-prompt webim-msg-icon-prompt" style="display: none;"></i>
+            </div>
+            <div id="groups" class="rel">
+                <i title="群组" class="webim-leftbar-icon font small">N</i>
+                <i class="webim-msg-prompt webim-msg-icon-prompt" style="display: none;"></i>
+            </div>
+            <!--<div id="chatrooms" class="rel"><i title="聊天室" class="webim-leftbar-icon font small">F</i>
+                <i class="webim-msg-prompt webim-msg-icon-prompt" style="display: none;"></i>
+            </div>
+            <div id="strangers" class="rel"><i title="陌生人" class="webim-leftbar-icon font small">O</i>
+                <i class="webim-msg-prompt webim-msg-icon-prompt" style="display: none;"></i>
+            </div>-->
+            <!--<div><i class="webim-operations-icon font xsmaller">M</i>
+                <ul class="webim-operations hide">
+                    <li><i class="font smallest">L</i><span>添加好友</span></li>
+                    <li><i class="font smallest">C</i><span>删除好友</span></li>
+                    <li><i class="font smallest">Q</i><span>退出</span></li>
+                </ul>
+            </div>-->
+        </div>
+        <div class="webim-contact-wrapper chat-scroll">
+            <div class="friends roster">
+
+            </div>
+            <div class="groups hide"></div>
+            <div class="chatrooms hide"></div>
+            <div class="strangers hide"></div>
+        </div>
+        <input type="file" class="hide">
+        <input type="file" class="hide">
+        <input type="file" class="hide" id="wxUpload">
+        <input type="file" id="uploadShim" class="hide">
+    </div>
+    <!--<div class="webim-loading hide"><img src="demo/images/loading.gif"></div>-->
+</div>
+<div id="link_content" class="hide"></div>
+

@@ -1,0 +1,17 @@
+
+{% if items.length>0 %}
+{%for item in items%}
+<ul class="table-container" >
+    <li class="f-tl" id="notice_{{item.id}}" data-id="{{item.id}}" style="width: 50%; padding: 0 50px; cursor: pointer;" title="点击阅览"><p>{{item.title}}</p></li>
+    <li>
+        {%if item.type==1%}系统公告
+        {%elif item.type==2%}其他公告
+        {%else %}无类别
+        {%endif%}
+    </li>
+    <li>{{item.createDate}}</li>
+</ul>
+{%endfor%}
+{%else%}
+{% include "/tpl/system/nodb.html" %}
+{%endif%}

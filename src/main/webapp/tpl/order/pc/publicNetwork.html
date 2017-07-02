@@ -1,0 +1,76 @@
+<!--公益网点-->
+<div class="panel-hidden">
+    <div class="m-panel m-buyshopsys">
+        <div class="panel-heading">
+            <div class="u-btn-lgltgry1 f-mt-xs f-mb-xs f-ml-m" onclick="orderRecoverBusiness.list.addPublicNetwork()">
+                <i class="iconfont icon-add u-change"></i>
+                <span>新增网点</span>
+            </div>
+        </div>
+        <div class="panel-body" style="padding: 0;">
+            <div class="m-jm-table" >
+                <ul class="table-hander">
+                    <li style="width: 20%;">网点照-名称</li>
+                    <li>营业时间</li>
+                    <li>所属地区</li>
+                    <li style="width: 22%;">详细地址</li>
+                    <li>联系人姓名-电话</li>
+                    <li style="width: 8%;">是否上架</li>
+                    <li>操作</li>
+                </ul>
+                <div class="table-body u-f-tl-pl">
+                    {% if items.length >0 %}
+                    {%for item in items%}
+                    <ul class="table-container">
+                        <li style="width: 20%;">
+                            <div class="g-table">
+                                <div class="g-table-cell f-vm" style="width: 45%;">
+                                    {% if item.imgUrl?? %}
+                                    <img class="u-thumbnail-squa" src="http://dev.jumiweigu.com/css/pc/img/no_picture.png">
+                                    {% else %}
+                                    <img class="u-thumbnail-squa" src="{{item.imgUrl}}">
+                                    {% endif %}
+                                </div>
+                                <div class="g-table-cell f-vm f-tl f-pr-s">
+                                    <span class="f-mb-xs">{{item.name}}</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="f-tl" style="padding-right: 20px; padding-left: 40px;">{{item.publicNetworkDate}}</li>
+                        <li>{{item.province}}<span>-</span>{{item.city}}<span>-</span>{{item.district}}</li>
+                        <li class="f-tl" style="width: 22%; padding: 0 20px;">{{item.province}}{{item.city}}{{item.district}}{{item.address}}</li>
+                        <li class="f-tl" style="padding-left: 55px;">
+                            <span>{{item.linkUser}}</span><br />
+                            <span>{{item.linkPhone}}</span>
+                        </li>
+                        <li style="width: 8%;">
+                            {% if item.status==1 %}
+                            <font class="c-orange2">上架</font>
+                            {% else %}
+                            <font class="c-orange2">下架</font>
+                            {% endif %}
+                        </li>
+                        <li>
+                            <div class="u-btn-smltgry dialog-wddetail0" onclick="orderRecoverBusiness.list.updatePublicNetwork('{{item.id}}')">编辑</div>
+                            <div class="u-btn-smltgry">预览</div>
+                            <div class="u-btn-smltgry" onclick="orderRecoverBusiness.list.delPublicNetworkNode('{{item.id}}')">删除</div><br />
+                            <span class="u-lb">
+                                <a href="javascript:void(0);" onclick="orderRecoverBusiness.list.updateRecoveryStatus('{{item.id}}','1','1')">上架</a><font color="#d9d9d9"> | </font>
+                                <a href="javascript:void(0);" onclick="orderRecoverBusiness.list.updateRecoveryStatus('{{item.id}}','0','1')">下架</a>
+                            </span>
+                        </li>
+                    </ul>
+                    {% endfor %}
+                    {% else %}
+                    <div class="m-jm-err">
+                        <img src="{{globalUrl}}/css/pc/img/jm-nodb.png">
+                    </div>
+                    {% endif %}
+                </div>
+                <!--以下是分页效果-->
+                <div id="pageTypeToolbar" class="pagination" align="right" style="margin-top: 10px">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

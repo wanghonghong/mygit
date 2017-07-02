@@ -1,0 +1,64 @@
+<style>
+    .m-table-control tbody tr td{
+        border-bottom: none;
+    }
+    .m-table-control:last-of-type tbody tr td{
+        border-bottom: 1px solid #ebebeb;
+    }
+</style>
+{%if items.length>0%}
+{% for item in items %}
+<table  class="m-table-control" >
+    <tbody>
+    <tr class="bg-gray">
+        <td colspan="6">
+            <ul class="table-xqd" >
+                <li class="floatleft padding-left-s"></li>
+                <li class="service f-fr f-pr-s"><a onclick="customer.operation.topUserPopMsg('{{item.userId}}')"> 上级</a><font color="#d9d9d9"> | </font>
+                    <a onclick="customer.operation.lastUserPopMsg('{{item.userId}}')">下级</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                    <a data-id="{{item.userId}}" onclick="ImInfo.openChatWin(this,'{{item.userId}}').wxChatModel('{{item.appid}}','{{item.openid}}','{{item.headimgurl}}','{{item.nickname}}');">{{item.nickname}}{% if item.headimgurl %}<img class="u-thumbnail-circ" src="{{item.headimgurl}}" />{% else %}<img class="u-thumbnail-circ" src="css/pc/img/s-newshop-lt-img3.jpg" />{% endif %}</a></li>
+            </ul>
+        </td>
+    <tr>
+    {% for shoppingCartListVoList in item.shoppingCartListVoList %}
+    <tr>
+        <td style="width:25%;">
+            <div class="table">
+                <div class="table-cell vertical-middle" style="width: 100px;padding-top: 5px">
+                    {% if shoppingCartListVoList.picSquare %}
+                    <img class="u-thumbnail-squa" src="{{shoppingCartListVoList.picSquare}}"/>
+                    {% else %}
+                    <img class="u-thumbnail-squa" src="{{globalUrl}}/css/pc/img/no_picture.png"/>
+                    {% endif %}
+                </div>
+                <div class="table-cell vertical-middle f-tl">
+                    <span >{{shoppingCartListVoList.name}}</span><br>
+                    <span class="font-color-orange" >{{shoppingCartListVoList.specValueTwo}}{{shoppingCartListVoList.specValueOne}}&nbsp&nbsp&nbsp&nbsp&nbsp{{shoppingCartListVoList.specValueThree}}</span>
+                </div>
+            </div>
+        </td>
+        {% if shoppingCartListVoList.type==0 %}
+            <td style="width:10%;"><span>￥{{shoppingCartListVoList.price/100}} </span><br><span>（{{shoppingCartListVoList.count}}件）</span></td>
+        {% endif %}
+        <td style="width:10%;"><span>微信</span></td>
+        <td style="width:10%;"><span>{{shoppingCartListVoList.updateTime}}</span></td>
+        {% if shoppingCartListVoList.type==0 %}
+            <td style="width:10%;"><span class="font-color-orange">购物车</span><br/><span class="ck"></span></td>
+            <td style="width:10%;"><span>￥{{shoppingCartListVoList.totalPrice/100}}</span><br/></td>
+        {% else %}
+            <td style="width:10%;"><span class="font-color-orange">兴趣订单</span><br/><span class="ck"></span></td>
+        {% endif %}
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endfor %}
+{%else%}
+<div class="m-jm-err">
+    <img src="{{globalUrl}}/css/pc/img/jm-nodb.png">
+</div>
+{%endif%}
+<div id="dialoginfo33" class="dialoginfo dhk" style="display: none;"></div>
+<script>
+    ImInfo.initData("{{ext.hxAccount}}","{{ext.userid}}","{{ext.nickname}}","{{ext.headImg}}","{{ext.shopId}}");
+</script>

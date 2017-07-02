@@ -1,0 +1,34 @@
+<!--供货结算-->
+<div class="m-search" id="m-search">
+    <form id="searchform1" >
+        <label class="u-lb-sm">代发店铺</label>
+        <div class="u-txt col-xs-3">
+            <input type="text" class="ipt-txt" placeholder="请输入代发店铺" id="shopName" name="shopName"/>
+        </div>
+        <label class="u-lb-sm">商品名称</label>
+        <div class="u-txt col-xs-3">
+            <input type="text" class="ipt-txt" placeholder="请输入商品名称" id="productName" name="productName" />
+        </div>
+        <label class="u-lb-sm">发货日期</label>
+        <div class="u-txt u-txt-date f-ml-m">
+            <i class="iconfont icon-calendar"></i>
+            <input type="text" class="ipt-txt c-gray1" id="supplySettlementBeginDate" name="supplySettlementBeginDate" placeholder="" style="width: 112px;" />
+        </div>
+        <div class="u-txt">
+            <span class="line" style="width: 24px;">-</span>
+        </div>
+        <div class="u-txt u-txt-date">
+            <i class="iconfont icon-calendar"></i>
+            <input type="text" class="ipt-txt c-gray1" id="supplySettlementEndDate" name="supplySettlementEndDate" placeholder="" style="width: 112px;" />
+        </div>
+        <label class="u-lb-sm">订单状态</label>
+        <div class="u-txt col-xs-3">
+            <select class="ipt-txt" name="s_statusList" id="s_statusList" style="width: 100%">
+            </select>
+        </div>
+        <div class="u-btn-box1">
+            <input type="button" class="u-btn-mddkbl f-mr-xs" value="导出" />
+            <input type="button" class="u-btn-mddkorg u-w querySupplySettlement" value="查询" onclick="supplySettlement.list.query()" />
+        </div>
+    </form>
+</div>

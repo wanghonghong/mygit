@@ -1,0 +1,35 @@
+<ul class="m-orderinfo-dialog">
+    <li>
+        <div class="bg-gray1">活动名称</div>
+        <div>{{name}}</div>
+    </li>
+    <li>
+        <div class="bg-gray1">活动商品</div>
+        <div>{{productName}}</div>
+    </li>
+    <li>
+        <div class="bg-gray1">拼团价格</div>
+        <div><font style="font-family: arial;">¥ </font><font>{{price/100}}</font></div>
+    </li>
+    <li>
+        <div class="bg-gray1">活动图片</div>
+        <div style="padding-bottom: 5px;"><img src="{{imageUrl|default(globalUrl+'/css/pc/img/no_picture.png',true)}}" alt="暂无图片" class="u-thumbnail-squa"></div>
+    </li>
+    <li>
+        <div class="bg-gray1">活动拼团人数</div>
+        <div><font></font>{{groupType}}人</div>
+    </li>
+    <li>
+        <div class="bg-gray1">活动状态</div>
+        <div>
+            {%if status==0%}
+               <font color="#6dc87b">未开始</font>
+            {%elif status==1%}
+            <font color="#6dc87b">进行中</font>
+            {%elif status==2%}
+            <font color="#6dc87b">已暂停</font>
+            {%endif%}
+        </div>
+    </li>
+</ul>
+<div class="u-btn-box1 f-mt-m"><input type="button" class="u-btn-mddkgry" value="关闭" id="action_close"></div>

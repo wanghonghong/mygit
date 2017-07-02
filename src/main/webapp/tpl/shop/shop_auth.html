@@ -1,0 +1,119 @@
+<style>
+    .authfont{font-family: '宋体', Verdana, Arial, Helvetica, sans-serif;}
+    .shop-rzbx label {
+        width: 112px;
+        display: inline-block;
+        text-align: right;
+    }
+    .multimarketing .djfe-bjth .sell-set-details .sell-set-details-right .sell-second-checkbox {
+        margin-left: 1px;
+    }
+    .sell-third-checkbox span{
+        color: #999;
+    }
+    .sell-third-checkbox .checkBox label {
+
+        font-size: 16px;
+        top: -2px;
+        left: 2px;
+
+    }
+    .multimarketing .djfe-bjth {
+        padding-top: 20px;
+        margin-left: 16px;
+    }
+</style>
+
+<div  style="width:1148px;float: left;padding: 0px 24px 58px 0px;">
+    <div class="manage mallBuilding multimarketing">
+        <div class="row clearfix">
+            <div class=" djfe-bjth shop-rzbx dialoginfo-lstk">
+                <div class="goods-sell-set">
+                    <div class="sell-set-details">
+                        <div class="sell-set-details-right padding-bottom-m">
+                            <div class="sell-second-checkbox">
+                              <!--  <div class="sell-third-checkbox " >
+                                    <label class="marginr1 authfont">认证状态</label>
+                                    <div class="checkBox">
+                                        <input type="checkbox" name="" id="checkbox1" value="" />
+                                        <label class="iconfont icon-avoid"  for="checkbox1"></label>
+                                    </div>
+                                    <span class="authfont">微信企业认证</span>
+                                    <div class="checkBox">
+                                        <input type="checkbox" name="" id="checkbox2" value="" />
+                                        <label class="iconfont icon-avoid"  for="checkbox2"></label>
+                                    </div>
+                                    <span class="authfont">个人实名认证</span>
+                                    <div class="checkBox">
+                                        <input type="checkbox" name="" id="checkbox3" value="" />
+                                        <label class="iconfont icon-avoid"  for="checkbox3"></label>
+                                    </div>
+                                    <span class="authfont">聚米优商认证</span>
+                                </div>-->
+
+                                <div class="sell-third-checkbox ">
+                                    <label class="marginr1 authfont">服务承诺(可多选)</label>
+                                     <div class="checkBox">
+                                        {% if directSell==1 %}
+
+                                        <input type="checkbox" name="checkbox" id="directSell"   value="{{directSell}}" checked="true" />
+                                        {% else %}
+                                        <input type="checkbox" name="checkbox" id="directSell"  value="{{directSell}}" />
+                                        {% endif %}
+                                        <label class="iconfont icon-avoid"  for="directSell"></label>
+                                    </div>
+                                    <span  class="authfont">官方直营</span>
+                                    <div class="checkBox">
+                                       {% if promise==1 %}
+                                        <input type="checkbox" name="checkbox" id="promise"   value="{{promise}}" checked="true" />
+                                        {% else %}
+                                        <input type="checkbox" name="checkbox" id="promise"  value="{{promise}}"  />
+                                        {% endif %}
+                                        <label class="iconfont icon-avoid"  for="promise"></label>
+                                    </div>
+                                    <span  class="authfont">无假货承诺</span>
+                                    <div class="checkBox">
+                                        {% if exchange==1 %}
+                                        <input type="checkbox" name="checkbox" id="exchange"    value="{{exchange}}" checked="true" />
+                                        {% else %}
+                                        <input type="checkbox" name="checkbox" id="exchange"  value="{{exchange}}" />
+                                        {% endif %}
+
+                                        <label class="iconfont icon-avoid"  for="exchange"></label>
+                                    </div>
+                                    <span class="authfont">7 天无理由退换</span>
+
+                                </div>
+                                <div class="sell-third-checkbox ">
+                                    <label class="marginr1 authfont">保险保障</label>
+                                    <div class="checkBox">
+                                        {% if safety==1 %}
+                                        <input type="checkbox" name="checkbox" id="safety"   checked="true"  value="{{safety}}" />
+                                        {% else %}
+                                        <input type="checkbox" name="checkbox" id="safety"    value="{{safety}}" />
+                                        {% endif %}
+
+                                        <label class="iconfont icon-avoid"  for="safety"></label>
+                                    </div>
+                                    <span class="authfont">平安品质保险</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="u-btn-box1">
+    <input type="button" class="u-btn-mainlg" id="shop_auth_save" value="保存" />
+</div>
+<!--<div style="margin: 61px 0 69px;">-->
+    <!--<div style="padding:0 30px;" class="btn btn-darkorange btn-radius-5 btn-lg col-xs-offset-6" id="shop_auth_save">保存</div>-->
+<!--</div>-->
+<script>
+    shop.shopmanage.shop_auth_edit();
+</script>

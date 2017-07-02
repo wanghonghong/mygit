@@ -1,0 +1,26 @@
+<style>
+.gmn{
+	padding: 23px 24px 23px 0;
+	width: 1154px;
+	float: left;
+}
+</style>
+<!--主模块-->
+<section style="">
+{% for item in account_list %}
+	<ul class="m-shop-box" >
+		<li>{{item.nickName}}</li>
+		<li class="img"><img src="{{item.headImg}}" /></li>
+		<li>微信已授权</li>
+		<a href="javascript:juke.jukeRed.gotoJkList('{{item.appid}}');">
+			<li>进入</li>
+		</a>
+	</ul>
+{%endfor%}
+ <ul class="m-shop-box1" > 
+	<li></li>
+	<li><a href="{{CONTEXT_PATH}}/auth/page_jk" target="_blank"><i class="iconfont icon-add"></i></a></li>
+	<li>新增授权</li>
+</ul>
+</section>
+

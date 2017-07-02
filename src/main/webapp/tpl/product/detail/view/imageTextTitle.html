@@ -1,0 +1,16 @@
+<div class="custom-imageTextTitle">
+    <div class="custom-head">
+        <i class="iconfont icon-left"></i>
+        <span>{{imageTextTile|default('暂无标题',ture)}}</span>
+    </div>
+
+        <div class="lenjoy-details">
+            <span class="lenjoy-details-title">{{imageTextTile|default('暂无标题',ture)}} </span>
+            {% if formatCode==1 %}
+            <div class="lenjoy-details-time">
+                <span>{{timeTxt|default('时间',ture)}} </span>
+                <span>{{authorTxt|default('作者',ture)}} </span>
+            </div>
+            {% endif %}
+        </div>
+</div>

@@ -1,0 +1,134 @@
+<div class="m-sell-set f-mt-l" id="basicBox" style="margin-left: 0;">
+    <div class="sell-set-left">
+        <h3>基本信息</h3>
+    </div>
+    <div class="sell-set-right">
+        <div class="col-xs-12 f-mt-xs">
+            <input type="hidden" name="pid" id="pid" value="{{product.pid}}" >
+            <label class="u-lb-md u-rd-lh">商品属性</label>
+            <div class="f-fl col-xs-6">
+                <div class="u-rb">
+                    <input type="radio" name="typeId" id="typeId1" value="0"       />
+                    <label for="typeId1"></label>
+                </div>
+                <label for="typeId1" class="u-rd-wd">实物商品</label>
+                <div class="u-rb">
+                    <input type="radio" name="typeId" id="typeId2" value="1" />
+                    <label for="typeId2"></label>
+                </div>
+                <label for="typeId2" class="u-rd-wd">虚拟商品</label>
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <label class="u-lb-md"><span class="f-star">*&nbsp;</span>商品标签</label>
+            <div class="u-txt col-xs-6">
+
+                <select class="ipt-txt" name="tagId" id="tagId" style="width: 100%">
+
+                </select>
+            </div>
+            <div class="m-tip4">
+                <i class="iconfont icon-lamp"></i>
+                <span>单个商品单个标签，点击选择</span>
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <label class="u-lb-md"><span class="f-star">*&nbsp;</span>商品名称</label>
+            <div class="u-txt col-xs-6">
+                <input type="text" class="ipt-txt" maxlength="20" name="name" id="goodsname" placeholder="请输入文字" value="{{product.name}}" />
+            </div>
+            <div class="m-tip4">
+                <i class="iconfont icon-lamp"></i>
+                <span>字符规格<span id="tmpfontsize">{{product.name.length|default(0,ture)}}</span>/20</span>
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <label class="u-lb-md"><span class="f-star">*&nbsp;</span>商品分类</label>
+            <div class=" col-xs-6 f-mb-s">
+
+                <select   name="grouplist" id="grouplist"  style="width: 100%">
+                </select>
+            </div>
+            <div class="m-tip4">
+                <i class="iconfont icon-lamp"></i>
+                <span>单个商品可归属多个分类，点击多选</span>
+            </div>
+        </div>
+
+        <div class="col-xs-12">
+            <label class="u-lb-md"><span class="f-star">*&nbsp;</span>商品价格</label>
+            <div class="u-txt col-xs-4">
+                <input type="number" class="ipt-txt" placeholder="0.00" min="0" id="goodsPrice"  name="price"   value="{{product.price|default(0,ture) /100}}" />
+            </div>
+            <div class="m-tip4">
+                <i class="iconfont icon-lamp"></i>
+                <span>若多种规格多种价格，填写最低价</span>
+            </div>
+        </div>
+        <div class="col-xs-12 m-base-info-img">
+            <label class="u-lb-md"><span class="f-star">*&nbsp;</span>商品主图</label>
+            <div>
+                <div class="img-square-box" id="img-square-box">
+                    <div class="info-img-square-add f-mb-xs" id="addImgSquare">
+                         <i style="position:absolute" class="iconfont icon-add"></i>
+                    </div>
+                    <input type="hidden" name="picSquare" id="picSquare" value="{{product.picSquare}}" >
+                    <input type="hidden" name="detailSquarePic" id="detailSquarePic" value="{{product.detailSquarePic}}" >
+                </div>
+                <div style="clear: both;overflow: hidden"> </div>
+                <div class="img-rectangle-box" id="img-rectangle-box">
+                    <div class="info-img-rectangle-add f-mb-xs" id="addImgRectangle">
+                         <i style="position:absolute" class="iconfont icon-add"></i>
+                    </div>
+                    <input type="hidden" name="picRectangle" id="picRectangle" value="{{product.picRectangle}}" >
+                    <input type="hidden" name="detailRectanglePic" id="detailRectanglePic" value="{{product.detailRectanglePic}}" >
+                </div>
+            </div>
+            <div class="m-tip3">
+                <i class="iconfont icon-lamp"></i>
+                <span>建议尺寸：正方形<span>318*318</span>像素，长方形<span>983*318</span>像素，各自至多上传8张图片，您可以通过拖拽图片调整图片顺序</span>
+            </div>
+        </div>
+        <div class="col-xs-12 m-base-info-img">
+            <label class="u-lb-md">商品视频</label>
+            <div>
+                <div class="productVideo-box" id="productVideo-box">
+
+                    <div class="video-box {%if not product.productVideo %}z-hide{%endif%}">
+                        <i class="iconfont icon-delete2"></i>
+                        <embed src="{{product.productVideo}}"
+                               align="middle"
+                               id="productembed"
+                               allowFullScreen="true"
+                               allowScriptAccess="always"
+                               type="application/x-shockwave-flash">
+                        </embed>
+                        <span>点击选择视频 </span>
+                    </div>
+                    <div class="video-add {%if product.productVideo %}z-hide{%endif%}">
+                        <div class="info-img-rectangle-add f-mb-xs" id="" style="margin-top: 0;">
+                            <i style="position:absolute" class="iconfont icon-add"></i>
+                        </div>
+                    </div>
+
+
+                </div>
+                <input type="hidden" name="productVideo" id="productVideo" value="{{product.productVideo}}" >
+            </div>
+            <div class="m-tip3 f-pt-s">
+                <i class="iconfont icon-lamp"></i>
+                <span>请选择一个商品视频，暂时只支持腾讯视频 </span>
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <label class="u-lb-md">显示排序</label>
+            <div class="u-txt col-xs-2">
+                <input type="text" class="ipt-txt" placeholder="10"  name="sort"  value="{{product.sort}}" />
+            </div>
+            <div class="m-tip4">
+                <i class="iconfont icon-lamp"></i>
+                <span>填写手机，数字越小，手机上该商品在该分类中显示越靠前，建议从10开始编号</span>
+            </div>
+        </div>
+    </div>
+</div>

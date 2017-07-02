@@ -1,0 +1,273 @@
+<div class="m-tab">
+    <ul>
+        <li class="z-sel">供货结算</li>
+        <li>货品设置</li>
+    </ul>
+</div>
+<!--供货结算-->
+<div class="panel-hidden">
+    <div class="m-search f-mt-m" id="m-search">
+        <label class="u-lb-sm">商品名称</label>
+        <div class="u-txt col-xs-3">
+            <input type="text" class="ipt-txt" placeholder="请输入商品名称" />
+        </div>
+        <label class="u-lb-sm">店主姓名</label>
+        <div class="u-txt col-xs-3">
+            <input type="text" class="ipt-txt" placeholder="请输入店主姓名" />
+        </div>
+        <label class="u-lb-sm">订单状态</label>
+        <div class="u-txt col-xs-3">
+            <select class="ipt-txt c-gray1">
+                <option value="1">待发货</option>
+                <option value="2">已发货</option>
+                <option value="1">已收货</option>
+                <option value="2">退款管理</option>
+            </select>
+        </div>
+        <label class="u-lb-sm">代发店铺</label>
+        <div class="u-txt col-xs-3">
+            <input type="text" class="ipt-txt" placeholder="请输入代发店铺" />
+        </div>
+        <label class="u-lb-sm">店主手机</label>
+        <div class="u-txt col-xs-3">
+            <input type="text" class="ipt-txt" placeholder="请输入店主手机" />
+        </div>
+        <label class="u-lb-sm">发货日期</label>
+        <div class="u-txt u-txt-date f-ml-m">
+            <i class="iconfont icon-calendar"></i>
+            <input type="text" class="ipt-txt c-gray1" id="loanSettlementBeginDate" name="loanSettlementBeginDate" placeholder="开始时间" style="width: 112px;" />
+        </div>
+        <div class="u-txt">
+            <span class="line" style="width: 24px;">-</span>
+        </div>
+        <div class="u-txt u-txt-date">
+            <i class="iconfont icon-calendar"></i>
+            <input type="text" class="ipt-txt c-gray1" id="loanSettlementEndDate" name="loanSettlementEndDate" placeholder="结束时间" style="width: 112px;" />
+        </div>
+        <div class="u-btn-box1">
+            <input type="button" class="u-btn-mddkbl f-mr-xs" value="导出" />
+            <input type="button" class="u-btn-mddkorg u-w" value="查询" />
+        </div>
+    </div>
+    <a class="btn-slide btn-slide1"></a>
+    <!--查询块-->
+    <div class="m-jm-table f-mt-l">
+        <ul class="table-hander">
+            <li style="width: 25%;">主图-名称</li>
+            <li>数量（件）</li>
+            <li>供货价（元）</li>
+            <li>小计（元）</li>
+            <li>发货时间</li>
+            <li>订单状态</li>
+            <li>代发店铺</li>
+            <li style="width: 15%;">店主姓名-手机</li>
+        </ul>
+        <div class="table-body u-loanlist">
+            <ul class="table-container">
+                <li style="width: 25%;">
+                    <div class="g-table">
+                        <div class="g-table-cell f-vm" style="width: 40%;">
+                            <img class="u-thumbnail-lg90" src="{{globalUrl}}/css/pc/img/no_picture.png"/>
+                        </div>
+                        <div class="g-table-cell f-vm f-tl" style="width: 60%;">
+                            <span>夏季男士短袖纯棉T恤 透气透气</span>
+                        </div>
+                    </div>
+                </li>
+                <li>2</li>
+                <li>54.00</li>
+                <li>108.00</li>
+                <li>2016-08-22<br />16:05:20</li>
+                <li>待发货</li>
+                <li>星星服装店</li>
+                <li style="width: 15%;">陈小君<br />18650026342</li>
+            </ul>
+            <ul class="table-container">
+                <li style="width: 25%;">
+                    <div class="g-table">
+                        <div class="g-table-cell f-vm" style="width: 40%;">
+                            <img class="u-thumbnail-lg90" src="{{globalUrl}}/css/pc/img/no_picture.png"/>
+                        </div>
+                        <div class="g-table-cell f-vm f-tl" style="width: 60%;">
+                            <span>夏季男士短袖纯棉T恤 透气透气</span>
+                        </div>
+                    </div>
+                </li>
+                <li>2</li>
+                <li>54.00</li>
+                <li>108.00</li>
+                <li>2016-08-22<br />16:05:20</li>
+                <li>已发货</li>
+                <li>星星服装店</li>
+                <li style="width: 15%;">陈小君<br />18650026342</li>
+            </ul>
+            <ul class="table-container">
+                <li style="width: 25%;">
+                    <div class="g-table">
+                        <div class="g-table-cell f-vm" style="width: 40%;">
+                            <img class="u-thumbnail-lg90" src="{{globalUrl}}/css/pc/img/no_picture.png"/>
+                        </div>
+                        <div class="g-table-cell f-vm f-tl" style="width: 60%;">
+                            <span>夏季男士短袖纯棉T恤 透气透气</span>
+                        </div>
+                    </div>
+                </li>
+                <li>2</li>
+                <li>54.00</li>
+                <li>108.00</li>
+                <li>2016-08-22<br />16:05:20</li>
+                <li>已收货</li>
+                <li>星星服装店</li>
+                <li style="width: 15%;">陈小君<br />18650026342</li>
+            </ul>
+            <ul class="table-container">
+                <li style="width: 25%;">
+                    <div class="g-table">
+                        <div class="g-table-cell f-vm" style="width: 40%;">
+                            <img class="u-thumbnail-lg90" src="{{globalUrl}}/css/pc/img/no_picture.png"/>
+                        </div>
+                        <div class="g-table-cell f-vm f-tl" style="width: 60%;">
+                            <span>夏季男士短袖纯棉T恤 透气透气</span>
+                        </div>
+                    </div>
+                </li>
+                <li>2</li>
+                <li>54.00</li>
+                <li>108.00</li>
+                <li>2016-08-22<br />16:05:20</li>
+                <li>退款管理</li>
+                <li>星星服装店</li>
+                <li style="width: 15%;">陈小君<br />18650026342</li>
+            </ul>
+        </div>
+        <div id="pageToolbar" class="pagination f-fr f-mt-m">
+            <span class="prev">&lt;</span>
+            <span class="current">1</span>
+            <a href="javascript:void(0)">2</a>
+            <a href="javascript:void(0)">3</a>
+            <em>...</em>
+            <a href="javascript:void(0)">9</a>
+            <a href="javascript:void(0)">10</a>
+            <span class="next">&gt;</span>
+            <input type="text" value="" class="ipt-page" />
+            <div class="u-btn-pageto">跳转</div>
+            <input type="hidden" id="pageToolbar_page" value="0">
+        </div>
+    </div>
+</div>
+<!--/-->
+<!--货品设置-->
+<div class="panel-hidden">
+    <div class="m-search f-mt-m" id="m-search1">
+        <label class="u-lb-sm">商品名称</label>
+        <div class="u-txt col-xs-3">
+            <input type="text" class="ipt-txt" placeholder="请输入商品名称" />
+        </div>
+        <label class="u-lb-sm">代发店铺</label>
+        <div class="u-txt col-xs-3">
+            <input type="text" class="ipt-txt" placeholder="请输入代发店铺" />
+        </div>
+        <label class="u-lb-sm">店主姓名</label>
+        <div class="u-txt col-xs-1" style="width: 11%;">
+            <input type="text" class="ipt-txt" placeholder="请输入姓名" />
+        </div>
+        <label class="u-lb-ssm">手机</label>
+        <div class="u-txt col-xs-1" style="width: 11%;">
+            <input type="text" class="ipt-txt" placeholder="请输入手机" />
+        </div>
+        <div class="u-btn-box1">
+            <input type="button" class="u-btn-mddkbl f-mr-xs" value="导出" />
+            <input type="button" class="u-btn-mddkorg u-w" value="查询" />
+        </div>
+    </div>
+    <a class="btn-slide2 btn-slide3"></a>
+    <div class="m-jm-table f-mt-l">
+        <ul class="table-hander">
+            <li style="width: 30%;">主图-名称</li>
+            <li>代发店铺</li>
+            <li>店主姓名-手机</li>
+            <li>供货单位（元）</li>
+        </ul>
+        <div class="table-body u-loanlist">
+            <ul class="table-container">
+                <li style="width: 30%;">
+                    <div class="g-table">
+                        <div class="g-table-cell f-vm" style="width: 40%;">
+                            <img class="u-thumbnail-lg90" src="css/pc/img/no_picture.png"/>
+                        </div>
+                        <div class="g-table-cell f-vm f-tl" style="width: 60%;">
+                            <span>夏季男士短袖纯棉T恤 透气透气</span>
+                        </div>
+                    </div>
+                </li>
+                <li>星星服装店</li>
+                <li>陈小君<br />18046238520</li>
+                <li><input type="text" class="table-input c-gray1" value="54.02" /></li>
+            </ul>
+            <ul class="table-container">
+                <li style="width: 30%;">
+                    <div class="g-table">
+                        <div class="g-table-cell f-vm" style="width: 40%;">
+                            <img class="u-thumbnail-lg90" src="css/pc/img/no_picture.png"/>
+                        </div>
+                        <div class="g-table-cell f-vm f-tl" style="width: 60%;">
+                            <span>夏季男士短袖纯棉T恤 透气透气</span>
+                        </div>
+                    </div>
+                </li>
+                <li>星星服装店</li>
+                <li>陈小君<br />18046238520</li>
+                <li><input type="text" class="table-input c-gray1" value="54.02" /></li>
+            </ul>
+        </div>
+        <div id="pageToolbar" class="pagination f-fr f-mt-m">
+            <span class="prev">&lt;</span>
+            <span class="current">1</span>
+            <a href="javascript:void(0)">2</a>
+            <a href="javascript:void(0)">3</a>
+            <em>...</em>
+            <a href="javascript:void(0)">9</a>
+            <a href="javascript:void(0)">10</a>
+            <span class="next">&gt;</span>
+            <input type="text" value="" class="ipt-page" />
+            <div class="u-btn-pageto">跳转</div>
+            <input type="hidden" id="pageToolbar_page" value="0">
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function(){
+        $(".panel-hidden").hide().eq(0).show();
+        var tabul = $(".m-tab ul li");
+        tabul.click(function(){
+            tabul.eq($(this).index()).addClass("z-sel").siblings().removeClass('z-sel');
+            $(".panel-hidden").hide().eq($(this).index()).show();
+        });
+        $(".btn-slide").click(function(){
+            $("#m-search").slideToggle("fast");
+            $(this).toggleClass("btn-slide1"); return false;
+        })
+        $(".btn-slide2").click(function(){
+            $("#m-search1").slideToggle("fast");
+            $(this).toggleClass("btn-slide3"); return false;
+        })
+    })
+
+    $("#loanSettlementBeginDate").datetimepicker({
+        showSecond : true,
+        timeFormat : 'hh:mm:ss',
+        dateFormat : 'yy-mm-dd',
+        stepHour : 1,
+        stepMinute : 1,
+        stepSecond : 1
+    });
+    $("#loanSettlementEndDate").datetimepicker({
+        showSecond : true,
+        timeFormat : 'hh:mm:ss',
+        dateFormat : 'yy-mm-dd',
+        stepHour : 1,
+        stepMinute : 1,
+        stepSecond : 1
+    });
+</script>

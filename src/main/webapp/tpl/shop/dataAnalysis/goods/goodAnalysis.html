@@ -1,0 +1,120 @@
+
+<div class="m-tab" id="good">
+    <ul>
+        <li id="good_1" class="z-sel" onclick="dataAnalysis.good.init(1)">基础数据</li>
+        <li id="good_2" onclick="dataAnalysis.good.init(2)">效果分析</li>
+    </ul>
+</div>
+<div id="m-tab-content">
+<!--基础数据-->
+{% include '/tpl/shop/dataAnalysis/goods/basic1.html' %}
+<!--/-->
+<!--效果分析-->
+{% include '/tpl/shop/dataAnalysis/goods/basic2.html' %}
+<!--/-->
+</div>
+
+<script type="text/javascript">
+
+    function g(n){
+        $("#m-search_g"+n).slideToggle("fast");
+        $("#btn_"+n).toggleClass("btn-slide1"); return false;
+    }
+    /*$(function(){
+
+        //趋势图分析begin
+        $(".dialog").click(function() {
+            var elem = document.getElementById('dialoginfo');
+            dialog({
+                title: "趋势图分析",
+                content: elem
+            }).width(990).showModal();
+        });
+        //趋势图分析begin
+        var myCharttrend = echarts.init(document.getElementById('charttrend'));
+        var optiontrend = {
+            tooltip: {
+                trigger: 'axis'
+            },
+            legend: {
+                data:['浏览人数','浏览人次','销售人次','销售单次','单品转化率','销售数量']
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            toolbox: {
+                right: '20',
+                feature: {
+                    saveAsImage: {}
+                }
+            },
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: ['2016-10-01','2016-10-02','2016-10-03','2016-10-04','2016-10-05','2016-10-06','2016-10-07']
+            },
+            yAxis: {
+                type: 'value'
+            },
+            color:['#5d9cec', '#62c87f','#f15755','#fc863f','#947ec8','#ffce55'] ,
+            series: [
+                {
+                    name:'浏览人数',
+                    type:'line',
+                    stack: '总量',
+                    symbol: 'circle',
+                    symbolSize: '7',
+                    data:[120, 132, 101, 134, 90, 230, 210]
+                },
+                {
+                    name:'浏览人次',
+                    type:'line',
+                    stack: '总量',
+                    symbol: 'circle',
+                    symbolSize: '7',
+                    data:[220, 182, 191, 234, 290, 330, 310]
+                },
+                {
+                    name:'销售人次',
+                    type:'line',
+                    stack: '总量',
+                    symbol: 'circle',
+                    symbolSize: '7',
+                    data:[150, 232, 201, 154, 190, 330, 410]
+                },
+                {
+                    name:'销售单次',
+                    type:'line',
+                    stack: '总量',
+                    symbol: 'circle',
+                    symbolSize: '7',
+                    data:[320, 332, 301, 334, 390, 330, 320]
+                },
+                {
+                    name:'单品转化率',
+                    type:'line',
+                    stack: '总量',
+                    symbol: 'circle',
+                    symbolSize: '7',
+                    data:[820, 932, 901, 934, 1290, 1330, 1320]
+                },
+                {
+                    name:'销售数量',
+                    type:'line',
+                    stack: '总量',
+                    symbol: 'circle',
+                    symbolSize: '7',
+                    data:[820, 932, 901, 934, 1290, 1330, 1320]
+                }
+            ]
+        };
+        myCharttrend.setOption(optiontrend);
+        //趋势图分析end
+    })*/
+</script>
+<script type="text/javascript">
+    dataAnalysis.good.init(1);
+</script>

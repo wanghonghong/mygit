@@ -1,0 +1,118 @@
+<style>
+
+    .sell-set-details-right .form-group, .stock-info-details .sell-set-details-right .form-group, .sell-set-details .sell-set-details-right .form-group{
+        margin-bottom: 0;
+    }
+    .tag-tips{
+        margin-top:-5px;
+        height: 32px;
+    }
+
+</style>
+<input type="hidden" name="subType" id="subType" value="1"/>
+<div id="tabcontent3" class="tabcontent">
+    <div class=" djfe-bjth shop-jbsz">
+        <div class="goods-sell-set goods-sell-set1 margin-top-l" style="margin-bottom: 20px">
+            <div class="sell-set-details">
+                <div class="sell-set-details-left">
+                    <div >服务角色</div>
+                </div>
+                <div class="sell-set-details-right">
+                    <div id="service_content" style="display: inline-block">
+                        <i class="iconfont icon-edit"></i>
+                        <span class="service_role"  data-id="{{applyRoleId}}" data-name="{{applyRole}}" >{{applyRole}}</span>
+                    </div>
+                    <div  class="btn  btn-lightgray btn-sm dialog" id="service_modify_btn"> 修改申请 </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="goods-sell-set goods-sell-set2">
+
+            <div class="sell-set-details">
+                <div class="sell-set-details-left">
+                    <div >个人资料</div>
+                </div>
+                <div class="sell-set-details-right">
+                    <form id="signupForm3" method="post" action="">
+                    <div class="form-group">
+                        <label class="margin-right-m">联系名称</label>
+                        <input type="text" class="form-control" id="userName" name="userName" value="{{userName}}" placeholder="" />
+                    </div>
+                    <div class="form-group ">
+                        <label class="margin-right-m">开通时间</label>
+                        <input type="text" class="form-control" value="{{createDate}}" placeholder="2015-12-12"  disabled/>
+                    </div>
+                    <div class="form-group form-gswz">
+                        <label class="margin-right-m">业绩</label>
+                        <input type="text" id="performance" name="performance" value="{{performance}}" class="form-control" placeholder="" />
+                    </div>
+                    <div class="form-group szd clearfix form-szd distpicker" data-autoselect="0" data-province="省">
+                    <label class="margin-right-m">经营地址</label>
+                    <select id="province2" name="province2" value="{{province}}" class="form-control floatleft" >
+                    </select>
+                    <span class="floatleft">-</span>
+                    <select id="city2" name="city2" value="{{city}}" class="floatleft form-control">
+                    </select>
+                    <span class="floatleft">-</span>
+                    <select id="district2" name="district2" value="{{district}}" class="floatleft form-control">
+                    </select>
+                    </div>
+                        <input type="hidden" name="_province2" id="_province2" value="{{province}}"/>
+                        <input type="hidden" name="_city2" id="_city2" value="{{city}}"/>
+                        <input type="hidden" name="_district2" id="_district2" value="{{district}}"/>
+                    <div class="form-group form-fxy">
+                        <label class="margin-right-m">详细地址</label>
+                        <textarea id="address" name="address"  class="form-control" placeholder="">{{address}}</textarea>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div style="margin: 40px 0 20px;">
+        <div style="padding:0 30px;" class="btn btn-darkorange btn-radius-5 btn-lg col-xs-offset-5" id="save3">提交修改</div>
+    </div>
+</div>
+
+<div id="dialoginfo" class="dialoginfo">
+
+    <div class="tag-tips">
+        <i class="iconfont icon-lamp"></i>
+        <span>服务商角色最多只能选1个</span>
+    </div>
+    <div class="tag-details">
+        {%for zbRole in roles %}
+        <div class="sort">
+            {{zbRole.roleName}}
+            <input type="radio"  name="zbRole" id="zbRole{{zbRole.roleId}}" value="{{zbRole.roleId}}"  data-name="{{zbRole.roleName}}" />
+            <label class="iconfont icon-avoid" ></label>
+        </div>
+        {%endfor%}
+    </div>
+</div>
+<script>
+
+    $(function(){
+        $("#dialoginfo").on("click",".sort",function(event){
+            event.stopPropagation();
+            $('.sort').find('input').attr("checked",false);
+            $(this).children("input").prop("checked",false);
+            $(this).toggleClass("sort-active").siblings().removeClass('sort-active');
+            $(this).children("input").attr("checked",true);
+            $(this).children("input").prop("checked",true);
+//            var has=$(this).hasClass("sort-active");
+//            if(has==true){
+//
+//                $(this).children("input").attr("checked",true);
+//                $(this).children("input").prop("checked",true);
+//            }
+//            else{
+//                $(this).children("input").attr("checked",false);
+//                $(this).children("input").prop("checked",false);
+//            }
+        })
+
+    })
+</script>

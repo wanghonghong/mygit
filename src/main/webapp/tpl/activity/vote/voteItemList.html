@@ -1,0 +1,30 @@
+{% for item in items %}
+<ul class="table-container">
+    <li>
+        {% if item.voteType==1 %}
+        <img class="u-thumbnail-squa" src="{{item.resUrl|default(globalUrl+'/css/pc/img/no_picture.png',ture)}}">
+        {% elif item.voteType ==2 %}
+        <img class="u-thumbnail-squa" src="{{globalUrl}}/css/pc/img/m_video.png">
+        {% elif item.voteType ==3 %}
+        <img class="u-thumbnail-squa" src="{{globalUrl}}/css/pc/img/music_stop.png">
+        {% endif %}
+
+    </li>
+    <li class="f-tl" style="width: 28%; padding: 0 25px;">
+        <p title="">{{item.name}}</p>
+    </li>
+    <li>
+        {% if item.voteType==1 %}图片 {% elif item.voteType ==2 %} 视频 {% elif item.voteType ==3 %} 音频 {% endif %}
+    </li>
+    <li class="f-tl" style="padding-left: 70px; padding-right: 30px;">{{item.createTime}}</li>
+    <li>
+        <div class="u-btn-smltgry" data-id="{{item.id}}" onclick="vote.item.updateItem(this)">编辑</div>
+        <div class="u-btn-smltgry" data-id="{{item.id}}" onclick="vote.item.delItem(this)">删除</div>
+    </li>
+</ul>
+{% else %}
+<div class="m-jm-err">
+    <img src="{{globalUrl}}/css/pc/img/jm-nodb.png">
+</div>
+
+{% endfor %}

@@ -1,0 +1,42 @@
+{%if items.length>0%}
+{%for item in items %}
+<ul class="table-container f-pd f-t-off">
+    <li class="f-tl" style="width:25%; padding: 0 15px;">
+        <p title="">{{item.cardName}}</p>
+    </li>
+    <li>{{item.cardMoney}}</li>
+    <li>
+        {%if item.userLimit== 0%}
+        全店通用
+        {%endif%}
+        {%if item.userLimit== 1%}
+        指定商品
+        {%endif%}
+    </li>
+
+    {%if item.periodType== 2%}
+    <li>{{item.startTime}}<br />{{item.endTime}} </li>
+    {%endif%}
+    {%if item.periodType== 1%}
+    <li>  {{item.fixDate}}天</li>
+    {%endif%}
+
+    <li>{{item.createTime}}</li>
+    <li>
+        <div class="u-btn-smltgry" id="edit_{{item.id}}">编辑 </div>
+        <div class="u-btn-smltgry" id="view_{{item.id}}">查看 </div>
+        <div class="u-btn-smltgry" id="del_{{item.id}}">删除 </div>
+    </li>
+</ul>
+{%endfor%}
+{%else%}
+<div class="m-jm-err">
+    <img src="{{globalUrl}}/css/pc/img/jm-nodb.png">
+</div>
+{%endif%}
+
+<script>
+    activity.gift.gift_data_edit();
+    activity.gift.gift_data_view();
+    activity.gift.gift_data_del();
+</script>

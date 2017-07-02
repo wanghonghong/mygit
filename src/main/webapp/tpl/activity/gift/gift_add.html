@@ -1,0 +1,301 @@
+<div class="m-tips-errs" style="margin:5px 0px;display: none" id="error"><i class="iconfont icon-errorhint"></i><em id="tipError"></em></div>
+<!--inline-block;-->
+<div class="col-xs-4">
+    <div class="m-phone-view" style="margin-left: 0; margin-top: -15px;">
+        <div class="phone-shell-top">
+        </div>
+        <div class="phone-window fxsz">
+            <img src="{{globalUrl}}/css/pc/img/fxsz.png" />
+        </div>
+        <div class="phone-shell-bottom">
+        </div>
+    </div>
+</div>
+
+<div class="col-xs-8" id="gift_container" style="padding: 0;">
+    <!--基本设置-->
+<form id="gift_form">
+    <div class="m-sell-set f-mb-s bg-white" style=" margin-left: 0;">
+        <div class="sell-set-left f-pt-m">
+            <h3 style="padding-left: 10px;">基本设置</h3>
+        </div>
+        <div class="sell-set-right f-pb-s f-pt-l">
+            <label class="u-lb-md c-black f-cb">礼券标题</label>
+            <div class="u-txt col-xs-10">
+                <input type="text" id="cardName" name="cardName" class="ipt-txt" value="{{cardName}}"  placeholder="请输入礼券标题" /> <input type="hidden" id="cardId" value="{{id}}"/>
+            </div>
+            <label class="u-lb-md c-black f-cb">礼券颜色</label>
+            <div class="col-xs-9 f-pt-s f-mb-s" id="colorlist">
+                <div class="m-couponcolor" style="margin-top: -8px;" id="giftColorDiv">
+                      {%if colour.length>0%}
+                     <span style="background-color:{{colour}};" id="giftColorSpan"></span><input type="hidden" id="hiddeColor" value="{{colour}}">
+                     {%else%}
+                    <span style="background-color: #b1c700;" id="giftColorSpan"></span><input type="hidden" id="hiddeColor" value="#b1c700">
+                     {%endif%}
+                    <i class="iconfont icon-belowtriangle"></i>
+                    <div class="u-couponcolor" id="giftColor">
+                        <em style="background-color: #22c2fe;" onclick="activity.gift.setGiftColor('#22c2fe')"></em>
+                        <em style="background-color: #fe6382;" onclick="activity.gift.setGiftColor('#fe6382')"></em>
+                        <em style="background-color: #fdc412;" onclick="activity.gift.setGiftColor('#fdc412')"></em>
+                        <em style="background-color: #ff2a22;" onclick="activity.gift.setGiftColor('#ff2a22')"></em>
+                        <em style="background-color: #f08501;" onclick="activity.gift.setGiftColor('#f08501')"></em>
+                        <em style="background-color: #e65dc7;" onclick="activity.gift.setGiftColor('#e65dc7')"></em>
+                        <em style="background-color: #b1c700;" onclick="activity.gift.setGiftColor('#b1c700')"></em>
+                        <em style="background-color: #252525;" onclick="activity.gift.setGiftColor('#252525')"></em>
+                    </div>
+                </div>
+            </div>
+            <label class="u-lb-md c-black f-cb">礼券面值</label>
+            <div class="col-xs-9 f-pt-s">
+                <div class="u-txt f-mb-m">
+                    <div class="ipt-txt11" style="margin-top: -8px; width: 230px;">
+                        <i class="icon-lb-word c-gray">元</i>
+                        <input type="text" id="cardMoney" name="cardMoney"  class="ipt-txt c-gray1" value="{{cardMoney}}" />
+                    </div>
+                    <div class="m-tip1 m-tip11 f-fl">
+										<span>
+											<i class="iconfont icon-lamp"></i>
+											请填写 1-999 元，仅限整数
+										</span>
+                    </div>
+                </div>
+            </div>
+           <!-- <label class="u-lb-md c-black f-cb">发放总量</label>
+            <div class="col-xs-9 f-pt-s">
+                <div class="u-txt f-mb-m">
+                    <div class="ipt-txt11" style="margin-top: -8px; width: 230px;">
+                        <i class="icon-lb-word c-gray">张</i>
+                        <input type="text" id="totalCount"  name="totalCount" class="ipt-txt c-gray1" value="{{totalCount}}" />
+                    </div>
+                </div>
+            </div>-->
+           <!-- <label class="u-lb-md c-black f-cb">总额小计</label>
+            <div class="col-xs-9 f-pt-s">
+                <div class="u-txt f-mb-m">
+                <div class="ipt-txt11" style="margin-top: -8px; width: 230px;">
+                    <i class="icon-lb-word c-gray">元</i>
+                    <input type="text" id="totalMoney" name="totalMoney" class="ipt-txt c-gray1" readonly="readonly" value="{{totalMoney}}" />
+                </div>
+            </div>
+            </div>-->
+            <label class="u-lb-md c-black f-cb">有效日期</label>
+            <div class="col-xs-10 f-pt-s">
+                <div class="f-fl u-txt" style="width: 100%; margin-bottom: 12px;">
+                    <div class="u-rb f-fl bg-white">
+
+                           {%if periodType==1 or periodType==2%}
+                          {%if periodType==2%}
+                          <input type="radio" name="00buy-r" id="periodType2" value="2" checked />
+                          {%else%}
+                          <input type="radio" name="00buy-r" id="periodType2" value="2" />
+                          {%endif%}
+                          {%else%}
+                        <input type="radio" name="00buy-r" id="periodType2" value="2" checked />
+                         {%endif%}
+                        <label for="periodType2"></label>
+                    </div>
+                    <label for="periodType2" class="f-fl f-ml-s c-gray1 u-customtime">自定义有效期</label>
+                    <div class="col-xs-8 u-customtimebox" style="margin-top: -8px;">
+                        <div class="u-txt-date">
+                            <input type="text" class="ipt-txt c-gray1" placeholder="生效日期" value="{{startTime}}" id="startTime" style="width: 140px;" />
+                        </div>
+                        <span class="line" style=" width: 20px;">-</span>
+                        <div class="u-txt-date">
+                            <input type="text" class="ipt-txt c-gray1" placeholder="失效日期" value="{{endTime}}"  id="endTime" style="width: 140px;" />
+                        </div>
+                    </div>
+                </div>
+                <div class="f-fl u-txt f-cb" style="margin-bottom: 2px;">
+                    <div class="u-rb f-fl bg-white">
+                         {%if periodType==1 or periodType==2%}
+                            {%if periodType==1%}
+                            <input type="radio" name="00buy-r" id="periodType1" value="1" checked />
+                            {%else%}
+                            <input type="radio" name="00buy-r" id="periodType1" value="1" />
+                            {%endif%}
+                            {%else%}
+                        <input type="radio" name="00buy-r" id="periodType1" value="1" />
+                        {%endif%}
+                        <label for="periodType1"></label>
+                    </div>
+                    <label for="periodType1" class="f-fl f-ml-s f-pr-m c-gray1 u-fixedtime">固定有效期</label>
+                    <div class="f-fl u-fixedtimebox" >
+                        <div class="ipt-txt11" style="margin-top: -8px; width: 110px;">
+                            <i class="icon-lb-word c-gray">天</i>
+                            {%if periodType==1%}
+                            <input type="text" id="fixDate" name="fixDate" class="ipt-txt c-gray1" value="{{fixDate}}" />
+                            {%else%}
+                            <input type="text" id="fixDate" name="fixDate" class="ipt-txt c-gray1" value="" />
+                            {%endif%}
+                        </div>
+                        <div class="m-tip1 m-tip11 f-fl">
+										<span>
+											<i class="iconfont icon-lamp"></i>
+											自领取日期开始计算时间
+										</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <label class="u-lb-md c-black f-cb">到期提醒</label>
+            <div class="col-xs-9 f-pt-s">
+                <div class="f-fl u-txt f-mb-zero">
+                    <div class="u-rb f-fl bg-white">
+                        {%if expireWarn > 0%}
+                        <input type="radio" name="buy-r1" id="expireWarn" value="{{expireWarn}}" checked />
+                        {%else%}
+                        <input type="radio" name="buy-r1" id="expireWarn" value="2" checked />
+                        {%endif%}
+                        <label for="expireWarn"></label>
+                    </div>
+                    <label for="expireWarn" class="f-fl f-ml-xs f-pr-m c-gray1">到期前 2 天提醒一次</label>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!--/-->
+    <!--礼券规则-->
+    <div class="m-sell-set f-mb-s bg-white" style=" margin-left: 0;">
+        <div class="sell-set-left f-pt-m">
+            <h3 style="padding-left: 10px;">礼券规则</h3>
+        </div>
+        <div class="sell-set-right f-pt-l f-pb-s">
+            <!--当选中大礼包的时候以下内容消失begin-->
+            <section>
+                <label class="u-lb-md c-black f-cb">使用门槛</label>
+                <div class="col-xs-9 f-pt-s">
+                    <div class="f-fl u-txt" style="margin-bottom: 0;">
+                        <div class="u-rb f-fl bg-white">
+                            {%if userCondition==0 or userCondition==1%}
+                            {%if userCondition==0%}
+                            <input type="radio" name="buy-r4" id="userCondition0" value="0" checked />
+                            {%else%}
+                            <input type="radio" name="buy-r4" id="userCondition0" value="0"  />
+                            {%endif%}
+                            {%else%}
+                            <input type="radio" name="buy-r4" id="userCondition0" value="0"  checked/>
+                            {%endif%}
+                            <label for="userCondition0"></label>
+                        </div>
+                        <label for="userCondition0" class="f-fl f-ml-s f-pr-m c-gray1">不限制订单金额</label>
+                    </div>
+                    <div class="f-fl u-txt f-cb" style="margin-bottom: 2px;">
+                        <div class="u-rb f-fl bg-white">
+                            {%if userCondition==0 or userCondition==1%}
+                            {%if userCondition==1%}
+                            <input type="radio" name="buy-r4" id="userCondition1" value="1" checked />
+                            {%else%}
+                            <input type="radio" name="buy-r4" id="userCondition1" value="1" />
+                            {%endif%}
+                            {%else%}
+                            <input type="radio" name="buy-r4" id="userCondition1" value="1" />
+                            {%endif%}
+                            <label for="userCondition1"></label>
+                        </div>
+                        <label for="userCondition1" class="f-fl f-ml-s f-pr-m c-gray1">订单买满</label>
+                        <div class="ipt-txt11" style="margin-top: -8px;">
+                            <i class="icon-lb-word c-gray">元</i>
+                            {%if userCondition==1%}
+                            <input type="text" class="ipt-txt c-gray1" id="buyMoney"  name="buyMoney" value="{{buyMoney}}" />
+                            {%else%}
+                            <input type="text" class="ipt-txt c-gray1" id="buyMoney"  name="buyMoney" value="" />
+                            {%endif%}
+
+                        </div>
+                        <label class="f-fl f-pl-xs c-gray1">可使用</label>
+                    </div>
+                </div>
+            </section>
+            <!--end-->
+            <label class="u-lb-md c-black f-cb">使用限定</label>
+            <div class="col-xs-10 f-pt-s f-mb-s">
+                <div class="f-fl u-txt" style="margin-bottom:0px;">
+                    <div class="u-rb f-fl bg-white">
+
+
+                        {%if userLimit==0 or userLimit==1%}
+                        {%if userLimit==0%}
+                        <input type="radio" name="buy-r5" id="userLimit0" value="0" checked />
+                        {%else%}
+                        <input type="radio" name="buy-r5" id="userLimit0" value="0"  />
+                        {%endif%}
+                        {%else%}
+                        <input type="radio" name="buy-r5" id="userLimit0" value="0" checked />
+                        {%endif%}
+
+                        <label for="userLimit0"></label>
+                    </div>
+                    <label for="userLimit0" class="f-fl f-ml-s c-gray1">全店通用</label>
+                    <!--选定全店通用才显示-->
+                    <div class="m-tip1 m-tip11 f-fl">
+										<span>
+											<i class="iconfont icon-lamp"></i>
+											保存后不能更改为指定商品
+										</span>
+                    </div>
+                </div>
+                <div class="f-fl u-txt f-cb" style="width: 100%; margin-bottom: 2px;">
+                    <div class="u-rb f-fl bg-white">
+
+
+                        {%if userLimit==0 or userLimit==1%}
+                        {%if userLimit==1%}
+                        <input type="radio" name="buy-r5" id="userLimit1" value="1" checked/>
+                        {%else%}
+                        <input type="radio" name="buy-r5" id="userLimit1" value="1"  />
+                        {%endif%}
+                        {%else%}
+                        <input type="radio" name="buy-r5" id="userLimit1" value="1" />
+                        {%endif%}
+
+                        <label for="userLimit1"></label>
+                    </div>
+                    <label for="userLimit1" class="f-fl f-ml-s c-gray1">指定商品</label>
+                    <!--选定指定商品才显示-->
+                    {%if cardProductsDetail.length>0%}
+                    <div  id="productlst_container">
+                        {%else%}
+                        <div  id="productlst_container" style="display: none;">
+                            {%endif%}
+
+                            <div class="m-addgoods-ttbox f-mb-s" id="productlst_obj" >
+
+                                <div id="porductlst_templatte" style="display: none;">
+                                <div class="u-btn-smltgry u-addgoodlt" id="porductlst_del"><span id="productName_"></span><i class="iconfont icon-delete1"></i></div><br />
+                                </div>
+
+                                {%if cardProductsDetail.length>0%}
+                                {%for item in cardProductsDetail%}
+                                <div  id="productlst_item_{{item.pid}}" >
+                                    <div class="u-btn-smltgry u-addgoodlt" id="productlst_del_{{item.pid}}"><span  id="productName_{{item.pid}}">{{item.name}}</span><i class="iconfont icon-delete1"></i></div><br />
+                                </div>
+                                {%endfor%}
+                                {%endif%}
+                            </div>
+
+                        <!--选定指定商品才显示-->
+                        <div class="u-btn-addnav dialog-goods" id="add_product"><i class="iconfont icon-add"></i>添加商品</div>
+                    </div>
+                </div>
+            </div>
+            <label class="u-lb-md c-black f-cb">使用说明</label>
+            <div class="u-txt col-xs-10">
+
+                {%if userNote.length>0%}
+                <textarea class="ipt-txt txtarea" id="userNote" value="{{userNote}}" >{{userNote}}</textarea>
+                {%else%}
+                <textarea class="ipt-txt txtarea" id="userNote" placeholder="请输入使用说明"></textarea>
+                {%endif%}
+
+            </div>
+        </div>
+    </div>
+    <!--/-->
+</div>
+</form>
+<div class="u-btn-box1">
+    <input type="button" class="u-btn-lgltgry f-mr-s" id="gift_cancel_btn" value="取消" style="padding: 0 35px;" />
+    <input type="button" class="u-btn-lgdkorg" id="gift_save_btn" value="保存" />
+</div>

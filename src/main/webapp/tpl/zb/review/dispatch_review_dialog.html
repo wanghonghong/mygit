@@ -1,0 +1,73 @@
+<!--审核操作begin-->
+<div id="dialoginfo-auditorder" class="dialoginfo" style="display: block">
+    <div class="m-tab" id="m-tab4">
+        <ul>
+            <li class="z-sel">派单操作</li>
+            <li>派单历史（{{zbDispatchHistoryList.length}}）</li>
+        </ul>
+    </div>
+    <div class="panel-hid2 f-padding-m" name="review-dialog" id="review-dialog1"style="padding-bottom: 0;">
+        <!--通过-->
+        <div class="m-tips-sucs"><i class="iconfont icon-checkboxselected1"></i>{{zbDispatchHistoryList.length}} 次派单已完成</div>
+        <!--/-->
+        <div class="m-graytable f-mt-m f-pb-xl">
+            <div class="table-head">
+                <ul class="table-hander">
+                    <li>渠道商</li>
+                    <li>姓名</li>
+                    <li>手机号</li>
+                    <li>代理等级</li>
+                    <li>所属地区</li>
+                </ul>
+            </div>
+            <div class="table-body">
+                <ul class="table-container">
+                    <li>{{lastDispatchHistory.companyName}}</li>
+                    <li>{{lastDispatchHistory.userName}}</li>
+                    <li>{{lastDispatchHistory.phoneNumber}}</li>
+                    <li>{{lastDispatchHistory.roleName}}</li>
+                    <li>{{lastDispatchHistory.province}}-{{lastDispatchHistory.city}}-{{lastDispatchHistory.district}}</li>
+                </ul>
+            </div>
+        </div>
+        <div class="u-btn-box1">
+            <div class="u-btn-agree"  id="saveReview">
+                <i class="iconfont icon-happy"></i>审核通过
+            </div>
+        </div>
+    </div>
+    <div class="panel-hid2 f-padding-m h-scroll" name="review-dialog" id="review-dialog2" style="padding-bottom: 0;">
+        {% for history in zbDispatchHistoryList %}
+        <div class="m-graypanel f-mb-m">
+            <h3>
+                <strong>{{loop.index}} 次派单</strong>
+                <div class="sendorder-history-head">
+                    <ul>
+                        <li class="f-t-off1" style="width: 25%;">
+                            <p title=""><span>渠道商：</span>{{history.companyName}}</p>
+                        </li>
+                        <li>
+                            <p><span>姓名：</span>{{history.userName}}</p>
+                        </li>
+                        <li style="width: 20%;">
+                            <p><span>手机号：</span>{{history.phoneNumber}}</p>
+                        </li>
+                        <li style="width: 20%;">
+                            <p><span>角色等级：</span>{{history.roleName}}</p>
+                        </li>
+                        <li style="width: 22%;">
+                            <p title=""><span>所属地区：</span>{{history.province}}-{{history.city}}-{{history.district}}</p>
+                        </li>
+                    </ul>
+                </div>
+            </h3>
+            <div class="m-review-txt">
+                <div class="txt-left">受理结果：</div>
+                <div class="txt-right">{{history.createDate}}{{history.result}}营业执照照片不清晰，看不清法人姓名<br />营业执照照片不清晰 </div>
+            </div>
+        </div>
+        {%endfor%}
+    </div>
+
+</div>
+<!--end-->

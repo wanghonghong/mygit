@@ -1,0 +1,19 @@
+<div class="m-jm-table">
+    <ul class="table-hander">
+        <li style="width: 20%;">分类名称</li>
+        <li style="width: 40%;">分享引导语</li>
+        <li>分类主图</li>
+        <li>选择</li>
+
+    </ul>
+    <div class="table-body h-scroll" style="max-height: 250px;">
+        {%for item in items.items %}
+        <ul class="table-container f-t-off" >
+            <li style="width: 20%; line-height: 20px;"><p title="{{item.typeName}}">{{item.typeName}}</p></li>
+            <li class="f-tl" style="width: 40%; padding: 0 15px; line-height: 20px;"><p title="{{item.shareText}}">{{item.shareText}}</p></li>
+            <li><img src="{{item.imageUrl|default('../css/pc/img/no_picture.png',true)}}" height="50" width="50" alt=""></li>
+            <li><div class='radioBox'><label onClick="setMemuLink('{{item.ultype}}','{{item.ulurlname}}','{{item.ulkey}}','{{item.ulnewurl}}{{item.id}}','{{item.ulshopId}}')"  ></label> </div></li>
+        </ul>
+        {%endfor%}
+    </div>
+</div>

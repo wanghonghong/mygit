@@ -1,0 +1,98 @@
+{%if items.length>0%}
+{% for item in items %}
+    <table  class="m-table-control">
+        <tbody>
+        <tr class="bg-gray">
+            <td colspan="6" style="border-top: none;">
+                <ul  >
+                    <li class="f-fl f-pl-s">订单编号：{{item.orderNum}}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{% if item.transactionId %}收款流水号：{{item.transactionId}}{% endif %}  </li>
+                    <li class="service f-fr f-pr-s"><a data-id="{{item.userId}}" onclick="ImInfo.openChatWin(this,'{{item.userId}}');">{{item.nickname}}{% if item.headimgurl %}<img class="u-thumbnail-circ" src="{{item.headimgurl}}" />{% else %}<img class="u-thumbnail-circ" src="css/pc/img/s-newshop-lt-img3.jpg" />{% endif %}</a></li>
+                </ul>
+            </td>
+        </tr>
+        {% if item.remark or item.sellerNote%}
+        <tr class="buy-header" style="word-break: break-all;">
+            <td colspan="3">
+                {% if item.remark %}
+                    <p class="f-tl f-pl-s">
+                        <img class="u-thumbnail-circ" src="{{globalUrl}}/css/pc/img/icon_buy.png" />
+                        买家留言：<font color="#6A6A6A">{{item.remark}}</font>
+                    </p>
+                {% endif %}
+            </td>
+            <td colspan="3">
+                {% if item.sellerNote %}
+                    <p class="f-tl f-pl-s">
+                        <img class="u-thumbnail-circ" src="{{globalUrl}}/css/pc/img/icon_sale.png" />
+                        卖家留言：<font color="#6A6A6A">{{item.sellerNote}}</font>
+                    </p>
+                {% endif %}
+            </td>
+        </tr>
+        {% endif %}
+        {% for orderDetail in item.orderDetails %}
+        <tr>
+            <td style="width:24%;">
+                <div class="g-table">
+                    <div class="g-table-cell f-vm f-pt-xs" style="width: 35%;">
+                        {% if orderDetail.pic %}
+                        <img class="u-thumbnail-squa" src="{{orderDetail.pic}}"/>
+                        {% else %}
+                        <img class="u-thumbnail-squa" src="{{globalUrl}}/css/pc/img/no_picture.png"/>
+                        {% endif %}
+                    </div>
+                    <div class="g-table-cell f-vm f-tl f-pr-s" style="width: 65%;">
+                        <span>{{orderDetail.name}}&nbsp&nbsp&nbsp{{orderDetail.specValueTwo}}</span><br>
+                        <font color="#6a6a6a">{{orderDetail.specValueOne}}&nbsp&nbsp&nbsp{{orderDetail.specValueThree}}</font>
+                    </div>
+                </div>
+            </td>
+            <td  style="width:12%;" >
+                {{orderDetail.count}} 件
+            </td>
+            <td  style="width:12%; vertical-align: text-top; padding-top: 25px;" >
+                {{item.createDate}}
+            </td>
+            <td style="width:16%; vertical-align: text-top; padding-top: 25px;" >
+                <div class="u-btn-smltgry f-mb-xs f-mt-xs" onclick="supply.list.queryShop('{{item.shopId}}')"><span>{{item.shopName}}</span></div>
+            </td>
+            <td class="font-color-black" style="width:26%; padding: 0 10px;" align="left" >
+                {{item.detailAddress}}
+            </td>
+            <td style="width:10%; vertical-align: text-top; padding-top: 25px;" >
+                {% if item.status==1 %}
+                <div class="u-btn-smltgry f-mb-xs dialog" sellerNote="{{item.sellerNote}}" remark="{{item.remark}}" onclick="supply.list.deliver('{{item.orderInfoId}}',this)"><span>立即发货</span></div><br>
+                {% elif item.status==2 %}
+                <span>待收货</span><br>
+                <div class="u-btn-smltgry f-mb-xs f-mt-xs" onclick="supply.list.queryOrderDetail('{{item.orderInfoId}}')"><span>订单详情</span></div>
+                {% elif item.status==3 %}
+                <span>已收货</span><br>
+                <div class="u-btn-smltgry f-mb-xs f-mt-xs" onclick="supply.list.queryOrderDetail('{{item.orderInfoId}}')"><span>订单详情</span></div>
+                {% else %}
+                {% endif %}
+                {% if item.status==5 %}
+                    {% if item.goodStatus==0 %}
+                    <span>退货中</span><br>
+                    <div class="u-btn-smltgry f-mb-xs f-mt-xs" onclick="refundGood.list.querySend('{{item.orderInfoId}}')"><span>查看物流</span></div><br>
+                    <div class="u-btn-smltgry f-mb-xs" onclick="refundGood.list.storageNote('{{item.orderInfoId}}')"><span>入库备注</span></div><br>
+                    <div class="u-btn-smltgry" onclick="refundGood.list.refundGoodConfirm('{{item.orderInfoId}}','1','你确定要确认收货？')"><span>确认入库</span></div>
+                    {% elif item.goodStatus==1 %}
+                    <span>已入库</span><br>
+                    <div class="u-btn-smltgry f-mt-xs dialog1" onclick="refundGood.list.storageNote('{{item.orderInfoId}}')"><span>入库备注</span></div>
+                    {% else %}
+                    {% endif %}
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% endfor %}
+{%else%}
+<div class="m-jm-err">
+    <img src="{{globalUrl}}/css/pc/img/jm-nodb.png">
+</div>
+{%endif%}
+<script>
+    ImInfo.initData("{{ext.hxAccount}}","{{ext.userid}}","{{ext.nickname}}","{{ext.headImg}}","{{ext.shopId}}");
+</script>

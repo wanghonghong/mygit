@@ -1,0 +1,133 @@
+<div class="panel-hidden_m1" id="u-tab1">
+    <div class="m-surveybox f-mt-m">
+        <h5>今日更新：<span id="currenDate" style="color: #ff9933">{{date}}</span></h5>
+        <!--<div class="m-survey-list">
+            <div class="surver-hander">客服信息</div>
+            <div class="surver-body">
+                <ul class="surver-container">
+                    <li>
+                        <span>待回复信息</span>
+                        <b><em>25</em>条</b>
+                    </li>
+                    <li>
+                        <span>客服UV</span>
+                        <b><em>1</em>人</b>
+                    </li>
+                    <li>
+                        <span>客服PV</span>
+                        <b><em>1</em>人</b>
+                    </li>
+                </ul>
+            </div>
+        </div>-->
+        <div class="m-survey-list">
+            <div class="surver-hander">交易信息</div>
+            <div class="surver-body">
+                <ul class="surver-container">
+                    <li>
+                        <span>收益额</span>
+                        <b><em>{{(rpInfo.revenue/100 - rpInfo.pay/100) | shortNumber(2)}}</em>元</b>
+                    </li>
+                    <li>
+                        <span>收入(元)</span>
+                        <b><em>{{rpInfo.revenue/100}}</em>元</b>
+                    </li>
+                    <li>
+                        <span>支出(元)</span>
+                        <b><em>{{rpInfo.pay/100}}</em>元</b>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="m-survey-list">
+            <div class="surver-hander" style="padding-top: 100px;">订单信息</div>
+            <div class="surver-body">
+                <ul class="surver-container">
+                    <li>
+                        <span>待退款订单</span>
+                        <b><em>{{orderInfo.wreturnOrder}}</em>单</b>
+                    </li>
+                    <li>
+                        <span>待发货订单</span>
+                        <b><em>{{orderInfo.sendOrder}}</em>单</b>
+                    </li>
+                    <li>
+                        <span>待收货订单</span>
+                        <b><em>{{orderInfo.receiptOrder}}</em>单</b>
+                    </li>
+                    <li>
+                        <span>新增订单</span>
+                        <b><em>{{orderInfo.addOrder}}</em>单</b>
+                    </li>
+                    <li>
+                        <span>付款订单</span>
+                        <b><em>{{orderInfo.payOrder}}</em>单</b>
+                    </li>
+                </ul>
+                <ul class="surver-container">
+                    <li>
+                        <span>新增订单额</span>
+                        <b><em>{{orderInfo.money/100}}</em>元</b>
+                    </li>
+                    <li>
+                        <span>优惠金额</span>
+                        <b><em>{{(orderInfo.money/100 - orderInfo.realMoney/100)  | shortNumber(2)}}</em>元</b>
+                    </li>
+                    <li>
+                        <span>新增营收</span>
+                        <b><em>{{orderInfo.realMoney/100}}</em>元</b>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="m-survey-list">
+            <div class="surver-hander">粉丝信息</div>
+            <div class="surver-body">
+                <ul class="surver-container">
+                    <li>
+                        <span>新增粉丝</span>
+                        <b><em>{{funsInfo.addCount}}</em>人</b>
+                    </li>
+                    <li>
+                        <span>跑路粉丝</span>
+                        <b><em>{{funsInfo.offCount}}</em>人</b>
+                    </li>
+                    <li>
+                        <span>净增粉丝</span>
+                        <b><em>{{funsInfo.addCount-funsInfo.offCount}}</em>人</b>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="m-survey-list">
+            <div class="surver-hander">商品信息</div>
+            <div class="surver-body">
+                <ul class="surver-container">
+                    <li>
+                        <span>商品UV</span>
+                        <b><em>{{productInfo.ucount}}</em>人</b>
+                    </li>
+                    <li>
+                        <span>商品PV</span>
+                        <b><em>{{productInfo.pv}}</em>次</b>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!--<div class="m-survey-list">
+            <div class="surver-hander">款项信息</div>
+            <div class="surver-body">
+                <ul class="surver-container">
+                    <li>
+                        <span>提款金额</span>
+                        <b><em>250.00</em>元</b>
+                    </li>
+                    <li>
+                        <span>不可提款金额</span>
+                        <b><em>0.00</em>元</b>
+                    </li>
+                </ul>
+            </div>
+        </div>-->
+    </div>
+</div>

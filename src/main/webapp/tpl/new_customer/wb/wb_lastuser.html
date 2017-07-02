@@ -1,0 +1,42 @@
+<div id="lastuser">
+
+<div class="m-tab">
+	<ul id="lastUserUlD">
+		<li class="z-sel" onclick="customer.wblastUser.query('{{id}}','1',this);">1级微客</li>
+		<li onclick="customer.wblastUser.query('{{id}}','2',this);">2级微客</li>
+		<li onclick="customer.wblastUser.query('{{id}}','0',this);">全部</li>
+	</ul>
+</div>
+<div class="m-person-totle1 f-mt-m">人数：<span id="lastcountD">0</span></div>
+<div class="m-jm-table" >
+	<ul class="table-hander">
+		<li>头像</li>
+		<li>昵称-姓名-手机</li>
+		<li>关注时间</li>
+		<li>微平台</li>
+		<li>等级</li>
+	</ul>
+	<div class="lastuserul table-body" id = "lastUserBody">
+	</div>
+    <div id="lastuserToolbar" class="pagination f-fr f-mt-m">
+    </div>
+</div>
+
+</div>
+
+<script>
+    customer.wblastUser.init('{{id}}',1);
+</script>
+<script>
+    var num_entries=33;
+    $("#Pagination").pagination(num_entries, {
+        num_edge_entries: 1, //边缘页数
+        num_display_entries: 3, //主体页数
+        prev_text:"<li class='iconfont icon-left  '></li>",
+        next_text:"<li class='iconfont icon-right  '></li>",
+        callback: pageselectCallback,
+        items_per_page:1 //每页显示1项
+    });
+</script>
+
+

@@ -1,0 +1,123 @@
+<style>
+    .sell-third-checkbox span{
+        color: #999;
+    }
+    .sell-third-checkbox .checkBox label {
+
+        font-size: 16px;
+        top: -2px;
+        left: 2px;
+
+    }
+    .main-content-pc .jm-table .table-container li .u-btn-smltgry .icon-delete1 {
+        color: #f89a14;
+        font-weight: bold;
+    }
+</style>
+<div class="main-content-pc">
+    <div class="mallBuilding manage">
+        <div class="col-xs-12" style="padding-left: 0;">
+            <div class="form-group col-xs-6 zhyh-mb zhyh-pl">
+                <label>模板名称:</label><input type="text" id="transTemName" class="form-control distance" placeholder="请输模板名称" />
+
+            </div>
+        </div>
+        <div class="jm-table" id="transTEM0" style="font-size: 12px;">
+            <ul class="table-hander">
+                <li style="height:35px;line-height:35px;width: 35%;text-align: left;  padding-left: 10px;">可配送至</li>
+                <li>首件（个）</li>
+                <li>运费（元）</li>
+                <li>续件（个）</li>
+                <li>续件（元）</li>
+                <li>操作</li>
+            </ul>
+            <ul class="table-container" id="first-table-container">
+                <li style="width: 35%;text-align: left;  padding-left: 10px;">
+                    <div class="page-left" style="margin-top: 0;">
+                        <div class="btn  btn-lightgray btn-sm dialog" id="forareatrans" style='float: left;'>添加可配送区域和运费</div>
+                        <div  class="text-center" id="onloadmsg" style="float: left; margin-left: 50px;display: none;"><i class="iconfont icon-loading" style="float: left;"></i><div style="float: left;color:#f78211;">请稍后...</div></div>
+              </div>
+
+                    <div id="dialogAreainfo" class="dialoginfo dhk" >
+
+                        <div class="jm-table jm-table1">
+                            <ul class="table-hander">
+                                <li>
+                                    <i class="iconfont icon-classify1"></i>
+                                    可选省、市、区
+                                </li>
+                            </ul>
+                            <ul id="area_tree" class="ztree" style="border: 1px solid #617775;overflow-y: scroll;height: 500px;">
+
+                            </ul>
+                        </div>
+                        <div class="sell-third-checkbox" style="margin-top: 10px;">
+                            <div class="checkBox">    <input type="checkbox" name="checkbox" id="selectAll"/>
+ <label class="iconfont icon-avoid"  for="selectAll"></label></div><span class="authfont"> 全选</span>&nbsp;&nbsp; <div class="checkBox"><input type="checkbox" name="checkbox" id="sltReverse"/>
+ <label class="iconfont icon-avoid"  for="sltReverse"></label></div> <span  class="authfont">反选</span>
+                    </div>
+                        </div>
+
+                </li>
+                <li style="display: none;" class="form-group form-group-zwmb">
+                    <input style="float: none;width:50%;" type="text" class="form-control distance" placeholder="" />
+                </li>
+                <li style="display: none;" class="form-group form-group-zwmb">
+                    <input style="float: none;width:50%;" type="text" class="form-control distance" placeholder="" />
+                </li>
+                <li style="display: none;" class="form-group form-group-zwmb">
+                    <input style="float: none;width:50%;" type="text" class="form-control distance" placeholder="" />
+                </li>
+                <li style="display: none;" class="form-group form-group-zwmb">
+                    <input style="float: none;width:50%;" type="text" class="form-control distance" placeholder="" />
+                </li>
+                <li style="display: none;" class="form-group form-group-zwmb" >
+
+                    <div class="u-btn-smltgry"><span  class='delete' style="cursor: pointer;"><i class="iconfont icon-delete1"></i>删除</span></div>
+                </li>
+
+            </ul>
+            <ul class="table-container">
+                <li style="width: 35%;text-align: left;  padding-left: 10px;">
+                    <span style='display: block;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;cursor:pointer;'  class='showtitle  c-gray1' areaids="-1">未选地区统一运费模板</span>
+                    <span class='areaidhid' style='display: none;'>""</span>
+                </li>
+                <li class="form-group form-group-zwmb">
+                    <input style="float: none;width:50%;" type="text" class="form-control distance" placeholder="" value="0" />
+                </li>
+                <li class="form-group form-group-zwmb">
+                    <input style="float: none;width:50%;" type="text" class="form-control distance" placeholder=""  value="0" />
+                </li>
+                <li class="form-group form-group-zwmb">
+                    <input style="float: none;width:50%;" type="text" class="form-control distance" placeholder=""  value="0" />
+                </li>
+                <li class="form-group form-group-zwmb">
+                    <input style="float: none;width:50%;" type="text" class="form-control distance" placeholder=""  value="0" />
+                </li>
+                <li class="form-group form-group-zwmb" >
+
+                </li>
+
+            </ul>
+
+        </div>
+        <div style="margin: 61px 0 69px;">
+            <div style="padding:0 30px;" class="btn btn-lightgray btn-radius-5 btn-lg col-xs-offset-4" id="close">关闭</div>
+            <div id="addTransTempBtn" style="margin-left:8px;" class="btn btn-darkorange btn-radius-5 btn-lg">保存</div>
+        </div>
+
+        <div id="selectednodes" style="display:none ;"></div>
+        <div id="unselectednodes" style="display: none;"></div>
+    </div>
+</div>
+<script>
+    onLoadZTree();
+    product.transtemplate.shop_forareatrans();
+    product.transtemplate.addTransTemplate();
+    product.transtemplate.deltranstemplate();
+    product.transtemplate.backparent();
+    product.transtemplate.shop_stran_selectAll();
+    product.transtemplate.shop_stran_selectReverse();
+    product.transtemplate.showareafortitle();
+
+</script>

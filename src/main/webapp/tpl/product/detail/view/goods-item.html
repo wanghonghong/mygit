@@ -1,0 +1,52 @@
+  <li>
+            <div class="goods">
+            {% if item.pic_square %}
+                <div class="goods-img-box" >
+                    <i></i>
+                    <a class="goods-img-block">
+                        {% if sizeClass=="small-Img" %}
+                            <img src="{{item.pic_square}}" class="goods-img">
+                        {% elif sizeClass=="big-Img" %}
+                             <img src="{{item.pic_square}}" class="goods-img">
+                        {% elif sizeClass=="rectangle-Img" %}
+                            <img src="{{item.pic_rectangle}}" class="goods-img">
+                        {% elif sizeClass=="big-small-Img" %}
+                            {% if loop.index  % 3 ==1 %}
+                               <img src="{{item.pic_rectangle}}" class="goods-img">
+                            {% else %}
+                                <img src="{{item.pic_square}}" class="goods-img">
+                            {% endif %}
+                        {% endif %}
+                       </a>
+                    <i></i>
+                </div>
+              {% else  %}
+                 <div class="goods-img-box" style="background-color: {{goodsbgcolorArray[loop.revindex0]}};">
+                    <i></i>
+                    <a class="goods-img-block"> 第{{loop.index}}个商品  </a>
+                    <i></i>
+                </div>
+              {% endif %}
+                <div class="goodsname">
+                    {{item.name}}
+                </div>
+                {% if sizeClass=="big-Img" or    sizeClass=="rectangle-Img"  %}
+                <div class="sharetext">
+                    {{item.share}}
+                </div>
+                {% elif sizeClass=="big-small-Img" %}
+                {% if loop.index  % 3 ==1 %}
+                <div class="sharetext">
+                    {{item.share}}
+                </div>
+                {% endif %}
+                {% endif %}
+                <div class="goodsPrice">
+                    <span>￥</span>
+                    <span class="price"> {{item.price /100}} </span>
+                    <div class="buybtn">
+                        <img src="{{globalUrl}}/css/pc/img/default.gif">
+                    </div>
+                </div>
+            </div>
+        </li>

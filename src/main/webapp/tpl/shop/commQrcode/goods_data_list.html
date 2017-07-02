@@ -1,0 +1,18 @@
+{%if items.length>0%}
+{% for item in items %}
+<ul class="table-container f-pd-s">
+	<li><img src="{{item.pic_square}}" alt="暂无图片" class="u-thumbnail-squa" /></li>
+	<li><label for="goodsBox{{item.pid}}">{{item.name}}</label></li>
+	<li>
+		<div class="u-rb">
+			<input type="radio" name="goodsBox" id="goodsBox{{item.pid}}" value="{{item.pid}},{{item.name}}" />
+			<label for="goodsBox{{item.pid}}"></label>
+		</div>
+	</li>
+</ul>
+{%endfor%}
+{% else %}
+<div class="m-jm-err">
+	<img src="{{globalUrl}}/css/pc/img/jm-nodb.png">
+</div>
+{%endif%}

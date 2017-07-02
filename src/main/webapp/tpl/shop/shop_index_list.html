@@ -1,0 +1,205 @@
+<style>
+    .shop-manage .shop-title .shop-icon .iconfont {
+        display: inline-block;
+        margin-left: -5px;
+        margin-top: -5px;
+    }
+</style>
+
+    <div class="shop-manage" id="self-support-shop">
+        <div class="shop-title">
+                            <span  class="shop-icon">
+                                <i class="iconfont icon-shop"> </i>
+                            </span>
+            <label>
+                自营店铺
+            </label>
+        </div>
+        <div class="shop-panel-group" style="padding-left: 25px">
+
+            {% for item in items %}
+            {% if item.status ==0 and item.roleId==2 %}
+                    <div class="shop-item ">
+                        <div class="self-support-shop">
+                            <ul class="self-support-shop-ul">
+                                <li class="self-support-shop-title">{{item.shopName}}</li>
+                                <li class="self-support-shop-img">
+                                    {% if item.imgUrl!='' and item.imgUrl!=null %}
+                                        <img src="{{item.imgUrl}}"/>
+                                    {% else %}
+                                        <img src="{{globalUrl}}/css/pc/img/logo.png"/>
+                                    {% endif %}
+                                </li>
+                                {% if item.appId!='' and item.appId!=null and item.appId!='null' %}
+                                    <li class="self-support-shop-opt xhx">微信已授权</li>
+                                {% else %}
+                                    <li class="self-support-shop-opt font-color-orange xhx" onclick="shop.index.goAuthPage({{item.shopId}})" >微信未授权</li>
+                                {% endif %}
+
+                                {% if item.wbUid!='' and item.wbUid!=null and item.wbUid!='null' %}
+                                <li class="self-support-shop-opt xhx">微博已授权</li>
+                                {% else %}
+                                <li class="self-support-shop-opt font-color-orange xhx" onclick="shop.index.wbAuth('{{item.shopId}}')">微博未授权</li>
+                                {% endif %}
+
+                                <li class="self-support-shop-opt">本地服务商</li>
+                                {% if item.appId!='' and item.appId!=null and item.appId!='null' %}
+                                    <li class="self-support-shop-btn getinto" data-id="{{item.shopId}}" data-roleid="{{item.roleId}}"  data="1">进入</li>
+                                {% else %}
+                                    <li class="self-support-shop-btn getinto"  data-id="{{item.shopId}}" data-roleid="{{item.roleId}}"  data="0">进入</li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+            {% endif %}
+            {%endfor%}
+
+
+            <div class="shop-item ">
+                <div class="self-support-shop">
+                    <ul class="self-support-shop-ul">
+                        <li class="self-support-shop-title">店铺名称</li>
+                        <li class="self-support-shop-img">
+                            <div class="add-shop">
+                                <i class="icon-add  iconfont" onclick="shop.index.createShop()"></i>
+                            </div>
+                        </li>
+                        <li class="self-support-shop-btn  lg-btn" onclick="shop.index.createShop()">新增店铺</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% set isShow1 = false %}
+    {% set isShow2 = false %}
+    {% set isShow3 = false %}
+    {% for item in items %}
+        {% if item.type == 1 %}
+             {% set isShow1 = true %}
+        {% endif%}
+        {% if item.type == 2 %}
+            {% set isShow2 = true %}
+        {% endif%}
+        {% if item.type == 4 %}
+            {% set isShow3 = true %}
+        {% endif%}
+    {% endfor%}
+
+    {% if isShow1 %}
+    <div class="shop-manage" id="service-shop">
+        <div class="shop-title">
+                            <span  class="shop-icon">
+                                <i class="iconfont  icon-service1"> </i>
+                            </span>
+            <label>
+                在职店铺
+            </label>
+        </div>
+        <div class="shop-panel-group" style="padding-left: 40px">
+            {% for item in items %}
+                 {% if item.type == 1 %}
+                    <div class="shop-item ">
+                        <div class="service-shop">
+                            <div class="service-shop-img">
+                                <img src="{{item.imgUrl}}" style="height: 119px;width: 102px;"/>
+                            </div>
+                            <div class="service-shop-name">
+                                <h4>{{item.shopName}}</h4>
+                                {% if item.appId!='' and item.appId!=null %}
+                                    <a href="javascript:void(0);" class="getinto" data-id="{{item.shopId}}"  data-roleid="{{item.roleId}}"  data="1">
+                                        <span class="enter-btn">进入</span>
+                                    </a>
+                                {% else %}
+                                    <a href="javascript:void(0);" class="getinto" data-id="{{item.shopId}}" data-roleid="{{item.roleId}}"  data="0">
+                                        <span class="enter-btn">进入</span>
+                                    </a>
+                                {%endif%}
+                            </div>
+                        </div>
+                    </div>
+                {%endif%}
+            {%endfor%}
+        </div>
+    </div>
+    {% endif %}
+
+    {% if isShow3 %}
+    <div class="shop-manage" >
+        <div class="shop-title">
+            <span  class="shop-icon">
+                <i class="iconfont  icon-service1"> </i>
+            </span>
+            <label>
+                服务店铺
+            </label>
+        </div>
+        <div class="shop-panel-group" style="padding-left: 40px">
+            {% for item in items %}
+            {% if item.type == 4 %}
+            <div class="shop-item ">
+                <div class="service-shop">
+                    <div class="service-shop-img">
+                        <img src="{{item.imgUrl}}" style="height: 119px;width: 102px;"/>
+                    </div>
+                    <div class="service-shop-name">
+                        <h4>{{item.shopName}}</h4>
+                        {% if item.appId!='' and item.appId!=null %}
+                        <a href="javascript:void(0);" class="getinto" data-id="{{item.shopId}}"  data-roleid="{{item.roleId}}"  data="1">
+                            <span class="enter-btn">进入</span>
+                        </a>
+                        {% else %}
+                        <a href="javascript:void(0);" class="getinto" data-id="{{item.shopId}}" data-roleid="{{item.roleId}}"  data="0">
+                            <span class="enter-btn">进入</span>
+                        </a>
+                        {%endif%}
+                    </div>
+                </div>
+            </div>
+            {%endif%}
+            {%endfor%}
+        </div>
+    </div>
+    {% endif %}
+
+    {% if isShow2 %}
+    <div class="shop-manage margin-bottom-xxl" id="supplier-shop">
+        <div class="shop-title">
+            <span  class="shop-icon">
+                <i class="iconfont  icon-supplier"> </i>
+            </span>
+            <label>
+                供应商
+            </label>
+        </div>
+        <div class="shop-panel-group">
+            {% for item in items %}
+                {% if item.type == 2 %}
+                    <div class="shop-item ">
+                        <div class="service-shop">
+                            <div class="service-shop-img">
+                                <img src="{{item.imgUrl}}"  style="height: 119px;width: 102px;"/>
+                            </div>
+                            <div class="service-shop-name">
+                                <h4>{{item.shopName}}</h4>
+
+                                {% if item.appId!='' and item.appId!=null %}
+                                    <a href="javascript:void(0);" class="getinto" data-id="{{item.shopId}}" data-roleid="{{item.roleId}}"  data="1">
+                                        <span class="enter-btn">进入</span>
+                                    </a>
+                                {% else %}
+                                    <a href="javascript:void(0);" class="getinto" data-id="{{item.shopId}}" data-roleid="{{item.roleId}}"  data="0">
+                                        <span class="enter-btn">进入</span>
+                                    </a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                 {%endif%}
+            {%endfor%}
+        </div>
+    </div>
+    {% endif %}
+
+    <script>
+        shop.index.init();
+    </script>

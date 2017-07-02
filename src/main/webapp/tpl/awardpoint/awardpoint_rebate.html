@@ -1,0 +1,70 @@
+<div class="panel-hidden" style="display: block;">
+    <div class="m-search" id="m-search3">
+        <label class="u-lb-sm">买家昵称</label>
+        <div class="u-txt col-xs-3">
+            <input type="text" class="ipt-txt" placeholder="请输入买家昵称">
+        </div>
+        <label class="u-lb-sm">买家姓名</label>
+        <div class="u-txt col-xs-3">
+            <input type="text" class="ipt-txt" placeholder="请输入买家姓名">
+        </div>
+        <label class="u-lb-sm">买家手机</label>
+        <div class="u-txt col-xs-3">
+            <input type="text" class="ipt-txt" placeholder="请输入买家手机">
+        </div>
+        <label class="u-lb-sm">订单编号</label>
+        <div class="u-txt col-xs-3">
+            <input type="text" class="ipt-txt" placeholder="请输入订单编号">
+        </div>
+        <label class="u-lb-sm">支付编号</label>
+        <div class="u-txt col-xs-3">
+            <input type="text" class="ipt-txt" placeholder="请输入支付编号">
+        </div>
+        <label class="u-lb-sm">下单日期</label>
+        <div class="u-txt u-txt-date f-ml-m" style="margin-left: 18px;">
+            <i class="iconfont icon-calendar"></i>
+            <input type="text" class="ipt-txt c-gray1" placeholder="开始时间" style="width: 115px;">
+        </div>
+        <div class="u-txt">
+            <span class="line" style=" width: 16px;">-</span>
+        </div>
+        <div class="u-txt u-txt-date">
+            <i class="iconfont icon-calendar"></i>
+            <input type="text" class="ipt-txt c-gray1" placeholder="结束时间" style="width: 115px;">
+        </div>
+
+
+
+
+        <div class="u-btn-box1">
+            <input type="button" class="u-btn-mddkbl f-mr-xs" value="导出">
+            <input type="button" class="u-btn-mddkorg" value="查询">
+        </div>
+    </div>
+    <a class="btn-slide2 btn-slide3"></a>
+    <table cellspacing="0" id="jmtable" class="m-table-control f-mt-m">
+        <thead>
+        <tr>
+            <th style="width:30%;">主图-名称-规格</th>
+            <th style="width:15%;">下单时间</th>
+            <th style="width:15%;">积分使用</th>
+            <th style="width:15%;">实付金额</th>
+            <th style="width:10%;">返利比率</th>
+            <th style="width:15%;">返利金额</th>
+        </tr>
+        </thead>
+    </table>
+    <div id="rebate_list">
+
+
+    </div>
+    <!--返利清单-->
+</div>
+<script>
+    $(function(){
+        $(".btn-slide2").click(function(){
+            $("#m-search3").slideToggle("fast");
+            $(this).toggleClass("btn-slide3"); return false;
+        })
+    })
+</script>

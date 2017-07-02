@@ -1,0 +1,140 @@
+<div class="m-orderstate m-leave-msg">
+    <p class="f-tl f-pl-s">
+        <img src="{{globalUrl}}/css/pc/img/icon_buy.png"/>买家留言：
+        <font class="c-gray1">{{remark}}</font>
+    </p>
+    <p class="f-tl f-pl-s">
+        <img src="{{globalUrl}}/css/pc/img/icon_sale.png"/>卖家留言：
+        <font class="c-gray1">{{sellerNote}}</font>
+    </p>
+</div>
+<div class="m-shipinfo-lt f-cb">
+    <ul class="table-hander" style="border-top: none;">
+        <li style="width: 15%;">商品主图</li>
+        <li style="width: 22%;">名称</li>
+        <li style="width: 8%;">规格</li>
+        <li style="width: 8%;">数量</li>
+        <!--<li>买家昵称-姓名-手机号</li>-->
+        <li>订单编号</li>
+        <li style="width: 13%;">操作</li>
+    </ul>
+    <div class="table-body u-4border">
+        <input type="hidden" id="orderInfoId" name="orderInfoId" value="{{orderInfoId}}"/>
+        <input type="hidden" id="giverName" name="giverName" value="{{giverName}}"/>
+        {% for data in orderDetails %}
+        <input type="hidden" id="productName" name="productName" value="{{data.name}}"/>
+        <ul class="table-container">
+            <li style="width: 15%;">
+                {% if data.pic %}
+                <img class="u-thumbnail-squa" src="{{data.pic}}"/>
+                {% else %}
+                <img class="u-thumbnail-squa" src="{{globalUrl}}/css/pc/img/no_picture.png"/>
+                {% endif %}
+            </li>
+            <li class="f-tl" style="width: 22%; padding: 0 20px;">{{data.name}}</li>
+            <li style="width: 8%;">{{data.specValueTwo}}{{data.specValueThree}} {{data.specValueOne}}</li>
+            <li style="width: 8%;">{{data.count}}</li>
+            <!--<li class="f-tl" style="padding: 0 45px;">
+                <span>我是你的例外</span><br />
+                <span>陈小君</span><br />
+                <span>13569821452</span>
+            </li>-->
+            <li class="f-wb-ba">{{orderNum}}</li>
+            <li style="width: 13%;">
+                <div class="u-btn-smltgry" onclick="comm.auth.callAuthDialog('{{userId}}')"><span>物料二维码授权</span></div>
+            </li>
+        </ul>
+        {% endfor %}
+    </div>
+</div>
+<!--包裹1-->
+{%if orderInfoDispatchVos.length>0%}
+{% for data in orderInfoDispatchVos %}
+<div class="m-panel-head f-mt-s" style="padding-top: 0;" >
+    <div class="m-tt c-orange1 f-pb-s bg-gray2 f-pt-s">
+        <p class="f-fl">包裹{{loop.index}}
+        {% if data.status==1 %}
+            <div class="u-btn-infonotice" ><a class="mailBtn" href="javascript:void(0);" data-id="{{data.orderInfoId}}" id="a_{{data.orderInfoId}}" >短信告知</a></div>
+        {% elif data.status==2 %}
+            <div class="u-btn-infonotice" >已发货</div>
+        {% elif data.status==3 %}
+            <div class="u-btn-infonotice" >已收货</div>
+        {% else %}
+        {% endif %}
+        </p>
+        {% if data.status==1 %}
+            <div class="u-cb f-ml-xs">
+                <input type="checkbox" name="pack{{data.orderInfoId}}" id="pack{{data.orderInfoId}}"  pack-id ="{{data.orderInfoId}}"  />
+                <label class="iconfont icon-avoid" for="pack{{data.orderInfoId}}"></label>
+            </div>
+        {% else %}
+        <div class="u-cb f-ml-xs">
+        </div>
+        {% endif %}
+    </div>
+    <div class="m-bagbox f-pt-s">
+        <input type="hidden" name="userName" id="userName{{data.orderInfoId}}" value="{{data.userName}}"/>
+        <input type="hidden" name="phoneNumber" id="phoneNumber{{data.orderInfoId}}" value="{{data.phoneNumber}}"/>
+        <input type="hidden" name="detailAddress" id="detailAddress{{data.orderInfoId}}" value="{{data.detailAddress}}"/>
+        <div class="col-xs-12 f-mb-xs" style="padding: 0;">
+            <label class="u-lb-sm font-s12">收货地址 ：</label>
+            <div class="col-xs-11 f-wb-ba font-s12 c-deepgray" style="padding-left: 0; padding-top: 8px;">
+                <span>{{data.userName}}</span>，<span>{{data.phoneNumber}}</span>，<span>{{data.detailAddress}}</span>
+            </div>
+        </div>
+        <div class="col-xs-12 u-txt" style="padding: 0; margin-bottom: 5px;">
+            <label class="u-lb-sm font-s12" style="width: 68px;">物流公司</label>
+            <div class="col-xs-2">
+                {% if data.transCompany %}
+                <label class="u-lb-sm font-s12">{{data.transCompany}}</label>
+                {% else %}
+                <select class="ipt-txt " name="transCompany" data-id="{{data.orderInfoId}}" id="transCompany{{data.orderInfoId}}" style="width: 100%"
+                        v-model="transCompany">
+                    <option value="">请选择</option>
+                    {%for item in companys%}
+                    <option value="{{item.name}},{{item.code}}">{{item.name}}</option>
+                    {%endfor%}
+                </select>
+                {% endif %}
+            </div>
+            <label class="u-lb-sm font-s12" style="width: 68px; margin-left: -15px;">物流单号</label>
+            <div class="col-xs-2">
+                {% if data.transNumber %}
+                <label class="u-lb-sm font-s12">{{data.transNumber}}</label>
+                {% else %}
+                <input type="text" class="ipt-txt" id="transNumber{{data.orderInfoId}}" name="transNumber"
+                       placeholder="请输入物流单号"/>
+                {% endif %}
+            </div>
+            <label class="u-lb-sm font-s12" style="width: 68px; margin-left: -15px;">物流备注</label>
+            <div class="col-xs-6">
+                {% if data.deliveryNote %}
+                <label class="u-lb-sm font-s12">{{data.deliveryNote}}</label>
+                {% else %}
+                <input type="text" class="ipt-txt" id="deliveryNote{{data.orderInfoId}}" name="deliveryNote"
+                       placeholder="请输入物流备注"/>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% else %}
+<div class="m-tip1">
+    <i class="iconfont icon-lamp"></i>
+    <span>该订单暂未有收礼人填写地址，暂时无法发货！</span>
+</div>
+{% endif %}
+<div class="u-btn-box f-mt-l">
+    <input type="button" class="u-btn-mddkorg f-mr-xs" value="返回" onclick="delivery.list.closeD();" />
+    <!--<input type="button" class="u-btn-mddkbl f-mr-xs" value="部分发货" />-->
+    <!--<input type="button" class="u-btn-mddkorg f-mr-xs" value="全部发出" />-->
+    {% if status==1 %}
+        <input type="button" class="u-btn-mddkorg f-mr-xs dispatchSendAll" value="确认发货" />
+    {% endif %}
+</div>
+
+<!--通码授权窗口-->
+<div id="commAuthDialog" class="dialoginfo">
+
+</div>

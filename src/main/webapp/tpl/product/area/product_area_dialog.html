@@ -1,0 +1,39 @@
+<div id="product_area">
+    <div class="m-panel-box" id="f-scollbar">
+        <input value="{{offerType}}" id="offer_type" type="hidden">
+        <div class="m-p-tt">
+            <span  class="f-fl">供货选择</span>
+            <div class="f-fl">
+                <div class="u-rb">
+                    <input type="radio" name="offerType" id="radioBox2" value="2"/>
+                    <label for="radioBox2" onclick="area.dialog.areaOffer()"></label>
+                </div>
+                <label for="radioBox2" class="u-rd-wd"  onclick="area.dialog.areaOffer()">地区供货</label>
+            </div>
+
+            <div class="f-fl">
+                <div class="u-rb">
+                    <input type="radio" name="offerType" id="radioBox1" value="1"/>
+                    <label for="radioBox1" onclick="area.dialog.plantOffer()"></label>
+                </div>
+                <label for="radioBox1" class="u-rd-wd f-mr-xl" onclick="area.dialog.plantOffer()" >平台供货</label>
+            </div>
+        </div>
+    </div>
+    <input value="{{pid}}" type="hidden" id="dio_pid">
+
+    <div id="area_offer_div">
+            {% include "/tpl/product/area/area_offer.html" %}
+    </div>
+    <div id="plant_offer_div">
+
+        <div class="u-btn-box1">
+
+            <input type="button" class="u-btn-mddkorg" onclick="product.area.cancel('{{pid}}',1)" value="保存"/>
+        </div>
+    </div>
+
+</div>
+<script>
+    area.dialog.init();
+</script>

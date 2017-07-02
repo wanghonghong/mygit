@@ -1,0 +1,286 @@
+<div class="panel-hid">
+    <div class="m-orderstate f-mb-s">
+        <ul class="m-orderprocess">
+            <li class="active">
+                <span>买家下单</span>
+                <em><i></i></em>
+                <div class="m-layerbox">
+                    <span class="out"></span>
+                    <span class="iner"></span>
+                    <div class="layercon">
+                        {{data.createDate}}
+                    </div>
+                </div>
+            </li>
+            {% if data.updatePriceDate %}
+            <li class="active">
+                <span>卖家改价</span>
+                <em><i></i></em>
+                <div class="m-layerbox">
+                    <span class="out"></span>
+                    <span class="iner"></span>
+                    <div class="layercon">
+                        {{data.updatePriceDate}}
+                    </div>
+                </div>
+            </li>
+            {% endif %}
+            {% if data.payDate %}
+            <li class="active">
+                <span>买家付款(待发货)</span>
+                <em><i></i></em>
+                <div class="m-layerbox">
+                    <span class="out"></span>
+                    <span class="iner"></span>
+                    <div class="layercon">
+                        {{data.payDate}}
+                    </div>
+                </div>
+            </li>
+            {% endif %}
+            {% if data.sendDate %}
+            <li class="active">
+                <span>卖家发货(待收货)</span>
+                <em><i></i></em>
+                <div class="m-layerbox">
+                    <span class="out"></span>
+                    <span class="iner"></span>
+                    <div class="layercon">
+                        {{data.sendDate}}
+                    </div>
+                </div>
+            </li>
+            {% endif %}
+            {% if data.takeDate %}
+            <li class="active">
+                <span>买家收货</span>
+                <em><i></i></em>
+                <div class="m-layerbox">
+                    <span class="out"></span>
+                    <span class="iner"></span>
+                    <div class="layercon">
+                        {{data.takeDate}}
+                    </div>
+                </div>
+            </li>
+            {% endif %}
+            {% if data.createGoodDate%}
+            <li class="active">
+                <span>买家退货</span>
+                <em><i></i></em>
+                <div class="m-layerbox">
+                    <span class="out"></span>
+                    <span class="iner"></span>
+                    <div class="layercon">
+                        {{data.createGoodDate}}
+                    </div>
+                </div>
+            </li>
+            {% endif %}
+            {% if data.storageDate %}
+            <li class="active">
+                <span>卖家入库</span>
+                <em><i></i></em>
+                <div class="m-layerbox">
+                    <span class="out"></span>
+                    <span class="iner"></span>
+                    <div class="layercon">
+                        {{data.storageDate}}
+                    </div>
+                </div>
+            </li>
+            {% endif %}
+            {% if data.createRefundDate %}
+            <li class="active">
+                <span>申请退款</span>
+                <em><i></i></em>
+                <div class="m-layerbox">
+                    <span class="out"></span>
+                    <span class="iner"></span>
+                    <div class="layercon">
+                        {{data.createRefundDate}}
+                    </div>
+                </div>
+            </li>
+            {% endif %}
+            {% if data.refundStatus==1 %}
+            <li class="active">
+                <span>已退款</span>
+                <em><i></i></em>
+                <div class="m-layerbox">
+                    <span class="out"></span>
+                    <span class="iner"></span>
+                    <div class="layercon">
+                        {{data.agreeRefundDate}}
+                    </div>
+                </div>
+            </li>
+            {% endif %}
+            {% if data.refundStatus==2 %}
+            <li class="active">
+                <span>拒绝退款</span>
+                <em><i></i></em>
+                <div class="m-layerbox">
+                    <span class="out"></span>
+                    <span class="iner"></span>
+                    <div class="layercon">
+                        {{data.agreeRefundDate}}
+                    </div>
+                </div>
+            </li>
+            {% endif %}
+            <li></li>
+        </ul>
+    </div>
+    <div class="m-processtab">
+        {% if data.orderDeliveryVo.length>1 %}
+        <ul>
+            {% for item in data.orderDeliveryVo %}
+            <li {%if loop.index ==1 %} class="z-sel" {%endif%}>包裹 {{loop.index}}<span><i class="iconfont icon-uptriangle"></i></span></li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+    <!--订单信息-->
+    <div class="m-order-info" style="position: absolute; margin-top: 20px; width: 555px; height: 515px;">
+        <h3>订单信息</h3>
+        <div class="m-info-lt">
+            <p>
+                <b>订单编号：</b>
+                <span>{{data.orderNum}}</span>
+            </p>
+            <p>
+                <b>支付流水号：</b>
+                <span>{{data.transactionId}}</span>
+            </p>
+            <p>
+                <b>购买平台：</b>
+                <span>微信</span>
+            </p>
+            <p>
+                <b>付款方式：</b>
+                <span>微信安全支付</span>
+            </p>
+            <p>
+                <b>买家昵称：</b>
+                <span>{{data.nickname}}</span>
+            </p>
+            <p>
+                <b>买家手机：</b>
+                <span>{{data.phoneNumber}}</span>
+            </p>
+        </div>
+        <div class="m-info-lt">
+            <p>
+                <b>收货信息：</b>
+                <span>{{data.userName}}<br />{{data.phoneNumber}}<br />{{data.detailAddress}}</span>
+            </p>
+            <p>
+                <b>买家留言：</b>
+                <span class="f-wb-ba">{{data.remark}}</span>
+            </p>
+            <p>
+                <b>卖家留言：</b>
+                <span class="f-wb-ba">{{data.sellerNote}}</span>
+            </p>
+        </div>
+    </div>
+    <!--/-->
+    <!--包裹-->
+    {% if data.orderDeliveryVo.length>0 %}
+        {% for item in data.orderDeliveryVo %}
+        <div class="panel-hidden">
+            <div class="m-orderstate" style="border-top: none; border-bottom: none;">
+                <div class="u-infolistbg">
+                    <div class="m-order-info f-fl" style="height: 515px;"></div>
+                    <div class="m-order-info f-fl">
+                        <h3>物流信息</h3>
+                        <div class="orderinfo-title">
+                            <p>物流公司：<span>{{item.transCompany}}</span></p>
+                            <p>物流单号：<span>{{item.transNumber}}</span></p>
+                            <p>物流备注：<span>{{item.deliveryNote}}</span></p>
+                        </div>
+                        <ul>
+                            <li>
+                                <div><i class="iconfont icon-car1"></i></div>
+                                <div>
+                                    <p>
+                                        <iframe id="orderDetailFrame" src="{{item.transMsg}}" scrolling="no" width="550px" height="260px"></iframe>
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="m-shipinfo-lt">
+                <ul class="table-hander">
+                    <li>商品主图</li>
+                    <li>名称</li>
+                    <li>规格</li>
+                    <li>数量</li>
+                </ul>
+                {% for orderDetail in item.orderDetails %}
+                <div class="table-body u-4border">
+                    <ul class="table-container">
+                        {% if orderDetail.pic %}
+                        <li><img class="u-thumbnail-squa" src="{{orderDetail.pic}}"/></li>
+                        {% else %}
+                        <li><img src="css/pc/img/no_picture.png" class="u-shipimg" /></li>
+                        {% endif %}
+                        <li>{{orderDetail.name}}</li>
+                        <li>{{orderDetail.specValueTwo}} {{orderDetail.specValueThree}} {{orderDetail.specValueOne}}</li>
+                        <li>{{orderDetail.count}}</li>
+                    </ul>
+                </div>
+                {% endfor %}
+                <div class="u-countinfo">{% if data.orderDeliveryVo.length>1 %}包裹 {{loop.index}}{% endif %} 共 <font class="c-orange1">{{item.orderDetails.length}}</font> 件商品</div>
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+    <div class="panel-hidden">
+        <div class="m-orderstate" style="border-top: none; border-bottom: none;">
+            <div class="u-infolistbg">
+                <div class="m-order-info f-fl" style="height: 515px;"></div>
+                <div class="m-order-info f-fl">
+                    <h3>物流信息</h3>
+                    <div class="orderinfo-title">
+                    </div>
+                    <ul>
+                        <li>
+                            <div><i class="iconfont icon-car1"></i></div>
+                            <div>
+                                <p>
+                                    <font color="red">暂无物流信息！</font>
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="m-shipinfo-lt">
+        </div>
+    </div>
+    {% endif %}
+    <div class="u-btn-box">
+        <input type="button" class="u-btn-mddkorg f-mr-xs" value="返回" onclick="closeD();" />
+    </div>
+</div>
+<script>
+    $("#tableBody .m-table-control").each(function(i){
+        $(this).rowspan([1,2,3,4,5]);
+    });
+    $(".panel-hidden").hide().eq(0).show();
+    var tabul = $(".m-processtab ul li");
+    tabul.click(function () {
+        tabul.eq($(this).index()).addClass("z-sel").siblings().removeClass('z-sel');
+        $(".panel-hidden").hide().eq($(this).index()).show();
+    });
+
+    function closeD(){
+        $("#supply_detail_content").hide();
+        $("#supply_detatil").show();
+    }
+</script>

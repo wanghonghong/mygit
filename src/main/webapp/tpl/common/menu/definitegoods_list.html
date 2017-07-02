@@ -1,0 +1,27 @@
+<div class="m-jm-table f-mb-m">
+    <ul class="table-hander">
+        <li>商品名称</li>
+        <li>价格</li>
+        <li>库存</li>
+        <li>选择</li>
+    </ul>
+    <div class="table-body">
+        {%if items.length>0%}
+        {%for item in items%}
+        <ul class="table-container font-s12">
+            <li class="f-tl" style="display:block;white-space:nowrap; overflow:hidden;text-overflow:ellipsis;">{{item.name}}</li>
+            <li>{{item.ulprice}}</li>
+            <li>{{item.total_count}}</li>
+            <li>
+                <div class='radioBox'>
+                    <label link_url="{{item.ulnewurl}}" link_type="{{item.ultype}}" type="{{item.type}}" shop_id="{{item.ulshopId}}" data-name="{{item.name}}"
+                           link_key="{{item.ulkey}}" link_name="{{item.ulurlname}}" link_id="{{item.pid}}" parent_id="{{item.parent_id}}"></label>
+                </div>
+            </li>
+        </ul>
+        {%endfor%}
+        {%else%}
+        <div>暂无数据</div>
+        {%endif%}
+    </div>
+</div>

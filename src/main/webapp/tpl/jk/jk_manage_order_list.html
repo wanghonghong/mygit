@@ -1,0 +1,86 @@
+{%if items.length>0%}
+<div class="table-body" style="overflow: inherit;">
+    {% for item in items %}
+    <ul class="table-container">
+
+        <li>
+            {%if item.headimgurl%}
+            <img class="u-thumbnail-squa" src="{{item.headimgurl}}">
+            {%else%}
+            <img class="u-thumbnail-squa" src="https://www.jumiweigu.com/css/pc/img/no_headpic.jpg">
+            {%endif%}
+        </li>
+        <li>
+            {%if item.nickname%}
+            {{item.nickname}}
+            {%else%}
+            ---
+            {%endif%}
+        </li>
+        <li>{{item.pubNickName}}</li>
+        <li>
+            {%if (item.areaNames==null or item.areaNames=='')  and (item.sex==null or item.sex=='')%}
+            <p>无条件限制</p>
+            {%else%}
+            {%if item.areaNames%}
+            <p>{{item.areaNames}}</p>
+            {%endif%}
+            {%if item.sex%}
+            {%if item.sex==1%}
+            <p>男</p>
+            {%elif item.sex==2%}
+            <p>女</p>
+            {%elif item.sex==3%}
+            <p>未知</p>
+            {%endif%}
+            {%endif%}
+
+            {%endif%}
+        </li>
+        <li>{{item.redMoney/100}}元</li>
+        <li>{{item.createTime}}</li>
+
+        <li class="f-tl" style="padding-left: 45px;">
+            {%if item.status==1%}
+            未领取
+            {%elif item.status==0%}
+            未领取
+            {%elif item.status==2%}
+            已领取
+            {%elif item.status==3%}
+            发放失败
+            {%elif item.status==4%}
+            已退款
+            {%endif%}
+        </li>
+    </ul>
+    {%endfor%}
+</div>
+{%else%}
+<!--< !&#45;&#45;<div class="noData">暂无数据</div>&ndash;&gt;-->
+<div class="m-jm-err">
+    <img src="{{globalUrl}}/css/pc/img/jm-nodb.png">
+</div>
+{%endif%}
+
+<script  type="text/javascript">
+
+    function showDig(activityUserId,obj){
+        var conditions = $(".condition");
+        conditions.css("display","none");
+        $.each(conditions,function(i,condition){
+            var id = $(condition).attr("id");
+            if(id==="qCondition"+activityUserId){
+                $(condition).css("display","");
+                $(".table-body").bind("click",function(event){
+                    var target = event.target;
+                    if($(target).attr("id")!==$(obj).attr("id")){
+                        $(condition).hide();
+                        $(this).unbind("click");
+                    }
+                });
+            }
+        });
+    }
+
+</script>

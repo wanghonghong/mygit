@@ -1,0 +1,37 @@
+<div class="edit-window ">
+    <i class="iconfont  icon-delete1"></i>
+    <div class="edit-panel">
+        <div class="item-config    ">
+            <div class="item-row ">
+                <label class="item-label">选择图片</label>
+                <div class="item-panel">
+                    <div class="m-add-img">
+                        {% if imageUrl %}
+                        <img src="{{imageUrl}}">
+                        {% else %}
+                        <img src="{{globalUrl}}/css/pc/img/no_picture.png">
+                        {% endif %}
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="item-row  ">
+                <label class="item-label">选择地址</label>
+                <div class="item-panel">
+                    <span class="link-span">{{linkName|default('请选择个地址',ture)}} </span>
+                </div>
+            </div>
+            <div class="item-row  ">
+                <label class="item-label">图片占位</label>
+                <div class="item-panel">
+                    <div class="u-txt col-xs-12">
+                        <select class="ipt-txt placeholder" >
+                            {% for item in  selectdata %}
+                                <option col="{{item.col}}" row="{{item.row}}" value="{{item.row}}行 * {{item.col}}列" {% if item.row==row and item.col==col %} selected {% endif %}>{{item.row}}行 * {{item.col}}列 </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>

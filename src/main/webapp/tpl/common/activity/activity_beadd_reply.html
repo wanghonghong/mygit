@@ -1,0 +1,78 @@
+<style>
+    .m-panel-zdhf ul li{cursor: pointer;}
+    .m-mall-link > div span {
+        display: block;
+        width: 120px;
+    }
+    .panel-hidden .panel-body .panel-list a:link{
+        color:#f89a14;
+    }
+
+    .panel-hidden .panel-body .panel-list a:active{
+        color:#f89a14;
+    }
+    .panel-hidden .panel-body .panel-list a:hover{
+        color:#f89a14;
+    }
+    .panel-hidden .panel-body .panel-list a:visited{
+        color:#f89a14;
+    }
+
+</style>
+
+<!--被添加关注回复-->
+<div class="panel-hidden"  id="reply_content_beadd">
+    <div class="m-panel-zdhf">
+        <ul class="panel-top">
+            <li><i class="iconfont icon-issue"></i>文本</li>
+            <li style=" position: relative;display:none;"><i id="beadd_face"><i class="icon-smile iconfont" ></i><span>表情</span></i>
+                <div id="beadd_qqC" style="display: none;" ></div>
+            </li>
+            <li class="dialog" id="bdadd_imgdg" style="margin-left:0px;"><i class="iconfont icon-image"></i>图片</li>
+            <!--<li class="music dialog2">&nbsp;&nbsp;音频</li>-->
+            <!--<li class="movie">&nbsp;&nbsp;视频</li>-->
+            <!--<li><i class="iconfont icon-link"></i>外网连接</li>-->
+            <!-- <li class="">
+                 <i class="iconfont icon-link"></i>商城连接
+             </li>-->
+        </ul>
+        <div class="panel-body">
+            <div class="panel-list-auto">
+                <div id="panel_bedd" style="display:none;">
+                    <script id="panel_beadd_text" name="content" type="text/plain"></script>
+                </div>
+            </div>
+            <div class="panel-list-auto">
+                <textarea rows="" cols="" name=""></textarea>
+            </div>
+            <div class="panel-list-auto" style="height: 205px;padding:15px;">
+                <div class="m-add-img f-fl" id="newmass_imgdiv" style="display: none;position:relative;">
+                    <span  id="beadd_imgstatus"  style="display: none">0</span>
+                    <img id="beadd_img" src="{{globalUrl}}/css/pc/img/no_picture.png" />
+                    <i class="iconfont icon-add"></i>
+                </div>
+                <div class="u-btn-smltgry f-fl f-mt-xl f-ml-m" id="beadd_imgdel"><i class="iconfont icon-delete1"></i><span>删除</span></div>
+            </div>
+            <div class="panel-list-auto">
+                <textarea rows="" cols="" name=""></textarea>
+            </div>
+
+            <div class="panel-list-auto">
+                <textarea rows="" cols="" name=""></textarea>
+            </div>
+            <div class="panel-list-auto">
+                <div id="beadd_outsl_status" style="display: none;">0</div>
+                <textarea rows="" id="beadd_outsidelink" placeholder="请输入外网连接" cols="" name="" ></textarea>
+            </div>
+        </div>
+    </div>
+   <!-- <div class="u-btn-box1" style="padding-top:20px ;">
+        <input type="button" class="u-btn-lgdkorg" id="bdadd_save" onclick="mm.autoreply.reply_bdadd_save();" value="保存" />
+    </div>-->
+</div>
+<!--被添加关注回复-->
+
+<script>
+    activity.reply.act_beaddreply_change();
+
+</script>

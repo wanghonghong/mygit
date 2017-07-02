@@ -1,0 +1,24 @@
+<ul class="table-container">
+    <li>
+        {% if voteType==1 %}
+        <img class="u-thumbnail-squa" src="{{resUrl|default(globalUrl+'/css/pc/img/no_picture.png',ture)}}">
+        {% elif voteType ==2 %}
+        <img class="u-thumbnail-squa" src="{{globalUrl}}/css/pc/img/m_video.png">
+        {% elif voteType ==3 %}
+        <img class="u-thumbnail-squa" src="{{globalUrl}}/css/pc/img/music_stop.png">
+        {% endif %}
+
+    </li>
+    <li style=" ">
+        <label  >{{name}}</label>
+    </li>
+    <li class="f-tc">
+        {{votesNum}}
+    </li>
+    <li class="f-tc"  >
+        {{num}}
+    </li>
+    <li>
+        <div class="u-btn-smltgry"   onclick="vote.item.queryItem(this)">查看</div>
+    </li>
+</ul>

@@ -1,0 +1,60 @@
+<div class="m-search" id="searchform1">
+    <label class="u-lb-sm">标题名称</label>
+    <div class="u-txt col-xs-3">
+        <input type="hidden" name="platform" value="0"/>
+        <input type="text" class="ipt-txt" placeholder="请输入标题名称" name="name"/>
+    </div>
+    <label class="u-lb-sm">发布类型</label>
+    <div class="u-txt col-xs-3">
+        <select class="ipt-txt c-gray1" name="voteType">
+            <option value="0">全部</option>
+            <option value="1">图片</option>
+            <option value="2">视频</option>
+            <option value="3">音频</option>
+        </select>
+    </div>
+    <label class="u-lb-sm">创建日期</label>
+    <div class="u-txt u-txt-date f-ml-m">
+        <i class="iconfont icon-calendar"></i>
+        <input type="text" name="beginCreateTime" class="ipt-txt c-gray1" placeholder="" style="width: 115px;"/>
+    </div>
+    <div class="u-txt">
+        <span class="line" style=" width: 20px;">-</span>
+    </div>
+    <div class="u-txt u-txt-date">
+        <i class="iconfont icon-calendar"></i>
+        <input type="text" name="endCreateTime" class="ipt-txt c-gray1" placeholder="" style="width: 115px;"/>
+    </div>
+    <div class="u-btn-box1 f-cb">
+        <input type="button" class="u-btn-mddkorg u-w" id="itemSearchBtn" value="查询"/>
+    </div>
+</div>
+<a class="btn-slide btn-slide1"></a>
+<!--查询列表-->
+<div class="m-panel m-buyshopsys f-mt-m">
+    <div class="panel-heading">
+        <div class="u-btn-lgltgry1 f-ml-s dialog-newobj" onclick="vote.item.addItem();">
+            <i class="iconfont icon-add u-change"></i>
+            <span>新增对象</span>
+        </div>
+    </div>
+    <div class="panel-body" style="padding: 0;">
+        <div class="m-jm-table">
+            <ul class="table-hander">
+                <li>主图</li>
+                <li style="width: 28%;">标题名称</li>
+                <li>发布类型</li>
+                <li>创建日期</li>
+                <li>管理</li>
+            </ul>
+            <div class="table-body f-t-off" id="tableBody1">
+
+            </div>
+            <!--以下是分页效果-->
+            <div id="pageToolbar1" class="pagination f-tr f-mt-m f-mb-s f-mr-m">
+
+            </div>
+            <!--分页end-->
+        </div>
+    </div>
+</div>

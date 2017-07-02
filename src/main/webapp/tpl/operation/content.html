@@ -1,0 +1,55 @@
+<div  id="operationBody">
+
+</div>
+<script>
+    $(function () {
+        $('#shopIndexLeftmenu').hide();
+        var data = {};
+        var joinVoUrl = CONTEXT_PATH + "/join/apply/2";
+        $.ajaxJsonGet(joinVoUrl, null, {
+            "done": function (res) {
+                data.jmJoin = res.data;
+                data.THIRD_URL = '{{THIRD_URL}}';
+                var id = res.data.id;
+                var subType = res.data.subType;
+                var status =  res.data.status;
+                if (!id){
+                    jumi.template('operation/application',data,function(tpl){
+                        $('#operationBody').empty();
+                        $('#operationBody').html(tpl);
+                    });
+                }else if(status==1) {
+                    if (subType==1){
+                        jumi.template('operation/p_join_wait',function(tpl){
+                            $('#operationBody').empty();
+                            $('#operationBody').html(tpl);
+                        });
+                    }else {
+                        jumi.template('operation/c_join_wait',function(tpl){
+                            $('#operationBody').empty();
+                            $('#operationBody').html(tpl);
+                        });
+                    }
+                }else if(status==2) {
+                    if (subType == 1) {
+                        jumi.template('operation/personal_join',data,function(tpl){
+                            $('#operationBody').empty();
+                            $('#operationBody').html(tpl);
+                        });
+                    } else {
+                        jumi.template('operation/company_join',data,function(tpl){
+                            $('#operationBody').empty();
+                            $('#operationBody').html(tpl);
+                        });
+                    }
+                }else{
+                    jumi.template('operation/business',function(tpl){
+                        $('#operationBody').empty();
+                        $('#operationBody').html(tpl);
+                    });
+                }
+            }
+        });
+    });
+
+</script>

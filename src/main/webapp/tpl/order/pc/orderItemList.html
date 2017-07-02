@@ -1,0 +1,165 @@
+<style>
+    .ui-dialog-body{
+        padding:0 10px 15px 10px;
+    }
+</style>
+{%if items.length>0%}
+{% for item in items %}
+    <table  class="m-table-control">
+        <tbody>
+        <tr class="bg-gray">
+            <td colspan="5" style="border-top: none;">
+                <ul>
+                    <li class="f-fl f-pl-s">订单编号：{{item.orderNum}}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{% if item.transactionId %}收款流水号：{{item.transactionId}}{% endif %}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp{% if item.refundId %}退款流水号：{{item.refundId}}{% endif %}</li>
+                    <li class="service f-fr f-pr-s">
+                        <font color="#adadad">
+                            {% if item.wxRemark %}
+                                备注: {{item.wxRemark}}
+                            {% endif %}
+                        </font>&nbsp;&nbsp;&nbsp;
+                        <a onclick="customer.operation.topUserPopMsg('{{item.userId}}')"> 上级</a><font color="#d9d9d9"> | </font>
+                        <a onclick="customer.operation.lastUserPopMsg('{{item.userId}}')">下级</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                        <a data-id="{{item.userId}}" onclick="ImInfo.openChatWin(this,'{{item.userId}}');">{{item.nickname}}{% if item.headimgurl %}<img class="u-thumbnail-circ" src="{{item.headimgurl}}" />{% else %}<img class="u-thumbnail-circ" src="css/pc/img/s-newshop-lt-img3.jpg" />{% endif %}</a></li>
+                </ul>
+            </td>
+        </tr>
+        {% for orderDetail in item.orderDetails %}
+        <tr>
+            <td style="width:40%;">
+                <div class="g-table">
+                    <div class="g-table-cell f-vm" style="width: 20%;padding-top: 5px;">
+                        {% if orderDetail.pic %}
+                        <img class="u-thumbnail-squa" src="{{orderDetail.pic}}"/>
+                        {% else %}
+                        <img class="u-thumbnail-squa" src="{{globalUrl}}/css/pc/img/no_picture.png"/>
+                        {% endif %}
+                    </div>
+                    <div class="g-table-cell f-vm f-tl f-" style="width: 57%;">
+                        <span>{{orderDetail.name}}&nbsp&nbsp&nbsp{{orderDetail.specValueTwo}}</span><br>
+                        <font color="#6a6a6a">{{orderDetail.specValueOne}}&nbsp&nbsp&nbsp{{orderDetail.specValueThree}}</font>
+                    </div>
+                    <div class="g-table-cell f-vm" style="width: 23%;">
+                        <span>￥{{orderDetail.price/100}}</span><br>
+                        <font color="#e29c3d">{{orderDetail.count}}件</font>
+                    </div>
+                </div>
+            </td>
+            <!-- <td class="font-color-black" style="width:10%;" >
+                52
+            </td>-->
+            <td class="font-color-black" style="width:15%;" >
+                {{item.createDate}}
+            </td>
+            <td class="font-color-black" style="width:15%;" >
+            {% if item.type==5 or item.type==6 %}
+            <font color="red">礼品单</font>
+            {% else %}
+            标准单
+            {% endif %}
+            </td>
+            <td style="width:15%;" >
+                {% if item.status==0 %}
+                <span class="font-color-black"><font color="#fe5224"> 待付款</font></span><br>
+                <div class="u-btn-smltgry f-mb-xs  f-mt-xs" onclick="order.list.queryDialogOrderDetail('{{item.orderInfoId}}')"> <span>订单详情</span></div><br>
+                <div class="u-btn-smltgry" onclick="order.list.closeOrder('{{item.orderInfoId}}','4','你确定要关闭订单吗？')"><span>取消订单</span></div>
+                {% elif item.status==1 %}
+                <span class="font-color-black" ><font color="#fe5224"> 待发货</font></span><br>
+                <div class="u-btn-smltgry f-mb-xs  f-mt-xs" onclick="order.list.queryDialogOrderDetail('{{item.orderInfoId}}')"> <span>订单详情</span></div><br>
+                {% elif item.status==2 %}
+                <span class="font-color-black" ><font color="#6dc87b"> 已发货</font></span><br>
+                    {% if item.type==5 or item.type==6 %}
+                        {% if  item.parentOrderId %}
+                            <div class="u-btn-smltgry f-mb-xs  f-mt-xs" onclick="order.list.queryOrderDetail('{{item.orderInfoId}}')"> <span>订单详情</span></div><br>
+                        {% else %}
+                            <div class="u-btn-smltgry f-mb-xs  f-mt-xs" onclick="order.list.queryOrderDispatchDetail('{{item.orderInfoId}}')"> <span>订单详情</span></div><br>
+                        {% endif %}
+                    {% else %}
+                        <div class="u-btn-smltgry f-mb-xs  f-mt-xs" onclick="order.list.queryOrderDetail('{{item.orderInfoId}}')"> <span>订单详情</span></div><br>
+                    {% endif %}
+                {% elif item.status==3 and item.goodStatus!=1 %}
+                <span class="font-color-black" ><font color="#6dc87b"> 已收货</font></span><br>
+                    {% if item.type==5 or item.type==6 %}
+                        {% if  item.parentOrderId %}
+                            <div class="u-btn-smltgry f-mb-xs  f-mt-xs" onclick="order.list.queryOrderDetail('{{item.orderInfoId}}')"> <span>订单详情</span></div><br>
+                        {% else %}
+                            <div class="u-btn-smltgry f-mb-xs  f-mt-xs" onclick="order.list.queryOrderDispatchDetail('{{item.orderInfoId}}')"> <span>订单详情</span></div><br>
+                        {% endif %}
+                    {% else %}
+                        <div class="u-btn-smltgry f-mb-xs  f-mt-xs" onclick="order.list.queryOrderDetail('{{item.orderInfoId}}')"> <span>订单详情</span></div><br>
+                    {% endif %}
+                {% elif item.status==4 %}
+                <span class="font-color-black" >订单关闭</span><br>
+                <!--<div class="u-btn-smltgry f-mb-xs  f-mt-xs" onclick="order.list.queryOrderDetail('{{item.orderInfoId}}')"> <span>订单详情</span></div><br>-->
+                {% else %}
+                {% endif %}
+                {% if orderDetail.refundStatus==0 %}
+                <span class="font-color-black" ><font color="#fe5224"> 申请退款</font></span><br>
+                <div class="u-btn-smltgry f-mb-xs  f-mt-xs" onclick="order.list.queryOrderDetail('{{item.orderInfoId}}')"> <span>订单详情</span></div><br>
+                {% elif orderDetail.refundStatus==1 %}
+                <span class="font-color-black" ><font color="#6dc87b"> 已退款</font></span><br>
+                <div class="u-btn-smltgry f-mb-xs  f-mt-xs" onclick="order.list.queryOrderDetail('{{item.orderInfoId}}')"> <span>订单详情</span></div><br>
+                {% elif orderDetail.refundStatus==2 %}
+                <span class="font-color-black" ><font color="#fe5224"> 拒绝退款</font></span><br>
+                <div class="u-btn-smltgry f-mb-xs  f-mt-xs" onclick="order.list.queryOrderDetail('{{item.orderInfoId}}')"> <span>订单详情</span></div><br>
+                {% elif orderDetails.refundStatus==3 %}
+                <span class="font-color-black" ><font color="#fe5224"> 退款中</font></span><br>
+                <div class="u-btn-smltgry f-mb-xs  f-mt-xs" onclick="order.list.queryOrderDetail('{{item.orderInfoId}}')"> <span>订单详情</span></div><br>
+                {% else %}
+                {% endif %}
+                {% if item.goodStatus==1 and orderDetail.refundStatus==6 %}
+                <span class="font-color-black" ><font color="#fe5224"> 退货中</font></span><br>
+                <div class="u-btn-smltgry f-mb-xs  f-mt-xs" onclick="order.list.queryOrderDetail('{{item.orderInfoId}}')"> <span>订单详情</span></div>
+                {% endif %}
+            </td>
+            <td style="width:15%;" >
+                <span>￥{{item.realPrice/100}}</span><br>
+                <span>（含运费：{{item.sendFee/100}}）</span><br>
+                {% if item.status!=4 %}
+                <div class="u-btn-smltgry f-mb-xs f-mt-xs" onclick="order.list.queryCustomerNote('{{item.orderInfoId}}')"> <span>客服备注</span></div><br>
+                {% endif %}
+                {% if item.status==0 %}
+                <div class="u-btn-smltgry f-mb-xs" onclick="order.list.queryUpdatePrice('{{item.orderInfoId}}')"><span>修改价格</span></div><br>
+                <div class="u-btn-smltgry" onclick="order.list.queryReduceSendFee('{{item.orderInfoId}}')"><span>减免运费</span></div>
+                {% elif item.status==2 %}
+                <div class="u-btn-smltgry dialog" onclick="order.list.confirm('{{item.orderInfoId}}','3','请确认是否帮客户提交确认收货')"><span>确认收货</span></div><br>
+                {% elif item.status==5 and orderDetail.refundStatus!=6 %}
+                <div class="u-btn-smltgry dialog u-txt-er1" onclick="order.list.refundOperation('{{item.orderInfoId}}')"><span>退款操作</span></div>
+                {% else %}
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+        {% if item.remark %}
+        <tr class="buy-footer">
+            <td colspan="5">
+                <p class="f-tl f-pl-s f-pr-s f-wb-ba"><img class="u-thumbnail-circ" src="{{globalUrl}}/css/pc/img/icon_buy.png" />	买家留言：<font color="#6A6A6A">{{item.remark}}</font></p>
+            </td>
+        </tr>
+        {% endif %}
+        {% if item.sellerNote %}
+        <tr class="buy-footer">
+            <td colspan="5">
+                <p class="f-tl f-pl-s f-pr-s f-wb-ba"><img class="u-thumbnail-circ" src="{{globalUrl}}/css/pc/img/icon_sale.png" />	卖家留言：<font color="#6A6A6A">{{item.sellerNote}}</font></p>
+            </td>
+        </tr>
+        {% endif %}
+        <!--{% if item.status==2 or item.status==3 or item.status==5 %}
+            {% if item.deliveryNote %}
+            <tr class="buy-footer">
+                <td colspan="6"  >
+                    <p class="f-tl f-pl-s"><img class="u-thumbnail-circ" src="css/pc/img/icon_pd.png" />物流留言：<font color="#6A6A6A">{{item.deliveryNote}}</font></p>
+                </td>
+            </tr>
+            {% endif %}
+        {% endif %}-->
+        </tbody>
+    </table>
+{% endfor %}
+{%else%}
+<div class="m-jm-err">
+    <img src="{{globalUrl}}/css/pc/img/jm-nodb.png">
+</div>
+{%endif%}
+<script>
+    ImInfo.initData("{{ext.hxAccount}}","{{ext.userid}}","{{ext.nickname}}","{{ext.headImg}}","{{ext.shopId}}");
+</script>

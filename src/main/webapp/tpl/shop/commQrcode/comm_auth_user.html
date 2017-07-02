@@ -1,0 +1,85 @@
+
+
+
+<div class="m-shipinfo-lt" id="channelBody">
+
+	<ul class="table-hander font-s14">
+		<li>头像</li>
+		<li>姓名</li>
+		<li>手机</li>
+		<li>角色</li>
+		<li>操作</li>
+	</ul>
+	<div class="table-body u-4border" >
+		{% for item in items %}
+		<ul class="table-container">
+			<li>
+				<img src="{{item.headimgurl}}" class="u-thumbnail-circ" />
+				<input type="hidden" value="{{item.userId}}" id="authUserId{{item.userId}}"/>
+			</li>
+			<li>{{item.nickname}}</li>
+			<li>{{item.phoneNumber}}</li>
+			<li>
+				{%if item.agentRole==1 %}
+				代理商1档
+				{%elif item.agentRole==2 %}
+				代理商2档
+				{%elif item.agentRole==3 %}
+				代理商3档
+				{%elif item.agentRole==4 %}
+				代理商4档
+				{%elif item.agentRole==5 %}
+				分销商1档
+				{%elif item.agentRole==6 %}
+				分销商2档
+				{%elif item.agentRole==7 %}
+				分销商3档
+				{%elif item.agentRole==8 %}
+				分享客
+				{%else%}
+				-
+				{%endif%}
+			</li>
+			<li>
+				<div class="u-rb f-mb-zero">
+					<input type="radio" name="rdate" id="rdate{{item.userId}}" value="{{item.userId}}"  />
+					<label for="rdate{{item.userId}}"></label>
+				</div>
+			</li>
+		</ul>
+		{%endfor%}
+	</div>
+
+</div>
+<div class="m-sell-set bg-white f-mt-m" style="margin-left: 0; padding-left: 300px;">
+	<div class="col-xs-12 f-mb-xs">
+		<label class="u-lb-sm f-fl c-deepgray">指定商品</label>
+		<div class="col-xs-10 f-pt-s">
+			<div class="u-txt f-mb-zero">
+				<div class="u-rb bg-white">
+					<input type="radio" name="authType" id="radioBox1" value="1"  />
+					<label for="radioBox1"></label>
+				</div>
+				<label for="radioBox1" class="c-gray1 f-mr-s">选择商品</label>
+				<div class="u-btn-smltgry dialog-goodsbox" onclick="comm.auth.goodsDataDialog()"><span>点击选择</span></div>
+				<div class="m-selectbarbox f-ml-s f-t-off1" style="width: 190px;">
+					<input type="hidden" id="goodsId" />
+					<p title="" id="goodsName"></p>
+				</div>
+			</div>
+			<div class="u-txt f-cb f-mb-zero">
+				<div class="u-rb bg-white">
+					<input type="radio" name="authType" id="radioBox3" value="0" checked />
+					<label for="radioBox3"></label>
+				</div>
+				<label for="radioBox3" class="c-gray1">不修改</label>
+			</div>
+		</div>
+
+
+	</div>
+</div>
+<div class="u-btn-box f-mt-l">
+	<input type="button" class="u-btn-dgymainlg f-mr-s" value="结束授权" />
+	<input type="button" class="u-btn-mainlg" value="启动授权" onclick="comm.auth.authDialog()"  />
+</div>

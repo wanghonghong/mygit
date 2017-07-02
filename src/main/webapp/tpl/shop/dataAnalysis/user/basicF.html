@@ -1,0 +1,36 @@
+<div class="m-jm-table" id="u-tab1">
+    <ul class="table-hander">
+        <li>商品平推</li>
+        <li>新增关注（人）</li>
+        <li>跑路粉丝（人）</li>
+        <li>净增粉丝（人）</li>
+        <li>新增购买（人）</li>
+        <li>分享客（人）</li>
+        <li>新增分销（人）</li>
+        <li>新增代理（人）</li>
+    </ul>
+    <div class="table-body">
+
+        {%if items.length>0 %}
+        {% for item in items %}
+        <ul class="table-container">
+            {% for e in item %}
+            <li>{{e.name}}</li>
+            <li>{{e.count}}</li>
+            <li>{{e.offCount}}</li>
+            <li>{{e.count-e.offCount}}</li>
+            <li>{{e.buyCount}}</li>
+            <li>{{e.shareCount}}</li>
+            <li>{{e.distriCount}}</li>
+            <li>{{e.agentCount}}</li>
+            {%endfor%}
+        </ul>
+        {%endfor%}
+        {%else%}
+        <div class="m-jm-err">
+            <img src="{{globalUrl}}/css/pc/img/jm-nodb.png">
+        </div>
+        {%endif%}
+
+    </div>
+</div>

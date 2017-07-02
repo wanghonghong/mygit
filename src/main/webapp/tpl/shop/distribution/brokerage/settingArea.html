@@ -1,0 +1,1365 @@
+<form id="form1">
+
+{% if type==1 %}
+
+    <!-- 分享分销系统 —— 普通版 -->
+    <div class="m-panel bg-gray1 f-mb-s">
+        <div class="panel-heading m-tt panel-hidden" style="border-bottom: 0;">
+            <p class="f-mt-s col-xs-9 u-bgline" style="width: 72%;"><span>分享分销系统 —— 普通版</span></p>
+            <div class="f-fr f-pr-m">
+                <div class="f-fl f-ml-s u-btn-oval">
+                    <i class="iconfont icon-Application"></i>
+                    <span>运用说明</span>
+                </div>
+                <div class="f-fl close f-ml-s f-mt-xs">
+                    <input type="checkbox" name="isOpen" id="isOpen" value="1"   on-text="开通" off-text="关闭"   />
+                </div>
+            </div>
+        </div>
+        <div class="panel-body m-moresale">
+            <div class="">
+                <!--上面放关闭后的框类-->
+                <div class="g-table sale-content f-pt-s">
+                    <div class="m-multisale-tt f-mb-xs">
+                        <span class="u-dottt">分享组</span>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="u-txt">
+                            <label class="u-lb-sm f-ml-s f-pr-s c-deepgray"><font>1 </font>级佣金</label>
+                            <div class="ipt-txt11 f-mb-xs">
+                                <i class="icon-lb-word c-gray">％</i>
+                                <input type="number" class="ipt-txt c-gray1" min="0" max="100"  name="one" value="{{one|default(0,ture) /100}}" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="u-txt">
+                            <label class="u-lb-sm f-pr-s c-deepgray"><font>2 </font>级佣金</label>
+                            <div class="ipt-txt11">
+                                <i class="icon-lb-word c-gray">％</i>
+                                <input type="number" class="ipt-txt c-gray1  "min="0" max="100"  name="two" value="{{two|default(0,ture) /100}}" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="f-cb m-tip3 f-pr-l f-pb-s">
+                        <i class="iconfont icon-lamp"></i>
+                        <span>只填写 1 级，即为 1 级分销系统；填写到 2 级，即为 2 级分销系统</span>
+                    </div>
+                </div>
+                {%if isFansShop !=0 %}
+                <!--粉丝小店-->
+                {% set isfun=1 %}
+                {% include 'tpl/shop/distribution/brokerage/fans_shop.html' %}
+                <!--粉丝小店-->
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <!-- /分享分销系统 —— 普通版-->
+{% elif type==2 %}
+    <!-- 代理订购系统 —— 升级版 -->
+    <div class="m-panel bg-gray1 f-mb-s">
+        <div class="panel-heading m-tt panel-hidden" style="border-bottom: 0;">
+            <p class="f-mt-s col-xs-7 u-bgline"><span>代理订购系统 —— 升级版</span></p>
+            <!--未开通的时候用f-active，开通的时候用active-->
+            <div class="u-sort active f-fl f-ml-s bg-white f-mb-zero">
+                <i class="iconfont icon-shopcarnew"></i>
+                10万元/套
+            </div>
+            <div class="f-fl f-ml-s u-btn-oval">
+                <i class="iconfont icon-Application"></i>
+                <span>运用说明</span>
+            </div>
+            <div class="f-fl close f-ml-s f-mt-xs">
+                <input type="checkbox" name="isOpen" id="isOpen" value="1"   on-text="开通" off-text="关闭"   />
+            </div>
+        </div>
+        <div class="panel-body m-moresale">
+            <div class="">
+                <!--上面放关闭后的框类-->
+                <!--代理组-->
+                <div class="g-table sale-content f-pt-s">
+                    <div class="m-multisale-tt f-mb-s">
+                        <span class="u-dottt">代理组</span>
+                    </div>
+                    <div class="col-xs-12 f-mb-xs">
+                        <div class="u-txt">
+                            <label class="u-lb-sm f-pr-m c-deepgray"><font> 1 </font>档：</label>
+                            <div class="ipt-txt11">
+                                <i class="icon-lb-word c-gray">折</i>
+                                <input type="number" class="ipt-txt c-gray1" min="0" max="10" name="agentA" value="{{agentA|default(0,ture) /100}}" />
+                            </div>
+                        </div>
+                        <div class="u-txt">
+                            <label class="u-lb-sm f-pr-s c-deepgray">收费</label>
+                            <div class="ipt-txt11">
+                                <i class="icon-lb-word c-gray">元</i>
+                                <input type="number" class="ipt-txt c-gray1" min="0"   name="agentAfee" value="{{agentAfee|default(0,ture) /100}}" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 f-mb-xs">
+                        <div class="u-txt">
+                            <label class="u-lb-sm f-pr-m c-deepgray"><font> 2 </font>档：</label>
+                            <div class="ipt-txt11">
+                                <i class="icon-lb-word c-gray">折</i>
+                                <input type="number" class="ipt-txt c-gray1" min="0" max="10"  name="agentB" value="{{agentB|default(0,ture) /100}}" />
+                            </div>
+                        </div>
+                        <div class="u-txt">
+                            <label class="u-lb-sm f-pr-s c-deepgray">收费</label>
+                            <div class="ipt-txt11">
+                                <i class="icon-lb-word c-gray">元</i>
+                                <input type="number" class="ipt-txt c-gray1" min="0"   name="agentBfee" value="{{agentBfee|default(0,ture) /100}}"  />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 f-mb-xs">
+                        <div class="u-txt">
+                            <label class="u-lb-sm f-pr-m c-deepgray"><font> 3 </font>档：</label>
+                            <div class="ipt-txt11">
+                                <i class="icon-lb-word c-gray">折</i>
+                                <input type="number" class="ipt-txt c-gray1"  min="0"  max="10" name="agentC" value="{{agentC|default(0,ture) /100}}" />
+                            </div>
+                        </div>
+                        <div class="u-txt">
+                            <label class="u-lb-sm f-pr-s c-deepgray">收费</label>
+                            <div class="ipt-txt11">
+                                <i class="icon-lb-word c-gray">元</i>
+                                <input type="number" class="ipt-txt c-gray1" min="0"  name="agentCfee" value="{{agentCfee|default(0,ture) /100}}" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 f-mb-xs">
+                        <div class="u-txt">
+                            <label class="u-lb-sm f-pr-m c-deepgray"><font> 4 </font>档：</label>
+                            <div class="ipt-txt11">
+                                <i class="icon-lb-word c-gray">折</i>
+                                <input type="number" class="ipt-txt c-gray1" min="0" max="10"  name="agentD" value="{{agentD|default(0,ture) /100}}" />
+                            </div>
+                        </div>
+                        <div class="u-txt">
+                            <label class="u-lb-sm f-pr-s c-deepgray">收费</label>
+                            <div class="ipt-txt11">
+                                <i class="icon-lb-word c-gray">元</i>
+                                <input type="number" class="ipt-txt c-gray1" min="0"   name="agentDfee" value="{{agentDfee|default(0,ture) /100}}" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="g-table bg-antiquewhite f-padding-s">
+                        <label class="u-lb-lg f-ml-l c-deepgray">线下代理购买限定</label>
+                        <div class="col-xs-9 f-pt-s c-gray1">
+                            <div class="u-rb f-mb-zero">
+                                <input type="radio" name="settleType" id="settleType1" value="1"  checked  />
+                                <label for="settleType1"></label>
+                            </div>
+                            <label for="settleType1" class="u-rd-wd">按折扣价结算</label>
+                            <div class="u-rb f-ml-xl f-mb-zero">
+                                <input type="radio" name="settleType" id="settleType2" value="2" />
+                                <label for="settleType2"></label>
+                            </div>
+                            <label for="settleType2" class="u-rd-wd">按原价结算</label>
+                        </div>
+                    </div>
+                </div>
+                <!--/代理组-->
+                <!--粉丝小店-->
+                {%if isFansShop !=0 %}
+                {%set feeTips=1 %}
+                {% include 'tpl/shop/distribution/brokerage/fans_shop.html' %}
+                {% endif %}
+                <!--/粉丝小店-->
+            </div>
+        </div>
+    </div>
+    <!-- /代理订购系统 —— 升级版 -->
+
+{% elif type==3 %}
+    <!-- 分享分销系统 —— 升级版 -->
+    <div class="m-panel bg-gray1 f-mb-s">
+        <div class="panel-heading m-tt panel-hidden" style="border-bottom: 0;">
+            <p class="f-mt-s col-xs-7 u-bgline"><span>分享分销系统 —— 升级版</span></p>
+            <div class="f-fr f-pr-m">
+                <div class="u-sort active f-fl f-ml-s f-mb-zero bg-white">
+                    <i class="iconfont icon-shopcarnew"></i>
+                    10万元/套
+                </div>
+                <div class="f-fl f-ml-s u-btn-oval">
+                    <i class="iconfont icon-Application"></i>
+                    <span>运用说明</span>
+                </div>
+                <div class="f-fl close f-ml-s f-mt-xs">
+                    <input type="checkbox" name="isOpen" id="isOpen" value="1"   on-text="开通" off-text="关闭"   />
+                </div>
+            </div>
+        </div>
+        <div class="panel-body m-moresale">
+            <div class="">
+                <!--上面放关闭后的框类-->
+                <!--分享组-->
+                <div class="g-table sale-content f-pt-s">
+                    <div class="m-multisale-tt f-mb-xs">
+                        <span class="u-dottt">分享组</span>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="u-txt">
+                            <label class="u-lb-sm f-ml-s f-pr-s c-deepgray"><font>1 </font>级佣金</label>
+                            <div class="ipt-txt11 f-mb-xs">
+                                <i class="icon-lb-word c-gray">％</i>
+                                <input type="number" class="ipt-txt c-gray1" min="0" max="100"  name="one" value="{{one|default(0,ture) /100}}"  />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="u-txt">
+                            <label class="u-lb-sm f-pr-s c-deepgray"><font>2 </font>级佣金</label>
+                            <div class="ipt-txt11">
+                                <i class="icon-lb-word c-gray">％</i>
+                                <input type="number" class="ipt-txt c-gray1" min="0" max="100"  name="two" value="{{two|default(0,ture) /100}}"  />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="f-cb m-tip3 f-pr-l f-pb-s">
+                        <i class="iconfont icon-lamp"></i>
+                        <span>只填写 1 级，即为 1 级分销系统；填写到 2 级，即为 2 级分销系统</span>
+                    </div>
+                </div>
+                <!--/-->
+                <!--分销组-->
+                <div class="g-table sale-content f-pt-s f-mt-s">
+                    <div class="m-multisale-tt f-mb-s">
+                        <span class="u-dottt">分销组</span>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="u-txt">
+                            <label class="u-lb-lg f-ml-l f-pr-s c-deepgray"><font>1</font> 档：&nbsp;1 级佣金</label>
+                            <div class="ipt-txt11 f-mb-xs" style="width: 120px;">
+                                <i class="icon-lb-word c-gray">％</i>
+                                <input type="number" class="ipt-txt c-gray1" min="0"  max="100" name="oneAup" value="{{oneAup|default(0,ture) /100}}"  placeholder="" />
+                            </div>
+                        </div>
+                        <div class="u-txt">
+                            <label class="u-lb-sm f-pr-s c-deepgray">2 级佣金</label>
+                            <div class="ipt-txt11" style="width: 120px;">
+                                <i class="icon-lb-word c-gray">％</i>
+                                <input type="number" class="ipt-txt c-gray1" min="0" max="100"  name="twoAup" value="{{twoAup|default(0,ture) /100}}" placeholder="" />
+                            </div>
+                        </div>
+                        <div class="u-txt">
+                            <label class="u-lb-sm f-pr-s c-deepgray">收费</label>
+                            <div class="ipt-txt11" style="width: 120px;">
+                                <i class="icon-lb-word c-gray">元</i>
+                                <input type="number" class="ipt-txt c-gray1" min="0"   name="afee" value="{{afee|default(0,ture) /100}}" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="u-txt">
+                            <label class="u-lb-lg f-ml-l f-pr-s c-deepgray"><font>2</font> 档：&nbsp;1 级佣金</label>
+                            <div class="ipt-txt11 f-mb-xs" style="width: 120px;">
+                                <i class="icon-lb-word c-gray">％</i>
+                                <input type="number" class="ipt-txt c-gray1" min="0" max="100"  name="oneBup" value="{{oneBup|default(0,ture) /100}}"  />
+                            </div>
+                        </div>
+                        <div class="u-txt">
+                            <label class="u-lb-sm f-pr-s c-deepgray">2 级佣金</label>
+                            <div class="ipt-txt11" style="width: 120px;">
+                                <i class="icon-lb-word c-gray">％</i>
+                                <input type="number" class="ipt-txt c-gray1" min="0" max="100"  name="twoBup" value="{{twoBup|default(0,ture) /100}}"  />
+                            </div>
+                        </div>
+                        <div class="u-txt">
+                            <label class="u-lb-sm f-pr-s c-deepgray">收费</label>
+                            <div class="ipt-txt11" style="width: 120px;">
+                                <i class="icon-lb-word c-gray">元</i>
+                                <input type="number" class="ipt-txt c-gray1" min="0"  name="bfee" value="{{bfee|default(0,ture) /100}}"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="u-txt">
+                            <label class="u-lb-lg f-ml-l f-pr-s c-deepgray"><font>3</font> 档：&nbsp;1 级佣金</label>
+                            <div class="ipt-txt11 f-mb-xs" style="width: 120px;">
+                                <i class="icon-lb-word c-gray">％</i>
+                                <input type="number" class="ipt-txt c-gray1" min="0" max="100"  name="oneCup" value="{{oneCup|default(0,ture) /100}}" />
+                            </div>
+                        </div>
+                        <div class="u-txt">
+                            <label class="u-lb-sm f-pr-s c-deepgray">2 级佣金</label>
+                            <div class="ipt-txt11" style="width: 120px;">
+                                <i class="icon-lb-word c-gray">％</i>
+                                <input type="number" class="ipt-txt c-gray1" min="0" max="100"  name="twoCup" value="{{twoCup|default(0,ture) /100}}"   />
+                            </div>
+                        </div>
+                        <div class="u-txt">
+                            <label class="u-lb-sm f-pr-s c-deepgray">收费</label>
+                            <div class="ipt-txt11" style="width: 120px;">
+                                <i class="icon-lb-word c-gray">元</i>
+                                <input type="number" class="ipt-txt c-gray1" min="0"  name="cfee" value="{{cfee|default(0,ture) /100}}" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--/-->
+                <!--粉丝小店-->
+                {%if isFansShop !=0 %}
+                {% include 'tpl/shop/distribution/brokerage/fans_shop.html' %}
+                {% endif %}
+                <!--/粉丝小店-->
+            </div>
+        </div>
+    </div>
+    <!-- /分享分销系统 —— 升级版 -->
+
+{% elif type==4 %}
+
+<!-- O2O 分销代理系统 -->
+<!--<div class="m-panel bg-gray1 f-mb-s">-->
+    <!--<div class="panel-heading m-tt panel-hidden" style="border-bottom: 0;">-->
+        <!--<p class="f-mt-s col-xs-7 u-bgline"><span>O2O 分销代理系统</span></p>-->
+        <!--<div class="u-sort active f-fl f-ml-s"  name="pricesort">-->
+            <!--<i class="iconfont icon-shopcarnew"></i>-->
+            <!--10万元/套-->
+        <!--</div>-->
+        <!--<div class="f-fl f-ml-s u-btn-oval">-->
+            <!--<i class="iconfont icon-Application"></i>-->
+            <!--<span>运用说明</span>-->
+        <!--</div>-->
+        <!--<div class="f-fl close f-ml-s f-mt-xs">-->
+            <!--<input type="checkbox" name="isOpen" id="isOpen" value="1"   on-text="开通" off-text="关闭"   />-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="panel-body m-moresale">-->
+        <!--<div class="g-table sale-content f-pt-m">-->
+            <!--<div class="col-xs-12">-->
+                <!--<div class="u-txt">-->
+                    <!--<label class="u-lb-lg f-tl f-fl c-black">线上：<font>1</font> 级佣金</label>-->
+                    <!--<div class="ipt-txt11">-->
+                        <!--<i class="icon-lb-word c-gray">％</i>-->
+                        <!--<input type="number" class="ipt-txt c-gray1" min="0" max="100"  name="one" value="{{one|default(0,ture) /100}}" />-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="col-xs-12">-->
+                <!--<div class="u-txt">-->
+                    <!--<label class="u-lb-lg f-tl f-fl c-black">　　　<font>2</font> 级佣金</label>-->
+                    <!--<div class="ipt-txt11">-->
+                        <!--<i class="icon-lb-word c-gray">％</i>-->
+                        <!--<input type="number" class="ipt-txt c-gray1" min="0" max="100"  name="two" value="{{two|default(0,ture) /100}}" />-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="m-tip3 f-pr-l f-pb-s">-->
+                <!--<i class="iconfont icon-lamp"></i>-->
+                <!--<span>只填写 1 级，即为 1 级分销系统；填写到 2 级，即为 2 级分销系统</span>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="g-table sale-content f-pt-m f-mt-s">-->
+            <!--<div class="col-xs-6">-->
+                <!--<div class="u-txt">-->
+                    <!--<label class="u-lb-lg f-tl f-fl c-black">线下：代理<font> A </font>档</label>-->
+                    <!--<div class="ipt-txt11" style="width: 180px;">-->
+                        <!--<i class="icon-lb-word c-gray">折</i>-->
+                        <!--<input type="number" class="ipt-txt c-gray1" min="0" max="10"  name="agentA" value="{{agentA|default(0,ture) /100}}" />-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="col-xs-6">-->
+                <!--<div class="u-txt">-->
+                    <!--<label class="u-lb-lg f-tl f-fl c-black">　　　代理收费</label>-->
+                    <!--<div class="ipt-txt11" style="width: 180px;">-->
+                        <!--<i class="icon-lb-word c-gray">元</i>-->
+                        <!--<input type="number" class="ipt-txt c-gray1" min="0"   name="agentAfee" value="{{agentAfee|default(0,ture) /100}}" />-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="col-xs-6">-->
+                <!--<div class="u-txt">-->
+                    <!--<label class="u-lb-lg f-tl f-fl c-black">　　　代理<font> B </font>档</label>-->
+                    <!--<div class="ipt-txt11" style="width: 180px;">-->
+                        <!--<i class="icon-lb-word c-gray">折</i>-->
+                        <!--<input type="number" class="ipt-txt c-gray1" min="0" max="10"  name="agentB" value="{{agentB|default(0,ture) /100}}" />-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="col-xs-6">-->
+                <!--<div class="u-txt">-->
+                    <!--<label class="u-lb-lg f-tl f-fl c-black">　　　代理收费</label>-->
+                    <!--<div class="ipt-txt11" style="width: 180px;">-->
+                        <!--<i class="icon-lb-word c-gray">元</i>-->
+                        <!--<input type="number" class="ipt-txt c-gray1" min="0"   name="agentBfee" value="{{agentBfee|default(0,ture) /100}}" />-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="col-xs-6">-->
+                <!--<div class="u-txt">-->
+                    <!--<label class="u-lb-lg f-tl f-fl c-black">　　　代理<font> C </font>档</label>-->
+                    <!--<div class="ipt-txt11" style="width: 180px;">-->
+                        <!--<i class="icon-lb-word c-gray">折</i>-->
+                        <!--<input type="number" class="ipt-txt c-gray1" min="0" max="10"  name="agentC" value="{{agentC|default(0,ture) /100}}" />-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="col-xs-6">-->
+                <!--<div class="u-txt">-->
+                    <!--<label class="u-lb-lg f-tl f-fl c-black">　　　代理收费</label>-->
+                    <!--<div class="ipt-txt11" style="width: 180px;">-->
+                        <!--<i class="icon-lb-word c-gray">元</i>-->
+                        <!--<input type="number" class="ipt-txt c-gray1" min="0"    name="agentCfee" value="{{agentCfee|default(0,ture) /100}}" />-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="col-xs-6">-->
+                <!--<div class="u-txt">-->
+                    <!--<label class="u-lb-lg f-tl f-fl c-black">　　　代理<font> D </font>档</label>-->
+                    <!--<div class="ipt-txt11" style="width: 180px;">-->
+                        <!--<i class="icon-lb-word c-gray">折</i>-->
+                        <!--<input type="number" class="ipt-txt c-gray1" min="0"  max="10" name="agentD" value="{{agentD|default(0,ture) /100}}" />-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="col-xs-6">-->
+                <!--<div class="u-txt">-->
+                    <!--<label class="u-lb-lg f-tl f-fl c-black">　　　代理收费</label>-->
+                    <!--<div class="ipt-txt11" style="width: 180px;">-->
+                        <!--<i class="icon-lb-word c-gray">元</i>-->
+                        <!--<input type="number" class="ipt-txt c-gray1" min="0"    name="agentDfee" value="{{agentDfee|default(0,ture) /100}}" />-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="m-tip3 f-pr-l">-->
+                <!--<i class="iconfont icon-lamp"></i>-->
+                <!--<span>只填写 A 档，即开通 1 种线下代理及折扣，逐个填写，最多开通 4 档</span>-->
+            <!--</div>-->
+            <!--<div class="g-table">-->
+                <!--<label class="u-lb-lg c-black">线下代理购买限定</label>-->
+                <!--<div class="col-xs-9 f-pt-s c-gray1">-->
+                    <!--<div class="u-rb">-->
+                        <!--<input type="radio" name="settleType" id="settleType1" value="1" checked />-->
+                        <!--<label for="settleType1"></label>-->
+                    <!--</div>-->
+                    <!--<label for="settleType1" class="u-rd-wd">按折扣价结算</label>-->
+                    <!--<div class="u-rb f-ml-xl">-->
+                        <!--<input type="radio" name="settleType" id="settleType2" value="2" />-->
+                        <!--<label for="settleType2"></label>-->
+                    <!--</div>-->
+                    <!--<label for="settleType2" class="u-rd-wd">按原价结算</label>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+<!-- /O2O 分销代理系统 -->
+{% elif type==5 %}
+    <!-- O2O 全渠道系统 —— 普通版-->
+    <div class="m-panel bg-gray1 f-mb-s">
+        <div class="panel-heading m-tt panel-hidden" style="border-bottom: 0;">
+            <p class="f-mt-s col-xs-7 u-bgline"><span>O2O 全渠道系统 —— 普通版</span></p>
+            <!--未开通的时候用f-active，开通的时候用active-->
+            <div class="u-sort active f-fl f-ml-s bg-white f-mb-zero">
+                <i class="iconfont icon-shopcarnew"></i>
+                10万元/套
+            </div>
+            <div class="f-fl f-ml-s u-btn-oval">
+                <i class="iconfont icon-Application"></i>
+                <span>运用说明</span>
+            </div>
+            <div class="f-fl   f-ml-s f-mt-xs">
+                <input type="checkbox" name="isOpen" id="isOpen" value="1"   on-text="开通" off-text="关闭"   />
+            </div>
+        </div>
+        <div class="panel-body m-moresale">
+            <div class="">
+                <!--上面放关闭后的框类-->
+                <!--分享组-->
+                <div class="g-table sale-content f-pt-s">
+                    <div class="m-multisale-tt f-mb-xs">
+                        <span class="u-dottt">分享组</span>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="u-txt">
+                            <label class="u-lb-sm f-ml-s f-pr-s c-deepgray"><font>1 </font>级佣金</label>
+                            <div class="ipt-txt11 f-mb-xs">
+                                <i class="icon-lb-word c-gray">％</i>
+                                <input type="number" class="ipt-txt c-gray1" min="0" max="100"  name="one" value="{{one|default(0,ture) /100}}"  />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="u-txt">
+                            <label class="u-lb-sm f-pr-s c-deepgray"><font>2 </font>级佣金</label>
+                            <div class="ipt-txt11">
+                                <i class="icon-lb-word c-gray">％</i>
+                                <input type="number" class="ipt-txt c-gray1" min="0" max="100"  name="two" value="{{two|default(0,ture) /100}}"  />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="f-cb m-tip3 f-pr-l f-pb-s">
+                        <i class="iconfont icon-lamp"></i>
+                        <span>只填写 1 级，即为 1 级分销系统；填写到 2 级，即为 2 级分销系统</span>
+                    </div>
+                </div>
+                <!--/-->
+                <!--分销组-->
+                <div class="g-table sale-content f-pt-s f-mt-s">
+                    <div class="m-multisale-tt f-mb-s">
+                        <span class="u-dottt">分销组佣金</span>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="u-txt">
+                            <label class="u-lb-lg f-ml-s f-pr-s c-deepgray"><font>1</font> 档：&nbsp;1 级佣金</label>
+                            <div class="ipt-txt11 f-mb-xs" style="width: 120px;">
+                                <i class="icon-lb-word c-gray">％</i>
+                                <input type="number" class="ipt-txt c-gray1" min="0"  max="100" name="oneAup" value="{{oneAup|default(0,ture) /100}}"  placeholder="" />
+                            </div>
+                        </div>
+                        <div class="u-txt">
+                            <label class="u-lb-sm f-pr-s c-deepgray">2 级佣金</label>
+                            <div class="ipt-txt11" style="width: 120px;">
+                                <i class="icon-lb-word c-gray">％</i>
+                                <input type="number" class="ipt-txt c-gray1" min="0" max="100"  name="twoAup" value="{{twoAup|default(0,ture) /100}}" placeholder="" />
+                            </div>
+                        </div>
+                        <div class="u-txt">
+                            <label class="u-lb-sm f-pr-s c-deepgray">收费</label>
+                            <div class="ipt-txt11" style="width: 120px;">
+                                <i class="icon-lb-word c-gray">元</i>
+                                <input type="number" class="ipt-txt c-gray1" min="0"   name="afee" value="{{afee|default(0,ture) /100}}" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="u-txt">
+                            <label class="u-lb-lg f-ml-s f-pr-s c-deepgray"><font>2</font> 档：&nbsp;1 级佣金</label>
+                            <div class="ipt-txt11 f-mb-xs" style="width: 120px;">
+                                <i class="icon-lb-word c-gray">％</i>
+                                <input type="number" class="ipt-txt c-gray1" min="0" max="100"  name="oneBup" value="{{oneBup|default(0,ture) /100}}"  />
+                            </div>
+                        </div>
+                        <div class="u-txt">
+                            <label class="u-lb-sm f-pr-s c-deepgray">2 级佣金</label>
+                            <div class="ipt-txt11" style="width: 120px;">
+                                <i class="icon-lb-word c-gray">％</i>
+                                <input type="number" class="ipt-txt c-gray1" min="0" max="100"  name="twoBup" value="{{twoBup|default(0,ture) /100}}"  />
+                            </div>
+                        </div>
+                        <div class="u-txt">
+                            <label class="u-lb-sm f-pr-s c-deepgray">收费</label>
+                            <div class="ipt-txt11" style="width: 120px;">
+                                <i class="icon-lb-word c-gray">元</i>
+                                <input type="number" class="ipt-txt c-gray1" min="0"  name="bfee" value="{{bfee|default(0,ture) /100}}"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="u-txt">
+                            <label class="u-lb-lg f-ml-s f-pr-s c-deepgray"><font>3</font> 档：&nbsp;1 级佣金</label>
+                            <div class="ipt-txt11 f-mb-xs" style="width: 120px;">
+                                <i class="icon-lb-word c-gray">％</i>
+                                <input type="number" class="ipt-txt c-gray1" min="0" max="100"  name="oneCup" value="{{oneCup|default(0,ture) /100}}" />
+                            </div>
+                        </div>
+                        <div class="u-txt">
+                            <label class="u-lb-sm f-pr-s c-deepgray">2 级佣金</label>
+                            <div class="ipt-txt11" style="width: 120px;">
+                                <i class="icon-lb-word c-gray">％</i>
+                                <input type="number" class="ipt-txt c-gray1" min="0" max="100"  name="twoCup" value="{{twoCup|default(0,ture) /100}}"   />
+                            </div>
+                        </div>
+                        <div class="u-txt">
+                            <label class="u-lb-sm f-pr-s c-deepgray">收费</label>
+                            <div class="ipt-txt11" style="width: 120px;">
+                                <i class="icon-lb-word c-gray">元</i>
+                                <input type="number" class="ipt-txt c-gray1" min="0"  name="cfee" value="{{cfee|default(0,ture) /100}}" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--/-->
+                <!--代理组-->
+                <div class="g-table sale-content f-pt-s f-mt-s">
+                    <div class="m-multisale-tt f-mb-s">
+                        <span class="u-dottt">代理组佣金</span>
+                    </div>
+                    <div class="col-xs-12 f-mb-xs">
+                        <div class="u-txt">
+                            <label class="u-lb-sm f-pr-m c-deepgray"><font> 1 </font>档：</label>
+                            <div class="ipt-txt11">
+                                <i class="icon-lb-word c-gray">折</i>
+                                <input type="number" class="ipt-txt c-gray1" min="0" max="10" name="agentA" value="{{agentA|default(0,ture) /100}}" />
+                            </div>
+                        </div>
+                        <div class="u-txt">
+                            <label class="u-lb-sm f-pr-s c-deepgray">收费</label>
+                            <div class="ipt-txt11">
+                                <i class="icon-lb-word c-gray">元</i>
+                                <input type="number" class="ipt-txt c-gray1" min="0"   name="agentAfee" value="{{agentAfee|default(0,ture) /100}}" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 f-mb-xs">
+                        <div class="u-txt">
+                            <label class="u-lb-sm f-pr-m c-deepgray"><font> 2 </font>档：</label>
+                            <div class="ipt-txt11">
+                                <i class="icon-lb-word c-gray">折</i>
+                                <input type="number" class="ipt-txt c-gray1" min="0" max="10"  name="agentB" value="{{agentB|default(0,ture) /100}}" />
+                            </div>
+                        </div>
+                        <div class="u-txt">
+                            <label class="u-lb-sm f-pr-s c-deepgray">收费</label>
+                            <div class="ipt-txt11">
+                                <i class="icon-lb-word c-gray">元</i>
+                                <input type="number" class="ipt-txt c-gray1" min="0"   name="agentBfee" value="{{agentBfee|default(0,ture) /100}}"  />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 f-mb-xs">
+                        <div class="u-txt">
+                            <label class="u-lb-sm f-pr-m c-deepgray"><font> 3 </font>档：</label>
+                            <div class="ipt-txt11">
+                                <i class="icon-lb-word c-gray">折</i>
+                                <input type="number" class="ipt-txt c-gray1"  min="0"  max="10" name="agentC" value="{{agentC|default(0,ture) /100}}" />
+                            </div>
+                        </div>
+                        <div class="u-txt">
+                            <label class="u-lb-sm f-pr-s c-deepgray">收费</label>
+                            <div class="ipt-txt11">
+                                <i class="icon-lb-word c-gray">元</i>
+                                <input type="number" class="ipt-txt c-gray1" min="0"  name="agentCfee" value="{{agentCfee|default(0,ture) /100}}" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 f-mb-xs">
+                        <div class="u-txt">
+                            <label class="u-lb-sm f-pr-m c-deepgray"><font> 4 </font>档：</label>
+                            <div class="ipt-txt11">
+                                <i class="icon-lb-word c-gray">折</i>
+                                <input type="number" class="ipt-txt c-gray1" min="0" max="10"  name="agentD" value="{{agentD|default(0,ture) /100}}" />
+                            </div>
+                        </div>
+                        <div class="u-txt">
+                            <label class="u-lb-sm f-pr-s c-deepgray">收费</label>
+                            <div class="ipt-txt11">
+                                <i class="icon-lb-word c-gray">元</i>
+                                <input type="number" class="ipt-txt c-gray1" min="0"   name="agentDfee" value="{{agentDfee|default(0,ture) /100}}" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="g-table bg-antiquewhite f-padding-s">
+                        <label class="u-lb-lg f-ml-l c-deepgray">线下代理购买限定</label>
+                        <div class="col-xs-9 f-pt-s c-gray1">
+                            <div class="u-rb f-mb-zero">
+                                <input type="radio" name="settleType" id="settleType1" value="1"  checked  />
+                                <label for="settleType1"></label>
+                            </div>
+                            <label for="settleType1" class="u-rd-wd">按折扣价结算</label>
+                            <div class="u-rb f-ml-xl f-mb-zero">
+                                <input type="radio" name="settleType" id="settleType2" value="2" />
+                                <label for="settleType2"></label>
+                            </div>
+                            <label for="settleType2" class="u-rd-wd">按原价结算</label>
+                        </div>
+                    </div>
+                </div>
+                <!--/代理组-->
+                <!--粉丝小店-->
+                {%if isFansShop !=0 %}
+                {%set feeTips=1 %}
+                {% include 'tpl/shop/distribution/brokerage/fans_shop.html' %}
+                {% endif %}
+                <!--/粉丝小店-->
+            </div>
+        </div>
+    </div>
+    <!-- /O2O 全渠道系统 —— 普通版 -->
+
+<!-- /O2O 分销代理系统 + 分销佣金升级 -->
+{% elif type==6 %}
+    <!-- O2O 全渠道系统 —— 普通版-->
+    <div class="m-panel bg-gray1 f-mb-s">
+        <div class="panel-heading m-tt panel-hidden" style="border-bottom: 0;">
+            <p class="f-mt-s col-xs-7 u-bgline"><span>O2O 全渠道系统 —— 普通版</span></p>
+            <!--未开通的时候用f-active，开通的时候用active-->
+            <div class="u-sort active f-fl f-ml-s bg-white f-mb-zero">
+                <i class="iconfont icon-shopcarnew"></i>
+                10万元/套
+            </div>
+            <div class="f-fl f-ml-s u-btn-oval">
+                <i class="iconfont icon-Application"></i>
+                <span>运用说明</span>
+            </div>
+            <div class="f-fl   f-ml-s f-mt-xs">
+                <input type="checkbox" name="isOpen" id="isOpen" value="1"   on-text="开通" off-text="关闭"   />
+            </div>
+        </div>
+        <div class="panel-body m-moresale">
+            <div class="">
+                <!--上面放关闭后的框类-->
+                <!--分享组-->
+                <div class="g-table sale-content f-pt-s">
+                    <div class="m-multisale-tt f-mb-xs">
+                        <span class="u-dottt">分享组</span>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="u-txt">
+                            <label class="u-lb-sm f-ml-s f-pr-s c-deepgray"><font>1 </font>级佣金</label>
+                            <div class="ipt-txt11 f-mb-xs">
+                                <i class="icon-lb-word c-gray">％</i>
+                                <input type="number" class="ipt-txt c-gray1" min="0" max="100"  name="one" value="{{one|default(0,ture) /100}}"  />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="u-txt">
+                            <label class="u-lb-sm f-pr-s c-deepgray"><font>2 </font>级佣金</label>
+                            <div class="ipt-txt11">
+                                <i class="icon-lb-word c-gray">％</i>
+                                <input type="number" class="ipt-txt c-gray1" min="0" max="100"  name="two" value="{{two|default(0,ture) /100}}"  />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="f-cb m-tip3 f-pr-l f-pb-s">
+                        <i class="iconfont icon-lamp"></i>
+                        <span>只填写 1 级，即为 1 级分销系统；填写到 2 级，即为 2 级分销系统</span>
+                    </div>
+                </div>
+                <!--/-->
+                <!--分销组-->
+                <div class="g-table sale-content f-pt-s f-mt-s">
+                    <div class="m-multisale-tt f-mb-s">
+                        <span class="u-dottt">分销组佣金</span>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="u-txt">
+                            <label class="u-lb-lg f-ml-s f-pr-s c-deepgray"><font>1</font> 档：&nbsp;1 级佣金</label>
+                            <div class="ipt-txt11 f-mb-xs" style="width: 120px;">
+                                <i class="icon-lb-word c-gray">％</i>
+                                <input type="number" class="ipt-txt c-gray1" min="0"  max="100" name="oneAup" value="{{oneAup|default(0,ture) /100}}"  placeholder="" />
+                            </div>
+                        </div>
+                        <div class="u-txt">
+                            <label class="u-lb-sm f-pr-s c-deepgray">2 级佣金</label>
+                            <div class="ipt-txt11" style="width: 120px;">
+                                <i class="icon-lb-word c-gray">％</i>
+                                <input type="number" class="ipt-txt c-gray1" min="0" max="100"  name="twoAup" value="{{twoAup|default(0,ture) /100}}" placeholder="" />
+                            </div>
+                        </div>
+                        <div class="u-txt">
+                            <label class="u-lb-sm f-pr-s c-deepgray">收费</label>
+                            <div class="ipt-txt11" style="width: 120px;">
+                                <i class="icon-lb-word c-gray">元</i>
+                                <input type="number" class="ipt-txt c-gray1" min="0"   name="afee" value="{{afee|default(0,ture) /100}}" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="u-txt">
+                            <label class="u-lb-lg f-ml-s f-pr-s c-deepgray"><font>2</font> 档：&nbsp;1 级佣金</label>
+                            <div class="ipt-txt11 f-mb-xs" style="width: 120px;">
+                                <i class="icon-lb-word c-gray">％</i>
+                                <input type="number" class="ipt-txt c-gray1" min="0" max="100"  name="oneBup" value="{{oneBup|default(0,ture) /100}}"  />
+                            </div>
+                        </div>
+                        <div class="u-txt">
+                            <label class="u-lb-sm f-pr-s c-deepgray">2 级佣金</label>
+                            <div class="ipt-txt11" style="width: 120px;">
+                                <i class="icon-lb-word c-gray">％</i>
+                                <input type="number" class="ipt-txt c-gray1" min="0" max="100"  name="twoBup" value="{{twoBup|default(0,ture) /100}}"  />
+                            </div>
+                        </div>
+                        <div class="u-txt">
+                            <label class="u-lb-sm f-pr-s c-deepgray">收费</label>
+                            <div class="ipt-txt11" style="width: 120px;">
+                                <i class="icon-lb-word c-gray">元</i>
+                                <input type="number" class="ipt-txt c-gray1" min="0"  name="bfee" value="{{bfee|default(0,ture) /100}}"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="u-txt">
+                            <label class="u-lb-lg f-ml-s f-pr-s c-deepgray"><font>3</font> 档：&nbsp;1 级佣金</label>
+                            <div class="ipt-txt11 f-mb-xs" style="width: 120px;">
+                                <i class="icon-lb-word c-gray">％</i>
+                                <input type="number" class="ipt-txt c-gray1" min="0" max="100"  name="oneCup" value="{{oneCup|default(0,ture) /100}}" />
+                            </div>
+                        </div>
+                        <div class="u-txt">
+                            <label class="u-lb-sm f-pr-s c-deepgray">2 级佣金</label>
+                            <div class="ipt-txt11" style="width: 120px;">
+                                <i class="icon-lb-word c-gray">％</i>
+                                <input type="number" class="ipt-txt c-gray1" min="0" max="100"  name="twoCup" value="{{twoCup|default(0,ture) /100}}"   />
+                            </div>
+                        </div>
+                        <div class="u-txt">
+                            <label class="u-lb-sm f-pr-s c-deepgray">收费</label>
+                            <div class="ipt-txt11" style="width: 120px;">
+                                <i class="icon-lb-word c-gray">元</i>
+                                <input type="number" class="ipt-txt c-gray1" min="0"  name="cfee" value="{{cfee|default(0,ture) /100}}" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--/-->
+                <!--代理组-->
+                <div class="g-table sale-content f-pt-s f-mt-s">
+                    <div class="m-multisale-tt f-mb-s">
+                        <span class="u-dottt">代理组佣金</span>
+                    </div>
+                    <div class="col-xs-12 f-mb-xs">
+                        <div class="u-txt">
+                            <label class="u-lb-sm f-pr-m c-deepgray"><font> 1 </font>档：</label>
+                            <div class="ipt-txt11">
+                                <i class="icon-lb-word c-gray">折</i>
+                                <input type="number" class="ipt-txt c-gray1" min="0" max="10" name="agentA" value="{{agentA|default(0,ture) /100}}" />
+                            </div>
+                        </div>
+                        <div class="u-txt">
+                            <label class="u-lb-sm f-pr-s c-deepgray">收费</label>
+                            <div class="ipt-txt11">
+                                <i class="icon-lb-word c-gray">元</i>
+                                <input type="number" class="ipt-txt c-gray1" min="0"   name="agentAfee" value="{{agentAfee|default(0,ture) /100}}" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 f-mb-xs">
+                        <div class="u-txt">
+                            <label class="u-lb-sm f-pr-m c-deepgray"><font> 2 </font>档：</label>
+                            <div class="ipt-txt11">
+                                <i class="icon-lb-word c-gray">折</i>
+                                <input type="number" class="ipt-txt c-gray1" min="0" max="10"  name="agentB" value="{{agentB|default(0,ture) /100}}" />
+                            </div>
+                        </div>
+                        <div class="u-txt">
+                            <label class="u-lb-sm f-pr-s c-deepgray">收费</label>
+                            <div class="ipt-txt11">
+                                <i class="icon-lb-word c-gray">元</i>
+                                <input type="number" class="ipt-txt c-gray1" min="0"   name="agentBfee" value="{{agentBfee|default(0,ture) /100}}"  />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 f-mb-xs">
+                        <div class="u-txt">
+                            <label class="u-lb-sm f-pr-m c-deepgray"><font> 3 </font>档：</label>
+                            <div class="ipt-txt11">
+                                <i class="icon-lb-word c-gray">折</i>
+                                <input type="number" class="ipt-txt c-gray1"  min="0"  max="10" name="agentC" value="{{agentC|default(0,ture) /100}}" />
+                            </div>
+                        </div>
+                        <div class="u-txt">
+                            <label class="u-lb-sm f-pr-s c-deepgray">收费</label>
+                            <div class="ipt-txt11">
+                                <i class="icon-lb-word c-gray">元</i>
+                                <input type="number" class="ipt-txt c-gray1" min="0"  name="agentCfee" value="{{agentCfee|default(0,ture) /100}}" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 f-mb-xs">
+                        <div class="u-txt">
+                            <label class="u-lb-sm f-pr-m c-deepgray"><font> 4 </font>档：</label>
+                            <div class="ipt-txt11">
+                                <i class="icon-lb-word c-gray">折</i>
+                                <input type="number" class="ipt-txt c-gray1" min="0" max="10"  name="agentD" value="{{agentD|default(0,ture) /100}}" />
+                            </div>
+                        </div>
+                        <div class="u-txt">
+                            <label class="u-lb-sm f-pr-s c-deepgray">收费</label>
+                            <div class="ipt-txt11">
+                                <i class="icon-lb-word c-gray">元</i>
+                                <input type="number" class="ipt-txt c-gray1" min="0"   name="agentDfee" value="{{agentDfee|default(0,ture) /100}}" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="g-table bg-antiquewhite f-padding-s">
+                        <label class="u-lb-lg f-ml-l c-deepgray">线下代理购买限定</label>
+                        <div class="col-xs-9 f-pt-s c-gray1">
+                            <div class="u-rb f-mb-zero">
+                                <input type="radio" name="settleType" id="settleType1" value="1"  checked  />
+                                <label for="settleType1"></label>
+                            </div>
+                            <label for="settleType1" class="u-rd-wd">按折扣价结算</label>
+                            <div class="u-rb f-ml-xl f-mb-zero">
+                                <input type="radio" name="settleType" id="settleType2" value="2" />
+                                <label for="settleType2"></label>
+                            </div>
+                            <label for="settleType2" class="u-rd-wd">按原价结算</label>
+                        </div>
+                    </div>
+                </div>
+                <!--/代理组-->
+                <!--粉丝小店-->
+                {%if isFansShop !=0 %}
+                {%set feeTips=1 %}
+                {% include 'tpl/shop/distribution/brokerage/fans_shop.html' %}
+                {% endif %}
+                <!--/粉丝小店-->
+            </div>
+        </div>
+    </div>
+
+<!-- O2O 动销代理系统 -->
+<!--<div class="m-panel bg-gray1 f-mb-s">-->
+    <!--<div class="panel-heading m-tt panel-hidden" style="border-bottom: 0;">-->
+        <!--<p class="f-mt-s col-xs-7 u-bgline"><span>O2O 动销代理系统 </span></p>-->
+        <!--<div class="u-sort active f-fl f-ml-s"  name="pricesort">-->
+            <!--<i class="iconfont icon-shopcarnew"></i>-->
+            <!--10万元/套-->
+        <!--</div>-->
+        <!--<div class="f-fl f-ml-s u-btn-oval">-->
+            <!--<i class="iconfont icon-Application"></i>-->
+            <!--<span>运用说明</span>-->
+        <!--</div>-->
+        <!--<div class="f-fl close f-ml-s f-mt-xs">-->
+            <!--<input type="checkbox" name="isOpen" id="isOpen" value="1"   on-text="开通" off-text="关闭"   />-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="panel-body m-moresale">-->
+        <!--<div class="g-table sale-content f-pt-m">-->
+            <!--<div class="col-xs-12">-->
+                <!--<div class="u-txt">-->
+                    <!--<label class="u-lb-lg f-tl f-fl c-black">线上：<font>1</font> 级佣金</label>-->
+                    <!--<div class="ipt-txt11">-->
+                        <!--<i class="icon-lb-word c-gray">％</i>-->
+                        <!--<input type="number" class="ipt-txt c-gray1" min="0" max="100"  name="one" value="{{one|default(0,ture) /100}}" />-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="col-xs-12">-->
+                <!--<div class="u-txt">-->
+                    <!--<label class="u-lb-lg f-tl f-fl c-black">　　　<font>2</font> 级佣金</label>-->
+                    <!--<div class="ipt-txt11">-->
+                        <!--<i class="icon-lb-word c-gray">％</i>-->
+                        <!--<input type="number" class="ipt-txt c-gray1" min="0"  max="100"  name="two" value="{{two|default(0,ture) /100}}" />-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="m-tip3 f-pr-l f-pb-s">-->
+                <!--<i class="iconfont icon-lamp"></i>-->
+                <!--<span>只填写 1 级，即为 1 级分销系统；填写到 2 级，即为 2 级分销系统</span>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="g-table sale-content f-pt-m f-mt-s">-->
+            <!--<div class="col-xs-6">-->
+                <!--<div class="u-txt">-->
+                    <!--<label class="u-lb-lg f-tl f-fl c-black">线下：代理<font> A </font>档</label>-->
+                    <!--<div class="ipt-txt11" style="width: 180px;">-->
+                        <!--<i class="icon-lb-word c-gray">折</i>-->
+                        <!--<input type="number" class="ipt-txt c-gray1" min="0" max="10"  name="agentA" value="{{agentA|default(0,ture) /100}}" />-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="col-xs-6">-->
+                <!--<div class="u-txt">-->
+                    <!--<label class="u-lb-lg f-tl f-fl c-black">　　　代理收费</label>-->
+                    <!--<div class="ipt-txt11" style="width: 180px;">-->
+                        <!--<i class="icon-lb-word c-gray">元</i>-->
+                        <!--<input type="number" class="ipt-txt c-gray1" min="0"    name="agentAfee" value="{{agentAfee|default(0,ture) /100}}" />-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="col-xs-6">-->
+                <!--<div class="u-txt">-->
+                    <!--<label class="u-lb-lg f-tl f-fl c-black">　　　代理<font> B </font>档</label>-->
+                    <!--<div class="ipt-txt11" style="width: 180px;">-->
+                        <!--<i class="icon-lb-word c-gray">折</i>-->
+                        <!--<input type="number" class="ipt-txt c-gray1" min="0" max="10"  name="agentB" value="{{agentB|default(0,ture) /100}}" />-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="col-xs-6">-->
+                <!--<div class="u-txt">-->
+                    <!--<label class="u-lb-lg f-tl f-fl c-black">　　　代理收费</label>-->
+                    <!--<div class="ipt-txt11" style="width: 180px;">-->
+                        <!--<i class="icon-lb-word c-gray">元</i>-->
+                        <!--<input type="number" class="ipt-txt c-gray1" min="0"    name="agentBfee" value="{{agentBfee|default(0,ture) /100}}" />-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="col-xs-6">-->
+                <!--<div class="u-txt">-->
+                    <!--<label class="u-lb-lg f-tl f-fl c-black">　　　代理<font> C </font>档</label>-->
+                    <!--<div class="ipt-txt11" style="width: 180px;">-->
+                        <!--<i class="icon-lb-word c-gray">折</i>-->
+                        <!--<input type="number" class="ipt-txt c-gray1" min="0" max="10"  name="agentC" value="{{agentC|default(0,ture) /100}}" />-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="col-xs-6">-->
+                <!--<div class="u-txt">-->
+                    <!--<label class="u-lb-lg f-tl f-fl c-black">　　　代理收费</label>-->
+                    <!--<div class="ipt-txt11" style="width: 180px;">-->
+                        <!--<i class="icon-lb-word c-gray">元</i>-->
+                        <!--<input type="number" class="ipt-txt c-gray1" min="0"    name="agentCfee" value="{{agentCfee|default(0,ture) /100}}" />-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="col-xs-6">-->
+                <!--<div class="u-txt">-->
+                    <!--<label class="u-lb-lg f-tl f-fl c-black">　　　代理<font> D </font>档</label>-->
+                    <!--<div class="ipt-txt11" style="width: 180px;">-->
+                        <!--<i class="icon-lb-word c-gray">折</i>-->
+                        <!--<input type="number" class="ipt-txt c-gray1" min="0" max="10"  name="agentD" value="{{agentD|default(0,ture) /100}}" />-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="col-xs-6">-->
+                <!--<div class="u-txt">-->
+                    <!--<label class="u-lb-lg f-tl f-fl c-black">　　　代理收费</label>-->
+                    <!--<div class="ipt-txt11" style="width: 180px;">-->
+                        <!--<i class="icon-lb-word c-gray">元</i>-->
+                        <!--<input type="number" class="ipt-txt c-gray1" min="0"    name="agentDfee" value="{{agentDfee|default(0,ture) /100}}" />-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="m-tip3 f-pr-l f-pb-s">-->
+                <!--<i class="iconfont icon-lamp"></i>-->
+                <!--<span>只填写 A 档，即开通 1 种线下代理及折扣，逐个填写，最多开通 4 档</span>-->
+            <!--</div>-->
+            <!--<div class="g-table">-->
+                <!--<label class="u-lb-lg c-black">线下代理购买限定</label>-->
+                <!--<div class="col-xs-9 f-pt-s c-gray1">-->
+                    <!--<div class="u-rb">-->
+                        <!--<input type="radio" name="settleType" id="settleType1" value="1" checked />-->
+                        <!--<label for="settleType1"></label>-->
+                    <!--</div>-->
+                    <!--<label for="settleType1" class="u-rd-wd">按折扣价结算</label>-->
+                    <!--<div class="u-rb f-ml-xl">-->
+                        <!--<input type="radio" name="settleType" id="settleType2" value="2" />-->
+                        <!--<label for="settleType2"></label>-->
+                    <!--</div>-->
+                    <!--<label for="settleType2" class="u-rd-wd">按原价结算</label>-->
+                <!--</div>-->
+                <!--<label class="u-lb-lg c-black">异店提货佣金设定</label>-->
+                <!--<div class="col-xs-9 c-gray1">-->
+                    <!--<div class="u-txt">-->
+                        <!--<div class="ipt-txt11">-->
+                            <!--<i class="icon-lb-word c-gray">％</i>-->
+                            <!--<input type="number" class="ipt-txt c-gray1" min="0" max="100"  name="differentKit" value="{{differentKit|default(0,ture) /100}}" />-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+<!-- /O2O 动销代理系统 -->
+{% elif type==7 %}
+<!-- O2O 动销代理系统 + 分销佣金升级 -->
+<!--<div class="m-panel bg-gray1 f-mb-s">-->
+    <!--<div class="panel-heading m-tt panel-hidden" style="border-bottom: 0;">-->
+        <!--<p class="f-mt-s col-xs-7 u-bgline"><span>O2O 动销代理系统 + 分销佣金升级</span></p>-->
+        <!--<div class="u-sort active f-fl f-ml-s"  name="pricesort">-->
+            <!--<i class="iconfont icon-shopcarnew"></i>-->
+            <!--10万元/套-->
+        <!--</div>-->
+        <!--<div class="f-fl f-ml-s u-btn-oval">-->
+            <!--<i class="iconfont icon-Application"></i>-->
+            <!--<span>运用说明</span>-->
+        <!--</div>-->
+        <!--<div class="f-fl close f-ml-s f-mt-xs">-->
+            <!--<input type="checkbox" name="isOpen" id="isOpen" value="1"   on-text="开通" off-text="关闭"   />-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="panel-body m-moresale">-->
+        <!--<div class="g-table sale-content f-pt-m f-mt-s">-->
+            <!--<div class="col-xs-12">-->
+                <!--<div class="u-txt">-->
+                    <!--<label class="u-lb-lg f-tl f-fl c-black">线上：<font>1 </font>级佣金</label>-->
+                    <!--<div class="ipt-txt11" style="width: 180px;">-->
+                        <!--<i class="icon-lb-word c-gray">％</i>-->
+                        <!--<input type="number" class="ipt-txt c-gray1" min="0" max="100"  name="one" value="{{one|default(0,ture) /100}}" />-->
+                    <!--</div>-->
+                    <!--<span class="line">+</span>-->
+                    <!--<div class="ipt-txt11" style="width: 100px;">-->
+                        <!--<i class="icon-lb-word c-gray">％</i>-->
+                        <!--<input type="number" class="ipt-txt c-gray1" min="0" max="100"  name="oneAup" value="{{oneAup|default(0,ture) /100}}" placeholder="a 档" />-->
+                    <!--</div>-->
+                    <!--<span class="line">/</span>-->
+                    <!--<div class="ipt-txt11" style="width: 100px;">-->
+                        <!--<i class="icon-lb-word c-gray">％</i>-->
+                        <!--<input type="number" class="ipt-txt c-gray1" min="0" max="100"  name="oneBup" value="{{oneBup|default(0,ture) /100}}" placeholder="b 档" />-->
+                    <!--</div>-->
+                    <!--<span class="line">/</span>-->
+                    <!--<div class="ipt-txt11" style="width: 100px;">-->
+                        <!--<i class="icon-lb-word c-gray">％</i>-->
+                        <!--<input type="number" class="ipt-txt c-gray1" min="0"  max="100"  name="oneCup" value="{{oneCup|default(0,ture) /100}}" placeholder="c 档" />-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="col-xs-12">-->
+                <!--<div class="u-txt">-->
+                    <!--<label class="u-lb-lg f-tl f-fl c-black">　　　<font>2 </font>级佣金</label>-->
+                    <!--<div class="ipt-txt11" style="width: 180px;">-->
+                        <!--<i class="icon-lb-word c-gray">％</i>-->
+                        <!--<input type="number" class="ipt-txt c-gray1" min="0" max="100"  name="two" value="{{two|default(0,ture) /100}}" />-->
+                    <!--</div>-->
+                    <!--<span class="line">+</span>-->
+                    <!--<div class="ipt-txt11" style="width: 100px;">-->
+                        <!--<i class="icon-lb-word c-gray">％</i>-->
+                        <!--<input type="number" class="ipt-txt c-gray1" min="0" max="100"  name="twoAup" value="{{twoAup|default(0,ture) /100}}" placeholder="a 档" />-->
+                    <!--</div>-->
+                    <!--<span class="line">/</span>-->
+                    <!--<div class="ipt-txt11" style="width: 100px;">-->
+                        <!--<i class="icon-lb-word c-gray">％</i>-->
+                        <!--<input type="number" class="ipt-txt c-gray1" min="0" max="100"  name="twoBup" value="{{twoBup|default(0,ture) /100}}" placeholder="b 档" />-->
+                    <!--</div>-->
+                    <!--<span class="line">/</span>-->
+                    <!--<div class="ipt-txt11" style="width: 100px;">-->
+                        <!--<i class="icon-lb-word c-gray">％</i>-->
+                        <!--<input type="number" class="ipt-txt c-gray1" min="0" max="100"  name="twoCup" value="{{twoCup|default(0,ture) /100}}" placeholder="c 档" />-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="col-xs-12 f-mb-xs">-->
+                <!--<div class="u-txt">-->
+                    <!--<label class="u-lb-lg f-tl f-fl c-black">　　　a 档收费</label>-->
+                    <!--<div class="ipt-txt11" style="width: 180px;">-->
+                        <!--<i class="icon-lb-word c-gray">元</i>-->
+                        <!--<input type="number" class="ipt-txt c-gray1" min="0"    name="afee" value="{{afee|default(0,ture) /100}}" />-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="col-xs-12 f-mb-xs">-->
+                <!--<div class="u-txt">-->
+                    <!--<label class="u-lb-lg f-tl f-fl c-black">　　　b 档收费</label>-->
+                    <!--<div class="ipt-txt11" style="width: 180px;">-->
+                        <!--<i class="icon-lb-word c-gray">元</i>-->
+                        <!--<input type="number" class="ipt-txt c-gray1" min="0"    name="bfee" value="{{bfee|default(0,ture) /100}}" />-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="col-xs-12 f-mb-xs">-->
+                <!--<div class="u-txt">-->
+                    <!--<label class="u-lb-lg f-tl f-fl c-black">　　　c 档收费</label>-->
+                    <!--<div class="ipt-txt11" style="width: 180px;">-->
+                        <!--<i class="icon-lb-word c-gray">元</i>-->
+                        <!--<input type="number" class="ipt-txt c-gray1" min="0"    name="cfee" value="{{cfee|default(0,ture) /100}}" />-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="m-tip3 f-pr-l f-pb-s">-->
+                <!--<i class="iconfont icon-lamp"></i>-->
+                <!--<span>只填写 1 级，即为 1 级分销系统；填写到 2 级，即为 2 级分销系统</span>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="g-table sale-content f-pt-m f-mt-s">-->
+            <!--<div class="col-xs-6">-->
+                <!--<div class="u-txt">-->
+                    <!--<label class="u-lb-lg f-tl f-fl c-black">线下：代理<font> A </font>档</label>-->
+                    <!--<div class="ipt-txt11" style="width: 180px;">-->
+                        <!--<i class="icon-lb-word c-gray">折</i>-->
+                        <!--<input type="number" class="ipt-txt c-gray1" min="0"  max="10" name="agentA" value="{{agentA|default(0,ture) /100}}" />-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="col-xs-6">-->
+                <!--<div class="u-txt">-->
+                    <!--<label class="u-lb-lg f-tl f-fl c-black">　　　代理收费</label>-->
+                    <!--<div class="ipt-txt11" style="width: 180px;">-->
+                        <!--<i class="icon-lb-word c-gray">元</i>-->
+                        <!--<input type="number" class="ipt-txt c-gray1" min="0"    name="agentAfee" value="{{agentAfee|default(0,ture) /100}}" />-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="col-xs-6">-->
+                <!--<div class="u-txt">-->
+                    <!--<label class="u-lb-lg f-tl f-fl c-black">　　　代理<font> B </font>档</label>-->
+                    <!--<div class="ipt-txt11" style="width: 180px;">-->
+                        <!--<i class="icon-lb-word c-gray">折</i>-->
+                        <!--<input type="number" class="ipt-txt c-gray1" min="0"  max="10" name="agentB" value="{{agentB|default(0,ture) /100}}" />-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="col-xs-6">-->
+                <!--<div class="u-txt">-->
+                    <!--<label class="u-lb-lg f-tl f-fl c-black">　　　代理收费</label>-->
+                    <!--<div class="ipt-txt11" style="width: 180px;">-->
+                        <!--<i class="icon-lb-word c-gray">元</i>-->
+                        <!--<input type="number" class="ipt-txt c-gray1" min="0"   name="agentBfee" value="{{agentBfee|default(0,ture) /100}}" />-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="col-xs-6">-->
+                <!--<div class="u-txt">-->
+                    <!--<label class="u-lb-lg f-tl f-fl c-black">　　　代理<font> C </font>档</label>-->
+                    <!--<div class="ipt-txt11" style="width: 180px;">-->
+                        <!--<i class="icon-lb-word c-gray">折</i>-->
+                        <!--<input type="number" class="ipt-txt c-gray1" min="0"  max="10" name="agentC" value="{{agentC|default(0,ture) /100}}" />-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+
+            <!--<div class="col-xs-6">-->
+                <!--<div class="u-txt">-->
+                    <!--<label class="u-lb-lg f-tl f-fl c-black">　　　代理收费</label>-->
+                    <!--<div class="ipt-txt11" style="width: 180px;">-->
+                        <!--<i class="icon-lb-word c-gray">元</i>-->
+                        <!--<input type="number" class="ipt-txt c-gray1" min="0"    name="agentCfee" value="{{agentCfee|default(0,ture) /100}}" />-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="col-xs-6">-->
+                <!--<div class="u-txt">-->
+                    <!--<label class="u-lb-lg f-tl f-fl c-black">　　　代理<font> D </font>档</label>-->
+                    <!--<div class="ipt-txt11" style="width: 180px;">-->
+                        <!--<i class="icon-lb-word c-gray">折</i>-->
+                        <!--<input type="number" class="ipt-txt c-gray1" min="0" max="10"  name="agentD" value="{{agentD|default(0,ture) /100}}" />-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="col-xs-6">-->
+                <!--<div class="u-txt">-->
+                    <!--<label class="u-lb-lg f-tl f-fl c-black">　　　代理收费</label>-->
+                    <!--<div class="ipt-txt11" style="width: 180px;">-->
+                        <!--<i class="icon-lb-word c-gray">元</i>-->
+                        <!--<input type="number" class="ipt-txt c-gray1" min="0"    name="agentDfee" value="{{agentDfee|default(0,ture) /100}}" />-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="m-tip3 f-pr-l f-pb-s">-->
+                <!--<i class="iconfont icon-lamp"></i>-->
+                <!--<span>只填写 A 档，即开通 1 种线下代理及折扣，逐个填写，最多开通 4 档</span>-->
+            <!--</div>-->
+            <!--<div class="g-table">-->
+                <!--<label class="u-lb-lg c-black">线下代理购买限定</label>-->
+                <!--<div class="col-xs-9 f-pt-s c-gray1">-->
+                    <!--<div class="u-rb">-->
+                        <!--<input type="radio" name="settleType" id="settleType1" value="1" checked />-->
+                        <!--<label for="settleType1"></label>-->
+                    <!--</div>-->
+                    <!--<label for="settleType1" class="u-rd-wd">按折扣价结算</label>-->
+                    <!--<div class="u-rb f-ml-xl">-->
+                        <!--<input type="radio" name="settleType" id="settleType2" value="2" />-->
+                        <!--<label for="settleType2"></label>-->
+                    <!--</div>-->
+                    <!--<label for="settleType2" class="u-rd-wd">按原价结算</label>-->
+                <!--</div>-->
+                <!--<label class="u-lb-lg c-black">异店提货佣金设定</label>-->
+                <!--<div class="col-xs-9 c-gray1">-->
+                    <!--<div class="u-txt">-->
+                        <!--<div class="ipt-txt11">-->
+                            <!--<i class="icon-lb-word c-gray">％</i>-->
+                            <!--<input type="number" class="ipt-txt c-gray1" min="0"  max="100"  name="differentKit" value="{{differentKit|default(0,ture) /100}}" />-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+<!-- /O2O 动销代理系统 + 分销佣金升级 -->
+{% elif type==8 %}
+    <!--代理订购系统 —— 普通版 -->
+    <div class="m-panel bg-gray1 f-mb-s">
+        <div class="panel-heading m-tt panel-hidden" style="border-bottom: 0;">
+            <p class="f-mt-s col-xs-7 u-bgline"><span>代理订购系统 —— 普通版</span></p>
+            <!--未开通的时候用f-active，开通的时候用active-->
+            <div class="u-sort active f-fl f-ml-s bg-white f-mb-zero">
+                <i class="iconfont icon-shopcarnew"></i>
+                10万元/套
+            </div>
+            <div class="f-fl f-ml-s u-btn-oval">
+                <i class="iconfont icon-Application"></i>
+                <span>运用说明</span>
+            </div>
+            <div class="f-fl close f-ml-s f-mt-xs">
+                <input type="checkbox" name="isOpen" id="isOpen" value="1"   on-text="开通" off-text="关闭"   />
+            </div>
+        </div>
+        <div class="panel-body m-moresale">
+            <div class="">
+                <!--上面放关闭后的框类-->
+                <!--代理组-->
+                <div class="g-table sale-content f-pt-s">
+                    <div class="m-multisale-tt f-mb-s">
+                        <span class="u-dottt">代理组</span>
+                    </div>
+                    <div class="col-xs-2 f-mb-xs">
+                        <div class="u-txt">
+                            <label class="u-lb-sm f-pr-m c-deepgray"><font> 1 </font>档：</label>
+                            <div class="ipt-txt11">
+                                <i class="icon-lb-word c-gray">折</i>
+                                <input type="number" class="ipt-txt c-gray1" min="0" max="10" name="agentA" value="{{agentA|default(0,ture) /100}}" />
+                            </div>
+                        </div>
+                        <div class="u-txt">
+                            <label class="u-lb-sm f-pr-s c-deepgray">收费</label>
+                            <div class="ipt-txt11">
+                                <i class="icon-lb-word c-gray">元</i>
+                                <input type="number" class="ipt-txt c-gray1" min="0"   name="agentAfee" value="{{agentAfee|default(0,ture) /100}}" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 f-mb-xs">
+                        <div class="u-txt">
+                            <label class="u-lb-sm f-pr-m c-deepgray"><font> 2 </font>档：</label>
+                            <div class="ipt-txt11">
+                                <i class="icon-lb-word c-gray">折</i>
+                                <input type="number" class="ipt-txt c-gray1" min="0" max="10"  name="agentB" value="{{agentB|default(0,ture) /100}}" />
+                            </div>
+                        </div>
+                        <div class="u-txt">
+                            <label class="u-lb-sm f-pr-s c-deepgray">收费</label>
+                            <div class="ipt-txt11">
+                                <i class="icon-lb-word c-gray">元</i>
+                                <input type="number" class="ipt-txt c-gray1" min="0"   name="agentBfee" value="{{agentBfee|default(0,ture) /100}}"  />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 f-mb-xs">
+                        <div class="u-txt">
+                            <label class="u-lb-sm f-pr-m c-deepgray"><font> 3 </font>档：</label>
+                            <div class="ipt-txt11">
+                                <i class="icon-lb-word c-gray">折</i>
+                                <input type="number" class="ipt-txt c-gray1"  min="0"  max="10" name="agentC" value="{{agentC|default(0,ture) /100}}" />
+                            </div>
+                        </div>
+                        <div class="u-txt">
+                            <label class="u-lb-sm f-pr-s c-deepgray">收费</label>
+                            <div class="ipt-txt11">
+                                <i class="icon-lb-word c-gray">元</i>
+                                <input type="number" class="ipt-txt c-gray1" min="0"  name="agentCfee" value="{{agentCfee|default(0,ture) /100}}" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 f-mb-xs">
+                        <div class="u-txt">
+                            <label class="u-lb-sm f-pr-m c-deepgray"><font> 4 </font>档：</label>
+                            <div class="ipt-txt11">
+                                <i class="icon-lb-word c-gray">折</i>
+                                <input type="number" class="ipt-txt c-gray1" min="0" max="10"  name="agentD" value="{{agentD|default(0,ture) /100}}" />
+                            </div>
+                        </div>
+                        <div class="u-txt">
+                            <label class="u-lb-sm f-pr-s c-deepgray">收费</label>
+                            <div class="ipt-txt11">
+                                <i class="icon-lb-word c-gray">元</i>
+                                <input type="number" class="ipt-txt c-gray1" min="0"   name="agentDfee" value="{{agentDfee|default(0,ture) /100}}" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="g-table bg-antiquewhite f-padding-s">
+                        <label class="u-lb-lg f-ml-l c-deepgray">线下代理购买限定</label>
+                        <div class="col-xs-9 f-pt-s c-gray1">
+                            <div class="u-rb f-mb-zero">
+                                <input type="radio" name="settleType" id="settleType1" value="1"  checked  />
+                                <label for="settleType1"></label>
+                            </div>
+                            <label for="settleType1" class="u-rd-wd">按折扣价结算</label>
+                            <div class="u-rb f-ml-xl f-mb-zero">
+                                <input type="radio" name="settleType" id="settleType2" value="2" />
+                                <label for="settleType2"></label>
+                            </div>
+                            <label for="settleType2" class="u-rd-wd">按原价结算</label>
+                        </div>
+                    </div>
+                </div>
+                <!--/代理组-->
+            </div>
+        </div>
+    </div>
+    <!-- /代理订购系统 —— 普通版 -->
+
+
+
+{% endif %}
+</form>

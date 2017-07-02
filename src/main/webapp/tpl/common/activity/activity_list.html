@@ -1,0 +1,24 @@
+<div class="panel-hid f-mt-s">
+    <div class="m-jm-table">
+        <ul class="table-hander">
+                <li>分类图片</li>
+                <li style="width: 45%;">分类名称</li>
+                <li>选择</li>
+        </ul>
+        <div class="table-body h-scroll u-zero-fpm">
+            {%for item in items%}
+            <ul class="table-container">
+                <li><img class="u-thumbnail-squa" src="{{item.imageUrl|default(globalUrl+'/css/pc/img/no_picture.png',true)}}">	</li>
+                <li style="width: 45%;">{{item.typeName}} </li>
+                <li>
+                    <div class="u-rb f-mt-m">
+                        <input type="radio" name="activity-rd" data-name="{{item.typeName}}" id="checkbox_{{loop.index}}" data-id="{{item.id}}">
+                        <label for="checkbox_{{loop.index}}"></label>
+                    </div>
+
+                </li>
+            </ul>
+            {%endfor%}
+        </div>
+    </div>
+</div>

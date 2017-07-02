@@ -1,0 +1,47 @@
+{% for item in items %}
+<ul class="table-container font-s14" id="qrcode_{{item.qrcodeId}}">
+    <li style="width: 10%;">
+        <div class="u-rb">
+            {%if item.type==1 %}
+            <input type="radio" checked name="firstt" id="radiof{{item.qrcodeId}}" value="{{item.qrcodeId}}" onclick="activity.newcode.setDefault('{{item.qrcodeId}}')">
+            {%else%}
+            <input type="radio" name="firstt" id="radiof{{item.qrcodeId}}" value="{{item.qrcodeId}}" onclick="activity.newcode.setDefault('{{item.qrcodeId}}')">
+            {%endif%}
+            <label for="radiof{{item.qrcodeId}}"></label>
+        </div>
+    </li>
+    <li><img onmouseover="activity.newcode.lookImg('{{item.imageSrc}}')" class="u-thumbnail-squa" src="{{item.imageSrc}}"></li>
+    <li class="f-tl" style="width: 25%; padding-left: 15px;">
+        <p title="{{item.posterName}}">{{item.posterName}}</p>
+    </li>
+    <li>
+        {%if item.codeFormat==0 %}
+            A版
+        {%elif item.codeFormat==1%}
+            B版
+        {%elif item.codeFormat==2%}
+            C版
+        {%endif%}
+    </li>
+    <li>
+        <input type="text" id="sort_{{loop.index}}" class="table-input c-gray1" value="{{item.sort}}" onblur="activity.newcode.setSort('{{item.qrcodeId}}',this)">
+    </li>
+    <li>
+        <div class="u-cb">
+            {%if item.isSel==1 %}
+                <input type="checkbox" name="chb" id="checkhb{{item.qrcodeId}}" value="" onclick="activity.newcode.setSel('{{item.qrcodeId}}')" checked >
+            {%else%}
+                <input type="checkbox" name="chb" id="checkhb{{item.qrcodeId}}" value="" onclick="activity.newcode.setSel('{{item.qrcodeId}}')" >
+            {%endif%}
+            <label class="iconfont icon-avoid" for="checkhb{{item.qrcodeId}}" style="top: 0;"></label>
+        </div>
+    </li>
+    <li style="width: 15%;">
+        <div class="u-btn-smltgry" onclick="activity.newcode.edit({{item.qrcodeId}})"><i class="iconfont icon-modified"></i><span>编辑</span></div>
+        <div class="u-btn-smltgry" onclick="activity.newcode.del({{item.qrcodeId}})">
+            <i class="iconfont icon-delete1 c-orange2"></i>
+            <span>删除</span>
+        </div>
+    </li>
+</ul>
+{%endfor%}

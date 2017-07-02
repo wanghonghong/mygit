@@ -1,0 +1,54 @@
+<div class="m-search" id="m-search">
+    <label class="u-lb-sm">活动名称</label>
+    <div class="u-txt col-xs-3">
+        <input type="text" class="ipt-txt" placeholder="请输入活动名称" id="name">
+    </div>
+    <label class="u-lb-sm">商品名称</label>
+    <div class="u-txt col-xs-3">
+        <input type="text" class="ipt-txt" placeholder="请输入商品名称" id="productName">
+    </div>
+    <label class="u-lb-sm">活动状态</label>
+    <div class="u-txt col-xs-3">
+        <select class="ipt-txt c-gray1" id="status">
+            <option value="-1">全部</option>
+            <option value="0">未开始</option>
+            <option value="1">进行中</option>
+            <option value="2">已暂停</option>
+            <option value="3">已结束</option>
+        </select>
+    </div>
+
+    <div class="u-btn-box1">
+        <input type="button"  id="action_search" class="u-btn-mddkorg u-w" value="查询">
+    </div>
+</div>
+
+<a class="btn-slide btn-slide1"></a>
+
+<div class="m-jm-table f-mt-m">
+    <ul class="table-hander">
+        <li style="width: 30%;">商品主图-名称-价格</li>
+        <li style="width: 25%;">活动名称</li>
+        <li>拼团价格（元）</li>
+        <li>活动状态</li>
+        <li style="width: 18%;">操作</li>
+    </ul>
+    <div class="table-body f-t-off" id="tableBody">
+
+    </div>
+    <div class="f-fl f-pt-m">
+        <div class="u-cb">
+            <input type="checkbox" id="checkBox0" name="trad_all">
+            <label class="iconfont icon-avoid" for="checkBox0"></label>
+        </div>
+        <label for="checkBox0" class="f-mr-m" id="trad_all">全选</label>
+        <div class="u-btn-smltgry" id="trad_del"><i class="iconfont  icon-delete1"></i>删除 </div>
+    </div>
+    <!--以下是分页效果-->
+    <div id="pageToolbar" class="pagination f-fr" style="margin-top:10px;"></div>
+
+</div>
+
+<script>
+    trad.groups.init();
+</script>

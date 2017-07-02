@@ -1,0 +1,24 @@
+{%if items.length>0%}
+{% for item in items %}
+<ul class="table-container">
+    <li><img src="{{item.headimgurl}}"  class="u-thumbnail-circ"></li>
+    <li>
+        <span>{{item.nickname}}</span><br><span>{{item.userName}}</span><br><span>{{item.phoneNumber}}</span>
+    </li>
+    <li>{{item.subscribeTime}}</li>
+    <li>微信</li>
+    <li>
+		{%if item.upperOne== id%}
+            1级微客
+		{%endif%}
+		{%if item.upperTwo== id%}
+		2级微客
+		{%endif%}
+    </li>
+</ul>
+{%endfor%}
+{% else %}
+<div class="m-jm-err">
+    <img src="{{globalUrl}}/css/pc/img/jm-nodb.png">
+</div>
+{%endif%}

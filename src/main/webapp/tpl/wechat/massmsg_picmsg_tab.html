@@ -1,0 +1,28 @@
+    <div id="massmsg_imgtxt_tab" class="m-goodsList-tab">
+        <div class="m-tab f-mb-l">
+            <ul>
+                <li class="z-sel">微信图文</li>
+            </ul>
+        </div>
+        <div class="u-select-control ">
+            <input type="text" class="" name="goodsName" id="tab_itttitle" placeholder="标题" />
+            <i class="iconfont icon-belowtriangle  after-border"></i>
+            <i class="iconfont icon-search" style="cursor: pointer" id="searchBtn" onclick="mm.massmsg.mm_getimgtxt_searchTitle('#tab_itttitle');"></i>
+        </div>
+    </div>
+    <div class="m-jm-table">
+        <ul class="table-hander">
+            <li style="width: 45%;">主图-标题</li>
+            <li>创建日期</li>
+            <li>选择</li>
+        </ul>
+        <div class="table-body h-scroll">
+            <div class="table-body" id="mm_type_list">
+
+            </div>
+        </div>
+        <div id="pageToolbar" class="pagination"  style="float: right; margin: 0px 4px 10px 0;">
+
+        </div>
+    </div>
+    <div class="u-btn-box1 f-mt-m"><input type="button" class="u-btn-mddkorg" value="确定"  onclick="mm.massmsg.mm_wechat_click();"  /></div>

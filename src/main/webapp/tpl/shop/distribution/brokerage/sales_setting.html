@@ -1,0 +1,50 @@
+<style>
+    #two-error,#bfee-error,#cfee-error,#afee-error,#agentAfee-error,#agentBfee-error,#agentCfee-error,#agentDfee-error{
+        left:-5px;
+        top:40px;
+    }
+</style>
+<div class="m-tab">
+    <ul id="salestab">
+        <li class="z-sel" data-target="settingBox">分销设置</li>
+        <li class="f-disable" data-target="upgradeBox" id="upgradeTab" title="请先开通升级收费功能">升级收费</li>
+        <li class="f-disable" data-target="agentBox" id="agentTab" title="请先开通代理收费功能">代理收费</li>
+        <!--<li class="" data-target="smallshop-tpl"  >粉丝小店</li>-->
+    </ul>
+</div>
+<div  >
+    <div id="settingBox">
+        <div class="m-jm-table">
+            <div class="col-xs-35">
+                <div class="m-phone-view">
+                    <div class="phone-shell-top">
+                    </div>
+                    <div class="phone-window fxsz">
+                        <img src="{{globalUrl}}/css/pc/img/fxsz.png"/>
+                    </div>
+                    <div class="phone-shell-bottom">
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-85 f-mt-l " id="settingArea" style="padding: 0;">
+
+            </div>
+            <!-- /020 动销代理系统 + 分销佣金升级 -->
+            <div class="u-btn-box1">
+                <input type="button" class="u-btn-mainlg savebtn" id="" value="保存" />
+                <!--<input type="button" class="u-btn-lgdkorg savebtn" id="" value="保存"/>-->
+            </div>
+        </div>
+    </div>
+    <div id="upgradeBox" class="z-hide">
+        {% include 'tpl/shop/distribution/brokerage/upgrade_fee.html' %}
+    </div>
+    <div id="agentBox" class="z-hide">
+        {% include 'tpl/shop/distribution/brokerage/agent_fee.html' %}
+    </div>
+    <!--<div id="smallshop-tpl" class="z-hide">-->
+    <!--</div>-->
+</div>
+<script>
+    sales.setting.init();
+</script>

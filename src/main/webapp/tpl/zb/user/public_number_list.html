@@ -1,0 +1,53 @@
+
+    {% if items.length>0 %}
+    {%for item in items%}
+    <ul class="table-container">
+        <li>
+            <img src="{{item.headimgurl}}"  class="u-thumbnail-circ">
+        </li>
+        <li class="f-tl" style="width: 16%; padding-left: 40px;">
+            <span>{%if item.nickname%}{{item.nickname}}{%else%}--{%endif%}</span><br><span>{%if item.userName%}{{item.userName}}{%else%}--{%endif%}</span><br><span>{%if item.phoneNumber%}{{item.phoneNumber}}{%else%} --{%endif%}</span>
+        </li>
+        <li>{%if item.sex%}
+            {%if item.sex==1%}
+            男
+            {% elif item.sex==2%}
+            女
+            {%endif%}
+            {%else%}--{%endif%}
+        </li>
+        <li>
+            {%if item.agentRole and item.agentRole!=0%}
+                {%if item.agentRole==1%}代理商1档
+                {%elif item.agentRole==2%}代理商2档
+                {%elif item.agentRole==3%}代理商3档
+                {%elif item.agentRole==4%}代理商4档
+                {%elif item.agentRole==5%}分销商1档
+                {%elif item.agentRole==6%}分销商2档
+                {%elif item.agentRole==7%}分销商3档
+                {%endif%}
+            {%elif item.isBuy==1%}购买粉丝
+            {%elif item.isSubscribe==1%}关注粉丝
+            {%else%}跑路粉丝
+            {%endif%}
+        </li>
+        <li>{%if item.areaName%}{{item.areaName}}{%else%}--{%endif%}</li>
+        <li>0</li>
+        <li>
+            <div class="f-mb-xs">
+                <div class="u-btn-smltgry">编辑</div>
+            </div>
+            <div class="f-mb-xs">
+                <div class="u-btn-smltgry" onclick="customer.operation.topUserPopMsg('{{item.userId}}')" >上级</div>
+                <div class="u-btn-smltgry" onclick="customer.operation.lastUserPopMsg('{{item.userId}}')">下级</div>
+            </div>
+            <div>
+                <div class="u-btn-smltgry" style="padding: 0 12px;">米币二维码</div>
+            </div>
+        </li>
+    </ul>
+    {%endfor%}
+    {%else%}
+    {% include "/tpl/system/nodb.html" %}
+    {%endif%}
+

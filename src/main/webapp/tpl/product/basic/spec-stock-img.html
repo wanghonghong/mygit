@@ -1,0 +1,24 @@
+<div class="stock-img-show1">
+		<span class="test">
+			<span class="tagtext">{{specValue}}</span>
+	<span class="out"></span>
+		<span class="iner"></span>
+			<a class="iconfont icon-delete2"></a>
+		</span>
+	<div class="stock-img-show1-absolute u-txt f-padding-s z-hide">
+		<input type="text" class="ipt-txt" name="popValue" value="{{specValue}}" />
+		<div class="u-btn-smltorg"> 保存</div>
+		<span class="out"></span>
+		<span class="iner"></span>
+	</div>
+    <div class="add-img-hide" >
+		{% if specPic %}
+			<img src="	{{specPic}}" />
+			<i class="iconfont icon-add z-hide"></i>
+		{% else %}
+			<img src="" class="z-hide"/>
+			<i class="iconfont icon-add"></i>
+		{% endif %}
+    </div>
+
+</div>

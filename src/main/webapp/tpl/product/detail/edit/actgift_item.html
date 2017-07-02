@@ -1,0 +1,31 @@
+
+<ul class="table-container f-pd f-t-off">
+    <li>
+        <div   class="u-rb">
+            <input type="radio" name="agcard" id="agcard_check_{{id}}" value="{{id}}" />
+            <label  for="agcard_check_{{id}}"></label>
+        </div>
+    </li>
+    <li class="f-tl" style="width:25%; padding: 0 15px;">
+        <p title="">{{cardName}}</p>
+    </li>
+    <li>{{cardMoney}}</li>
+    <li>
+        {%if userLimit== 0%}
+        全店通用
+        {%endif%}
+        {%if userLimit== 1%}
+        指定商品
+        {%endif%}
+    </li>
+
+    {%if periodType== 2%}
+    <li>{{startTime}}<br />{{endTime}} </li>
+    {%endif%}
+    {%if periodType== 1%}
+    <li>  {{fixDate}}天</li>
+    {%endif%}
+
+    <li>{{createTime}}</li>
+
+</ul>

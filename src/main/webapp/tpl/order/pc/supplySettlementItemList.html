@@ -1,0 +1,148 @@
+<!--供货结算-->
+<div class="m-search" id="m-search">
+    <form id="searchform1" >
+        {% if ext.roleId==2 %}
+        <label class="u-lb-sm">供货商</label>
+        <div class="u-txt col-xs-3">
+            <input type="text" class="ipt-txt" placeholder="请输入供货商" id="shopUserName" name="shopUserName"/>
+        </div>
+        {% elif ext.roleId==9 %}
+        <label class="u-lb-sm">代发店铺</label>
+        <div class="u-txt col-xs-3">
+            <input type="text" class="ipt-txt" placeholder="请输入代发店铺" id="shopName" name="shopName"/>
+        </div>
+        {% else %}
+        {% endif %}
+        <label class="u-lb-sm">商品名称</label>
+        <div class="u-txt col-xs-3">
+            <input type="text" class="ipt-txt" placeholder="请输入商品名称" id="productName" name="productName" />
+        </div>
+        <label class="u-lb-sm">发货日期</label>
+        <div class="u-txt u-txt-date f-ml-m">
+            <i class="iconfont icon-calendar"></i>
+            <input type="text" class="ipt-txt c-gray1" id="supplySettlementBeginDate" name="supplySettlementBeginDate" placeholder="" style="width: 112px;" />
+        </div>
+        <div class="u-txt">
+            <span class="line" style="width: 24px;">-</span>
+        </div>
+        <div class="u-txt u-txt-date">
+            <i class="iconfont icon-calendar"></i>
+            <input type="text" class="ipt-txt c-gray1" id="supplySettlementEndDate" name="supplySettlementEndDate" placeholder="" style="width: 112px;" />
+        </div>
+        <label class="u-lb-sm">订单状态</label>
+        <div class="u-txt col-xs-3">
+            <select class="ipt-txt" name="s_statusList" id="s_statusList" style="width: 100%">
+            </select>
+        </div>
+        <div class="u-btn-box1">
+            <input type="button" class="u-btn-mddkbl f-mr-xs" value="导出" onclick="supplySettlement.list.exportSupply()"/>
+            <input type="button" class="u-btn-mddkorg u-w querySupplySettlement" value="查询" onclick="supplySettlement.list.query()" />
+        </div>
+    </form>
+</div>
+<a class="btn-slide btn-slide1"></a>
+<div class="m-jm-table f-mt-l">
+    <ul class="table-hander">
+        <li style="width: 25%;">主图-名称</li>
+        <li>数量（件）</li>
+        <li>供货价（元）</li>
+        <li>小计（元）</li>
+        <li>发货时间</li>
+        <li>订单状态</li>
+        {% if ext.roleId==2 %}
+        <li>供货商</li>
+        {% elif ext.roleId==9 %}
+        <li>代发店铺</li>
+        {% else %}
+        {% endif %}
+    </ul>
+    {%if items.length>0%}
+        {% for item in items %}
+        <div class="table-body u-loanlist">
+            <div class="m-person-totle1" style="color: inherit; border-top: none;">
+                订单编号：{{item.orderNum}}
+            </div>
+            {% for orderDetail in item.orderDetails %}
+            <ul class="table-container">
+                <li style="width: 25%;">
+                    <div class="g-table">
+                        <div class="g-table-cell f-vm" style="width: 40%;">
+                            {% if orderDetail.pic %}
+                            <img class="u-thumbnail-squa" src="{{orderDetail.pic}}"/>
+                            {% else %}
+                            <img class="u-thumbnail-squa" src="{{globalUrl}}/css/pc/img/no_picture.png"/>
+                            {% endif %}
+                        </div>
+                        <div class="g-table-cell f-vm f-tl" style="width: 60%;">
+                            <span>{{orderDetail.name}}</span>
+                        </div>
+                    </div>
+                </li>
+                <li>{{orderDetail.count}}</li>
+                <li>{{orderDetail.supplyPrice/100}}</li>
+                <li>{{orderDetail.count*orderDetail.supplyPrice/100}}</li>
+                <li>{{item.sendDate}}</li>
+                <li>
+                    {% if item.status==1 %}
+                        待发货
+                    {% elif item.status==2 %}
+                        已发货
+                    {% elif item.status==3 %}
+                        已收货
+                    {% elif item.status==5 %}
+                        退款管理
+                    {% else %}
+                    {% endif %}
+                </li>
+                {% if ext.roleId==2 %}
+                    <li><div class="u-btn-smltgry f-mb-xs f-mt-xs" onclick="supplySettlement.list.queryUser('{{orderDetail.supplyUserId}}')"><span>{{orderDetail.supplyUserName}}</span></div></li>
+                {% elif ext.roleId==9 %}
+                    <li><div class="u-btn-smltgry f-mb-xs f-mt-xs" onclick="supplySettlement.list.queryShop('{{item.shopId}}')"><span>{{item.shopName}}</span></div></li>
+                {% else %}
+                {% endif %}
+            </ul>
+            {% endfor %}
+        </div>
+        {% endfor %}
+    {%else%}
+    <div class="m-jm-err">
+        <img src="{{globalUrl}}/css/pc/img/jm-nodb.png">
+    </div>
+    {%endif%}
+</div>
+
+<script type="text/javascript">
+
+    var s_statusList = [{id: "12", text: "全部"},{id: "1", text: "待发货"},{id: "2", text: "已发货"}, {id: "3", text: "已收货"}, {id: "5", text: "退款管理"}];
+
+    var defaults = {
+        s_statusList: s_statusList,
+    };
+
+    $("#s_statusList").select2({
+        theme: "jumi",
+        data: defaults.s_statusList
+    });
+
+    $(".btn-slide").click(function(){
+        $("#m-search").slideToggle("fast");
+        $(this).toggleClass("btn-slide1"); return false;
+    })
+
+    $("#supplySettlementBeginDate").datetimepicker({
+        showSecond : true,
+        timeFormat : 'hh:mm:ss',
+        dateFormat : 'yy-mm-dd',
+        stepHour : 1,
+        stepMinute : 1,
+        stepSecond : 1
+    });
+    $("#supplySettlementEndDate").datetimepicker({
+        showSecond : true,
+        timeFormat : 'hh:mm:ss',
+        dateFormat : 'yy-mm-dd',
+        stepHour : 1,
+        stepMinute : 1,
+        stepSecond : 1
+    });
+</script>

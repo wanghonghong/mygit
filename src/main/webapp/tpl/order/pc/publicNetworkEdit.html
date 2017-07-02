@@ -1,0 +1,92 @@
+<style>
+    .ui-dialog .ui-dialog-content{
+        padding: 0;
+    }
+</style>
+<!--公益网点详情-->
+<form id="public_Node_Entity_Form" class="bl-form bl-formhor" novalidate="novalidate">
+    <input type="hidden" id="id" name="id" value="{{item.id}}" />
+    <input type="hidden" id="shopId" name="shopId" value="{{item.shopId}}" />
+    <input type="hidden" id="status" name="status" value="{{item.status}}" />
+    <div class="col-xs-12">
+        <label class="u-lb-sm c-deepgray f-cb">网点名称</label>
+        <div class="u-txt col-xs-7 f-mb-m">
+            <input type="text" class="ipt-txt c-gray1" id="name" name="name" value="{{item.name}}" placeholder="请输入网点名称" />
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label class="u-lb-sm c-deepgray f-cb">联系姓名</label>
+        <div class="u-txt col-xs-7 f-mb-m">
+            <input type="text" class="ipt-txt c-gray1" id="linkUser" name="linkUser" value="{{item.linkUser}}" placeholder="请输入联系姓名" />
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label class="u-lb-sm c-deepgray f-cb">联系电话</label>
+        <div class="u-txt col-xs-7 f-mb-m">
+            <input type="text" class="ipt-txt c-gray1" id="linkPhone" name="linkPhone" value="{{item.linkPhone}}" placeholder="请输入联系电话" />
+        </div>
+    </div>
+    <div class="col-xs-12" id="distpickerentt">
+        <label class="u-lb-sm c-deepgray f-cb">所属地区</label>
+        <div class="u-txt f-ml-m f-mb-m" style="width: 93px;">
+            <select class="ipt-txt c-gray1" id="provinceentt" style="padding-right: 0; padding-left: 5px;">
+                <option value="1">省</option>
+            </select>
+        </div>
+        <div class="u-txt">
+            <span class="line" style="width: 12px;">-</span>
+        </div>
+        <div class="u-txt f-mb-m" style="width: 93px;">
+            <select class="ipt-txt c-gray1" id="cityentt" style="padding-right: 0; padding-left: 5px;">
+                <option value="1">市</option>
+            </select>
+        </div>
+        <div class="u-txt">
+            <span class="line" style="width: 12px;">-</span>
+        </div>
+        <div class="u-txt f-mb-m" style="width: 93px;">
+            <select class="ipt-txt c-gray1" id="districtentt" style="padding-right: 0; padding-left: 5px;">
+                <option value="1">区</option>
+            </select>
+        </div>
+        <div style="display:none;" id="addresshid">{{item.province}},{{item.city}},{{item.district}}</div>
+    </div>
+    <div class="col-xs-12">
+        <label class="u-lb-sm c-deepgray f-cb">详细地址</label>
+        <div class="u-txt col-xs-7 f-mb-m">
+            <textarea name="shared" class="ipt-txt txtarea" id="address" name="address" placeholder="请输入详细地址">{{item.address}}</textarea>
+            <!--<span class="number font-s12">0/60</span>-->
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label class="u-lb-sm c-deepgray f-cb">设立日期</label>
+        <div class="u-txt col-xs-7 f-mb-m">
+            <input type="text" class="ipt-txt c-gray1" id="publicNetworkDate" name="publicNetworkDate" value="{{item.publicNetworkDate}}" placeholder="" />
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label class="u-lb-sm c-deepgray f-cb">简述</label>
+        <div class="u-txt col-xs-7 f-mb-m">
+            <textarea name="shared" class="ipt-txt txtarea" id="node" name="node" placeholder="请输入简述">{{item.node}}</textarea>
+            <!--<span class="number font-s12">0/60</span>-->
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label class="u-lb-sm c-deepgray f-cb">门店照片</label>
+        <div class="m-add-pic col-xs-3 f-mb-m" id="recovery_xy">
+            {%if item.imgUrl.length>0%}
+            <img src="{{item.imgUrl}}" alt="" id="imgUrl"/>
+            {%else%}
+            <img src="{{globalUrl}}/css/pc/img/no_picture.png" alt="" id="imgUrl"/>
+            {%endif%}
+        </div>
+    </div>
+    <div class="col-xs-12" id="publicNetworkContainerId">
+        <label class="u-lb-sm c-deepgray f-cb">说明编写</label>
+        <div class="col-xs-10 f-pt-s">
+            <div class="publicNetworkContainer">
+
+            </div>
+        </div>
+    </div>
+</form>

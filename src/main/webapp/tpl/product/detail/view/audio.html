@@ -1,0 +1,23 @@
+<div class="custom-audio">
+    {% for item in subEntry %}
+    <div class="audio ">
+        <div class="audio-box">
+            <div class="audio-img  f-ml-xs">
+                <div class="music-box">
+                    <img class="music_disc" src="{{globalUrl}}/css/pc/img/music_disc.png">
+                </div>
+            </div>
+            <div class="audio-info">
+                <div class="info-box">
+                    <i class="iconfont icon-31shengbo f-ml-s f-fl"></i>
+                    <span>{{item.resName}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% else   %}
+    <div class="init-describe">
+        {{name}}
+    </div>
+    {% endfor %}
+</div>

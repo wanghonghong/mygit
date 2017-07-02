@@ -1,0 +1,24 @@
+<form id="videoForm">
+<label class="u-lb-md f-mt-m">视频原名</label>
+<div class="u-txt col-xs-10 f-mt-m">
+    <input type="text" required data-msg-required="视频原名不能为空" class="ipt-txt fn-tinput valid" name="video_name" placeholder="原网址的视频名称" />
+</div>
+<label class="u-lb-md"><span>*&nbsp;&nbsp;</span>腾讯视频</label>
+<div class="u-txt col-xs-10">
+    <input type="text" class="ipt-txt fn-tinput valid" required data-msg-required="腾讯视频链接地址不能为空" name="tx_video_name" placeholder="请添加以http://开头的腾讯视频链接地址" />
+</div>
+<!--<label class="u-lb-md"><span>*&nbsp;&nbsp;</span>优酷视频</label>-->
+<!--<div class="u-txt col-xs-10">-->
+    <!--<input type="text" required data-msg-required="优酷视频链接地址不能为空" class="ipt-txt fn-tinput valid" name="yk_video_name" placeholder="请添加以http://开头的优酷视频链接地址" />-->
+<!--</div>-->
+<div class="m-tip3 col-xs-10 f-mb-mt f-mb-l">
+    <i style="" class="iconfont icon-lamp"></i>
+    <span>请准确填写分别来源网址，微信粉丝将自动显示腾讯视频，微博显示优酷视频；填写错误将无法显示！</span>
+</div>
+<div class="u-btn-box1 f-mt-m"><input type="button" id="m_video_btn" class="u-btn-mddkorg" value="确定" /></div>
+</form>
+<style>
+    .error{
+        color:red;
+    }
+</style>

@@ -1,0 +1,50 @@
+<div class="sell-set-cont" style="margin-left: 0;">
+    <label class="u-lb-sm c-black f-cb">活动主图</label>
+    <div class="m-add-pic col-xs-3 f-mb-m f-pt-xs">
+        <img src="{{img|default(globalUrl+'/css/pc/img/no_picture.png',ture)}} ">
+    </div>
+    <label class="u-lb-sm c-black f-cb">活动名称</label>
+    <div class="u-txt col-xs-6 f-mb-m">
+        <input type="text" class="ipt-txt c-gray1" name="activityName" value="{{activityName}}" placeholder="请输入活动名称" style="width: 330px;">
+    </div>
+    <label class="u-lb-sm c-black f-cb">活动时间</label>
+    <div class="u-txt f-ml-m f-mb-m">
+        <input type="text" name="startDate" class="ipt-txt c-gray1" value="{{startDate}}" placeholder="" style="width: 155px;">
+    </div>
+    <div class="u-txt">
+        <span class="line" style="width: 20px;">-</span>
+    </div>
+    <div class="u-txt f-mb-m">
+        <input type="text" name="endDate" class="ipt-txt c-gray1" placeholder=""  value="{{endDate}}" style="width: 155px;">
+    </div>
+    <label class="u-lb-sm c-black f-cb">短信通知</label>
+    <div class="u-txt col-xs-6 f-mb-m">
+        <textarea name="sms" class="ipt-txt txtarea" placeholder="请输入短信通知"   style="width: 330px;">{{sms}}</textarea>
+    </div>
+    <label class="u-lb-sm c-black f-cb">通知时间</label>
+    <div class="u-txt col-xs-6 f-mb-m">
+        <input type="text" class="ipt-txt c-gray1" name="noticeDate" value="{{noticeDate}}" placeholder="请输入通知时间" style="width: 330px;">
+    </div>
+</div>
+<div class="sell-set-cont f-pt-s" style="margin-left: 0;">
+    <label class="u-lb-sm c-black f-cb">信息选择</label>
+    <div class="panel-hidden f-cb">
+        <div class="m-panel m-panel-freight">
+            <div class="panel-heading" style="border-right: none; border-left: none;">
+                <h4>
+               <span class="titleName">{{titleName}} <font> </font>&nbsp;<font class="font-s14">（<font class="setInfonum">{%if setInfo %}{{setInfo.split(',').length}} {% else %} 0 {%endif%}</font> 个）</font></span>
+                    <div class="f-fr f-pr-s fn">
+                        <div class="u-btn-smltgry dialog-infonew">
+                            <i class="iconfont icon-modified"></i><span>选择</span>
+                        </div>
+                    </div>
+                </h4>
+            </div>
+            <div class="panel-body m-enrollbody"
+                 style="padding-top: 20px; padding-left: 20px; border-right: none; border-left: none; border-bottom: none; background-color: #fff;">
+
+            </div>
+        </div>
+    </div>
+
+</div>

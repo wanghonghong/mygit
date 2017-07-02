@@ -1,0 +1,23 @@
+{%if items.length>0%}
+
+			<div class="table-body">
+			{% for item in items %}
+				<ul class="table-container">
+					<li>{{item.payDate}}</li>
+					<li>{{(item.money/100)|shortNumber(2)}}</li>
+					{% if item.payType==1 %}
+					<li>微信支付</li>
+					{% else %}
+					<li>其他支付</li>
+					{% endif %}
+				</ul>
+			
+			 {%endfor%}
+
+			</div>
+	{%else%}
+<!--<div class="noData">暂无数据</div>--> 
+<div class="m-jm-err">
+    <img src="{{globalUrl}}/css/pc/img/jm-nodb.png">
+</div>
+{%endif%}

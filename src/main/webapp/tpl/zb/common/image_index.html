@@ -1,0 +1,62 @@
+<div class="m-tab f-mb-l">
+    <ul id="dialog_common">
+        <li class="z-sel">上传图片</li>
+        <li>历史图库</li>
+    </ul>
+</div>
+<div>
+<div class="m-upload" id="dia_0">
+    <input type="hidden" id="map_files">
+    <div class="col-xs-12">
+        <label class="u-lb-md"><span class="f-star">*&nbsp;&nbsp;</span>选择分组</label>
+        <div class="u-txt col-xs-4">
+            <select class="ipt-txt" id="ipt_group">
+
+            </select>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <label class="u-lb-md">网络图片</label>
+        <div class="u-txt col-xs-9">
+            <span class="pick" id="m_pick">提取</span>
+            <input type="text" name="network_picture" id="network_picture" class="ipt-txt" placeholder="请添加以http://开头的网络图片地址" />
+            <div class="col-xs-12">
+                <div class="display" id="display_img" style="margin-top:10px;display:none"><img width="200" height="200" src="" alt=""></div>
+            </div>
+        </div>
+    </div>
+
+        <div class="col-xs-12">
+        <label class="u-lb-md">本地图片</label>
+        <ul class="m-addimg-group col-xs-10" id="m-addimg-group">
+            <li class="add">
+                <i class="iconfont icon-add"></i>
+                <input type="file" id="map_fileupload_add_1" accept="image/gif,image/jpeg,image/png" name="myfile"/>
+            </li>
+
+        </ul>
+        <div class="m-tip3 col-xs-9 f-mb-m">
+            <i style="" class="iconfont icon-lamp"></i>
+            <span>仅支持jpg、gif、png三种格式，大小30k-300k</span>
+        </div>
+    </div>
+    <div class="u-btn-box1 f-mt-m"><input id="map_dialog_btn" type="button" class="u-btn-mddkorg" value="确定" /></div>
+</div>
+<div class="m-upload" style="display: none;"  id="dia_1">
+    <div class="m-material-center m-material-center1">
+        <div class="material-center-left">
+            <ul id="m-group-list">
+
+            </ul>
+        </div>
+        <div class="m-material-center-right" style="width:100%">
+            <ul class="material-center1" id="material-center1">
+
+
+            </ul>
+            <div id="image_common_page" class="pagination" style="text-align: right"></div>
+        </div>
+    </div>
+    <div class="u-btn-box1"><input type="button" class="u-btn-mddkorg" value="确定" id="map_choose_btn"/></div>
+</div>
+</div>

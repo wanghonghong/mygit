@@ -1,0 +1,16 @@
+<label class="u-lb-ssm f-cb">角色</label>
+<div class="u-txt col-xs-10">
+    <input type="text" class="ipt-txt" id="addRoleName" placeholder="请输入角色名称" value="" />
+</div>
+<label class="u-lb-ssm f-cb">类型</label>
+<div class="u-txt col-xs-10">
+    <select class="ipt-txt" id="type">
+        {%for type in item%}
+        <option value="{{type.id}}">{{type.typeName}}</option>
+        {%endfor%}
+    </select>
+</div>
+<div class="u-btn-box1">
+    <input type="button" class="u-btn-smlightgray f-mr-xs" id="cancel1" value="取消" />
+    <input type="button" class="u-btn-smlightred" value="保存" id="saveRole" style="width: 100px;" />
+</div>

@@ -1,0 +1,167 @@
+<div class="m-search" id="m-search">
+    <label class="u-lb-sm">商户姓名</label>
+    <div class="u-txt col-xs-3">
+        <input type="text" class="ipt-txt" id="userName" placeholder="请输入商户姓名" />
+    </div>
+    <label class="u-lb-sm">店铺名称</label>
+    <div class="u-txt col-xs-3">
+        <input type="text" class="ipt-txt" id="shopName" placeholder="请输入店铺名称" />
+    </div>
+    <label class="u-lb-sm">所在平台</label>
+    <div class="u-txt col-xs-3">
+        <select class="ipt-txt" id="platform">
+            <option value="">全部</option>
+            <option value="1">微信</option>
+            <option value="2">微博</option>
+            <option value="3">APP</option>
+            <option value="4">PC</option>
+        </select>
+    </div>
+    <label class="u-lb-sm">商户手机</label>
+    <div class="u-txt col-xs-3">
+        <input type="text" class="ipt-txt" id="phoneNumber" placeholder="请输入商户手机" />
+    </div>
+    <label class="u-lb-sm">店铺状态</label>
+    <div class="u-txt col-xs-3">
+        <select class="ipt-txt" id="status">
+            <option value="">全部</option>
+            <option value="0">开通</option>
+            <option value="1">关停</option>
+        </select>
+    </div>
+    <label class="u-lb-sm">创建日期</label>
+    <div class="u-txt f-ml-m">
+        <input type="text" class="ipt-txt c-gray1" id="startTime" placeholder="开始时间" style="width: 118px;" />
+    </div>
+    <div class="u-txt">
+        <span class="line" style=" width: 20px;">-</span>
+    </div>
+    <div class="u-txt f-mr-m">
+        <input type="text" class="ipt-txt c-gray1" id="endTime" placeholder="结束时间" style="width: 118px;" />
+    </div>
+    <div class="u-btn-box1">
+        <input type="button" class="u-btn-mdemptyred" id="search-btn" value="查询" />
+    </div>
+</div>
+<a class="btn-slide btn-slide1"></a>
+<div class="m-jm-table f-mt-m" >
+    <ul class="table-hander">
+        <li>店铺头像</li>
+        <li>店铺二维码</li>
+        <li>店铺名称</li>
+        <li style="width: 12%;">经营者</li>
+        <li style="width: 12%;">代理商</li>
+        <li>平台</li>
+        <li>创建日期</li>
+        <li>状态</li>
+        <li>操作</li>
+        <li>管理</li>
+    </ul>
+    <div class="table-body" id="shopList">
+
+    </div>
+    <!--以下是分页-->
+    <div id="shopToolbar" class="pagination f-fr f-mt-m">
+
+    </div>
+    <!--分页end-->
+</div>
+<div id="dialoginfo" class="dialoginfo">
+    <div class="m-tab" id="m-tab1">
+        <ul>
+            <li class="z-sel">审核执行</li>
+            <li>审核历史（0）</li>
+        </ul>
+    </div>
+    <div class="panel-hidden f-padding-m" style="padding-bottom: 0;">
+        <div class="m-tips-sucs f-mb-m"><i class="iconfont icon-checkboxselected1"></i>2次审核已通过</div>
+        <div class="m-graypanel f-mb-m">
+            <h4>审批角色</h4>
+            <div class="u-txt col-xs-4 u-slt-opt">
+                <select class="ipt-txt">
+                    <option value="1">运营管理师</option>
+                    <option value="2">兼职微客服</option>
+                    <option value="3">包装设计师</option>
+                </select>
+            </div>
+        </div>
+        <div class="m-graypanel" style="padding: 2px 1px;">
+            <h4>商户信息</h4>
+            <div class="m-review-hander">
+                <ul>
+                    <li style="width: 16%;">营业执照图片</li>
+                    <li>经营地址</li>
+                    <li>经营人数</li>
+                    <li>公司邮箱</li>
+                    <li>公司地址</li>
+                </ul>
+            </div>
+        </div>
+        <div class="m-review-body">
+            <ul class="m-review-container">
+                <li style="width: 16%;">
+                    <img src="{{globalUrl}}/css/pc/img/no_picture.png" alt="暂无图片" class="u-thumbnail-lg90">
+                </li>
+                <li class="f-tl">福建省-福州市-鼓楼区邮电公寓3层聚米为谷</li>
+                <li>100</li>
+                <li>102511111@qq.com</li>
+                <li>http://www.jumiweigu.com.cn/msa/login</li>
+            </ul>
+            <ul class="m-review-container">
+                <li class="review-con">
+                    <h3>公司简介</h3>
+                    <p class="company-text">璟珑家具位于享有“中国家具制造重镇”，“中国家具材料之都”美誉之称-广东佛山市顺德区乐从镇。集设计、研发、生产、销售、服务为一体，构筑现代时尚金属家具。璟珑家具位于享有“中国家具制造重镇”，“中国家具材料之都”美誉之称-广东佛山市顺德区乐从镇。集设计、研发、生产、销售、服务为一体，构筑现代时尚金属家具。</p>
+                    <em class="company-more">全文</em>
+                </li>
+            </ul>
+        </div>
+        <!--当出现2次审核通过提示框的时候，以下内容消失-->
+        <div class="m-graypanel f-mb-m">
+            <h4>审核意见</h4>
+            <div class="u-txt u-textarea">
+                <textarea name="shared" class="ipt-txt txtarea" placeholder=""></textarea>
+                <span class="number">0/300</span>
+            </div>
+        </div>
+        <div class="u-btn-box1">
+            <div class="u-btn-refuse f-mr-s">
+                <i class="iconfont icon-sorry"></i>拒绝
+            </div>
+            <div class="u-btn-agree">
+                <i class="iconfont icon-happy"></i>同意
+            </div>
+        </div>
+        <!--end-->
+    </div>
+    <div class="panel-hidden f-padding-m" style="padding-bottom: 0;">
+        <div class="m-graypanel f-mb-s">
+            <h4>审核意见 <span>1</span>:</h4>
+            <div class="m-review-txt">
+                <div class="txt-top">
+                    <b>审核人：<span>陈大君</span></b>
+                    <b>审核时间：<span>2016-08-06</span></b>
+                </div>
+                <p>营业执照照片不清晰，看不清法人姓名<br />......<br />......</p>
+            </div>
+        </div>
+        <div class="m-graypanel f-mb-s">
+            <h4>审核意见 <span>2</span>:</h4>
+            <div class="m-review-txt">
+                营业执照照片不清晰，看不清法人姓名<br />......<br />......
+            </div>
+        </div>
+        <div class="m-graypanel f-mb-s">
+            <h4>审核意见 <span>3</span>:</h4>
+            <div class="m-review-txt">
+                营业执照照片不清晰，看不清法人姓名
+            </div>
+        </div>
+    </div>
+</div>
+<!--/弹窗部分-->
+<script type="text/javascript">
+    shop.review.init();
+    $(function(){
+
+    })
+</script>

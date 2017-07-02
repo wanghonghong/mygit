@@ -1,0 +1,76 @@
+<div class="panel-hidden_a1" id="panel_a1" >
+    <div class="m-search" id="m-search_a1">
+        <label class="u-lb-sm">查询时间</label>
+        <div class="u-txt u-txt-date f-ml-m">
+            <i class="iconfont icon-calendar"></i>
+            <input type="text" id="startDate1"  class="ipt-txt c-gray1" placeholder="" style="width: 112px;" />
+        </div>
+        <div class="u-txt">
+            <span class="line" style=" width: 20px;">至</span>
+        </div>
+        <div class="u-txt u-txt-date f-mr-m">
+            <i class="iconfont icon-calendar"></i>
+            <input type="text" id="endDate1" class="ipt-txt c-gray1" placeholder="" style="width: 112px;" />
+        </div>
+        <label class="u-lb-sm">活动平台</label>
+        <div class="u-txt col-xs-3">
+            <select class="ipt-txt c-gray1">
+                <option value="1">微信</option>
+            </select>
+        </div>
+        <label class="u-lb-sm">活动类型</label>
+        <div class="u-txt col-xs-3">
+            <select class="ipt-txt c-gray1" name="typeId1" id="typeId1">
+                <option value="0">全部</option>
+                <option value="1">现金红包</option>
+                <option value="2">卡券红包</option>
+                <option value="3">金券红包</option>
+                <!--<option value="4">天天红包</option>
+                <option value="5">聚客红包</option>-->
+            </select>
+        </div>
+
+        <label class="u-lb-sm">活动名称</label>
+        <div class="u-txt col-xs-3">
+            <input type="text" class="ipt-txt" style="width: 244px;" placeholder="请输入活动名称" id="activityName1" />
+        </div>
+        <label class="u-lb-sm" style=" width: 50px;">状态</label>
+        <div class="u-txt col-xs-3" style=" padding-left: 42px;">
+            <select class="ipt-txt c-gray1" style=" width: 252px;" name="status" id="status">
+                <option value="0">全部</option>
+                <option value="1">进行中</option>
+                <option value="2">暂停</option>
+                <option value="3">已结束</option>
+            </select>
+        </div>
+        <div class="u-btn-box1">
+            <input type="button" class="u-btn-mddkorg u-w" value="查询" onclick="dataAnalysis.activity.search(1)" />
+        </div>
+    </div>
+    <a class="btn-slide btn-slide1" id="btn_1" onclick="a(1)"></a>
+    <!--查询列表-->
+    <div class="m-jm-table panel-hid1 f-mt-m" id="u-tab1">
+    </div>
+    <!--以下是分页效果-->
+    <div id="pageToolbar" class="pagination f-fr f-pt-s"></div>
+
+
+</div>
+<script>
+    $("#startDate1").datetimepicker({
+        showSecond : false,
+        timeFormat : 'hh:mm:ss',
+        dateFormat : 'yy-mm-dd',
+        stepHour : 1,
+        stepMinute : 1,
+        stepSecond : 1
+    });
+    $("#endDate1").datetimepicker({
+        showSecond : false,
+        timeFormat : '23:59:59',
+        dateFormat : 'yy-mm-dd',
+        stepHour : 1,
+        stepMinute : 1,
+        stepSecond : 1
+    });
+</script>

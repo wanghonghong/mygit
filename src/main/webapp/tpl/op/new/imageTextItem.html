@@ -1,0 +1,34 @@
+{%for item in items%}
+<ul data-item="{{item|toString}}" class="table-container f-t-off" id="op_table_container_{{item.id}}">
+    <li class="f-tl" style="width: 20%; padding: 0 15px;">
+        <p title="{{item.imageTextTile}}">
+            {%if item.isEdit=='1' %}
+            <font color="orange">*</font>
+            {%endif%}
+            {{item.imageTextTile}}</p></li>
+    <li style="width: 14%;">{{item.typeName}}</li>
+    {%if item.formatCode == 1%}
+    <li>仿微信页</li>
+    {%elif item.formatCode==2%}
+    <li>自由编辑</li>
+    {%else%}
+    <li>h5海报</li>
+    {%endif%}
+    <li>PV：{{item.pv}}<br/>
+        UV：{{item.uv}}
+    </li>
+    <li class="f-tl" style="padding-left: 40px; padding-right: 35px;">{{item.createTime}}</li>
+    <li>{{item.userName}}</li>
+    <li style="width: 16%;">
+        <div class="btn  btn-lightgray btn-sm dialog" onclick="official.imglist.detailItem(this);"> 编辑</div>
+        {%if item.isEdit !='1' %}
+             <div class="btn  btn-lightgray btn-sm" onclick="official.imglist.del(this);"> 删除</div>
+            {%if item.status==0%}
+            <div class="btn  btn-lightgray btn-sm" onclick="official.imglist.changeState(this);">下架</div>
+            {%else%}
+            <div class="btn  btn-lightgray btn-sm" onclick="official.imglist.changeState(this);">上架</div>
+            {%endif%}
+        {%endif%}
+    </li>
+</ul>
+{%endfor%}

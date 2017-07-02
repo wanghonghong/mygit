@@ -1,0 +1,399 @@
+<style>
+
+    img#op_edit_img{
+        border: 1px dashed #e2e2e2;
+    }
+    .watch_music{
+        height:35px;
+        line-height:35px;
+        width:60px;
+        text-align: center;
+        cursor:pointer;
+    }
+    .video_delete {
+        height: 35px;
+        line-height: 35px;
+        width: 60px;
+        text-align: center;
+        cursor: pointer;
+    }
+    .links_delete{
+        height: 35px;
+        line-height: 35px;
+        width: 60px;
+        text-align: center;
+        cursor: pointer;
+    }
+    /*begin@leixy*/
+    .mall-add .goods-sell-set :nth-child(6){
+        margin-bottom: 0;
+    }
+    .mall-add .goods-sell-set :nth-child(7) {
+        margin-bottom: 0;
+    }
+    .mall-add .goods-sell-set :nth-child(7) i {
+        color: #ededed;
+    }
+    .mall-add .goods-sell-set :nth-child(9) {
+        margin-bottom: 0;
+    }
+    .mall-add .goods-sell-set :nth-child(9) img{
+        padding: 0;
+        border: none;
+        margin-right: 10px;
+    }
+    .mall-add .goods-sell-set :nth-child(10) {
+        margin-bottom: 0;
+    }
+    .mall-add .goods-sell-set :nth-child(10) img{
+        padding: 0;
+        border: none;
+        margin-right: 10px;
+    }
+    .m-stylecolorbox li .u-cb label{
+        top: -5px;
+    }
+    .djsz span{
+        cursor: pointer;
+    }
+    /*end*/
+</style>
+<input type="hidden" value="{{items.id}}" name="edit">
+<div style="display: block;">
+    <div class="clearfix">
+        <div class="floatleft col-xs-35">
+            <div class="phone-view phone-view-mini phone-billd phone-marketing" style="width: 330px;">
+                <div class="phone-shell-top" style="height: 62px;">
+                </div>
+                <div class="phone-window">
+                    <div class="fxsz addti">
+                    </div>
+                    <div id="app-memu-panel">
+                        <ul class="app-bottom-memu" id="app-bottom-memu">
+                        </ul>
+                    </div>
+                </div>
+                <div class="phone-shell-bottom">
+                </div>
+            </div>
+        </div>
+        <div class="floatleft col-xs-85 djfe-bjth mall-add dialoginfo-lstk" style="padding-top: 20px;">
+            <form id="jsEditForm" class="bl-form bl-formhor" novalidate="novalidate">
+                <div class="goods-sell-set">
+                    <div class="form-group padding-top-xl">
+                        <label class="margin-right-xs">列表显示板式</label>
+                        <div class="radio-group">
+                            <div class="u-rb">
+                                {%if items.formatCode == 1%}
+                                <input type="radio" name="op_edit_lbradio" id="op_edit_radio1" value="1" checked>
+                                {%else%}
+                                <input type="radio" name="op_edit_lbradio" id="op_edit_radio1" value="1">
+                                {%endif%}
+                                <label for="op_edit_radio1"></label>
+                            </div>
+                            <label for="op_edit_radio1" class="u-rd-wd">仿微信页</label>
+                            <div class="u-rb">
+                                {%if items.formatCode == 2%}
+                                <input type="radio" name="op_edit_lbradio" id="op_edit_radio2" value="2" checked>
+                                {%else%}
+                                <input type="radio" name="op_edit_lbradio" id="op_edit_radio2" value="2">
+                                {%endif%}
+                                <label for="op_edit_radio2"></label>
+                            </div>
+                            <label for="op_edit_radio2" class="u-rd-wd">自由编辑</label>
+                            <div class="u-rb">
+                                {%if items.formatCode == 3%}
+                                <input type="radio" name="op_edit_lbradio" id="op_edit_radio3" value="3" checked>
+                                {%else%}
+                                <input type="radio" name="op_edit_lbradio" id="op_edit_radio3" value="3">
+                                {%endif%}
+                                <label for="op_edit_radio3"></label>
+                            </div>
+                            <label for="op_edit_radio3" class="u-rd-wd">H5海报</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="margin-right-m">分类</label>
+                        <select name="select_edit" id="select_edit"  required data-msg-required="分类不能为空" class="fn-tinput valid" style="width:150px">
+                            {% for item in itemsType%}
+                            {%if items.imageTextType == item.id%}
+                            <option value="{{item.id}}" selected>{{item.typeName}}</option>
+                            {%else%}
+                            <option value="{{item.id}}">{{item.typeName}}</option>
+                            {%endif%}
+                            {%endfor%}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="margin-right-m">标题</label>
+                        <input type="text" name="img_edit_text" value="{{items.imageTextTile
+}}" class="form-control fn-tinput valid" placeholder="请输入标题" required="" data-msg-required="标题不能为空" aria-required="true">
+                    </div>
+                    {%if items.formatCode == 1%}
+                    <div class="form-group" id="author_group">
+                        <label class="margin-right-m">作者</label>
+                        <input type="text" name="edit_author" value="{{items.authorName
+}}" class="form-control" placeholder="请输入作者" required="" data-msg-required="微商城不能为空" aria-required="true">
+                    </div>
+                    {%else%}
+                    <div class="form-group" id="author_group" style="display:none">
+                        <label class="margin-right-m">作者</label>
+                        <input type="text" name="edit_author" value="{{items.authorName
+}}" class="form-control" placeholder="请输入作者" required="" data-msg-required="微商城不能为空" aria-required="true">
+                    </div>
+                    {%endif%}
+                    <div class="form-group stock-info-details-right">
+                        <label class="margin-right-x">主图</label>
+                        <div class="stock-info-details stock-info-tips" style="width: auto;">
+                            <div class="">
+                                <div class="stock-info-details-add-img img-pzsc">
+                                    <div>
+                                        <div>
+                                            <img id="op_edit_img" flag="" src="{{items.imageUrl}}" alt="" name="ImagePath_3" height="100" width="100">
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="base-info-img-tips">
+                                <i class="iconfont icon-lamp margin-left-l"></i>
+                                <span class="tips-cont margin-left-s">建议尺寸：长<font color="orange">750</font>像素，宽不限</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="margin-right-m">摘要</label>
+                        <textarea id="op_edit_shared" data-msg-required="摘要不能为空" name="shared" required class="form-control h-scroll" placeholder="" aria-required="true" style="padding-top: 5px; line-height: 20px;">{{items.shareText}}</textarea>
+                    </div>
+                    <div class="base-info-img-tips" style="margin-left: 120px">
+                        <i style="" class="iconfont icon-lamp" style="color: #f38925; font-size: 14px;"></i>
+                        选填，如果不填写会默认抓取正文前部分文字
+                    </div>
+                    <div class="form-group" id="op_details">
+                        <label class="margin-right-m">图文详情</label>
+                        <div class="panel-spxq" style="border:none;background:none;width: 430px;">
+                            <script id="edit_container" name="content" type="text/plain">
+                            </script>
+                        </div>
+                    </div>
+
+                    <div class="form-group" id="op_code">
+                        <label class="margin-right-l">二维码板式</label>
+                        <div class="radio-group ">
+                            <div class="u-cb f-fl f-mt-xs">
+                                {%if items.bottomQrCode==1%}
+                                <input type="checkbox" id="op_edit_radio5" name="op_edit_ewradio" id="op_edit_radio5" value="1" checked>
+                                {%else%}
+                                <input type="checkbox" id="op_edit_radio5" name="op_edit_ewradio" id="op_edit_radio5" value="1">
+                                {%endif%}
+                                <label class="iconfont icon-avoid" for="op_edit_radio5"></label>
+                            </div>
+                            <img class="f-fl" src="{{globalUrl}}/css/pc/img/erm1.png">
+                            <div class="u-cb f-fl f-mt-xs f-ml-xxl">
+                                {%if items.bottomQrCode==2%}
+                                <input type="checkbox" id="op_edit_radio6" name="op_edit_ewradio" id="op_edit_radio6" value="2" checked>
+                                {%else%}
+                                <input type="checkbox" id="op_edit_radio6" name="op_edit_ewradio" id="op_edit_radio6" value="2">
+                                {%endif%}
+                                <label class="iconfont icon-avoid" for="op_edit_radio6"></label>
+                            </div>
+                            <img src="{{globalUrl}}/css/pc/img/ewm2.png">
+                        </div>
+                    </div>
+                    <div class="form-group" id="op_ds_code">
+                        <label class="margin-right-l">打赏板式</label>
+                        <div class="radio-group ">
+                            <div class="u-cb f-fl f-mt-xs">
+                                {%if items.rewardFormatCode==1%}
+                                <input type="checkbox" id="op_edit_radio13" name="op_ds_edit_radio" id="op_edit_radio13" value="1" checked>
+                                {%else%}
+                                <input type="checkbox" id="op_edit_radio13" name="op_ds_edit_radio" id="op_edit_radio13" value="1">
+                                {%endif%}
+                                <label class="iconfont icon-avoid" for="op_edit_radio13"></label>
+                            </div>
+                            <img class="f-fl" src="{{globalUrl}}/css/pc/img/da1.png">
+                            <div class="u-cb f-fl f-mt-xs" style="margin-left: 60px;">
+                                {%if items.rewardFormatCode==2%}
+                                <input type="checkbox" id="op_edit_radio14" name="op_ds_edit_radio" id="op_edit_radio14" value="2" checked>
+                                {%else%}
+                                <input type="checkbox" id="op_edit_radio14" name="op_ds_edit_radio" id="op_edit_radio14" value="2">
+                                {%endif%}
+                                <label class="iconfont icon-avoid" for="op_edit_radio14"></label>
+                            </div>
+                            <img src="{{globalUrl}}/css/pc/img/da2.png">
+                        </div>
+                    </div>
+                    <div class="form-group" id="op_dz">
+                        <label class="margin-right-m">点赞数量</label>
+                        <input type="number" name="dz_num" class="form-control" min="0" value="{{items.reward|default(0,true)}}"/>
+                    </div>
+                    <div class="form-group" id="link_group">
+                        <label class="margin-right-m">更多好料</label>
+                        <input type="text" name="op_edit_address" value="{{items.readLinkAdd|default('http://',true)}}" class="form-control" placeholder="请输入链接地址">
+                    </div>
+
+
+                    <div class="form-group" id="op_muscic" style="display: flex;">
+                        <label class="u-lb-md">音乐上传</label>
+                        <div class="u-txt col-xs-6" style="margin-bottom: 0;padding-right: 10px">
+                            <input type="text" name="op_music_s" class="ipt-txt" placeholder="" style="width: 100%" value="{{itemsAudio.resName}}">
+                        </div>
+                        <input type="hidden" name="op_music" value="{{itemsAudio.id}}" data-name="{{itemsAudio.resName}}">
+                        <div class="u-btn-mdltgry" style="padding: 0 10px;" id="op_c_music">选择音乐</div>
+                        {%if itemsAudio.id%}
+                        <a id="op_mContent" class="watch_music" style="color:#f8143d">查看</a>
+                        {%else%}
+                        <a id="op_mContent" class="watch_music">查看</a>
+                        {%endif%}
+                    </div>
+                    <div class="form-group" id="op_video">
+                        <label class="u-lb-md">视频上传</label>
+                        <div class="u-txt col-xs-6" style="margin-bottom: 0;padding-right: 10px">
+                            <input type="text" disabled name="op_video_s" class="ipt-txt" placeholder="" style="width: 100%" value="{{itemsVideo.resUrl}}">
+                        </div>
+                        <input type="hidden" name="op_video" data-url="{{itemsVideo.resUrl}}" data-vid="{{items.videoUrl}}" data-id="{{itemsVideo.id}}">
+                        <div class="u-btn-mdltgry" style="padding: 0 10px;" id="op_c_video">选择视频</div>
+                        <a id="op_del" class="video_delete">删除</a>
+                    </div>
+                    <div class="form-group" id="op_video_img">
+                        <label class="u-lb-md">视频主图</label>
+                        <div class="u-txt col-xs-6">
+                            <div>
+                                <div>
+                                    <img id="op_img_video" flag="" src="{{itemsVideoImg.resUrl}}" alt="" name="ImagePath_3" height="100" width="100">
+                                    <input type="hidden" name="op_img_video_id" value="{{itemsVideoImg.id}}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group" id="op_content">
+                        <label class="u-lb-md">内容图片</label>
+                        <input type="hidden" value="{{imgResList.length}}" name="imgResListImg">
+                        <ul class="m-addimg-group1 col-xs-9">
+                            {%for list in imgResList%}
+                            <li class="img"><img src={{list.resUrl}}>
+                                <input name="op_img_hidden" type="hidden" value={{list.id}}>
+                                <i class="iconfont icon-delete3" id="del_img_{{loop.index}}"></i></li>
+                            {%endfor%}
+                            <li class="add" style="margin-left:0px;" id="add_icon_edit">
+                                <i class="iconfont icon-add"></i>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="m-sell-set1 f-mb-xl" id="h5-link">
+                    <div class="sell-set-top f-mt-m f-mb-m" style="border-bottom: none;">
+                        <h3>底页模板</h3>
+                    </div>
+                    <div class="sell-set-cont" style="margin-left: 20px;">
+                        <div class="col-xs-12">
+                            <label class="u-lb-md f-fl">风格颜色</label>
+                            <div class="col-xs-9 f-pt-s f-pb-xs">
+                                <ul class="m-stylecolorbox">
+                                    <li>
+                                        <div class="u-cb tmp-blue">
+                                            <input type="checkbox" name="stylecolor" id="radiostyle1" value="1">
+                                            <label for="radiostyle1" class="iconfont icon-avoid"></label>
+                                        </div>
+                                        <label for="radiostyle1" class="tmp-name">酷密黑</label>
+                                    </li>
+                                    <li>
+                                        <div class="u-cb tmp-blue">
+                                            <input type="checkbox" name="stylecolor" id="radiostyle2" value="2">
+                                            <label for="radiostyle2" class="iconfont icon-avoid"></label>
+                                        </div>
+                                        <label for="radiostyle2" class="tmp-name">星海蓝</label>
+                                    </li>
+                                    <li>
+                                        <div class="u-cb tmp-red">
+                                            <input type="checkbox" name="stylecolor" id="radiostyle3" value="3">
+                                            <label for="radiostyle3" class="iconfont icon-avoid"></label>
+                                        </div>
+                                        <label for="radiostyle3" class="tmp-name">深情红</label>
+                                    </li>
+                                    <li>
+                                        <div class="u-cb tmp-yellow">
+                                            <input type="checkbox" name="stylecolor" id="radiostyle4" value="4">
+                                            <label for="radiostyle4" class="iconfont icon-avoid"></label>
+                                        </div>
+                                        <label for="radiostyle4" class="tmp-name">暖橘黄</label>
+                                    </li>
+                                    <li>
+                                        <div class="u-cb tmp-green">
+                                            <input type="checkbox" name="stylecolor" id="radiostyle5" value="5">
+                                            <label for="radiostyle5" class="iconfont icon-avoid"></label>
+                                        </div>
+                                        <label for="radiostyle5" class="tmp-name">苹果绿</label>
+                                    </li>
+                                    <li>
+                                        <div class="u-cb tmp-bluesw">
+                                            <input type="checkbox" name="stylecolor" id="radiostyle6" value="6">
+                                            <label for="radiostyle6" class="iconfont icon-avoid"></label>
+                                        </div>
+                                        <label for="radiostyle6" class="tmp-name">沙畹蓝</label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        {%if buttonList.length>0%}
+                        {%for blist in buttonList%}
+                        {%if loop.index==1%}
+                        <div class="col-xs-12" id="op_btn_{{loop.index}}">
+                            <label class="u-lb-sm" style="margin-right: 5px">最后 1 页</label>
+                            <div class="u-txt col-xs-4" style="margin-bottom: 0;">
+                                <input type="text" class="ipt-txt" placeholder="按钮1名称" name="op_btn" value="{{blist.buttonName}}">
+                                <input type="hidden" name="op_hi_hidden_{{loop.index}}" value="{{blist.id}}">
+                            </div>
+                            <div class="u-txt djsz col-xs-5" style="margin-bottom: 0;padding-left: 0;">
+                                <span id="op_set_btn_one"><i class="iconfont icon-link"></i>点击设置</span>
+                                <input type="text" class="ipt-txt" name="op_btn_link" placeholder="链接" style="padding-left: 75px;" value="{{blist.linkPath}}">
+                            </div>
+                        </div>
+                        {%else%}
+                        <div class="col-xs-12 f-mt-m" style="margin-bottom: 15px" id="op_btn_{{loop.index}}">
+                            <label class="u-lb-sm" style="margin-right: 5px">&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                            <div class="u-txt col-xs-4" style="margin-bottom: 0;">
+                                <input type="text" class="ipt-txt" placeholder="按钮2名称" name="op_btn" value="{{blist.buttonName}}">
+                                <input type="hidden" name="op_hi_hidden_{{loop.index}}" value="{{blist.id}}">
+                            </div>
+                            <div class="u-txt djsz col-xs-5" style="margin-bottom: 0;padding-left: 0;">
+                                <span id="op_set_btn_two"><i class="iconfont icon-link"></i>点击设置</span>
+                                <input type="text" class="ipt-txt" name="op_btn_link" placeholder="链接" style="padding-left: 75px;" value="{{blist.linkPath}}">
+                            </div>
+                        </div>
+                        {%endif%}
+                        {%endfor%}
+                        {%else%}
+                        <div class="col-xs-12" id="op_btn_1">
+                            <label class="u-lb-sm" style="margin-right: 5px">最后 1 页</label>
+                            <div class="u-txt col-xs-4" style="margin-bottom: 0;">
+                                <input type="text" class="ipt-txt" placeholder="按钮1名称" name="op_btn">
+                            </div>
+                            <div class="u-txt djsz col-xs-5" style="margin-bottom: 0;padding-left: 0;">
+                                <span id="op_set_btn_one"><i class="iconfont icon-link"></i>点击设置</span>
+                                <input type="text" class="ipt-txt" name="op_btn_link" placeholder="链接" style="padding-left: 75px;">
+                            </div>
+                            <a id="op_btn_del_one" class="links_delete">删除</a>
+                        </div>
+                        <div class="col-xs-12 f-mt-m" style="margin-bottom: 15px" id="op_btn_2">
+                            <label class="u-lb-sm" style="margin-right: 5px">&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                            <div class="u-txt col-xs-4" style="margin-bottom: 0;">
+                                <input type="text" class="ipt-txt" placeholder="按钮2名称" name="op_btn">
+                            </div>
+                            <div class="u-txt djsz col-xs-5" style="margin-bottom: 0;padding-left: 0;">
+                                <span id="op_set_btn_two"><i class="iconfont icon-link"></i>点击设置</span>
+                                <input type="text" class="ipt-txt" name="op_btn_link" placeholder="链接" style="padding-left: 75px;">
+                            </div>
+                            <a id="op_btn_del_two" class="links_delete">删除</a>
+                        </div>
+                        {%endif%}
+
+                    </div>
+                </div>
+            </form></div>
+
+    </div>
+    {%if type==1%}
+    <button class="btn btn-darkorange btn-radius-5 btn-lg col-xs-offset-6" type="submit" id="op_edit_save">保存</button>
+    {%endif%}
+</div>

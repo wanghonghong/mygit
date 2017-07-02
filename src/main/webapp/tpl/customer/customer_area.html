@@ -1,0 +1,206 @@
+<style>
+
+    .form_group_item{
+        display:inline-block;
+        margin: 5px;
+        color:#6e6e6e;
+        text-align: center;
+        font-family: '宋体', Verdana, Arial, Helvetica, sans-serif;
+        line-height:22px;
+        /*height: 22px;*/
+        padding: 0 7px;
+        font-size: 12px;
+        border-radius: 3px;
+        border:1px solid transparent;
+        cursor: pointer;
+    }
+    .form_group_itemselect{
+        display:inline-block;
+        margin: 5px;
+        color: #f89a14;
+        text-align: center;
+        font-family: '宋体', Verdana, Arial, Helvetica, sans-serif;
+        line-height:22px;
+        height: 22px;
+        padding: 0 7px;
+        font-size: 12px;
+        border-radius: 3px;
+        border:1px solid #f89a14;
+        cursor: pointer;
+    }
+
+</style>
+
+<label style="min-width:70px;text-align:right" id="area_title">粉丝地区</label>
+<div id="areaselectd">
+
+    <div class="u-sort" id="searcharea350100">
+        福州
+        <input type="checkbox"  id="chb350100" name="area"/>
+        <label class="iconfont icon-avoid"></label>
+    </div>
+
+    <div class="u-sort" id="searcharea330100">
+        杭州
+        <input type="checkbox"  id="chb330100" name="area"/>
+        <label class="iconfont icon-avoid"></label>
+    </div>
+    <div class="u-sort" id="searcharea440300">
+        深圳
+        <input type="checkbox"  id="chb440300" name="area"/>
+        <label class="iconfont icon-avoid"></label>
+    </div>
+    <div class="u-sort" id="searcharea310000">
+        上海
+        <input type="checkbox"  id="chb310000" name="area"/>
+        <label class="iconfont icon-avoid"></label>
+    </div>
+    <div class="u-sort" id="searcharea110100">
+        北京
+        <input type="checkbox"  id="chb110100" name="area"/>
+        <label class="iconfont icon-avoid"></label>
+    </div>
+    <div class="u-sort" id="searcharea440100">
+        广州
+        <input type="checkbox"  id="chb440100" name="area"/>
+        <label class="iconfont icon-avoid"></label>
+    </div>
+    <div class="u-sort" id="searcharea120000">
+        天津
+        <input type="checkbox"  id="chb120000" name="area"/>
+        <label class="iconfont icon-avoid"></label>
+    </div>
+    <div class="u-more dialog" id="showmorebtn">
+        更多
+        <span></span>
+    </div>
+</div>
+<script>
+    /////  粉丝地区更多城市start
+    var defaultobj= $("#areaselectd").find("div[class^='u-sort']");
+    defaultobj.click(function(){
+        if($(this).attr("class")==="u-sort"){
+            $(this).removeClass("u-sort").addClass("u-sort active");
+        }else{
+            $(this).removeClass("u-sort active").addClass("u-sort");
+        }
+    });
+    $("#showmorebtn").click(function() {
+        jumi.file("area.json", call_backdata1);
+
+    });
+    /////  粉丝地区更多城市end
+    /////  粉丝地区更多城市回调start
+    function call_backdata1(res) {
+        var defval="";
+        var proval="";
+        var ctyval="";
+        var def = res["data"]["default"];
+        var pro = res["data"]["province"];
+        var cty = res["data"]["city"];
+
+        for(var k in def){
+            defval+='<div class="form_group_item" id="searchareall'+k+'">'+def[k]+'</div>';
+        }
+        for(var i in pro){
+            proval+='<div class="form_group_item" id="searchareall'+i+'" >'+pro[i]+'</div>';
+        }
+        for(var j in cty){
+            ctyval+='<div class="form_group_item" id="searchareall'+j+'" >'+cty[j]+'</div>';
+        }
+        defval ='<div class="sctemp1 f-pb-m" style="float:left;" id="areacontent1">'+defval+'</div>';
+        proval='<div class="sctemp f-pt-m f-pb-m" style="float:left;border-top:1px solid #e3e3e3;margin-top:0px;" id="areacontent2">'+proval+'</div>';
+        ctyval='<div class="sctemp f-pt-m" style="float:left;border-top:1px solid #e3e3e3;margin-top:0px;" id="areacontent3">'+ctyval+'</div>';
+        defval =defval+proval+ctyval;
+
+        defval =defval+'<div class="sctemp1 f-mt" style="float:left;width: 100%;text-align: center;margin-top: 10px;"><input type="button" value="确定" id="searchbut" class="u-btn-mddkorg">&nbsp;&nbsp;<input type="button" class="u-btn-mddkgry" id="cancelbut" value="取消" /></div>';
+        dialog({
+            title: "更多城市",
+            id:"dialog_area",
+            width:600,
+            content: defval
+        }).showModal();
+       // alert(defval);
+        ///////粉丝地区选取start
+        var areaobj =$("div[id^='areacontent']").find("div[id^='searchareall']");
+        areaobj.click(function(){
+            if($(this).attr("class")==="form_group_item"){
+                $(this).removeClass('form_group_item').addClass('form_group_itemselect');
+            }else{
+                $(this).removeClass('form_group_itemselect').addClass('form_group_item');
+            }
+        });
+        //设置选中的地区
+        var idsStr = getselectedAreas();
+        if(idsStr!=""){
+            var idsArr = idsStr.split(',');
+            for(var i = 0,num = idsArr.length;i < num;i++){
+                areaobj.each(function () {
+                    var id = $(this).attr("id").replace("searchareall","");
+                    if(idsArr[i]===id){
+                        $(this).removeClass('form_group_item').addClass('form_group_itemselect');
+                    }
+                });
+            }
+        }
+
+        ///////粉丝地区选取end
+        ///////粉丝地区对话框确定start
+        var searchbutobj =  $("#searchbut");
+        searchbutobj.click(function(){
+
+            $("#areaselectd").children().remove("div[id^='searcharea']");
+
+            $(".form_group_itemselect").each(function(){
+                var selectedid =$(this).attr("id");
+                var selectedhtml =$(this).html();
+                var initid =selectedid.replace("searchareall","");
+                var str = '<div class="u-sort active" id="' + selectedid + '" >' + selectedhtml + '<input type="checkbox" id=chb' + initid + ' name="area" /><label class="iconfont icon-avoid" ></label></div>';
+                $("#showmorebtn").before(str);
+
+
+            });
+            dialog.get('dialog_area').close().remove();
+
+            /////  粉丝地区选取的城市start
+            var defaultobj2= $("#areaselectd").find("div[id^='searchareall']");
+            defaultobj2.click(function(){
+                if($(this).hasClass("u-sort active")){
+                    $(this).removeClass("u-sort active").addClass("u-sort");
+
+                }else{
+                    $(this).removeClass("u-sort").addClass("u-sort active");
+                }
+            });
+            /////  粉丝地区选取的城市end
+        });
+
+
+        ///////粉丝地区对话框确定end
+
+        ///////粉丝地区对话框取消start
+        var cancelbutobj=$("#cancelbut");
+        cancelbutobj.click(function(){
+            dialog.get('dialog_area').close().remove();
+          //  $(".ui-popup-backdrop").remove();
+          //  $(".ui-dialog").remove();
+        });
+        ///////粉丝地区对话框取消end
+
+    }
+    /////  粉丝地区更多城市回调end
+    ////获取已选择的地区
+    function getselectedAreas () {
+        var reval = "";
+        $("#areaselectd div[class='u-sort active'] input[name='area']").each(function () {  //地区
+            var val = $(this).attr("id");//取地区
+            val = val.replace("chb", "");
+            reval = reval + val + ",";
+        });
+        if (reval.length > 0) {
+            reval = reval.substr(0, reval.length - 1);
+        }
+        return reval;
+    }
+    
+</script>

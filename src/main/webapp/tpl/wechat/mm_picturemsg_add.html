@@ -1,0 +1,137 @@
+<style>
+    .b-sel {
+        border: 1px solid #333;
+    }
+</style>
+
+<div class="col-xs-4 m-message-marketing" id="wxyx_items">
+    <div class="scgl-left" style="padding: 0;" id="left_area">
+        <div class="bigimg1 selborder" id="smallimg1" style="cursor: pointer;"><!--<div id="pictxt_json1"  class="pictxtdata0" style="display:none;"></div>-->
+            <span style="padding-top: 10px;" id="bindi1_1"></span>
+            <p><font id="savedate"></font> &nbsp; &nbsp;<font id="bindi1_2"></font></p>
+            <img src="{{globalUrl}}/css/pc/img/no_picture.png" id="bindi1_3" width="260" height="121" />
+            <p class="f-pb-s"><font id="bindi1_4"></font></p>
+            <span class="readtext" style="border-top:1px solid #ECECEC; padding-bottom: 10px;" id="fulltxt1">阅读全文<i class="iconfont icon-right"></i></span>
+        </div>
+        <div style="margin: 0;padding: 0;" id="left_area_bottom">
+            <div class="readtext-box selborder pictxtitem-box" id="smallimg0" style="display: none;cursor: pointer;"><!--<div id="pictxt_json0" class="pictxtdata0" style="display:none;"></div>-->
+                <span class="readtext list-lh"><font id="bindi0_1" style="width: 70%;display: inline-block;line-height: 22px"></font><i><img  id="bindi0_3" src="{{globalUrl}}/css/pc/img/no_picture.png" width="50" height="50" \/></i></span>
+                <div class="readtext-hide" style="display: none;height: 23px;">
+                    <span class="up pictxt_up" style="cursor: pointer; "></span>
+                    <span class="down pictxt_down" style="cursor: pointer;"></span>
+                    <i class="iconfont icon-delete" id="del"  style="cursor: pointer;"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="scgl-add" id="but_smallimg">
+        <i class="iconfont icon-add"></i>
+    </div>
+    <div id="tempcontent" style="display: none;"></div>
+</div>
+<form way-data="myFormData" way-persistent="true">
+    <div class="col-xs-8">
+        <div class="m-panel-head panel-hidden">
+            <div class="m-tt">
+                <p class="f-mt-s col-xs-12 f-mb-l">发布样式编辑</p>
+            </div>
+            <div class="col-xs-12">
+                <label class="u-lb-md">图文标题</label>
+                <div class="u-txt col-xs-9">
+                    <input type="text" class="ipt-txt bindright" id="txtCon_1" maxlength="64" placeholder="请输入标题" /><!--onKeyUp="mm.picturemsg.picturemss_limitfontnum('#txtCon_1',150,1)" onblur="mm.picturemsg.picturemss_limitfontnum('#txtCon_1',150,1)"-->
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <label class="u-lb-md">作者名称</label>
+                <div class="u-txt col-xs-9">
+                    <input type="text" class="ipt-txt bindright" id="txtCon_2"  maxlength="8" placeholder="请输入名称" />
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <label class="u-lb-md">封面图片</label>
+                <div class=" col-xs-7">
+                    <div class="m-base-info-img1" style=" width: 102px; height: 102px;">
+                        <div id="mmpicture">
+                            <i class="iconfont icon-add" style="position: relative;">
+                                <img id="txtCon_3" flag="" src="{{globalUrl}}/css/pc/img/no_picture.png" alt="" name="ImagePath_3" height="100" width="100" style="position:absolute;left:-38px;top:-33px; cursor: pointer;">
+                            </i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="m-tip3 f-mb-s" style="margin-left: 130px;">
+                <i class="iconfont icon-lamp"></i>
+                <span>建议尺寸:长654 像素，宽304像素</span>
+            </div>
+            <div class="col-xs-12">
+                <label class="u-lb-md">日期</label>
+                <div class="u-txt col-xs-9">
+                    <input type="text" class="ipt-txt c-gray1" placeholder="" id="txtCon_6" style="width: 162px;" />
+                </div>
+            </div>
+            <div class="col-xs-12 ">
+                <label class="u-lb-md">摘要</label>
+                <div class="u-txt col-xs-9">
+                    <textarea name="txtCon_4" class="ipt-txt txtarea bindright" maxlength="60" placeholder=""  id="txtCon_4" onKeyUp="mm.picturemsg.picturemss_fontnum('#txtCon_4','#abs_num',60)" onblur="mm.picturemsg.picturemss_fontnum('#txtCon_4','#abs_num',60)"></textarea>
+                    <span class="number font-s12" > <span id="abs_num" style="color:#f38925"> 0</span>/60</span>
+                </div>
+            </div>
+            <div class="m-tip3 f-mb-s" style="margin-left: 130px;">
+                <i class="iconfont icon-lamp"></i>
+                <span>选填，如果不填写会默认抓取正文前 54 个字</span>
+            </div>
+            <div class="col-xs-12">
+                <label class="u-lb-md f-cb">图文编辑</label>
+                <div class="col-xs-9">
+                    <div class="panel-textarea">
+                        <img src="{{globalUrl}}/css/pc/img/g-textarea-tip.png" class="g-textarea-tip" style="top:58px;" />
+
+                        <script id="container" name="content" type="text/plain">
+                        </script>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 f-mb-s">
+                <label class="u-lb-md">二维码板式</label>
+                <div class="f-mt-s col-xs-9">
+                    <div class="u-rb">
+                        <input type="radio" name="bulid"  class="rbeweima"  id="radioBox1" value="1" checked/>
+                        <label for="radioBox1"></label>
+                    </div>
+                    <label for="radioBox1" class="u-rd-wd ewmbs"><img src="{{globalUrl}}/css/pc/img/ewmbs01.png" /></label>
+                    <div class="u-rb">
+                        <input type="radio" name="bulid" class="rbeweima" id="radioBox2" value="2"  />
+                        <label for="radioBox2"></label>
+                    </div>
+                    <label for="radioBox2" class="u-rd-wd ewmbs"><img src="{{globalUrl}}/css/pc/img/ewmbs02.png" /></label>
+
+                    <div class="u-rb">
+                        <input type="radio" name="bulid"  class="rbeweima"  id="radioBox3" value="3" />
+                        <label for="radioBox3"></label>
+                    </div>
+                    <label for="radioBox3" class="u-rd-wd ewmbs"><img src="{{globalUrl}}/css/pc/img/ewmbs03.png" /></label>
+                </div>
+            </div>
+           
+            <div class="col-xs-12">
+                <label class="u-lb-md">原文链接</label>
+                <div class="u-txt col-xs-9">
+                    <input type="text" class="ipt-txt bindright"  id="txtCon_5" placeholder="请手动输入阅读原文链接地址" />
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="u-btn-box1" style="padding-top:20px ;">
+        <input type="button" class="u-btn-mddkgry f-mr-xs" id="pmsg_cancel" value="取消" />
+        <input type="button" class="u-btn-mddkbl f-mr-xs"  id="pmsg_view" value="保存手机预览" />
+        <input type="button" class="u-btn-mddkorg"  id="pmsg_save" value="保存" />
+    </div>
+
+
+
+
+

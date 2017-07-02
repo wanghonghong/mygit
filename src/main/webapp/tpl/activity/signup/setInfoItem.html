@@ -1,0 +1,24 @@
+{% for item in items %}
+<div class="m-panel m-panel-freight f-mb-m">
+    <div class="panel-heading">
+        <h4>
+            <span> <font>{{item.titleName}} </font>&nbsp;<font class="font-s14">（<font>{{item.setInfo.split(',').length}}</font> 个）</font></span>
+            <div class="f-fr f-pr-s fn">
+                <div class="u-btn-smltgry" data-id="{{item.id}}" data-title-name="{{item.titleName}}" data-set-info="{{item.setInfo}}" onclick="signup.index.enrolmentConfEdit(this)">
+                    <i class="iconfont icon-modified"   ></i><span>编辑 </span>
+                </div>
+                <div class="u-btn-smltgry" data-id="{{item.id}}" onclick="signup.index.enrolmentConfDel(this)">
+                    <i class="iconfont icon-delete1"></i><span>删除</span>
+                </div>
+            </div>
+        </h4>
+    </div>
+    <div class="panel-body m-enrollbody" data-setInfo="{{item.setInfo}}" style="padding-top: 20px; padding-left: 20px; background-color: #fff;">
+    </div>
+</div>
+{% else %}
+<div class="m-jm-err">
+    <img src="{{globalUrl}}/css/pc/img/jm-nodb.png">
+</div>
+
+{% endfor %}

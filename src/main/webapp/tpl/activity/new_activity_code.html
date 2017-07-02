@@ -1,0 +1,36 @@
+<input type="hidden" name="new_code_list">
+<div class="col-xs-12" style="padding: 0;">
+        <div class="m-panel m-buyshopsys">
+            <div class="panel-heading">
+                <h4>海报管理</h4>
+            </div>
+            <div class="panel-body panel-hidden" style="padding: 0;">
+                <div class="m-jm-table" >
+                    <ul class="table-hander">
+                        <li style="width: 10%;">设为主推</li>
+                        <li>缩略图</li>
+                        <li style="width: 25%;">名称</li>
+                        <li>版本</li>
+                        <li>顺序</li>
+                        <li>轮播选用</li>
+                        <li style="width: 15%;">操作</li>
+                    </ul>
+                    <div class="table-body f-t-off" id="posterList">
+
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div onclick="activity.newcode.add()" id="add_postcode" class="u-btn-lgltgry1 f-mt-s f-mb-s f-fl dialog-addhb" style="padding: 0 22px;">
+                        <i class="iconfont icon-add"></i><span>添加海报</span>
+                    </div>
+                    <div class="m-tip1 f-fl">
+                        <i class="iconfont icon-lamp"></i>
+                        <span>序号为 1，默认为轮播选用第 1 张及公众号菜单点击推送海报</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        activity.newcode.init();
+    </script>

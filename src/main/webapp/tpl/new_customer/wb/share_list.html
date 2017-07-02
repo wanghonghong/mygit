@@ -1,0 +1,186 @@
+{%if items.length>0%}
+{% for item in items %}
+<ul class="table-container" style=" position: relative;">
+    <li style="width: 10%;">
+        <div class="g-table">
+            <div class="g-table-cell f-vm" style="width:10%;">
+                <div class="u-cb" style="margin-bottom: 6px">
+                    <input type="checkbox" name="userIdCheckBox" id="checkbox{{item.userId}}" value="{{item.userId}}" />
+                    <label class="iconfont icon-avoid"  for="checkbox{{item.userId}}"></label>
+                </div>
+            </div>
+            <div class="g-table-cell f-vm">
+                {% if item.isSubscribe==1 %}
+                <a data-id="{{item.userId}}" onclick="ImInfo.openChatWin(this,'{{item.userId}}');">
+                    {%endif%}
+                    {%if item.headimgurl!='' %}
+                    <img src="{{item.headimgurl}}" class="u-thumbnail-circ"  >
+                    {%else%}
+                    <img src="{{globalUrl}}/css/pc/img/no_picture.png" alt="暂无图片" class="u-thumbnail-circ" >
+                    {%endif%}
+                    {% if item.isSubscribe==1 %}
+                </a>
+                {%endif%}
+            </div>
+        </div>
+    </li>
+    <li class="f-tl" style="width:12%; padding-left: 25px;line-height: 20px;">
+        {% if item.isSubscribe==1 %}
+        <a data-id="{{item.userId}}" onclick="ImInfo.openChatWin(this,'{{item.userId}}');">
+            {%if item.nickname=='' or item.nickname==null %}-{%else%}{{item.nickname}}{%endif%}
+        </a>
+        <br>
+        <a data-id="{{item.userId}}" onclick="ImInfo.openChatWin(this,'{{item.userId}}');">
+            {%if item.susername=='' or item.susername==null %}-{%else%}{{item.susername}}{%endif%}
+        </a>
+        <br>
+        <a data-id="{{item.userId}}" onclick="ImInfo.openChatWin(this,'{{item.userId}}');">
+            {%if item.sphonenumber=='' or item.sphonenumber==null  %}-{%else%}{{item.sphonenumber}}{%endif%}
+        </a>
+        {%else%}
+        {%if item.nickname=='' or item.nickname==null %}-{%else%}{{item.nickname}}{%endif%}
+        <br>
+        {%if item.susername=='' or item.susername==null %}-{%else%}{{item.susername}}{%endif%}
+        <br>
+        {%if item.sphonenumber=='' or item.sphonenumber==null  %}-{%else%}{{item.sphonenumber}}{%endif%}
+        {%endif%}
+    </li>
+    <li>{%if item.sex==1%}男{%elif item.sex==2%}女 {%else%}-{%endif%}</li>
+    <li >
+        分享客
+    </li>
+    <li>{{item.suUpdateTime}}</li>
+    <li>{{item.totalCount/100}} 元</li>
+    <li>{{item.unissued}} 元</li>
+    <li>{{item.balance/100}} 元</li>
+    <li>
+        {{item.commissionPrice/100}} 元<br>
+        {{item.orderDate}}
+    </li>
+    <li style="position: relative;width: 13%;">
+        <div onclick="customer.operation.levelDialog({{item.userId}});">
+            <div class="u-btn-smltgry f-mb-xs">
+                {% if item.levelName==null or item.levelName=='' %}
+                等级
+                {% else %}
+                {{item.levelName}}
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="m-btn-layer" style="display: none;right: 120px;" id="levelDialog{{item.userId}}">
+            <span class="out"></span>
+            <span class="iner"></span>
+            <div class="m-grade">
+                <div class="h-scroll">
+                    {%if levels.length>0%}
+                    {% for level in levels %}
+                    <div class="u-txt">
+                        <div class="u-rb">
+                            <input type="radio" name="levelName{{item.userId}}" id="radioBox{{item.userId}}{{level.id}}" value="{{level.id}}"  />
+                            <label for="radioBox{{item.userId}}{{level.id}}"></label>
+                        </div>
+                        <label for="radioBox{{item.userId}}{{level.id}}" class="u-grade">{{level.levelName}}</label>
+                    </div>
+                    {%endfor%}
+                    {%endif%}
+                </div>
+                <div class="u-btn-box1" style="padding-top: 8px; padding-bottom: 8px;">
+                    <input type="button" class="u-btn-smdkorg" value="保存" onclick="customer.operation.saveWbLevel({{item.userId}});" />
+                    <input type="button" class="u-btn-smltgry" value="取消" onclick="customer.operation.cancel();" />
+                </div>
+            </div>
+        </div>
+        {% if item.isSubscribe==1 %}
+        <div onclick="customer.operation.groupDialog({{item.userId}});">
+            <div class="u-btn-smltgry f-mb-xs">
+                {% if item.groupname==null or item.groupname=='' %}
+                分组
+                {% else %}
+                {{item.groupname}}
+                {% endif %}
+            </div>
+        </div>
+        <div class="m-btn-layer layer-1" style="display: none;right: 120px" id="groupDialog{{item.userId}}">
+            <!--内容行数增加，layer-1的top也得增加-->
+            <span class="out"></span>
+            <span class="iner"></span>
+            <div class="m-grade">
+                <div class="h-scroll">
+                    {%if groups.length>0%}
+                    {% for group in groups %}
+                    <div class="u-txt" onclick="customer.operation.labelInput(this)">
+                        <div class="u-rb">
+                            <input type="radio" name="groupName{{item.userId}}" id="radioBox{{item.userId}}{{group.id}}" value="{{group.groupid}}" />
+                            <label for="radioBox{{item.userId}}{{group.id}}"></label>
+                        </div>
+                        <input type="text" class="u-grade" value="{{group.name}}" disabled />
+                        <div class="u-layer-operate">
+                            {% if group.groupid!=0 and group.groupid!=10000 and group.groupid!=10001 and group.groupid!=10002 and group.groupid!=20000 %}
+                            <i class="iconfont icon-modified"></i>
+                            <i class="iconfont icon-delete" onclick="customer.operation.wbDelGroup({{group.groupid}})"></i>
+                            {%endif%}
+                        </div>
+                    </div>
+                    {%endfor%}
+                    {%endif%}
+                    <!--自定义输入组名-->
+                    <div class="u-txt f-pb-s">
+                        <div class="u-rb">
+                            <input type="radio" name="groupName{{item.userId}}" id="new1Group{{item.userId}}" value="new" />
+                            <label for="new1Group{{item.userId}}"></label>
+                        </div>
+                        <input type="text" class="u-grades" value="" />
+                    </div>
+                </div>
+                <div class="u-btn-box1" style="padding-top: 8px; padding-bottom: 8px;">
+                    <input type="button" class="u-btn-smdkorg" value="保存" onclick="customer.operation.saveWbGroup('{{item.userId}}',this);" />
+                    <input type="button" class="u-btn-smltgry" value="取消" onclick="customer.operation.cancel();" />
+                </div>
+            </div>
+        </div>
+        <div onclick="customer.operation.remarkDialog({{item.userId}});">
+            <div class="u-btn-smltgry f-mb-xs">
+                {% if item.remark==null or item.remark=='' %}
+                备注
+                {% else %}
+                {{item.remark}}
+                {% endif %}
+            </div>
+        </div>
+        <div class="m-btn-layer layer-2" style="display: none;right: 120px" id="remarkDialog{{item.userId}}">
+            <span class="out"></span>
+            <span class="iner"></span>
+            <div class="m-grade">
+                <div class="u-txt">
+                    <input type="text" class="u-grades" value="{{item.remark}}" id="remark{{item.userId}}" />
+                </div>
+                <div class="u-btn-box1" style="padding-top: 8px; padding-bottom: 8px;">
+                    <input type="button" class="u-btn-smdkorg" value="保存" onclick="customer.operation.saveWbRemark({{item.userId}});" />
+                    <input type="button" class="u-btn-smltgry" value="取消" onclick="customer.operation.cancel();" />
+                </div>
+            </div>
+        </div>
+
+        <div class="u-btn-smltgry f-mb-xs" onclick="customer.operation.qrcode({{item.userId}})">
+            永久二维码
+        </div>
+        {% endif %}
+    </li>
+    <li style="width: 12%;">
+        <a onclick="customer.operation.wbTopUserPopMsg({{item.userId}})"> 上级客户</a><font color="#d9d9d9"> | </font>
+        <a onclick=" customer.operation.wbLastUserPopMsg({{item.userId}})">下级客户</a>
+    </li>
+</ul>
+{%endfor%}
+{% else %}
+<div class="m-jm-err">
+    <img src="{{globalUrl}}/css/pc/img/jm-nodb.png">
+</div>
+{%endif%}
+<script>
+    ImInfo.initData('{{userSession.hxAccount}}','{{userSession.userId}}','{{userSession.userName}}','{{userSession.headImg}}','{{userSession.shopId}}');
+    ImInfo.getHintWin().setting({
+        model:"default"
+    });
+</script>

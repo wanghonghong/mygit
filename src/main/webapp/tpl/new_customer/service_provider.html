@@ -1,0 +1,61 @@
+<!--主模块-->
+<section class="">
+	<div class="col-xs-12" style="padding-left: 0;">
+		<div class="u-txt col-xs-4" style="padding-left: 0;">
+			<input type="text" class="ipt-txt" placeholder="请输入服务商手机" id="phoneNumber" />
+		</div>
+		<input type="button" class="u-btn-mddkorg" value="服务商查询" onclick="customer.service.queryUser();" />
+	</div>
+	<div id="searchDiv" style="display: none;height: 250px;">
+		<div class="m-person-totle1 f-mt-xs">该服务商待授权</div>
+		<div class="m-jm-table">
+			<ul class="table-hander">
+				<li>头像</li>
+				<li>姓名</li>
+				<li>手机号</li>
+				<li>管理</li>
+			</ul>
+			<div class="table-body" id="table-body1">
+				<ul class="table-container" id="userUl">
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="m-person-totle1 f-mt-xs">服务商总人数：<span id="userCount"></span> 人</div>
+	<div class="m-jm-table">
+		<ul class="table-hander">
+			<li>头像</li>
+			<li>姓名</li>
+			<li>手机</li>
+			<li>身份</li>
+			<li>管理</li>
+		</ul>
+		<div class="table-body" id="table-body" >
+
+		</div>
+		<div id="pageToolbar" class="pagination f-fr f-mt-m">
+
+		</div>
+	</div>
+</section>
+<!--/主模块-->
+
+
+<div id="dialoginfo" class="dialoginfo">
+	<div class="m-authorize">
+		<ul class="m-select-rb" id="roleUl1">
+
+		</ul>
+		<ul class="m-select-rb" id="roleUl2">
+
+		</ul>
+		<ul class="m-select-rb" id="roleUl3">
+
+		</ul>
+	</div>
+	<div class="u-btn-box1 f-mt-m"><input type="button" class="u-btn-mddkorg" value="确定" onclick="customer.service.save()" /></div>
+</div>
+<script>
+	customer.service.init();
+</script>

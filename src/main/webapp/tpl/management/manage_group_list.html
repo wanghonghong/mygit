@@ -1,0 +1,9 @@
+{%for item in items %}
+<li>
+    <div class="u-rb">
+        <input type="radio" data-id="{{item.id}}" name="manage_group_radio" id="radioBox_{{item.id}}" value="" />
+        <label for="radioBox_{{item.id}}"></label>
+    </div>
+    <label for="radioBox_{{item.id}}" class="f-mr-l">{{item.groupName}}</label>
+</li>
+{%endfor%}

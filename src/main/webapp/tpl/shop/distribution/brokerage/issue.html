@@ -1,0 +1,36 @@
+<div class="u-lb col-xs-12 order-number">发放流水号：{{sendNum}}</div>
+<ul class="table-container">
+    <li>
+        <img src="{{headimgurl}}" alt="暂无图片" class="u-thumbnail-circ">
+    </li>
+    <li style="width:15%; padding: 0 30px;" class="f-ellipsis f-tl">
+        <span>{{nickname| default('-',true)}}</span><br><span>{{userName | default('-',true)}}</span><br><span>{{phoneNumber| default('-',true)}}</span>
+    </li>
+    <li>
+        {% if agentRole ==0 %}普通用户
+        {% elif agentRole ==1 %}代理1档
+        {% elif agentRole ==2 %}代理2档
+        {% elif agentRole ==3 %}代理3档
+        {% elif agentRole ==4 %}代理4档
+        {% elif agentRole ==5 %}分销1档
+        {% elif agentRole ==6 %}分销2档
+        {% elif agentRole ==7 %}分销3档
+        {% elif agentRole ==8 %}分享客
+        {% endif %}
+    </li>
+    <li class="f-tl" style="padding-left: 25px;"> {{sendTime}}</li>
+    <li>{{sendMoney|default(0,ture) /100}}</li>
+    <li>{% if platForm ==0 %}微信 {% elif platForm ==1 %}微博{% endif %}</li>
+    <li>{% if putType ==1 %}商家发放{% elif putType ==2 %}客户提现{% elif putType ==3 %}积分提现{% elif putType ==4 %}指定佣金{% endif %}</li>
+    <li>{% if autoType ==0 %}手动发放{% elif autoType ==1 %}满200 {% elif autoType ==2 %} 定期发放{% elif autoType ==3 %} 满额发放{% elif autoType ==4 %} 免审核{% elif autoType ==5 %} 需审核{% elif autoType ==6 %} 积分提取{% elif autoType ==7 %} 指定佣金 {% endif %}
+    </li>
+    <li>{% if status ==1 %}发放中
+        {% elif status ==2 %}已发放待领取
+        {% elif status ==3 %} 发放失败
+        {% elif status ==4 %} 已领取
+        {% elif status ==5 %} 退款中
+        {% elif status ==6 %} 已退款
+        {% endif %}
+    </li>
+</ul>
+

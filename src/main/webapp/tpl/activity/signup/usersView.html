@@ -1,0 +1,36 @@
+<div id="searchform4"  >
+    <div class="m-search f-pt-m f-pb-s">
+        <input type="hidden" name="activityId" value="{{id}}">
+        <label class="u-lb-sm">姓名</label>
+        <div class="u-txt col-xs-3">
+            <input type="text" class="ipt-txt" name="userName" placeholder="请输入姓名">
+        </div>
+        <label class="u-lb-sm">手机</label>
+        <div class="u-txt col-xs-3">
+            <input type="text" class="ipt-txt" name="telPhone" placeholder="请输入手机号">
+        </div>
+        <div class="col-xs-3 f-ml-xl">
+            <input type="button" class="u-btn-mddkorg u-w" onclick="signup.index.queryUsers()" value="查询">
+        </div>
+    </div>
+    <div class="m-jm-table f-mt-m">
+        <ul class="table-hander">
+            <li class="userName">姓名</li>
+            <li class="sex">性别</li>
+            <li class="telPhone">手机号</li>
+            <li class="position">职位</li>
+            <li class="email">邮箱</li>
+            <li class="webUrl">网址</li>
+            <li class="address">地址</li>
+            <!--<li class="company">公司</li>-->
+        </ul>
+        <div class="table-body f-t-off" id="tableBody4" style="min-height: 350px;">
+
+        </div>
+        <!--以下是分页效果-->
+        <div id="pageToolbar4" class="pagination f-tr f-mt-m">
+
+        </div>
+        <!--分页end-->
+    </div>
+</div>

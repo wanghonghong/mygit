@@ -1,0 +1,184 @@
+<div class="m-search" id="m-search">
+    <label class="u-lb-sm">商户姓名</label>
+    <div class="u-txt col-xs-3">
+        <input type="text" class="ipt-txt" id="userName" placeholder="请输入商户姓名" />
+    </div>
+    <label class="u-lb-sm">店铺名称</label>
+    <div class="u-txt col-xs-3">
+        <input type="text" class="ipt-txt" id="shopName" placeholder="请输入店铺名称" />
+    </div>
+    <label class="u-lb-sm">所在平台</label>
+    <div class="u-txt col-xs-3">
+        <select class="ipt-txt" id="platform">
+            <option value="">全部</option>
+            <option value="1">微信</option>
+            <option value="2">微博</option>
+            <option value="3">APP</option>
+            <option value="4">PC</option>
+        </select>
+    </div>
+    <label class="u-lb-sm">商户手机</label>
+    <div class="u-txt col-xs-3">
+        <input type="text" class="ipt-txt" id="phoneNumber" placeholder="请输入商户手机" />
+    </div>
+    <label class="u-lb-sm">店铺状态</label>
+    <div class="u-txt col-xs-3">
+        <select class="ipt-txt" id="status">
+            <option value="">全部</option>
+            <option value="1">开通</option>
+            <option value="2">关停</option>
+        </select>
+    </div>
+    <label class="u-lb-sm">创建日期</label>
+    <div class="u-txt f-ml-m">
+        <input type="text" class="ipt-txt c-gray1" id="startTime" placeholder="开始时间" style="width: 118px;" />
+    </div>
+    <div class="u-txt">
+        <span class="line" style=" width: 20px;">-</span>
+    </div>
+    <div class="u-txt f-mr-m">
+        <input type="text" class="ipt-txt c-gray1" id="endTime" placeholder="结束时间" style="width: 118px;" />
+    </div>
+    <div class="u-btn-box1">
+        <input type="button" class="u-btn-mdemptyred" id="search-btn" value="查询" />
+    </div>
+</div>
+<a class="btn-slide btn-slide1"></a>
+<div class="m-jm-table f-mt-m" >
+    <ul class="table-hander">
+        <li>店铺头像</li>
+        <li>店铺二维码</li>
+        <li>店铺名称</li>
+        <li style="width: 11%;">经营者</li>
+        <li style="width: 11%;">代理商</li>
+        <li>平台</li>
+        <li>创建日期</li>
+        <li>状态</li>
+        <li>操作</li>
+        <li style="width: 15%;">管理</li>
+    </ul>
+    <div class="table-body" id="softList">
+        <!--<ul class="table-container">-->
+            <!--<li>-->
+                <!--<img src="css/img/jmtt-small.png" alt="暂无图片" class="u-thumbnail-circ">-->
+            <!--</li>-->
+            <!--<li>-->
+                <!--<img src="css/img/ewm.png" alt="暂无图片" class="u-thumbnail-circ" style="border-radius: inherit;">-->
+            <!--</li>-->
+            <!--<li>六易便利店</li>-->
+            <!--<li class="f-tl" style="width: 11%; padding-left: 30px;">-->
+                <!--<span>小啊小二郎</span><br><span>陈小君</span><br><span>18042514222</span>-->
+            <!--</li>-->
+            <!--<li class="f-tl" style="width: 11%; padding-left: 30px;">-->
+                <!--<span>大啊大一郎</span><br><span>张三</span><br><span>18042514222</span>-->
+            <!--</li>-->
+            <!--<li>微信</li>-->
+            <!--<li>2016-08-22</li>-->
+            <!--<li>开通</li>-->
+            <!--<li>-->
+                <!--<div class="u-btn-smltgry"><i class="iconfont icon-signout" style="color: #f69f8e;"></i>关停</div>-->
+            <!--</li>-->
+            <!--<li style="width: 15%;">-->
+                <!--<div class="u-btn-smltgry f-mr-xs">查看</div>-->
+                <!--<div class="u-btn-smltgry dialog-use">授权使用</div>-->
+            <!--</li>-->
+        <!--</ul>-->
+        <!--<ul class="table-container">-->
+            <!--<li>-->
+                <!--<img src="css/img/jmtt-small.png" alt="暂无图片" class="u-thumbnail-circ">-->
+            <!--</li>-->
+            <!--<li>-->
+                <!--<img src="css/img/ewm.png" alt="暂无图片" class="u-thumbnail-circ" style="border-radius: inherit;">-->
+            <!--</li>-->
+            <!--<li>永辉便利店</li>-->
+            <!--<li class="f-tl" style="width: 11%; padding-left: 30px;">-->
+                <!--<span>小啊小二郎</span><br><span>陈小君</span><br><span>18042514222</span>-->
+            <!--</li>-->
+            <!--<li class="f-tl" style="width: 11%; padding-left: 30px;">-->
+                <!--<span>大啊大一郎</span><br><span>张三</span><br><span>18042514222</span>-->
+            <!--</li>-->
+            <!--<li>微信</li>-->
+            <!--<li>2016-08-22</li>-->
+            <!--<li>关停</li>-->
+            <!--<li>-->
+                <!--<div class="u-btn-smltgry"><i class="iconfont icon-righttriangle" style="color: #95d096;"></i>开通</div>-->
+            <!--</li>-->
+            <!--<li style="width: 15%;">-->
+                <!--<div class="u-btn-smltgry f-mr-xs">查看</div>-->
+                <!--<div class="u-btn-smltgry">授权使用</div>-->
+            <!--</li>-->
+        <!--</ul>-->
+
+    </div>
+    <!--以下是分页-->
+    <div id="softToolbar" class="pagination f-fr f-mt-m">
+
+    </div>
+    <!--分页end-->
+</div>
+<!--弹窗部分-->
+<div id="dialoginfo-use" class="dialoginfo">
+    <div class="m-jm-table f-mb-m">
+        <ul class="table-hander">
+            <li>选择</li>
+            <li>业务名称</li>
+            <li>分类</li>
+            <li>原价（元）</li>
+            <li>试用周期（天）</li>
+        </ul>
+        <div class="table-body h-scroll">
+            <ul class="table-container f-li-ps font-s14">
+                <li>
+                    <div class="u-cb">
+                        <input type="checkbox" name="" id="checkbox1" value="" />
+                        <label class="iconfont icon-avoid" for="checkbox1"></label>
+                    </div>
+                </li>
+                <li>全名小店</li>
+                <li>模块</li>
+                <li>200</li>
+                <li>15</li>
+            </ul>
+            <ul class="table-container f-li-ps font-s14">
+                <li>
+                    <div class="u-cb">
+                        <input type="checkbox" name="" id="checkbox1" value="" />
+                        <label class="iconfont icon-avoid" for="checkbox1"></label>
+                    </div>
+                </li>
+                <li>分销升级系统</li>
+                <li>系统</li>
+                <li>300</li>
+                <li>30</li>
+            </ul>
+            <ul class="table-container f-li-ps font-s14">
+                <li>
+                    <div class="u-cb">
+                        <input type="checkbox" name="" id="checkbox1" value="" />
+                        <label class="iconfont icon-avoid" for="checkbox1"></label>
+                    </div>
+                </li>
+                <li>一元夺宝商城</li>
+                <li>系统</li>
+                <li>800</li>
+                <li>90</li>
+            </ul>
+        </div>
+    </div>
+    <div class="u-btn-box1">
+        <input type="button" class="u-btn-smlightred" value="确定" />
+    </div>
+</div>
+<!--/弹窗部分-->
+<script type="text/javascript">
+    soft.test.init();
+    $(function(){
+        $(".dialog-use").click(function() {
+            var elem = document.getElementById('dialoginfo-use');
+            dialog({
+                title: "软件授权",
+                content: elem,
+            }).width(760).showModal();
+        });
+    })
+</script>

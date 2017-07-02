@@ -1,0 +1,38 @@
+<style>
+    .m_del{
+        z-index:10;
+        cursor: pointer;
+    }
+    .display{
+        margin-top: 5px;
+        float:left;
+    }
+    #display_img{
+        display:none;
+    }
+    .progress{
+        clear:both;
+    }
+</style>
+<input type="hidden" id="files">
+<label class="u-lb-md">网络图片</label>
+<div class="u-txt col-xs-9">
+    <span class="pick" id="m_pick">提取</span>
+    <form id="pick_form">
+     <input type="text" class="ipt-txt" required data-msg-required="文件路径不能为空" name="network_picture" placeholder="请添加以http://开头的网络图片地址" />
+    </form>
+    <div class="display" id="display_img"><img width="200" height="200" src="" alt=""></div>
+</div>
+<label class="u-lb-md">本地图片</label>
+<ul class="m-addimg-group col-xs-10" id="m_manage_upload">
+    <li class="add">
+        <i class="iconfont icon-add"></i>
+        <input type="file" id="fileupload_add_1" accept="image/gif,image/jpg,image/jpeg,image/png" name="myfile" multiple>
+    </li>
+
+</ul>
+<div class="m-tip3 col-xs-9 f-mb-m">
+    <i style="" class="iconfont icon-lamp"></i>
+    <span>仅支持jpg、gif、png三种格式，大小控制在80k-300k以内</span>
+</div>
+<div class="u-btn-box1 f-mt-m"><input type="button" id="m_manage_file" class="u-btn-mddkorg" value="确定" /></div>

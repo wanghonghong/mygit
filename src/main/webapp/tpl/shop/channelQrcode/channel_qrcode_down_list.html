@@ -1,0 +1,73 @@
+{%if items.length>0%}
+{% for item in items %}
+<ul class="table-container">
+	<li>
+		<img src="{{item.headimgurl}}" alt="暂无图片" class="u-thumbnail-circ" />
+	</li>
+	<li class="f-tl" style="padding-left: 20px; padding-right: 15px;">
+		<span>{{item.nickname}}</span><br>
+		<span>{{item.userName}}</span><br>
+		<span>{{item.phoneNumber}}</span>
+	</li>
+	<li class="f-tl f-wb-ba" style="width: 12%;">{{item.name}}</li>
+	<li class="f-tl" style="width: 11%;"><p title="{{item.productName}}">{{item.productName}}</p></li>
+	<li style="width: 8%;">
+		{%if item.codeType==1 %}
+			二维码
+		{%else%}
+			条形码
+		{%endif%}
+	</li>
+	<li class="f-tl" style="padding-left: 20px;">{{item.createTime}}</li>
+	<li class="f-tl" style="padding-left: 20px;">
+		{%if item.validType==1 %}
+		永久有效
+		{%else%}
+		{{item.endTime}}
+		{%endif%}
+	</li>
+	<li>
+		{%if item.fansType==1 %}
+		有粉
+		{%else%}
+		无粉
+		{%endif%}
+	</li>
+	<li style="width: 12%;">
+
+		<div class="u-btn-smltgry f-wb-ba" onclick="channel.qrcode.remarkDiv({{item.goodsQrcodeId}});">
+			备注
+		</div>
+		<div class="m-btn-layer layer-2" style="right: 215px;display: none" id="remarkDiv{{item.goodsQrcodeId}}">
+			<span class="out"></span>
+			<span class="iner"></span>
+			<div class="m-grade">
+				<div class="u-txt">
+					<input type="text" class="u-grades" value="" id="remarkVal{{item.goodsQrcodeId}}" />
+				</div>
+				<div class="u-btn-box1" style="border-top: none; padding-top: 0; padding-bottom: 8px;">
+					<input type="button" class="u-btn-smltgry" value="取消" onclick="channel.qrcode.remarkDivHide({{item.goodsQrcodeId}});" />
+					<input type="button" class="u-btn-smdkorg" value="保存" onclick="channel.qrcode.saveRemark({{item.goodsQrcodeId}});" />
+				</div>
+			</div>
+		</div>
+
+	</li>
+	<li>
+		<div class="u-btn-smltgry dialog-seedown" onclick="channel.qrcode.checkdown({{item.goodsQrcodeId}})">查看下载</div>
+	</li>
+</ul>
+{%if item.printRemark!='' and item.printRemark!=null %}
+<div class="table-remark">
+	<p class="g-table">
+		<font class="g-table-cell" style="width: 65px;"><i class="iconfont icon-drafts"></i>备注：</font>
+		<span class="g-table-cell"><font color="#6A6A6A">{{item.printRemark}}</font></span>
+	</p>
+</div>
+{%endif%}
+{%endfor%}
+{% else %}
+<div class="m-jm-err">
+	<img src="{{globalUrl}}/css/pc/img/jm-nodb.png">
+</div>
+{%endif%}

@@ -1,0 +1,26 @@
+{% if subEntry and  subEntry.length>0 %}
+<div class="slideBox">
+    <div class="bd">
+        <div>
+            <ul style="height: 150px; width:{{subEntry.length*100}}% ">
+                {% for item in subEntry %}
+                <li>
+                    <img src="{{item.imageUrl}}">
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div class="hd">
+        <ul>
+            {% for item in subEntry %}
+            <li> {{loop.index}} </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% else %}
+<div class="init-describe">
+    {{name}}
+</div>
+{% endif %}

@@ -1,0 +1,102 @@
+{% if items.length >0 %}
+{%for item in items%}
+<div class="table-remark2">
+    <div style="margin-left: 20px;">
+        <span class="bzcon">订单编号：{{item.orderNum}}</span>
+        <span class="bzcon f-fr"><a onclick="customer.operation.topUserPopMsg('{{item.userId}}')"> 上级</a><font color="#d9d9d9"> | </font>
+                        <a onclick="customer.operation.lastUserPopMsg('{{item.userId}}')">下级</a>&nbsp;&nbsp;<a data-id="{{item.userId}}" onclick="ImInfo.openChatWin(this,'{{item.userId}}');">{{item.shopUserPhone}}&nbsp;&nbsp;|&nbsp;&nbsp;{{item.shopUserName}}&nbsp;&nbsp; {% if item.headImgUrl %}<img src="{{item.headImgUrl}}" alt="" class="u-thumbnail-circ f-vm" style="width: 26px; height: 26px;" />{% else %}<img src="{{globalUrl}}/css/pc/img/jmtt-big.png" alt="暂无图片" class="u-thumbnail-circ f-vm" style="width: 26px; height: 26px;" />{% endif %}</a></span>
+    </div>
+</div>
+<ul class="table-container">
+    <li style="width: 9%;">
+        {% if item.imgUrl %}
+        <a href="{{item.imgUrl}}" data-lightbox="{{item.id}}" data-title=""><img src="{{item.imgUrl}}" alt="" class="u-thumbnail-circ f-vm" style="border-radius: inherit;" /></a>
+            {% if item.imgUrl2 %}
+                <p hidden="hidden"><a href="{{item.imgUrl2}}" data-lightbox="{{item.id}}" data-title=""></a></p>
+            {% endif %}
+            {% if item.imgUrl3 %}
+                <p hidden="hidden"><a href="{{item.imgUrl3}}" data-lightbox="{{item.id}}" data-title=""></a></p>
+            {% endif %}
+        {% else %}
+            <img src="{{globalUrl}}/css/pc/img/jmtt-big.png" alt="暂无图片" class="u-thumbnail-circ f-vm" />
+        {% endif %}
+    </li>
+    <li class="f-tl" style="width: 8%;">{{item.createTime}}</li>
+    <li>
+        {% if item.type==0 %}
+            衣服
+        {% elif item.type==1 %}
+            鞋帽
+        {% elif item.type==2 %}
+            包包
+        {% else %}
+            混合
+        {% endif %}
+    </li>
+    <li>
+        {{item.weight}}
+    </li>
+    <li class="f-tl" style="width: 17%;">
+        <span>{{item.provice}}</span>-<span>{{item.city}}</span>-<span>{{item.third}}</span><br />
+        <span>{{item.address}}</span>
+    </li>
+    <li class="f-tl" style="width: 9%; padding-left: 15px;">{{item.bookTime}}<br />{{item.bookTimeScope}}</li>
+    <li class="f-tl" style="width: 8%;">{{item.userName}}<br />{{item.phoneNumber}}</li>
+    <li>{{item.kdName}}</li>
+    <li class="f-tl" style="width: 12%; padding-left: 15px;">{{item.recAddress}}</li>
+    <li style="width: 7%;">
+        {% if item.status==0 %}
+            待收单
+        {% elif item.status==2 %}
+            已收单
+        {% elif item.status==3 %}
+            已完成
+        {% elif item.status==4 %}
+            已取消
+        {% else %}
+        {% endif %}
+    </li>
+    <li>
+        {% if item.status==4 %}
+            <font class="c-orange2">订单取消</font>
+        {% elif item.status==0 %}
+            <div class="u-btn-smltgry dialog-jl" onclick="orderBook.list.close('{{item.id}}','4','请确认是否取消订单')">取消</div><br>
+            <div class="u-btn-smltgry dialog-jl f-mt-xs" onclick="orderBook.list.confirm('{{item.id}}','3','请确认是否完成订单')">完成</div><br>
+            <div class="u-btn-smltgry dialog-jl f-mt-xs" onclick="orderBook.list.queryCustomerNote('{{item.id}}')">客服备注</div><br>
+            <div class="u-btn-smltgry dialog-jl f-mt-xs" onclick="orderBook.list.queryReceiveNote('{{item.id}}')">收货备注</div><br>
+        {% elif item.status==3 %}
+            {% if item.reward==0 %}
+                <div class="u-btn-smltgry dialog-jl" onclick="orderBook.list.triggerReward('{{item.id}}','请确认是否触发奖励')">触发奖励</div>
+            {% else %}
+                <font class="c-orange2">已奖励</font>
+            {% endif %}
+        {% else %}
+        {% endif %}
+    </li>
+</ul>
+<div class="table-remark2">
+    {% if item.userRemark %}
+    <div>
+        <i class="iconfont icon-person c-orange"></i>用户备注：
+        <span class="bzcon">{{item.userRemark}}</span>
+    </div>
+    {% endif %}
+    {% if item.customRemark %}
+    <div>
+        <i class="iconfont icon-cusService c-blue"></i>客服备注：
+        <span class="bzcon">{{item.customRemark}}</span>
+    </div>
+    {% endif %}
+    {% if item.receiveRemark %}
+    <div>
+        <i class="iconfont icon-car1 c-green"></i>收货备注：
+        <span class="bzcon">{{item.receiveRemark}}</span>
+    </div>
+    {% endif %}
+</div>
+{% endfor %}
+{% else %}
+<div class="m-jm-err">
+    <img src="{{globalUrl}}/css/pc/img/jm-nodb.png">
+</div>
+{% endif %}

@@ -1,0 +1,25 @@
+<div class="panel-hid1 f-mt-s" style="display: block;">
+    <div class="m-jm-table">
+        <ul class="table-hander">
+            <li style="width: 30%;">标题</li>
+            <li>创建人</li>
+            <li>创建日期</li>
+            <li>选择</li>
+        </ul>
+        <div class="table-body h-scroll u-zero-fpmb">
+            {%for item in items%}
+            <ul class="table-container">
+                <li class="f-tl f-t-off" style="width: 30%;"><p>{{item.title}}</p></li>
+                <li>{{item.author}}</li>
+                <li>{{item.saveTime}}</li>
+                <li>
+                    <div class="u-rb f-mt-m">
+                        <input type="radio" data-name="{{item.title}}" data-id="{{item.id}}" name="activity-detail" id="checkbox_{{loop.index}}">
+                        <label for="checkbox_{{loop.index}}"></label>
+                    </div>
+                </li>
+            </ul>
+            {%endfor%}
+        </div>
+    </div>
+</div>

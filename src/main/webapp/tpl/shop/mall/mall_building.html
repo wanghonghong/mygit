@@ -1,0 +1,23 @@
+<section id="mallMain">
+    <div class="m-tab f-mb-m" id="mallTab">
+        <ul>
+            <li data-target="choiceTemplate" class="z-sel">选择模板</li>
+            <li data-target="homeBuild"> 首页搭建</li>
+            <li data-target="memberCenter">会员中心</li>
+        </ul>
+    </div>
+    <div id="mallContent">
+        <div class="z-sel" id="choiceTemplate">
+            {% include 'tpl/shop/mall/choiceTemplate.html' %}
+        </div>
+        <div class="z-hide" id="homeBuild">
+            {% include 'tpl/shop/mall/homeBuild.html' %}
+        </div>
+        <div class="z-hide" id="memberCenter">
+            {% include 'tpl/shop/mall/memberCenter.html' %}
+        </div>
+    </div>
+</section>
+<script>
+    mall.main.init();
+</script>

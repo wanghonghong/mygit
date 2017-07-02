@@ -1,0 +1,65 @@
+{%if items.length>0%}
+{%for item in items%}
+<ul class="table-container f-t-off">
+    <li class="f-tl" style="width:20%; padding: 0 15px;">
+        <p title="">{{item.activityName}}</p>
+    </li>
+    <li>
+        {%if item.subType==1%}
+        首次关注发红包
+        {%elif item.subType==2%}
+        已关注粉丝发红包
+        {%elif item.subType==3%}
+        购买商品发红包
+        {%elif item.subType==4%}
+        确认收货发红包
+        {%else%}
+        卡卷转赠发红包
+        {%endif%}
+    </li>
+    <li>
+        {%if item.cardType==1%}
+        限定面值
+        {%elif item.cardType==2%}
+        随机面值
+        {%else%}
+        礼包组合
+        {%endif%}
+    </li>
+   <!-- <li style="width: 8%;">性别</li>-->
+    <li>{{item.startTime}}<br />{{item.endTime}}</li>
+    <li>{{item.createTime}}</li>
+    {%if item.status==0%}
+    <li>
+        <div class="u-btn-smltgry" onclick="activity.gift.redbag_modify('{{item.id}}','{{item.subType}}','{{item.status}}')">编辑 </div>
+        <div class="u-btn-smltgry" onclick="activity.gift.redbag_del('{{item.id}}','{{item.activityName}}','{{item.status}}')">删除 </div>
+
+    </li>
+    {%elif item.status==1%}
+    <li>
+        <div class="u-btn-smltgry" onclick="activity.gift.redbag_set('{{item.id}}','{{item.activityName}}','{{item.status}}')"><i class="iconfont icon-righttriangle c-lightgreen"></i>启动</div>
+        <div class="u-btn-smltgry" onclick="activity.gift.redbag_del('{{item.id}}','{{item.activityName}}','{{item.status}}')">删除 </div>
+    </li>
+    {%elif item.status==2%}
+    <li>
+        <div class="u-btn-smltgry" onclick="activity.gift.redbag_set('{{item.id}}','{{item.activityName}}','{{item.status}}')"><i class="iconfont icon-pause c-lightred"></i>暂停</div>
+        <div class="u-btn-smltgry" onclick="activity.gift.redbag_del('{{item.id}}','{{item.activityName}}','{{item.status}}')">删除 </div>
+    </li>
+    {%elif item.status==3%}
+    <li>
+        <div class="u-btn-smltgry" onclick="activity.gift.redbag_againOne('{{item.id}}','{{item.subType}}')">再来 1 场</div>
+        <!--<div class="u-btn-smltgry" onclick="activity.gift.redbag_del('{{item.id}}','{{item.activityName}}','{{item.status}}')">删除 </div>-->
+    </li>
+    {%endif%}
+
+    <li class="c-gray1">
+        <div class="u-btn-smltgry" onclick="activity.gift.actgift_effect('{{item.id}}')">效果</div>
+        <div class="u-btn-smltgry" onclick="activity.gift.redbag_view('{{item.id}}','{{item.subType}}')">活动查看</div>
+    </li>
+</ul>
+{%endfor%}
+{%else%}
+<div class="m-jm-err">
+    <img src="{{globalUrl}}/css/pc/img/jm-nodb.png">
+</div>
+{%endif%}

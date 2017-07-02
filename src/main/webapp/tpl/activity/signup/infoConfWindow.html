@@ -1,0 +1,77 @@
+<!--信息创建-->
+<div id="infoconfwindow" >
+    <div class="col-xs-12" style="padding: 0;">
+        <div class="col-xs-5">
+            <div class="m-phone-view">
+                <div class="phone-shell-top" style="height: 62px;">
+                </div>
+                <div class="phone-window">
+                    <div class="m-app-main">
+                        <div class="app-config app-fields">
+                            <div class="app-field z-disable">
+                                <div class="control-group">
+                                    <div class="custom-head">
+                                        <i class="iconfont icon-left"></i>
+                                        <span>页面标题</span>
+                                    </div>
+                                </div>
+                                <div class="control-mask"></div>
+                            </div>
+                        </div>
+                        <div class="js-fields-region app-fields">
+                            <div class="app-field z-disable   ">
+                                <div class="control-group" id="signUpFormBox">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="app-bottom app-fields">
+
+                            <div class="line"></div>
+                            <div class="supprot">
+                                <img src="{{globalUrl}}/css/pc/img/logo_min.png" style="height: auto;" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="phone-shell-bottom">
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-7" style="padding: 0;">
+            <div class="m-sell-set1" style="padding-bottom: 0;">
+                <div class="sell-set-top" style="display: inherit; border-bottom: none;">
+                    <h3 style="padding-left: 12px;">功能版本</h3>
+                </div>
+                <div>
+                    <label class="u-lb-md">板式名称</label>
+                    <div class="u-txt col-xs-5">
+                        <input type="text" name="titleName" value="{{titleName}}" class="ipt-txt" placeholder="请输入文字">
+                    </div>
+                </div>
+                <div class="sell-set-cont" style="margin: 0;">
+                    <div class="m-enrollmodule">
+                        <div class="g-table-cell">
+                            <div class="en-hander">已选模块</div>
+                            <ul class="en-list" id="enlist">
+                            </ul>
+                        </div>
+                        <div class="g-table-cell">
+                            <div class="en-hander">可选择标签</div>
+                            <div class="en-block" id="enblock">
+                                <div><span item-id="1" >姓名</span><span item-id="2" >手机号</span></div>
+                                <div><span item-id="3" >性别</span><span item-id="5">邮箱</span></div>
+                                <div><span item-id="6">地址</span><span item-id="7">网址</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="u-btn-box1 f-mt-xxl">
+                <input type="button" id="confSaveBtn" class="u-btn-mainlg" value="保存">
+            </div>
+        </div>
+    </div>
+</div>
+<!--/-->

@@ -1,0 +1,25 @@
+{% if sizeType==0 %}
+{% set sizeClass="halfgroup" %}
+{% set size=4 %}
+{% elif sizeType==1 %}
+{% set sizeClass="fullgroup" %}
+{% set size=3 %}
+{% elif sizeType==2 %}
+{% endif %}
+    <ul class="m-pingroupbox {{sizeClass}}">
+        {% set goodsbgcolorArray = ["#81D5FA", "#FF7EC4", "#FFBD33", "#CDDC39", "#4CAF50", "#2196F3", "#E91E63", "#00BCD4", "#673AB7", "#9E9E9E", "#FFEB3B", "#F44336"] %}
+        {% if items  and items.length>0 %}
+        {% for item in items   %}
+        {% include 'activity-good-item.html' %}
+        {% endfor %}
+        {% elif goodsitems and goodsitems.length>0  %}
+        {% for item in goodsitems   %}
+        {% include 'activity-good-item.html' %}
+        {% endfor %}
+        {% else %}
+        {% for i in range(size) %}
+        {% set item={ name:"商品名称", price:1500 ,productPrice:5000,count:9} %}
+        {% include 'activity-good-item.html' %}
+        {% endfor %}
+        {% endif %}
+    </ul>

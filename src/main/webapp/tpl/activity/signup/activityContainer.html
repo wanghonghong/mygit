@@ -1,0 +1,82 @@
+<style>
+    .m-panel .panel-heading i.u-change{
+        position: initial;
+        float: initial;
+        top: initial;
+        right: initial;
+        margin-right: 3px;
+        margin-left: 0;
+    }
+</style>
+<div class="m-search" id="searchform2">
+    <label class="u-lb-sm">活动名称</label>
+    <div class="u-txt col-xs-3">
+        <input type="text" class="ipt-txt" name="activityName" placeholder="请输入活动名称"/>
+    </div>
+    <label class="u-lb-sm">发布日期</label>
+    <div class="u-txt f-ml-m">
+        <input type="text" class="ipt-txt c-gray1" name="createStartDate" placeholder=""
+               style="width: 115px;"/>
+    </div>
+    <div class="u-txt">
+        <span class="line" style=" width: 22px;">-</span>
+    </div>
+    <div class="u-txt f-mr-m">
+        <input type="text" class="ipt-txt c-gray1" name="createEndDate" placeholder=""
+               style="width: 115px;"/>
+    </div>
+    <label class="u-lb-sm">活动日期</label>
+    <div class="u-txt u-txt-date f-ml-m">
+        <i class="iconfont icon-calendar"></i>
+        <input type="text" class="ipt-txt c-gray1" name="startDate" placeholder="" style="width: 115px;"/>
+    </div>
+    <div class="u-txt">
+        <span class="line" style=" width: 22px;">-</span>
+    </div>
+    <div class="u-txt u-txt-date">
+        <i class="iconfont icon-calendar"></i>
+        <input type="text" class="ipt-txt c-gray1" name="endDate" placeholder="" style="width: 115px;"/>
+    </div>
+    <label class="u-lb-sm f-cb">活动状态</label>
+    <div class="u-txt col-xs-3">
+        <select class="ipt-txt c-gray1" style="width: 100%" name="status">
+            <option value="0">未开始</option>
+            <option value="1">执行中</option>
+            <option value="2">已结束</option>
+        </select>
+    </div>
+    <div class="u-btn-box1 f-cb">
+        <input type="button" class="u-btn-mddkorg u-w" value="查询"
+               onclick="signup.index.queryActivityList(true)"/>
+    </div>
+</div>
+<a class="btn-slide btn-slide1"></a>
+<div class="m-panel m-buyshopsys f-mt-m">
+    <div class="panel-heading">
+        <div class="u-btn-lgltgry1 f-mt-xs f-mb-xs f-ml-m" onclick="signup.activity.addActivity()">
+            <i class="iconfont icon-add u-change"></i>
+            <span>活动创建</span>
+        </div>
+    </div>
+    <div class="panel-body" style="padding: 0;">
+        <div class="m-jm-table">
+            <ul class="table-hander">
+                <li style="width: 12%;">活动主图</li>
+                <li style="width: 25%;">活动名称</li>
+                <li>发布日期</li>
+                <li style="width: 13%;">活动日期</li>
+                <li>报名总数</li>
+                <li>活动状态</li>
+                <li style="width: 15%;">报名明细</li>
+            </ul>
+            <div class="table-body u-f-tl-pl f-t-off" id="tableBody2">
+
+            </div>
+            <!--以下是分页效果-->
+            <div id="pageToolbar2" class="pagination f-fr f-mt-m f-mb-s f-mr-m">
+
+            </div>
+            <!--分页end-->
+        </div>
+    </div>
+</div>

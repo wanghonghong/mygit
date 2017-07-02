@@ -1,0 +1,133 @@
+<!--派单操作begin-->
+<div id="dialoginfo-sendorder" class="dialoginfo" style="display: block">
+    <div class="m-tab" id="m-tab1">
+        <ul>
+            <li class="z-sel">派单操作</li>
+            <li>派单历史（{{zbDispatchHistoryList.length}}）</li>
+        </ul>
+    </div>
+    <div class="panel-hidden f-padding-m" style="padding-bottom: 0;">
+        <input type="hidden"  id="dispatchId" value="{{dispatchId}}"/>
+        <div class="m-search">
+            <label class="u-lb-msm">渠道商</label>
+            <div class="u-txt col-xs-3">
+                <select class="ipt-txt " id="joinType">
+                    <option value="">全部</option>
+                    <option value="1">代理商</option>
+                    <option value="2">服务商</option>
+                </select>
+            </div>
+            <label class="u-lb-msm">角色等级</label>
+            <div class="u-txt col-xs-3 selectRole" id="allRole">
+                <select class="ipt-txt select2" id="allRoleClass"  style="width: 100%;">
+                    <option value="">全部</option>
+                    <option value="11">机构代理 1 级</option>
+                    <option value="12">机构代理 2 级</option>
+                    <option value="10">个人代理</option>
+                    {%for zbRole in roles%}
+                    <option value="{{zbRole.roleId}}">{{zbRole.roleName}}</option>
+                    {%endfor%}
+                </select>
+            </div>
+            <div class="u-txt col-xs-3 selectRole" id="agentRole" style="display: none;">
+                <select class="ipt-txt select2" id="roleClass"  style="width: 100%;">
+                    <option value="">全部</option>
+                    <option value="11">机构代理 1 级</option>
+                    <option value="12">机构代理 2 级</option>
+                    <option value="10">个人代理</option>
+                </select>
+            </div>
+            <div class="u-txt col-xs-3 selectRole" id="serviceRole" style="display: none;">
+                <select class="ipt-txt select2" id="roleClass2" style="width: 100%;">
+                    <option value="">全部</option>
+                    {%for zbRole in roles%}
+                    <option value="{{zbRole.roleId}}">{{zbRole.roleName}}</option>
+                    {%endfor%}
+                </select>
+            </div>
+            <label class="u-lb-msm">姓名</label>
+            <div class="u-txt col-xs-3">
+                <input type="text" class="ipt-txt" id="userName_" placeholder="请输入姓名" />
+            </div>
+            <label class="u-lb-msm">手机号</label>
+            <div class="u-txt col-xs-3">
+                <input type="text" class="ipt-txt" id="phoneNumber_" placeholder="请输入手机号" />
+            </div>
+            <label class="u-lb-msm">所在地区</label>
+            <div class="f-fl distpicker col-xs-7" style="padding: 0;">
+                <div class="u-txt col-xs-3" style="padding-right: 0">
+                    <select class="ipt-txt" id="province_" style="padding: 0 3px;">
+                    </select>
+                </div>
+                <div class="u-txt">
+                    <span class="line" style=" width: 20px;">-</span>
+                </div>
+                <div class="u-txt col-xs-3" style="padding: 0">
+                    <select class="ipt-txt" id="city_" style="padding: 0 3px;">
+                    </select>
+                </div>
+                <div class="u-txt">
+                    <span class="line" style=" width: 20px;">-</span>
+                </div>
+                <div class="u-txt col-xs-3" style="padding: 0">
+                    <select class="ipt-txt" id="district_" style="padding: 0 3px;">
+                    </select>
+                </div>
+            </div>
+            <div class="u-btn-box1" style="padding-bottom: 0;">
+                <input type="button" class="u-btn-mdemptyred" id="queryJoins" value="查询" />
+            </div>
+        </div>
+        <div class="m-jm-table f-mt-m" >
+            <ul class="table-hander">
+                <li style="width: 25%;">渠道商</li>
+                <li>姓名</li>
+                <li>手机号</li>
+                <li>角色等级</li>
+                <li style="width: 20%;">地区</li>
+                <li>选择</li>
+            </ul>
+            <div class="table-body" id="joinList">
+
+            </div>
+            <!--以下是分页-->
+            <div id="joinPageToolbar" class="pagination f-fr f-mt-m">
+
+            </div>
+            <!--分页end-->
+        </div>
+    </div>
+    <div class="panel-hidden f-padding-m" style="padding-bottom: 0;">
+        {% for history in zbDispatchHistoryList %}
+        <div class="m-graypanel f-mb-m">
+            <h3>
+                <strong>{{loop.index}} 次派单</strong>
+                <div class="sendorder-history-head">
+                    <ul>
+                        <li class="f-t-off1" style="width: 25%;">
+                            <p title=""><span>渠道商：</span>{{history.companyName}}</p>
+                        </li>
+                        <li>
+                            <p><span>姓名：</span>{{history.userName}}</p>
+                        </li>
+                        <li style="width: 20%;">
+                            <p><span>手机号：</span>{{history.phoneNumber}}</p>
+                        </li>
+                        <li style="width: 20%;">
+                            <p><span>代理等级：</span>{{history.roleName}}</p>
+                        </li>
+                        <li style="width: 22%;">
+                            <p title=""><span>所属地区：</span>{{history.province}}-{{history.city}}-{{history.district}}</p>
+                        </li>
+                    </ul>
+                </div>
+            </h3>
+            <div class="m-review-txt">
+                <div class="txt-left">受理结果：</div>
+                <div class="txt-right">{{history.createDate}}{{history.result}}营业执照照片不清晰，看不清法人姓名<br />营业执照照片不清晰 </div>
+            </div>
+        </div>
+        {%endfor%}
+    </div>
+</div>
+<!--end-->

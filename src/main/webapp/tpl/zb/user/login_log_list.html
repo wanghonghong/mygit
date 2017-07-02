@@ -1,0 +1,14 @@
+
+    {% if items.length>0 %}
+    {%for item in items%}
+    <li>
+        <span>{{item.createDate}}</span><em></em>
+        <span>{{item.ip}}</span><em></em>
+        <b>{{item.address}}</b><em></em>
+        <b>{{item.tool}}</b>
+    </li>
+    {%endfor%}
+    {%else%}
+    {% include "/tpl/system/nodb.html" %}
+    {%endif%}
+

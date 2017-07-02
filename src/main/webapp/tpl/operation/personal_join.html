@@ -1,0 +1,219 @@
+
+    <style>
+        .u-tiptxt label{
+            font-family: '宋体', Verdana, Arial, Helvetica, sans-serif;
+            font-size: 12px;
+            color: red;
+        }
+        input[disabled]{
+            background-color: #fcfcfc;
+        }
+        .m-goto:hover{
+            background-color: #ffffff;
+            color: #f89a14;
+        }
+        .m-joinmsg span{
+            float: left;
+            width: 440px;
+            font-size: 14px;
+            line-height: 36px;
+            font-family: '宋体', Verdana, Arial, Helvetica, sans-serif;
+        }
+        .m-joinmsg span b{
+            display: block;
+            color:red;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .m-joinmsg span .m-goto{
+            display: inline-block;
+            margin: 0 auto;
+            padding: 0 10px;
+            border: 1px solid #ECECEC;
+            color: #999999;
+            border-radius: 5px;
+            height: 32px;
+            cursor: pointer;
+            line-height: 32px;
+            text-align: center;
+            background-color: #f8f8f8;
+        }
+    </style>
+    
+    <section class="g-mn1">
+        <div class="m-tab">
+            <ul>
+                <li class="z-sel">个人加盟</li>
+            </ul>
+        </div>
+        <form id="signupForm1" method="post" action="">
+            <div class="m-indl-aplica f-mt-l">
+                {%if jmJoin.id%}
+                    <div class="indl-aplica-left">
+                    <label class="u-lb-md">申请角色</label>
+                    <div class="apl-jol col-xs-9 f-fl" >
+                        <i class="iconfont icon-person"></i>
+                        <span>
+                                    个人服务
+                                </span>
+                    </div>
+                    <label for="userName1" class="u-lb-md">联系姓名</label>
+                    <div class="u-txt col-xs-9 u-tiptxt">
+                        <input type="text" id="userName" name="userName" value="{{jmJoin.userName}}" class="ipt-txt" placeholder="请输入联系姓名" />
+                    </div>
+                    <label class="u-lb-md">联系手机</label>
+                    <div class="u-txt col-xs-9 u-tiptxt">
+                        <input type="text" id="phoneNumber" name="phoneNumber" value="{{jmJoin.phoneNumber}}" class="ipt-txt" placeholder="请输入手机号码" disabled/>
+                    </div>
+                    <label class="u-lb-md">联系邮箱</label>
+                    <div class="u-txt col-xs-9 u-tiptxt">
+                        <input type="text" id="email" name="email" class="ipt-txt" value="{{jmJoin.email}}"placeholder="请输入联系邮箱" />
+                    </div>
+                    <label class="u-lb-md">业绩</label>
+                    <div class="u-txt col-xs-9 u-tiptxt">
+                        {%if jmJoin.performance%}
+                            <input type="text" id="performance" name="performance" value="{{jmJoin.performance}}" class="ipt-txt" placeholder="网址填写/发送邮箱" />
+                        {%else%}
+                            <input type="text" id="performance" name="performance" value="" class="ipt-txt" placeholder="网址填写/发送邮箱" />
+                        {%endif%}
+                    </div>
+                    <label class="u-lb-md f-mr-m">服务能力</label>
+                    <div class="u-more f-fl op-dialog" style="margin-bottom: 0;">
+                        选择角色
+                        <span></span>
+                    </div>
+                    <div class="m-tip5" id="m-tip-box1" style="padding-top: 7px;">
+                        <div class="u-btn-smltgry" data-id="{{jmJoin.applyRoleId}}" data-name="{{jmJoin.applyRole}}" ><span>{%if jmJoin.applyRole%}{{jmJoin.applyRole}}{%endif%}</span><i class="iconfont icon-delete1 f-ml-m" id="icon_a" ></i></div>
+                    </div>
+                        <div id="selectRole" style="font-size: 12px;color: red;padding-left: 115px;display: none" >请选择角色</div>
+                    <label class="u-lb-md f-mt-s">所在地区</label>
+                    <div class="u-txt col-xs-9 f-mt-s u-tiptxt distpicker"  >
+                    <select id="province"  data-province="{{jmJoin.province}}" class="ipt-txt f-mb-s" style="width: 30.1%;">
+                    </select>
+                    <span class="line">-</span>
+                    <select id="city"  data-city="{{jmJoin.city}}" class="ipt-txt f-mb-s" style="width: 30.1%;">
+                    </select>
+                    <span class="line">-</span>
+                    <select id="district" data-district="{{jmJoin.district}}"  class="ipt-txt f-mb-s" style="width: 30.1%;">
+                    </select>
+                    <textarea  id="address" name="address" class="ipt-txt txtarea" placeholder="详细街道地址">{{jmJoin.address}}</textarea>
+                </div>
+                </div>
+                {%else%}
+                <div class="indl-aplica-left">
+                    <label class="u-lb-md">申请角色</label>
+                    <div class="apl-jol col-xs-9 f-fl" >
+                        <i class="iconfont icon-person"></i>
+                        <span>
+                                    个人服务
+                                </span>
+                    </div>
+                    <label for="userName1" class="u-lb-md">联系姓名</label>
+                    <div class="u-txt col-xs-9 u-tiptxt">
+                        <input type="text" id="userName" name="userName" class="ipt-txt" placeholder="请输入联系姓名" />
+                    </div>
+                    <label class="u-lb-md">联系手机</label>
+                    <div class="u-txt col-xs-9 u-tiptxt">
+                        <input type="text" id="phoneNumber" name="phoneNumber" class="ipt-txt" value="{{jmJoin.phoneNumber}}" placeholder="请输入手机号码" disabled/>
+                    </div>
+                    <label class="u-lb-md">联系邮箱</label>
+                    <div class="u-txt col-xs-9 u-tiptxt">
+                        <input type="text" id="email" name="email" class="ipt-txt" placeholder="请输入联系邮箱" />
+                    </div>
+                    <label class="u-lb-md">业绩</label>
+                    <div class="u-txt col-xs-9 u-tiptxt">
+                        <input type="text" id="performance" name="performance" class="ipt-txt" placeholder="网址填写/发送邮箱" />
+                    </div>
+                    <label class="u-lb-md f-mr-m">服务能力</label>
+                    <div class="u-more f-fl op-dialog" style="margin-bottom: 0;">
+                        选择角色
+                        <span></span>
+                    </div>
+                    <div class="m-tip5" id="m-tip-box1" style="padding-top: 7px;">
+
+                    </div>
+                    <div id="selectRole" style="font-size: 12px;color: red;padding-left: 115px;display: none" >请选择角色</div>
+                    <label class="u-lb-md f-mt-s">所在地区</label>
+                    <div class="u-txt col-xs-9 f-mt-s u-tiptxt distpicker" id="area" >
+                        <select id="province"  class="ipt-txt f-mb-s" style="width: 30.1%;">
+                        </select>
+                        <span class="line">-</span>
+                        <select id="city"  class="ipt-txt f-mb-s" style="width: 30.1%;">
+                        </select>
+                        <span class="line">-</span>
+                        <select id="district"  class="ipt-txt f-mb-s" style="width: 30.1%;">
+                        </select>
+                        <textarea  id="address" name="address" class="ipt-txt txtarea" placeholder="详细街道地址"></textarea>
+                    </div>
+                </div>
+                    {%endif%}
+                <div class="indl-aplica-right">
+                    <img class="personal-joinimg" src="{{globalUrl}}/css/pc/img/gejm.png"  />
+                </div>
+                <div class="u-btn-box">
+                    <input type="button" id="submitApply3" class="u-btn-lgdkorg dialog" value="提交申请" />
+                </div>
+            </div>
+        </form>
+    </section>
+    
+<div id="dialoginfo" class="dialoginfo">
+    <div class="m-appling">
+        <h3>你已成功提交申请</h3>
+        <img src="{{globalUrl}}/css/pc/img/jmtool2.png"  />
+        <p>三个工作日内，工作人员将与您电话确认，敬请保持手机接听畅通</p>
+        <label>聚米为谷全国统一服务电话：<span>400-0766-568</span></label>
+        <div class="u-btn-box1 f-mt-m"><input type="button" id="konw3" onclick="agent.join.konw3Click()" class="u-btn-mddkorg" value="我知道了" /></div>
+    </div>
+
+</div>
+<div id="dialoginfo2" class="dialoginfo">
+    <div class="m-sus-box m-joinmsg">
+        <div class="f-fl">
+            <img src="{{globalUrl}}/css/pc/img/jmtool1.png" style="margin-top: 40%;" />
+        </div>
+        <span>
+            <b>您本次提交申请失败，请重新提交</b>
+            <p>失败原因：{%if jmJoin.checkContext%}{{jmJoin.checkContext}}{%endif%}</p>
+            <div class="m-tip1 m-tip11" style="padding-left: 0; margin-left: 0;">
+                <span>
+                    <i class="iconfont icon-lamp"></i>
+                    若要申请公司加盟，请点击按钮—>
+                    <div class="m-goto" onclick="agent.join.opcJoin()">公司加盟</div>
+                </span>
+            </div>
+        </span>
+    </div>
+    <div class="u-btn-box1 f-pt-l">
+        <input type="button" class="u-btn-mddkorg" id="confirm" onclick="agent.join.closeReview()" value="关闭" />
+    </div>
+</div>
+{%if jmJoin%}
+<input type="hidden" name="type" id="type" value="{{jmJoin.type}}"/>
+<input type="hidden" name="subType" id="subType" value="{{jmJoin.subType}}"/>
+<input type="hidden" name="status" id="status" value="{{jmJoin.status}}"/>
+{%endif%}
+
+<!-- 上下文根路径-->
+<script type="text/javascript" charset="utf-8">
+    agent.join.init();
+    $(function(){
+        var type = $('#type').val();
+        var subType = $('#subType').val();
+        var status = $('#status').val();
+        if (type==2&&subType==1&status==2){
+            var elem1 = document.getElementById('dialoginfo2');
+            var d = dialog({
+                title: "审核意见",
+                id:"closeReview",
+                content: elem1
+            }).width(600).showModal();
+        }
+        $('#confirm').click(function () {
+            d.close().remove();
+        })
+    })
+</script>
+</body>
+
+</html>

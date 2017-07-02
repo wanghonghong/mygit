@@ -1,0 +1,74 @@
+<style type="text/css">
+    .m-message-marketing .scgl-left .hnct span{
+        display: inline;
+
+    }
+    @media screen and (max-height:720px){
+        #Preview {
+            width:281px;
+            height:590px;
+            margin-left:-140px;
+            margin-top:-295px;
+        }
+        .btb-close {
+            position: absolute;
+            left: 92%;
+            top: 3%;
+            z-index: 103;
+        }
+        .m-phone-view .phone-shell-top{
+            width: 85%;
+        }
+        .m-phone-view .phone-window{
+            height: 450px;
+            width: 85%;
+        }
+        .m-phone-view .phone-height .m-message-marketing{
+            max-height: 430px;
+
+        }
+        .m-phone-view .phone-height1 .m-message-marketing{
+            max-height: 450px;
+        }
+        .m-phone-view .phone-shell-bottom{
+            width: 85%;
+        }
+        .u-btn-lgdkorg{
+            padding: 0 35px;
+        }
+        .u-btn-lgdkbl{
+            padding: 0 35px;
+        }
+    }
+    .m-message-marketing .scgl-left .hnct{
+        padding: 0 10px;
+    }
+</style>
+    <div id="shade"></div>
+    <div id="Preview">
+        <div class="btb-preview">
+            <a ><input type="button" class="u-btn-lgdkorg" onClick="mm.picturemsg.mm_mobile_back();" value="返回" /></a><br  />
+            <a><input type="button" class="u-btn-lgdkbl f-mt-xs"  onclick="mm.picturemsg.mm_mobile_view_dg();" value="To手机预览"/></a>
+        </div>
+        <a class="btb-close"  onClick="mm.picturemsg.pictxt_mobile_close();"><i class="iconfont icon-delete2"></i></a>
+         <div class="m-phone-view" >
+             <div class="phone-shell-top">
+             </div>
+             <div class="phone-window phone-height1" style="background-color: #FFFFFF;">
+                 <div class=" m-message-marketing h-scroll">
+                     <div class="scgl-left" style="border: none;display: inline;">
+                         <span>{{title}}</span>
+                         <p>{{saveTime}} &nbsp; &nbsp;{{author}}</p>
+                         <div class="hnct" style="padding-bottom: 5px;">{{jmContent|safe}}</div>
+                         <div class="ewm"><img src="{{globalUrl}}/css/pc/img/addti-ewm.png"  /></div>
+                         {%if contentSourceUrl!=""%}
+                         <span class="readtext" style=""><a href="{{contentSourceUrl}}" target="_blank">阅读全文</a></span>
+                         {%endif%}
+                     </div>
+                 </div>
+             </div>
+             <div class="phone-shell-bottom">
+             </div>
+         </div>
+    </div>
+

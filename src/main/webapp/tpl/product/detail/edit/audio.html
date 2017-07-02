@@ -1,0 +1,16 @@
+<div class="audio-config">
+     <ul class="audio-groups">
+          {% for item in subEntry %}
+          <li  class="audio-group" >
+               <span>{{item.resName}}</span>
+               <i class="iconfont icon-delete1"></i>
+          </li>
+          {% else %}
+          <li  class="audio-group" >
+               <span>请选择一个音频文件</span>
+               <i class="iconfont icon-delete1 z-hide"></i>
+          </li>
+          {% endfor %}
+
+     </ul>
+</div>

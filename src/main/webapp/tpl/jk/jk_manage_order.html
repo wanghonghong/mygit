@@ -1,0 +1,72 @@
+<style>
+    .gmn{
+        padding: 23px 24px 23px 0;
+        width: 1154px;
+        float: left;
+    }
+</style>
+<!--主模块-->
+<div class="m-search" id="m-search">
+    <label class="u-lb-sm">公众号</label>
+    <div class="u-txt col-xs-3">
+        <select class="ipt-txt" id="publicList">
+
+        </select>
+    </div>
+
+    <label class="u-lb-sm">状态</label>
+    <div class="col-xs-3">
+        <select class="ipt-txt" name="status" id="status" style="width: 100%" >
+        </select>
+    </div>
+
+    <label class="u-lb-sm">发放日期</label>
+    <div class="u-txt u-txt-date f-ml-m">
+        <i class="iconfont icon-calendar"></i>
+        <input type="text" class="ipt-txt" id="startTime2"  placeholder="开始时间" style="width: 112px;"  />
+    </div>
+    <div class="u-txt">
+        <span class="line" style=" width: 25px;">-</span>
+    </div>
+    <div class="u-txt u-txt-date">
+        <i class="iconfont icon-calendar"></i>
+        <input type="text"  class="ipt-txt" id="endTime2"  placeholder="结束时间" style="width: 112px;" />
+    </div>
+    <div class="f-cb"></div>
+
+    <div class="u-btn-box1">
+        <input type="button" onclick="juke.manages.order.getSearch()" class="u-btn-mddkorg" value="查询" />
+    </div>
+</div>
+<a class="btn-slide btn-slide1"></a>
+<div class="m-jm-table f-mt-m" style="overflow: inherit;">
+    <ul class="table-hander">
+        <li>头像</li>
+        <li>昵称</li>
+        <li>公众号</li>
+        <li>限定条件</li>
+        <li>金额（元）</li>
+        <li>发放日期</li>
+        <li>红包状态</li>
+    </ul>
+    <div id="send_list">
+
+    </div>
+</div>
+<div class="col-xs-6" style="float: right;">
+    <!--以下是分页效果-->
+    <div id=sendRecordPaperToolbar class="pagination f-mt-s f-mr-s f-fr">
+
+    </div>
+    <!--分页end-->
+</div>
+<script>
+    var statusList = [{id: "-1", text: "全部"},{id: "1", text: "未领取"},{id: "2", text: "已领取"},{id: "3", text: "发放失败"},{id: "4", text: "已退款"}];
+    $("#status").select2({
+        theme: "jumi",
+        data: statusList
+    });
+    juke.manages.order.init();
+</script>
+
+

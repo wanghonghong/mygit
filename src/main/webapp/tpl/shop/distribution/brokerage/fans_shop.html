@@ -1,0 +1,114 @@
+<!--粉丝小店-->
+<div class="g-table sale-content f-pt-s f-pb-s f-mt-s">
+    <div class="m-multisale-tt">
+        <div class="col-xs-8 u-bgline f-mt-xs f-pt-xs f-pb-xs" style="padding-left: 0;">
+            <span class="u-dottt">粉丝小店</span>
+        </div>
+        <div class="col-xs-4 f-fr">
+            <div class="f-fl f-ml-s u-btn-oval">
+                <i class="iconfont icon-Application"></i>
+                <span>运用说明</span>
+            </div>
+            <div class="f-fl close f-ml-s f-mt-xs">
+                <input type="checkbox" name="isFansShop" id="isFansShop" value="1" on-text="开通" off-text="关闭"/>
+            </div>
+        </div>
+    </div>
+    <div class="panel-hidden f-pt-xs fansShop">
+        <!--背景风格-->
+        <div class="col-xs-2">
+            <label class="u-lb-sm c-deepgray">背景风格</label>
+        </div>
+        <div class="col-xs-10 f-pt-s" style="padding-left: 0;">
+            <!--这里的js要自己重写-->
+            <div class="f-mb-xs">
+                <div class="u-rb bg-white">
+                    <input type="radio" name="backStyle" id="backStyle1"  checked value="1" data-target="backStyleBox1"/>
+                    <label for="backStyle1"></label>
+                </div>
+                <label for="backStyle1" class="c-gray1 m-sptlp1" >选择预置模板</label>
+                <div class="u-shoptlp1 u-sptlp1" id="backStyleBox1" style="display: block">
+                    <div class="u-sort active">
+                        <img src="{{globalUrl}}/css/pc/img/shoptlp-img1.png"/>
+                        <input type="checkbox" name="preStyle" id="preStyle1" value="1"/>
+                        <label class="iconfont icon-avoid"></label>
+                    </div>
+                    <div class="u-sort">
+                        <img src="{{globalUrl}}/css/pc/img/shoptlp-img2.png"/>
+                        <input type="checkbox" name="preStyle"  id="preStyle2" value="2" />
+                        <label class="iconfont icon-avoid"></label>
+                    </div>
+                    <div class="u-sort">
+                        <img src="{{globalUrl}}/css/pc/img/shoptlp-img3.png"/>
+                        <input type="checkbox" name="preStyle"  id="preStyle3" value="3"/>
+                        <label class="iconfont icon-avoid"></label>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="u-rb bg-white">
+                    <input type="radio" name="backStyle" id="backStyle2" data-target="backStyleBox2" value="2"/>
+                    <label for="backStyle2"></label>
+                </div>
+                <label for="backStyle2" class="c-gray1 m-sptlp2">上传自定义模板</label>
+                <div class="m-tip1 m-tip11" style="display: inline-block;">
+				 <span> <i class="iconfont icon-lamp"></i> 建议尺寸（宽*高）：<font class="c-orange1">750 * 320</font> 像素</span>
+                </div>
+                <div class="u-shoptlp1 u-sptlp2" id="backStyleBox2">
+                    <div class="m-add-pic" style="width: 135px; height: 59px;">
+                        <img id="backUrlImg" src="{{backUrl|default(globalUrl+'/css/pc/img/noc_picture.png',true)}}" style="width: 133px; height: 57px;"/>
+                        <input type="hidden" id="backUrl" name="backUrl" value="{{backUrl|default('',true)}}">
+                    </div>
+                </div>
+            </div>
+            {%if feeTips %}
+            <div class="f-cb m-tip3 f-pr-l" style="margin-left: 0;">
+                <i class="iconfont icon-lamp"></i>
+                <span>粉丝小店仅限对分销、代理角色客户开通，聚米为谷收费标准：10元/小店</span>
+            </div>
+            {% endif %}
+        </div>
+        <!--/-->
+
+        {% if isfun %}
+        <!--功能设置-->
+        <div class="col-xs-2">
+            <label class="u-lb-sm c-deepgray">功能设置</label>
+        </div>
+        <div class="col-xs-10 f-pt-s" style="padding-left: 0;">
+            <div class="f-mb-xs">
+                <div class="u-rb bg-white">
+                    <input type="radio" name="mode" id="mode1" checked value="1"/>
+                    <label for="mode1"></label>
+                </div>
+                <label for="mode1" class="c-gray1 m-tip1-on">粉丝开通免费模式</label>
+                <div class="m-tip1 m-tip11 f-pb-s" id="m-tip1" style="">
+				<span style="color: #a1a1a1;" ><i class="iconfont icon-lamp"></i>聚米为谷赠送2000家粉丝小店，第2001家开始每家收费0.10元，请提前做好【增加小店】购买</span>
+                </div>
+            </div>
+            <div>
+                <div class="u-rb bg-white f-fl">
+                    <input type="radio" name="mode" id="mode2" value="2"/>
+                    <label for="mode2"></label>
+                </div>
+                <label for="mode2" class="f-fl f-pl-xs c-gray1 m-tip2-on">粉丝开通收费模式</label>
+                <label class="c-gray1 f-pl-xl f-pr-m f-fl">收费标准</label>
+                <div class="u-txt" style="top: -6px;">
+                    <div class="ipt-txt11" style="width: 145px;">
+                        <i class="icon-lb-word c-gray">元/店</i>
+                        <input type="number" class="ipt-txt c-gray1"  id="money" name="money" value="{{money|default(0,ture) /100}}" style="padding-right: 50px;" />
+                    </div>
+                </div>
+            </div>
+            <div class="m-tip1 m-tip11" id="m-tip2" style="display: none;">
+			    <span style="color: #a1a1a1;">
+				 <i class="iconfont icon-lamp"></i>
+			 	粉丝小店功能聚米为谷收费标准：商家免费版 1元/小店，商家收费版为商家收费金额 10%/店！
+			   </span>
+            </div>
+        </div>
+        {% endif %}
+        <!--/-->
+    </div>
+</div>
+<!--/粉丝小店-->

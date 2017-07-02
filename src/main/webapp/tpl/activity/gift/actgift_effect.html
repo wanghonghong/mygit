@@ -1,0 +1,28 @@
+<ul class="m-redbage-effect f-mb-s">
+    <li>
+
+        <p>计划礼券：<span>{{cardTotalCount}}</span> 张</p>
+        <p>开始时间：{{startTime}}</p>
+    </li>
+    <li>
+
+        <p>实发礼券：<font><span>{{cardUseCount}}</span> 张</font></p>
+        {%if subType!=2%}
+        <p>结束时间：{{endTime}}</p>
+        {%endif%}
+    </li>
+</ul>
+<div class="m-jm-table">
+    <ul class="table-hander">
+        <li>头像</li>
+        <li style="width:18%">昵称</li>
+        <li style="width:22%">卡券标题</li>
+        <li>面值（元）</li>
+        <li style="width: 20%;">时间</li>
+        <li>领取状态</li>
+    </ul>
+    <div id="actgift_table_grid"></div>
+</div>
+<div id="actgift_pageToolbar" class="pagination f-fr f-mt-m">
+
+</div>

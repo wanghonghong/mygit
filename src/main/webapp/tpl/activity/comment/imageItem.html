@@ -1,0 +1,18 @@
+<ul class="table-container">
+    <li class="f-tl" style="width: 30%; padding: 0 20px;">
+        <p title="">{{imageTextTile}}</p>
+    </li>
+    <li>{{createTime}}</li>
+    <li class="f-tl" style="padding-left: 70px;">
+        <span>PV：{{pv}}</span><br />
+        <span>UV：{{uv}}</span>
+    </li>
+    <li class="f-tl" style="padding-left: 70px; line-height: 20px;">
+        <span><i class="iconfont icon-dotlove font-s14 c-orange2"></i>&nbsp;{{reward|default(0,ture)}}</span><br />
+        <span><i class="iconfont icon-reply font-s14" style="color: #63a9e4;"></i>&nbsp;{{commentNum|default(0,ture)}}</span>
+    </li>
+    <li>
+        <div class="u-btn-smltgry dialog-see" data-id="{{id}}" onclick="imagecomment.index.viewItem(this)">查看评论</div>
+    </li>
+</ul>
+

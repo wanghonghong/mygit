@@ -1,0 +1,239 @@
+<style>
+	.copybtn{
+		background-color: transparent;
+		text-decoration: none;
+		color: #adadad;
+		cursor: pointer;
+		border: 0;
+		font-family: 微软雅黑;
+		font-size: 12px;
+	}
+	.copybtn:hover{
+		color: #ffa627;
+	}
+	.addgoods-btn.active span {
+		border-color: transparent #ffbe4e #ffbe4e transparent;
+	}
+	.addgoods-btn.active {
+		border: 1px solid #fff1da;
+		background-image: -webkit-linear-gradient(top, #fff 40%, #fffbf4 100%);
+		background-image: -o-linear-gradient(top, #fff 40%, #fffbf4 100%);
+		background-image: linear-gradient(to bottom, #fff 40%, #fffbf4 100%);
+		background-repeat: repeat-x;
+		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff', endColorstr='#fffbf4', GradientType=0);
+	}
+</style>
+
+<div class="goodsList-region">
+
+	<!--<div class="addgoods-btn margin-xs"   onclick="product.list.toProductEdit('0');" style="">-->
+		<!--新增商品 <span></span>-->
+	<!--</div>-->
+	<!--<div class="addgoods-btn  margin-xs"  onclick="product.list.toProductGroup('0',$(this));"  style="" >-->
+		<!--新增分类 <span></span>-->
+	<!--</div>-->
+	<!--<div class="addgoods-btn  margin-xs" id="transtempTab"  onclick="transtemp.new.temp_list($(this));" style=""  >&lt;!&ndash;product.list.toTransTemplates();&ndash;&gt;
+		运费模板 <span></span>
+	</div>-->
+
+	<div class="m-search" id="m-search">
+		<label class="u-lb-sm">商品名称</label>
+		<div class="u-txt col-xs-3">
+			<input type="text" class="ipt-txt" name="name" id="name" placeholder="请输入商品名称" />
+		</div>
+
+		<label class="u-lb-sm">商品分类</label>
+		<div class="u-txt col-xs-3">
+			<select class="ipt-txt c-gray1" name="groupId" id="groupId">
+				<option></option>
+			</select>
+		</div>
+
+		<label class="u-lb-sm">创建时间</label>
+		<div class="u-txt u-txt-date f-ml-m">
+			<input type="text" class="ipt-txt c-gray1" id="startDate" name="startDate" placeholder="" style="width: 114px;" />
+		</div>
+		<div class="u-txt">
+			<span class="line" style=" width: 24px;">-</span>
+		</div>
+		<div class="u-txt u-txt-date">
+			<input type="text" class="ipt-txt c-gray1" id="endDate" name="endDate" placeholder="" style="width: 114px;" />
+		</div>
+
+		<label class="u-lb-sm">售价区间</label>
+		<div class="u-txt u-txt-date f-ml-m">
+			<input type="text" class="ipt-txt c-gray1" id="minPrice" name="minPrice" placeholder="" style="width: 114px;" />
+		</div>
+		<div class="u-txt">
+			<span class="line" style=" width: 24px;">-</span>
+		</div>
+		<div class="u-txt u-txt-date">
+			<input type="text" class="ipt-txt c-gray1" id="maxPrice" name="maxPrice" placeholder="" style="width: 114px;" />
+		</div>
+		<div class="u-btn-box1">
+			<!--<input type="button" class="u-btn-mddkbl f-mr-xs" value="导出" />-->
+			<input type="button" class="u-btn-mddkorg u-w" id="searchBtn" value="查询"/>
+		</div>
+
+	</div>
+	<a class="btn-slide btn-slide1"></a>
+
+	<div  id="contentBox ">
+			<div id="productList">
+				<div class=" goodsList-tab margin-xs f-mt-m">
+					<div class="tab  ">
+						<ul>
+							<li data-target="tabcontent1" class="active  goodstab">在售商品</li>
+							<li data-target="tabcontent2" class="goodstab">手动下架</li>
+							<li data-target="tabcontent3" class="goodstab">售完下架</li>
+							<li data-target="tabcontent4" class="goodstab">全部商品</li>
+						</ul>
+					</div>
+
+					<!--<div class="form-group  search-group ">-->
+						<!--<div class="form-select-control ">-->
+							<!--<input type="text" class="" name="name" placeholder="输入商品名称" id="name" />-->
+							<!--<i class="iconfont icon-belowtriangle  after-border"></i>-->
+							<!--<i class="iconfont icon-search" id="searchBtn"  ></i>-->
+						<!--</div>-->
+					<!--</div>-->
+				</div>
+				<div id="tabcontent1" class="tabcontent active">
+					<div class="m-jm-table f-mt-m" style="min-height: inherit;">
+						<ul class="table-hander">
+							<li style="width:25%;">主图-名称-价格</li>
+							<li>访问量</li>
+							<li>库存</li>
+							<li>销量</li>
+							<li>创建日期</li>
+							<li>显示顺序</li>
+							<li style="width:15%;">操作</li>
+							<li>管理</li>
+						</ul>
+						<div id="tableBody1" class="table-body">
+						</div>
+					</div>
+					<div class="table-toolbar" id="tabletoolbar1">
+						<div class="btn-toolbar">
+							<div class="btn  btn-lightgray btn-sm" style="background-color: #fff; border: none; font-size: 14px;" onclick="product.list.allcheck(this,'tableBody1')">
+								<i class="iconfont icon-checkbox checkbox" style="font-size: 18px;"></i><span class="c-black">全选</span>
+							</div>
+							<div class="btn  btn-lightgray btn-sm" onclick="product.list.updateStatus('0','1','是否确认下架')">
+								<i class="iconfont icon-soldout"></i><span>下架</span>
+							</div>
+							<div class="btn  btn-lightgray btn-sm" onclick="product.list.updateStatus('0','9','是否确认删除')">
+								<i class="iconfont icon-delete1 font-color-red"></i><span>删除</span>
+							</div>
+							<!-- <div class="btn  btn-lightgray btn-sm" id="modifyType">
+								<i class="iconfont icon-modified font-color-blue"></i><span>修改分类</span>
+							</div> -->
+						</div>
+
+					</div>
+				</div>
+				<div id="tabcontent2" class="tabcontent">
+					<div class="m-jm-table f-mt-m" style="min-height: inherit;">
+						<ul class="table-hander">
+							<li style="width:25%;">主图-名称-价格</li>
+							<li>访问量</li>
+							<li>库存</li>
+							<li>销量</li>
+							<li>创建日期</li>
+							<li>显示顺序</li>
+							<li style="width:15%;">操作</li>
+							<li>管理</li>
+						</ul>
+						<div id="tableBody2" class="table-body">
+						</div>
+					</div>
+					<div class="table-toolbar" id="tabletoolbar2">
+						<div class="btn-toolbar">
+							<div class="btn  btn-lightgray btn-sm" style="background-color: #fff; border: none; font-size: 14px;" onclick="product.list.allcheck(this,'tableBody2')">
+								<i class="iconfont icon-checkbox checkbox" style="font-size: 18px;"></i><span class="c-black">全选</span>
+							</div>
+							<div class="btn  btn-lightgray btn-sm" onclick="product.list.updateStatus('1','0','是否确认上架')">
+								<i class="iconfont icon-soldout"></i><span>上架</span>
+							</div>
+							<div class="btn  btn-lightgray btn-sm" onclick="product.list.updateStatus('1','9','是否确认删除')">
+								<i class="iconfont icon-delete1 font-color-red"></i><span>删除</span>
+							</div>
+						</div>
+						</div>
+					</div>
+
+				<div id="tabcontent3" class="tabcontent">
+					<div class="m-jm-table f-mt-m" style="min-height: inherit;">
+						<ul class="table-hander">
+							<li style="width:25%;">主图-名称-价格</li>
+							<li>访问量</li>
+							<li>库存</li>
+							<li>销量</li>
+							<li>创建日期</li>
+							<li>显示顺序</li>
+							<li style="width:15%;">操作</li>
+							<li>管理</li>
+						</ul>
+						<div id="tableBody3" class="table-body">
+						</div>
+					</div>
+					<div class="table-toolbar" id="tabletoolbar3">
+						<div class="btn-toolbar">
+							<div class="btn  btn-lightgray btn-sm" style="background-color: #fff; border: none; font-size: 14px;" onclick="product.list.allcheck(this,'tableBody3')">
+								<i class="iconfont icon-checkbox checkbox" style="font-size: 18px;"></i><span class="c-black">全选</span>
+							</div>
+							<div class="btn  btn-lightgray btn-sm" onclick="product.list.updateStatus('2','9','是否确认删除')">
+								<i class="iconfont icon-delete1 font-color-red"></i><span>删除</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="tabcontent4" class="tabcontent">
+					<div class="m-jm-table f-mt-m" style="min-height: inherit;">
+						<ul class="table-hander">
+							<li style="width:25%;">主图-名称-价格</li>
+							<li>访问量</li>
+							<li>库存</li>
+							<li>销量</li>
+							<li>创建日期</li>
+							<li>显示顺序</li>
+							<li style="width:15%;">操作</li>
+							<li>管理</li>
+						</ul>
+						<div id="tableBody4" class="table-body">
+						</div>
+					</div>
+					<div class="table-toolbar" id="tabletoolbar4">
+						<div class="btn-toolbar">
+							<div class="btn  btn-lightgray btn-sm" style="background-color: #fff; border: none; font-size: 14px;" onclick="product.list.allcheck(this,'tableBody4')">
+								<i class="iconfont icon-checkbox checkbox" style="font-size: 18px;"></i><span class="c-black">全选</span>
+							</div>
+							<div class="u-btn-smltgry" onclick="product.list.updateStatus('4','0','是否确认上架')">
+								<i class="iconfont icon-sold"></i><span>上架</span>
+							</div>
+							<div class="u-btn-smltgry" onclick="product.list.updateStatus('4','1','是否确认下架')">
+								<i class="iconfont icon-soldout"></i><span>下架</span>
+							</div>
+							<div class="u-btn-smltgry" onclick="product.list.updateStatus('4','9','是否确认删除')">
+								<i class="iconfont icon-delete1" style="color: #f87a60;"></i><span>删除</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		<div id="pageToolbar" class="pagination f-fr" style="margin-top: -5px;"></div>
+		<input type="hidden" name="count" id="count" value="${counts!}" />
+		<div id="dialoginfo2" class="dialoginfo dhk" style="display: none;">
+			<img src="" id="qrcode" width="300px">
+		</div>
+    </div>
+</div>
+<script type="text/javascript">
+		product.list.init();
+		$(function(){
+			$(".btn-slide").click(function(){
+				$("#m-search").slideToggle("fast");
+				$(this).toggleClass("btn-slide1"); return false;
+			})
+		})
+</script>

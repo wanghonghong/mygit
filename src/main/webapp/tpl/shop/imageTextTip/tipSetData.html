@@ -1,0 +1,51 @@
+<style>
+    .error[for] {
+        position: absolute;
+        width: auto;
+        white-space: nowrap;
+        font-size: 12px;
+        color: #ff6446;
+        background-color: #ffecec;
+        z-index: 20;
+        left: 0;
+        top: 40px;
+        padding: 0 10px;
+        line-height: 34px;
+        border-radius: 3px;
+        border: 1px solid #fcc3c3;
+    }
+    .u-sortbox{
+        overflow: visible;
+    }
+</style>
+<form id="tip_set_form">
+<label class="u-lb-sm f-mr-s c-deepgray" >赏金</label>
+<div class="m-rewardmoney u-txt" id="div_1">
+        <input type="text" class="ipt-txt" name="tip_integral" id="tip1" value="{{(shopTipSetInfo.tipMoney1 | default(0,true)/100) | shortNumber(2)}}"/>
+        <span  onclick="imageTextTip.tip.isCheck(1)"><i class="iconfont icon-avoid"></i></span>
+</div>
+<div class="m-rewardmoney u-txt" id="div_2">
+        <input type="text" class="ipt-txt" name="tip_integral" id="tip2" value="{{(shopTipSetInfo.tipMoney2 | default(0,true)/100) | shortNumber(2)}}"/>
+        <span  onclick="imageTextTip.tip.isCheck(2)"><i class="iconfont icon-avoid"></i></span>
+</div>
+<div class="m-rewardmoney u-txt" id="div_3">
+        <input type="text" class="ipt-txt" name="tip_integral" id="tip3" value="{{(shopTipSetInfo.tipMoney3 | default(0,true)/100) | shortNumber(2)}}"/>
+        <span  onclick="imageTextTip.tip.isCheck(3)"><i class="iconfont icon-avoid"></i></span>
+</div>
+<div class="m-rewardmoney u-txt" id="div_4">
+        <input type="text" class="ipt-txt" name="tip_integral" id="tip4" value="{{(shopTipSetInfo.tipMoney4 | default(0,true)/100) | shortNumber(2)}}"/>
+        <span  onclick="imageTextTip.tip.isCheck(4)"><i class="iconfont icon-avoid"></i></span>
+</div>
+<div class="m-rewardmoney u-txt" id="div_5">
+        <input type="text" class="ipt-txt" name="tip_integral" id="tip5" value="{{(shopTipSetInfo.tipMoney5 | default(0,true)/100) | shortNumber(2)}}"/>
+        <span  onclick="imageTextTip.tip.isCheck(5)"><i class="iconfont icon-avoid"></i></span>
+</div>
+<div class="m-rewardmoney u-txt" id="div_6">
+        <input type="text" class="ipt-txt" name="tip_integral" id="tip6" value="{{(shopTipSetInfo.tipMoney6 | default(0,true)/100) | shortNumber(2)}}"/>
+        <span  onclick="imageTextTip.tip.isCheck(6)"><i class="iconfont icon-avoid"></i></span>
+</div>
+
+<div class="u-txt f-pt-xs" style="float: inherit; display: inline-block;">
+(元)
+</div>
+</form>

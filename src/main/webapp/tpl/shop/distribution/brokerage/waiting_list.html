@@ -1,0 +1,240 @@
+<!--待发清单 begin-->
+<div id="waiting">
+    <div class="m-tab">
+        <ul>
+            <li class="z-sel" data-target="putout">商家发放</li>
+            <li  data-target="withdrawcash">粉丝提现</li>
+            <li  data-target="otherClient">其他客户</li>
+        </ul>
+    </div>
+    <div>
+        <!--商家发放-->
+        <div class="panel-hidden " id="putout">
+            <div class="m-search f-mt-m" id="m-search1">
+                <form id="searchform2" >
+                    <label class="u-lb-sm">手机</label>
+                    <div class="u-txt col-xs-3">
+                        <input type="text" class="ipt-txt" name="phoneNumber" placeholder="请输入手机"/>
+                    </div>
+                    <label class="u-lb-sm">姓名</label>
+                    <div class="u-txt col-xs-3">
+                        <input type="text" class="ipt-txt" name="userName" placeholder="请输入姓名"/>
+                    </div>
+                    <label class="u-lb-sm">付款平台</label>
+                    <div class="u-txt col-xs-3">
+                        <select class="ipt-txt c-gray1" name="platForm" id="putoutplatForm">
+                            <option value="-1">全部</option>
+                            <option value="0">微信</option>
+                            <option value="1">微博</option>
+                        </select>
+                    </div>
+                    <label class="u-lb-sm">昵称</label>
+                    <div class="u-txt col-xs-3">
+                        <input type="text" class="ipt-txt" name="nickname" placeholder="请输入昵称"/>
+                        <input type="text" class="z-hide" name="type" value="1"/>
+                        <input type="text" class="z-hide" name="accountType" value="1"/>
+                    </div>
+                    <!--<label class="u-lb-sm">用户角色</label>-->
+                    <!--<div class="u-txt col-xs-3">-->
+                    <!--<select class="ipt-txt c-gray1">-->
+                    <!--<option value="1">分销客户</option>-->
+                    <!--<option value="2">分销a档</option>-->
+                    <!--<option value="2">分销b档</option>-->
+                    <!--<option value="2">分销c档</option>-->
+                    <!--<option value="2">代理A档</option>-->
+                    <!--<option value="2">代理B档</option>-->
+                    <!--<option value="2">代理C档</option>-->
+                    <!--<option value="2">代理D档</option>-->
+                    <!--</select>-->
+                    <!--</div>-->
+
+                    <div class="u-btn-box1">
+                        <input type="button" class="u-btn-mddkbl f-mr-xs" value="导出"/>
+                        <input type="button" class="u-btn-mddkorg u-w searchbtn" value="查询"/>
+                    </div>
+                </form>
+            </div>
+            <a class="btn-slide btn-slide1"></a>
+            <!--商家发放查询列表-->
+            <div class="m-jm-table f-mt-m">
+                <ul class="table-hander">
+                    <li>头像</li>
+                    <li style="width: 15%">昵称-姓名-手机号</li>
+                    <li>用户角色</li>
+                    <li>合计佣金（元）</li>
+                    <li>已发放（元）</li>
+                    <li>未发放（元）</li>
+                    <li>付款平台</li>
+                    <li>发放操作</li>
+                </ul>
+                <div class="table-body" id="tableBody2">
+
+                </div>
+                <div class="table-footer f-mt-s" >
+                    <div id="pageToolbar2" class="pagination f-fr"></div>
+                </div>
+            </div>
+        </div>
+        <!--/商家发放-->
+        <!--客户提现-->
+        <div class="panel-hidden z-hide" id="withdrawcash">
+            <div class="m-search f-mt-m" id="m-search">
+                <form id="searchform1">
+                    <label class="u-lb-sm">手机</label>
+                    <div class="u-txt col-xs-3">
+                        <input type="text" class="ipt-txt" name="phoneNumber" placeholder="请输入手机"/>
+                    </div>
+                    <label class="u-lb-sm">姓名</label>
+                    <div class="u-txt col-xs-3">
+                        <input type="text" class="ipt-txt" name="userName" placeholder="请输入姓名"/>
+                    </div>
+                    <label class="u-lb-sm">付款平台</label>
+                    <div class="u-txt col-xs-3">
+                        <select class="ipt-txt c-gray1" name="platForm" id="withdrawcashplatForm">
+                            <option value="-1">全部</option>
+                            <option value="0">微信</option>
+                            <option value="1">微博</option>
+                        </select>
+                    </div>
+                    <label class="u-lb-sm">昵称</label>
+                    <div class="u-txt col-xs-3">
+                        <input type="text" class="ipt-txt" name="nickname" placeholder="请输入昵称"/>
+                        <input type="text" class="z-hide" name="accountType" value="1"/>
+                    </div>
+                    <!--<label class="u-lb-sm">用户角色</label>-->
+                    <!--<div class="u-txt col-xs-3">-->
+                        <!--<select class="ipt-txt c-gray1">-->
+                            <!--<option value="-1">全部</option>-->
+                            <!--<option value="1">分销客户</option>-->
+                            <!--<option value="2">分销a档</option>-->
+                            <!--<option value="2">分销b档</option>-->
+                            <!--<option value="2">分销c档</option>-->
+                            <!--<option value="2">代理A档</option>-->
+                            <!--<option value="2">代理B档</option>-->
+                            <!--<option value="2">代理C档</option>-->
+                            <!--<option value="2">代理D档</option>-->
+                        <!--</select>-->
+                    <!--</div>-->
+                    <label class="u-lb-sm">提现日期</label>
+                    <div class="u-txt u-txt-date f-ml-m">
+                        <input type="text" class="ipt-txt c-gray1" id="startDate" name="startDate" placeholder=""
+                               style="width: 114px;"/>
+                    </div>
+                    <div class="u-txt">
+                        <span class="line" style=" width:24px;">-</span>
+                    </div>
+                    <div class="u-txt u-txt-date">
+                        <input type="text" class="ipt-txt c-gray1" id="endDate" name="endDate" placeholder="" style="width: 114px;"/>
+                    </div>
+                    <div class="u-btn-box1">
+                        <input type="button" class="u-btn-mddkbl f-mr-xs" value="导出"/>
+                        <input type="button" class="u-btn-mddkorg searchbtn" value="查询"/>
+                    </div>
+                </form>
+            </div>
+            <a class="btn-slide btn-slide1"></a>
+            <!--客户提现查询列表-->
+            <div class="m-jm-table f-mt-m panel-per">
+                <ul class="table-hander">
+                    <li>头像</li>
+                    <li style="width:15%">昵称-姓名-手机号</li>
+                    <li>用户角色</li>
+                    <li>合计佣金（元）</li>
+                    <li>已发放（元）</li>
+                    <li>未发放（元）</li>
+                    <li>付款平台</li>
+                    <li>提现日期</li>
+                    <li>提现金额（元）</li>
+                    <li>发放操作</li>
+                </ul>
+                <div class="table-body" id="tableBody1">
+
+                </div>
+                <div class="table-footer f-mt-s"  >
+                    <div id="pageToolbar1" class="pagination f-fr"></div>
+                </div>
+            </div>
+        </div>
+        <!--/客户提现-->
+
+        <!--其他客户-->
+        <div class="panel-hidden " id="otherClient">
+            <div class="m-search f-mt-m" id="m-search3">
+                <form id="searchform3" >
+                    <label class="u-lb-sm">手机</label>
+                    <div class="u-txt col-xs-3">
+                        <input type="text" class="ipt-txt" name="phoneNumber" placeholder="请输入手机"/>
+                    </div>
+                    <label class="u-lb-sm">姓名</label>
+                    <div class="u-txt col-xs-3">
+                        <input type="text" class="ipt-txt" name="userName" placeholder="请输入姓名"/>
+                    </div>
+                    <label class="u-lb-sm">付款平台</label>
+                    <div class="u-txt col-xs-3">
+                        <select class="ipt-txt c-gray1" name="platForm" id="otherClientplatForm">
+                            <option value="-1">全部</option>
+                            <option value="0">微信</option>
+                            <option value="1">微博</option>
+                        </select>
+                    </div>
+                    <label class="u-lb-sm">属性</label>
+                    <div class="u-txt col-xs-3">
+                        <select class="ipt-txt c-gray1" name="type" id="otherClientplatother">
+                            <option value="0">账户零元</option>
+                            <option value="2">跑路粉丝</option>
+                        </select>
+                        <input type="text" class="z-hide" name="accountType" value="1"/>
+                    </div>
+                    <label class="u-lb-sm">昵称</label>
+                    <div class="u-txt col-xs-3">
+                        <input type="text" class="ipt-txt" name="nickname" placeholder="请输入昵称"/>
+                    </div>
+                    <!--<label class="u-lb-sm">用户角色</label>-->
+                    <!--<div class="u-txt col-xs-3">-->
+                        <!--<select class="ipt-txt c-gray1">-->
+                            <!--<option value="1">分销客户</option>-->
+                            <!--<option value="2">分销a档</option>-->
+                            <!--<option value="2">分销b档</option>-->
+                            <!--<option value="2">分销c档</option>-->
+                            <!--<option value="2">代理A档</option>-->
+                            <!--<option value="2">代理B档</option>-->
+                            <!--<option value="2">代理C档</option>-->
+                            <!--<option value="2">代理D档</option>-->
+                        <!--</select>-->
+                    <!--</div>-->
+
+                    <div class="u-btn-box1">
+                        <input type="button" class="u-btn-mddkbl f-mr-xs" value="导出"/>
+                        <input type="button" class="u-btn-mddkorg searchbtn" value="查询"/>
+                    </div>
+                </form>
+            </div>
+            <a class="btn-slide btn-slide1"></a>
+            <!--商家发放查询列表-->
+            <div class="m-jm-table f-mt-m">
+                <ul class="table-hander">
+                    <li>头像</li>
+                    <li style="width: 15%">昵称-姓名-手机号</li>
+                    <li>用户角色</li>
+                    <li>合计佣金（元）</li>
+                    <li>已发放（元）</li>
+                    <li>未发放（元）</li>
+                    <li>付款平台</li>
+                    <li>商家发放</li>
+                </ul>
+                <div class="table-body" id="tableBody3">
+
+                </div>
+                <div class="table-footer f-mt-s" >
+                    <div id="pageToolbar3" class="pagination f-fr"></div>
+                </div>
+            </div>
+        </div>
+        <!--/其他客户-->
+    </div>
+</div>
+<!--待发清单 end-->
+
+<script>
+    sales.waiting.init();
+</script>

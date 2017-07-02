@@ -1,0 +1,120 @@
+<style>
+    .select2-container--jumi .select2-selection--single .select2-selection__arrow{ height: 33px;}
+
+</style>
+<!--主模块-->
+
+<div class="m-tab f-mb-m">
+    <ul>
+        <li class="z-sel">新建群发</li>
+        <li>已发送</li>
+    </ul>
+</div>
+<!--新建群发消息-->
+
+<div class="panel-hidden" id="massmsg_content_new">
+    <div class="m-search" id="massmsg_updown_page">
+        <label class="u-lb-sm">分组选择</label>
+        <div class="u-txt col-xs-3">
+            <select name="userGroup" id="userGroup"   style="width:248px;"></select>
+        </div>
+        <label class="u-lb-sm">性别选择</label>
+        <div class="u-txt col-xs-3">
+            <select name="sex" id="sex"   style="width:248px;">
+                <option value="-1">全部</option>
+                <option value="0">无</option>
+                <option value="1">男</option>
+                <option value="2">女</option>
+            </select>
+        </div>
+        <label class="u-lb-sm">角色选择</label>
+        <div class="u-txt col-xs-3">
+            <select class="ipt-txt" name="zbRole" id="zbRole" style="width: 247px;">
+
+            </select>
+        </div>
+        <div class="col-xs-12" style="padding: 0;">
+            <div class="form-group" id="customer_content" style="margin-left: 30px">
+            </div>
+        </div>
+        <div class="u-btn-box1">
+            <input type="button" class="u-btn-lgdkorg1" id="massmsg_select" value="筛选" /><span id="span_sltobjs" style="display:none;"></span>
+            <input type="hidden" id="getmassoption" value="">
+        </div>
+    </div>
+
+    <a class="btn-slide btn-slide1" id="mass_pagebtn"></a>
+    <div class="m-panel-zdhf">
+        <ul class="panel-top">
+            <li class="dialog" style="cursor: pointer;"><i class="iconfont icon-list"></i>图文消息</li>
+            <li style="cursor: pointer;"><i class="iconfont icon-issue"></i>文本</li>
+            <li style="cursor: pointer;margin-left:5px;" id="newmass_imgdg"><i class="iconfont icon-image"></i>图片</li>
+            <!--<li style="cursor: pointer;"><i class="iconfont icon-column"></i>语音</li>-->
+            <!--<li  style="cursor: pointer;"><i class="iconfont icon-tv"></i>视频</li>-->
+            <!--<li></li>-->
+        </ul><div id="mm_tempcontent" style="display: none;"></div>
+        <div class="panel-body">
+            <div class="panel-list box" id="pictxt_show_con">
+
+            </div>
+            <div class="panel-list" id="panel_bedd">
+                <script id="panel_beadd_text_b" name="content" type="text/plain"></script>
+                <!--<textarea rows="" cols="" id="content"  placeholder="请输入文本"  name="" ></textarea>-->
+            </div>
+            <div class="panel-list box">
+                <div class="m-add-img" id="newmass_imgdiv" style="display: none;"><span id="imgstatus" style="display: none">0</span>
+                    <img id="newmass_img" src="" />
+                    <i class="iconfont icon-add"></i>
+                </div>
+                <!-- <textarea rows="" cols="" name="" >3</textarea>-->
+            </div>
+            <div class="panel-list box">
+                <textarea rows="" cols="" name="" ></textarea>
+            </div>
+            <div class="panel-list box">
+                <textarea rows="" cols="" name="" ></textarea>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="u-txt">
+            <div class="u-rb">
+                <input type="radio" name="sex_12" id="masssendType11" value="0" checked />
+                <label for="masssendType11"></label>
+            </div>
+            <label for="masssendType11"  class="f-mr-l">立即群发</label>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <div class="u-txt">
+            <div class="u-rb" style="margin-bottom: 10px;">
+                <input type="radio" name="sex_12" id="masssendType12" value="1" >
+                <label for="masssendType12"></label>
+            </div>
+            <label for="masssendType12" class="f-mr-l">定时群发</label>
+        </div>
+        <div class="u-txt u-txt-date f-ml-m" style="margin-top: -6px;">
+            <i class="iconfont icon-calendar"></i>
+            <input type="text" class="ipt-txt c-gray1" placeholder="" id="timemass" style="width: 162px;" />
+            <!-- <input type="text" class="form-control"  readonly="readonly" id="timemassmsg" value=""/>-->
+        </div>
+    </div>
+    <div class="u-btn-box1" style="padding-top:20px ;">
+        <!--   <input type="button" class="u-btn-lgdkbl f-mr-xs dialog" value="手机预览" />-->
+        <!--<input type="button" class="u-btn-lgdkorg" id="newmms_save_btn" value="保存" />-->
+        <input type="button" class="u-btn-mainlg" id="newmms_save_btn" value="保存" />
+    </div>
+</div>
+<!--新建群发消息111-->
+<!--已发送-->
+<div class="panel-hidden" id="massmsg_content_sended" style="overflow:inherit;">
+
+</div>
+<!--已发送-->
+
+<!--/主模块-->
+<script>
+    mm.massmsg.init();
+    mm.massmsg.mm_massmsg_slide();
+</script>

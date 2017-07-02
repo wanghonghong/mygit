@@ -1,0 +1,57 @@
+<style>
+    .m-jm-table .table-body .table-container li.f-tl{
+        word-break: break-all;
+    }
+    .error {
+        color: #ff6543;
+        font-size: 12px;
+    }
+    .m-fine-push{
+        top:-85px;
+    }
+    .m-fine-push span.iner{
+        top:105px;
+    }
+    .m-fine-push span.out{
+        top:105px;
+    }
+</style>
+<div class="m-jm-table" style="overflow: visible;min-height: 0">
+    <ul class="table-hander">
+        <li style="width: 20%;">标题</li>
+       <!-- <li>摘要</li>-->
+        <li>链接</li>
+        <li>发送日期</li>
+        <li>发送人</li>
+        <li>发送状态</li>
+        <li>查看</li>
+    </ul>
+    <div class="table-body" style="overflow: visible;">
+        {% if items.length >0 %}
+        {%for item in items%}
+        <ul class="table-container" style="position: relative;">
+            <li class="f-tl" style="width: 20%; padding: 0 20px;">{{item.first}}</li>
+           <!-- <li class="f-tl">{{item.description}}</li>-->
+            <li>{{item.urlName}} </li>
+            <li>{{item.sendTime}}</li>
+            <li>{{item.userName}}</li>
+            <li>{{item.statusName}}</li>
+            <li>
+                <div class="u-btn-smltgry" id="clickview_{{loop.index}}"> 点击查看</div><input type="hidden" id="pushview_{{loop.index}}" value="{{item|toString}}"/>
+                <div class="m-btn-layer m-fine-push" id="pushcontainer_{{loop.index}}" style="display: none;">
+
+                </div >
+            </li>
+        </ul>
+        {%endfor%}
+        {% else %}
+        <div class="m-jm-err">
+            <img src="{{globalUrl}}/css/pc/img/jm-nodb.png">
+        </div>
+        {% endif %}
+    </div>
+</div>
+<div class="f-fr">
+
+</div>
+

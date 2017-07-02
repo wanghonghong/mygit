@@ -1,0 +1,75 @@
+
+<div class="panel-hidden_1" style="position: relative;">
+    <!--时间查询条件-->
+    <div class="m-search f-mt-m f-pb-s" id="m-search1">
+        <label class="u-lb-sm">查询时间</label>
+        <div class="u-txt u-txt-date f-ml-m">
+            <i class="iconfont icon-calendar"></i>
+            <input type="text" id="beginDate" style="width: 111px;"  class="ipt-txt c-gray1" placeholder=""  />
+        </div>
+        <div class="u-txt">
+            <span class="line" style=" width: 20px;">至</span>
+        </div>
+        <div class="u-txt u-txt-date f-mr-m">
+            <i class="iconfont icon-calendar"></i>
+            <input type="text" id="endDate" style="width: 111px;" class="ipt-txt c-gray1" placeholder=""  />
+        </div>
+        <label class="u-lb-sm" style=" width: 120px;">交易平台</label>
+        <div class="u-txt col-xs-3">
+            <select class="ipt-txt c-gray1" id="platForm1">
+                <option value="1">微信</option>
+                <option value="2">微博</option>
+                <option value="0">全部</option>
+            </select>
+        </div>
+        <div class="col-xs-3">
+            <!--<input type="button" class="u-btn-mddkbl f-mr-xs" value="导出" />-->
+            <input type="button" class="u-btn-mddkorg u-w" onclick="dataAnalysis.user.initBase(0,'','A',$('#beginDate').val(),$('#endDate').val())" value="查询" />
+        </div>
+    </div>
+    <!--/-->
+    <!--<a class="btn-slide btn-slide1" id="btn_1" onclick="u(1)"></a>-->
+    <div class="m-subtab f-mt-xs" id="m-subtab1">
+        <ul class="u-usertabnav" id="f">
+            <li id="f_1" class="z-sel" onclick="dataAnalysis.user.initBase(1,'','B')">今日</li>
+            <li id="f_2" onclick="dataAnalysis.user.initBase(2,'','C')" >本周</li>
+            <li id="f_3" onclick="dataAnalysis.user.initBase(3,'','D')">本月</li>
+            <li id="f_4" onclick="dataAnalysis.user.initBase(4,'','F')">历史</li>
+            <li id="f_5" >自定义</li>
+            <div class="current">
+                <i class="iconfont icon-uptriangle"></i>
+            </div>
+        </ul>
+    </div>
+    <div class="panel-hid1" style="overflow: auto;">
+        <div class="u-tabchange"  id="show_f" flag="F">
+            <span class="u-tab1 active" onclick="dataAnalysis.user.showFormat(1)">表格展示</span>
+            <span class="u-tab2" onclick="dataAnalysis.user.showFormat(2)">柱状图展示</span>
+        </div>
+        <!--数据列表-->
+        {% include '/tpl/shop/dataAnalysis/user/basicF.html' %}
+        <!--柱状图-->
+        {% include '/tpl/shop/dataAnalysis/user/basicG.html' %}
+    </div>
+
+</div>
+
+<script type="text/javascript">
+
+    $("#beginDate").datetimepicker({
+        showSecond : false,
+        timeFormat : 'hh:mm:ss',
+        dateFormat : 'yy-mm-dd',
+        stepHour : 1,
+        stepMinute : 1,
+        stepSecond : 1
+    });
+    $("#endDate").datetimepicker({
+        showSecond : false,
+        timeFormat : '23:59:59',
+        dateFormat : 'yy-mm-dd',
+        stepHour : 1,
+        stepMinute : 1,
+        stepSecond : 1
+    });
+</script> 

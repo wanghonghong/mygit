@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>html5</title>
+	<link rel="stylesheet" href="css/pc/index.css">
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="js/libs/third-js/artDialog/6.0/css/ui-dialog.css"/>
+	<style>
+		/*查看下载弹窗*/
+		.m-orderinfo-dialog li > div:nth-child(1) {
+			width: 28%;
+		}
+		/*备注*/
+		.m-jm-table .table-body .table-container {
+			position: relative;
+		}
+		.m-btn-layer.layer-2 {
+			top: 5px;
+		}
+		.m-btn-layer.layer-2 span.out {
+			top: 15px;
+		}
+		.m-btn-layer.layer-2 span.iner {
+			top: 15px;
+		}
+	</style>
+</head>
+<body>
+<!-- 头部模块 -->
+  <header class="g-hd">
+		<header>
+			<div class="g-mn">
+				<label>欢迎来到聚米为谷！</label>
+				<div class="g-memu">
+					  <img src="css/pc/img/shopimg2.png" /> 
+					  <div>
+					  	商铺切换
+					  	<i class="iconfont icon-belowtriangle"></i>
+					  </div><br>
+					<ul >
+			  			<li> <a>店铺切换</a> </li>
+			  			<li> <a>商铺设置</a> </li>
+			  			<li> <a>个人资料</a> </li>
+			  			<li> <a>退出</a> </li>
+			  		</ul>
+				</div>
+			</div>
+		</header>
+		<section class="g-mn">
+			<div class="u-logo">
+			  		<img src="css/pc/img/logo.png"  />
+			 </div>
+			 <div class="m-nav">
+			 	 <ul  >
+		  		 	<li><a href="#">商城搭建</a></li>
+						<li class="z-sel"><a href="#">多级分销</a></li>
+						<li><a href="#">活动推广</a></li>
+						<li><a href="#">内容营销</a></li>
+						<li><a href="#">用户管理</a></li>
+						<li><a href="#">订单管理</a></li>
+						<li><a href="#">在线客服</a></li>
+						<li><a href="#">经营分析</a></li>
+		  		 </ul>
+			 	
+			 </div>
+			 
+		</section>		
+	</header>
+	<!-- /头部模块 -->
+	<!-- 主界面 -->
+	<div class="g-content">
+		<!-- 左侧菜单 -->
+		<aside class="g-sd-left">
+ 			<div class="m-memu">
+ 				<div class="memu-panel">
+ 					<div class="one-level-memu">
+        			 	  <i class="iconfont icon-menuset"></i>
+        			 	   菜单设置
+        			 </div>
+        			 <div class="two-level-memu">
+        			 	    菜单设置
+        			 	   <i class="iconfont  icon-righttriangle"></i>
+        			 </div>
+        			 <div class="two-level-memu">
+        			 	微信授权  <i class="iconfont  icon-righttriangle"></i>
+        			 </div>
+ 				</div>
+ 				<div class="memu-panel">
+ 					<div class="one-level-memu">
+        			 	<i class="iconfont icon-market"></i>
+        			 	支付设置
+        			</div>
+ 				</div> 
+ 				<div class="memu-panel">
+        			<div class="one-level-memu">
+        			 	<i class="iconfont icon-basket"></i>
+        				商城管理
+        			</div>
+        			<div class="two-level-memu ">
+        				商城搭建  <i class="iconfont  icon-righttriangle"></i>
+        			</div>
+	        		<div class="two-level-memu">
+        				商品发布  <i class="iconfont  icon-righttriangle"></i>
+        			</div>
+        			<div class="two-level-memu">
+        				商品管理  <i class="iconfont  icon-righttriangle"></i>
+        			</div>
+	        	</div>
+	        	<div class="memu-panel">
+					<div class="one-level-memu z-sel">
+    			 		<i class="iconfont  icon-imageText"></i>
+    			 	 	商品条码
+    			 	</div>	 
+    				 <div class="two-level-memu">
+    			 		渠道条码  <i class="iconfont  icon-righttriangle"></i>
+    				</div>
+    				<div class="two-level-memu z-sel">
+    			 	 	通用条码  <i class="iconfont  icon-righttriangle"></i>
+    				</div>
+    				<div class="two-level-memu">
+    			 	 	通码授权  <i class="iconfont  icon-righttriangle"></i>
+    				</div>
+        		</div>
+        		<div class="memu-panel">
+					<div class="one-level-memu">
+    			 		<i class="iconfont  icon-imageText"></i>
+    			 	 	官方图文
+    			 	</div>	 
+    				 <div class="two-level-memu">
+    			 		项目图文  <i class="iconfont  icon-righttriangle"></i>
+    				</div>
+    				<div class="two-level-memu">
+    			 	 	乐享图文  <i class="iconfont  icon-righttriangle"></i>
+    				</div>
+    				<div class="two-level-memu">
+    			 	 	培训通知  <i class="iconfont  icon-righttriangle"></i>
+    				</div>
+        		</div>
+        		<div class="memu-panel">
+ 					<div class="one-level-memu">
+        			 	<i class="iconfont icon-store2"></i>
+        			 	店铺设置
+        			</div>
+ 				</div>
+ 				<div class="memu-panel">
+ 					<div class="one-level-memu">
+        			 	<i class="iconfont icon-matterCore"></i>
+        			 	素材中心
+        			</div>
+ 				</div>
+ 				<div class="memu-panel">
+					<div class="one-level-memu">
+    			 		<i class="iconfont  icon-serviceMarket"></i>
+    			 	 	服务市场
+    			 	</div>	 
+    				 <div class="two-level-memu">
+    			 		运营服务  <i class="iconfont  icon-righttriangle"></i>
+    				</div>
+    				<div class="two-level-memu">
+    			 	 	软件采购  <i class="iconfont  icon-righttriangle"></i>
+    				</div>
+    				<div class="two-level-memu">
+    			 	 	硬件采购  <i class="iconfont  icon-righttriangle"></i>
+    				</div>
+    				<div class="two-level-memu">
+    			 	 	购买记录  <i class="iconfont  icon-righttriangle"></i>
+    				</div>
+        		</div>
+ 			</div>			
+		</aside>
+		<!-- 左侧菜单 -->
+		<!--主模块-->
+		<section class="g-mn">
+			<div class="m-tab f-mb-l" id="m-tab">
+				<ul>
+					<li class="z-sel">创建条码</li>
+					<li>下载条码</li>
+					<li>使用效果</li>
+				</ul>
+			</div>
+			<!--创建条码-->
+			<div class="panel-hidden">
+				<div class="m-sell-set" style="margin-right: 0; margin-left: 0px;">
+					<div class="sell-set-left c-gray1">
+						<h3 style="padding-left: 15px;">条码设置</h3>
+					</div>
+					<div class="sell-set-right">
+						<div class="col-xs-12 f-mb-xs">
+							<label class="u-lb-sm f-fl c-deepgray">指定商品</label>
+							<div class="col-xs-10 f-pt-xs">
+								<div class="u-btn-smltgry dialog-barbox"><span>点击选择</span></div>
+								<div class="m-selectbarbox f-ml-s" style="width: 430px;">
+									陈君&nbsp;&nbsp;18065324987&nbsp;&nbsp;代理 1 档
+								</div>
+							</div>
+						</div>
+						<div class="col-xs-12 f-mb-xs">
+							<label class="u-lb-sm f-fl c-deepgray">条码名称</label>
+							<div class="u-txt col-xs-7">
+								<input type="text" class="ipt-txt c-gray1" placeholder="" />
+								<span class="number font-s12">0/20</span>
+							</div>
+						</div>
+						<div class="col-xs-12 f-mb-xs">
+							<label class="u-lb-sm f-fl c-deepgray">条码数量</label>
+							<div class="u-txt col-xs-7">
+								<input type="text" class="ipt-txt c-gray1" placeholder="" style="padding-right: 28px;" />
+								<span class="number font-s12" style="bottom: 8px; right: 22px;">枚</span>
+							</div>
+						</div>
+						<div class="col-xs-12 f-mb-xs">
+							<label class="u-lb-sm f-fl c-deepgray">条码类型</label>
+							<div class="u-txt col-xs-7">
+								<select class="ipt-txt c-gray1">
+									<option value="1">二维码</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-xs-12 f-mb-xs">
+							<label class="u-lb-sm f-fl c-deepgray">有效日期</label>
+							<div class="u-txt f-ml-m">
+								<input type="text" class="ipt-txt c-gray1" placeholder="" style="width: 245px;" />
+							</div>
+							<div class="u-txt">
+								<span class="line" style="width: 20px;">-</span>
+							</div>
+							<div class="u-txt">
+								<input type="text" class="ipt-txt c-gray1" placeholder="" style="width: 245px;" />
+							</div>
+						</div>
+						<div class="col-xs-12">
+							<label class="u-lb-sm f-fl c-deepgray">备注说明</label>
+							<div class="u-txt col-xs-7">
+								<textarea name="shared" class="ipt-txt txtarea" placeholder=""></textarea>
+								<span class="number font-s12">0/60</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="u-btn-box f-mt-xl">
+					<input type="button" class="u-btn-mainlg" value="生成条码" />
+				</div>
+			</div>
+			<!--/创建条码-->
+			<!--下载条码-->
+			<div class="panel-hidden" style="overflow: inherit;">
+				<div class="m-search" id="m-search">
+					<label class="u-lb-sm">条码名称</label>
+					<div class="u-txt col-xs-3">
+						<input type="text" class="ipt-txt" placeholder="请输入条码名称" />
+					</div>
+					<label class="u-lb-sm">截效日期</label>
+					<div class="u-txt col-xs-3">
+						<input type="text" class="ipt-txt" placeholder="请输入截效日期" />
+					</div>
+					<label class="u-lb-sm">创建日期</label>
+					<div class="u-txt u-txt-date f-ml-m">
+						<i class="iconfont icon-calendar"></i>
+						<input type="text" class="ipt-txt c-gray1" placeholder="" style="width: 115px;" />
+					</div>
+					<div class="u-txt">
+						<span class="line" style="width: 22px;">-</span>
+					</div>
+					<div class="u-txt u-txt-date">
+						<i class="iconfont icon-calendar"></i>
+						<input type="text" class="ipt-txt c-gray1" placeholder="" style="width: 115px;" />
+					</div>
+					<div></div>	
+					<label class="u-lb-sm">指定商品</label>
+					<div class="u-txt col-xs-3">
+						<input type="text" class="ipt-txt" placeholder="请输入指定商品" />
+					</div>
+					<label class="u-lb-sm">使用状态</label>
+					<div class="u-txt col-xs-3">
+						<select class="ipt-txt c-gray1">
+							<option value="1">无粉</option>
+							<option value="2">有粉</option>
+						</select>
+					</div>
+					<div class="u-btn-box1">	
+						<input type="button" class="u-btn-mddkorg u-w" value="查询" />
+					</div>				
+				</div>
+				<a class="btn-slide btn-slide1"></a>
+				<div class="m-jm-table f-mt-m" style="overflow: inherit;">
+					<ul class="table-hander">
+						<li style="width: 15%;">条码名称</li>
+						<li>数量（枚）</li>
+						<li style="width: 15%;">指定商品</li>
+						<li>类型</li>
+						<li style="width: 12%;">创建时间</li>
+						<li style="width: 12%;">截效日期</li>
+						<li>使用状态</li>
+						<li>印刷备注</li>
+						<li>查看下载</li>
+					</ul>
+					<div class="table-body" style="overflow: inherit;">
+						<ul class="table-container">	
+							<li class="f-tl" style="width: 15%; padding-left: 15px; padding-right: 15px;">金标红酒二维码</li>
+							<li>15</li>
+							<li class="f-tl" style="width: 15%; padding-left: 15px; padding-right: 15px;"><p title="金标红酒二维码">金标-1865金标</p></li>
+							<li>条形码</li>
+							<li style="width: 12%;">2016-08-24 15:29</li>
+							<li style="width: 12%;">2016-09-24 15:29</li>
+							<li>无粉</li>
+							<li>
+								<div class="u-btn-smltgry">备注</div>
+							</li>
+							<li>
+								<div class="u-btn-smltgry dialog-seedown">查看</div>		
+							</li>
+						</ul>
+						<ul class="table-container">
+							<li class="f-tl" style="width: 15%; padding-left: 15px; padding-right: 15px;">家具图文二维码</li>
+							<li>18</li>
+							<li class="f-tl" style="width: 15%; padding-left: 15px; padding-right: 15px;"><p title="金标红酒二维码">红艺沙发</p></li>
+							<li>二维码</li>
+							<li style="width: 12%;">2016-08-24 15:29</li>
+							<li style="width: 12%;">2016-09-24 15:29</li>
+							<li>有粉</li>
+							<li>
+								已印刷
+							</li>
+							<li>
+								<div class="u-btn-smltgry">查看</div>		
+							</li>
+						</ul>
+						<ul class="table-container">
+							<li class="f-tl" style="width: 15%; padding-left: 15px; padding-right: 15px;">金标红酒二维码</li>
+							<li>18</li>
+							<li class="f-tl" style="width: 15%; padding-left: 15px; padding-right: 15px;"><p title="金标红酒二维码">金标-1865金标</p></li>
+							<li>条形码</li>
+							<li style="width: 12%;">2016-08-24 15:29</li>
+							<li style="width: 12%;">2016-09-24 15:29</li>
+							<li>有粉</li>
+							<li>
+								未印刷
+							</li>
+							<li>
+								<div class="u-btn-smltgry">查看</div>		
+							</li>
+						</ul>
+						<ul class="table-container">
+							<li class="f-tl" style="width: 15%; padding-left: 15px; padding-right: 15px;">金标红酒二维码</li>
+							<li>18</li>
+							<li class="f-tl" style="width: 15%; padding-left: 15px; padding-right: 15px;"><p title="金标红酒二维码">金标-1865金标</p></li>
+							<li>条形码</li>
+							<li style="width: 12%;">2016-08-24 15:29</li>
+							<li style="width: 12%;">2016-09-24 15:29</li>
+							<li>无粉</li>
+							<li>
+								<div class="u-btn-smltgry">备注</div>
+								<div class="m-btn-layer layer-2" style="right: 200px;">
+									<span class="out"></span>
+									<span class="iner"></span> 
+									<div class="m-grade">
+										<div class="u-txt">
+											<input type="text" class="u-grades" value="" />
+										</div>
+										<div class="u-btn-box1" style="border-top: none; padding-top: 0; padding-bottom: 8px;">
+											<input type="button" class="u-btn-smltgry" value="取消" />
+											<input type="button" class="u-btn-smdkorg" value="保存" />
+										</div>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="u-btn-smltgry dialog-seedown">查看</div>		
+							</li>
+						</ul>
+					</div>
+					<!--以下是分页效果-->
+					<div id="pageToolbar" class="pagination f-tr f-mt-m">
+						<span class="pagenum">每页 10 条，总共 26 条</span>
+						<span class="prev">&lt;</span>
+						<span class="current">1</span>
+						<a href="javascript:void(0)">2</a>
+						<a href="javascript:void(0)">3</a>
+						<em>...</em>
+						<a href="javascript:void(0)">9</a>
+						<a href="javascript:void(0)">10</a>
+						<span class="next">&gt;</span>
+						<input type="text" value="" class="ipt-page" />
+						<div class="u-btn-pageto">跳转</div>
+						<input type="hidden" id="pageToolbar_page" value="0">
+					</div>
+					<!--分页end-->
+				</div>
+			</div>
+			<!--/下载条码-->
+			<!--使用效果-->
+			<div class="panel-hidden" style="overflow: inherit;">
+				<div class="m-search" id="m-search2">
+					<label class="u-lb-sm">条码名称</label>
+					<div class="u-txt col-xs-3">
+						<input type="text" class="ipt-txt" placeholder="请输入条码名称" />
+					</div>
+					<label class="u-lb-sm">截效日期</label>
+					<div class="u-txt col-xs-3">
+						<input type="text" class="ipt-txt" placeholder="请输入截效日期" />
+					</div>
+					<label class="u-lb-sm">创建日期</label>
+					<div class="u-txt u-txt-date f-ml-m">
+						<i class="iconfont icon-calendar"></i>
+						<input type="text" class="ipt-txt c-gray1" placeholder="" style="width: 115px;" />
+					</div>
+					<div class="u-txt">
+						<span class="line" style="width: 22px;">-</span>
+					</div>
+					<div class="u-txt u-txt-date">
+						<i class="iconfont icon-calendar"></i>
+						<input type="text" class="ipt-txt c-gray1" placeholder="" style="width: 115px;" />
+					</div>
+					<div></div>	
+					<label class="u-lb-sm">指定商品</label>
+					<div class="u-txt col-xs-3">
+						<input type="text" class="ipt-txt" placeholder="请输入指定商品" />
+					</div>
+					<label class="u-lb-sm">自授权者</label>
+					<div class="u-txt col-xs-3">
+						<input type="text" class="ipt-txt" placeholder="请输入自授权者" />
+					</div>
+					<label class="u-lb-sm">使用状态</label>
+					<div class="u-txt col-xs-3">
+						<select class="ipt-txt c-gray1">
+							<option value="1">无粉</option>
+							<option value="2">有粉</option>
+						</select>
+					</div>
+					<div class="u-btn-box1">	
+						<input type="button" class="u-btn-mddkorg u-w" value="查询" />
+					</div>				
+				</div>
+				<a class="btn-slide2 btn-slide3"></a>
+				<div class="m-jm-table f-mt-m">
+					<ul class="table-hander">
+						<li>条码编号</li>
+						<li>条码名称</li>
+						<li>指定商品</li>
+						<li style="width: 7%;">类型</li>
+						<li>创建时间</li>
+						<li>截效日期</li>
+						<li style="width: 15%;">自授权者</li>
+						<li style="width: 8%;">使用状态</li>
+						<li style="width: 15%;">管理</li>
+					</ul>
+					<div class="table-body" style="overflow: inherit;">
+						<ul class="table-container">
+							<li>
+								<div class="u-cb">
+									<input type="checkbox" name="" id="checknum1" value="" />
+									<label class="iconfont icon-avoid" for="checknum1"></label>
+								</div>
+								<label for="checknum1">58469223655</label>
+							</li>						
+							<li class="f-tl" style="padding-left: 15px;">金标红酒二维码</li>
+							<li class="f-tl" style="padding-left: 15px;"><p title="金标红酒二维码">金标-1865金标</p></li>
+							<li style="width: 7%;">条形码</li>
+							<li>2016-08-24 15:29</li>
+							<li>2016-09-24 15:29</li>
+							<li style="width: 15%;">
+								<div class="g-table">
+									<div class="g-table-cell f-vm">
+										<img src="css/pc/img/jmtt-big.png" alt="暂无图片" class="u-thumbnail-circ" />
+									</div>
+									<div class="g-table-cell f-vm f-tl">
+										<span>陈小君</span><span>18042514222</span>
+									</div>
+								</div>
+							</li>
+							<li style="width: 8%;">无粉</li>
+							<li style="width: 15%;">
+								<div class="u-btn-smltgry f-mr-xs dialog-clear">清空授权</div>
+								<div class="u-btn-smltgry dialog-see">查看效果</div>	
+							</li>
+						</ul>
+						<ul class="table-container">
+							<li class="f-tl">
+								<div class="u-cb">
+									<input type="checkbox" name="" id="checknum2" value="" />
+									<label class="iconfont icon-avoid" for="checknum2"></label>
+								</div>
+								<label for="checknum2">58469223655</label>
+							</li>						
+							<li class="f-tl" style="padding-left: 15px;">家具图文二维码</li>
+							<li class="f-tl" style="padding-left: 15px;"><p title="金标红酒二维码">红艺沙发</p></li>
+							<li style="width: 7%;">二维码</li>
+							<li>2016-08-24 15:29</li>
+							<li>2016-09-24 15:29</li>
+							<li style="width: 15%;">
+								<div class="g-table">
+									<div class="g-table-cell f-vm">
+										<img src="css/pc/img/jmtt-big.png" alt="暂无图片" class="u-thumbnail-circ" />
+									</div>
+									<div class="g-table-cell f-vm f-tl">
+										<span>陈小君</span><span>18042514222</span>
+									</div>
+								</div>
+							</li>
+							<li style="width: 8%;">有粉</li>
+							<li style="width: 15%;">
+								<div class="u-btn-smltgry f-mr-xs">清空授权</div>
+								<div class="u-btn-smltgry">查看效果</div>	
+							</li>
+						</ul>
+						<ul class="table-container">
+							<li class="f-tl">
+								<div class="u-cb">
+									<input type="checkbox" name="" id="checknum3" value="" />
+									<label class="iconfont icon-avoid" for="checknum3"></label>
+								</div>
+								<label for="checknum3">58469223655</label>
+							</li>						
+							<li class="f-tl" style="padding-left: 15px;">金标红酒二维码</li>
+							<li class="f-tl" style="padding-left: 15px;"><p title="金标红酒二维码">金标-1865金标</p></li>
+							<li style="width: 7%;">条形码</li>
+							<li>2016-08-24 15:29</li>
+							<li>2016-09-24 15:29</li>
+							<li style="width: 15%;">
+								<div class="g-table">
+									<div class="g-table-cell f-vm">
+										<img src="css/pc/img/jmtt-big.png" alt="暂无图片" class="u-thumbnail-circ" />
+									</div>
+									<div class="g-table-cell f-vm f-tl">
+										<span>陈小君</span><span>18042514222</span>
+									</div>
+								</div>
+							</li>
+							<li style="width: 8%;">有粉</li>
+							<li style="width: 15%;">
+								<div class="u-btn-smltgry f-mr-xs">清空授权</div>
+								<div class="u-btn-smltgry">查看效果</div>	
+							</li>
+						</ul>
+						<ul class="table-container f-t-off">
+							<li class="f-tl">
+								<div class="u-cb">
+									<input type="checkbox" name="" id="checknum4" value="" />
+									<label class="iconfont icon-avoid" for="checknum4"></label>
+								</div>
+								<label for="checknum4">58469223655</label>
+							</li>						
+							<li class="f-tl" style="padding-left: 15px;">金标红酒二维码</li>
+							<li class="f-tl" style="padding-left: 15px;"><p title="金标红酒二维码">金标-1865金标红酒二维码金标红酒二维码金标红酒二维码金标红酒二维码</p></li>
+							<li style="width: 7%;">条形码</li>
+							<li>2016-08-24 15:29</li>
+							<li>2016-09-24 15:29</li>
+							<li style="width: 15%;">
+								<div class="g-table">
+									<div class="g-table-cell f-vm">
+										<img src="css/pc/img/jmtt-big.png" alt="暂无图片" class="u-thumbnail-circ" />
+									</div>
+									<div class="g-table-cell f-vm f-tl">
+										<span>陈小君</span><span>18042514222</span>
+									</div>
+								</div>
+							</li>
+							<li style="width: 8%;">无粉</li>
+							<li style="width: 15%;">
+								<div class="u-btn-smltgry f-mr-xs">清空授权</div>
+								<div class="u-btn-smltgry">查看效果</div>	
+							</li>
+						</ul>
+					</div>
+					<div class="panel-hid1 f-pt-m">
+						<div class="u-cb">
+							<input type="checkbox" name="" id="checkbox0" value="" />
+							<label class="iconfont icon-avoid" for="checkbox0"></label>
+						</div>
+						<label for="checkbox0" class="font-s12">全选</label>
+						<div class="u-btn-smltgry f-ml-s"><i class="iconfont icon-delete1" style="color: #f6a18d; font-weight: bold;"></i>清空授权</div>
+						<!--以下是分页效果-->
+						<div id="pageToolbar" class="pagination f-fr">
+							<span class="pagenum">每页 10 条，总共 26 条</span>
+							<span class="prev">&lt;</span>
+							<span class="current">1</span>
+							<a href="javascript:void(0)">2</a>
+							<a href="javascript:void(0)">3</a>
+							<em>...</em>
+							<a href="javascript:void(0)">9</a>
+							<a href="javascript:void(0)">10</a>
+							<span class="next">&gt;</span>
+							<input type="text" value="" class="ipt-page" />
+							<div class="u-btn-pageto">跳转</div>
+							<input type="hidden" id="pageToolbar_page" value="0">
+						</div>
+						<!--分页end-->
+					</div>
+				</div>
+			</div>
+			<!--/使用效果-->
+		</section>
+		<!--/主模块-->
+	</div>
+		<!-- /主界面 -->
+	 <!-- 底部模块 -->
+	 <footer class="g-ft">
+	 	 <label> Copyright  版权由聚米为谷科技所有 </label>
+	 </footer>
+	 <!-- /底部模块 -->
+	 <!--渠道商选择-->
+	<div id="dialoginfo-barbox" class="dialoginfo">
+		<div class="m-jm-table">
+			<div class="u-select-control col-xs-4 f-mb-s" style="position: relative; top: 0; padding: 0;">
+				<input type="text" class="" name="goodsName" placeholder="请输入姓名或手机号" />
+				<i class="iconfont icon-belowtriangle after-border"></i>
+				<i class="iconfont icon-search" id="searchBtn"></i>
+			</div>
+			<ul class="table-hander">
+				<li>姓名</li>
+				<li>手机号</li>
+				<li>角色</li>
+				<li>选择</li>			
+			</ul>
+			<div class="table-body h-scroll">
+				<ul class="table-container">
+					<li><label for="barBox1">陈小君</label></li>
+					<li>18236549870</li>
+					<li>代理 1 档 </li>
+					<li>
+						<div class="u-rb">
+							<input type="radio" name="sel" id="barBox1" value="" />
+							<label for="barBox1"></label>
+						</div>
+					</li>					
+				</ul>
+				<ul class="table-container">
+					<li><label for="barBox2">张三</label></li>
+					<li>18236549870</li>
+					<li>代理 1 档 </li>
+					<li>
+						<div class="u-rb">
+							<input type="radio" name="sel" id="barBox2" value="" />
+							<label for="barBox2"></label>
+						</div>
+					</li>					
+				</ul>
+				<ul class="table-container">
+					<li><label for="barBox3">李四</label></li>
+					<li>18236549870</li>
+					<li>代理 1 档 </li>
+					<li>
+						<div class="u-rb">
+							<input type="radio" name="sel" id="barBox3" value="" />
+							<label for="barBox3"></label>
+						</div>
+					</li>					
+				</ul>
+				<ul class="table-container">
+					<li><label for="barBox4">王五</label></li>
+					<li>18236549870</li>
+					<li>代理 1 档 </li>
+					<li>
+						<div class="u-rb">
+							<input type="radio" name="sel" id="barBox4" value="" />
+							<label for="barBox4"></label>
+						</div>
+					</li>					
+				</ul>
+			</div>
+			<!--以下是分页效果-->
+			<div id="pageToolbar" class="pagination f-tr f-mt-m">
+				<span class="pagenum">每页 10 条，总共 26 条</span>
+				<span class="prev">&lt;</span>
+				<span class="current">1</span>
+				<a href="javascript:void(0)">2</a>
+				<a href="javascript:void(0)">3</a>
+				<em>...</em>
+				<a href="javascript:void(0)">9</a>
+				<a href="javascript:void(0)">10</a>
+				<span class="next">&gt;</span>
+				<input type="text" value="" class="ipt-page" />
+				<div class="u-btn-pageto">跳转</div>
+				<input type="hidden" id="pageToolbar_page" value="0">
+			</div>
+			<!--分页end-->
+		</div>
+		<div class="u-btn-box1 f-mt-m"><input type="button" class="u-btn-mainlg" value="确定" /></div>
+	</div>
+	<!--/-->
+	<!--商品选择-->
+	<div id="dialoginfo-goodsbox" class="dialoginfo">
+		<div class="m-jm-table">
+			<ul class="table-hander">
+				<li>商品主图</li>
+				<li>商品名称</li>
+				<li>选择</li>			
+			</ul>
+			<div class="table-body h-scroll">
+				<ul class="table-container f-pd-s">
+					<li><img src="css/pc/img/no_picture.png" alt="暂无图片" class="u-thumbnail-squa" /></li>
+					<li><label for="goodsBox1">秒角卡棒棒糖</label></li>
+					<li>
+						<div class="u-rb">
+							<input type="radio" name="sel" id="goodsBox1" value="" />
+							<label for="goodsBox1"></label>
+						</div>
+					</li>					
+				</ul>
+				<ul class="table-container f-pd-s">
+					<li><img src="css/pc/img/no_picture.png" alt="暂无图片" class="u-thumbnail-squa" /></li>
+					<li><label for="goodsBox2">金丝猴奶糖</label></li>
+					<li>
+						<div class="u-rb">
+							<input type="radio" name="sel" id="goodsBox2" value="" />
+							<label for="goodsBox2"></label>
+						</div>
+					</li>					
+				</ul>
+				<ul class="table-container f-pd-s">
+					<li><img src="css/pc/img/no_picture.png" alt="暂无图片" class="u-thumbnail-squa" /></li>
+					<li><label for="goodsBox3">可比克</label></li>
+					<li>
+						<div class="u-rb">
+							<input type="radio" name="sel" id="goodsBox3" value="" />
+							<label for="goodsBox3"></label>
+						</div>
+					</li>					
+				</ul>
+				<ul class="table-container f-pd-s">
+					<li><img src="css/pc/img/no_picture.png" alt="暂无图片" class="u-thumbnail-squa" /></li>
+					<li><label for="goodsBox4">可口可乐</label></li>
+					<li>
+						<div class="u-rb">
+							<input type="radio" name="sel" id="goodsBox4" value="" />
+							<label for="goodsBox4"></label>
+						</div>
+					</li>					
+				</ul>
+			</div>
+			<!--以下是分页效果-->
+			<div id="pageToolbar" class="pagination f-tr f-mt-m">
+				<span class="pagenum">每页 10 条，总共 26 条</span>
+				<span class="prev">&lt;</span>
+				<span class="current">1</span>
+				<a href="javascript:void(0)">2</a>
+				<a href="javascript:void(0)">3</a>
+				<em>...</em>
+				<a href="javascript:void(0)">9</a>
+				<a href="javascript:void(0)">10</a>
+				<span class="next">&gt;</span>
+				<input type="text" value="" class="ipt-page" />
+				<div class="u-btn-pageto">跳转</div>
+				<input type="hidden" id="pageToolbar_page" value="0">
+			</div>
+			<!--分页end-->
+		</div>
+		<div class="u-btn-box1 f-mt-m"><input type="button" class="u-btn-mainlg" value="确定" /></div>
+	</div>
+	<!--/-->
+	<!--查看下载-->
+	<!--顶部有样式控制-->
+	<div id="dialoginfo-seedown" class="dialoginfo">
+		<ul class="m-orderinfo-dialog">
+			<li>
+				<div class="bg-gray1">条码名称</div>
+				<div>零食金丝猴的图文二维码</div>
+			</li>
+			<li>
+				<div class="bg-gray1">条码编号</div>
+				<div>1641629846479841</div>
+			</li>
+			<li>
+				<div class="bg-gray1">条码图片</div>
+				<div style="padding-bottom: 5px;"><img src="css/pc/img/no_picture.png" alt="暂无图片" class="u-thumbnail-squa" /></div>
+			</li>
+			<li>
+				<div class="bg-gray1">商品名称</div>
+				<div>金丝猴奶糖</div>
+			</li>
+			<li>
+				<div class="bg-gray1">商品主图</div>
+				<div style="padding-bottom: 5px;"><img src="css/pc/img/no_picture.png" alt="暂无图片" class="u-thumbnail-squa" /></div>
+			</li>
+		</ul>
+		<div class="u-btn-box1 f-mt-m"><input type="button" class="u-btn-mainlg" value="下载" /></div>
+	</div>
+	<!--/-->
+	<!--查看效果-->
+	<div id="dialoginfo-see" class="dialoginfo">
+		<div class="m-tab f-mb-m" id="m-tab1">
+			<ul>
+				<li class="z-sel">基础信息</li>
+				<li>使用效果</li>
+			</ul>
+		</div>
+		<div class="panel-hid">
+			<ul class="m-orderinfo-dialog">
+				<li>
+					<div class="bg-gray1">条码名称</div>
+					<div>零食金丝猴的图文二维码</div>
+				</li>
+				<li>
+					<div class="bg-gray1">条码编号</div>
+					<div>1641629846479841</div>
+				</li>
+				<li>
+					<div class="bg-gray1">条码图片</div>
+					<div style="padding-bottom: 5px;"><img src="css/pc/img/no_picture.png" alt="暂无图片" class="u-thumbnail-squa" /></div>
+				</li>
+				<li>
+					<div class="bg-gray1">商品名称</div>
+					<div>金丝猴奶糖</div>
+				</li>
+				<li>
+					<div class="bg-gray1">商品主图</div>
+					<div style="padding-bottom: 5px;"><img src="css/pc/img/no_picture.png" alt="暂无图片" class="u-thumbnail-squa" /></div>
+				</li>
+			</ul>
+			<div class="u-btn-box1 f-mt-m"><input type="button" class="u-btn-mddkorg u-w" value="关闭" /></div>
+		</div>
+		<div class="panel-hid">
+			<ul class="m-redbage-effect f-mb-s">
+				<li>
+					<p>加粉人数：<span class="c-orange1">12345.00</span> 人</p>
+					<p>使用次数：<span class="c-orange1">12345</span> 次</p>
+				</li>
+			</ul>
+			<div class="m-jm-table">
+				<ul class="table-hander">
+					<li>昵称</li>
+					<li>角色</li>
+					<li>关注时间</li>
+					<li>购买金额（元）</li>
+				</ul>
+				<div class="table-body h-scroll">
+					<ul class="table-container">
+						<li>我是昵称我是昵称</li>
+						<li>代理 1 档</li>
+						<li>2016-08-16 14:00:33</li>
+						<li>125.00</li>
+					</ul>
+					<ul class="table-container">
+						<li>小爷不谷先生</li>
+						<li>代理 2 档</li>
+						<li>2016-08-16 14:00:33</li>
+						<li>125.00</li>
+					</ul>
+					<ul class="table-container">
+						<li>陈君君</li>
+						<li>代理 3 档</li>
+						<li>2016-08-16 14:00:33</li>
+						<li>125.00</li>
+					</ul>
+					<ul class="table-container">
+						<li>陈小君</li>
+						<li>代理 4 档</li>
+						<li>2016-08-16 14:00:33</li>
+						<li>125.00</li>
+					</ul>
+					<ul class="table-container">
+						<li>陈小君</li>
+						<li>分销 1 档</li>
+						<li>2016-08-16 14:00:33</li>
+						<li>125.00</li>
+					</ul>
+					<ul class="table-container">
+						<li>陈小君</li>
+						<li>分销 2 档</li>
+						<li>2016-08-16 14:00:33</li>
+						<li>125.00</li>
+					</ul>
+					<ul class="table-container">
+						<li>陈小君</li>
+						<li>分销 3 档</li>
+						<li>2016-08-16 14:00:33</li>
+						<li>125.00</li>
+					</ul>
+					<ul class="table-container">
+						<li>陈小君</li>
+						<li>分销 3 档</li>
+						<li>2016-08-16 14:00:33</li>
+						<li>125.00</li>
+					</ul>
+				</div>
+				<div id="pageToolbar" class="pagination f-tr f-mt-m">
+					<span class="prev">&lt;</span>
+					<span class="current">1</span>
+					<a href="javascript:void(0)">2</a>
+					<a href="javascript:void(0)">3</a>
+					<em>...</em>
+					<a href="javascript:void(0)">9</a>
+					<a href="javascript:void(0)">10</a>
+					<span class="next">&gt;</span>
+					<input type="text" value="" class="ipt-page" />
+					<div class="u-btn-pageto">跳转</div>
+					<input type="hidden" id="pageToolbar_page" value="0">
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--/-->
+	<!--清空授权-->
+	<div id="dialoginfo-clear" class="dialoginfo">
+		<div class="m-err-box" style="overflow: hidden;">
+			<img class="f-fl" src="css/pc/img/jmtool1.png" />
+			<span style="line-height: 28px;">
+				确定对该渠道商、该批次码<br />清空授权？
+			</span>
+		</div>
+		<div class="u-btn-box1 f-mt-l f-cb">
+			<input type="button" class="u-btn-mddkgry f-mr-xs" value="取消" />
+			<input type="button" class="u-btn-mddkorg u-w" value="确定" />
+		</div>
+	</div>
+	<!--/-->
+
+	<script src="js/libs/third-js/jquery/1.11.0/jquery.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/libs/our-js/jm-ui/1.0/jm-ui.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/libs/third-js/artDialog/6.0/js/dialog-min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		$(function(){
+			$(".panel-hidden").hide().eq(0).show();			
+		     var tabul = $("#m-tab ul li");
+	         tabul.click(function(){
+		         tabul.eq($(this).index()).addClass("z-sel").siblings().removeClass('z-sel');
+				 $(".panel-hidden").hide().eq($(this).index()).show();		       
+	        });
+	        $(".panel-hid").hide().eq(0).show();			
+		     var tabul1 = $("#m-tab1 ul li");
+	         tabul1.click(function(){
+		         tabul1.eq($(this).index()).addClass("z-sel").siblings().removeClass('z-sel');
+				 $(".panel-hid").hide().eq($(this).index()).show();		       
+	         });
+	        $(".btn-slide").click(function(){
+				$("#m-search").slideToggle("fast");
+				$(this).toggleClass("btn-slide1"); return false;
+			})
+	        $(".btn-slide2").click(function(){
+				$("#m-search2").slideToggle("fast");
+				$(this).toggleClass("btn-slide3"); return false;
+			})
+	         //渠道商选择
+			$(".dialog-barbox").click(function() {								
+				var elembarbox = document.getElementById('dialoginfo-barbox');
+				dialog({
+					title: "渠道商选择",
+					content: elembarbox,
+				}).width(755).showModal();
+				 
+			});
+			//商品选择
+			$(".dialog-goodsbox").click(function() {								
+				var elemgoodsbox = document.getElementById('dialoginfo-goodsbox');
+				dialog({
+					title: "商品选择",
+					content: elemgoodsbox,
+				}).width(755).showModal();
+				 
+			});
+			//查看下载
+			$(".dialog-seedown").click(function() {								
+				var elemseedown = document.getElementById('dialoginfo-seedown');
+				dialog({
+					title: "查看下载",
+					content: elemseedown,
+				}).width(755).showModal();
+				 
+			});
+			//查看效果
+			$(".dialog-see").click(function() {								
+				var elemsee = document.getElementById('dialoginfo-see');
+				dialog({
+					title: "查看",
+					content: elemsee,
+				}).width(755).showModal();
+				 
+			});
+			//清空授权
+			$(".dialog-clear").click(function() {								
+				var elemclear = document.getElementById('dialoginfo-clear');
+				dialog({
+					title: "操作提醒",
+					content: elemclear,
+				}).width(420).showModal();
+				 
+			});
+		 })
+    </script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<style>
+	.ui-dialog .ui-dialog-content{
+		padding: 0;
+	}
+</style>
+<div class="m-tab f-mb-m" id="m-tab1">
+	<ul>
+		<li class="z-sel">基础信息</li>
+		<li>使用效果</li>
+	</ul>
+</div>
+<div class="panel-hid" id="effectJc">
+	<ul class="m-orderinfo-dialog">
+		<li>
+			<div class="bg-gray1">条码名称</div>
+			<div>{{name}}</div>
+		</li>
+		<li>
+			<div class="bg-gray1">条码编号</div>
+			<div>{{number}}</div>
+		</li>
+		<li>
+			<div class="bg-gray1">条码图片</div>
+			<div style="padding-bottom: 5px;"><img src="{{qrcode}}" alt="暂无图片" class="u-thumbnail-squa" /></div>
+		</li>
+		<li>
+			<div class="bg-gray1">商品名称</div>
+			<div>{{productName}}</div>
+		</li>
+		<li>
+			<div class="bg-gray1">商品主图</div>
+			<div style="padding-bottom: 5px;"><img src="{{productImg}}" alt="暂无图片" class="u-thumbnail-squa" /></div>
+		</li>
+	</ul>
+	<div class="u-btn-box1 f-mt-m"><input type="button" class="u-btn-mddkorg u-w" value="关闭" onclick="channel.qrcode.colseCheckDialog();"  /></div>
+</div>
+<div class="panel-hid" style="display: none;" >
+	<ul class="m-redbage-effect f-mb-s">
+		<li>
+			<p>加粉人数：<span class="c-orange1" id="effectUserCount">0</span> 人</p>
+			<p>使用次数：<span class="c-orange1" id="frequencyUserCount">0</span> 次</p>
+		</li>
+	</ul>
+	<div class="m-jm-table">
+		<ul class="table-hander">
+			<li>昵称</li>
+			<li>角色</li>
+			<li>关注时间</li>
+			<li>购买金额（元）</li>
+		</ul>
+		<div class="table-body h-scroll" id="effectUserList">
+
+		</div>
+		<div id="effectPageToolbar" class="pagination f-tr f-mt-m">
+		</div>
+	</div>
+</div>
+
+<script>
+	$(function() {
+		var tabul1 = $("#m-tab1 ul li");
+		tabul1.click(function () {
+			if($(this).index()==1){
+				channel.qrcode.effectUserList({{goodsQrcodeId}});
+			}
+			tabul1.eq($(this).index()).addClass("z-sel").siblings().removeClass('z-sel');
+			$(".panel-hid").hide().eq($(this).index()).show();
+		});
+	});
+</script>

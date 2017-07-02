@@ -1,0 +1,64 @@
+<div class="m-search" id="m-search">
+    <label class="u-lb-sm">姓名</label>
+    <div class="u-txt col-xs-3">
+        <input type="text" class="ipt-txt" name="userName" id="userName" placeholder="请输入姓名" />
+    </div>
+    <label class="u-lb-sm">手机</label>
+    <div class="u-txt col-xs-3">
+        <input type="text" class="ipt-txt" name="phoneNumber" id="phoneNumber" placeholder="请输入手机" />
+    </div>
+    <label class="u-lb-sm">部门</label>
+    <div class="u-txt col-xs-3">
+        <select class="ipt-txt" id="zbDepartment">
+            <option value="">全部</option>
+            {%for zbDepartment in items%}
+            <option value="{{zbDepartment.departmentId}}">{{zbDepartment.departmentName}}</option>
+            {%endfor%}
+        </select>
+    </div>
+    <label class="u-lb-sm f-cb">性别</label>
+    <div class="u-txt col-xs-3">
+        <select class="ipt-txt" name="sex" id="sex">
+            <option value="">全部</option>
+            <option value="1">男</option>
+            <option value="2">女</option>
+        </select>
+    </div>
+    <label class="u-lb-sm">微信号</label>
+    <div class="u-txt col-xs-3">
+        <input type="text" class="ipt-txt" name="wxnum" id="wxnum" placeholder="请输入微信号" />
+    </div>
+    <label class="u-lb-sm">员工号码</label>
+    <div class="u-txt col-xs-3">
+        <input type="text" class="ipt-txt" name="staffCode" id="staffCode" placeholder="请输入员工号码" />
+    </div>
+    <div class="u-btn-box1">
+        <input type="button" class="u-btn-mdemptyred" id="search-btns" value="查询" />
+    </div>
+</div>
+<a class="btn-slide btn-slide1"></a>
+<div class="m-jm-table f-mt-m" >
+    <ul class="table-hander">
+        <li style="width: 18%;">头像</li>
+        <li>姓名</li>
+        <li>性别</li>
+        <li>手机号</li>
+        <li>微信号</li>
+        <li>员工号码</li>
+        <li>部门</li>
+        <li>管理</li>
+    </ul>
+    <div class="table-body" id="staffManageList">
+    </div>
+    <div class="f-pt-s" style="position: absolute;">
+        <div class="u-btn-smltgry" id="delete"><i class="iconfont icon-delete1"></i><span>删除</span></div>
+    </div>
+    <!--以下是分页-->
+    <div id="staffToolbar" class="pagination f-fr f-mt-m">
+
+    </div>
+    <!--分页end-->
+</div>
+<script>
+    staff.list.init();
+</script>

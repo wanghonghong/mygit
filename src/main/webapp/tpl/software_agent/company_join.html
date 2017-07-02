@@ -1,0 +1,289 @@
+<style>
+    .error,.u-tiptxt label{
+        font-family: '宋体', Verdana, Arial, Helvetica, sans-serif;
+        font-size: 12px;
+        color: red;
+    }
+    .select2-container .select2-selection--single{
+        height: 36px;
+    }
+    .select2-container--default .select2-selection--single .select2-selection__rendered{
+        line-height: 36px;
+    }
+    .select2-container--default .select2-selection--single .select2-selection__arrow{
+        height: 36px;
+    }
+    input[disabled]{
+        background-color: #fcfcfc;
+    }
+    .m-goto:hover{
+        background-color: #ffffff;
+        color: #f89a14;
+    }
+    .m-joinmsg span{
+        float: left;
+        width: 440px;
+        font-size: 14px;
+        line-height: 36px;
+        font-family: '宋体', Verdana, Arial, Helvetica, sans-serif;
+    }
+    .m-joinmsg span b{
+        display: block;
+        color:red;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+    .m-joinmsg span .m-goto{
+        display: inline-block;
+        margin: 0 auto;
+        padding: 0 10px;
+        border: 1px solid #ECECEC;
+        color: #999999;
+        border-radius: 5px;
+        height: 32px;
+        cursor: pointer;
+        line-height: 32px;
+        text-align: center;
+        background-color: #f8f8f8;
+    }
+</style>
+
+    <!--主模块-->
+    <section class="g-mn1">
+        <div class="m-tab">
+            <ul>
+                <li class="z-sel">公司加盟</li>
+            </ul>
+        </div>
+
+        <form id="signupForm2" method="post" action="">
+            <div class="m-indl-aplica f-mt-m">
+               {%if jmJoin.id%}
+                    <div class="indl-aplica-left">
+                        <label class="u-lb-md">申请角色</label>
+                        <div class="u-txt col-xs-9">
+                            <select id="applyRole" name="applyRole" class="ipt-txt select2">
+                              {%if jmJoin.applyRoleId == 11%}
+                                    <option value="11" selected>机构代理1级</option>
+                                    <option value="12" >机构代理2级</option>
+                              {%elif jmJoin.applyRoleId == 12%}
+                                    <option value="11" >机构代理1级</option>
+                                    <option value="12" selected>机构代理2级</option>
+                               {%else%}
+                                    <option></option>
+                                    <option value="11">机构代理1级</option>
+                                    <option value="12">机构代理2级</option>
+                                {%endif%}
+                            </select>
+                            <div class="error" id="apply-error" style="display:none;">请选择角色</div>
+                        </div>
+                        <label class="u-lb-md">公司名称</label>
+                        <div class="u-txt col-xs-9 u-tiptxt">
+                            {%if jmJoin.companyName%}
+                                <input type="text" id="companyName" name="companyName" class="ipt-txt" value="{{jmJoin.companyName}}" placeholder="请输入公司名称" />
+                            {%else%}
+                                <input type="text" id="companyName" name="companyName" class="ipt-txt" value="" placeholder="请输入公司名称" />
+                            {%endif%}
+                        </div>
+                        <label class="u-lb-md">营业执照</label>
+                        <div class="col-xs-9">
+                            <div class="m-add-img" id="m-add-img" style="width: 25%;">
+                                {%if jmJoin.businessLicense%}
+                                <img src="{{jmJoin.businessLicense}}">
+                                {%else%}
+                                <img src="{{globalUrl}}/css/pc/img/no_picture.png">
+                                {%endif%}
+                                <i class="iconfont icon-add"></i>
+                                <span id="businessLicense_span" style="font-size: 12px;color: red;display: none">请上传营业执照</span>
+                            </div>
+                        </div>
+                        <div class="m-tip3 col-xs-9 f-mb-s">
+                            <i style="" class="iconfont icon-lamp"></i>
+                            <span>海报图片的二维码根据海报格式的位置摆放</span>
+                        </div>
+                        <label class="u-lb-md">经营人数</label>
+                        <div class="u-txt col-xs-9 u-tip u-tiptxt">
+                            {%if jmJoin.manageNum%}
+                                <input type="text" id="manageNum" name="manageNum" class="ipt-txt " value="{{jmJoin.manageNum}}" placeholder="请输入经营人数" />
+                            {%else%}
+                                <input type="text" id="manageNum" name="manageNum" class="ipt-txt " value="" placeholder="请输入经营人数" />
+                            {%endif%}
+                        </div>
+                        <label class="u-lb-md">经营地址</label>
+                        <div class="u-txt col-xs-9 u-tiptxt distpicker" data-toggle="distpicker">
+                            <select id="province" data-province="{{jmJoin.province}}" class="ipt-txt f-mb-s " style="width: 29.2%;" >
+                            </select>
+                            <span class="line">-</span>
+                            <select id="city" data-city="{{jmJoin.city}}" class="ipt-txt f-mb-s " style="width: 29.2%;" >
+                            </select>
+                            <span class="line">-</span>
+                            <select id="district" data-district="{{jmJoin.district}}" class="ipt-txt f-mb-s " style="width: 29.2%;" >
+                            </select>
+                            <textarea id="address" name="address" class="ipt-txt txtarea "  placeholder="详细街道地址">{{jmJoin.address}}</textarea>
+                        </div>
+
+                        <label class="u-lb-md">联系姓名</label>
+                        <div class="u-txt col-xs-9 u-tiptxt">
+                            <input type="text" id="userName" name="userName" class="ipt-txt " value="{{jmJoin.userName}}" placeholder="请输入联系姓名" />
+                        </div>
+                        <label class="u-lb-md">联系手机</label>
+                        <div class="u-txt col-xs-9 u-tiptxt">
+                            <input type="text" id="phoneNumber" name="phoneNumber" class="ipt-txt " value="{{jmJoin.phoneNumber}}" placeholder="请输入联系手机" disabled/>
+                        </div>
+                        <label class="u-lb-md">联系邮箱</label>
+                        <div class="u-txt col-xs-9 u-tiptxt">
+                            <input type="text" id="email" name="email" value="{{jmJoin.email}}"class="ipt-txt" placeholder="请输入联系邮箱" />
+                        </div>
+                        <label class="u-lb-md">公司网址</label>
+                        <div class="u-txt col-xs-9 u-tiptxt">
+                            {%if jmJoin.companyUrl%}
+                                <input type="text" id="url" name="url" class="ipt-txt " value="{{jmJoin.companyUrl}}" placeholder="请输入公司网址" />
+                            {%else%}
+                                <input type="text" id="url" name="url" class="ipt-txt " value="" placeholder="请输入公司网址" />
+                            {%endif%}
+                        </div>
+                        <label class="u-lb-md">公司简介</label>
+                        <div class="u-txt col-xs-9 u-tiptxt">
+                            <textarea id="companyDesc" name="companyDesc" class="ipt-txt txtarea " maxlength="500" onKeyUp="jumi.wordNumber('companyDesc',500)" onblur="jumi.wordNumber('companyDesc',500)" placeholder="请输入公司简介">{%if jmJoin.companyDesc%}{{jmJoin.companyDesc}}{%endif%}</textarea>
+                            <span class="number" ><span id="companyDesc1" style="color:#f38925"> 0</span>/500</span>
+                        </div>
+                    </div>
+                {%else%}
+                    <div class="indl-aplica-left">
+                        <label class="u-lb-md">申请角色</label>
+                        <div class="u-txt col-xs-9 u-tiptxt">
+                            <select id="applyRole" class="ipt-txt select2">
+                                <option></option>
+                                <option value="11">机构代理1级</option>
+                                <option value="12">机构代理2级</option>
+                            </select>
+                            <div class="error" id="apply-error" style="display:none;">请选择角色</div>
+                        </div>
+                        <label class="u-lb-md">公司名称</label>
+                        <div class="u-txt col-xs-9 u-tiptxt">
+                            <input type="text" id="companyName" name="companyName" class="ipt-txt" placeholder="请输入公司名称" />
+                        </div>
+                        <label class="u-lb-md">营业执照</label>
+                        <div class="col-xs-9">
+                            <div class="m-add-img" id="m-add-img" style="width: 25%;">
+                                <img src="{{globalUrl}}/css/pc/img/no_picture.png">
+                                <i class="iconfont icon-add"></i>
+                            </div>
+                            <span id="businessLicense_span" style="font-size: 12px;color: red;display: none">请上传营业执照</span>
+                        </div>
+                        <div class="m-tip3 col-xs-9 f-mb-s">
+                            <i style="" class="iconfont icon-lamp"></i>
+                            <span>海报图片的二维码根据海报格式的位置摆放</span>
+                        </div>
+                        <label class="u-lb-md">经营人数</label>
+                        <div class="u-txt col-xs-9 u-tip u-tiptxt">
+                            <input type="text" id="manageNum" name="manageNum" class="ipt-txt " placeholder="请输入经营人数" />
+                        </div>
+                        <label class="u-lb-md">经营地址</label>
+                        <div class="u-txt col-xs-9 u-tiptxt distpicker" >
+                            <select id="province"  class="ipt-txt f-mb-s " style="width: 29.2%;" >
+                            </select>
+                            <span class="line">-</span>
+                            <select id="city"  class="ipt-txt f-mb-s " style="width: 29.2%;" >
+                            </select>
+                            <span class="line">-</span>
+                            <select id="district"  class="ipt-txt f-mb-s " style="width: 29.2%;" >
+                            </select>
+                            <textarea id="address" name="address" class="ipt-txt txtarea " placeholder="详细街道地址"></textarea>
+                        </div>
+
+                        <label class="u-lb-md">联系姓名</label>
+                        <div class="u-txt col-xs-9 u-tiptxt">
+                            <input type="text" id="userName" name="userName" class="ipt-txt " placeholder="请输入联系姓名" />
+                        </div>
+                        <label class="u-lb-md">联系手机</label>
+                        <div class="u-txt col-xs-9 u-tiptxt">
+                            <input type="text" id="phoneNumber" name="phoneNumber" class="ipt-txt " value="{{phoneNumber}}" placeholder="请输入联系手机" disabled/>
+                        </div>
+                        <label class="u-lb-md">联系邮箱</label>
+                        <div class="u-txt col-xs-9 u-tiptxt">
+                            <input type="text" id="email" name="email" class="ipt-txt" placeholder="请输入联系邮箱" />
+                        </div>
+                        <label class="u-lb-md">公司网址</label>
+                        <div class="u-txt col-xs-9 u-tiptxt">
+                            <input type="text" id="url" name="url" class="ipt-txt " placeholder="请输入公司网址" />
+                        </div>
+                        <label class="u-lb-md">公司简介</label>
+                        <div class="u-txt col-xs-9 u-tiptxt">
+                            <textarea id="companyDesc" name="companyDesc" maxlength="500" onKeyUp="jumi.wordNumber('companyDesc',500)" onblur="jumi.wordNumber('companyDesc',500)" class="ipt-txt txtarea " placeholder="公司简介"></textarea>
+                            <span class="number" ><span id="companyDesc1" style="color:#f38925"> 0</span>/500</span>
+                        </div>
+                    </div>
+
+                {%endif%}
+                <div class="indl-aplica-right">
+                    <img class="personal-agent" src="{{globalUrl}}/img/pc/gsdl.png"  />
+                </div>
+                <div class="u-btn-box">
+                    <input type="button" id="submitApply2" class="u-btn-lgdkorg dialog" value="提交申请" />
+                </div>
+
+            </div>
+        </form>
+    </section>
+    <!--/主模块-->
+<div id="dialoginfo" class="dialoginfo">
+    <div class="m-appling">
+        <h3>你已成功提交申请</h3>
+        <img src="{{globalUrl}}/css/pc/img/jmtool2.png"  />
+        <p>三个工作日内，工作人员将与您电话确认，敬请保持手机接听畅通</p>
+        <label>聚米为谷全国统一服务电话：<span>400-0766-568</span></label>
+        <div class="u-btn-box1 f-mt-m"><input type="button" id="konw2" onclick="agent.join.konw2Click()" class="u-btn-mddkorg" value="我知道了" /></div>
+    </div>
+
+</div>
+<div id="dialoginfo1" class="dialoginfo">
+    <div class="m-sus-box m-joinmsg">
+        <div class="f-fl">
+            <img src="{{globalUrl}}/css/pc/img/jmtool1.png" style="margin-top: 40%;" />
+        </div>
+        <span>
+            <b>您本次提交申请失败，请重新提交</b>
+            <p>失败原因：{%if jmJoin.checkContext%}{{jmJoin.checkContext}}{%endif%}</p>
+            <div class="m-tip1 m-tip11" style="padding-left: 0; margin-left: 0;">
+                <span>
+                    <i class="iconfont icon-lamp"></i>
+                    若要申请个人加盟，请点击按钮—>
+                    <div class="m-goto" onclick="agent.join.pJoin()">个人加盟</div>
+                </span>
+            </div>
+        </span>
+    </div>
+    <div class="u-btn-box1 f-pt-l">
+        <input type="button" class="u-btn-mddkorg" id="confirm" onclick="agent.join.closeReview()" value="关闭" />
+    </div>
+
+</div>
+{%if jmJoin%}
+<input type="hidden" name="type" id="type" value="{{jmJoin.type}}"/>
+<input type="hidden" name="subType" id="subType" value="{{jmJoin.subType}}"/>
+<input type="hidden" name="status" id="status" value="{{jmJoin.status}}"/>
+{%endif%}
+<script type="text/javascript" charset="utf-8">
+    agent.join.init();
+    $(function(){
+        var type = $('#type').val();
+        var subType = $('#subType').val();
+        var status = $('#status').val();
+        if (type==1&&subType==2&status==2){
+            var elem1 = document.getElementById('dialoginfo1');
+            var d = dialog({
+                title: "审核意见",
+                content: elem1,
+                id:'closeReview',
+            }).width(600).showModal();
+        }
+
+        //选择框select2
+        $(".select2").select2({
+            placeholder: "请选择角色",
+            allowClear: false,
+            theme: "jumi"
+        });
+    })
+</script>

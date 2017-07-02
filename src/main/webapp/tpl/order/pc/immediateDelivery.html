@@ -1,0 +1,45 @@
+<div id="dialoginfo" >
+    <form id="immediateForm" name="immediateForm" >
+        <div class="m-info-box">
+                <span class="info-cott">
+                    <input type="hidden" id="orderInfoId" name="orderInfoId" value="{{orderInfoId}}" />
+                    <div class="g-table">
+                        <span class="g-table-cell">
+                            <img class="u-thumbnail-circ" src="css/pc/img/icon_buy.png" />
+                        </span>
+                        <span class="g-table-cell">买家留言：<font color="#6A6A6A">{{remark}}</font></span>
+                    </div>
+                    <div>
+                        <span class="g-table-cell">
+                            <img class="u-thumbnail-circ" src="css/pc/img/icon_sale.png" />
+                        </span>
+                        <span class="g-table-cell">买家留言：<font color="#6A6A6A">{{sellerNote}}</font></span>
+                    </div>
+                </span>
+            <div class="logistics">
+                <h3 class="">物流信息</h3>
+
+                <label class="u-lb-sm">物流公司</label>
+                <div class="u-txt">
+                    <select class="ipt-txt" name="d_transCompany" id="d_transCompany" style="width: 100%">
+                        <option value="">请选择</option>
+                        {%for item in items%}
+                        <option value="{{item.name}},{{item.code}}">{{item.name}}</option>
+                        {%endfor%}
+                    </select>
+                </div>
+                <label class="u-lb-sm">物流单号</label>
+                <div class="u-txt">
+                    <input class="ipt-txt" type="text" id="d_transNumber" name="d_transNumber" value="" />
+                </div>
+                <label class="u-lb-sm">物流备注</label>
+                <div class="u-txt">
+                    <textarea name="shared" class="ipt-txt txtarea" id="d_deliveryNote" name="d_deliveryNote" placeholder=""></textarea>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<script type="text/javascript">
+    jumi.Select('#d_transCompany');
+</script>

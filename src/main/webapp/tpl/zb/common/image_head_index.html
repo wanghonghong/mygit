@@ -1,0 +1,33 @@
+<div class="m-tab f-mb-l">
+    <ul id="dialog_common">
+        <li class="z-sel">上传图片</li>
+    </ul>
+</div>
+<div>
+    <div class="m-upload" id="dia_0">
+        <input type="hidden" id="map_files">
+        <div class="col-xs-12">
+            <!--<label class="u-lb-md">本地图片</label>-->
+            <ul class="m-addimg-group col-xs-10" id="m-addimg-group">
+                <li class="add" style="margin-left: 160px; width: 200px; height: 200px;">
+                    <i class="iconfont icon-add" style="width: 200px; height: 200px; line-height: 180px; font-size: 50px;"></i>
+                    <input type="file" id="map_fileupload_add_1" accept="image/gif,image/jpeg,image/png" name="myfile" style="width: 200px; height: 200px; top: -200px;"/>
+                </li>
+            </ul>
+            <div class="m-tip3 col-xs-9 f-mb-m f-pt-m">
+                <i style="" class="iconfont icon-lamp"></i>
+                <span>仅支持jpg、gif、png三种格式，大小30k-300k</span>
+            </div>
+        </div>
+        <div class="u-btn-box1 f-mt-m"><input id="map_dialog_upload_btn" type="button" class="u-btn-mddkorg" value="确定" /></div>
+    </div>
+</div>
+<style>
+    .m-addimg-group .img{
+        width: 200px;
+        height: 200px;
+        margin-left: 160px;
+        background-size: 100%;
+        background-position: center;
+    }
+</style>

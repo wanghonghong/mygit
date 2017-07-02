@@ -1,0 +1,36 @@
+
+    <div class="m-select-list f-pl-s">
+        <div class="f-mb-l">
+            <div class="u-cb">
+                {%if isAll==1 %}
+                <input type="checkbox" name="selectpower" checked id="sltpower_all" value="0"/>
+                {%else%}
+                <input type="checkbox" name="selectpower"  id="sltpower_all" value="0"/>
+                {%endif%}
+                <label class="iconfont icon-avoid" for="sltpower_all"></label>
+            </div>
+            <label for="sltpower_all" class="f-pl-xs">全部成员</label>
+        </div>
+        {%for zbDepartment in zbDepartmentList %}
+        {%if zbDepartment.isChecked==1%}
+        <div class="f-mb-l">
+            <div class="u-cb">
+                <input type="checkbox" name="selectpower" checked id="sltpower{{zbDepartment.departmentId}}" value="{{zbDepartment.departmentId}}"/>
+                <label class="iconfont icon-avoid" for="sltpower{{zbDepartment.departmentId}}"></label>
+            </div>
+            <label for="sltpower{{zbDepartment.departmentId}}" class="f-pl-xs">{{zbDepartment.departmentName}}</label>
+        </div>
+        {%else %}
+        <div class="f-mb-l">
+            <div class="u-cb">
+                <input type="checkbox" name="selectpower"  id="sltpower{{zbDepartment.departmentId}}" value="{{zbDepartment.departmentId}}"/>
+                <label class="iconfont icon-avoid" for="sltpower{{zbDepartment.departmentId}}"></label>
+            </div>
+            <label for="sltpower{{zbDepartment.departmentId}}" class="f-pl-xs">{{zbDepartment.departmentName}}</label>
+        </div>
+        {%endif%}
+        {%endfor%}
+        <div class="u-btn-box1">
+            <input type="button" class="u-btn2-mddeepred" onclick="notice.first.sureDepartment('{{id}}')" value="确定" />
+        </div>
+    </div>

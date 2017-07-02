@@ -1,0 +1,27 @@
+{%if items.length>0 %}
+{% for item in items %}
+<ul class="table-container f-t-off" id="op_table_container_{{item.id}}">
+    <li class="f-tl" style="width: 20%; line-height: 20px;">
+        <p title="{{item.typeName}}">{%if isFirstPage==1 and loop.index<=3 %}
+            <font color="orange">*</font>
+        {%endif%}
+        <label>{{item.typeName}}</label></p>
+    </li>
+    <li style="width: 10%;">{{item.sort}}</li>
+    <li class="f-tl" style="width: 28%; line-height: 20px;"><p title="{{item.shareText}}">{{item.shareText}}</p></li>
+    <li>
+        <div><img class="thumbnail-img" src="{{item.imageUrl}}" alt="暂无图片"></div>
+    </li>
+    <li style="width: 25%;">
+        <div class="btn  btn-lightgray btn-sm" data-type-id="{{item.id}}" id="op_edit_{{loop.index}}"><i class="iconfont icon-modified font-color-blue"></i><span>编辑</span></div>
+        {%if loop.index>3 %}
+        <div class="btn  btn-lightgray btn-sm" data-type-id="{{item.id}}" id="op_del_{{loop.index}}"><i class="iconfont icon-delete1 font-color-red"></i><span>删除</span></div>
+        {%endif%}
+    </li>
+</ul>
+{%endfor%}
+{%else%}
+<div class="m-jm-err">
+    <img src="{{globalUrl}}/css/pc/img/jm-nodb.png">
+</div>
+{%endif%}

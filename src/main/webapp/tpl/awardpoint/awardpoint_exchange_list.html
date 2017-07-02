@@ -1,0 +1,57 @@
+<style>
+    .noData{
+        font-size: 16px;
+        text-align: center;
+        height:30px;
+        line-height: 30px;
+    }
+</style>
+{%if items.length>0%}
+{%for item in items %}
+<ul class="table-container">
+    <li style="width:35%;">
+        <div class="g-table">
+            <div class="g-table-cell f-vm" style="width:6%;">
+                <div class="u-cb1">
+                    <input type="checkbox" name="checkall" data-id="{{item.id}}" id="checkBox_{{item.pid}}" value="{{item.pid}}">
+                    <label class="iconfont icon-avoid" for="checkBox_{{item.pid}}" style="top: 0;"></label>
+                </div>
+            </div>
+            <div class="g-table-cell f-vm" style="width:25%;">
+                <label for="checkBox_{{item.pid}}"><img class="u-thumbnail-squa" src="{{item.pic}}"></label>
+            </div>
+            <div class="g-table-cell f-vm f-tl">
+                <span>{{item.name}}</span><br>
+                <font color="#f36920">￥{{item.price/100}}</font>
+            </div>
+        </div>
+    </li>
+    {%if item.type==0 %}
+    <li style="width: 25%;">全额抵扣</li>
+    <li style="width: 25%;">-</li>
+    {%elif item.type==1%}
+    <li style="width: 25%;">限额抵扣</li>
+    <li style="width: 25%;">{{item.integral}}积分</li>
+    {%else%}
+    <li style="width: 25%;">-</li>
+    <li  style="width: 25%;">-</li>
+    {%endif%}
+    {%if item.id %}
+      <li>
+          <div id="awardpoint_edit_{{item.pid}}" data-integral="{{item.integral}}" data-price="{{item.price/100}}" data-type="{{item.type}}" data-id="{{item.id}}" data-pid="{{item.pid}}" class="u-btn-smltgry dialog"><i class="iconfont icon-modified"></i><span>编辑</span></div>
+          <div id="awardpoint_del_{{item.pid}}" data-integral="{{item.integral}}" data-price="{{item.price/100}}" data-type="{{item.type}}" data-id="{{item.id}}" data-pid="{{item.pid}}" class="u-btn-smltgry dialog"><i class="iconfont icon-delete1"></i><span>清空</span></div>
+      </li>
+    {%else%}
+    <li><div id="awardpoint_edit_{{item.pid}}" data-price="{{item.price/100}}" data-pid="{{item.pid}}" class="u-btn-smltgry dialog"><i class="iconfont icon-modified"></i><span>设置积分</span></div></li>
+    {%endif%}
+
+</ul>
+{%endfor%}
+{%else%}
+<!--<div class="noData">-->
+    <!--暂无符合数据-->
+<!--</div>-->
+<div class="m-jm-err">
+    <img src="{{globalUrl}}/css/pc/img/jm-nodb.png">
+</div>
+{%endif%}

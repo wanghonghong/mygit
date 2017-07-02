@@ -1,0 +1,75 @@
+<!--修改价格-->
+<div id="dialoginfo5" >
+    <form id="updatePriceForm" name="updatePriceForm">
+        <input type="hidden" id="u_totalPrice" name="u_totalPrice" value="{{data.totalPrice/100}}" />
+        <input type="hidden" id="u_sendFee" name="u_sendFee" value="{{data.sendFee/100}}"/>
+        <dl class="m-changeprice">
+            <dd>
+                <ul>
+                    <li>
+                        <div>商品价格</div>
+                        <div><font>{{data.totalPrice/100}}</font>元</div>
+                    </li>
+                    <li>
+                        <div>运费价格</div>
+                        <div><font>{{data.sendFee/100}}</font>元</div>
+                    </li>
+                    <li>
+                        <div>积分抵扣</div>
+                        <div>
+                            <div class="u-txt" style="top: 8px;">
+                                <div class="ipt-txt11">
+                                    <input type="text" class="ipt-txt" id="u_benefits" name="u_benefits" value="{{data.benefits/1}}" readonly="readonly" />
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div>优惠券使用</div>
+                        <div>
+                            <div class="u-txt" style="top: 8px;">
+                                <div class="ipt-txt11">
+                                    <i class="icon-lb-word c-gray">元</i>
+                                    <input type="text" class="ipt-txt" id="u_coupon" name="u_coupon" value="{{data.coupon/1}}" readonly="readonly" />
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div>分销商折扣</div>
+                        <div>
+                            <div class="u-txt" style="top: 8px;">
+                                <div class="ipt-txt11">
+                                    <i class="icon-lb-word c-gray">折</i>
+                                    <input type="hidden" class="ipt-txt" id="u_discount" name="u_discount" value="{{data.discount/10}}" readonly="readonly" />
+                                    {% if data.discount<=0 %}
+                                        <input type="text" class="ipt-txt" value="10" readonly="readonly" />
+                                    {% else %}
+                                        <input type="text" class="ipt-txt" value="{{data.discount/10}}" readonly="readonly" />
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </dd>
+            <dt>
+            <div class="f-fl">
+                <div class="u-rb">
+                    <input type="radio" name="xgjg" id="radiojg" value="" checked />
+                    <label for="radiojg"></label>
+                </div>
+                <label class="u-rd-wd">修改总价</label>
+            </div>
+            <div class="u-txt">
+                <div class="ipt-txt11" style="width: 186px;">
+                    <i class="icon-lb-word c-gray">元</i>
+                    <input type="text" class="ipt-txt" id="u_discountAmount1" name="u_discountAmount1" autocomplete="off" onkeyup="updatePrice.list.clearNoNum(this)"/>
+                </div>
+            </div>
+            <label class="u-rd-wd2">实际收取：<font><span id="u_totalPrice1"></span></font><font>元</font></label>
+            </dt>
+            <div style="width: 300px"><label class="u-rd-wd2" style="width: 300px"><font color="red"><span id="prompt"></span></font></label></div>
+        </dl>
+    </form>
+</div>

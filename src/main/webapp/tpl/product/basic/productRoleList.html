@@ -1,0 +1,15 @@
+
+{% for item in productRoleList %}
+<ul class="table-container f-pd-ss">
+    <li>
+        <div class="u-txt" style="margin-left: 35px;">
+            <div class="u-cb">
+                <input type="checkbox" name="agentRole" id="agentRole{{item.agentRole}}" value="{{item.agentRole}}" {% if item.ischange==1 %} checked {% endif  %}  />
+                <label class="iconfont icon-avoid" for="agentRole{{item.agentRole}}" style="top: 0px;"></label>
+            </div>
+            <label for="agentRole{{item.agentRole}}">{{item.agentName}}</label>
+        </div>
+    </li>
+    <li class="limitCountNum"><input type="number" class="table-input"  id="limitCount{{item.agentRole}}"  name="limitCount" placeholder="请输入数量"  min="0" value="{{item.limitCount | default(0,true) }}" /></li>
+</ul>
+{% endfor %}

@@ -1,0 +1,150 @@
+<div class="m-panel-head f-mt-m">
+    <div class="m-tt">
+        <p style="padding-left: 10px;">新老构成</p>
+    </div>
+    <div class="col-xs-12 f-pb-m f-pt-m">
+        <div id="chartcustomer" style="width: 400px; height: 180px; float: left;"></div>
+        <div class="m-shipinfo-lt f-fl f-mt-xl" style="width: 550px;">
+            <ul class="table-hander font-s14">
+                <li>客户属性</li>
+                <li>付款人数</li>
+                <li>付款金额</li>
+            </ul>
+            <div class="table-body">
+                <ul class="table-container">
+                    <li>新客户</li>
+                    <li>{{customerInfo.newCount|default(0,true)}}</li>
+                    <li>{{customerInfo.newMoney|default(0,true)/100}}</li>
+                </ul>
+                <ul class="table-container">
+                    <li>老客户</li>
+                    <li>{{customerInfo.oldCount|default(0,true)}}</li>
+                    <li>{{customerInfo.oldMoney/100}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="m-panel-head f-mt-m">
+    <div class="m-tt">
+        <p style="padding-left: 10px;">金额区间</p>
+    </div>
+    <div class="col-xs-12 f-pb-m">
+        <div id="chartmoney" style="width: 1080px; height: 330px;"></div>
+    </div>
+</div>
+<div class="m-panel-head f-mt-m">
+    <div class="m-tt">
+        <p style="padding-left: 10px;">地区分布</p>
+    </div>
+    <div class="col-xs-12 f-pb-m f-pt-s">
+        <div id="chartareaplace" style="width: 435px; height: 370px; float: left;"></div>
+        <div class="m-shipinfo-lt f-fl" style="width: 640px;">
+            <ul class="table-hander font-s14">
+                <li>排名</li>
+                <li>地区</li>
+                <li>付款人数</li>
+                <li>访客数</li>
+                <li>浏览-付款转化率</li>
+            </ul>
+            <div class="table-body">
+                {% for bv in bvInfo %}
+                {%if loop.index<=10 %}
+                <ul class="table-container">
+                    <li>{{loop.index}}</li>
+                    <li>{{bv.name}}</li>
+                    <li>{{bv.buyCount}}</li>
+                    <li>{{bv.visitCount}}</li>
+                    <li>{{bv.percent}}</li>
+                </ul>
+                {%endif%}
+                {%endfor%}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="m-panel-head f-mt-m">
+    <div class="m-tt">
+        <p style="padding-left: 10px;">等级分布</p>
+    </div>
+    <div class="col-xs-12 f-pb-m f-pt-m">
+        <div id="chartgrade" style="width: 350px; height: 200px; float: left;"></div>
+        <div class="m-shipinfo-lt f-fl" style="width: 700px;">
+            <ul class="table-hander font-s14">
+                <li>积分</li>
+                <li>人数</li>
+                <li>占比</li>
+            </ul>
+            <div class="table-body">
+                <ul class="table-container">
+                    <li>金卡</li>
+                    <li>{{levelInfo.gold}}</li>
+                    <li>{{levelInfo.goldPercent}}</li>
+                </ul>
+                <ul class="table-container">
+                    <li>银卡</li>
+                    <li>{{levelInfo.silver}}</li>
+                    <li>{{levelInfo.silverPercent}}</li>
+                </ul>
+                <ul class="table-container">
+                    <li>铜卡</li>
+                    <li>{{levelInfo.copper}}</li>
+                    <li>{{levelInfo.copperPercent}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--<div class="m-panel-head f-mt-m">
+    <div class="m-tt">
+        <p style="padding-left: 10px;">角色</p>
+    </div>
+    <div class="col-xs-12 f-mt-m f-pb-m">
+        <div class="m-jm-table">
+            <ul class="table-hander font-s14">
+                <li>&nbsp;</li>
+                <li>购买客户</li>
+                <li>分销客户</li>
+                <li>代理客户</li>
+                <li>普通分销</li>
+                <li>分销A档</li>
+                <li>分销B档</li>
+                <li>分销C档</li>
+                <li>代理A档</li>
+                <li>代理B档</li>
+                <li>代理C档</li>
+                <li>代理D档</li>
+            </ul>
+            <div class="table-body">
+                <ul class="table-container">
+                    <li class="font-s14 bg-gray1">数据分析</li>
+                    <li>50</li>
+                    <li>50</li>
+                    <li>50</li>
+                    <li>50</li>
+                    <li>50</li>
+                    <li>50</li>
+                    <li>50</li>
+                    <li>50</li>
+                    <li>50</li>
+                    <li>50</li>
+                    <li>50</li>
+                </ul>
+                <ul class="table-container">
+                    <li class="font-s14 bg-gray1">占比(%)</li>
+                    <li>50</li>
+                    <li>50</li>
+                    <li>50</li>
+                    <li>50</li>
+                    <li>50</li>
+                    <li>50</li>
+                    <li>50</li>
+                    <li>50</li>
+                    <li>50</li>
+                    <li>50</li>
+                    <li>50</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>-->

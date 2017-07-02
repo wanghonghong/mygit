@@ -1,0 +1,104 @@
+<style>
+.gmn{
+	padding: 23px 24px 23px 0;
+	width: 1154px;
+	float: left;
+}
+.m-jm-table .table-hander li{
+		        border-left: 1px solid #d7d7d7;
+		        border-right: 1px solid #fbfbfb;
+		        color: #000000;
+		    }
+</style>
+<!--主模块-->
+<section id="cash_balance">
+	<div class="m-sell-set bg-white"
+		style="margin-right: 0; margin-left: 0px; padding: 20px 0 20px;box-shadow: none;">
+		<div class="sell-set-left c-gray1">
+			<h3 style="padding-left: 15px;">现金余额</h3>
+		</div>
+		<div class="sell-set-right">
+			<div class="money f-font-yahei-lg">
+				<span style="color: #019858;">{{(balance/100)|shortNumber(2)}}</span>&nbsp;&nbsp;元
+			</div>
+		</div>
+	</div>
+	<div class="m-sell-set bg-white"
+		style="margin-right: 0; margin-left: 0px; padding: 20px 0 20px;box-shadow: none;">
+		<div class="sell-set-left c-gray1">
+			<h3 style="padding-left: 15px;">在线充值</h3>
+		</div>
+		<div class="sell-set-right">
+			<div class="u-txt">
+				<div class="ipt-txt11"
+					style=" width: 200px; margin-top: -5px;padding-top: 5px;">
+					<i class="icon-lb-word c-gray">元</i> <input type="text" id="otherMoney"
+						class="ipt-txt c-gray1" onfocus="juke.jukeRed.clearCheckedMoney()"
+						onkeyup="this.value=this.value.replace(/[^\d.]/g,'')" placeholder="输入其它金额" />
+				</div>
+			</div>
+			<div class="select-money">
+				<div class="u-sort f-ml-l active">
+					500元 <input type="checkbox" value="500" name="rechargeMoney" checked="checked"  /> <label  class="iconfont icon-avoid"></label>
+				</div>
+				<div class="u-sort">
+					1000元 <input type="checkbox" value="1000"  name="rechargeMoney" /> <label class="iconfont icon-avoid"></label>
+				</div>
+				<div class="u-sort">
+					2000元 <input type="checkbox" value="2000"  name="rechargeMoney" /> <label class="iconfont icon-avoid"></label>
+				</div>
+				<div class="u-sort">
+					3000元 <input type="checkbox" value="3000"  name="rechargeMoney" /> <label class="iconfont icon-avoid"></label>
+				</div>
+				<input type="button" class="u-btn-mddkorg f-ml-s dialog" onclick="juke.jukeRed.createOrder()"  value="现金充值" />
+			</div>
+		</div>
+	</div>
+	<div class="m-sell-set bg-white"
+		style="margin-right: 0; margin-left: 0px; padding: 5px 0 10px;box-shadow: none;">
+		<div class="sell-set-top f-mb-m" style="width: 100%; color: #7e7e7e;">
+			<h3 style="padding-left: 15px;">充值记录</h3>
+		</div>
+		<div class="m-jm-table">
+			<ul class="table-hander bg" style="background:#ededed;">
+				<li>日期</li>
+				<li>金额（元）</li>
+				<li>支付方式</li>
+			</ul>
+			<div id="jk_recharg_list"></div>
+			<div class="col-xs-6" style="float: right;">
+				<!--以下是分页效果-->
+				<div id=rechargePaperToolbar class="pagination f-fr f-mt-m">
+					
+				</div>
+				<!--分页end-->
+			</div>	
+		</div>
+	</div>
+	
+		
+</section>
+<input type="hidden" id="orderInfoId" />
+<div id="dialoginfo" class="dialoginfo">
+		<div class="col-xs-12 m-bullet-img f-tc">
+			<img id="codePayImg" src="" style="width: 180px;height: 180px;" >
+			<p class="f-pt-s">微信扫码支付</p>
+		</div>
+</div> 
+	<script type="text/javascript">
+	juke.jukeRed.getrecharge();//初始化加载列表
+	
+	$(function(){
+		var tabul = $(".select-money .u-sort");
+	       tabul.click(function(){
+	    	   	 $("#otherMoney").val("");//选择固定额度的时候就置空input内容
+	    	   	 $(this).addClass("active").siblings().removeClass('active');
+	    	   	 tabul.find("input").prop("checked",false);
+		         $(this).find("input").prop("checked",true);
+		        
+	       });
+	});
+
+	
+	</script>
+
